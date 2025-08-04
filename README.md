@@ -1,17 +1,17 @@
 # Zendesk (zendesk)
-All requests to the Sync API endpoints must be authenticated. You can easily reuse access tokens you might have used during the calls to the REST API.
+Zendesk provides customer service and engagement software that helps businesses manage support tickets, automate workflows, and offer multi-channel supportincluding email, chat, social media, and phonethrough a unified platform.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/zendesk/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consumer 
+- **Type:** Contract 
+- **Position:** Consuming 
 - **Access:** 3rd-Party 
 
 ## Tags:
 
- - API
+ - Support, Tcikets
 
 ## Timestamps
 
@@ -28,7 +28,7 @@ All requests to the Sync API endpoints must be authenticated. You can easily reu
 
 #### Tags:
 
- - API
+ - Support, Tcikets
 
 #### Properties
 
