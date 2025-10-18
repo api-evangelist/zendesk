@@ -1,0 +1,1230 @@
+openapi: 3.1.0
+info:
+  title: Triggers
+  description: Needs a description.
+paths:
+  /api/v2/custom_objects/{custom_object_key}/triggers:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+    get:
+      operationId: ListObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers
+      description: |
+        Lists all triggers for the specified custom object.
+
+        #### Allowed For 
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TriggerActive'
+        - $ref: '#/components/parameters/TriggerSortBy'
+        - $ref: '#/components/parameters/TriggerSortOrder'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersResponseExample'
+    post:
+      operationId: CreateObjectTrigger
+      tags:
+        - Object Triggers
+      summary: Post  Api V2 Custom_objects Custom_object_key Triggers
+      description: >
+        Creates a new object trigger for a specified object.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerRequestExample'
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/{trigger_id}:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerId'
+    get:
+      operationId: GetObjectTrigger
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: |
+        Returns details of a specific object trigger.
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+    put:
+      operationId: UpdateObjectTrigger
+      tags:
+        - Object Triggers
+      summary: Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: >
+        Updates a specified object trigger.
+
+
+        **Note**: Updating a condition or action updates both the conditions and
+        actions arrays,
+
+        clearing all existing values of both arrays. Include all your conditions
+
+        and actions when updating any condition or action.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+    delete:
+      operationId: DeleteObjectTrigger
+      tags:
+        - Object Triggers
+      summary: Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: >
+        Deletes a specified object trigger.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/custom_objects/{custom_object_key}/triggers/active:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+    get:
+      operationId: ListActiveObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Active
+      description: >
+        Lists all active object triggers.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersActiveResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/definitions:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+    get:
+      operationId: ListObjectTriggersDefinitions
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
+      description: >
+        Lists the conditions and actions of all triggers for the specified
+        custom object.
+
+
+        #### Allowed For 
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerDefinitionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerDefinitionResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/destroy_many:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerIds'
+    delete:
+      operationId: DeleteManyObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
+      description: >
+        Deletes the object triggers corresponding to the provided
+        comma-separated list of ids. 
+
+
+        **Note**: You can only bulk-delete triggers associated with one object
+        at a time, specified by the `custom_object_key` in the request.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+
+
+        #### Request Parameters
+
+
+        The DELETE request takes an `ids` object that lists the
+
+        object triggers to delete. All of the specified object trigger `ids`
+        must be associated with a single object.
+
+
+        | Name | Description
+
+        | ---- | -----------
+
+        | ids  | The ids of the triggers to delete
+
+
+        #### Example request
+
+
+        ```js
+
+        {
+          "ids": "25,23,27,22"
+        }
+
+        ```
+      responses:
+        '204':
+          description: No content response
+  /api/v2/custom_objects/{custom_object_key}/triggers/search:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerSearchQuery'
+      - $ref: '#/components/parameters/TriggerSearchFilter'
+      - $ref: '#/components/parameters/TriggerActive'
+      - $ref: '#/components/parameters/TriggerSort'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+      - $ref: '#/components/parameters/TriggerInclude'
+    get:
+      operationId: SearchObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Search
+      description: >
+        Returns a list of object triggers that meet your filter or search
+        criteria.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Filter
+
+
+        Use the `filter` query parameter to filter an object trigger search by
+        one or more attributes. For example, the following `filter` argument
+        filters object triggers by the `title` attribute:
+
+
+        ```json
+
+        {
+          "json": {
+            "title": "test"
+          }
+        }
+
+        ```
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersSearchResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/update_many:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+    put:
+      operationId: UpdateManyObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
+      description: >
+        Updates the position or the active status of multiple object triggers.
+        Any additional properties are ignored.
+
+
+        **Note**: You can only bulk-update triggers associated with one object
+        at a time, specified by the `custom_object_key` in the request.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+
+
+        #### Request Parameters
+
+
+        The PUT request expects a `triggers` object that lists the object
+        triggers to update. All of the specified object trigger `ids` must be
+        associated with a single object.
+
+
+        You can specify the following properties for each object trigger you're
+        updating:
+
+
+        | Name        | Mandatory | Description
+
+        | --------    | --------- | -----------
+
+        | id          | yes       | The ID of the object trigger to update
+
+        | position    | no        | The new position of the object trigger
+
+        | active      | no        | The active status of the object trigger
+        (true or false)
+
+
+        #### Example Request
+
+
+        ```js
+
+        {
+          "triggers": [
+            {"id": 25, "position": 3},
+            {"id": 23, "active": true},
+            {"id": 27, "position": 9, "active": false},
+            {"id": 22, "position": 7}
+          ]
+        }
+
+        ```
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerBulkUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerBulkUpdateRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersResponseExample'
+  /api/v2/triggers:
+    get:
+      operationId: ListTriggers
+      tags:
+        - Triggers
+      summary: Get  Api V2 Triggers
+      description: >
+        Lists all ticket triggers for the current account.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Sideloads
+
+
+        The following sideloads are supported. The usage sideloads are only
+        supported on the Support Professional or Suite Growth plan or above.
+
+
+        | Name             | Will sideload
+
+        | ---------------- | -------------
+
+        | app_installation | The app installation that requires each trigger, if
+        present
+
+        | permissions      | The permissions for each trigger
+
+        | usage_1h         | The number of times each trigger has been used in
+        the past hour
+
+        | usage_24h        | The number of times each trigger has been used in
+        the past day
+
+        | usage_7d         | The number of times each trigger has been used in
+        the past week
+
+        | usage_30d        | The number of times each trigger has been used in
+        the past thirty days
+      parameters:
+        - $ref: '#/components/parameters/TriggerActive'
+        - $ref: '#/components/parameters/TriggerSort'
+        - $ref: '#/components/parameters/TriggerSortBy'
+        - $ref: '#/components/parameters/TriggerSortOrder'
+        - $ref: '#/components/parameters/TriggerCategoryId'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggersResponseExample'
+    post:
+      operationId: CreateTrigger
+      tags:
+        - Triggers
+      summary: Post  Api V2 Triggers
+      description: |
+        #### Allowed For
+
+        * Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerWithCategoryRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TriggerWithCategoryRequestExample'
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggerResponseExample'
+  /api/v2/triggers/{trigger_id}:
+    parameters:
+      - $ref: '#/components/parameters/TriggerId'
+    get:
+      operationId: GetTrigger
+      tags:
+        - Triggers
+      summary: Get  Api V2 Triggers Trigger_id
+      description: >
+        #### Allowed For
+
+
+        * Agents
+
+
+        The Via Type value is a number instead of a text string. See [Via types
+        reference](/documentation/ticketing/reference-guides/via-types/) for the
+        keys.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggerResponseExample'
+    put:
+      operationId: UpdateTrigger
+      tags:
+        - Triggers
+      summary: Put  Api V2 Triggers Trigger_id
+      description: >
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Note
+
+
+        Updating a condition or action updates both the conditions and actions
+        arrays,
+
+        clearing all existing values of both arrays. Include all your conditions
+
+        and actions when updating any condition or action.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerWithCategoryRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TriggerWithCategoryRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggerResponseExample'
+    delete:
+      operationId: DeleteTrigger
+      tags:
+        - Triggers
+      summary: Delete  Api V2 Triggers Trigger_id
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/triggers/{trigger_id}/revisions:
+    parameters:
+      - $ref: '#/components/parameters/TriggerId'
+    get:
+      operationId: ListTriggerRevisions
+      tags:
+        - Triggers
+      summary: Get  Api V2 Triggers Trigger_id Revisions
+      description: >
+        List the revisions associated with a ticket trigger. Ticket trigger
+        revision history is only available on Enterprise plans.
+
+
+        #### Allowed For
+
+         * Agents
+
+        #### Sideloads
+
+
+        The following sideloads are supported:
+
+
+        | Name  | Will sideload
+
+        | ----- | -------------
+
+        | users | The user that authored each revision
+
+
+        #### Pagination
+
+
+        This endpoint uses cursor-based pagination. The records are ordered in
+
+        descending order by the `created_at` timestamp, then by `id` on
+        duplicate
+
+        `created_at` values.
+
+
+        The `cursor` parameter is a non-human-readable argument you can use to
+        move
+
+        forward or backward in time.
+
+
+        Each JSON response will contain the following attributes to help you get
+
+        more results:
+
+
+        - `after_url` requests more recent results
+
+        - `before_url` requests older results
+
+        - `after_cursor` is the cursor to build the request yourself
+
+        - `before_cursor` is the cursor to build the request yourself
+
+
+        The properties are null if no more records are available.
+
+
+        You can request a maximum of 1000 records using the `limit` parameter.
+        If
+
+        no `limit` parameter is supplied, it will default to 1,000.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerRevisionsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggerRevisionsResponseExample'
+  /api/v2/triggers/{trigger_id}/revisions/{trigger_revision_id}:
+    parameters:
+      - $ref: '#/components/parameters/TriggerId'
+      - $ref: '#/components/parameters/TriggerRevisionId'
+    get:
+      operationId: TriggerRevision
+      tags:
+        - Triggers
+      summary: Get  Api V2 Triggers Trigger_id Revisions Trigger_revision_id
+      description: >
+        Fetches a revision associated with a ticket trigger. Ticket trigger
+        revision history is only available on Enterprise plans.
+
+
+        #### Allowed For
+
+         * Agents
+
+        #### Sideloads
+
+
+        The following sideloads are supported:
+
+
+        | Name  | Will sideload
+
+        | ----- | -------------
+
+        | users | The user that authored each revision
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerRevisionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggerRevisionResponseExample'
+  /api/v2/triggers/active:
+    parameters:
+      - $ref: '#/components/parameters/TriggerSort'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+      - $ref: '#/components/parameters/TriggerCategoryId'
+    get:
+      operationId: ListActiveTriggers
+      tags:
+        - Triggers
+      summary: Get  Api V2 Triggers Active
+      description: >
+        Lists all active ticket triggers.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Sideloads
+
+
+        The following sideloads are supported:
+
+
+        | Name             | Will sideload
+
+        | ---------------- | -------------
+
+        | app_installation | The app installation that requires each ticket
+        trigger, if present
+
+        | permissions      | The permissions for each trigger
+
+        | usage_1h         | The number of times each ticket trigger has been
+        used in the past hour
+
+        | usage_24h        | The number of times each ticket trigger has been
+        used in the past day
+
+        | usage_7d         | The number of times each ticket trigger has been
+        used in the past week
+
+        | usage_30d        | The number of times each ticket trigger has been
+        used in the past thirty days
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggersActiveResponseExample'
+  /api/v2/triggers/definitions:
+    get:
+      operationId: ListTriggerActionConditionDefinitions
+      tags:
+        - Triggers
+      summary: Get  Api V2 Triggers Definitions
+      description: >
+        Returns the definitions of the actions a ticket trigger can perform and
+        the
+
+        definitions of the conditions under which a ticket trigger can execute.
+        The
+
+        definition of the action includes a title ("Status"), a type ("list"),
+        and
+
+        possible values. The definition of the condition includes the same
+        fields
+
+        as well as the possible operators.
+
+
+        For a list of supported actions, see the [Actions
+        reference](/documentation/ticketing/reference-guides/actions-reference)
+
+        For a list of supported conditions, see the [Conditions
+        reference](/documentation/ticketing/reference-guides/conditions-reference)
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerDefinitionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggerDefinitionResponseExample'
+  /api/v2/triggers/destroy_many:
+    parameters:
+      - $ref: '#/components/parameters/TriggerIds'
+    delete:
+      operationId: DeleteManyTriggers
+      tags:
+        - Triggers
+      summary: Delete  Api V2 Triggers Destroy_many
+      description: >
+        Deletes the ticket triggers corresponding to the provided
+        comma-separated list of IDs.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Request Parameters
+
+
+        The DELETE request takes one parameter, an `ids` object that lists the
+
+        ticket triggers to delete.
+
+
+        | Name | Description
+
+        | ---- | -----------
+
+        | ids  | The IDs of the triggers to delete
+
+
+        #### Example request
+
+
+        ```js
+
+        {
+          "ids": "25,23,27,22"
+        }
+
+        ```
+      responses:
+        '204':
+          description: No content response
+  /api/v2/triggers/reorder:
+    put:
+      operationId: ReorderTriggers
+      tags:
+        - Triggers
+      summary: Put  Api V2 Triggers Reorder
+      description: >
+        Alters the firing order of ticket triggers in the account. See
+
+        [Reordering and sorting
+        triggers](https://support.zendesk.com/hc/en-us/articles/115015696088)
+
+        in the Zendesk Help Center. The firing order is set in a `trigger_ids`
+        array in the request body.
+
+
+        You must include every ticket trigger id in your account to reorder the
+        ticket triggers. If not, the endpoint will return 404 Forbidden.
+
+
+        Reordering ticket triggers via the API is not permitted if you have more
+        than one ticket trigger category. If there is more than one
+
+        ticket trigger category, the endpoint will return a `LimitOneCategory`
+        error.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggerResponseExample'
+  /api/v2/triggers/search:
+    parameters:
+      - $ref: '#/components/parameters/TriggerSearchQuery'
+      - $ref: '#/components/parameters/TriggerSearchFilter'
+      - $ref: '#/components/parameters/TriggerActive'
+      - $ref: '#/components/parameters/TriggerSort'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+      - $ref: '#/components/parameters/TriggerInclude'
+    get:
+      operationId: SearchTriggers
+      tags:
+        - Triggers
+      summary: Get  Api V2 Triggers Search
+      description: >
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Sideloads
+
+
+        The following sideloads are supported. For more information, see
+        [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).
+
+
+        | Name             | Will sideload
+
+        | ---------------- | -------------
+
+        | app_installation | The app installation that requires each ticket
+        trigger, if present
+
+        | permissions      | The permissions for each ticket trigger
+
+        | usage_1h         | The number of times each ticket trigger has been
+        used in the past hour
+
+        | usage_24h        | The number of times each ticket trigger has been
+        used in the past day
+
+        | usage_7d         | The number of times each ticket trigger has been
+        used in the past week
+
+        | usage_30d        | The number of times each ticket trigger has been
+        used in the past thirty days
+
+
+        #### Filter
+
+
+        Use the `filter` query parameter to filter a ticket trigger search by
+        one or more attributes. For example, the following `filter` argument
+        filters ticket triggers by the `description` attribute:
+
+
+        ```json
+
+        {
+          "json": {
+            "description": "Close a ticket"
+          }
+        }
+
+        ```
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggersSearchResponseExample'
+  /api/v2/triggers/update_many:
+    put:
+      operationId: UpdateManyTriggers
+      tags:
+        - Triggers
+      summary: Put  Api V2 Triggers Update_many
+      description: >
+        Updates the position or the active status of multiple ticket triggers.
+        Any additional properties are ignored.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Request Parameters
+
+
+        The PUT request expects a `triggers` object that lists the ticket
+        triggers to update.
+
+
+        Each ticket trigger may have the following properties:
+
+
+        | Name        | Mandatory | Description
+
+        | --------    | --------- | -----------
+
+        | id          | yes       | The ID of the ticket trigger to update
+
+        | position    | no        | The new position of the ticket trigger
+
+        | active      | no        | The active status of the ticket trigger
+        (true or false)
+
+        | category_id | no        | The ID of the new category the ticket
+        trigger is to be moved to
+
+
+        #### Example Request
+
+
+        ```js
+
+        {
+          "triggers": [
+            {"id": 25, "position": 3},
+            {"id": 23, "position": 5},
+            {"id": 27, "position": 9},
+            {"id": 22, "position": 7}
+          ]
+        }
+
+        ```
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerBulkUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TriggerBulkUpdateRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggersResponseExample'
+components:
+  schemas:
+    ObjectTriggersResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectTriggerObject'
+    ObjectTriggerResponse:
+      type: object
+      properties:
+        trigger:
+          $ref: '#/components/schemas/ObjectTriggerObject'
+    ObjectTriggerDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          $ref: '#/components/schemas/ObjectTriggerDefinitionObject'
+    TriggersResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TriggerObject'
+    TriggerResponse:
+      type: object
+      properties:
+        trigger:
+          $ref: '#/components/schemas/TriggerObject'
+    TriggerRevisionsResponse:
+      type: object
+      properties:
+        after_cursor:
+          type: string
+        after_url:
+          type: string
+        before_cursor:
+          type: string
+        before_url:
+          type: string
+        count:
+          type: integer
+        trigger_revisions:
+          type: array
+          items:
+            type: object
+            properties:
+              author_id:
+                type: integer
+              created_at:
+                type: string
+              diff:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    description: An array that contain [action diff objects](#Action Diffs)
+                    items:
+                      $ref: '#/components/schemas/TriggerActionDiffObject'
+                  active:
+                    type: array
+                    description: An array of [change](#change) objects
+                    items:
+                      $ref: '#/components/schemas/TriggerChangeObject'
+                  conditions:
+                    $ref: '#/components/schemas/TriggerConditionDiffObject'
+                  description:
+                    type: array
+                    description: An array of [change](#change) objects
+                    items:
+                      $ref: '#/components/schemas/TriggerChangeObject'
+                  source_id:
+                    type: integer
+                    description: ID of the source revision
+                  target_id:
+                    type: integer
+                    description: ID of the target revision
+                  title:
+                    type: array
+                    description: An array of [change](#change) objects
+                    items:
+                      $ref: '#/components/schemas/TriggerChangeObject'
+              id:
+                type: integer
+              snapshot:
+                $ref: '#/components/schemas/TriggerSnapshotObject'
+              url:
+                type: string
+    TriggerRevisionResponse:
+      type: object
+      properties:
+        trigger_revision:
+          type: object
+          properties:
+            author_id:
+              type: integer
+            created_at:
+              type: string
+            id:
+              type: integer
+            snapshot:
+              type: object
+              properties:
+                actions:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/TriggerActionObject'
+                active:
+                  type: boolean
+                conditions:
+                  $ref: '#/components/schemas/TriggerConditionsObject'
+                description:
+                  type: string
+                  nullable: true
+                title:
+                  type: string
+            url:
+              type: string
+    TriggerDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          $ref: '#/components/schemas/TriggerDefinitionObject'

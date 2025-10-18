@@ -1,0 +1,959 @@
+openapi: 3.1.0
+info:
+  title: Organizations
+  description: Needs a description.
+paths:
+  /api/v2/incremental/organizations:
+    parameters:
+      - $ref: '#/components/parameters/IncrementalUnixTime'
+      - $ref: '#/components/parameters/IncrementalPage'
+    get:
+      operationId: IncrementalOrganizationExport
+      tags:
+        - Incremental Export
+      summary: Get  Api V2 Incremental Organizations
+      description: >
+        #### Allowed For
+
+         * Admins
+
+        #### Sideloading
+
+
+        See [Organizations
+        sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportIncrementalOrganizationsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/ExportIncrementalOrganizationsResponseExample
+  /api/v2/organizations:
+    get:
+      operationId: ListOrganizations
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations
+      description: >
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents, with certain restrictions
+
+
+        If the agent has a custom agent role that restricts their access to only
+        users in their own organization, a 403 Forbidden error is returned. See
+        [Creating custom agent
+        roles](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents#topic_cxn_hig_bd)
+        in Zendesk help.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationsResponseExample'
+    post:
+      operationId: CreateOrganization
+      tags:
+        - Organizations
+      summary: Post  Api V2 Organizations
+      description: >
+        You must provide a unique `name` for each organization. Normally
+
+        the system doesn't allow records to be created with identical names.
+
+        However, a race condition can occur if you make two or more identical
+
+        POSTs very close to each other, causing the records to have identical
+
+        organization names.
+
+
+        **Note**: Leading and trailing whitespace in `name` is automatically
+        trimmed before validation. This means that names differing only by
+        whitespace are treated as duplicates. For example, "API Company" and
+        "API Company " are considered the same name.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage
+        organizations (Enterprise only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrganizationRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CreateOrganizationRequestExample'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CreatedOrganizationResponseExample'
+  /api/v2/organizations/{organization_id}:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+    get:
+      operationId: ShowOrganization
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Organization_id
+      description: |
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationResponseExample'
+    put:
+      operationId: UpdateOrganization
+      tags:
+        - Organizations
+      summary: Put  Api V2 Organizations Organization_id
+      description: >
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+
+        Agents with no permissions restrictions can only update "notes" on
+        organizations.
+
+
+        **Note:** Updating an organization's `domain_names` property overwrites
+        all existing `domain_names` values. To prevent this, submit a complete
+        list of `domain_names` for the organization in your request.
+
+
+        #### Example Request
+
+
+        ```js
+
+        {
+          "organization": {
+            "notes": "Something interesting"
+          }
+        }
+
+        ```
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UpdateOrganizationResponseExample'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                      - code: TooManyRequests
+                        title: Too many requests to update
+    delete:
+      operationId: DeleteOrganization
+      tags:
+        - Organizations
+      summary: Delete  Api V2 Organizations Organization_id
+      description: >
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage
+        organizations (Enterprise only)
+      responses:
+        '204':
+          description: No Content Response
+  /api/v2/organizations/{organization_id}/merge:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+    post:
+      operationId: CreateOrganizationMerge
+      tags:
+        - Organizations
+      summary: Post  Api V2 Organizations Organization_id Merge
+      description: >
+        Merges two organizations by moving all users, tickets, and domain names
+        from the organization specified by `{organization_id}` to the
+        organization specified by `winner_id`. After the merge:
+
+
+        - The "losing" organization will be deleted.
+
+        - Other organization fields and their values will not be carried over to
+        the "winning" organization.
+
+        - The merge operation creates an `Organization Merge` record which
+        contains a status indicating the progress of the merge.
+
+
+        **Note**: This operation is irreversible.
+
+
+        #### Merge Statuses
+
+
+        | Status | Description |
+
+        |--------|-------------|
+
+        | new | A job has been queued to merge the two organizations. |
+
+        | in progress | The job to merge the two organizations has started. |
+
+        | error | An error occurred during the merge job. The merge can be
+        retried by repeating the API call. | 
+
+        | complete | The merge has been completed successfully. |
+
+
+        #### Allowed For
+
+
+        * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationMergeRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/OrganizationMergeRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeResponseExample'
+  /api/v2/organizations/{organization_id}/merges:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+    get:
+      operationId: ListOrganizationMerges
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Organization_id Merges
+      description: >
+        Retrieves a list of all organization merge operations associated with a
+        given organization. This endpoint allows you to track the history of
+        merge actions for an organization, including ongoing and completed
+        merges.
+
+
+        Each entry in the list contains details such as the ID of the merge, the
+        winning and losing organization IDs, the current status of the merge,
+        and a URL to access the `Organization Merge` record.
+
+
+        #### Pagination
+
+
+        - Cursor pagination is used for this endpoint.
+
+        - A maximum of 100 records can be returned per page.
+
+
+        See [Pagination](/api-reference/introduction/pagination/) for more
+        details.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeListResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeListResponseExample'
+  /api/v2/organizations/{organization_id}/related:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+    get:
+      operationId: OrganizationRelated
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Organization_id Related
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsRelatedResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationsRelatedResponse'
+  /api/v2/organizations/autocomplete:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationQueryFragment'
+      - $ref: '#/components/parameters/LookupRelationshipAutocompleteFieldIdFragment'
+      - $ref: '#/components/parameters/LookupRelationshipAutocompleteSourceFragment'
+    get:
+      operationId: AutocompleteOrganizations
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Autocomplete
+      description: >
+        Returns an array of organizations whose name starts with the
+
+        value specified in the `name` parameter.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/AutocompleteOrganizationsResponseExample
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                      - code: QueryError
+                        title: Invalid type:sample_type
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                      - code: TooManyRequests
+                        title: Too many requests to autocomplete
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                      - code: Unavailable
+                        title: Internal Server Error
+  /api/v2/organizations/count:
+    get:
+      operationId: CountOrganizations
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Count
+      description: >
+        Returns an approximate count of organizations. If the count exceeds
+
+        100,000, it is updated every 24 hours.
+
+
+        The `refreshed_at` property of the `count` object is a timestamp that
+        indicates
+
+        when the count was last updated.
+
+
+        When the count exceeds 100,000, the `refreshed_at` property may
+
+        occasionally be null. This indicates that the count is being
+
+        updated in the background and the `value` property of the `count` object
+        is limited to
+
+        100,000 until the update is complete.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountOrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CountOrganizationsResponseExample'
+  /api/v2/organizations/create_many:
+    post:
+      operationId: CreateManyOrganizations
+      tags:
+        - Organizations
+      summary: Post  Api V2 Organizations Create_many
+      description: >
+        Accepts an array of up to 100 organization objects.
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+
+        * Agents, with restrictions applying on certain actions
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ShowJobStatusResponseExample'
+  /api/v2/organizations/create_or_update:
+    post:
+      operationId: CreateOrUpdateOrganization
+      tags:
+        - Organizations
+      summary: Post  Api V2 Organizations Create_or_update
+      description: |
+        Creates an organization if it doesn't already exist, or updates
+        an existing organization. Using this method means one less call
+        to check if an organization exists before creating it. You need
+        to specify the id or external id when updating
+        an organization to avoid a duplicate error response. Name is
+        not available as a matching criteria.
+
+        #### Allowed For
+
+        * Agents, with restrictions on certain actions
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CreatedOrganizationResponseExample'
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CreatedOrganizationResponseExample'
+  /api/v2/organizations/destroy_many:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationIds'
+      - $ref: '#/components/parameters/OrganizationExternalIds'
+    delete:
+      operationId: DeleteManyOrganizations
+      tags:
+        - Organizations
+      summary: Delete  Api V2 Organizations Destroy_many
+      description: >
+        Accepts a comma-separated list of up to 100 organization ids or external
+        ids.
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage
+        organizations (Enterprise only)
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusBulkDeleteResponseExample'
+  /api/v2/organizations/search:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationExternalId'
+      - $ref: '#/components/parameters/OrganizationName'
+    get:
+      operationId: SearchOrganizations
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Search
+      description: >
+        Returns an array of organizations matching the criteria. You may search
+        by an organization's `external_id` or `name`, but not both:
+
+
+        #### Searching by `external_id`
+
+
+        If you set the `external_id` value of an organization to associate it to
+        an external record, you can use it to search for the organization.
+
+
+        For an organization to be returned, its `external_id` must exactly match
+        the value provided (case insensitive).
+
+
+        #### Searching by `name`
+
+
+        For an organization to be returned, its `name` must exactly match the
+        value provided (case insensitive).
+
+
+        #### Allowed For:
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to add or modify
+        organizations (Enterprise only)
+
+
+        See [Creating custom agent
+        roles](https://support.zendesk.com/hc/en-us/articles/203662026#topic_cxn_hig_bd)
+        in the Support Help Center.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationsResponseExample'
+  /api/v2/organizations/show_many:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationIds'
+      - $ref: '#/components/parameters/OrganizationExternalIds'
+    get:
+      operationId: ShowManyOrganizations
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Show_many
+      description: >
+        Accepts a comma-separated list of up to 100 organization ids or external
+        ids.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/AutocompleteOrganizationsResponseExample
+  /api/v2/organizations/update_many:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationIds'
+      - $ref: '#/components/parameters/OrganizationExternalIds'
+    put:
+      operationId: UpdateManyOrganizations
+      tags:
+        - Organizations
+      summary: Put  Api V2 Organizations Update_many
+      description: >
+        Bulk or batch updates up to 100 organizations.
+
+
+        #### Bulk update
+
+
+        To make the same change to multiple organizations, use the following
+        endpoint and data format:
+
+
+        `https://{subdomain}.zendesk.com/api/v2/organizations/update_many.json?ids=1,2,3`
+
+
+        ```js
+
+        {
+          "organization": {
+            "notes": "Priority"
+          }
+        }
+
+        ```
+
+
+        #### Batch update
+
+
+        To make different changes to multiple organizations, use the following
+        endpoint and data format:
+
+
+        `https://{subdomain}.zendesk.com/api/v2/organizations/update_many.json`
+
+
+        ```js
+
+        {
+          "organizations": [
+            { "id": 1, "notes": "Priority" },
+            { "id": 2, "notes": "Normal" }
+          ]
+        }
+
+        ```
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+
+        Agents with no permissions restrictions can only update "notes" on
+        organizations.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ShowJobStatusResponseExample'
+  /api/v2/users/{user_id}/organizations/{organization_id}:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+      - $ref: '#/components/parameters/UserId'
+    delete:
+      operationId: UnassignOrganization
+      tags:
+        - Organization Memberships
+      summary: Delete  Api V2 Users User_id Organizations Organization_id
+      description: >
+        Immediately removes a user from an organization and schedules a job to
+        unassign all working tickets currently assigned to the user and
+        organization combination. The `organization_id` of the unassigned
+        tickets is set to null.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/users/{user_id}/organizations/{organization_id}/make_default:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/OrganizationId'
+    put:
+      operationId: SetOrganizationAsDefault
+      tags:
+        - Organization Memberships
+      summary: Put  Api V2 Users User_id Organizations Organization_id Make_default
+      description: |
+        Sets the default organization membership of a given user.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembershipResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMembershipResponseExample'
+components:
+  schemas:
+    ExportIncrementalOrganizationsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        end_of_stream:
+          type: boolean
+        end_time:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationObject'
+      example:
+        count: 1
+        end_of_stream: true
+        end_time: 1601357503
+        next_page: >-
+          https://example.zendesk.com/api/v2/incremental/ticket_events.json?start_time=1601357503
+        organizations:
+          - created_at: '2018-11-14T00:14:52Z'
+            details: caterpillar =)
+            domain_names:
+              - remain.com
+            external_id: ABC198
+            group_id: 1835962
+            id: 4112492
+            name: Groablet Enterprises
+            notes: donkey
+            organization_fields:
+              datepudding: '2018-11-04T00:00:00+00:00'
+              org_field_1: happy happy
+              org_field_2: teapot_kettle
+            shared_comments: false
+            shared_tickets: false
+            tags:
+              - smiley
+              - teapot_kettle
+            updated_at: '2018-11-14T00:54:22Z'
+            url: https://example.zendesk.com/api/v2/organizations/4112492.json
+    OrganizationsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationObject'
+        previous_page:
+          type: string
+          nullable: true
+    OrganizationResponse:
+      type: object
+      properties:
+        organization:
+          $ref: '#/components/schemas/OrganizationObject'
+    OrganizationMergeResponse:
+      type: object
+      properties:
+        organization_merge:
+          type: object
+          properties:
+            id:
+              type: string
+              format: string
+            loser_id:
+              type: integer
+            status:
+              type: string
+              enum:
+                - new
+                - in_progress
+                - error
+                - complete
+            url:
+              type: string
+              format: string
+            winner_id:
+              type: integer
+          required:
+            - id
+            - url
+            - loser_id
+            - winner_id
+            - status
+    OrganizationMergeListResponse:
+      type: object
+      properties:
+        organization_merges:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: string
+              loser_id:
+                type: integer
+              status:
+                type: string
+                enum:
+                  - new
+                  - in_progress
+                  - error
+                  - complete
+              url:
+                type: string
+                format: string
+              winner_id:
+                type: integer
+          required:
+            - id
+            - url
+            - loser_id
+            - winner_id
+            - status
+    OrganizationsRelatedResponse:
+      type: object
+      properties:
+        organization_related:
+          $ref: '#/components/schemas/OrganizationMetadataObject'
+    CountOrganizationResponse:
+      type: object
+      properties:
+        count:
+          $ref: '#/components/schemas/CountOrganizationObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    OrganizationMembershipResponse:
+      type: object
+      properties:
+        organization_membership:
+          $ref: '#/components/schemas/OrganizationMembershipObject'

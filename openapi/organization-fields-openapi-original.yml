@@ -1,0 +1,239 @@
+openapi: 3.1.0
+info:
+  title: Organization Fields
+  description: Needs a description.
+paths:
+  /api/v2/organization_fields:
+    get:
+      operationId: ListOrganizationFields
+      tags:
+        - Organization Fields
+      summary: Get  Api V2 Organization_fields
+      description: >
+        Returns a list of custom organization fields in your account. Fields are
+        returned in the order that you specify in your organization fields
+        configuration in Zendesk Support. Clients should cache this resource for
+        the duration of their API usage and map the key for each organization
+        field to the values returned under the `organization_fields` attribute
+        on the
+        [organization](/api-reference/ticketing/organizations/organizations/)
+        resource.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationFieldsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationFieldsResponseExample'
+    post:
+      operationId: CreateOrganizationField
+      tags:
+        - Organization Fields
+      summary: Post  Api V2 Organization_fields
+      description: >
+        Creates any of the following custom field types:
+
+
+        * text (default when no "type" is specified)
+
+        * textarea
+
+        * checkbox
+
+        * date
+
+        * integer
+
+        * decimal
+
+        * regexp
+
+        * dropdown
+
+        * lookup
+
+        * multiselect
+
+
+        See [About custom field
+        types](https://support.zendesk.com/hc/en-us/articles/203661866) in
+        Zendesk help.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationFieldCreateResponseExample'
+  /api/v2/organization_fields/{organization_field_id}:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationFieldId'
+    get:
+      operationId: ShowOrganizationField
+      tags:
+        - Organization Fields
+      summary: Get  Api V2 Organization_fields Organization_field_id
+      description: |
+        #### Allowed for
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationFieldResponseExample'
+    put:
+      operationId: UpdateOrganizationField
+      tags:
+        - Organization Fields
+      summary: Put  Api V2 Organization_fields Organization_field_id
+      description: >
+        #### Updating a Dropdown (Tagger) or Multiselect Field
+
+
+        Dropdown and multiselect fields return an array of
+        `custom_field_options` which specify the name, value, and order of
+        dropdown or multiselect options. When updating a dropdown or multiselect
+        field, note the following information:
+
+
+        - All options must be passed on update. Options that are not passed will
+        be removed. As a result, these values will be removed from any
+        organizations
+
+        - To create a new option, pass a null `id` along with the `name` and
+        `value`
+
+        - To update an existing option, pass its `id` along with the `name` and
+        `value`
+
+        - To reorder an option, reposition it in the `custom_field_options`
+        array relative to the other options
+
+        - To remove an option, omit it from the list of options upon update
+
+
+        #### Example Request
+
+
+        ```bash
+
+        curl
+        https://{subdomain}.zendesk.com/api/v2/organization_fields/{organization_field_id}.json
+        \
+          -H "Content-Type: application/json" -X PUT \
+          -d '{"organization_field": {"custom_field_options": [{"id": 124, "name": "Option 2", "value": "option_2"}, {"id": 123, "name": "Option 1", "value": "option_1"}, {"id": 125, "name": "Option 3", "value": "option_3"}]}}' \
+          -v -u {email_address}/token:{api_token}
+        ```
+
+        #### Allowed for
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationFieldUpdateResponseExample'
+    delete:
+      operationId: DeleteOrganizationField
+      tags:
+        - Organization Fields
+      summary: Delete  Api V2 Organization_fields Organization_field_id
+      description: |
+        #### Allowed for
+
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/organization_fields/reorder:
+    put:
+      operationId: ReorderOrganizationField
+      tags:
+        - Organization Fields
+      summary: Put  Api V2 Organization_fields Reorder
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+components:
+  schemas:
+    OrganizationFieldsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total count of records retrieved
+          readOnly: true
+        next_page:
+          type: string
+          description: URL of the next page
+          nullable: true
+          readOnly: true
+        organization_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationFieldObject'
+        previous_page:
+          type: string
+          description: URL of the previous page
+          nullable: true
+          readOnly: true
+    OrganizationFieldResponse:
+      type: object
+      properties:
+        organization_field:
+          $ref: '#/components/schemas/OrganizationFieldObject'

@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: Approval Workflow Instances
+  description: Needs a description.
+paths:
+  /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/{approval_request_id}:
+    parameters:
+      - $ref: '#/components/parameters/ApprovalWorkflowInstanceId'
+      - $ref: '#/components/parameters/ApprovalRequestId'
+    get:
+      operationId: ShowApprovalRequest
+      tags:
+        - Approval Requests
+      summary: >-
+        Get  Api V2 Approval_workflow_instances Approval_workflow_instance_id
+        Approval_requests Approval_request_id
+      description: |
+        Shows an approval request.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApprovalRequestResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApprovalRequestResponseExample'
+  /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/{approval_request_id}/decision:
+    parameters:
+      - $ref: '#/components/parameters/ApprovalWorkflowInstanceId'
+      - $ref: '#/components/parameters/ApprovalRequestId'
+    patch:
+      operationId: UpdateDecisionApprovalRequest
+      tags:
+        - Approval Requests
+      summary: >-
+        Patch  Api V2 Approval_workflow_instances Approval_workflow_instance_id
+        Approval_requests Approval_request_id Decision
+      description: |
+        Updates the  approver's decision about an approval request.
+
+        #### Allowed For
+
+        * Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                notes:
+                  type: string
+                  description: Notes for the decision
+                status:
+                  type: string
+                  description: The status of the approval request
+                  enum:
+                    - approved
+                    - rejected
+                    - pending
+                    - withdrawn
+            example:
+              notes: Approved by manager
+              status: approved
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApprovalRequestResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApprovalRequestResponseExample'
+  /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/search:
+    parameters:
+      - $ref: '#/components/parameters/ApprovalWorkflowInstanceId'
+    post:
+      operationId: SearchApprovals
+      tags:
+        - Approval Requests
+      summary: >-
+        Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id
+        Approval_requests Search
+      description: >
+        Returns a list of approvals associated with a specific workflow
+        instance. Results can be filtered by approval request status.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApprovalRequestsSearchResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApprovalRequestsSearchResponseExample'
+components:
+  schemas:
+    ApprovalRequestResponse:
+      title: ApprovalRequestObject
+      type: object
+      properties:
+        approval_request:
+          type: object
+          properties:
+            assignee_user:
+              $ref: '#/components/schemas/ApprovalRequestUser'
+            created_at:
+              type: string
+              format: date-time
+              description: The time the approval request was created
+              readOnly: true
+            created_by_user:
+              $ref: '#/components/schemas/ApprovalRequestUser'
+            decided_at:
+              type: string
+              format: date-time
+              description: >-
+                The time at which the approver submitted a decision about the
+                request.
+              nullable: true
+            decisions:
+              type: array
+              description: List of decisions for the approval request
+              items:
+                $ref: '#/components/schemas/ApprovalRequestDecision'
+            id:
+              type: string
+              description: Unique identifier for the approval request
+            message:
+              type: string
+              description: Details for the approval request
+            status:
+              type: string
+              description: Current status of the approval request
+            subject:
+              type: string
+              description: Subject for the approval request
+            ticket_details:
+              $ref: '#/components/schemas/ApprovalTicketDetails'
+            withdrawn_reason:
+              type: string
+              description: Reason for withdrawing the approval request
+              nullable: true
+    ApprovalRequestsSearchResponse:
+      title: ApprovalRequestsSearchResponse
+      type: object
+      properties:
+        after_cursor:
+          type: string
+          description: Cursor for the next page of results
+          nullable: true
+        after_url:
+          type: string
+          description: URL for the next page of results
+          nullable: true
+        approval_requests:
+          type: array
+          items:
+            type: object
+            properties:
+              approval_workflow_instance_id:
+                type: string
+                description: Unique identifier for the approval workflow instance
+              created_at:
+                type: string
+                format: date-time
+                description: The time the approval request was created was created
+                readOnly: true
+              created_by_name:
+                type: string
+                description: Name of the user that created the approval request
+              id:
+                type: string
+                description: Unique identifier for the approval request
+              message:
+                type: string
+                description: Details for the approval request
+              requester_name:
+                type: string
+                description: >-
+                  Name of the user that can make a decision on the approval
+                  request
+              status:
+                type: string
+                description: Current status of the approval request
+              subject:
+                type: string
+                description: Subject for the approval request
+        before_cursor:
+          type: string
+          description: Cursor for the previous page of results
+          nullable: true
+        before_url:
+          type: string
+          description: URL for the previous page of results
+          nullable: true

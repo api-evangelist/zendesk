@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: Target Failures
+  description: Needs a description.
+paths:
+  /api/v2/target_failures:
+    get:
+      operationId: ListTargetFailures
+      tags:
+        - Target Failures
+      summary: Get  Api V2 Target_failures
+      description: |
+        Returns the 25 most recent target failures, per target.
+
+        #### Stability
+
+        * Development
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetFailuresResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TargetFailuresResponseExample'
+  /api/v2/target_failures/{target_failure_id}:
+    parameters:
+      - $ref: '#/components/parameters/TargetFailureId'
+    get:
+      operationId: ShowTargetFailure
+      tags:
+        - Target Failures
+      summary: Get  Api V2 Target_failures Target_failure_id
+      description: |
+        #### Stability
+
+        * Development
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetFailureResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TargetFailureResponseExample'
+components:
+  schemas:
+    TargetFailuresResponse:
+      type: object
+      properties:
+        target_failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TargetFailureObject'
+    TargetFailureResponse:
+      type: object
+      properties:
+        target_failure:
+          $ref: '#/components/schemas/TargetFailureObject'

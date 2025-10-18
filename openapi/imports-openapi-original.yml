@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: Imports
+  description: Needs a description.
+paths:
+  /api/v2/imports/tickets:
+    post:
+      operationId: TicketImport
+      tags:
+        - Ticket Import
+      summary: Post  Api V2 Imports Tickets
+      description: |-
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/ArchiveImmediately'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketImportRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketImportRequestExample'
+      responses:
+        '201':
+          description: Successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketResponseExample'
+  /api/v2/imports/tickets/create_many:
+    post:
+      operationId: TicketBulkImport
+      tags:
+        - Ticket Import
+      summary: Post  Api V2 Imports Tickets Create_many
+      description: |-
+        Accepts an array of up to 100 ticket objects.
+
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/ArchiveImmediately'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketBulkImportRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketBulkImportRequestExample'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+components:
+  schemas:
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'

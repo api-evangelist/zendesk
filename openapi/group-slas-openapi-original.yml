@@ -1,0 +1,214 @@
+openapi: 3.1.0
+info:
+  title: Group Slas
+  description: Needs a description.
+paths:
+  /api/v2/group_slas/policies:
+    get:
+      operationId: ListGroupSLAPolicies
+      tags:
+        - Group SLA Policies
+      summary: Get  Api V2 Group_slas Policies
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSLAPoliciesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupSLAPoliciesResponseExample'
+    post:
+      operationId: CreateGroupSLAPolicy
+      tags:
+        - Group SLA Policies
+      summary: Post  Api V2 Group_slas Policies
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSLAPolicyResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupSLAPolicyCreateResponse'
+  /api/v2/group_slas/policies/{group_sla_policy_id}:
+    parameters:
+      - $ref: '#/components/parameters/GroupSLAPolicyId'
+    get:
+      operationId: ShowGroupSLAPolicy
+      tags:
+        - Group SLA Policies
+      summary: Get  Api V2 Group_slas Policies Group_sla_policy_id
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSLAPolicyResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupSLAPolicyResponseExample'
+    put:
+      operationId: UpdateGroupSLAPolicy
+      tags:
+        - Group SLA Policies
+      summary: Put  Api V2 Group_slas Policies Group_sla_policy_id
+      description: |
+        Updates the specified policy.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSLAPolicyResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupSLAPolicyUpdateResponse'
+    delete:
+      operationId: DeleteGroupSLAPolicy
+      tags:
+        - Group SLA Policies
+      summary: Delete  Api V2 Group_slas Policies Group_sla_policy_id
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/group_slas/policies/definitions:
+    get:
+      operationId: RetrieveGroupSLAPolicyFilterDefinitionItems
+      tags:
+        - Group SLA Policies
+      summary: Get  Api V2 Group_slas Policies Definitions
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSLAPolicyFilterDefinitionResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/GroupSLAPolicyFilterDefinitionResponseExample
+  /api/v2/group_slas/policies/reorder:
+    put:
+      operationId: ReorderGroupSLAPolicies
+      tags:
+        - Group SLA Policies
+      summary: Put  Api V2 Group_slas Policies Reorder
+      description: |
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - name: group_sla_policy_ids
+          in: query
+          description: The ids of the Group SLA policies to reorder
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+components:
+  schemas:
+    GroupSLAPoliciesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          readOnly: true
+        group_sla_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupSLAPolicyObject'
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+    GroupSLAPolicyResponse:
+      type: object
+      properties:
+        group_sla_policy:
+          $ref: '#/components/schemas/GroupSLAPolicyObject'
+    GroupSLAPolicyFilterDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          type: object
+          properties:
+            all:
+              type: array
+              items:
+                type: object
+                properties:
+                  group:
+                    type: string
+                  operators:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        value:
+                          type: string
+                  title:
+                    type: string
+                  value:
+                    type: string
+                  values:
+                    type: object
+                    properties:
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                            value:
+                              type: integer
+                              nullable: true
+                      type:
+                        type: string

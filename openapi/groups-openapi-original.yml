@@ -1,0 +1,333 @@
+openapi: 3.1.0
+info:
+  title: Groups
+  description: Needs a description.
+paths:
+  /api/lotus/assignables/groups.json:
+    get:
+      operationId: ListAssigneeFieldAssignableGroups
+      tags:
+        - AssigneeFieldAssignableAgents
+      summary: Get  Api Lotus Assignables Groups.json
+      description: |
+        List assignable groups on the AssigneeField
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssigneeFieldAssignableGroupsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/AssigneeFieldAssignableGroupsResponseExample
+  /api/lotus/assignables/groups/{group_id}/agents.json:
+    get:
+      operationId: ListAssigneeFieldAssignableGroupAgents
+      tags:
+        - AssigneeFieldAssignableAgents
+      summary: Get  Api Lotus Assignables Groups Group_id Agents.json
+      description: |
+        List assignable agents from a group on the AssigneeField
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/GroupId'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/AssigneeFieldAssignableGroupAgentsResponse
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/AssigneeFieldAssignableGroupAgentsResponseExample
+  /api/v2/groups:
+    get:
+      operationId: ListGroups
+      tags:
+        - Groups
+      summary: Get  Api V2 Groups
+      description: |
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For
+
+        * Admins
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/ExcludeDeleted'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupsResponseExample'
+    post:
+      operationId: CreateGroup
+      tags:
+        - Groups
+      summary: Post  Api V2 Groups
+      description: >
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage groups
+        (Enterprise only)
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupCreateResponseExample'
+  /api/v2/groups/{group_id}:
+    parameters:
+      - $ref: '#/components/parameters/GroupId'
+    get:
+      operationId: ShowGroupById
+      tags:
+        - Groups
+      summary: Get  Api V2 Groups Group_id
+      description: |
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupResponseExample'
+    put:
+      operationId: UpdateGroup
+      tags:
+        - Groups
+      summary: Put  Api V2 Groups Group_id
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupUpdateResponseExample'
+    delete:
+      operationId: DeleteGroup
+      tags:
+        - Groups
+      summary: Delete  Api V2 Groups Group_id
+      description: >
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage groups
+        (Enterprise only)
+      responses:
+        '204':
+          description: No content response
+  /api/v2/groups/assignable:
+    get:
+      operationId: ListAssignableGroups
+      tags:
+        - Groups
+      summary: Get  Api V2 Groups Assignable
+      description: |
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupsResponseExample'
+  /api/v2/groups/count:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: CountGroups
+      tags:
+        - Groups
+      summary: Get  Api V2 Groups Count
+      description: >
+        Returns an approximate count of groups. If the count exceeds 100,000, it
+        is updated every 24 hours.
+
+
+        The `refreshed_at` property of the `count` object is a timestamp that
+        indicates when the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, `refreshed_at` may
+        occasionally be null. This indicates that the count is being updated in
+        the background, and the `value` property of the `count` object is
+        limited to 100,000 until the update is complete.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupsCountObject'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupsCountResponseExample'
+components:
+  schemas:
+    AssigneeFieldAssignableGroupsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of groups listed in `groups` property.
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssigneeFieldAssignableGroupObject'
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+      example:
+        count: 3
+        groups:
+          - description: Engineering
+            id: 9182736455
+            name: Group for Bugs for Engineering
+          - description: Product
+            id: 1928374655
+            name: Group for feature requests
+          - description: Customer Support
+            id: 5519283746
+            name: Group for customer inquiries
+        next_page: null
+        previous_page: null
+    AssigneeFieldAssignableGroupAgentsResponse:
+      type: object
+      properties:
+        agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssigneeFieldAssignableAgentObject'
+        count:
+          type: integer
+          description: Number of agents listed in `agents` property.
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+      example:
+        agents:
+          - avatar_url: >-
+              https://z3n-example.zendesk.com/system/photos/900005192023/my_profile.png
+            id: 6473829100
+            name: Joe Smith
+          - avatar_url: >-
+              https://z3n-example.zendesk.com/system/photos/412005192023/my_profile.png
+            id: 9182736400
+            name: Jane Doe
+          - avatar_url: >-
+              https://z3n-example.zendesk.com/system/photos/887005192023/my_profile.png
+            id: 1928373460
+            name: Cookie Monster
+        count: 3
+        next_page: null
+        previous_page: null
+    GroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupObject'
+    GroupResponse:
+      type: object
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupObject'
+    GroupsCountObject:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: date-time
+              description: Timestamp that indicates when the count was last updated
+              readOnly: true
+            value:
+              type: integer
+              description: Approximate count of groups
+              readOnly: true

@@ -1,0 +1,257 @@
+openapi: 3.1.0
+info:
+  title: Brands
+  description: Needs a description.
+paths:
+  /api/v2/brands:
+    get:
+      operationId: ListBrands
+      tags:
+        - Brands
+      summary: Get  Api V2 Brands
+      description: >-
+        Returns a list of all brands for your account sorted by name.
+
+
+        #### Allowed for
+
+
+        * Admins
+
+        * Agents with the `assign_tickets_to_any_brand` permission can list all
+        brands for the account
+
+        * Agents without the `assign_tickets_to_any_brand` permission can only
+        list brands they are members of
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandsResponseExample'
+    post:
+      operationId: CreateBrand
+      tags:
+        - Brands
+      summary: Post  Api V2 Brands
+      description: |-
+        #### Allowed for
+        - Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/BrandCreateRequestExample'
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandResponseExample'
+  /api/v2/brands/{brand_id}:
+    get:
+      operationId: ShowBrand
+      tags:
+        - Brands
+      summary: Get  Api V2 Brands Brand_id
+      description: |-
+        Returns a brand for your account.
+
+        #### Allowed for
+
+        * Admins, Agents
+      parameters:
+        - $ref: '#/components/parameters/BrandId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandResponseExample'
+    put:
+      operationId: UpdateBrand
+      tags:
+        - Brands
+      summary: Put  Api V2 Brands Brand_id
+      description: >-
+        Returns an updated brand.
+
+
+        #### Allowed for
+
+        * Admins
+
+
+        #### Updating a Brand's Image
+
+        A brand image can be updated by uploading a local file using the update
+        brand endpoint. See the **Using curl** sections below for more
+        information.
+      parameters:
+        - $ref: '#/components/parameters/BrandId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/BrandUpdateRequestExample'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandResponseExample'
+            image/jpg: {}
+            image/png: {}
+    delete:
+      operationId: DeleteBrand
+      tags:
+        - Brands
+      summary: Delete  Api V2 Brands Brand_id
+      description: |-
+        Deletes a brand.
+
+        #### Allowed for
+        - Admins
+      parameters:
+        - $ref: '#/components/parameters/BrandId'
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/brands/{brand_id}/check_host_mapping:
+    get:
+      operationId: CheckHostMappingValidityForExistingBrand
+      tags:
+        - Brands
+      summary: Get  Api V2 Brands Brand_id Check_host_mapping
+      description: >-
+        Returns a JSON object determining whether a host mapping is valid for
+        the given brand.
+
+
+        #### Allowed for
+
+        - Admins
+      parameters:
+        - $ref: '#/components/parameters/BrandId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostMappingObject'
+              examples:
+                default:
+                  $ref: '#/components/examples/HostMappingResponseValidExample'
+                invalidCNAMEExample:
+                  $ref: '#/components/examples/HostMappingResponseInvalidCNAMEExample'
+                wrongCNAMEExample:
+                  $ref: '#/components/examples/HostMappingResponseWrongCNAMEExample'
+  /api/v2/brands/check_host_mapping:
+    get:
+      operationId: CheckHostMappingValidity
+      tags:
+        - Brands
+      summary: Get  Api V2 Brands Check_host_mapping
+      description: >-
+        Returns a JSON object determining whether a host mapping is valid for a
+        given subdomain.
+
+
+        #### Allowed for
+
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/HostMapping'
+        - $ref: '#/components/parameters/Subdomain'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostMappingObject'
+              examples:
+                default:
+                  $ref: '#/components/examples/HostMappingResponseValidExample'
+                invalidCNAMEExample:
+                  $ref: '#/components/examples/HostMappingResponseInvalidCNAMEExample'
+                wrongCNAMEExample:
+                  $ref: '#/components/examples/HostMappingResponseWrongCNAMEExample'
+components:
+  schemas:
+    BrandsResponse:
+      title: Brands
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/OffsetPaginationObject'
+        - type: object
+          properties:
+            brands:
+              type: array
+              description: Array of brands
+              items:
+                $ref: '#/components/schemas/BrandObject'
+    BrandResponse:
+      type: object
+      properties:
+        brand:
+          $ref: '#/components/schemas/BrandObject'
+    HostMappingObject:
+      title: Host Mapping
+      type: object
+      properties:
+        cname:
+          type: string
+          description: The canonical name record for a host mapping
+        expected_cnames:
+          type: array
+          description: Array of expected CNAME records for host mapping(s) of a given brand
+          items:
+            type: string
+        is_valid:
+          type: boolean
+          description: Whether a host mapping is valid or not for a given brand
+        reason:
+          type: string
+          description: Reason why a host mapping is valid or not
+      example:
+        cname: google.com
+        expected_cnames:
+          - bar.zendesk.coom
+        is_valid: false
+        reason: wrong_cname

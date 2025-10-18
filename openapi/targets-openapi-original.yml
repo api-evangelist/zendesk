@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: Targets
+  description: Needs a description.
+paths:
+  /api/v2/targets:
+    get:
+      operationId: ListTargets
+      tags:
+        - Targets
+      summary: Get  Api V2 Targets
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TargetsResponseExample'
+    post:
+      operationId: CreateTarget
+      tags:
+        - Targets
+      summary: Post  Api V2 Targets
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TargetCreateResponseExample'
+  /api/v2/targets/{target_id}:
+    parameters:
+      - $ref: '#/components/parameters/TargetId'
+    get:
+      operationId: ShowTarget
+      tags:
+        - Targets
+      summary: Get  Api V2 Targets Target_id
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TargetResponseExample'
+    put:
+      operationId: UpdateTarget
+      tags:
+        - Targets
+      summary: Put  Api V2 Targets Target_id
+      description: |
+        #### Allowed For
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TargetUpdateResponseExample'
+    delete:
+      operationId: DeleteTarget
+      tags:
+        - Targets
+      summary: Delete  Api V2 Targets Target_id
+      description: |
+        #### Allowed For
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+components:
+  schemas:
+    TargetsResponse:
+      type: object
+      properties:
+        targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TargetObject'
+    TargetResponse:
+      type: object
+      properties:
+        target:
+          $ref: '#/components/schemas/TargetObject'

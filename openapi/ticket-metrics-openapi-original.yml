@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: Ticket Metrics
+  description: Needs a description.
+paths:
+  /api/v2/ticket_metrics:
+    get:
+      operationId: ListTicketMetrics
+      tags:
+        - Ticket Metrics
+      summary: Get  Api V2 Ticket_metrics
+      description: >
+        Returns a list of tickets with their metrics.
+
+
+        Tickets are ordered chronologically by created date, from newest to
+        oldest.
+
+        The last ticket listed may not be the absolute oldest ticket in your
+        account
+
+        due to ticket archiving.
+
+
+        Archived tickets are not included in the response. See
+
+        [About archived
+        tickets](https://support.zendesk.com/hc/en-us/articles/203657756) in
+
+        Zendesk help.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketMetricsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketMetricsResponseExample'
+  /api/v2/ticket_metrics/{ticket_metric_id}:
+    get:
+      operationId: ShowTicketMetrics
+      tags:
+        - Ticket Metrics
+      summary: Get  Api V2 Ticket_metrics Ticket_metric_id
+      description: |
+        Returns a specific metric, or the metrics of a specific ticket.
+
+        #### Pagination
+
+        - Cursor pagination (recommended)
+        - Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - name: ticket_metric_id
+          in: path
+          description: The id of the ticket metric to retrieve
+          required: true
+          schema:
+            type: string
+          example: '10001'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketMetricsByTicketMetricIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketMetricResponseExample'
+components:
+  schemas:
+    TicketMetricsResponse:
+      type: object
+      properties:
+        ticket_metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketMetricObject'
+    TicketMetricsByTicketMetricIdResponse:
+      type: object
+      properties:
+        ticket_metric:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketMetricObject'

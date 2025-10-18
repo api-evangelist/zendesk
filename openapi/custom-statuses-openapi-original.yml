@@ -1,0 +1,211 @@
+openapi: 3.1.0
+info:
+  title: Custom Statuses
+  description: Needs a description.
+paths:
+  /api/v2/custom_statuses:
+    get:
+      operationId: ListCustomStatuses
+      tags:
+        - Custom Ticket Statuses
+      summary: Get  Api V2 Custom_statuses
+      description: >
+        Lists all undeleted custom ticket statuses for the account. No
+        pagination is provided.
+
+
+        #### Allowed For
+
+
+        * End Users
+      parameters:
+        - name: status_categories
+          in: query
+          description: >-
+            Filter the list of custom ticket statuses by a comma-separated list
+            of status categories
+          schema:
+            type: string
+        - name: active
+          in: query
+          description: >-
+            If true, show only active custom ticket statuses. If false, show
+            only inactive custom ticket statuses. If the filter is not used,
+            show all custom ticket statuses
+          schema:
+            type: boolean
+        - name: default
+          in: query
+          description: >-
+            If true, show only default custom ticket statuses. If false, show
+            only non-default custom ticket statuses. If the filter is not used,
+            show all custom ticket statuses
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: List custom ticket statuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomStatusesResponseExample'
+    post:
+      operationId: CreateCustomStatus
+      tags:
+        - Custom Ticket Statuses
+      summary: Post  Api V2 Custom_statuses
+      description: >
+        Takes a `custom_status` object that specifies the custom ticket status
+        properties to create.
+
+
+        #### Allowed For
+
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomStatusCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomStatusCreateRequestExample'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomStatusResponseExample'
+  /api/v2/custom_statuses/{custom_status_id}:
+    get:
+      operationId: ShowCustomStatus
+      tags:
+        - Custom Ticket Statuses
+      summary: Get  Api V2 Custom_statuses Custom_status_id
+      description: |
+        Returns the custom ticket status object.
+
+        #### Allowed For
+
+        * End Users
+      parameters:
+        - $ref: '#/components/parameters/CustomStatusId'
+      responses:
+        '200':
+          description: Custom Status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomStatusResponseExample'
+    put:
+      operationId: UpdateCustomStatus
+      tags:
+        - Custom Ticket Statuses
+      summary: Put  Api V2 Custom_statuses Custom_status_id
+      description: |
+        Takes a `custom_status` object that specifies the properties to update.
+
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/CustomStatusId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomStatusUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomStatusUpdateRequestExample'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomStatusResponseExample'
+  /api/v2/custom_statuses/{custom_status_id}/ticket_form_statuses:
+    parameters:
+      - $ref: '#/components/parameters/CustomStatusId'
+    post:
+      operationId: CreateTicketFormStatusesForCustomStatus
+      tags:
+        - Custom Ticket Statuses
+        - Ticket Form Statuses
+      summary: Post  Api V2 Custom_statuses Custom_status_id Ticket_form_statuses
+      description: >
+        Creates one or many tickets form status associations for a custom
+        status.
+
+
+        #### Allowed For
+
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ticket_form_status:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      ticket_form_id:
+                        type: integer
+                        description: The id of the ticket form
+                        example: 1
+            example:
+              ticket_form_status:
+                - ticket_form_id: 1
+                - ticket_form_id: 2
+                - ticket_form_id: 3
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+components:
+  schemas:
+    CustomStatusesResponse:
+      type: object
+      properties:
+        custom_statuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomStatusObject'
+    CustomStatusResponse:
+      type: object
+      properties:
+        custom_status:
+          $ref: '#/components/schemas/CustomStatusObject'
+    TicketFormStatusesResponse:
+      type: object
+      properties:
+        ticket_form_statuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFormStatusObject'
+          maxItems: 1

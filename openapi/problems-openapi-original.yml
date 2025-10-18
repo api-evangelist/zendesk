@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Problems
+  description: Needs a description.
+paths:
+  /api/v2/problems:
+    get:
+      operationId: ListTicketProblems
+      tags:
+        - Tickets
+      summary: Get  Api V2 Problems
+      description: |-
+        The response is always ordered by `updated_at` in descending order
+
+        #### Allowed For
+
+        * Agents
+
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketProblemsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketProblemsResponseExample'
+  /api/v2/problems/autocomplete:
+    post:
+      operationId: AutocompleteProblems
+      tags:
+        - Tickets
+      summary: Post  Api V2 Problems Autocomplete
+      description: >-
+        Returns tickets whose type is "problem" and whose subject contains the
+        string specified in the `text` parameter.
+
+
+        You can specify the `text` parameter in the request body rather than the
+        query string. Example:
+
+
+        `{"text": "fire"}`
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: text
+          in: query
+          description: The text to search for
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The text to search for
+            example:
+              text: fire
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketProblemsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketProblemsResponseExample'
+components:
+  schemas:
+    ListTicketProblemsResponse:
+      type: object
+      additionalProperties: true

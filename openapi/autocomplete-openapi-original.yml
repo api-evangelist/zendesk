@@ -1,0 +1,458 @@
+openapi: 3.1.0
+info:
+  title: Autocomplete
+  description: Needs a description.
+paths:
+  /api/lotus/assignables/autocomplete.json:
+    get:
+      operationId: ListAssigneeFieldAssignableGroupsAndAgentsSearch
+      tags:
+        - AssigneeFieldAssignableGroups
+        - AssigneeFieldAssignableAgents
+      summary: Get  Api Lotus Assignables Autocomplete.json
+      description: |
+        List assignable groups and agents based on query matched against name
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/AssigneeFieldSearchValue'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/AssigneeFieldAssignableGroupsAndAgentsSearchResponse
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/AssigneeFieldAssignableGroupsAndAgentsSearchResponseExample
+  /api/v2/autocomplete/tags:
+    parameters:
+      - $ref: '#/components/parameters/TagNameFragment'
+    get:
+      operationId: AutocompleteTags
+      tags:
+        - Tags
+      summary: Get  Api V2 Autocomplete Tags
+      description: >
+        Returns an array of registered and recent tag names that start with the
+        characters specified in the `name` query parameter. You must specify at
+        least 2 characters.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsAutocompleteResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/records/autocomplete:
+    get:
+      operationId: AutocompleteCustomObjectRecordSearch
+      tags:
+        - Custom Object Records
+      summary: Get  Api V2 Custom_objects Custom_object_key Records Autocomplete
+      description: >-
+        Retrieves an array of custom object records that have a field value that
+        matches the value specified in the `name` parameter.
+
+
+        #### Pagination
+
+
+        * [Cursor
+        pagination](/api-reference/introduction/pagination/#cursor-pagination)
+        only.
+
+        * Returns the first 10,000 records sorted by relevancy with page limits.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - name: name
+          in: query
+          description: Part of a name of the record you are searching for
+          schema:
+            type: string
+        - name: page[before]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.before_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[after]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.after_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[size]
+          in: query
+          description: >
+            The number of records to return in the response. You can specify up
+            to 100 records per page.
+          schema:
+            type: integer
+        - name: field_id
+          in: query
+          description: >
+            The id of the lookup field. If the field has a relationship filter,
+            the filter is applied to the results. Must be used with `source`
+            param.
+          schema:
+            type: string
+        - name: source
+          in: query
+          description: >
+            One of "zen:user", "zen:ticket", "zen:organization", or
+            "zen:custom_object:CUSTOM_OBJECT_KEY". Represents the object
+            `field_id` belongs to. Must be used with field_id param.
+          schema:
+            type: string
+        - name: filter[dynamic_values]
+          in: query
+          description: >
+            Provided values to be used with [dynamic
+            filters](/api-reference/ticketing/lookup_relationships/lookup_relationships/#using-dynamic-filters).
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            additionalProperties:
+              type: integer
+            example:
+              ticket_fields_123: 123
+        - name: requester_id
+          in: query
+          description: |
+            The id of the requester. For use with dynamic filters.
+          schema:
+            type: integer
+          example: 264817272
+        - name: assignee_id
+          in: query
+          description: |
+            The id of the selected assignee. For use with dynamic filters.
+          schema:
+            type: integer
+          example: 7334148660734
+        - name: organization_id
+          in: query
+          description: >
+            The id of the organization the requester belongs to. For use with
+            dynamic filters.
+          schema:
+            type: integer
+          example: 5633330889598
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsAutocompleteResponseExample
+  /api/v2/organizations/autocomplete:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationQueryFragment'
+      - $ref: '#/components/parameters/LookupRelationshipAutocompleteFieldIdFragment'
+      - $ref: '#/components/parameters/LookupRelationshipAutocompleteSourceFragment'
+    get:
+      operationId: AutocompleteOrganizations
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Autocomplete
+      description: >
+        Returns an array of organizations whose name starts with the
+
+        value specified in the `name` parameter.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/AutocompleteOrganizationsResponseExample
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                      - code: QueryError
+                        title: Invalid type:sample_type
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                      - code: TooManyRequests
+                        title: Too many requests to autocomplete
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                      - code: Unavailable
+                        title: Internal Server Error
+  /api/v2/problems/autocomplete:
+    post:
+      operationId: AutocompleteProblems
+      tags:
+        - Tickets
+      summary: Post  Api V2 Problems Autocomplete
+      description: >-
+        Returns tickets whose type is "problem" and whose subject contains the
+        string specified in the `text` parameter.
+
+
+        You can specify the `text` parameter in the request body rather than the
+        query string. Example:
+
+
+        `{"text": "fire"}`
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: text
+          in: query
+          description: The text to search for
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The text to search for
+            example:
+              text: fire
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketProblemsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketProblemsResponseExample'
+  /api/v2/users/autocomplete:
+    get:
+      operationId: AutocompleteUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Users Autocomplete
+      description: >
+        Returns an array of users whose name starts with the value specified in
+        the `name` parameter.
+
+        It only returns users with no foreign identities.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: name
+          in: query
+          description: |
+            The name to search for the user.
+          required: true
+          schema:
+            type: string
+          example: gil
+        - $ref: >-
+            #/components/parameters/LookupRelationshipAutocompleteFieldIdFragment
+        - $ref: '#/components/parameters/LookupRelationshipAutocompleteSourceFragment'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SearchUsersResponseExample'
+components:
+  schemas:
+    AssigneeFieldAssignableGroupsAndAgentsSearchResponse:
+      type: object
+      properties:
+        agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssigneeFieldAssignableSearchAgentObject'
+        count:
+          type: integer
+          description: Number of agents + groups listed from search result.
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssigneeFieldAssignableSearchGroupObject'
+      example:
+        agents:
+          - group: Tech
+            group_id: 6574839201
+            id: 8392017465
+            name: Sam Technologist
+            photo_url: >-
+              https://z3n-example.zendesk.com/system/photos/410305192023/my_profile.png
+        count: 2
+        groups:
+          - id: 6574839201
+            name: Tech
+    TagsByObjectIdResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          description: An array of strings
+          items:
+            type: string
+      required:
+        - tags
+    CustomObjectRecordsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The number of results returned for the current request
+          readOnly: true
+        custom_object_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomObjectRecord'
+        links:
+          type: object
+          properties:
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+          required:
+            - prev
+            - next
+        meta:
+          type: object
+          properties:
+            after_cursor:
+              type: string
+              nullable: true
+            before_cursor:
+              type: string
+              nullable: true
+            has_more:
+              type: boolean
+          required:
+            - has_more
+            - after_cursor
+            - before_cursor
+    OrganizationsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationObject'
+        previous_page:
+          type: string
+          nullable: true
+    ListTicketProblemsResponse:
+      type: object
+      additionalProperties: true
+    UsersResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserObject'

@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Sessions
+  description: Needs a description.
+paths:
+  /api/v2/sessions:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: ListSessions
+      tags:
+        - Sessions
+      summary: Get  Api V2 Sessions
+      description: >
+        If authenticated as an admin, returns all the account's sessions. If
+        authenticated as an agent or end user, returns only the sessions of the
+        user making the request.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        #### Allowed For
+
+
+        * Admins, Agents, End users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SessionsResponseExample'
+  /api/v2/users/{user_id}/sessions:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    delete:
+      operationId: BulkDeleteSessionsByUserId
+      tags:
+        - Sessions
+      summary: Delete  Api V2 Users User_id Sessions
+      description: |
+        Deletes all the sessions for a user.
+
+        #### Allowed For
+
+        * Admins, Agents, End users
+      responses:
+        '204':
+          description: No Content
+  /api/v2/users/{user_id}/sessions/{session_id}:
+    parameters:
+      - $ref: '#/components/parameters/SessionId'
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: ShowSession
+      tags:
+        - Sessions
+      summary: Get  Api V2 Users User_id Sessions Session_id
+      description: |
+        #### Allowed For
+
+        * Admins, Agents, End users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SessionResponseExample'
+    delete:
+      operationId: DeleteSession
+      tags:
+        - Sessions
+      summary: Delete  Api V2 Users User_id Sessions Session_id
+      description: |
+        #### Allowed For
+
+        * Admins, Agents, End users
+      responses:
+        '204':
+          description: No Content
+components:
+  schemas:
+    SessionsResponse:
+      type: object
+      properties:
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionObject'
+    SessionResponse:
+      type: object
+      properties:
+        session:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionObject'

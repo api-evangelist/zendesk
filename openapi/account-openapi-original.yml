@@ -1,0 +1,336 @@
+openapi: 3.1.0
+info:
+  title: Account
+  description: Needs a description.
+paths:
+  /api/v2/account/settings:
+    get:
+      operationId: ShowAccountSettings
+      tags:
+        - Account Settings
+      summary: Get  Api V2 Account Settings
+      description: |
+        Shows the settings that are available for the account.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSettingsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AccountSettingsResponseExample'
+    put:
+      operationId: UpdateAccountSettings
+      tags:
+        - Account Settings
+      summary: Put  Api V2 Account Settings
+      description: >
+        Updates settings for the account. See [JSON Format](#json-format) above
+        for the settings you can update.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSettingsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AccountSettingsResponseExample'
+  /api/v2/accounts:
+    post:
+      operationId: CreateTrialAccount
+      tags:
+        - Reseller
+      summary: Post  Api V2 Accounts
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialAccountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TrialAccountResponseExample'
+  /api/v2/accounts/available:
+    get:
+      operationId: VerifySubdomainAvailability
+      tags:
+        - Reseller
+      summary: Get  Api V2 Accounts Available
+      description: >
+        Zendesk Support credentials are not required to access this endpoint.
+        You can use any Zendesk Support subdomain.
+
+
+        Returns "true" if the subdomain is available.
+      parameters:
+        - name: subdomain
+          in: query
+          description: >
+            Specify the name of the subdomain you want to verify. The name can't
+            contain underscores, hyphens, or spaces.
+          required: true
+          schema:
+            type: string
+          example: z3ndesk
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+              example:
+                success: true
+components:
+  schemas:
+    AccountSettingsResponse:
+      type: object
+      properties:
+        settings:
+          $ref: '#/components/schemas/AccountSettingsObject'
+      example:
+        settings:
+          active_features:
+            agent_forwarding: false
+            allow_ccs: true
+            allow_email_template_customization: true
+            automatic_answers: false
+            bcc_archiving: false
+            benchmark_opt_out: false
+            business_hours: false
+            chat: false
+            chat_about_my_ticket: false
+            csat_reason_code: false
+            custom_dkim_domain: true
+            customer_context_as_default: false
+            customer_satisfaction: false
+            dynamic_contents: false
+            explore: true
+            explore_on_support_ent_plan: false
+            explore_on_support_pro_plan: false
+            facebook: false
+            facebook_login: false
+            fallback_composer: false
+            forum_analytics: true
+            good_data_and_explore: false
+            google_login: false
+            is_abusive: false
+            light_agents: false
+            markdown: false
+            on_hold_status: false
+            organization_access_enabled: true
+            rich_content_in_emails: true
+            sandbox: false
+            satisfaction_prediction: false
+            suspended_ticket_notification: false
+            ticket_forms: true
+            ticket_tagging: true
+            topic_suggestion: false
+            twitter: true
+            twitter_login: false
+            user_org_fields: true
+            user_tagging: true
+            voice: true
+          agents:
+            agent_home: false
+            agent_workspace: false
+            aw_self_serve_migration_enabled: true
+            focus_mode: false
+            idle_timeout_enabled: false
+            unified_agent_statuses: false
+          api:
+            accepted_api_agreement: true
+            api_password_access: 'true'
+            api_token_access: 'true'
+          apps:
+            create_private: true
+            create_public: false
+            use: true
+          billing:
+            backend: zuora
+          branding:
+            favicon_url: null
+            header_color: 78A300
+            header_logo_url: null
+            page_background_color: '333333'
+            tab_background_color: 7FA239
+            text_color: FFFFFF
+          brands:
+            default_brand_id: 1873
+            require_brand_on_new_tickets: false
+          cdn:
+            cdn_provider: default
+            fallback_cdn_provider: secondary
+            hosts:
+              - name: default
+                url: https://static.zdassets.com
+              - name: secondary
+                url: https://static-fallback.zdassets.com
+          chat:
+            available: true
+            enabled: false
+            integrated: true
+            maximum_request_count: 1
+            welcome_message: Hi there. How can I help today?
+          cross_sell:
+            show_chat_tooltip: true
+            xsell_source: null
+          email:
+            accept_wildcard_emails: false
+            custom_dkim_domain: false
+            email_sender_authentication: true
+            email_sender_authentication_profile: enhanced
+            email_status: true
+            email_template_photos: true
+            email_template_selection: false
+            gmail_actions: true
+            html_mail_template: "<!DOCTYPE html>\r\n<html dir=\"auto\" {{lang}}>\r\n<head>\r\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n  <style type=\"text/css\">\r\n    table td {\r\n      border-collapse: collapse;\r\n    }\r\n    {{styles}}\r\n  </style>\r\n</head>\r\n<body {{attributes}} style=\"width: 100%!important; margin: 0; padding: 0;\">\r\n  <div style=\"font-family: 'system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue','Arial','sans-serif'; font-size: 14px; line-height: 1.5; color:#444444;\">\r\n    <div style=\"color: #b5b5b5;\">{{delimiter}}</div>\r\n    {{content}}\r\n  </div><br/>\r\n  <div style=\"font-family: 'system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue','Arial','sans-serif'; font-size: 12px; line-height: 1.5; color: #49545c; margin: 10px 0 14px 0; padding-top: 10px;\">\r\n    {{footer}} {{footer_link}}\r\n  </div><br/>\r\n  {{quoted_content}}\r\n</body>\r\n</html>\r\n"
+            mail_delimiter: '{{txt.email.delimiter}}'
+            modern_email_template: true
+            no_mail_delimiter: true
+            personalized_replies: true
+            rich_content_in_emails: true
+            send_gmail_messages_via_gmail: true
+            text_mail_template: "{{content}}\r\n\r\n{{footer}}\r\n\r\n{{quoted_content}}"
+          google_apps:
+            has_google_apps: false
+            has_google_apps_admin: false
+          groups:
+            check_group_name_uniqueness: true
+          limits:
+            attachment_size: 52428800
+          localization:
+            locale_ids:
+              - 1042
+          lotus:
+            pod_id: 999
+            prefer_lotus: true
+            reporting: true
+          messaging_inactivity:
+            default_localized_messages:
+              pre_solved_message_1: >-
+                Waiting on your response. If we don't hear from you within a few
+                minutes, this ticket will be marked as solved.
+              pre_solved_message_2: >-
+                This ticket will be marked as solved soon. We hope to hear from
+                you.
+              solved_message: >-
+                As we haven't heard from you in a while, we'll be marking this
+                ticket as solved.
+            enabled: true
+            reminders:
+              - message: >-
+                  Waiting on your response. If we don't hear from you within a
+                  few minutes, this ticket will be marked as solved.
+              - message: >-
+                  This ticket will be marked as solved soon. We hope to hear
+                  from you.
+                ticket_status_id: null
+                timeout: 300
+              - message: >-
+                  As we haven't heard from you in a while, we'll be marking this
+                  ticket as solved.
+                ticket_status_id: 8678123367037
+                timeout: 60
+            ticket_status_id: 8001424138749
+            timeout: 5
+          metrics:
+            account_size: 100-399
+          onboarding:
+            checklist_onboarding_version: 2
+            onboarding_segments: null
+            product_sign_up: null
+          routing:
+            autorouting_tag: ''
+            enabled: false
+            max_email_capacity: 0
+            max_messaging_capacity: 0
+          rule:
+            macro_most_used: true
+            macro_order: alphabetical
+            skill_based_filtered_views: []
+            using_skill_based_routing: false
+          side_conversations:
+            email_channel: false
+            msteams_channel: false
+            show_in_context_panel: false
+            slack_channel: false
+            tickets_channel: false
+          statistics:
+            forum: true
+            rule_usage: true
+            search: true
+          ticket_form:
+            raw_ticket_forms_instructions: Please choose your issue below
+            ticket_forms_instructions: Please choose your issue below
+          tickets:
+            accepted_new_collaboration_tos: false
+            agent_collision: true
+            agent_invitation_enabled: true
+            agent_ticket_deletion: false
+            allow_group_reset: true
+            assign_default_organization: true
+            assign_tickets_upon_solve: true
+            auto_translation_enabled: false
+            auto_updated_ccs_followers_rules: false
+            chat_sla_enablement: false
+            collaboration: true
+            comments_public_by_default: true
+            default_solved_ticket_reassignment_strategy: legacy
+            default_to_draft_mode: false
+            email_attachments: false
+            emoji_autocompletion: true
+            follower_and_email_cc_collaborations: false
+            has_color_text: true
+            is_first_comment_private_enabled: true
+            light_agent_email_ccs_allowed: false
+            list_empty_views: true
+            list_newest_comments_first: true
+            markdown_ticket_comments: false
+            maximum_personal_views_to_list: 8
+            modern_ticket_reassignment: false
+            private_attachments: false
+            rich_text_comments: true
+            show_modern_ticket_reassignment: false
+            status_hold: false
+            tagging: true
+            using_skill_based_routing: false
+          twitter:
+            shorten_url: optional
+          user:
+            agent_created_welcome_emails: true
+            end_user_phone_number_validation: false
+            have_gravatars_enabled: true
+            language_selection: true
+            multiple_organizations: false
+            tagging: true
+            time_zone_selection: true
+          voice:
+            agent_confirmation_when_forwarding: true
+            agent_wrap_up_after_calls: true
+            enabled: true
+            logging: true
+            maximum_queue_size: 5
+            maximum_queue_wait_time: 1
+            only_during_business_hours: false
+            outbound_enabled: true
+            recordings_public: true
+            uk_mobile_forwarding: true

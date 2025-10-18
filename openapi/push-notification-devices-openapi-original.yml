@@ -1,0 +1,40 @@
+openapi: 3.1.0
+info:
+  title: Push Notification Devices
+  description: Needs a description.
+paths:
+  /api/v2/push_notification_devices/destroy_many:
+    post:
+      operationId: PushNotificationDevices
+      tags:
+        - Push Notification Devices
+      summary: Post  Api V2 Push_notification_devices Destroy_many
+      description: >-
+        Unregisters the mobile devices that are receiving push notifications.
+        Specify the devices as an array of mobile device tokens.
+
+
+        #### Allowed for
+
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PushNotificationDevicesRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/PushNotificationDevicesRequestExample'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: empty
+                example: ''
+              example: ''
+components:
+  schemas: {}

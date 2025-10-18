@@ -1,0 +1,242 @@
+openapi: 3.1.0
+info:
+  title: Recipient Addresses
+  description: Needs a description.
+paths:
+  /api/v2/recipient_addresses:
+    get:
+      operationId: ListSupportAddresses
+      tags:
+        - Support Addresses
+      summary: Get  Api V2 Recipient_addresses
+      description: |
+        Lists all the support addresses for the account.
+
+        #### Pagination
+
+        - Cursor pagination (recommended)
+        - Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportAddressesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SupportAddressesResponseExample'
+    post:
+      operationId: CreateSupportAddress
+      tags:
+        - Support Addresses
+      summary: Post  Api V2 Recipient_addresses
+      description: >
+        Adds a Zendesk or external support address to your account.
+
+
+        To add a Zendesk address, use the following syntax:
+        `{local-part}@{accountname}.zendesk.com`.
+
+        Example: 'sales-team@example.zendesk.com'. The
+        [local-part](https://en.wikipedia.org/wiki/Email_address#Local-part) can
+        be anything you like.
+
+
+        To add an external email address such as help@omniwearshop.com, the
+        email must already exist and you must set up forwarding on your email
+        server. The exact steps depend on your mail server. See [Forwarding
+        incoming email to Zendesk
+        Support](https://support.zendesk.com/hc/en-us/articles/203663266). After
+        setting up forwarding, run the [Verify Support Address
+        Forwarding](#verify-support-address-forwarding) endpoint. The address
+        won't work in Zendesk Support until it's been verified.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents with permission to manage channels and extensions. See the
+        system permissions in [Creating custom roles and assigning agents
+        (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd)
+        in the Support Help Center
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportAddressResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SupportAddressCreateResponseExample'
+  /api/v2/recipient_addresses/{support_address_id}:
+    parameters:
+      - $ref: '#/components/parameters/SupportAddressId'
+    get:
+      operationId: ShowSupportAddress
+      tags:
+        - Support Addresses
+      summary: Get  Api V2 Recipient_addresses Support_address_id
+      description: |
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportAddressResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SupportAddressResponseExample'
+    put:
+      operationId: UpdateSupportAddress
+      tags:
+        - Support Addresses
+      summary: Put  Api V2 Recipient_addresses Support_address_id
+      description: >
+        Updates an existing support address for your account.
+
+
+        You can't use this endpoint to update a support address's `email`
+        property.
+
+        Instead, you can create a new address using the [Create Support
+
+        Address](#create-support-address) endpoint.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents with permission to manage channels and extensions. See the
+        system permissions in [Creating custom roles and assigning agents
+        (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd)
+        in the Support Help Center
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportAddressResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SupportAddressUpdateResponseExample'
+    delete:
+      operationId: DeleteRecipientAddress
+      tags:
+        - Support Addresses
+      summary: Delete  Api V2 Recipient_addresses Support_address_id
+      description: >
+        Deletes a support address.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents with permission to manage channels and extensions. See the
+        system permissions in [Creating custom roles and assigning agents
+        (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd)
+        in the Support Help Center
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/recipient_addresses/{support_address_id}/verify:
+    parameters:
+      - $ref: '#/components/parameters/SupportAddressId'
+    put:
+      operationId: VerifySupportAddressForwarding
+      tags:
+        - Support Addresses
+      summary: Put  Api V2 Recipient_addresses Support_address_id Verify
+      description: >
+        Sends a test email to the specified support address to verify that email
+        forwarding for the address works. An external support address won't work
+        in Zendesk Support until it's verified.
+
+
+        **Note**: You don't need to verify Zendesk system support addresses.
+
+
+        The endpoint takes the following body: `{"type": "forwarding"}`. The
+        value of the `type` property defaults to "forwarding" if none is
+        specified, but the values "spf" and "dns" are also accepted.
+
+
+        Use this endpoint after [adding](#create-support-address) an external
+        support address to Zendesk Support and setting up forwarding on your
+        email server. See [Forwarding incoming email to Zendesk
+        Support](https://support.zendesk.com/hc/en-us/articles/203663266).
+
+
+        The endpoint doesn't return the results of the test. Instead, use the
+        [Show Support Address](#show-support-address) endpoint to check that the
+        `forwarding_status` property is "verified".
+
+
+        Other verification checks can also be performed using this API. These
+        include SPF checks and DNS checks.
+
+
+        When calling the endpoint with `type` set to "spf", it will queries the
+        DNS records to check that the SPF records for Zendesk are present for
+        outbound emails.
+
+
+        When calling the endpoint with `type` set to "dns", it runs checks on
+        your CNAME records to make sure they are set up properly in your DNS.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents with permission to manage channels and extensions. See the
+        system permissions in [Creating custom roles and assigning agents
+        (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd)
+        in the Support Help Center
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+components:
+  schemas:
+    SupportAddressesResponse:
+      type: object
+      properties:
+        recipient_addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportAddressObject'
+    SupportAddressResponse:
+      type: object
+      properties:
+        recipient_address:
+          $ref: '#/components/schemas/SupportAddressObject'

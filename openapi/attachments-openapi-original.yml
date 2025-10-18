@@ -1,0 +1,293 @@
+openapi: 3.1.0
+info:
+  title: Attachments
+  description: Needs a description.
+paths:
+  /api/v2/attachments/{attachment_id}:
+    get:
+      operationId: ShowAttachment
+      tags:
+        - Attachments
+      summary: Get  Api V2 Attachments Attachment_id
+      description: >
+        Shows attachment details. You can get the value of the `attachment_id`
+        parameter by listing the ticket's comments.
+
+        See [List
+        Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments).
+        Each comment
+
+        in the list has an `attachments` list that specifies an `id` for each
+        attachment.
+
+
+         #### Allowed for
+
+         * Agents
+      parameters:
+        - $ref: '#/components/parameters/AttachmentId'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AttachmentResponseExample'
+    put:
+      operationId: UpdateAttachment
+      tags:
+        - Attachments
+      summary: Put  Api V2 Attachments Attachment_id
+      description: >
+        Toggles enabling or restricting agent access to attachments with
+        detected malware.
+
+
+        #### Allowed For
+
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/AttachmentId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttachmentUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/AttachmentUpdateRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AttachmentResponseExample'
+  /api/v2/macros/{macro_id}/attachments:
+    parameters:
+      - $ref: '#/components/parameters/MacroId'
+    get:
+      operationId: ListMacroAttachments
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Macro_id Attachments
+      description: |
+        Lists the attachments associated with a macro.
+
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroAttachmentsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroAttachmentsResponseExample'
+    post:
+      operationId: CreateAssociatedMacroAttachment
+      tags:
+        - Macros
+      summary: Post  Api V2 Macros Macro_id Attachments
+      description: >
+        Allows an attachment to be uploaded and associated with a macro at the
+        same time.
+
+
+        **Note:** A macro can be associated with up to five attachments.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '201':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroAttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroAttachmentResponseExample'
+  /api/v2/macros/attachments:
+    post:
+      operationId: CreateMacroAttachment
+      tags:
+        - Macros
+      summary: Post  Api V2 Macros Attachments
+      description: >
+        Allows an attachment to be uploaded that can be associated with a macro
+        at a later time.
+
+
+        **Note:** To ensure an uploaded attachment is not lost, associate it
+        with a macro as soon as possible. From time to time, old attachments
+        that are not not associated with any macro are purged.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '201':
+          description: Created Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroAttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroAttachmentResponseExample'
+  /api/v2/macros/attachments/{attachment_id}:
+    parameters:
+      - $ref: '#/components/parameters/AttachmentId'
+    get:
+      operationId: ShowMacroAttachment
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Attachments Attachment_id
+      description: |
+        Shows the properties of the specified macro attachment.
+
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroAttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroAttachmentResponseExample'
+  /api/v2/suspended_tickets/attachments:
+    parameters:
+      - $ref: '#/components/parameters/SuspendedTicketId'
+    post:
+      operationId: SuspendedTicketsAttachments
+      tags:
+        - Suspended Tickets
+      summary: Post  Api V2 Suspended_tickets Attachments
+      description: >
+        Makes copies of any attachments on a suspended ticket and returns them
+        as [attachment
+        tokens](/api-reference/ticketing/tickets/ticket-attachments/). If the 
+        ticket is manually recovered, you can include the attachment tokens on
+        the new ticket.
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage suspended tickets on Enterprise plans
+
+        * Unrestricted agents on all other plans
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuspendedTicketsAttachmentsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SuspendedTicketsAttachmentsResponseExample
+  /api/v2/tickets/{ticket_id}/comments/{comment_id}/attachments/{attachment_id}/redact:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+      - $ref: '#/components/parameters/CommentId'
+      - $ref: '#/components/parameters/AttachmentId'
+    put:
+      operationId: RedactCommentAttachment
+      tags:
+        - Attachments
+      summary: >-
+        Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments
+        Attachment_id Redact
+      description: >
+        Redaction allows you to permanently remove attachments from an existing
+        comment on a ticket. Once removed from a comment, the attachment is
+        replaced with an empty "redacted.txt" file.
+
+
+        The redaction is permanent. It is not possible to undo redaction or see
+        what was removed. Once a ticket is closed, redacting its attachments is
+        no longer possible.
+
+
+        Also, if you want to redact an inline attachment, you can use the
+        `include_inline_images` parameter in the [List
+        Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments)
+        operation to obtain the inline attachment ID, and use it in the request
+        URL.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents when [deleting tickets is enabled for agents on professional
+        accounts](https://support.zendesk.com/hc/en-us/articles/360002128107)
+
+        * Agents assigned to a custom role with permissions to redact ticket
+        content (Enterprise only)
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AttachmentResponseExample'
+components:
+  schemas:
+    AttachmentResponse:
+      type: object
+      properties:
+        attachment:
+          $ref: '#/components/schemas/AttachmentObject'
+    MacroAttachmentsResponse:
+      type: object
+      properties:
+        macro_attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/MacroAttachmentObject'
+    MacroAttachmentResponse:
+      type: object
+      properties:
+        macro_attachment:
+          $ref: '#/components/schemas/MacroAttachmentObject'
+    SuspendedTicketsAttachmentsResponse:
+      type: object
+      properties:
+        upload:
+          type: object
+          properties:
+            attachments:
+              type: array
+              items:
+                $ref: '#/components/schemas/AttachmentObject'
+            token:
+              type: string
+              description: Token for subsequent request
+              readOnly: true

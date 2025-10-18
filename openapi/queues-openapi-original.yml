@@ -1,0 +1,258 @@
+openapi: 3.1.0
+info:
+  title: Queues
+  description: Needs a description.
+paths:
+  /api/v2/queues:
+    get:
+      operationId: ListQueues
+      tags:
+        - Omnichannel Routing Queues
+      summary: Get  Api V2 Queues
+      description: |
+        Returns all active queues for an account.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueuesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/QueuesResponseExample'
+    post:
+      operationId: CreateQueue
+      tags:
+        - Omnichannel Routing Queues
+      summary: Post  Api V2 Queues
+      description: |
+        Creates a queue. Accepts a JSON queue definition as the request body.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/QueueCreateResponseExample'
+  /api/v2/queues/{queue_id}:
+    parameters:
+      - $ref: '#/components/parameters/OcrQueueId'
+    get:
+      operationId: ShowQueueById
+      tags:
+        - Omnichannel Routing Queues
+      summary: Get  Api V2 Queues Queue_id
+      description: |
+        Returns a queue for the given queue id.
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/QueueResponseExample'
+    put:
+      operationId: UpdateQueue
+      tags:
+        - Omnichannel Routing Queues
+      summary: Put  Api V2 Queues Queue_id
+      description: |
+        Updates the queue definition for a given queue id.
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/QueuesUpdateResponseExample'
+    delete:
+      operationId: DeleteQueue
+      tags:
+        - Omnichannel Routing Queues
+      summary: Delete  Api V2 Queues Queue_id
+      description: |
+        Deletes the queue and related records.
+        #### Allowed For
+
+        * Admins
+      responses:
+        '204':
+          description: No content response
+  /api/v2/queues/definitions:
+    get:
+      operationId: ListQueueDefinitions
+      tags:
+        - Omnichannel Routing Queues
+      summary: Get  Api V2 Queues Definitions
+      description: >
+        Returns the definitions of the queues and the
+
+        definitions of the conditions under which a queue can execute. The
+
+        definition of the action includes a title ("Status"), a type ("list"),
+        and
+
+        possible values. The definition of the condition includes the same
+        fields
+
+        as well as the possible operators.
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefinitionsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DefinitionsResponseExample'
+  /api/v2/queues/order:
+    patch:
+      operationId: ReorderQueues
+      tags:
+        - Omnichannel Routing Queues
+      summary: Patch  Api V2 Queues Order
+      description: >
+        Alters the evaluation order of OCR queues in the account.
+
+        The evaluation order is set in a `queue_ids` array in the request body.
+
+
+        You must include every queue id in your account to reorder the OCR
+        queues. If not, the endpoint will return 400 Bad Request.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '204':
+          description: No Content
+components:
+  schemas:
+    QueuesResponse:
+      type: object
+      properties:
+        queues:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueueObject'
+    QueueResponse:
+      type: object
+      properties:
+        queue:
+          $ref: '#/components/schemas/QueueObject'
+    DefinitionsResponse:
+      type: object
+      properties:
+        definitions:
+          type: object
+          properties:
+            conditions_all:
+              type: array
+              items:
+                type: object
+                properties:
+                  group:
+                    type: string
+                  nullable:
+                    type: boolean
+                  operators:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        terminal:
+                          type: boolean
+                        title:
+                          type: string
+                        value:
+                          type: string
+                  repeatable:
+                    type: boolean
+                  subject:
+                    type: string
+                  title:
+                    type: string
+                  type:
+                    type: string
+                  values:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        title:
+                          type: string
+                        value:
+                          type: string
+            conditions_any:
+              type: array
+              items:
+                type: object
+                properties:
+                  group:
+                    type: string
+                  nullable:
+                    type: boolean
+                  operators:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        terminal:
+                          type: boolean
+                        title:
+                          type: string
+                        value:
+                          type: string
+                  repeatable:
+                    type: boolean
+                  subject:
+                    type: string
+                  title:
+                    type: string
+                  type:
+                    type: string
+                  values:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        title:
+                          type: string
+                        value:
+                          type: string

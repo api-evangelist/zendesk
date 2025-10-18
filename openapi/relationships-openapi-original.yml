@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: Relationships
+  description: Needs a description.
+paths:
+  /api/v2/relationships/definitions/{target_type}:
+    get:
+      operationId: GetRelationshipFilterDefinitions
+      tags:
+        - Lookup Relationships
+      summary: Get  Api V2 Relationships Definitions Target_type
+      description: >
+        Returns filter definitions based on the given target type.  Target types
+
+        include users (zen:user), tickets (zen:ticket), organizations
+        (zen:organization), or custom objects
+        (zen:custom_object:CUSTOM_OBJECT_KEY).
+
+        The returned filter definitions are the options that you can use to
+        build a custom field or ticket field's
+
+        `relationship_filter`.
+      parameters:
+        - name: target_type
+          in: path
+          description: >
+            The target type for which you would like to see filter definitions.
+
+            The options are "zen:user", "zen:ticket", "zen:organization", and
+            "zen:custom_object:CUSTOM_OBJECT_KEY"
+          required: true
+          schema:
+            type: string
+          example: zen:custom_object:apartment
+        - name: source_type
+          in: query
+          description: |
+            The source type for which you would like to see filter definitions.
+            The options are "zen:user", "zen:ticket", and "zen:organization"
+          schema:
+            type: string
+          example: zen:user
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelationshipFilterDefinitionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/RelationshipFilterDefinitionExample'
+components:
+  schemas:
+    RelationshipFilterDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          $ref: '#/components/schemas/RelationshipFilterDefinition'

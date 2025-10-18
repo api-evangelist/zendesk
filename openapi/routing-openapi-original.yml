@@ -1,0 +1,821 @@
+openapi: 3.1.0
+info:
+  title: Routing
+  description: Needs a description.
+paths:
+  /api/v2/incremental/routing/attribute_values:
+    get:
+      operationId: IncrementalSkilBasedRoutingAttributeValuesExport
+      tags:
+        - Incremental Skill Based Routing
+      summary: Get  Api V2 Incremental Routing Attribute_values
+      description: >
+        Returns a stream of changes that occurred on routing attribute values.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+
+        #### Parameters
+
+
+        Optional
+
+
+        | Name   | Type   | Comment
+
+        | ------ | ------ | -------
+
+        | cursor | string | The `cursor` parameter is a non-human-readable
+        argument you can use to move forward or backward in time. The cursor is
+        a read-only URL parameter that's only available in API responses. See
+        [Pagination](#pagination).
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncrementalSkillBasedRouting'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/IncrementalSkillBasedRoutingAttributeValuesExample
+  /api/v2/incremental/routing/attributes:
+    get:
+      operationId: IncrementalSkilBasedRoutingAttributesExport
+      tags:
+        - Incremental Skill Based Routing
+      summary: Get  Api V2 Incremental Routing Attributes
+      description: >
+        Returns a stream of changes that occurred on routing attributes.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+
+        #### Parameters
+
+
+        Optional
+
+
+
+        | Name   | Type   | Comment
+
+        | ------ | ------ | -------
+
+        | cursor | string | The `cursor` parameter is a non-human-readable
+        argument you can use to move forward or backward in time. The cursor is
+        a read-only URL parameter that's only available in API responses. See
+        [Pagination](#pagination).
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncrementalSkillBasedRouting'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/IncrementalSkillBasedRoutingAttributesExample
+  /api/v2/incremental/routing/instance_values:
+    get:
+      operationId: IncrementalSkilBasedRoutingInstanceValuesExport
+      tags:
+        - Incremental Skill Based Routing
+      summary: Get  Api V2 Incremental Routing Instance_values
+      description: >
+        Returns a stream of changes that occurred on routing instance values.
+        Changes are grouped by `attribute_value_id`,
+
+        with associate type events listed alongside unassociate type events
+        based on the unassociate event’s timestamp.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+
+        #### Parameters
+
+
+        Optional
+
+
+        | Name   | Type   | Comment
+
+        | ------ | ------ | -------
+
+        | cursor | string | The `cursor` parameter is a non-human-readable
+        argument you can use to move forward or backward in time. The cursor is
+        a read-only URL parameter that's only available in API responses. See
+        [Pagination](#pagination).
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncrementalSkillBasedRouting'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/IncrementalSkillBasedRoutingInstanceValuesExample
+  /api/v2/routing/agents/{user_id}/instance_values:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: ListAGentAttributeValues
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Agents User_id Instance_values
+      description: |
+        Returns an attribute value.
+
+        #### Allowed For
+
+        * Agents and admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeValuesResponseExample
+    post:
+      operationId: SetAgentAttributeValues
+      tags:
+        - Skill Based Routing
+      summary: Post  Api V2 Routing Agents User_id Instance_values
+      description: >
+        Adds the specified attributes if no attributes exists, or replaces all
+        existing attributes with the specified attributes.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeValuesResponseExample
+  /api/v2/routing/agents/instance_values:
+    get:
+      operationId: ListManyAgentsAttributeValues
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Agents Instance_values
+      description: >
+        Accepts a comma-separated list of up to 100 agent ids and returns
+        attribute values for each agent in the list.
+
+
+        #### Allowed For
+
+        * Admins
+
+        * [Agents in custom role with permission to manage
+        skills](https://support.zendesk.com/hc/en-us/articles/4408882153882-Creating-custom-roles-and-assigning-agents)
+
+
+        #### Pagination
+
+        * [Cursor
+        pagination](/api-reference/introduction/pagination/#cursor-pagination)
+        only.
+
+        Note: `page[before]` and `page[after]` can't be used together in the
+        same request.
+      parameters:
+        - name: filter[agent_ids]
+          in: query
+          description: A comma-separated list of agent ids
+          required: true
+          schema:
+            type: string
+          example: 224,225
+        - name: page[before]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.before_cursor` value from a previous request.
+          schema:
+            type: string
+        - name: page[after]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.after_cursor` value from a previous request.
+          schema:
+            type: string
+        - name: page[size]
+          in: query
+          description: The number of items to return per page
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 100
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ManySkillBasedRoutingAttributeValuesResponse
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/ManySkillBasedRoutingAttributeValuesResponseExample
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesError'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/ManySkillBasedRoutingAttributeValuesErrorExample
+  /api/v2/routing/agents/instance_values/job:
+    post:
+      operationId: BulkSetAgentAttributeValuesJob
+      tags:
+        - Skill Based Routing
+        - Job Statuses
+      summary: Post  Api V2 Routing Agents Instance_values Job
+      description: >
+        Adds, replaces or removes multiple attributes for up to 100 agents.
+
+
+        #### Allowed For
+
+        * Admins
+
+        * [Agents in custom role with permission to manage
+        skills](https://support.zendesk.com/hc/en-us/articles/4408882153882-Creating-custom-roles-and-assigning-agents)
+
+
+        #### Available Parameters
+
+
+        The request takes a data object with the following properties:
+
+        | Name       | Type   | Required |
+        Description                                                                                      
+        |
+
+        | ---------- | ------ | -------- |
+        -------------------------------------------------------------------------------------------------
+        |
+
+        | action     | string | true     | The action to perform on the
+        attribute values. One of the following: "upsert", "update", "delete" |
+
+        | attributes | object | true     | The attribute values to update. See
+        [Attribute Values](#attribute-values)                         |
+
+        | items      | array  | true     | The list of agent
+        ids                                                                            
+        |
+
+
+        Action can be one of the following:
+          * upsert: Adds new attribute values to the agents
+          * update: Replaces all the current attribute values of the agents with the new values
+          * delete: Removes specified attribute values from the agents
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkSkillBasedRoutingAttributeValuesRequest'
+            examples:
+              default:
+                $ref: >-
+                  #/components/examples/BulkSkillBasedRoutingAttributeValuesRequestExample
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/BulkSkillBasedRoutingAttributeValuesJobStatusResponseExample
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesError'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/BulkSkillBasedRoutingAttributeValuesErrorExample
+  /api/v2/routing/attributes:
+    get:
+      operationId: ListAccountAttributes
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Attributes
+      description: |
+        Returns a list of attributes for the account.
+
+        #### Sideloads
+
+        The following sideloads are supported:
+
+        | Name             | Will sideload
+        | ---------------- | -------------
+        | attribute_values | The attribute values available on the account
+
+        #### Allowed For
+
+        * Agents and admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributesResponseExample
+    post:
+      operationId: CreateAttribute
+      tags:
+        - Skill Based Routing
+      summary: Post  Api V2 Routing Attributes
+      description: |
+        Creates an attribute.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeCreateResponseExample
+  /api/v2/routing/attributes/{attribute_id}:
+    parameters:
+      - $ref: '#/components/parameters/SkillBasedRoutingAttributeId'
+    get:
+      operationId: ShowAttribute
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Attributes Attribute_id
+      description: |
+        Returns an attribute.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeResponseExample
+    put:
+      operationId: UpdateAttribute
+      tags:
+        - Skill Based Routing
+      summary: Put  Api V2 Routing Attributes Attribute_id
+      description: |
+        Updates an attribute.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeUpdateResponseExample
+    delete:
+      operationId: DeleteAttribute
+      tags:
+        - Skill Based Routing
+      summary: Delete  Api V2 Routing Attributes Attribute_id
+      description: |
+        Deletes an attribute.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/routing/attributes/{attribute_id}/values:
+    parameters:
+      - $ref: '#/components/parameters/SkillBasedRoutingAttributeId'
+    get:
+      operationId: ListAttributeValues
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Attributes Attribute_id Values
+      description: |
+        Returns a list of attribute values for a provided attribute.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeValuesResponseExample
+    post:
+      operationId: CreateAttributeValue
+      tags:
+        - Skill Based Routing
+      summary: Post  Api V2 Routing Attributes Attribute_id Values
+      description: |
+        Creates an attribute value.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValueResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeValueCreateResponseExample
+  /api/v2/routing/attributes/{attribute_id}/values/{attribute_value_id}:
+    parameters:
+      - $ref: '#/components/parameters/SkillBasedRoutingAttributeId'
+      - $ref: '#/components/parameters/SkillBasedRoutingAttributeValueId'
+    get:
+      operationId: ShowAttributeValue
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      description: |
+        Returns an attribute value.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValueResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeValueResponseExample
+    patch:
+      operationId: UpdateAttributeValue
+      tags:
+        - Skill Based Routing
+      summary: Patch  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      description: >
+        Updates the name and ticket conditions of a skill. When a ticket is
+        created, the skill is applied to a ticket  if the ticket meets the
+        specified condition or conditions. See the [Conditions
+        reference](/documentation/ticketing/reference-guides/conditions-reference/)
+        for more information.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValueResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeValueUpdateResponseExample
+    delete:
+      operationId: DeleteAttributeValue
+      tags:
+        - Skill Based Routing
+      summary: Delete  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      description: |
+        Deletes an attribute value.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/routing/attributes/definitions:
+    get:
+      operationId: ListRoutingAttributeDefinitions
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Attributes Definitions
+      description: >
+        Returns the condition definitions that can be configured to apply
+        attributes to a ticket.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeDefinitions'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingAttributeDefinitionsExample
+  /api/v2/routing/requirements/fulfilled:
+    get:
+      operationId: ListTicketsFullfilledByUser
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Requirements Fulfilled
+      description: >
+        Returns a list of ticket ids that contain attributes matching the
+        current user's attributes. Accepts a `ticket_ids` parameter for relevant
+        tickets to check for matching attributes.
+
+
+        #### Allowed For
+
+
+        * Agents and admins
+      parameters:
+        - name: ticket_ids
+          in: query
+          description: The IDs of the relevant tickets to check for matching attributes
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingTicketFulfilledResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingTicketFulfilledResponseExample
+  /api/v2/routing/tickets/{ticket_id}/instance_values:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListTicketAttributeValues
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Tickets Ticket_id Instance_values
+      description: |
+        Returns a list of attributes values for the ticket.
+
+        #### Allowed For
+
+        * Agents and admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingTicketAttributesResponseExample
+    post:
+      operationId: SetTicketAttributeValues
+      tags:
+        - Skill Based Routing
+      summary: Post  Api V2 Routing Tickets Ticket_id Instance_values
+      description: >
+        Adds the specified attributes if no attributes exists, or replaces all
+        existing attributes with the specified attributes.
+
+
+        Invalid or deleted attributes are ignored.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingTicketAttributesResponseExample
+components:
+  schemas:
+    IncrementalSkillBasedRouting:
+      title: Incremental Skill-based Routing
+      type: object
+      properties:
+        attribute_values:
+          type: array
+          description: Routing attribute values
+          items:
+            $ref: '#/components/schemas/IncrementalSkillBasedRoutingAttributeValue'
+        attributes:
+          type: array
+          description: Routing attributes
+          items:
+            $ref: '#/components/schemas/IncrementalSkillBasedRoutingAttribute'
+        count:
+          type: integer
+          description: The number of results returned for the current request
+          readOnly: true
+        end_time:
+          type: integer
+          description: >-
+            The most recent resource creation time present in this result set in
+            Unix epoch time
+          readOnly: true
+        instance_values:
+          type: array
+          description: Routing instance values
+          items:
+            $ref: '#/components/schemas/IncrementalSkillBasedRoutingInstanceValue'
+        next_page:
+          type: string
+          description: The URL that should be called to get the next set of results
+          readOnly: true
+    SkillBasedRoutingAttributeValuesResponse:
+      type: object
+      properties:
+        attribute_values:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
+    ManySkillBasedRoutingAttributeValuesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: The number of instance values returned
+          readOnly: true
+        instance_values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManySkillBasedRoutingAttributeValues'
+        next_page:
+          type: string
+          description: The URL for the next page of results
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: The URL for the previous page of results
+          nullable: true
+          readOnly: true
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    SkillBasedRoutingAttributesResponse:
+      type: object
+      properties:
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillBasedRoutingAttributeObject'
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+    SkillBasedRoutingAttributeResponse:
+      type: object
+      properties:
+        attribute:
+          $ref: '#/components/schemas/SkillBasedRoutingAttributeObject'
+    SkillBasedRoutingAttributeValueResponse:
+      type: object
+      properties:
+        attribute_value:
+          $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
+    SkillBasedRoutingAttributeDefinitions:
+      type: object
+      properties:
+        definitions:
+          type: object
+          properties:
+            conditions_all:
+              type: array
+              items:
+                type: object
+                properties:
+                  subject:
+                    type: string
+                  title:
+                    type: string
+            conditions_any:
+              type: array
+              items:
+                type: object
+                properties:
+                  subject:
+                    type: string
+                  title:
+                    type: string
+    SkillBasedRoutingTicketFulfilledResponse:
+      type: object
+      properties:
+        fulfilled_ticket_ids:
+          type: array
+          items:
+            type: integer

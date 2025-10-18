@@ -1,0 +1,256 @@
+openapi: 3.1.0
+info:
+  title: Organization Memberships
+  description: Needs a description.
+paths:
+  /api/v2/organization_memberships:
+    get:
+      operationId: ListOrganizationMemberships
+      tags:
+        - Organization Memberships
+      summary: Get  Api V2 Organization_memberships
+      description: >
+        Returns a list of organization memberships for the account, user or
+        organization in question.
+
+
+        **Note**: When returning organization memberships for a user,
+        organization memberships are sorted with the default organization first,
+        and then by organization name.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        - Agents
+
+        - End users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembershipsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMembershipsResponseExample'
+    post:
+      operationId: CreateOrganizationMembership
+      tags:
+        - Organization Memberships
+      summary: Post  Api V2 Organization_memberships
+      description: >
+        Assigns a user to a given organization. Returns an error with status 422
+        if the user is already assigned to the organization.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents when creating a new organization membership for an end user
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembershipResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/OrganizationMembershipCreateResponseExample
+  /api/v2/organization_memberships/{organization_membership_id}:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationMembershipId'
+    get:
+      operationId: ShowOrganizationMembershipById
+      tags:
+        - Organization Memberships
+      summary: Get  Api V2 Organization_memberships Organization_membership_id
+      description: |
+        #### Allowed for
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembershipResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMembershipResponseExample'
+    delete:
+      operationId: DeleteOrganizationMembership
+      tags:
+        - Organization Memberships
+      summary: Delete  Api V2 Organization_memberships Organization_membership_id
+      description: >
+        Immediately removes a user from an organization and schedules a job to
+        unassign all working tickets currently assigned to the user and
+        organization combination. The `organization_id` of the unassigned
+        tickets is set to null.
+
+
+        #### Allowed for
+
+
+        * Admins
+
+        * Agents when deleting an organization membership for an end user
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/organization_memberships/create_many:
+    post:
+      operationId: CreateManyOrganizationMemberships
+      tags:
+        - Organization Memberships
+      summary: Post  Api V2 Organization_memberships Create_many
+      description: >
+        Accepts an array of up to 100 organization membership objects.
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+        * Admins
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/OrganizationMembershipCreateManyResponseExample
+  /api/v2/organization_memberships/destroy_many:
+    delete:
+      operationId: DeleteManyOrganizationMemberships
+      tags:
+        - Organization Memberships
+      summary: Delete  Api V2 Organization_memberships Destroy_many
+      description: >
+        Immediately removes a user from an organization and schedules a job to
+        unassign all working tickets currently assigned to the user and
+        organization combination. The `organization_id` of the unassigned
+        tickets is set to null.
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: ids
+          in: query
+          description: The IDs of the organization memberships to delete
+          schema:
+            type: array
+            items:
+              type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusBulkDeleteResponseExample'
+  /api/v2/users/{user_id}/organization_memberships/{organization_membership_id}/make_default:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/OrganizationMembershipId'
+    put:
+      operationId: SetOrganizationMembershipAsDefault
+      tags:
+        - Organization Memberships
+      summary: >-
+        Put  Api V2 Users User_id Organization_memberships
+        Organization_membership_id Make_default
+      description: >
+        Sets the default organization membership of a given user.
+
+
+        #### Allowed for
+
+
+        * Admins
+
+        * Agents when setting the default organization membership for an end
+        user
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembershipsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMembershipsResponseExample'
+components:
+  schemas:
+    OrganizationMembershipsResponse:
+      type: object
+      properties:
+        organization_memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationMembershipObject'
+    OrganizationMembershipResponse:
+      type: object
+      properties:
+        organization_membership:
+          $ref: '#/components/schemas/OrganizationMembershipObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'

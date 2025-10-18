@@ -1,0 +1,368 @@
+openapi: 3.1.0
+info:
+  title: Channels
+  description: Needs a description.
+paths:
+  /api/v2/channels/twitter/monitored_twitter_handles:
+    get:
+      operationId: ListMonitoredTwitterHandles
+      tags:
+        - X Channel
+      summary: Get  Api V2 Channels Twitter Monitored_twitter_handles
+      description: |
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwitterChannelsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TwitterChannelsResponseExample'
+  /api/v2/channels/twitter/monitored_twitter_handles/{monitored_twitter_handle_id}:
+    parameters:
+      - $ref: '#/components/parameters/MonitoredTwitterHandleId'
+    get:
+      operationId: ShowMonitoredTwitterHandle
+      tags:
+        - X Channel
+      summary: >-
+        Get  Api V2 Channels Twitter Monitored_twitter_handles
+        Monitored_twitter_handle_id
+      description: |
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwitterChannelResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TwitterChannelResponseExample'
+  /api/v2/channels/twitter/tickets:
+    post:
+      operationId: CreateTicketFromTweet
+      tags:
+        - X Channel
+      summary: Post  Api V2 Channels Twitter Tickets
+      description: >
+        Turns a tweet into a ticket. You must provide the tweet id as well as
+        the id of a monitored X (formerly Twitter) handle configured for your
+        account.
+
+
+        The submitter of the ticket is set to be the user submitting the API
+        request.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '201':
+          description: description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/channels/twitter/tickets/{comment_id}/statuses:
+    parameters:
+      - $ref: '#/components/parameters/CommentId'
+    get:
+      operationId: GettingTwicketStatus
+      tags:
+        - X Channel
+      summary: Get  Api V2 Channels Twitter Tickets Comment_id Statuses
+      description: |
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - name: ids
+          in: query
+          description: >-
+            Optional comment ids to retrieve tweet information for only
+            particular comments
+          schema:
+            type: string
+          example: 1,3,5
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwitterChannelTwicketStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/TwitterChannelTwicketStatusResponseExample
+  /api/v2/channels/voice/agents/{agent_id}/tickets/{ticket_id}/display:
+    post:
+      operationId: OpenTicketInAgentBrowser
+      tags:
+        - Basics
+      summary: Post  Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
+      description: |-
+        Allows you to instruct an agent's browser to open a ticket.
+
+        When the message is successfully delivered to an agent's browser:
+
+        ```http
+        Status: 200 OK
+        ```
+
+        When `agent_id` or `ticket_id` is invalid:
+
+        ```http
+        Status: 404 Not Found
+        ```
+
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: empty
+                example: ''
+              example: ''
+        '404':
+          description: When the `agent_id` or `ticket_id` is invalid
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Invalid attribute
+                example: ''
+              example: ''
+  /api/v2/channels/voice/agents/{agent_id}/users/{user_id}/display:
+    post:
+      operationId: OpenUsersProfileInAgentBrowser
+      tags:
+        - Basics
+      summary: Post  Api V2 Channels Voice Agents Agent_id Users User_id Display
+      description: |-
+        Allows you to instruct an agent's browser to open a user's profile.
+
+        When the message is successfully delivered to an agent's browser:
+
+        ```http
+        Status: 200 OK
+        ```
+
+        When `agent_id` or `user_id` is invalid:
+
+        ```http
+        Status: 404 Not Found
+        ```
+
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: empty
+                example: ''
+              example: ''
+        '404':
+          description: When the `agent_id` or `user_id` is invalid
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Invalid attribute
+                example: ''
+              example: ''
+  /api/v2/channels/voice/tickets:
+    post:
+      operationId: CreateTicketOrVoicemailTicket
+      tags:
+        - Basics
+      summary: Post  Api V2 Channels Voice Tickets
+      description: >-
+        #### Allowed For
+
+        * Agents
+
+
+        ### Creating tickets
+
+
+        #### Introduction
+
+
+        Creating tickets using Talk Partner Edition follows the same conventions
+        as the Create Ticket endpoint. See [Create
+        Ticket](/api-reference/ticketing/tickets/tickets/#create-ticket).
+
+
+        #### Request parameters
+
+
+        The POST request takes a mandatory `ticket` object that lists the values
+        to set when the ticket is created.
+
+        You may also include an optional `display_to_agent` value such as the ID
+        of the agent that will see the newly created ticket.
+
+        The `display_to_agent` is validated before creating the ticket,
+        returning a 422 error if it is invalid.
+
+
+        Tickets created using this endpoint must have a `via_id` parameter. See
+        the following
+
+        section for possible values.
+
+
+        #### Zendesk Talk Integration Via IDs
+
+
+        Tickets created using this endpoint must have one of the following
+        `via_id` parameters:
+
+
+        | ID       | Description
+
+        | ---------| -------------
+
+        | 44       | Voicemail
+
+        | 45       | Phone call (inbound)
+
+        | 46       | Phone call (outbound)
+
+
+        ### Creating voicemail tickets
+
+        #### Request parameters
+
+
+        The POST request takes a mandatory `ticket` object that lists the values
+        to set when the ticket is created.
+
+        The ticket must have a `voice_comment` with the following values:
+
+
+        | Name               | Type                  | Comment
+
+        | ------------------ | ----------------------| -------
+
+        | from               | string                | Incoming phone number
+
+        | to                 | string                | Dialed phone number
+
+        | recording_url      | string                | URL of the recording
+
+        | started_at         | date                  | [ISO
+        8601](http://en.wikipedia.org/wiki/ISO_8601) timestamp of the call
+        starting time
+
+        | call_duration      | integer               | Duration in seconds of
+        the call
+
+        | answered_by_id     | integer               | The agent who answered
+        the call
+
+        | transcription_text | string                | Transcription of the call
+        (optional)
+
+        | location           | string                | Location of the caller
+        (optional)
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+        - $ref: '#/components/parameters/TicketId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketCreateVoicemailTicketRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketCreateTicketViaTalkRequestExample'
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketResponseExample'
+        '404':
+          description: When the `ticket_id` is invalid
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Invalid attribute
+                example: ''
+              example: ''
+        '422':
+          description: When the `agent_id` is invalid
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Invalid attribute
+                example: ''
+              example: ''
+components:
+  schemas:
+    TwitterChannelsResponse:
+      type: object
+      properties:
+        monitored_twitter_handles:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwitterChannelObject'
+    TwitterChannelResponse:
+      type: object
+      properties:
+        monitored_twitter_handle:
+          $ref: '#/components/schemas/TwitterChannelObject'
+    TwitterChannelTwicketStatusResponse:
+      type: object
+      properties:
+        statuses:
+          type: array
+          items:
+            type: object
+            properties:
+              favorited:
+                type: boolean
+              id:
+                type: integer
+              retweeted:
+                type: boolean
+              user_followed:
+                type: boolean

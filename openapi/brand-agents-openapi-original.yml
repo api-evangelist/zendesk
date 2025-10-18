@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: Brand Agents
+  description: Needs a description.
+paths:
+  /api/v2/brand_agents:
+    get:
+      operationId: ListBrandAgents
+      tags:
+        - Brand Agents
+      summary: Get  Api V2 Brand_agents
+      description: |
+        Returns a list of all brand agent memberships for your account.
+
+
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For:
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/BrandId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandAgentsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandAgentsResponseExample'
+  /api/v2/brand_agents/{brand_agent_id}:
+    get:
+      operationId: ShowBrandAgentById
+      tags:
+        - Brand Agents
+      summary: Get  Api V2 Brand_agents Brand_agent_id
+      description: |
+        Returns a brand agent membership for your account.
+
+
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/BrandAgentId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandAgentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandAgentResponseExample'
+components:
+  schemas:
+    BrandAgentsResponse:
+      type: object
+      properties:
+        brand_agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandAgentObject'
+    BrandAgentResponse:
+      type: object
+      properties:
+        brand_agent:
+          $ref: '#/components/schemas/BrandAgentObject'

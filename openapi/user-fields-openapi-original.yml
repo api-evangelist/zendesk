@@ -1,0 +1,393 @@
+openapi: 3.1.0
+info:
+  title: User Fields
+  description: Needs a description.
+paths:
+  /api/v2/user_fields:
+    get:
+      operationId: ListUserFields
+      tags:
+        - User Fields
+      summary: Get  Api V2 User_fields
+      description: >
+        Returns a list of custom user fields in your account. Fields are
+        returned in the order that you specify in your user fields configuration
+        in Zendesk Support. Clients should cache this resource for the duration
+        of their API usage and map the key for each User Field to the values
+        returned under the `user_fields` attribute on the
+        [User](/api-reference/ticketing/users/users/) resource.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFieldsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserFieldsResponseExample'
+    post:
+      operationId: CreateUserField
+      tags:
+        - User Fields
+      summary: Post  Api V2 User_fields
+      description: >
+        Creates any of the following custom field types:
+
+
+        * text (default when no "type" is specified)
+
+        * textarea
+
+        * checkbox
+
+        * date
+
+        * integer
+
+        * decimal
+
+        * regexp
+
+        * dropdown
+
+        * lookup
+
+        * multiselect
+
+
+        See [About custom field
+        types](https://support.zendesk.com/hc/en-us/articles/203661866) in
+        Zendesk help.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserFieldCreateResponseExample'
+  /api/v2/user_fields/{user_field_id}:
+    parameters:
+      - $ref: '#/components/parameters/UserFieldId'
+    get:
+      operationId: ShowUserField
+      tags:
+        - User Fields
+      summary: Get  Api V2 User_fields User_field_id
+      description: |
+        #### Allowed for
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserFieldResponseExample'
+    put:
+      operationId: UpdateUserField
+      tags:
+        - User Fields
+      summary: Put  Api V2 User_fields User_field_id
+      description: >
+        #### Updating a Dropdown (Tagger) or Multiselect Field
+
+
+        Dropdown and multiselect fields return an array of
+        `custom_field_options` which specify the name, value, and order of the
+        list of dropdown or multiselect options.
+
+        Understand the following behavior when updating a dropdown or
+        multiselect field:
+
+
+        - All options must be passed on update. Options that are not passed will
+        be removed. As a result, these values will be removed from any
+        organizations.
+
+        - To create a new option, pass a null `id` along with `name` and
+        `value`.
+
+        - To update an existing option, pass its `id` along with `name` and
+        `value`.
+
+        - To re-order an option, reposition it in the `custom_field_options`
+        array relative to the other options.
+
+        - To remove an option, omit it from the list of options upon update.
+
+
+        #### Example Request
+
+
+        ```bash
+
+        curl
+        https://{subdomain}.zendesk.com/api/v2/user_fields/{user_field_id}.json
+        \
+          -H "Content-Type: application/json" -X PUT \
+          -d '{"user_field": {"custom_field_options": [{"id": 124, "name": "Option 2", "value": "option_2"}, {"id": 123, "name": "Option 1", "value": "option_1"}, {"id": 125, "name": "Option 2", "value": "option_3"}]}}' \
+          -v -u {email_address}/token:{api_token}
+        ```
+
+        #### Allowed for
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserFieldUpdateResponseExample'
+    delete:
+      operationId: DeleteUserField
+      tags:
+        - User Fields
+      summary: Delete  Api V2 User_fields User_field_id
+      description: |
+        #### Allowed for
+
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/user_fields/{user_field_id}/options:
+    parameters:
+      - $ref: '#/components/parameters/UserFieldId'
+    get:
+      operationId: ListUserFieldOptions
+      tags:
+        - User Fields
+      summary: Get  Api V2 User_fields User_field_id Options
+      description: >
+        Returns a list of custom user field options for the given dropdown user
+        field.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldOptionsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomUserFieldOptionsResponseExample'
+    post:
+      operationId: CreateOrUpdateUserFieldOption
+      tags:
+        - User Fields
+      summary: Post  Api V2 User_fields User_field_id Options
+      description: >
+        Creates a new option or updates an existing option for the given
+        drop-down user field.
+
+
+        To update an option, include the id of the option in the
+        `custom_field_option` object. Example: `{"custom_field_option": {"id":
+        10002, "name": "Pineapples", ... }`. If an option exists for the given
+        ID, the option will be updated. Otherwise, a new option will be created.
+
+
+        #### Response
+
+
+        Returns one of the following status codes:
+
+
+        - 200 with `Location: /api/v2/user_fields/{user_field_id}/options.json`
+        if the user field option already exists in the database
+
+        - 201 with `Location: /api/v2/user_fields/{user_field_id}/options.json`
+        if the user field option is new
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldOptionResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomUserFieldOptionUpdateResponseExample
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldOptionResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomUserFieldOptionCreateResponseExample
+  /api/v2/user_fields/{user_field_id}/options/{user_field_option_id}:
+    parameters:
+      - $ref: '#/components/parameters/UserFieldId'
+      - $ref: '#/components/parameters/UserFieldOptionId'
+    get:
+      operationId: ShowUserFieldOption
+      tags:
+        - User Fields
+      summary: Get  Api V2 User_fields User_field_id Options User_field_option_id
+      description: |
+        #### Allowed for
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldOptionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomUserFieldOptionResponseExample'
+    delete:
+      operationId: DeleteUserFieldOption
+      tags:
+        - User Fields
+      summary: Delete  Api V2 User_fields User_field_id Options User_field_option_id
+      description: |
+        #### Allowed for
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/user_fields/reorder:
+    put:
+      operationId: ReorderUserField
+      tags:
+        - User Fields
+      summary: Put  Api V2 User_fields Reorder
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+components:
+  schemas:
+    UserFieldsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total count of records retrieved
+          readOnly: true
+        next_page:
+          type: string
+          description: URL of the next page
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: URL of the previous page
+          nullable: true
+          readOnly: true
+        user_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserFieldObject'
+    UserFieldResponse:
+      type: object
+      properties:
+        user_field:
+          $ref: '#/components/schemas/UserFieldObject'
+    CustomFieldOptionsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total count of records retrieved
+          readOnly: true
+        custom_field_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldOptionObject'
+        next_page:
+          type: string
+          description: URL of the next page
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: URL of the previous page
+          nullable: true
+          readOnly: true
+    CustomFieldOptionResponse:
+      type: object
+      properties:
+        custom_field_option:
+          $ref: '#/components/schemas/CustomFieldOptionObject'

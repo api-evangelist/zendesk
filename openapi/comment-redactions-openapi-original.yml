@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  title: Comment Redactions
+  description: Needs a description.
+paths:
+  /api/v2/comment_redactions/{ticket_comment_id}:
+    parameters:
+      - $ref: '#/components/parameters/TicketCommentId'
+    put:
+      operationId: RedactTicketCommentInAgentWorkspace
+      tags:
+        - Ticket Comments
+      summary: Put  Api V2 Comment_redactions Ticket_comment_id
+      description: >
+        Redaction allows you to permanently remove words, strings, or
+        attachments from a ticket comment.
+
+
+        In the `html_body` of the comment, wrap the content you want redacted in
+        `<redact>` tags. Example:
+
+
+        ```json
+
+        {
+          "html_body": "<div class=\"zd-comment\" dir=\"auto\">My ID number is <redact>847564</redact>!</div>",
+          "ticket_id":100
+        }
+
+        ```
+
+
+        The characters in the redact tag will be replaced by the ▇ symbol.
+
+
+        To redact HTML elements such inline images, anchor tags, and links, add
+        the `redact` tag attribute to the element as well as the `<redact>` tag
+        to inner text, if any. Example: 
+
+
+        `<a href="http://example.com" redact><redact>some link</redact></a>`
+
+
+        The `redact` attribute only redacts the tag. Any inner text will be left
+        behind if not enclosed in a `<redact>` tag.
+
+
+        Redaction is permanent and can not be undone. Data is permanently
+        deleted from Zendesk servers with no way to recover it.
+
+
+        This endpoint provides all the same functionality that the [Redact
+        String in
+        Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment)
+        endpoint provides, plus:
+
+
+        - Redaction of comments in closed tickets
+
+
+        - Redaction of comments in archived tickets
+
+
+        - Redaction of formatted text (bold, italics, hyperlinks)
+
+
+        **Limitations**: When content is redacted from an email comment, the
+        content is also redacted from the original email through a background
+        job. It may take a while for the changes to be completed.
+
+
+        **Note**: We recommend using this endpoint instead of the [Redact String
+        in
+        Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment)
+        endpoint, which will eventually be deprecated.
+
+
+        #### Allowed For
+
+
+        - Agents
+
+
+        [Agent
+        Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473)
+        must be enabled on the account. For professional accounts, deleting
+        tickets must be enabled for agents. On Enterprise accounts, you can
+        assign agents to a custom role with permissions to redact ticket
+        content.
+
+
+        #### Request Body Properties
+
+
+        | Name                     | Type    | Required |
+        Description                                                                                                                                     
+        |
+
+        | -------------------------| ------- | -------- |
+        ------------------------------------------------------------------------------------------------------------------------------------------------
+        |
+
+        | ticket_id                | integer | true     | The ID of the
+        ticket                                                                                                                            
+        |
+
+        | html_body                | string  | false    | The `html_body` of the
+        comment containing `<redact>` tags or `redact`
+        attributes                                           |
+
+        | external_attachment_urls | array   | false    | Array of attachment
+        URLs belonging to the comment to be redacted. See [`content_url`
+        property of
+        Attachment](/api-reference/ticketing/tickets/ticket-attachments/) |
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketCommentResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/TicketCommentsRedactionInAgentWorkspaceResponseExample
+components:
+  schemas:
+    TicketCommentResponse:
+      type: object
+      properties:
+        comment:
+          $ref: '#/components/schemas/TicketCommentObject'

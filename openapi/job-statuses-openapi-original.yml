@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: Job Statuses
+  description: Needs a description.
+paths:
+  /api/v2/job_statuses:
+    get:
+      operationId: ListJobStatuses
+      tags:
+        - Job Statuses
+      summary: Get  Api V2 Job_statuses
+      description: >
+        Shows the statuses for background jobs. Statuses are sorted first by
+        completion date and then by creation date in descending order.
+
+
+        #### Allowed For:
+
+
+        * Agents
+
+
+        #### Pagination
+
+
+        * Cursor pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusesResponseExample'
+  /api/v2/job_statuses/{job_status_id}:
+    parameters:
+      - $ref: '#/components/parameters/JobStatusId'
+    get:
+      operationId: ShowJobStatus
+      tags:
+        - Job Statuses
+      summary: Get  Api V2 Job_statuses Job_status_id
+      description: |
+        Shows the status of a background job.
+
+        #### Allowed For:
+
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ShowJobStatusResponseExample'
+  /api/v2/job_statuses/show_many:
+    get:
+      operationId: ShowManyJobStatuses
+      tags:
+        - Job Statuses
+      summary: Get  Api V2 Job_statuses Show_many
+      description: |
+        Accepts a comma-separated list of job status ids.
+
+        #### Allowed For:
+
+        * Agents
+      parameters:
+        - name: ids
+          in: query
+          description: Comma-separated list of job status ids.
+          required: true
+          schema:
+            type: string
+          example: 8b726e606741012ffc2d782bcb7848fe,e7665094164c498781ebe4c8db6d2af5
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusesResponseExample'
+components:
+  schemas:
+    JobStatusesResponse:
+      type: object
+      properties:
+        job_statuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobStatusObject'
+      required:
+        - job_statuses
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'

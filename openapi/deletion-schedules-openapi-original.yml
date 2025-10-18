@@ -1,0 +1,162 @@
+openapi: 3.1.0
+info:
+  title: Deletion Schedules
+  description: Needs a description.
+paths:
+  /api/v2/deletion_schedules:
+    get:
+      operationId: ListDeletionSchedules
+      tags:
+        - Deletion Schedules
+      summary: Get  Api V2 Deletion_schedules
+      description: >
+        Lists all deletion schedules for the account. Deletion schedules are
+        used to automatically delete data from the account after a certain
+        period of time.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deletion_schedules:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DeletionSchedule'
+              examples:
+                default:
+                  $ref: '#/components/examples/GetDeletionSchedulesResponseExample'
+    post:
+      operationId: CreateDeletionSchedule
+      tags:
+        - Deletion Schedules
+      summary: Post  Api V2 Deletion_schedules
+      description: |
+        Creates a new deletion schedule.
+
+        #### Allowed For
+
+        * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deletion_schedule:
+                  $ref: '#/components/schemas/DeletionSchedule'
+            examples:
+              default:
+                $ref: '#/components/examples/CreateDeletionScheduleRequestExample'
+      responses:
+        '201':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deletion_schedule:
+                    $ref: '#/components/schemas/DeletionSchedule'
+              examples:
+                default:
+                  $ref: '#/components/examples/CreateDeletionScheduleResponseExample'
+  /api/v2/deletion_schedules/{deletion_schedule_id}:
+    get:
+      operationId: GetDeletionSchedule
+      tags:
+        - Deletion Schedules
+      summary: Get  Api V2 Deletion_schedules Deletion_schedule_id
+      description: |
+        Gets a deletion schedule by its id.
+
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/DeletionScheduleId'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deletion_schedule:
+                    $ref: '#/components/schemas/DeletionSchedule'
+              examples:
+                default:
+                  $ref: '#/components/examples/GetDeletionScheduleResponseExample'
+    put:
+      operationId: UpdateDeletionSchedule
+      tags:
+        - Deletion Schedules
+      summary: Put  Api V2 Deletion_schedules Deletion_schedule_id
+      description: >
+        Updates a deletion schedule by its id.
+
+
+        **Note**: Updating a condition updates the conditions array, clearing
+        all existing values of the array. Include all your conditions when
+        updating any condition.
+
+
+        #### Allowed For
+
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/DeletionScheduleId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deletion_schedule:
+                  $ref: '#/components/schemas/DeletionSchedule'
+            examples:
+              default:
+                $ref: '#/components/examples/UpdateDeletionScheduleRequestExample'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deletion_schedule:
+                    $ref: '#/components/schemas/DeletionSchedule'
+              examples:
+                default:
+                  $ref: '#/components/examples/UpdateDeletionScheduleResponseExample'
+    delete:
+      operationId: DeleteDeletionSchedule
+      tags:
+        - Deletion Schedules
+      summary: Delete  Api V2 Deletion_schedules Deletion_schedule_id
+      description: |
+        Deletes a deletion schedule by its id.
+
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/DeletionScheduleId'
+      responses:
+        '204':
+          description: Success Response
+components:
+  schemas: {}

@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: Custom Roles
+  description: Needs a description.
+paths:
+  /api/v2/custom_roles:
+    get:
+      operationId: ListCustomRoles
+      tags:
+        - Custom Roles
+      summary: Get  Api V2 Custom_roles
+      description: |
+        #### Availability
+
+        * Accounts on the Enterprise plan or above
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomRolesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomRolesResponseExample'
+    post:
+      operationId: CreateCustomRole
+      tags:
+        - Custom Roles
+      summary: Post  Api V2 Custom_roles
+      description: |
+        #### Availability
+
+        * Accounts on the Enterprise plan or above
+
+        #### Allowed for
+
+        * Administrators
+        * Agents with the `manage_roles` permission
+      responses:
+        '200':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomRoleResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomRoleResponseExample'
+  /api/v2/custom_roles/{custom_role_id}:
+    parameters:
+      - $ref: '#/components/parameters/CustomRoleId'
+    get:
+      operationId: ShowCustomRoleById
+      tags:
+        - Custom Roles
+      summary: Get  Api V2 Custom_roles Custom_role_id
+      description: |
+        #### Availability
+
+        * Accounts on the Enterprise plan or above
+
+        #### Allowed for
+
+        * Administrators
+        * Agents with the `manage_roles` permission
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomRoleResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomRoleResponseExample'
+    put:
+      operationId: UpdateCustomRoleById
+      tags:
+        - Custom Roles
+      summary: Put  Api V2 Custom_roles Custom_role_id
+      description: |
+        #### Availability
+
+        * Accounts on the Enterprise plan or above
+
+        #### Allowed for
+
+        * Administrators
+        Agents with the `manage_roles` permission
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomRoleResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomRoleResponseExample'
+    delete:
+      operationId: DeleteCustomRoleById
+      tags:
+        - Custom Roles
+      summary: Delete  Api V2 Custom_roles Custom_role_id
+      description: |
+        #### Availability
+
+        * Accounts on the Enterprise plan or above
+
+        #### Allowed for
+
+        * Administrators
+        * Agents with the `manage_roles` permission
+      responses:
+        '204':
+          description: No Contetnt response
+components:
+  schemas:
+    CustomRolesResponse:
+      type: object
+      properties:
+        custom_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomRoleObject'
+    CustomRoleResponse:
+      type: object
+      properties:
+        custom_role:
+          $ref: '#/components/schemas/CustomRoleObject'

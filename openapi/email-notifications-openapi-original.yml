@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: Email Notifications
+  description: Needs a description.
+paths:
+  /api/v2/email_notifications:
+    parameters:
+      - $ref: '#/components/parameters/EmailNotificationsFilter'
+      - name: filter[notification_id]
+        in: query
+        description: Filter the email notifications by notification.
+        required: true
+        schema:
+          type: integer
+        example: 7824075373693
+      - name: filter[comment_id]
+        in: query
+        description: Filter the email notifications by comment.
+        required: true
+        schema:
+          type: integer
+        example: 782407
+      - name: filter[ticket_id]
+        in: query
+        description: Filter the email notifications by ticket.
+        required: true
+        schema:
+          type: integer
+        example: 623
+      - $ref: '#/components/parameters/IncrementalPage'
+      - $ref: '#/components/parameters/Sort'
+    get:
+      operationId: ListEmailNotifications
+      tags:
+        - Email Notifications
+      summary: Get  Api V2 Email_notifications
+      description: >
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Request parameters
+
+
+        **Important**: You must specify a `filter` query parameter to narrow the
+        scope of the search for this endpoint.
+
+
+        ##### Pagination
+
+
+        By default, a maximum of 100 email notifications are included per page.
+        Use cursor-based pagination parameters (`page[after]` and
+        `page[before]`) to navigate the records (can't be used together in the
+        same request). See [Pagination](/api-reference/introduction/pagination/)
+        for more details.
+
+
+        ##### Sorting
+
+
+        By default, email notifications are sorted by creation time (newest
+        first). The query parameter is not supported for this endpoint.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailNotificationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/EmailNotificationsResponseExample'
+  /api/v2/email_notifications/{notification_id}:
+    parameters:
+      - $ref: '#/components/parameters/NotificationId'
+    get:
+      operationId: ShowEmailNotification
+      tags:
+        - Email Notifications
+      summary: Get  Api V2 Email_notifications Notification_id
+      description: >
+        Shows details on an email notification. You can get the value of the
+        `notification_id` parameter by listing the ticket's outbound emails.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailNotificationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/EmailNotificationResponseExample'
+  /api/v2/email_notifications/show_many:
+    parameters:
+      - $ref: '#/components/parameters/NotificationIds'
+      - $ref: '#/components/parameters/CommentIds'
+      - $ref: '#/components/parameters/EmailNotificationsByTicketIds'
+    get:
+      operationId: ShowManyEmailNotifications
+      tags:
+        - Email Notifications
+      summary: Get  Api V2 Email_notifications Show_many
+      description: >
+        Shows details of many email notifications. Allows you to query by
+        providing a list of notifications, comments, or tickets IDs.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Filters
+
+
+        * By notification: `?ids=8433702508541,8433348111869`
+
+        * By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`
+
+        * By ticket: `?ticket_ids=730,723`
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailNotificationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/EmailNotificationResponseExample'
+components:
+  schemas:
+    EmailNotificationsResponse:
+      type: object
+      properties:
+        email_notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNotificationObject'
+    EmailNotificationResponse:
+      type: object
+      properties:
+        email_notification:
+          $ref: '#/components/schemas/EmailNotificationObject'

@@ -1,0 +1,262 @@
+openapi: 3.1.0
+info:
+  title: Deleted Tickets
+  description: Needs a description.
+paths:
+  /api/v2/deleted_tickets:
+    get:
+      operationId: ListDeletedTickets
+      tags:
+        - Tickets
+      summary: Get  Api V2 Deleted_tickets
+      description: >-
+        Returns a maximum of 100 deleted tickets per page. See
+        [Pagination](/api-reference/introduction/pagination/).
+
+
+        The results includes all deleted (and not yet archived) tickets that
+
+        have not yet been
+        [scrubbed](https://support.zendesk.com/hc/en-us/articles/4408845703194#topic_fv5_w51_sdb)
+        in the past 30 days. Archived tickets are
+
+        not included in the results. See [About archived
+        tickets](https://support.zendesk.com/hc/en-us/articles/203657756)
+
+        in the Support Help Center.
+
+
+        The tickets are ordered chronologically by created date, from oldest to
+        newest.
+
+        The first ticket listed may not be the oldest ticket in your
+
+        account due to [ticket
+        archiving](https://support.zendesk.com/hc/en-us/articles/203657756).
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Rate Limit
+
+
+        You can make 10 requests every 1 minute using this endpoint.
+
+        When making requests beyond page 100, you can make 5 requests every 1
+        minute.
+
+        The rate limiting mechanism behaves as described in
+
+        [Monitoring your request
+        activity](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity)
+        in the API introduction.
+      parameters:
+        - $ref: '#/components/parameters/TicketSortBy'
+        - $ref: '#/components/parameters/TicketSortOrder'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDeletedTicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListDeletedTicketsResponseExample'
+  /api/v2/deleted_tickets/{ticket_id}:
+    delete:
+      operationId: DeleteTicketPermanently
+      tags:
+        - Tickets
+      summary: Delete  Api V2 Deleted_tickets Ticket_id
+      description: >-
+        Permanently deletes a soft-deleted ticket. See [Soft
+        delete](https://support.zendesk.com/hc/en-us/articles/4408834005530#topic_zrm_wbj_1db)
+
+        in the Zendesk GDPR docs. To soft delete a ticket, use the [Delete
+        Ticket](#delete-ticket) endpoint.
+
+
+        This endpoint enqueues a ticket deletion job and returns a payload with
+        the jobs status.
+
+
+        If the job succeeds, the ticket is permanently deleted. This operation
+        can't be undone.
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work.
+
+        Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/PermanentlyDeleteTicketJobStatusResponseExample
+  /api/v2/deleted_tickets/{ticket_id}/restore:
+    put:
+      operationId: RestoreDeletedTicket
+      tags:
+        - Tickets
+      summary: Put  Api V2 Deleted_tickets Ticket_id Restore
+      description: |-
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Empty response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/deleted_tickets/destroy_many:
+    delete:
+      operationId: BulkPermanentlyDeleteTickets
+      tags:
+        - Tickets
+      summary: Delete  Api V2 Deleted_tickets Destroy_many
+      description: >-
+        Permanently deletes up to 100 soft-deleted tickets. See [Soft
+        delete](https://support.zendesk.com/hc/en-us/articles/4408834005530#topic_zrm_wbj_1db)
+
+        in the Zendesk GDPR docs. To soft delete tickets, use the [Bulk Delete
+        Tickets](#bulk-delete-tickets) endpoint.
+
+
+        This endpoint accepts a comma-separated list of up to 100 ticket ids. It
+        enqueues
+
+        a ticket deletion job and returns a payload with the jobs status.
+
+
+        If one ticket fails to be deleted, the endpoint still attempts to delete
+        the others. If the job succeeds,
+
+        the tickets that were successfully deleted are permanently deleted. This
+        operation can't be undone.
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/PermanentlyDeleteTicketJobStatusResponseExample
+  /api/v2/deleted_tickets/restore_many:
+    put:
+      operationId: BulkRestoreDeletedTickets
+      tags:
+        - Tickets
+      summary: Put  Api V2 Deleted_tickets Restore_many
+      description: |-
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: Empty response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+components:
+  schemas:
+    ListDeletedTicketsResponse:
+      type: object
+      allOf:
+        - type: object
+          properties:
+            deleted_tickets:
+              type: array
+              items:
+                type: object
+                properties:
+                  actor:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  deleted_at:
+                    type: string
+                  id:
+                    type: integer
+                  previous_state:
+                    type: string
+                  subject:
+                    type: string
+        - $ref: '#/components/schemas/OffsetPaginationObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'

@@ -1,0 +1,453 @@
+openapi: 3.1.0
+info:
+  title: Ticket Forms
+  description: Needs a description.
+paths:
+  /api/v2/ticket_forms:
+    get:
+      operationId: ListTicketForms
+      tags:
+        - Ticket Forms
+      summary: Get  Api V2 Ticket_forms
+      description: >
+        Returns a list of all ticket forms for your account if accessed as an
+        admin or agent. End users only see ticket forms that have
+        `end_user_visible` set to true.
+
+
+        #### Allowed For
+
+
+        * Anyone
+      parameters:
+        - name: active
+          in: query
+          description: >-
+            true returns active ticket forms; false returns inactive ticket
+            forms. If not present, returns both
+          schema:
+            type: boolean
+        - name: end_user_visible
+          in: query
+          description: >-
+            true returns ticket forms where `end_user_visible`; false returns
+            ticket forms that are not end-user visible. If not present, returns
+            both
+          schema:
+            type: boolean
+        - name: fallback_to_default
+          in: query
+          description: >-
+            true returns the default ticket form when the criteria defined by
+            the parameters results in a set without active and end-user visible
+            ticket forms
+          schema:
+            type: boolean
+        - name: associated_to_brand
+          in: query
+          description: >-
+            true returns the ticket forms of the brand specified by the url's
+            subdomain
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormsResponseExample'
+    post:
+      operationId: CreateTicketForm
+      tags:
+        - Ticket Forms
+      summary: Post  Api V2 Ticket_forms
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormCreateResponseExample'
+  /api/v2/ticket_forms/{ticket_form_id}:
+    parameters:
+      - $ref: '#/components/parameters/TicketFormId'
+    get:
+      operationId: ShowTicketForm
+      tags:
+        - Ticket Forms
+      summary: Get  Api V2 Ticket_forms Ticket_form_id
+      description: |
+        #### Allowed For
+
+        * Admins, Agents, and End Users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormResponseExample'
+    put:
+      operationId: UpdateTicketForm
+      tags:
+        - Ticket Forms
+      summary: Put  Api V2 Ticket_forms Ticket_form_id
+      description: |
+        #### Allowed For
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormUpdateResponseExample'
+    delete:
+      operationId: DeleteTicketForm
+      tags:
+        - Ticket Forms
+      summary: Delete  Api V2 Ticket_forms Ticket_form_id
+      description: |
+        #### Allowed For
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/ticket_forms/{ticket_form_id}/clone:
+    parameters:
+      - $ref: '#/components/parameters/TicketFormId'
+    post:
+      operationId: CloneTicketForm
+      tags:
+        - Ticket Forms
+      summary: Post  Api V2 Ticket_forms Ticket_form_id Clone
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormResponseExample'
+  /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses:
+    parameters:
+      - $ref: '#/components/parameters/TicketFormId'
+    get:
+      operationId: TicketFormTicketFormStatuses
+      tags:
+        - Ticket Forms
+        - Ticket Form Statuses
+      summary: Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: |
+        Fetches all of the associated ticket form statuses of a ticket form.
+
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    post:
+      operationId: CreateTicketFormStatuses
+      tags:
+        - Ticket Forms
+        - Ticket Form Statuses
+      summary: Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: |
+        Creates one or many ticket form status associations
+
+        #### Allowed For
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketFormStatusesParams'
+            example:
+              ticket_form_status:
+                - custom_status_id: 1234
+                - custom_status_id: 1235
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    put:
+      operationId: UpdateTicketFormStatuses
+      tags:
+        - Ticket Forms
+        - Ticket Form Statuses
+      summary: Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: >
+        Updates or deletes ticket form status associations. This is a bulk
+        operation that can both add and remove ticket form status associations
+        for a form in one call.
+
+
+        #### Allowed For
+
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
+            example:
+              ticket_form_status:
+                - _destroy: '1'
+                  id: abcdef
+                - custom_status_id: 1
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    delete:
+      operationId: DeleteTicketFormStatuses
+      tags:
+        - Ticket Form Statuses
+      summary: Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: |
+        Deletes all of of the ticket form statuses by id.
+
+        #### Allowed For
+
+        * Admins
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: array
+                  description: List of ids to delete
+                  items:
+                    type: string
+            example:
+              id:
+                - abc
+                - def
+                - hij
+      responses:
+        '204':
+          description: Success response
+  /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses/{ticket_form_status_id}:
+    parameters:
+      - $ref: '#/components/parameters/TicketFormId'
+      - $ref: '#/components/parameters/TicketFormStatusId'
+    put:
+      operationId: UpdateTicketFormStatusById
+      tags:
+        - Ticket Forms
+        - Ticket Form Statuses
+      summary: >-
+        Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        Ticket_form_status_id
+      description: |
+        Updates or deletes ticket form status association by id.
+
+        #### Allowed For
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
+            example:
+              ticket_form_status:
+                - custom_status_id: 1
+                - custom_status_id: 2
+                - custom_status_id: 3
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    delete:
+      operationId: DeleteTicketFormStatusById
+      tags:
+        - Ticket Form Statuses
+      summary: >-
+        Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        Ticket_form_status_id
+      description: |
+        Deletes a ticket form status by id.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '204':
+          description: Success response
+  /api/v2/ticket_forms/reorder:
+    put:
+      operationId: ReorderTicketForms
+      tags:
+        - Ticket Forms
+      summary: Put  Api V2 Ticket_forms Reorder
+      description: >
+        #### Allowed For
+
+        * Admins
+
+
+        #### Request Parameters
+
+
+        You can pass in the following parameter in the payload:
+
+
+        | Name                | Type   | Comment
+
+        | ------------------- | ------ | --------
+
+        | ticket_form_ids     | array  | An array of ticket form ids. Example:
+        "[2, 23, 46, 50]"
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormsResponseExample'
+  /api/v2/ticket_forms/show_many:
+    get:
+      operationId: ShowManyTicketForms
+      tags:
+        - Ticket Forms
+      summary: Get  Api V2 Ticket_forms Show_many
+      description: >
+        Takes an `ids` query parameter that accepts a comma-separated list of up
+        to 100 ticket form ids. This endpoint is used primarily by the [mobile
+        SDK](/documentation/classic-web-widget-sdks/) and the [Web
+        Widget](/api-reference/widget/introduction/).
+
+
+        #### Allowed For
+
+
+        * Anyone
+      parameters:
+        - name: ids
+          in: query
+          description: IDs of the ticket forms to be shown
+          required: true
+          schema:
+            type: string
+          example: 1,2,3
+        - name: active
+          in: query
+          description: >-
+            true returns active ticket forms; false returns inactive ticket
+            forms. If not present, returns both
+          schema:
+            type: boolean
+        - name: end_user_visible
+          in: query
+          description: >-
+            true returns ticket forms where `end_user_visible`; false returns
+            ticket forms that are not end-user visible. If not present, returns
+            both
+          schema:
+            type: boolean
+        - name: fallback_to_default
+          in: query
+          description: >-
+            true returns the default ticket form when the criteria defined by
+            the parameters results in a set without active and end-user visible
+            ticket forms
+          schema:
+            type: boolean
+        - name: associated_to_brand
+          in: query
+          description: >-
+            true returns the ticket forms of the brand specified by the url's
+            subdomain
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormsResponseExample'
+components:
+  schemas:
+    TicketFormsResponse:
+      type: object
+      properties:
+        ticket_forms:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFormObject'
+    TicketFormResponse:
+      type: object
+      properties:
+        ticket_form:
+          $ref: '#/components/schemas/TicketFormObject'
+    TicketFormStatusesResponse:
+      type: object
+      properties:
+        ticket_form_statuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFormStatusObject'
+          maxItems: 1

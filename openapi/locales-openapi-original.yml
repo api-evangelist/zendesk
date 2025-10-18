@@ -1,0 +1,165 @@
+openapi: 3.1.0
+info:
+  title: Locales
+  description: Needs a description.
+paths:
+  /api/v2/locales:
+    get:
+      operationId: ListLocales
+      tags:
+        - Locales
+      summary: Get  Api V2 Locales
+      description: >
+        Lists the translation locales available for the account.
+
+
+        **Note**: You can alter the list by passing an updated `locale_ids`
+        array to the [Update Account
+        Settings](/api-reference/ticketing/account-configuration/account_settings/#update-account-settings)
+        endpoint.
+
+
+        #### Allowed For
+
+
+        * Anyone
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocalesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/LocalesResponseExample'
+  /api/v2/locales/{locale_id}:
+    parameters:
+      - $ref: '#/components/parameters/LocaleId'
+    get:
+      operationId: ShowLocaleById
+      tags:
+        - Locales
+      summary: Get  Api V2 Locales Locale_id
+      description: |
+        #### Allowed For
+
+        * Anyone
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocaleResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/LocaleResponseExample'
+  /api/v2/locales/agent:
+    get:
+      operationId: ListLocalesForAgent
+      tags:
+        - Locales
+      summary: Get  Api V2 Locales Agent
+      description: >
+        Lists the translation locales that have been localized for agents on a
+        specific account.
+
+
+        #### Allowed For
+
+
+        * Anyone
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocalesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/LocalesResponseExample'
+  /api/v2/locales/current:
+    get:
+      operationId: ShowCurrentLocale
+      tags:
+        - Locales
+      summary: Get  Api V2 Locales Current
+      description: >
+        This works like [Show Locale](#show-locale), but instead of taking a
+        locale id as an argument, it renders the locale of the user performing
+        the request.
+
+
+        #### Allowed For
+
+
+        * Anyone
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocaleResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/LocaleResponseExample'
+  /api/v2/locales/detect_best_locale:
+    get:
+      operationId: DetectBestLocale
+      tags:
+        - Locales
+      summary: Get  Api V2 Locales Detect_best_locale
+      description: |
+        #### Allowed For
+
+        * Anyone
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocaleResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/LocaleDetectBestLanguageResponseExample
+  /api/v2/locales/public:
+    get:
+      operationId: ListAvailablePublicLocales
+      tags:
+        - Locales
+      summary: Get  Api V2 Locales Public
+      description: |
+        Lists the translation locales that are available to all accounts.
+
+        #### Allowed For
+
+        * Anyone
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocalesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/LocalesResponseExample'
+components:
+  schemas:
+    LocalesResponse:
+      type: object
+      properties:
+        locales:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocaleObject'
+    LocaleResponse:
+      type: object
+      properties:
+        locale:
+          $ref: '#/components/schemas/LocaleObject'

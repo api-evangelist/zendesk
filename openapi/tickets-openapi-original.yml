@@ -1,0 +1,2236 @@
+openapi: 3.1.0
+info:
+  title: Tickets
+  description: Needs a description.
+paths:
+  /api/v2/channels/twitter/tickets:
+    post:
+      operationId: CreateTicketFromTweet
+      tags:
+        - X Channel
+      summary: Post  Api V2 Channels Twitter Tickets
+      description: >
+        Turns a tweet into a ticket. You must provide the tweet id as well as
+        the id of a monitored X (formerly Twitter) handle configured for your
+        account.
+
+
+        The submitter of the ticket is set to be the user submitting the API
+        request.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '201':
+          description: description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/channels/twitter/tickets/{comment_id}/statuses:
+    parameters:
+      - $ref: '#/components/parameters/CommentId'
+    get:
+      operationId: GettingTwicketStatus
+      tags:
+        - X Channel
+      summary: Get  Api V2 Channels Twitter Tickets Comment_id Statuses
+      description: |
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - name: ids
+          in: query
+          description: >-
+            Optional comment ids to retrieve tweet information for only
+            particular comments
+          schema:
+            type: string
+          example: 1,3,5
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwitterChannelTwicketStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/TwitterChannelTwicketStatusResponseExample
+  /api/v2/channels/voice/agents/{agent_id}/tickets/{ticket_id}/display:
+    post:
+      operationId: OpenTicketInAgentBrowser
+      tags:
+        - Basics
+      summary: Post  Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
+      description: |-
+        Allows you to instruct an agent's browser to open a ticket.
+
+        When the message is successfully delivered to an agent's browser:
+
+        ```http
+        Status: 200 OK
+        ```
+
+        When `agent_id` or `ticket_id` is invalid:
+
+        ```http
+        Status: 404 Not Found
+        ```
+
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: empty
+                example: ''
+              example: ''
+        '404':
+          description: When the `agent_id` or `ticket_id` is invalid
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Invalid attribute
+                example: ''
+              example: ''
+  /api/v2/channels/voice/tickets:
+    post:
+      operationId: CreateTicketOrVoicemailTicket
+      tags:
+        - Basics
+      summary: Post  Api V2 Channels Voice Tickets
+      description: >-
+        #### Allowed For
+
+        * Agents
+
+
+        ### Creating tickets
+
+
+        #### Introduction
+
+
+        Creating tickets using Talk Partner Edition follows the same conventions
+        as the Create Ticket endpoint. See [Create
+        Ticket](/api-reference/ticketing/tickets/tickets/#create-ticket).
+
+
+        #### Request parameters
+
+
+        The POST request takes a mandatory `ticket` object that lists the values
+        to set when the ticket is created.
+
+        You may also include an optional `display_to_agent` value such as the ID
+        of the agent that will see the newly created ticket.
+
+        The `display_to_agent` is validated before creating the ticket,
+        returning a 422 error if it is invalid.
+
+
+        Tickets created using this endpoint must have a `via_id` parameter. See
+        the following
+
+        section for possible values.
+
+
+        #### Zendesk Talk Integration Via IDs
+
+
+        Tickets created using this endpoint must have one of the following
+        `via_id` parameters:
+
+
+        | ID       | Description
+
+        | ---------| -------------
+
+        | 44       | Voicemail
+
+        | 45       | Phone call (inbound)
+
+        | 46       | Phone call (outbound)
+
+
+        ### Creating voicemail tickets
+
+        #### Request parameters
+
+
+        The POST request takes a mandatory `ticket` object that lists the values
+        to set when the ticket is created.
+
+        The ticket must have a `voice_comment` with the following values:
+
+
+        | Name               | Type                  | Comment
+
+        | ------------------ | ----------------------| -------
+
+        | from               | string                | Incoming phone number
+
+        | to                 | string                | Dialed phone number
+
+        | recording_url      | string                | URL of the recording
+
+        | started_at         | date                  | [ISO
+        8601](http://en.wikipedia.org/wiki/ISO_8601) timestamp of the call
+        starting time
+
+        | call_duration      | integer               | Duration in seconds of
+        the call
+
+        | answered_by_id     | integer               | The agent who answered
+        the call
+
+        | transcription_text | string                | Transcription of the call
+        (optional)
+
+        | location           | string                | Location of the caller
+        (optional)
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+        - $ref: '#/components/parameters/TicketId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketCreateVoicemailTicketRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketCreateTicketViaTalkRequestExample'
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketResponseExample'
+        '404':
+          description: When the `ticket_id` is invalid
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Invalid attribute
+                example: ''
+              example: ''
+        '422':
+          description: When the `agent_id` is invalid
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Invalid attribute
+                example: ''
+              example: ''
+  /api/v2/imports/tickets:
+    post:
+      operationId: TicketImport
+      tags:
+        - Ticket Import
+      summary: Post  Api V2 Imports Tickets
+      description: |-
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/ArchiveImmediately'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketImportRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketImportRequestExample'
+      responses:
+        '201':
+          description: Successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketResponseExample'
+  /api/v2/imports/tickets/create_many:
+    post:
+      operationId: TicketBulkImport
+      tags:
+        - Ticket Import
+      summary: Post  Api V2 Imports Tickets Create_many
+      description: |-
+        Accepts an array of up to 100 ticket objects.
+
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/ArchiveImmediately'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketBulkImportRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketBulkImportRequestExample'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/incremental/tickets:
+    parameters:
+      - $ref: '#/components/parameters/IncrementalUnixTime'
+    get:
+      operationId: IncrementalTicketExportTime
+      tags:
+        - Incremental Export
+      summary: Get  Api V2 Incremental Tickets
+      description: >
+        Returns the tickets that changed since the start time. For more
+        information,
+
+        see [Exporting
+        tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-tickets)
+        in [Using the Incremental Exports
+        API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).
+
+
+        This endpoint supports time-based incremental exports.
+
+        For more information, see [Time-based incremental
+        exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports)
+        in [Using the Incremental Exports
+        API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).
+        You can also return tickets using cursor-based pagination. See
+        [Incremental Ticket Export, Cursor
+        Based](#incremental-ticket-export-cursor-based).
+
+
+        The results include tickets that were updated by the system. See
+
+        [Excluding system-updated
+        tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#excluding-system-updated-tickets-time-based-exports)
+        in [Using the Incremental Exports
+        API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).
+
+
+        The endpoint can return tickets with an `updated_at` time that's earlier
+        than the
+
+        `start_time` time. The reason is that the API compares the `start_time`
+        with the ticket's
+
+        `generated_timestamp` value, not its `updated_at` value. The
+        `updated_at` value is
+
+        updated only if the update generates a [ticket
+        event](#incremental-ticket-event-export).
+
+        The `generated_timestamp` value is updated for all ticket updates,
+        including system
+
+        updates. If a system update occurs after a ticket event, the unchanged
+
+        `updated_at` time will become earlier relative to the updated
+        `generated_timestamp`
+
+        time.
+
+
+        #### Allowed For
+
+         * Admins
+
+        #### Sideloading
+
+
+        See [Tickets
+        sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).
+        For performance reasons,
+
+        `last_audits` sideloads aren't supported.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeBasedExportIncrementalTicketsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/TimeBasedExportIncrementalTicketsResponseExample
+  /api/v2/incremental/tickets/cursor:
+    parameters:
+      - $ref: '#/components/parameters/IncrementalUnixTime'
+      - $ref: '#/components/parameters/IncrementalCursor'
+    get:
+      operationId: IncrementalTicketExportCursor
+      tags:
+        - Incremental Export
+      summary: Get  Api V2 Incremental Tickets Cursor
+      description: >
+        Returns the tickets that changed since the start time. For more
+        information,
+
+        see [Exporting
+        tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-tickets)
+        in [Using the Incremental Exports
+        API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).
+
+
+        This endpoint supports cursor-based incremental exports.
+
+        Cursor-based exports are highly encouraged because they provide more
+        consistent performance and
+
+        response body sizes. For more information, see [Cursor-based incremental
+        exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#cursor-based-incremental-exports)
+        in [Using the Incremental Exports
+        API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).
+
+
+
+
+        #### Allowed For
+
+         * Admins
+
+        #### Sideloading
+
+
+        See [Tickets
+        sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).
+        For performance reasons,
+
+        `last_audits` sideloads aren't supported.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/CursorBasedExportIncrementalTicketsResponse
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CursorBasedExportIncrementalTicketsResponseExample
+  /api/v2/routing/tickets/{ticket_id}/instance_values:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListTicketAttributeValues
+      tags:
+        - Skill Based Routing
+      summary: Get  Api V2 Routing Tickets Ticket_id Instance_values
+      description: |
+        Returns a list of attributes values for the ticket.
+
+        #### Allowed For
+
+        * Agents and admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingTicketAttributesResponseExample
+    post:
+      operationId: SetTicketAttributeValues
+      tags:
+        - Skill Based Routing
+      summary: Post  Api V2 Routing Tickets Ticket_id Instance_values
+      description: >
+        Adds the specified attributes if no attributes exists, or replaces all
+        existing attributes with the specified attributes.
+
+
+        Invalid or deleted attributes are ignored.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValuesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SkillBasedRoutingTicketAttributesResponseExample
+  /api/v2/tickets:
+    get:
+      operationId: ListTickets
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets
+      parameters:
+        - name: external_id
+          in: query
+          description: >-
+            Lists tickets by external id. External ids don't have to be unique
+            for each ticket. As a result, the request may return multiple
+            tickets with the same external id.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketsResponseExample'
+    post:
+      operationId: CreateTicket
+      tags:
+        - Tickets
+      summary: Post  Api V2 Tickets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketCreateRequestExample'
+      responses:
+        '201':
+          description: Create ticket
+          headers:
+            Location:
+              description: The URL of the created ticket
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketResponseExample'
+  /api/v2/tickets/{ticket_id}:
+    get:
+      operationId: ShowTicket
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets Ticket_id
+      description: >-
+        Returns a number of ticket properties though not the ticket comments. To
+        get the comments, use [List
+        Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments)
+
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Ticket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketResponseExample'
+    put:
+      operationId: UpdateTicket
+      tags:
+        - Tickets
+      summary: Put  Api V2 Tickets Ticket_id
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketUpdateRequestExample'
+      responses:
+        '200':
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketUpdateResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketUpdateResponseExample'
+    delete:
+      operationId: DeleteTicket
+      tags:
+        - Tickets
+      summary: Delete  Api V2 Tickets Ticket_id
+      description: >-
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents with permission to delete tickets
+
+
+        Agent delete permissions are set in Support. See
+
+        [Deleting
+        tickets](https://support.zendesk.com/hc/en-us/articles/203690936)
+
+        in the Support Help Center.
+
+
+        #### Ticket deletion rate limit
+
+
+        You can delete 400 tickets every 1 minute using this endpoint.
+
+        The rate limiting mechanism behaves as described in
+
+        [Rate limits](/api-reference/introduction/rate-limits/) in the API
+        introduction.
+
+        Zendesk recommends that you obey the Retry-After header values.
+
+        To delete many tickets, you may use [Bulk Delete
+        Tickets](/api-reference/ticketing/tickets/tickets/#bulk-delete-tickets).
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '204':
+          description: No content
+  /api/v2/tickets/{ticket_id}/audits:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListAuditsForTicket
+      tags:
+        - Ticket Audits
+      summary: Get  Api V2 Tickets Ticket_id Audits
+      description: >
+        Lists the audits for a specified ticket.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        **Note**: Audits for [Archived
+        Tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) do
+        not support pagination for this endpoint.
+
+
+        #### Allowed for
+
+
+        * Agents
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketAuditsResponseNoneCursor'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketAuditsForTicketResponseExample'
+  /api/v2/tickets/{ticket_id}/audits/{ticket_audit_id}:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+      - $ref: '#/components/parameters/TicketAuditId'
+    get:
+      operationId: ShowTicketAudit
+      tags:
+        - Ticket Audits
+      summary: Get  Api V2 Tickets Ticket_id Audits Ticket_audit_id
+      description: |
+        #### Allowed for
+
+        * Agents
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketAuditResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketAuditResponseExample'
+  /api/v2/tickets/{ticket_id}/audits/{ticket_audit_id}/make_private:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+      - $ref: '#/components/parameters/TicketAuditId'
+    put:
+      operationId: MakeTicketCommentPrivateFromAudits
+      tags:
+        - Ticket Audits
+      summary: Put  Api V2 Tickets Ticket_id Audits Ticket_audit_id Make_private
+      description: |
+        #### Allowed for
+
+        * Agents
+      responses:
+        '200':
+          description: description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/tickets/{ticket_id}/audits/count:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: CountAuditsForTicket
+      tags:
+        - Ticket Audits
+      summary: Get  Api V2 Tickets Ticket_id Audits Count
+      description: >
+        Returns an approximate count of audits for a specified ticket. If the
+        count exceeds 100,000, the count will return a cached result.  This
+        cached result will update every 24 hours.
+
+
+        The `count[refreshed_at]` property is a timestamp that indicates when
+        the count was last updated.
+
+
+        **Note**: If the total number of audits for a ticket exceeds 100,000,
+        this endpoint returns a count of 100,000 with a `count[refreshed_at]`
+        value of null. This value is cached for 24 hours, during which any
+        requests returns the same count and timestamp. After 24 hours, the
+        endpoint temporarily shows the same count again before providing an
+        updated total.
+
+
+        #### Allowed for
+
+
+        * Agents
+      responses:
+        '200':
+          description: Count of audits on a ticket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketAuditsCountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketAuditsCountResponseExample'
+  /api/v2/tickets/{ticket_id}/collaborators:
+    get:
+      operationId: ListTicketCollaborators
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets Ticket_id Collaborators
+      description: |-
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketCollaboratorsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketCollaboratorsResponseExample'
+  /api/v2/tickets/{ticket_id}/comments:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListTicketComments
+      tags:
+        - Ticket Comments
+      summary: Get  Api V2 Tickets Ticket_id Comments
+      description: >
+        Returns the comments added to the ticket.
+
+
+        Each comment may include a `content_url` for an attachment or a
+        `recording_url` for a voice comment that points to a file that may be
+        hosted externally. For security reasons, take care not to inadvertently
+        send Zendesk authentication credentials to third parties when attempting
+        to access these files. See [Working with url
+        properties](/documentation/ticketing/managing-tickets/working-with-url-properties).
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Sorting
+
+
+        By default, comments are sorted by creation date in ascending order.
+
+
+        When using cursor pagination, use the following parameter to change the
+        sort order:
+
+
+        | Name   | Type   | Required | Comments
+
+        | ------ | ------ | -------- | --------
+
+        | `sort` | string | no       | Possible values are "created_at"
+        (ascending order) or "-created_at" (descending order)
+
+
+        When using offset pagination, use the following parameters to change the
+        sort order:
+
+
+        | Name         | Type   | Required | Comments
+
+        | ------------ | ------ | -------- | --------
+
+        | `sort_order` | string | no       | One of `asc`, `desc`. Defaults to
+        `asc`
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: include_inline_images
+          in: query
+          description: >-
+            Default is false. When true, inline images are also listed as
+            attachments in the response
+          schema:
+            type: boolean
+        - name: include
+          in: query
+          description: >-
+            Accepts "users". Use this parameter to list email CCs by
+            side-loading users. Example: `?include=users`. **Note**: If the
+            comment source is email, a deleted user will be represented as the
+            CCd email address. If the comment source is anything else, a deleted
+            user will be represented as the user name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketCommentsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketCommentsResponseExample'
+  /api/v2/tickets/{ticket_id}/comments/{comment_id}/attachments/{attachment_id}/redact:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+      - $ref: '#/components/parameters/CommentId'
+      - $ref: '#/components/parameters/AttachmentId'
+    put:
+      operationId: RedactCommentAttachment
+      tags:
+        - Attachments
+      summary: >-
+        Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments
+        Attachment_id Redact
+      description: >
+        Redaction allows you to permanently remove attachments from an existing
+        comment on a ticket. Once removed from a comment, the attachment is
+        replaced with an empty "redacted.txt" file.
+
+
+        The redaction is permanent. It is not possible to undo redaction or see
+        what was removed. Once a ticket is closed, redacting its attachments is
+        no longer possible.
+
+
+        Also, if you want to redact an inline attachment, you can use the
+        `include_inline_images` parameter in the [List
+        Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments)
+        operation to obtain the inline attachment ID, and use it in the request
+        URL.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents when [deleting tickets is enabled for agents on professional
+        accounts](https://support.zendesk.com/hc/en-us/articles/360002128107)
+
+        * Agents assigned to a custom role with permissions to redact ticket
+        content (Enterprise only)
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AttachmentResponseExample'
+  /api/v2/tickets/{ticket_id}/comments/{ticket_comment_id}/make_private:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+      - $ref: '#/components/parameters/TicketCommentId'
+    put:
+      operationId: MakeTicketCommentPrivate
+      tags:
+        - Ticket Comments
+      summary: Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Make_private
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/tickets/{ticket_id}/comments/{ticket_comment_id}/redact:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+      - $ref: '#/components/parameters/TicketCommentId'
+    put:
+      operationId: RedactStringInComment
+      tags:
+        - Ticket Comments
+      summary: Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Redact
+      description: >
+        Permanently removes words or strings from a ticket comment. Specify the
+        string to redact in an object with a `text` property. Example:
+        `'{"text": "987-65-4320"}'`. The characters of the word or string are
+        replaced by the ▇ symbol.
+
+
+        If the comment was made by email, the endpoint also attempts to redact
+        the string from the original email retained by Zendesk for audit
+        purposes.
+
+
+        **Note**: If you use the rich text editor, support for redacting
+        formatted text (bold, italics, hyperlinks) is limited.
+
+
+        Redaction is permanent. You can't undo the redaction or see *what* was
+        removed. Once a ticket is closed, you can no longer redact strings from
+        its comments.
+
+
+        To use this endpoint, the "Agents can delete tickets" option must be
+        enabled in the Zendesk Support admin interface at **Admin** >
+        **Settings** > **Agents**.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketCommentResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/TicketCommentStringRedactResponseExample
+  /api/v2/tickets/{ticket_id}/comments/count:
+    get:
+      operationId: CountTicketComments
+      tags:
+        - Ticket Comments
+      summary: Get  Api V2 Tickets Ticket_id Comments Count
+      description: >-
+        Returns an approximate count of the comments added to the ticket. If the
+        count exceeds 100,000, the count will return a cached result.  This
+        cached result will update every 24 hours.
+
+
+        The `count[refreshed_at]` property is a timestamp that indicates when
+        the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, `count[refreshed_at]` may
+        occasionally be null.
+
+        This indicates that the count is being updated in the background, and
+        `count[value]` is limited to 100,000 until the update is complete.
+
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Count of ticket comments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketCommentsCountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketCommentsCountResponseExample'
+  /api/v2/tickets/{ticket_id}/conversation_log:
+    get:
+      operationId: ListConversationLogForTicket
+      tags:
+        - Conversation Log
+      summary: Get  Api V2 Tickets Ticket_id Conversation_log
+      description: |
+        Lists the conversation log events for a specified ticket.
+
+        #### Pagination
+
+        - Cursor pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed for
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationLogResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ConversationLogResponseExample'
+  /api/v2/tickets/{ticket_id}/email_ccs:
+    get:
+      operationId: ListTicketEmailCCs
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets Ticket_id Email_ccs
+      description: >-
+        Returns any users cc'd on the ticket.
+
+
+        #### Availability
+
+
+        The [CCs and
+        Followers](https://support.zendesk.com/hc/en-us/articles/203690846)
+        feature must be enabled in Zendesk Support.
+
+
+        If the feature is not enabled, the default CC functionality is used. In
+        that case, use [List
+        Collaborators](/api-reference/ticketing/tickets/tickets/#list-collaborators-for-a-ticket)
+        to list the users cc'ed on the ticket.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketEmailCCsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketEmailCCsResponseExample'
+  /api/v2/tickets/{ticket_id}/followers:
+    get:
+      operationId: ListTicketFollowers
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets Ticket_id Followers
+      description: >-
+        Returns any users who follow the ticket.
+
+
+        #### Availability
+
+
+        The [CCs and
+        Followers](https://support.zendesk.com/hc/en-us/articles/203690846)
+        feature must be enabled in Zendesk Support.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketFollowersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketFollowersResponseExample'
+  /api/v2/tickets/{ticket_id}/incidents:
+    get:
+      operationId: ListTicketIncidents
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets Ticket_id Incidents
+      description: |-
+        #### Allowed For
+
+        * Agents
+
+        #### Pagination
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketIncidentsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketIncidentsResponseExample'
+  /api/v2/tickets/{ticket_id}/macros/{macro_id}/apply:
+    parameters:
+      - $ref: '#/components/parameters/MacroId'
+      - name: ticket_id
+        in: path
+        description: The ID of the ticket
+        required: true
+        schema:
+          type: integer
+        example: 35436
+    get:
+      operationId: ShowTicketAfterChanges
+      tags:
+        - Macros
+      summary: Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
+      description: >
+        Returns the full ticket object as it would be after applying the macro
+        to the ticket.
+
+        It doesn't actually change the ticket.
+
+
+        To get only the ticket fields that would be changed by the macro,
+
+        see [Show Changes to Ticket](#show-changes-to-ticket).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroApplyTicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroChangesToTicketsResponseExample'
+  /api/v2/tickets/{ticket_id}/mark_as_spam:
+    put:
+      operationId: MarkTicketAsSpamAndSuspendRequester
+      tags:
+        - Tickets
+      summary: Put  Api V2 Tickets Ticket_id Mark_as_spam
+      description: |-
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: ''
+              example: ''
+  /api/v2/tickets/{ticket_id}/merge:
+    post:
+      operationId: MergeTicketsIntoTargetTicket
+      tags:
+        - Tickets
+      summary: Post  Api V2 Tickets Ticket_id Merge
+      description: >-
+        Merges one or more tickets into the ticket with the specified id.
+
+
+        See [Merging
+        tickets](https://support.zendesk.com/hc/en-us/articles/203690916)
+
+        in the Support Help Center for ticket merging rules.
+
+
+        Any attachment to the source ticket is copied to the target ticket.
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        Agents in the Enterprise account must have merge permissions.
+
+        See [Creating custom roles and assigning agents
+        (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026)
+
+        in the Support Help Center.
+
+
+        #### Available parameters
+
+
+        The request takes a data object with the following properties:
+
+
+        | Name                     | Type    | Required |
+        Comments                                                |
+
+        | ------------------------ | ------- | -------- |
+        ------------------------------------------------------- |
+
+        | ids                      | array   | yes      | Ids of tickets to
+        merge into the target ticket          |
+
+        | target_comment           | string  | no       | Private comment to add
+        to the target ticket. This comment is optional but strongly recommended
+        |
+
+        | source_comment           | string  | no       | Private comment to add
+        to the source ticket. This comment is optional but strongly recommended
+        |
+
+        | target_comment_is_public | boolean | no       | Whether comments in
+        the target ticket are public or private   |
+
+        | source_comment_is_public | boolean | no       | Whether comments in
+        the source tickets are public or private |
+
+
+        `target_comment` and `source_comment` can be used to provide a reason
+        for the merge for recordkeeping purposes. If the source ticket has
+        attachments, they are included in `target_comment`.
+
+
+        Comments are private and can't be modified in the following cases:
+
+          * Any of the sources or target tickets are private
+          * Any of the sources or target tickets were created through X (formerly Twitter), Facebook or the Channel framework
+
+        In any other case, comments default to private but can be modified with
+        the comment privacy parameters.
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketMergeInput'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketMergeInputExample'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/{ticket_id}/related:
+    get:
+      operationId: TicketRelatedInformation
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets Ticket_id Related
+      description: >-
+        The request returns a data object with the following properties:
+
+
+        | Name                | Type    | Comment
+
+        | ------------------- | ------- | -------
+
+        | topic_id            | string  | Related topic in the Web portal
+        (deprecated feature)
+
+        | jira_issue_ids      | array   | Array of associated jira issues
+
+        | followup_source_ids | array   | Sources to follow up
+
+        | from_archive        | boolean | Is true if the current ticket is
+        archived
+
+        | incidents           | integer | A count of related incident
+        occurrences
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketRelatedInformation'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketRelatedInformationExample'
+  /api/v2/tickets/{ticket_id}/satisfaction_rating:
+    parameters:
+      - name: ticket_id
+        in: path
+        description: The id of the ticket
+        required: true
+        schema:
+          type: integer
+        example: 35436
+    post:
+      operationId: CreateTicketSatisfactionRating
+      tags:
+        - Satisfaction Ratings
+      summary: Post  Api V2 Tickets Ticket_id Satisfaction_rating
+      description: >
+        Creates a CSAT rating for a solved ticket, or for a ticket that was
+        previously
+
+        solved and then reopened.
+
+
+        Only the end user listed as the ticket requester can create a
+        satisfaction rating for the ticket.
+
+
+        Only "good" and "bad" are valid values for the score when creating a
+        rating. Other states, like "offered", are not valid and will result in a
+        422 error.
+
+
+        #### Allowed For
+
+
+        * End user who requested the ticket
+
+
+        The end user must be a verified user.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SatisfactionRatingResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SatisfactionRatingResponseExample'
+  /api/v2/tickets/{ticket_id}/tags:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListResourceTags
+      tags:
+        - Tags
+      summary: Get  Api V2 Tickets Ticket_id Tags
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    post:
+      operationId: SetTagsTicket
+      tags:
+        - Tags
+      summary: Post  Api V2 Tickets Ticket_id Tags
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    put:
+      operationId: PutTagsTicket
+      tags:
+        - Tags
+      summary: Put  Api V2 Tickets Ticket_id Tags
+      description: >
+        You can also add tags to multiple tickets with the [Update Many
+
+        Tickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets)
+        endpoint.
+
+
+        #### Safe Update
+
+
+        If the same ticket is updated by multiple API requests at
+
+        the same time, some tags could be lost because of ticket
+
+        update collisions. Include `updated_stamp` and `safe_update`
+
+        properties in the request body to make a safe update.
+
+
+        For `updated_stamp`, retrieve and specify the ticket's
+
+        latest `updated_at` timestamp. The tag update only occurs
+
+        if the `updated_stamp` timestamp matches the ticket's
+
+        actual `updated_at` timestamp at the time of the request.
+
+        If the timestamps don't match (in other words, if the
+
+        ticket was updated since you retrieved the ticket's
+
+        last `updated_at` timestamp), the request returns a
+
+        409 Conflict error.
+
+
+        #### Example
+
+
+        ```js
+
+        {
+          "tags": ["customer"],
+          "updated_stamp":"2019-09-12T21:45:16Z",
+          "safe_update":"true"
+        }
+
+        ```
+
+
+        For details, see [Protecting against ticket update
+        collisions](/api-reference/ticketing/tickets/tickets/#protecting-against-ticket-update-collisions).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    delete:
+      operationId: DeleteTagsTicket
+      tags:
+        - Tags
+      summary: Delete  Api V2 Tickets Ticket_id Tags
+      description: >
+        You can also delete tags from multiple tickets with the
+
+        [Update Many
+        Tickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets)
+        endpoint.
+
+
+        This endpoint supports safe updates. See [Safe
+        Update](/api-reference/ticketing/ticket-management/tags/#safe-update).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsRemoveResponseExample'
+  /api/v2/tickets/count:
+    get:
+      operationId: CountTickets
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets Count
+      description: >-
+        Returns an approximate count of tickets in the account. If the count
+        exceeds 100,000, it is updated every 24 hours.
+
+
+        `ccd` lists tickets that the specified user is cc'd on.
+
+
+        The `count[refreshed_at]` property is a timestamp that indicates when
+        the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, `count[refreshed_at]` may
+        occasionally be null.
+
+        This indicates that the count is being updated in the background, and
+        `count[value]` is limited to 100,000 until the update is complete.
+
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Count of tickets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: object
+                    properties:
+                      refreshed_at:
+                        type: string
+                        format: date-time
+                      value:
+                        type: integer
+              examples:
+                default:
+                  value:
+                    count:
+                      refreshed_at: '2020-04-06T02:18:17Z'
+                      value: 102
+  /api/v2/tickets/create_many:
+    post:
+      operationId: TicketsCreateMany
+      tags:
+        - Tickets
+      summary: Post  Api V2 Tickets Create_many
+      description: >-
+        Accepts an array of up to 100 ticket objects. **Note**: Every ticket
+        created with this endpoint may be affected by your business rules, which
+        can include sending email notifications to your end users. If you are
+        importing historical tickets or creating more than 1000 tickets,
+        consider using the [Ticket Bulk
+        Import](/api-reference/ticketing/tickets/ticket_import/#ticket-bulk-import)
+        endpoint.
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketsCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketsCreateRequestExample'
+      responses:
+        '200':
+          description: Create many tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/destroy_many:
+    delete:
+      operationId: BulkDeleteTickets
+      tags:
+        - Tickets
+      summary: Delete  Api V2 Tickets Destroy_many
+      description: >-
+        Accepts a comma-separated list of up to 100 ticket ids.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents with permission to delete tickets
+
+
+        Agent delete permissions are set in Support. See
+
+        [Deleting
+        tickets](https://support.zendesk.com/hc/en-us/articles/203690936)
+
+        in the Support Help Center.
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+      parameters:
+        - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/mark_many_as_spam:
+    put:
+      operationId: MarkManyTicketsAsSpam
+      tags:
+        - Tickets
+      summary: Put  Api V2 Tickets Mark_many_as_spam
+      description: >-
+        Accepts a comma-separated list of up to 100 ticket ids.
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/show_many:
+    get:
+      operationId: TicketsShowMany
+      tags:
+        - Tickets
+      summary: Get  Api V2 Tickets Show_many
+      description: |-
+        Accepts a comma-separated list of ticket ids to return.
+
+        This endpoint will return up to 100 tickets records.
+
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: List tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketsResponseExample'
+  /api/v2/tickets/update_many:
+    put:
+      operationId: TicketsUpdateMany
+      tags:
+        - Tickets
+      summary: Put  Api V2 Tickets Update_many
+      description: >-
+        Accepts an array of up to 100 ticket objects, or a comma-separated list
+        of up to 100 ticket ids.
+      parameters:
+        - name: ids
+          in: query
+          description: Comma-separated list of ticket ids
+          schema:
+            type: string
+          example: 35436,35437
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/views/{view_id}/tickets:
+    parameters:
+      - $ref: '#/components/parameters/ViewId'
+    get:
+      operationId: ListTicketsFromView
+      tags:
+        - Views
+      summary: Get  Api V2 Views View_id Tickets
+      description: |
+        #### Allowed For
+
+        * Agents
+
+        #### Pagination
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      parameters:
+        - name: sort_by
+          in: query
+          description: >-
+            Sort or group the tickets by a column in the [View
+            columns](#view-columns) table. The `subject` and `submitter` columns
+            are not supported
+          schema:
+            type: string
+        - name: sort_order
+          in: query
+          description: >-
+            One of "asc" or "desc". Defaults to "asc" for alphabetical and
+            position sort, "desc" for all others
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ViewListTicketsResponseEXample'
+components:
+  schemas:
+    TwitterChannelTwicketStatusResponse:
+      type: object
+      properties:
+        statuses:
+          type: array
+          items:
+            type: object
+            properties:
+              favorited:
+                type: boolean
+              id:
+                type: integer
+              retweeted:
+                type: boolean
+              user_followed:
+                type: boolean
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    TimeBasedExportIncrementalTicketsResponse:
+      type: object
+      description: >
+        See [Tickets](/api-reference/ticketing/tickets/tickets/) for a detailed
+        example.
+      properties:
+        count:
+          type: integer
+        end_of_stream:
+          type: boolean
+        end_time:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketObject'
+      example:
+        count: 2
+        end_of_stream: true
+        end_time: 1390362485
+        next_page: >-
+          https://{subdomain}.zendesk.com/api/v2/incremental/tickets.json?per_page=3&start_time=1390362485
+        tickets:
+          - assignee_id: 235323
+            collaborator_ids:
+              - 35334
+              - 234
+            created_at: '2009-07-20T22:55:29Z'
+            custom_fields:
+              - id: 27642
+                value: '745'
+              - id: 27648
+                value: 'yes'
+            description: The fire is very colorful.
+            due_at: null
+            external_id: ahg35h3jh
+            follower_ids:
+              - 35334
+              - 234
+            generated_timestamp: 1304553600
+            group_id: 98738
+            has_incidents: false
+            id: 35436
+            organization_id: 509974
+            priority: high
+            problem_id: 9873764
+            raw_subject: '{{dc.printer_on_fire}}'
+            recipient: support@company.com
+            requester_id: 20978392
+            satisfaction_rating:
+              comment: Great support!
+              id: 1234
+              score: good
+            sharing_agreement_ids:
+              - 84432
+            status: open
+            subject: Help, my printer is on fire!
+            submitter_id: 76872
+            tags:
+              - enterprise
+              - other_tag
+            type: incident
+            updated_at: '2011-05-05T10:38:52Z'
+            url: https://company.zendesk.com/api/v2/tickets/35436.json
+            via:
+              channel: web
+    CursorBasedExportIncrementalTicketsResponse:
+      type: object
+      description: >
+        See [Tickets](/api-reference/ticketing/tickets/tickets/) for a detailed
+        example.
+      properties:
+        after_cursor:
+          type: string
+          nullable: true
+        after_url:
+          type: string
+          nullable: true
+        before_cursor:
+          type: string
+          nullable: true
+        before_url:
+          type: string
+          nullable: true
+        end_of_stream:
+          type: boolean
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketObject'
+      example:
+        after_cursor: MTU3NjYxMzUzOS4wfHw0Njd8
+        after_url: >-
+          https://{subdomain}.zendesk.com/api/v2/incremental/tickets/cursor.json?cursor=MTU3NjYxMzUzOS4wfHw0Njd8
+        before_cursor: null
+        before_url: null
+        end_of_stream: true
+        tickets:
+          - assignee_id: 235323
+            collaborator_ids:
+              - 35334
+              - 234
+            created_at: '2009-07-20T22:55:29Z'
+            custom_fields:
+              - id: 27642
+                value: '745'
+              - id: 27648
+                value: 'yes'
+            description: The fire is very colorful.
+            due_at: null
+            external_id: ahg35h3jh
+            follower_ids:
+              - 35334
+              - 234
+            generated_timestamp: 1304553600
+            group_id: 98738
+            has_incidents: false
+            id: 35436
+            organization_id: 509974
+            priority: high
+            problem_id: 9873764
+            raw_subject: '{{dc.printer_on_fire}}'
+            recipient: support@company.com
+            requester_id: 20978392
+            satisfaction_rating:
+              comment: Great support!
+              id: 1234
+              score: good
+            sharing_agreement_ids:
+              - 84432
+            status: open
+            subject: Help, my printer is on fire!
+            submitter_id: 76872
+            tags:
+              - enterprise
+              - other_tag
+            type: incident
+            updated_at: '2011-05-05T10:38:52Z'
+            url: https://company.zendesk.com/api/v2/tickets/35436.json
+            via:
+              channel: web
+    SkillBasedRoutingAttributeValuesResponse:
+      type: object
+      properties:
+        attribute_values:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
+    TicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketObject'
+    TicketResponse:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/TicketObject'
+    TicketUpdateResponse:
+      type: object
+      properties:
+        audit:
+          $ref: '#/components/schemas/AuditObject'
+        ticket:
+          $ref: '#/components/schemas/TicketObject'
+    TicketAuditsResponseNoneCursor:
+      type: object
+      properties:
+        audits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketAuditObject'
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+    TicketAuditResponse:
+      type: object
+      properties:
+        audit:
+          $ref: '#/components/schemas/TicketAuditObject'
+    TicketAuditsCountResponse:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: date-time
+            value:
+              type: integer
+    ListTicketCollaboratorsResponse:
+      type: object
+      additionalProperties: true
+    TicketCommentsResponse:
+      type: object
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketCommentObject'
+    AttachmentResponse:
+      type: object
+      properties:
+        attachment:
+          $ref: '#/components/schemas/AttachmentObject'
+    TicketCommentResponse:
+      type: object
+      properties:
+        comment:
+          $ref: '#/components/schemas/TicketCommentObject'
+    TicketCommentsCountResponse:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: date-time
+            value:
+              type: integer
+    ConversationLogResponse:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversationLogObject'
+        links:
+          type: object
+          properties:
+            next:
+              type: string
+            prev:
+              type: string
+        meta:
+          type: object
+          properties:
+            after_cursor:
+              type: string
+            before_cursor:
+              type: string
+            has_more:
+              type: boolean
+    ListTicketEmailCCsResponse:
+      type: object
+      additionalProperties: true
+    ListTicketFollowersResponse:
+      type: object
+      additionalProperties: true
+    ListTicketIncidentsResponse:
+      type: object
+      additionalProperties: true
+    MacroApplyTicketResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            ticket:
+              type: object
+              properties:
+                assignee_id:
+                  type: integer
+                comment:
+                  type: object
+                  properties:
+                    body:
+                      type: string
+                    public:
+                      type: boolean
+                    scoped_body:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: string
+                fields:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    value:
+                      type: string
+                group_id:
+                  type: integer
+                id:
+                  type: integer
+                url:
+                  type: string
+    TicketRelatedInformation:
+      type: object
+      properties:
+        followup_source_ids:
+          type: array
+          items:
+            type: string
+            description: Sources to follow up
+        from_archive:
+          type: boolean
+          description: Is true if the current ticket is archived
+        incidents:
+          type: integer
+          description: A count of related incident occurrences
+        jira_issue_ids:
+          type: array
+          items:
+            type: string
+            description: Associated jira issues
+        topic_id:
+          type: string
+          description: Related topic in the Web portal (deprecated feature)
+          nullable: true
+    SatisfactionRatingResponse:
+      type: object
+      properties:
+        satisfaction_rating:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionRatingObject'
+    TagsByObjectIdResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          description: An array of strings
+          items:
+            type: string
+      required:
+        - tags

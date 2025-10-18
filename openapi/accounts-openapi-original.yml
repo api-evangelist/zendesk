@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Accounts
+  description: Needs a description.
+paths:
+  /api/v2/accounts:
+    post:
+      operationId: CreateTrialAccount
+      tags:
+        - Reseller
+      summary: Post  Api V2 Accounts
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialAccountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TrialAccountResponseExample'
+  /api/v2/accounts/available:
+    get:
+      operationId: VerifySubdomainAvailability
+      tags:
+        - Reseller
+      summary: Get  Api V2 Accounts Available
+      description: >
+        Zendesk Support credentials are not required to access this endpoint.
+        You can use any Zendesk Support subdomain.
+
+
+        Returns "true" if the subdomain is available.
+      parameters:
+        - name: subdomain
+          in: query
+          description: >
+            Specify the name of the subdomain you want to verify. The name can't
+            contain underscores, hyphens, or spaces.
+          required: true
+          schema:
+            type: string
+          example: z3ndesk
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+              example:
+                success: true
+components:
+  schemas: {}

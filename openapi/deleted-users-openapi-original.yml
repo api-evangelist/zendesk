@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: Deleted Users
+  description: Needs a description.
+paths:
+  /api/v2/deleted_users:
+    get:
+      operationId: ListDeletedUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Deleted_users
+      description: |
+        Returns deleted users, including permanently deleted users.
+
+        If the results contains permanently deleted users, the users' properties
+        that normally contain personal data, such as `email` and `phone`,
+        are null. The `name` property is "Permanently Deleted User".
+
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedUsersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DeletedUsersResponseExample'
+  /api/v2/deleted_users/{deleted_user_id}:
+    parameters:
+      - $ref: '#/components/parameters/DeletedUserId'
+    get:
+      operationId: ShowDeletedUser
+      tags:
+        - Users
+      summary: Get  Api V2 Deleted_users Deleted_user_id
+      description: >
+        Returns users that have been deleted but not permanently yet. See
+        [Permanently Delete User](#permanently-delete-user).
+
+
+        #### Allowed For:
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedUserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DeletedUserResponseExample'
+    delete:
+      operationId: PermanentlyDeleteUser
+      tags:
+        - Users
+      summary: Delete  Api V2 Deleted_users Deleted_user_id
+      description: >
+        Before permanently deleting a user, you must delete the user first. See
+        [Delete User](/api-reference/ticketing/users/users/#delete-user).
+
+
+        WARNING: Permanently deleting a user deletes all of their information.
+        This information is not recoverable.
+
+
+        #### Permanent user deletion rate limit
+
+
+        You can permanently delete 700 users every 10 minutes.
+
+        The rate limiting mechanism behaves as described in
+
+        [Rates
+        Limits](/api-reference/introduction/rate-limits/#monitoring-your-request-activity)
+        in the API introduction.
+
+        Zendesk recommends that you obey the Retry-After header values.
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage end users or team members
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedUserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DeletedUserResponseExample'
+  /api/v2/deleted_users/count:
+    get:
+      operationId: CountDeletedUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Deleted_users Count
+      description: >
+        Returns an approximate count of deleted users, including permanently
+        deleted users. If the count exceeds 100,000, it is updated every 24
+        hours.
+
+
+        The response includes a `refreshed_at` property in a `count` object that
+        contains a timestamp indicating when the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, `count[refreshed_at]` may
+        occasionally be null.
+
+        This indicates that the count is being updated in the background, and
+        `count[value]` is limited to 100,000 until the update is complete.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DeletedUsersCountResponseExample'
+components:
+  schemas:
+    DeletedUsersResponse:
+      type: object
+      properties:
+        deleted_users:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeletedUserObject'
+    DeletedUserResponse:
+      type: object
+      properties:
+        deleted_user:
+          $ref: '#/components/schemas/DeletedUserObject'
+    CountResponse:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: datetime
+            value:
+              type: integer

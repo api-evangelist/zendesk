@@ -1,0 +1,1470 @@
+openapi: 3.1.0
+info:
+  title: Search
+  description: Needs a description.
+paths:
+  /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/search:
+    parameters:
+      - $ref: '#/components/parameters/ApprovalWorkflowInstanceId'
+    post:
+      operationId: SearchApprovals
+      tags:
+        - Approval Requests
+      summary: >-
+        Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id
+        Approval_requests Search
+      description: >
+        Returns a list of approvals associated with a specific workflow
+        instance. Results can be filtered by approval request status.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApprovalRequestsSearchResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApprovalRequestsSearchResponseExample'
+  /api/v2/automations/search:
+    parameters:
+      - $ref: '#/components/parameters/AutomationSearchQuery'
+      - $ref: '#/components/parameters/AutomationActive'
+      - $ref: '#/components/parameters/AutomationSortBy'
+      - $ref: '#/components/parameters/AutomationSortOrder'
+      - $ref: '#/components/parameters/AutomationInclude'
+    get:
+      operationId: SearchAutomations
+      tags:
+        - Automations
+      summary: Get  Api V2 Automations Search
+      description: >
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Sideloads
+
+
+        The following sideloads are supported. For more information, see
+        [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).
+
+
+        | Name             | Will sideload
+
+        | ---------------- | -------------
+
+        | app_installation | The app installation that requires each automation,
+        if present
+
+        | permissions      | The permissions for each automation
+
+        | usage_1h         | The number of times each automation has been used
+        in the past hour
+
+        | usage_24h        | The number of times each automation has been used
+        in the past day
+
+        | usage_7d         | The number of times each automation has been used
+        in the past week
+
+        | usage_30d        | The number of times each automation has been used
+        in the past thirty days
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AutomationsSearchResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/records/search:
+    get:
+      operationId: SearchCustomObjectRecords
+      tags:
+        - Custom Object Records
+      summary: Get  Api V2 Custom_objects Custom_object_key Records Search
+      description: >-
+        Returns an array of custom object records that meet the search criteria
+
+
+        #### Pagination
+
+
+        * [Cursor
+        pagination](/api-reference/introduction/pagination/#cursor-pagination)
+        only.
+
+        * Returns the records sorted by relevancy with page limits. Without a
+        `sort` parameter, only the first 10,000 records are returned. With a
+        `sort` parameter, all records are returned.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - name: query
+          in: query
+          description: >
+            The query parameter is used to search text-based fields for records
+            that match specific query terms.
+
+            The query can be multiple words or numbers. Every record that
+            matches the beginning of any word or number in the query string is
+            returned.<br/><br/>
+
+
+            Fuzzy search is supported for the following text-based field types:
+            : Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>
+
+
+            For example, you might want to search for records related to Tesla
+            vehicles: `query=Tesla`. In this example the API would return every
+            record for the given custom object where any of the supported text
+            fields contain the word 'Tesla'.<br/><br/>
+
+
+            You can include multiple words or numbers in your search. For
+            example: `query=Tesla Honda 2020`. This search phrase would be URL
+            encoded as `query=Tesla%20Honda%202020` and return every record for
+            the custom object for which any of the supported text fields
+            contained 'Tesla', 'Honda', or '2020'.
+          schema:
+            type: string
+          example: jdoe
+        - name: sort
+          in: query
+          description: >
+            One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`,
+            or `-updated_at`. The `-` denotes the sort will be descending.
+            Defaults to sorting by relevance.
+          schema:
+            type: string
+        - name: page[before]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.before_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[after]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.after_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[size]
+          in: query
+          description: >
+            Specifies how many records should be returned in the response. You
+            can specify up to 100 records per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsSearchResponseExample
+    post:
+      operationId: FilteredSearchCustomObjectRecords
+      tags:
+        - Custom Object Records
+      summary: Post  Api V2 Custom_objects Custom_object_key Records Search
+      description: >-
+        Returns an array of custom object records that meet the search and
+        filter criteria.
+
+
+        Filters can contain either an individual [comparison
+        object](#comparison-object) or an array of [comparison
+        objects](#comparison-object) within logical namespaces.
+
+
+        A filter is a JSON object that has the following properties:
+
+
+        | Name      | Type   | Required | Description
+
+        | --------- | ------ | -------- | -----------
+
+        | ATTRIBUTE | object | no       | A [comparison
+        object](#comparison-object) specifying an attribute value condition to
+        be met for records to match.<br/><br/>Examples are marked below.
+
+        | $and      | array  | no       | Array of conjunctive filter objects
+        (logical AND)
+
+        | $or       | array  | no       | Array of conjunctive filter objects
+        (logical OR)
+
+
+        ##### Examples
+
+
+
+        ```js
+
+        {
+          "filter": {
+            "custom_object_fields.field_key": { "$eq": "value" } // ATTRIBUTE
+          }
+        }
+
+        ```
+
+
+        ```js
+
+        // $or
+
+        {
+          "filter": {
+            "$or": [
+              { "custom_object_fields.field_key": { "$eq": "value" } }, // ATTRIBUTE
+              { "external_id": { "$eq": "Record123" } } // ATTRIBUTE
+            ]
+          }
+        }
+
+        ```
+
+
+        #### Comparison Object
+
+
+        A comparison object defines a condition a record must meet to be
+        considered a match. The condition is based on an attribute value or
+        object type.
+
+
+        A comparison object is a JSON object that has the following properties:
+
+
+        | Name      | Type          | Required | Description
+
+        | --------- | ------------- | -------- | -----------
+
+        | FIELD_KEY | string        | yes      | When filtering on a custom
+        field, they must be namedspaced with `custom_object_fields.`. ex.
+        `custom_object_fields.field_key`<br/><br/>When filtering on a standard
+        field, no namespace is required. The following fields are considered
+        standard: `created_at`, `updated_at`, `created_by_user`,
+        `updated_by_user`, `name`, `external_id`
+
+        | OPERATOR  | string        | yes      | [Supported
+        operators](/documentation/custom-data/v2/searching-custom-object-records/)
+        vary by the value's data type
+
+        | VALUE     | string, array | yes      | The value you're filtering for
+
+
+        #### Pagination
+
+
+        * [Cursor
+        pagination](/api-reference/introduction/pagination/#cursor-pagination)
+        only.
+
+        * Returns the records sorted by relevancy with page limits. Without a
+        `sort` parameter, only the first 10,000 records are returned. With a
+        `sort` parameter, all records are returned.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        * End users (when an admin
+        [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066)
+        the custom object to be accessible to end users)
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - name: query
+          in: query
+          description: >
+            The query parameter is used to search text-based fields for records
+            that match specific query terms.
+
+            The query can be multiple words or numbers. Every record that
+            matches the beginning of any word or number in the query string is
+            returned.<br/><br/>
+
+
+            Fuzzy search is supported for the following text-based field types:
+            Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>
+
+
+            For example, you might want to search for records related to Tesla
+            vehicles: `query=Tesla`. In this example the API would return every
+            record for the given custom object where any of the supported text
+            fields contain the word 'Tesla'.<br/><br/>
+
+
+            You can include multiple words or numbers in your search. For
+            example: `query=Tesla Honda 2020`. This search phrase would be URL
+            encoded as `query=Tesla%20Honda%202020` and return every record for
+            the custom object for which any of the supported text fields
+            contained 'Tesla', 'Honda', or '2020'.
+          schema:
+            type: string
+          example: jdoe
+        - name: sort
+          in: query
+          description: >
+            One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`,
+            or `-updated_at`. The `-` denotes the sort will be descending.
+            Defaults to sorting by relevance.
+          schema:
+            type: string
+        - name: page[before]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.before_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[after]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.after_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[size]
+          in: query
+          description: >
+            Specifies how many records should be returned in the response. You
+            can specify up to 100 records per page.
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: >-
+                    #/components/schemas/CustomObjectRecordsFilteredSearchRequestBasic
+                - $ref: >-
+                    #/components/schemas/CustomObjectRecordsFilteredSearchRequestComplex
+            examples:
+              default:
+                $ref: >-
+                  #/components/examples/CustomObjectRecordsFilteredSearchRequestExample
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsSearchResponseExample
+  /api/v2/custom_objects/{custom_object_key}/triggers/search:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerSearchQuery'
+      - $ref: '#/components/parameters/TriggerSearchFilter'
+      - $ref: '#/components/parameters/TriggerActive'
+      - $ref: '#/components/parameters/TriggerSort'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+      - $ref: '#/components/parameters/TriggerInclude'
+    get:
+      operationId: SearchObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Search
+      description: >
+        Returns a list of object triggers that meet your filter or search
+        criteria.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Filter
+
+
+        Use the `filter` query parameter to filter an object trigger search by
+        one or more attributes. For example, the following `filter` argument
+        filters object triggers by the `title` attribute:
+
+
+        ```json
+
+        {
+          "json": {
+            "title": "test"
+          }
+        }
+
+        ```
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersSearchResponseExample'
+  /api/v2/macros/search:
+    parameters:
+      - $ref: '#/components/parameters/MacroInclude'
+      - $ref: '#/components/parameters/MacroAccess'
+      - $ref: '#/components/parameters/MacroActive'
+      - $ref: '#/components/parameters/MacroCategory'
+      - $ref: '#/components/parameters/MacroGroupId'
+      - $ref: '#/components/parameters/MacroOnlyViewable'
+      - $ref: '#/components/parameters/MacroSearchSortBy'
+      - $ref: '#/components/parameters/MacroSortOrder'
+      - $ref: '#/components/parameters/MacroQuery'
+    get:
+      operationId: SearchMacro
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Search
+      description: >
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacrosResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacrosResponseExample'
+  /api/v2/organizations/search:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationExternalId'
+      - $ref: '#/components/parameters/OrganizationName'
+    get:
+      operationId: SearchOrganizations
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organizations Search
+      description: >
+        Returns an array of organizations matching the criteria. You may search
+        by an organization's `external_id` or `name`, but not both:
+
+
+        #### Searching by `external_id`
+
+
+        If you set the `external_id` value of an organization to associate it to
+        an external record, you can use it to search for the organization.
+
+
+        For an organization to be returned, its `external_id` must exactly match
+        the value provided (case insensitive).
+
+
+        #### Searching by `name`
+
+
+        For an organization to be returned, its `name` must exactly match the
+        value provided (case insensitive).
+
+
+        #### Allowed For:
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to add or modify
+        organizations (Enterprise only)
+
+
+        See [Creating custom agent
+        roles](https://support.zendesk.com/hc/en-us/articles/203662026#topic_cxn_hig_bd)
+        in the Support Help Center.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationsResponseExample'
+  /api/v2/requests/search:
+    get:
+      operationId: SearchRequests
+      tags:
+        - Requests
+      summary: Get  Api V2 Requests Search
+      description: >
+        Examples:
+
+
+        * `GET /api/v2/requests/search.json?query=printer`
+
+        * `GET /api/v2/requests/search.json?query=printer&organization_id=1`
+
+        * `GET /api/v2/requests/search.json?query=printer&cc_id=true`
+
+        * `GET /api/v2/requests/search.json?query=printer&status=hold,open`
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Results limit
+
+
+        The Search Requests endpoint returns up to 1,000 results per query, with
+        a maximum of 100 results per page. See
+        [Pagination](/api-reference/ticketing/introduction/#pagination). If you
+        request a page past the limit (`page=11` at 100 results per page), a 422
+        Insufficient Resource Error is returned.
+
+
+        #### Allowed For
+
+
+        * End Users
+      parameters:
+        - name: query
+          in: query
+          description: >-
+            The syntax and matching logic for the string is detailed in the
+            [Zendesk Support search
+            reference](https://support.zendesk.com/hc/en-us/articles/203663226).
+            See also [Query
+            basics](/api-reference/ticketing/ticket-management/search/#query-basics)
+            in the Tickets API doc.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/RequestsResponseExample'
+  /api/v2/search:
+    get:
+      operationId: ListSearchResults
+      tags:
+        - Search
+      summary: Get  Api V2 Search
+      description: >
+        Returns the search results. See [Query basics](#query-basics) for the
+        syntax of the `query` parameter.
+
+
+        Use the ampersand character (&) to append the `sort_by` or `sort_order`
+        parameters to the URL.
+
+
+        For examples, see [Searching with Zendesk
+        API](/documentation/ticketing/using-the-zendesk-api/searching-with-the-zendesk-api).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        Offset pagination may result in duplicate results when paging. You can
+        also use the
+
+        [Export Search
+        Results](/api-reference/ticketing/ticket-management/search/#export-search-results)
+        endpoint, which
+
+        uses cursor-based pagination and doesn't return duplicate results. See
+
+        [Using cursor
+        pagination](/api-reference/introduction/pagination/#using-cursor-pagination)
+        for more information.
+
+
+
+        #### Errors JSON Format
+
+
+        Errors are represented as JSON objects which have the following keys:
+
+
+        | Name                  | Type                 | Comment
+
+        | --------------------- | ---------------------| --------------------
+
+        | error                 | string               | The type of error.
+        Examples: "unavailable", "invalid"
+
+        | description           | string               |
+
+
+        ##### Example Error
+
+        ```js
+
+        {
+          "error": "unavailable",
+          "description": "Sorry, we could not complete your search query. Please try again in a moment."
+        }
+
+        ```
+      parameters:
+        - name: query
+          in: query
+          description: >-
+            The search query. See [Query basics](#query-basics) above. For
+            details on the query syntax, see the [Zendesk Support search
+            reference](https://support.zendesk.com/hc/en-us/articles/203663226)
+          required: true
+          schema:
+            type: string
+          example: >-
+            https://subdomain.zendesk.com/api/v2/search.json?query=type:ticket
+            status:closed&sort_by=status&sort_order=desc
+        - name: sort_by
+          in: query
+          description: >-
+            One of `updated_at`, `created_at`, `priority`, `status`, or
+            `ticket_type`. Defaults to sorting by relevance
+          schema:
+            type: string
+        - name: sort_order
+          in: query
+          description: One of `asc` or `desc`.  Defaults to `desc`
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SearchResponseExample'
+  /api/v2/search/count:
+    get:
+      operationId: CountSearchResults
+      tags:
+        - Search
+      summary: Get  Api V2 Search Count
+      description: >
+        Returns the number of items matching the query rather than the items.
+        The search string works the same as a regular search.
+
+
+        #### Allowed For
+
+
+        - Agents
+      parameters:
+        - name: query
+          in: query
+          description: The search query
+          required: true
+          schema:
+            type: string
+          example: >-
+            https://subdomain.zendesk.com/api/v2/search.json?query=type:ticket
+            status:closed
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchCountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SearchCountResponseExample'
+  /api/v2/search/export:
+    get:
+      operationId: ExportSearchResults
+      tags:
+        - Search
+      summary: Get  Api V2 Search Export
+      description: >
+        Exports a set of results. See [Query syntax](#query-syntax) for the
+        syntax of the `query` parameter.
+
+
+        Use this endpoint for search queries that will return more than 1000
+        results. The result set is ordered only by the `created_at` attribute.
+
+
+        The search only returns results of a single object type. The following
+        object types are supported: ticket, organization, user, or group.
+
+
+        You must specify the type in the `filter[type]` parameter. Searches with
+        type in the query string will result in an error.
+
+
+        #### Allowed For
+
+
+        - Agents
+
+
+        #### Pagination
+
+
+        - Cursor pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 1000 records per page. The number of results shown
+        in a page is determined by the `page[size]` parameter.
+
+
+        **Note**: You may experience a speed reduction or a timeout if you
+        request 1000 results per page and you have many archived tickets in the
+        results. Try reducing the number of results per page. We recommend 100
+        results per page.
+
+
+        The cursor specified by the `after_cursor` property in a response
+        expires after one hour.
+
+
+        For more information on cursor-based pagination, see the following
+        articles:
+
+
+        - [Comparing cursor pagination and offset
+        pagination](/documentation/developer-tools/pagination/comparing-cursor-pagination-and-offset-pagination)
+
+        - [Paginating through lists using cursor
+        pagination](/documentation/developer-tools/pagination/paginating-through-lists-using-cursor-pagination)
+
+
+        #### Limits
+
+
+        This API endpoint is rate-limited to 100 requests per minute per
+        account. The limit also counts towards the global API rate limit.
+
+
+        #### Response Format
+
+
+        | Name                  | Type                 | Comment
+
+        | --------------------- | ---------------------| --------------------
+
+        | links[next]           | string               | URL to the next page of
+        results
+
+        | meta[has_more]        | string               | Boolean indicating if
+        there are more results
+
+        | meta[after_cursor]    | string               | Cursor object returned
+        from the Search Service
+
+        | results               | array                | May consist of tickets,
+        users, groups, or organizations, as specified by the `filter_type`
+        parameter
+
+
+        The response is similar to the response of `GET /api/v2/search.json?`,
+        with a few changes:
+
+
+        * `links` - Has the following nested properties: `prev` and `next`.
+        These replace the `next_page` and `prev_page` links. The `prev` property
+        is always null because backward pagination is not supported. The `next`
+        property may include an auto-generated link to the next page of results.
+
+        * `meta` - Has the following nested properties: `has_more` and
+        `after_cursor`. The `has_more` property indicates whether the next page
+        has more results. The `after_cursor` property is the cursor used to
+        paginate to the next page. It expires after one hour.
+
+
+        There's no `count` property.
+      parameters:
+        - name: query
+          in: query
+          description: >-
+            The search query. See [Query basics](#query-basics) above. For
+            details on the query syntax, see the [Zendesk Support search
+            reference](https://support.zendesk.com/hc/en-us/articles/203663226)
+          required: true
+          schema:
+            type: string
+          example: >-
+            https://subdomain.zendesk.com/api/v2/search.json?query=type:ticket
+            status:closed&sort_by=status&sort_order=desc
+        - name: page[size]
+          in: query
+          description: The number of results shown in a page.
+          schema:
+            type: integer
+        - name: filter[type]
+          in: query
+          description: >-
+            The object type returned by the export query. Can be `ticket`,
+            `organization`, `user`, or `group`.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchExportResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SearchExportResponseExample'
+  /api/v2/triggers/search:
+    parameters:
+      - $ref: '#/components/parameters/TriggerSearchQuery'
+      - $ref: '#/components/parameters/TriggerSearchFilter'
+      - $ref: '#/components/parameters/TriggerActive'
+      - $ref: '#/components/parameters/TriggerSort'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+      - $ref: '#/components/parameters/TriggerInclude'
+    get:
+      operationId: SearchTriggers
+      tags:
+        - Triggers
+      summary: Get  Api V2 Triggers Search
+      description: >
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Sideloads
+
+
+        The following sideloads are supported. For more information, see
+        [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).
+
+
+        | Name             | Will sideload
+
+        | ---------------- | -------------
+
+        | app_installation | The app installation that requires each ticket
+        trigger, if present
+
+        | permissions      | The permissions for each ticket trigger
+
+        | usage_1h         | The number of times each ticket trigger has been
+        used in the past hour
+
+        | usage_24h        | The number of times each ticket trigger has been
+        used in the past day
+
+        | usage_7d         | The number of times each ticket trigger has been
+        used in the past week
+
+        | usage_30d        | The number of times each ticket trigger has been
+        used in the past thirty days
+
+
+        #### Filter
+
+
+        Use the `filter` query parameter to filter a ticket trigger search by
+        one or more attributes. For example, the following `filter` argument
+        filters ticket triggers by the `description` attribute:
+
+
+        ```json
+
+        {
+          "json": {
+            "description": "Close a ticket"
+          }
+        }
+
+        ```
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TriggersSearchResponseExample'
+  /api/v2/users/search:
+    get:
+      operationId: SearchUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Users Search
+      description: >
+        Returns an array of users who meet the search criteria.
+
+
+        Returns up to 100 records per page to a maximum of 10,000 records per
+        query. See [Using offset
+        pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: query
+          in: query
+          description: >
+            The `query` parameter supports the Zendesk search syntax for more
+            advanced
+
+            user searches. It can specify a partial or full value of any
+
+            user property, including name, email address, notes, or phone.
+            Example:
+
+            `query="jdoe"`.
+
+            See the [Search
+            API](/api-reference/ticketing/ticket-management/search/).
+          schema:
+            type: string
+          example: jdoe
+        - name: external_id
+          in: query
+          description: >
+            The `external_id` parameter does not support the search syntax. It
+            only accepts ids.
+          schema:
+            type: string
+          example: abc124
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SearchUsersResponseExample'
+  /api/v2/views/search:
+    get:
+      operationId: SearchViews
+      tags:
+        - Views
+      summary: Get  Api V2 Views Search
+      description: >
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Sideloads
+
+
+        The following sideloads are supported. For more information, see
+        [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).
+
+
+        | Name             | Will sideload
+
+        | ---------------- | -------------
+
+        | app_installation | The app installation that requires each view, if
+        present
+
+        | permissions      | The permissions for each view
+      parameters:
+        - name: query
+          in: query
+          description: Query string used to find all views with matching title
+          required: true
+          schema:
+            type: string
+          example: sales&group_id=25789188
+        - name: access
+          in: query
+          description: Filter views by access. May be "personal", "shared", or "account"
+          schema:
+            type: string
+        - name: active
+          in: query
+          description: Filter by active views if true or inactive views if false
+          schema:
+            type: boolean
+        - name: group_id
+          in: query
+          description: Filter views by group
+          schema:
+            type: integer
+        - name: sort_by
+          in: query
+          description: >-
+            Possible values are "alphabetical", "created_at", "updated_at", and
+            "position". If unspecified, the views are sorted by relevance
+          schema:
+            type: string
+        - name: sort_order
+          in: query
+          description: >-
+            One of "asc" or "desc". Defaults to "asc" for alphabetical and
+            position sort, "desc" for all others
+          schema:
+            type: string
+        - name: include
+          in: query
+          description: A sideload to include in the response. See [Sideloads](#sideloads-3)
+          schema:
+            type: string
+          example: permissions
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ViewsResponseExample'
+components:
+  schemas:
+    ApprovalRequestsSearchResponse:
+      title: ApprovalRequestsSearchResponse
+      type: object
+      properties:
+        after_cursor:
+          type: string
+          description: Cursor for the next page of results
+          nullable: true
+        after_url:
+          type: string
+          description: URL for the next page of results
+          nullable: true
+        approval_requests:
+          type: array
+          items:
+            type: object
+            properties:
+              approval_workflow_instance_id:
+                type: string
+                description: Unique identifier for the approval workflow instance
+              created_at:
+                type: string
+                format: date-time
+                description: The time the approval request was created was created
+                readOnly: true
+              created_by_name:
+                type: string
+                description: Name of the user that created the approval request
+              id:
+                type: string
+                description: Unique identifier for the approval request
+              message:
+                type: string
+                description: Details for the approval request
+              requester_name:
+                type: string
+                description: >-
+                  Name of the user that can make a decision on the approval
+                  request
+              status:
+                type: string
+                description: Current status of the approval request
+              subject:
+                type: string
+                description: Subject for the approval request
+        before_cursor:
+          type: string
+          description: Cursor for the previous page of results
+          nullable: true
+        before_url:
+          type: string
+          description: URL for the previous page of results
+          nullable: true
+    AutomationsResponse:
+      type: object
+      properties:
+        automations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutomationObject'
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+    CustomObjectRecordsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The number of results returned for the current request
+          readOnly: true
+        custom_object_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomObjectRecord'
+        links:
+          type: object
+          properties:
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+          required:
+            - prev
+            - next
+        meta:
+          type: object
+          properties:
+            after_cursor:
+              type: string
+              nullable: true
+            before_cursor:
+              type: string
+              nullable: true
+            has_more:
+              type: boolean
+          required:
+            - has_more
+            - after_cursor
+            - before_cursor
+    ObjectTriggersResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectTriggerObject'
+    MacrosResponse:
+      type: object
+      allOf:
+        - type: object
+          properties:
+            macros:
+              type: array
+              items:
+                $ref: '#/components/schemas/MacroObject'
+        - $ref: '#/components/schemas/OffsetPaginationObject'
+    OrganizationsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationObject'
+        previous_page:
+          type: string
+          nullable: true
+    RequestsResponse:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestObject'
+    SearchResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: >-
+            The number of resources returned by the query corresponding to this
+            page of results in the paginated response
+          readOnly: true
+        facets:
+          type: string
+          description: The facets corresponding to the search query
+          nullable: true
+          readOnly: true
+        next_page:
+          type: string
+          description: URL to the next page of results
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: URL to the previous page of results
+          nullable: true
+          readOnly: true
+        results:
+          type: array
+          description: >-
+            May consist of tickets, users, groups, or organizations, as
+            specified by the `result_type` property in each result object
+          items:
+            $ref: '#/components/schemas/SearchResultObject'
+          readOnly: true
+      example:
+        count: 1
+        facets: null
+        next_page: null
+        previous_page: null
+        results:
+          - created_at: '2018-04-06T03:17:05Z'
+            default: false
+            deleted: false
+            description: ''
+            id: 1835972
+            name: Ragtail
+            result_type: group
+            updated_at: '2018-04-06T03:17:05Z'
+            url: https://example.zendesk.com/api/v2/groups/1835972.json
+    SearchCountResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+    SearchExportResponse:
+      type: object
+      properties:
+        facets:
+          type: string
+          description: The facets corresponding to the search query
+          nullable: true
+          readOnly: true
+        links:
+          type: object
+          description: >-
+            The links to the previous and next entries via the cursor ids in the
+            metadata.
+          properties:
+            next:
+              type: string
+              description: The url to the next entry via the cursor.
+              nullable: true
+              readOnly: true
+            prev:
+              type: string
+              description: The url to the previous entry via the cursor.
+              nullable: true
+              readOnly: true
+        meta:
+          type: object
+          description: Metadata for the export query response.
+          properties:
+            after_cursor:
+              type: string
+              description: The cursor id for the next object.
+              nullable: true
+              readOnly: true
+            before_cursor:
+              type: string
+              description: The cursor id for the previous object.
+              nullable: true
+              readOnly: true
+            has_more:
+              type: boolean
+              description: Whether there are more items yet to be returned by the cursor.
+              readOnly: true
+        results:
+          type: array
+          description: >-
+            May consist of tickets, users, groups, or organizations, as
+            specified by the `result_type` property in each result object
+          items:
+            $ref: '#/components/schemas/SearchResultObject'
+          readOnly: true
+      example:
+        facets: null
+        links:
+          next: >-
+            https://example.zendesk.com/api/v2/search/export.json?filter%5Btype%5D=ticket&page%5Bafter%5D=eyJmaWVsZCI6ImNyZWF0ZWRfYXQiLCJkZXNjIjp0cnVlLCJ0aWVCcmVha0ZpZWxkIjoiaWQiLCJ0aWVCcmVha0Rlc2MiOmZhbHNlLCJzb3J0VmFsdWVzIjpudWxsLCJleHBvcnRlZFRodXNGYXIiOjAsInNlc3Npb25TdGFydCI6MTYwNzAzOTI1Mzk4NSwiY3JlYXRlZEF0IjoxNjA3MDM5MjUzOTg1LCJzYWx0ZWRSZXF1ZXN0SGFzaCI6LTQ5ODM0ODc3LCJzYWx0ZWRDdXJzb3JIYXNoIjotMjQwMzQ4MjgwfQ%3D%3D&page%5Bsize%5D=100&query=hello%26page%5Bsize%5D%3D100%26filter%5Btype%5D%3Dticket
+          prev: null
+        meta:
+          after_cursor: >-
+            eyJmaWVsZCI6ImNyZWF0ZWRfYXQiLCJkZXNjIjp0cnVlLCJ0aWVCcmVha0ZpZWxkIjoiaWQiLCJ0aWVCcmVha0Rlc2MiOmZhbHNlLCJzb3J0VmFsdWVzIjpudWxsLCJleHBvcnRlZFRodXNGYXIiOjAsInNlc3Npb25TdGFydCI6MTYwNzAzOTI1Mzk4NSwiY3JlYXRlZEF0IjoxNjA3MDM5MjUzOTg1LCJzYWx0ZWRSZXF1ZXN0SGFzaCI6LTQ5ODM0ODc3LCJzYWx0ZWRDdXJzb3JIYXNoIjotMjQwMzQ4MjgwfQ==
+          before_cursor: null
+          has_more: true
+        results: []
+    TriggersResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TriggerObject'
+    UsersResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserObject'
+    ViewsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+        views:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewObject'

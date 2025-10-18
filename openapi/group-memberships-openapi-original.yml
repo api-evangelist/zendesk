@@ -1,0 +1,257 @@
+openapi: 3.1.0
+info:
+  title: Group Memberships
+  description: Needs a description.
+paths:
+  /api/v2/group_memberships:
+    get:
+      operationId: ListGroupMemberships
+      tags:
+        - Group Memberships
+      summary: Get  Api V2 Group_memberships
+      description: |
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For:
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/GroupId'
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMembershipsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupMembershipsResponseExample'
+    post:
+      operationId: CreateGroupMembership
+      tags:
+        - Group Memberships
+      summary: Post  Api V2 Group_memberships
+      description: >
+        Assigns an agent to a given group.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage group
+        memberships (Enterprise only)
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMembershipResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupMembershipResponseExample'
+  /api/v2/group_memberships/{group_membership_id}:
+    parameters:
+      - $ref: '#/components/parameters/GroupMembershipId'
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: ShowGroupMembershipById
+      tags:
+        - Group Memberships
+      summary: Get  Api V2 Group_memberships Group_membership_id
+      description: |
+        The 'id' is the group membership id, not a group id.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMembershipResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupMembershipResponseExample'
+    delete:
+      operationId: DeleteGroupMembership
+      tags:
+        - Group Memberships
+      summary: Delete  Api V2 Group_memberships Group_membership_id
+      description: >
+        Immediately removes a user from a group and schedules a job to unassign
+        all working tickets that are assigned to the given user and group
+        combination.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage group
+        memberships (Enterprise only)
+      responses:
+        '204':
+          description: No content response
+  /api/v2/group_memberships/assignable:
+    get:
+      operationId: ListAssignableGroupMemberships
+      tags:
+        - Group Memberships
+      summary: Get  Api V2 Group_memberships Assignable
+      description: |
+        Returns a maximum of 100 group memberships per page.
+
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For:
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMembershipsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupMembershipsResponseExample'
+  /api/v2/group_memberships/create_many:
+    post:
+      operationId: GroupMembershipBulkCreate
+      tags:
+        - Group Memberships
+      summary: Post  Api V2 Group_memberships Create_many
+      description: >
+        Assigns up to 100 agents to given groups.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage group
+        memberships (Enterprise only)
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/group_memberships/destroy_many:
+    delete:
+      operationId: GroupMembershipBulkDelete
+      tags:
+        - Group Memberships
+      summary: Delete  Api V2 Group_memberships Destroy_many
+      description: >
+        Immediately removes users from groups and schedules a job to unassign
+        all working tickets that are assigned to the given user and group
+        combinations.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage group
+        memberships (Enterprise only)
+      parameters:
+        - name: ids
+          in: query
+          description: Id of the group memberships to delete. Comma separated
+          schema:
+            type: string
+          example: 1,2,3
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusBulkDeleteResponseExample'
+  /api/v2/users/{user_id}/group_memberships/{group_membership_id}/make_default:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/GroupMembershipId'
+    put:
+      operationId: GroupMembershipSetDefault
+      tags:
+        - Group Memberships
+      summary: >-
+        Put  Api V2 Users User_id Group_memberships Group_membership_id
+        Make_default
+      description: |
+        #### Allowed For:
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMembershipsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupMembershipsResponseExample'
+components:
+  schemas:
+    GroupMembershipsResponse:
+      type: object
+      properties:
+        group_memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMembershipObject'
+    GroupMembershipResponse:
+      type: object
+      properties:
+        group_membership:
+          $ref: '#/components/schemas/GroupMembershipObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'

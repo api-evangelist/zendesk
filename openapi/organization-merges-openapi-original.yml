@@ -1,0 +1,70 @@
+openapi: 3.1.0
+info:
+  title: Organization Merges
+  description: Needs a description.
+paths:
+  /api/v2/organization_merges/{organization_merge_id}:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationMergeId'
+    get:
+      operationId: ShowOrganizationMerge
+      tags:
+        - Organizations
+      summary: Get  Api V2 Organization_merges Organization_merge_id
+      description: >
+        Retrieves the details of a specific organization merge operation. This
+        endpoint is useful for obtaining the status and outcome of a merge that
+        was previously initiated. It provides information such as the winning
+        and losing organization IDs, the status of the merge, and the associated
+        URLs.
+
+
+        This endpoint can be used to determine if a merge is still in progress,
+        has completed successfully, or has encountered an error.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeResponseExample'
+components:
+  schemas:
+    OrganizationMergeResponse:
+      type: object
+      properties:
+        organization_merge:
+          type: object
+          properties:
+            id:
+              type: string
+              format: string
+            loser_id:
+              type: integer
+            status:
+              type: string
+              enum:
+                - new
+                - in_progress
+                - error
+                - complete
+            url:
+              type: string
+              format: string
+            winner_id:
+              type: integer
+          required:
+            - id
+            - url
+            - loser_id
+            - winner_id
+            - status

@@ -1,0 +1,165 @@
+openapi: 3.1.0
+info:
+  title: Satisfaction Ratings
+  description: Needs a description.
+paths:
+  /api/v2/satisfaction_ratings:
+    get:
+      operationId: ListSatisfactionRatings
+      tags:
+        - Satisfaction Ratings
+      summary: Get  Api V2 Satisfaction_ratings
+      description: >
+        #### Allowed For
+
+        * Admins
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        #### Filters
+
+
+        | Parameter  | Value
+
+        | ---------- | -----
+
+        | score      | offered, unoffered, received, received\_with\_comment,
+        received\_without\_comment,<br/>good, good\_with\_comment,
+        good\_without\_comment,<br/>bad, bad\_with\_comment,
+        bad\_without\_comment
+
+        | start_time | Time of the oldest satisfaction rating, as a [Unix epoch
+        time](https://www.epochconverter.com/)
+
+        | end_time   | Time of the most recent satisfaction rating, as a [Unix
+        epoch time](https://www.epochconverter.com/)
+
+
+        If you specify an unqualified score such as `good`, the results include
+        all the records with and without comments.
+
+
+        Examples:
+
+
+        * `/api/v2/satisfaction_ratings.json?score=bad`
+
+        * `/api/v2/satisfaction_ratings.json?score=bad&start_time=1498151194`
+
+        *
+        `/api/v2/satisfaction_ratings.json?start_time=1340384793&end_time=1371920793`
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SatisfactionRatingsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SatisfactionRatingsResponseExample'
+  /api/v2/satisfaction_ratings/{satisfaction_rating_id}:
+    get:
+      operationId: ShowSatisfactionRating
+      tags:
+        - Satisfaction Ratings
+      summary: Get  Api V2 Satisfaction_ratings Satisfaction_rating_id
+      description: |
+        Returns a specific satisfaction rating. You can get the id from
+        the [List Satisfaction Ratings](#list-satisfaction-ratings) endpoint.
+
+        #### Allowed For
+
+         * Admins
+      parameters:
+        - name: satisfaction_rating_id
+          in: path
+          description: The id of the satisfaction rating to retrieve
+          required: true
+          schema:
+            type: integer
+          example: 35436
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SatisfactionRatingResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SatisfactionRatingResponseExample'
+  /api/v2/satisfaction_ratings/count:
+    get:
+      operationId: CountSatisfactionRatings
+      tags:
+        - Satisfaction Ratings
+      summary: Get  Api V2 Satisfaction_ratings Count
+      description: >-
+        Returns an approximate count of satisfaction ratings in the account. If
+        the count exceeds 100,000, the count will return a cached result. This
+        cached result will update every 24 hours.
+
+
+        The `count[refreshed_at]` property is a timestamp that indicates when
+        the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, `count[refreshed_at]` may
+        occasionally be null.
+
+        This indicates that the count is being updated in the background, and
+        `count[value]` is limited to 100,000 until the update is complete.
+
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Count of satisfaction ratings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SatisfactionRatingsCountResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SatisfactionRatingsCountResponseExample
+components:
+  schemas:
+    SatisfactionRatingsResponse:
+      type: object
+      properties:
+        satisfaction_ratings:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionRatingObject'
+    SatisfactionRatingResponse:
+      type: object
+      properties:
+        satisfaction_rating:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionRatingObject'
+    SatisfactionRatingsCountResponse:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: date-time
+            value:
+              type: integer

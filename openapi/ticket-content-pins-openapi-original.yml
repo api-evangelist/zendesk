@@ -1,0 +1,253 @@
+openapi: 3.1.0
+info:
+  title: Ticket Content Pins
+  description: Needs a description.
+paths:
+  /api/v2/ticket_content_pins:
+    get:
+      operationId: ListTicketContentPins
+      tags:
+        - Ticket Content Pins
+      summary: Get  Api V2 Ticket_content_pins
+      description: >
+        Lists the content pins for a specific ticket. Content pins are used to
+        pin related content such as articles to a ticket for quick access. This
+        endpoint returns the content pins associated with the specified ticket
+        id.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: ticket_id
+          in: query
+          description: The id of the ticket for which to list content pins
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    description: Total number of content pins for the ticket.
+                  ticket_content_pins:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TicketContentPin'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketContentPinsExample'
+    post:
+      operationId: CreateTicketContentPin
+      tags:
+        - Ticket Content Pins
+      summary: Post  Api V2 Ticket_content_pins
+      description: >
+        Creates a new content pin for a specific ticket. Content pins allow you
+        to link to articles, community posts, or external content for easy
+        reference.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+      requestBody:
+        description: >
+          Creates a new content pin for a specific ticket. The content pin can
+          link to articles, topics, or other relevant content.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ticket_content_pin:
+                  type: object
+                  properties:
+                    content_id:
+                      type: string
+                      description: The id of the content to pin
+                    content_type:
+                      type: string
+                      description: The type of content being pinned.
+                    locale:
+                      type: string
+                      description: >-
+                        The locale for the content pin. This is required only
+                        for articles.
+                    ticket_id:
+                      type: string
+                      description: >-
+                        The id of the ticket to which the content pin will be
+                        added
+                  required:
+                    - ticket_id
+                    - content_id
+                    - content_type
+            examples:
+              default:
+                value:
+                  ticket_content_pin:
+                    content_id: 01HFS51MMTVW7CMVEV5V51NYV5
+                    content_type: article
+                    locale: en-US
+                    ticket_id: '12345'
+      responses:
+        '201':
+          description: Content pin created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketContentPin'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketContentPinExample'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Detailed message explaining the error.
+                      title:
+                        type: string
+                        description: Error title indicating the nature of the bad request.
+              examples:
+                default:
+                  value:
+                    error:
+                      message: ticket_id must be a string
+                      title: Invalid attribute
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    type: string
+                    description: Detailed description of the conflict.
+                  error:
+                    type: string
+                    description: Error message indicating a conflict.
+              examples:
+                default:
+                  value:
+                    description: >-
+                      A conflicting operation is in progress, please try again
+                      later
+                    error: ContentPinCreationConflict
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    type: string
+                    description: Detailed description of the error.
+                  error:
+                    type: string
+                    description: Error message indicating why the request failed.
+              examples:
+                default:
+                  value:
+                    description: >-
+                      The content with ID 12345 is already pinned to this
+                      ticket.
+                    error: ContentAlreadyPinned
+  /api/v2/ticket_content_pins/{content_pin_id}:
+    delete:
+      operationId: DeleteTicketContentPin
+      tags:
+        - Ticket Content Pins
+      summary: Delete  Api V2 Ticket_content_pins Content_pin_id
+      description: |
+        Deletes a specific content pin from a ticket.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - name: content_pin_id
+          in: path
+          description: The id of the content pin to delete
+          required: true
+          schema:
+            type: string
+          example: 01HFS51MMTVW7CMVEV5V51NYV5
+      responses:
+        '200':
+          description: Content pin deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketContentPin'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketContentPinExample'
+        '404':
+          description: Content pin not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    type: string
+                  error:
+                    type: string
+              examples:
+                default:
+                  value:
+                    description: Not found
+                    error: RecordNotFound
+components:
+  schemas:
+    TicketContentPin:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: The ID of the account that owns the content pin.
+        content_id:
+          type: string
+          description: The ID of the content that is pinned.
+        content_type:
+          type: string
+          description: 'The type of content that is pinned. Example: external_content'
+        created_at:
+          type: string
+          format: date-time
+          description: The timestamp when the content pin was created.
+        id:
+          type: string
+          description: The unique identifier for the content pin.
+        locale:
+          type: string
+          description: The locale of the content pin.
+          nullable: true
+        ticket_id:
+          type: string
+          description: The ID of the ticket associated with the content pin.
+        url:
+          type: string
+          description: The URL to access the pinned content.

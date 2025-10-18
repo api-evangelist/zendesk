@@ -1,0 +1,181 @@
+openapi: 3.1.0
+info:
+  title: Chat Redactions
+  description: Needs a description.
+paths:
+  /api/v2/chat_redactions/{ticket_id}:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    put:
+      operationId: RedactChatComment
+      tags:
+        - Ticket Comments
+      summary: Put  Api V2 Chat_redactions Ticket_id
+      description: >
+        Permanently removes words or strings from a chat ticket's comment. 
+
+
+        Wrap `<redact>` tags around the content in the chat comment you want
+        redacted. Example: 
+
+
+        ```json
+
+        {
+          "text": "My ID number is <redact>847564</redact>!"
+        }
+
+        ```
+
+
+        The characters contained in the tag will be replaced by the ▇ symbol.
+
+
+        **Note**: This does not work on active chats. For chat tickets that
+        predate March 2020, consider using [Redact Ticket Comment In Agent
+        Workspace](#redact-ticket-comment-in-agent-workspace).
+
+
+        #### Allowed For
+
+
+        - Agents
+
+
+        [Agent
+        Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473)
+        must enabled for the account. Deleting tickets must be enabled for
+        agents.
+
+
+        #### Request Body Properties
+
+
+        | Name                     | Type    | Required |
+        Description                                                                                                                                                                                                                                      
+        |
+
+        | ------------------------ | ------- | -------- |
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        |
+
+        | chat_id                  | string  | true     | The `chat_id` in the
+        `ChatStartedEvent` event in the ticket audit. See [Ticket
+        Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                           
+        |
+
+        | chat_index               | integer | false    | The `chat_index` in
+        the `ChatMessage` event in the ticket audit. See [Ticket
+        Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if
+        `message_id` is not
+        used                                                                      
+        |
+
+        | message_id               | string  | false    | The `message_id` of
+        the `ChatMessage` event in the ticket audit that is part of a
+        `ChatStartedEvent` history. Used when redacting a ChatMessage that is
+        part of a conversation history. Mandatory if `chat_index` is not
+        used                     |
+
+        | text                     | string  | true     | The `message` in the
+        `ChatMessage` event in the ticket audit. See [Ticket
+        Audits](/api-reference/ticketing/tickets/ticket_audits).  Wrap `message`
+        with `<redact>`
+        tags                                                                          
+        |
+
+
+        To get the required body properties, make a request to the [Ticket
+        Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example
+        response:
+
+
+        ```http
+
+        Status 200 OK
+
+        {
+          "audits": [
+            "events": [
+              {
+                "id": 1932802680168,
+                "type": "ChatStartedEvent",
+                "value": {
+                  "visitor_id": "10502823-16EkM3T6VNq7KMd",
+                  "chat_id": "2109.10502823.Sjuj2YrBpXwei",
+                  "history": [
+                    {
+                      "chat_index": 0,
+                      "type": "ChatMessage",
+                      "message": "My ID number is 847564!"
+                    }
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+
+        ```
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketChatCommentRedactionResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/TicketChatCommentRedactionResponseExample
+components:
+  schemas:
+    TicketChatCommentRedactionResponse:
+      type: object
+      properties:
+        chat_event:
+          type: object
+          description: Chat event object
+          properties:
+            id:
+              type: integer
+              description: Id assigned to the chat event object
+              readOnly: true
+            type:
+              type: string
+              description: Type of chat event
+              readOnly: true
+            value:
+              type: object
+              description: The value of the chat event object
+              properties:
+                chat_id:
+                  type: string
+                  description: Id of the chat session
+                  readOnly: true
+                history:
+                  type: array
+                  description: Chat events within the chat session
+                  items:
+                    type: object
+                    additionalProperties: true
+                visitor_id:
+                  type: string
+                  description: Id assigned to the visitor
+                  readOnly: true
+              readOnly: true
+          readOnly: true
+      example:
+        chat_event:
+          id: 1932802680168
+          type: ChatStartedEvent
+          value:
+            chat_id: 2109.10502823.Sjuj2YrBpXwei
+            history:
+              - actor_id: 1900448983828
+                actor_name: Visitor 36044085
+                actor_type: end-user
+                chat_index: 0
+                timestamp: 1632470783218
+                type: ChatJoin
+            visitor_id: 10502823-16EkM3T6VNq7KMd

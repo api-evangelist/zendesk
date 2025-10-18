@@ -1,0 +1,179 @@
+openapi: 3.1.0
+info:
+  title: Resource Collections
+  description: Needs a description.
+paths:
+  /api/v2/resource_collections:
+    get:
+      operationId: ListResourceCollections
+      tags:
+        - Resource Collections
+      summary: Get  Api V2 Resource_collections
+      description: |
+        Lists resource collections for the account.
+
+        #### Allowed for
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ResourceCollectionsResponseExample'
+    post:
+      operationId: CreateResourceCollection
+      tags:
+        - Resource Collections
+      summary: Post  Api V2 Resource_collections
+      description: >
+        Creates a resource collection from a provided `payload` object. The
+        `payload` object is specified the same way as the content of a
+        requirements.json file in a Zendesk app. See [Specifying Apps
+        Requirements](/documentation/apps/app-developer-guide/apps_requirements/)
+        in the Zendesk Apps framework docs.
+
+
+        The response includes a [job
+
+        status](/api-reference/ticketing/ticket-management/job_statuses/) for
+        creation of the specified resources.
+
+
+        #### Allowed for
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/ResourceCollectionCreateResponseExample
+  /api/v2/resource_collections/{resource_collection_id}:
+    parameters:
+      - $ref: '#/components/parameters/ResourceCollectionId'
+    get:
+      operationId: RetrieveResourceCollection
+      tags:
+        - Resource Collections
+      summary: Get  Api V2 Resource_collections Resource_collection_id
+      description: |
+        Retrieves details for a specified resource collection.
+
+        #### Allowed for
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ResourceCollectionResponseExample'
+    put:
+      operationId: UpdateResourceCollection
+      tags:
+        - Resource Collections
+      summary: Put  Api V2 Resource_collections Resource_collection_id
+      description: >
+        Updates a resource collection using a provided `payload` object. The
+        `payload` object  is specified the same way as the content of a
+        requirements.json file in a Zendesk app. See [Specifying Apps
+        Requirements](/documentation/apps/app-developer-guide/apps_requirements/)
+        in the Zendesk Apps framework docs.
+
+
+        The response includes a [job
+
+        status](/api-reference/ticketing/ticket-management/job_statuses/) for
+        the resource updates.
+
+
+        #### Allowed for
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/ResourceCollectionUpdateResponseExample
+    delete:
+      operationId: DeleteResourceCollection
+      tags:
+        - Resource Collections
+      summary: Delete  Api V2 Resource_collections Resource_collection_id
+      description: >
+        Deletes a specified resource collection.
+
+
+        The response includes a [job
+
+        status](/api-reference/ticketing/ticket-management/job_statuses/) for
+        deletion of the collection's resources.
+
+
+        #### Allowed for
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/ResourceCollectionDeleteResponseExample
+components:
+  schemas:
+    ResourceCollectionsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+        resource_collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceCollectionObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    ResourceCollectionResponse:
+      type: object
+      properties:
+        resource_collection:
+          $ref: '#/components/schemas/ResourceCollectionObject'

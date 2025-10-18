@@ -1,0 +1,309 @@
+openapi: 3.1.0
+info:
+  title: Tags
+  description: Needs a description.
+paths:
+  /api/v2/autocomplete/tags:
+    parameters:
+      - $ref: '#/components/parameters/TagNameFragment'
+    get:
+      operationId: AutocompleteTags
+      tags:
+        - Tags
+      summary: Get  Api V2 Autocomplete Tags
+      description: >
+        Returns an array of registered and recent tag names that start with the
+        characters specified in the `name` query parameter. You must specify at
+        least 2 characters.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsAutocompleteResponseExample'
+  /api/v2/tags:
+    get:
+      operationId: ListTags
+      tags:
+        - Tags
+      summary: Get  Api V2 Tags
+      description: >
+        Lists up to the 20,000 most popular tags in the last 60 days, in
+        decreasing popularity.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsResponseExample'
+  /api/v2/tags/count:
+    get:
+      operationId: CountTags
+      tags:
+        - Tags
+      summary: Get  Api V2 Tags Count
+      description: >
+        Returns an approximate count of tags. If the count exceeds 100,000, it
+
+        is updated every 24 hours.
+
+
+        The `refreshed_at` property of the `count` object is a timestamp that
+        indicates when
+
+        the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, the `refreshed_at` property in
+        the `count` object may
+
+        occasionally be null. This indicates that the count is being
+
+        updated in the background and the `value` property in the `count` object
+        is limited to
+
+        100,000 until the update is complete.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagCountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagCountResponseExample'
+  /api/v2/tickets/{ticket_id}/tags:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListResourceTags
+      tags:
+        - Tags
+      summary: Get  Api V2 Tickets Ticket_id Tags
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    post:
+      operationId: SetTagsTicket
+      tags:
+        - Tags
+      summary: Post  Api V2 Tickets Ticket_id Tags
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    put:
+      operationId: PutTagsTicket
+      tags:
+        - Tags
+      summary: Put  Api V2 Tickets Ticket_id Tags
+      description: >
+        You can also add tags to multiple tickets with the [Update Many
+
+        Tickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets)
+        endpoint.
+
+
+        #### Safe Update
+
+
+        If the same ticket is updated by multiple API requests at
+
+        the same time, some tags could be lost because of ticket
+
+        update collisions. Include `updated_stamp` and `safe_update`
+
+        properties in the request body to make a safe update.
+
+
+        For `updated_stamp`, retrieve and specify the ticket's
+
+        latest `updated_at` timestamp. The tag update only occurs
+
+        if the `updated_stamp` timestamp matches the ticket's
+
+        actual `updated_at` timestamp at the time of the request.
+
+        If the timestamps don't match (in other words, if the
+
+        ticket was updated since you retrieved the ticket's
+
+        last `updated_at` timestamp), the request returns a
+
+        409 Conflict error.
+
+
+        #### Example
+
+
+        ```js
+
+        {
+          "tags": ["customer"],
+          "updated_stamp":"2019-09-12T21:45:16Z",
+          "safe_update":"true"
+        }
+
+        ```
+
+
+        For details, see [Protecting against ticket update
+        collisions](/api-reference/ticketing/tickets/tickets/#protecting-against-ticket-update-collisions).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    delete:
+      operationId: DeleteTagsTicket
+      tags:
+        - Tags
+      summary: Delete  Api V2 Tickets Ticket_id Tags
+      description: >
+        You can also delete tags from multiple tickets with the
+
+        [Update Many
+        Tickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets)
+        endpoint.
+
+
+        This endpoint supports safe updates. See [Safe
+        Update](/api-reference/ticketing/ticket-management/tags/#safe-update).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsRemoveResponseExample'
+components:
+  schemas:
+    TagsByObjectIdResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          description: An array of strings
+          items:
+            type: string
+      required:
+        - tags
+    TagsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The number of pages
+          readOnly: true
+        next_page:
+          type: string
+          description: The url of the previous page
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: The url of the next page
+          nullable: true
+          readOnly: true
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagListTagObject'
+    TagCountResponse:
+      type: object
+      properties:
+        count:
+          $ref: '#/components/schemas/TagCountObject'

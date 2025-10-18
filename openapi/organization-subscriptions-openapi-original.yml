@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  title: Organization Subscriptions
+  description: Needs a description.
+paths:
+  /api/v2/organization_subscriptions:
+    get:
+      operationId: ListOrganizationSubscriptions
+      tags:
+        - Organization Subscriptions
+      summary: Get  Api V2 Organization_subscriptions
+      description: >-
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For:
+
+
+        * Agents
+
+        * End users
+
+
+        For end users, the response will only list the subscriptions created by
+        the requesting end user.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationSubscriptionsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/OrganizationSubscriptionsResponseExample
+    post:
+      operationId: CreateOrganizationSubscription
+      tags:
+        - Organization Subscriptions
+      summary: Post  Api V2 Organization_subscriptions
+      description: >-
+        #### Allowed For:
+
+
+        * Agents
+
+        * End users
+
+
+        End users can only subscribe to shared organizations in which they're
+        members.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationSubscriptionCreateRequest'
+            examples:
+              default:
+                $ref: >-
+                  #/components/examples/OrganizationSubscriptionCreateRequestExample
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationSubscriptionResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/OrganizationSubscriptionResponseExample
+  /api/v2/organization_subscriptions/{organization_subscription_id}:
+    get:
+      operationId: ShowOrganizationSubscription
+      tags:
+        - Organization Subscriptions
+      summary: Get  Api V2 Organization_subscriptions Organization_subscription_id
+      description: >-
+        #### Allowed For:
+
+
+        * Agents
+
+        * End users
+
+
+        For end users, the response will only list the subscriptions created by
+        the requesting end user.
+      parameters:
+        - $ref: '#/components/parameters/OrganizationSubscriptionId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationSubscriptionResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/OrganizationSubscriptionResponseExample
+    delete:
+      operationId: DeleteOrganizationSubscription
+      tags:
+        - Organization Subscriptions
+      summary: Delete  Api V2 Organization_subscriptions Organization_subscription_id
+      description: |-
+        #### Allowed For:
+
+        * Agents
+        * End users
+      parameters:
+        - $ref: '#/components/parameters/OrganizationSubscriptionId'
+      responses:
+        '204':
+          description: No content
+components:
+  schemas:
+    OrganizationSubscriptionsResponse:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/OffsetPaginationObject'
+        - type: object
+          properties:
+            organization_subscriptions:
+              type: array
+              description: An array of organization subscriptions
+              items:
+                $ref: '#/components/schemas/OrganizationSubscriptionObject'
+    OrganizationSubscriptionResponse:
+      type: object
+      properties:
+        organization_subscription:
+          $ref: '#/components/schemas/OrganizationSubscriptionObject'

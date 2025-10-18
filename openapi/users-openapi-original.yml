@@ -1,0 +1,1910 @@
+openapi: 3.1.0
+info:
+  title: Users
+  description: Needs a description.
+paths:
+  /api/v2/channels/voice/agents/{agent_id}/users/{user_id}/display:
+    post:
+      operationId: OpenUsersProfileInAgentBrowser
+      tags:
+        - Basics
+      summary: Post  Api V2 Channels Voice Agents Agent_id Users User_id Display
+      description: |-
+        Allows you to instruct an agent's browser to open a user's profile.
+
+        When the message is successfully delivered to an agent's browser:
+
+        ```http
+        Status: 200 OK
+        ```
+
+        When `agent_id` or `user_id` is invalid:
+
+        ```http
+        Status: 404 Not Found
+        ```
+
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: empty
+                example: ''
+              example: ''
+        '404':
+          description: When the `agent_id` or `user_id` is invalid
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Invalid attribute
+                example: ''
+              example: ''
+  /api/v2/incremental/users:
+    parameters:
+      - $ref: '#/components/parameters/IncrementalUnixTime'
+      - $ref: '#/components/parameters/IncrementalPage'
+    get:
+      operationId: IncrementalUserExportTime
+      tags:
+        - Incremental Export
+      summary: Get  Api V2 Incremental Users
+      description: >
+        #### Allowed For
+
+         * Admins
+
+        #### Sideloading
+
+
+        See [Users
+        sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeBasedExportIncrementalUsersResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/TimeBasedExportIncrementalUsersResponseExample
+  /api/v2/incremental/users/cursor:
+    parameters:
+      - $ref: '#/components/parameters/IncrementalUnixTime'
+      - $ref: '#/components/parameters/IncrementalCursor'
+      - $ref: '#/components/parameters/IncrementalPage'
+    get:
+      operationId: IncrementalUserExportCursor
+      tags:
+        - Incremental Export
+      summary: Get  Api V2 Incremental Users Cursor
+      description: >
+        #### Allowed For
+
+         * Admins
+
+        #### Sideloading
+
+
+        See [Users
+        sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorBasedExportIncrementalUsersResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CursorBasedExportIncrementalUsersResponseExample
+  /api/v2/users:
+    get:
+      operationId: ListUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Users
+      description: |
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+
+        #### Allowed For
+
+        * Admins, Agents and Light Agents
+      parameters:
+        - $ref: '#/components/parameters/UserRoleFilter'
+        - $ref: '#/components/parameters/UserRolesFilter'
+        - $ref: '#/components/parameters/UserPermissionSetFilter'
+        - $ref: '#/components/parameters/UserExternalIdFilter'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UsersResponseExample'
+    post:
+      operationId: CreateUser
+      tags:
+        - Users
+      summary: Post  Api V2 Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UserRequestExample'
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserCreateResponseExample'
+  /api/v2/users/{user_id}:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: ShowUser
+      tags:
+        - Users
+      summary: Get  Api V2 Users User_id
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserResponseExample'
+    put:
+      operationId: UpdateUser
+      tags:
+        - Users
+      summary: Put  Api V2 Users User_id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UpdateUserRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UpdateUserResponseExample'
+    delete:
+      operationId: DeleteUser
+      tags:
+        - Users
+      summary: Delete  Api V2 Users User_id
+      description: >
+        Deletes the user and associated records from the account.
+
+
+        **Warning**:
+
+
+        * Deleted users are not recoverable.
+
+        * Both agents and administrators can soft delete users in the agent
+        interface in Zendesk Support. Agents with permission can delete end
+        users, while administrators can delete all users except the account
+        owner.
+
+
+        To comply with GDPR, a further step is needed. See [Permanently Delete
+        User](/api-reference/ticketing/users/users/#permanently-delete-user).
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage end users or team members
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DeleteUserResponseExample'
+  /api/v2/users/{user_id}/compliance_deletion_statuses:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: ShowUserComplianceDeletionStatuses
+      tags:
+        - Users
+      summary: Get  Api V2 Users User_id Compliance_deletion_statuses
+      description: >
+        Returns the GDPR status for each user per area of compliance. A Zendesk
+        area of compliance is typically a product like "support/explore" but can
+        be more fine-grained for areas within the product lines.
+
+
+        If the user is not in the account, the request returns a 404 status.
+
+
+        ```http
+
+        Status: 404
+
+        {
+          "error":"RecordNotFound",
+          "description":"Not found"
+        }
+
+        ```
+
+
+        #### Allowed For
+
+
+        * Agents, with restrictions
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      parameters:
+        - name: application
+          in: query
+          description: Area of compliance
+          schema:
+            type: string
+          example: chat
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceDeletionStatusesResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/ComplianceDeletionStatusesResponseExample
+  /api/v2/users/{user_id}/group_memberships/{group_membership_id}/make_default:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/GroupMembershipId'
+    put:
+      operationId: GroupMembershipSetDefault
+      tags:
+        - Group Memberships
+      summary: >-
+        Put  Api V2 Users User_id Group_memberships Group_membership_id
+        Make_default
+      description: |
+        #### Allowed For:
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMembershipsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupMembershipsResponseExample'
+  /api/v2/users/{user_id}/identities:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: type[]
+        in: query
+        description: >-
+          Filters results by one or more identity types using the format
+          `?type[]={type}&type[]={type}`
+        explode: true
+        schema:
+          type: string
+          enum:
+            - email
+            - facebook
+            - phone_number
+            - sdk
+            - twitter
+            - messaging
+            - microsoft
+    get:
+      operationId: ListUserIdentities
+      tags:
+        - User Identities
+      summary: Get  Api V2 Users User_id Identities
+      description: >
+        Returns a list of identities for the given user.
+
+
+        Use the first endpoint if authenticating as an agent. Use the second if
+        authenticating as an end user. End users can only list email and phone
+        number identities.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page for cursor pagination.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        * Verified end users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserIdentitiesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserIdentitiesResponseExample'
+    post:
+      operationId: CreateUserIdentity
+      tags:
+        - User Identities
+      summary: Post  Api V2 Users User_id Identities
+      description: >
+        Adds an identity to a user's profile. An agent can add an identity to
+        any user profile.
+
+
+        Supported identity types:
+
+
+        | Type             | Example |
+
+        | ---------------- | ------- |
+
+        | email            | `{ "type" : "email", "value" :
+        "someone@example.com" }` |
+
+        | twitter          | `{ "type" : "twitter", "value" : "screen_name" }` |
+
+        | facebook         | `{ "type" : "facebook", "value" : "855769377321" }`
+        |
+
+        | google           | `{ "type" : "google", "value" : "example@gmail.com"
+        }` |
+
+        | agent_forwarding | `{ "type" : "agent_forwarding", "value" : "+1
+        555-123-4567" }` |
+
+        | phone_number     | `{ "type" : "phone_number", "value" : "+1
+        555-123-4567" }` |
+
+
+        To create an identity without sending out a verification email, include
+        a `"skip_verify_email": true` property. The `"skip_verify_email": true`
+        property does not apply when updating your own agent profile. A welcome
+        or verification email will be sent regardless of this setting.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserIdentityResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserIdentityCreateResponseExample'
+  /api/v2/users/{user_id}/identities/{user_identity_id}:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/UserIdentityId'
+    get:
+      operationId: ShowUserIdentity
+      tags:
+        - User Identities
+      summary: Get  Api V2 Users User_id Identities User_identity_id
+      description: >
+        Shows the identity with the given id for a given user.
+
+
+        Use the first endpoint if authenticating as an agent. Use the second if
+        authenticating as an end user. End users can only view email or phone
+        number identity.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        * Verified end users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserIdentityResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserIdentityResponseExample'
+    put:
+      operationId: UpdateUserIdentity
+      tags:
+        - User Identities
+      summary: Put  Api V2 Users User_id Identities User_identity_id
+      description: >
+        This endpoint allows you to:
+
+
+        * Set the specified identity as verified (by setting `verified` to
+        "true" or `verification_method` to "low")
+
+        * Unverify a verified identity (by setting `verified` to "false" or
+        `verification_method` to "none")
+
+        * Update the `value` property of the specified identity
+
+
+        You can't change an identity's `primary` attribute with this endpoint.
+        You must use the [Make Identity Primary](#make-identity-primary)
+        endpoint instead.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserIdentityResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserIdentityUpdateResponseExample'
+    delete:
+      operationId: DeleteUserIdentity
+      tags:
+        - User Identities
+      summary: Delete  Api V2 Users User_id Identities User_identity_id
+      description: >
+        Deletes the identity for a given user.
+
+        In certain cases, a phone number associated with an identity is still
+        visible on the user profile after the identity has been deleted via API.
+        You can remove the phone number from the user profile by updating the
+        `phone` attribute of the user to an empty string. See [Update User via
+        API](/api-reference/ticketing/users/users/#update-user) for details and
+        examples.
+
+
+        Deleting identities with type `messaging` could break messaging
+        functionality. For example, an agent may stop being able to send
+        messages via the messaging channel.
+
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/users/{user_id}/identities/{user_identity_id}/make_primary:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/UserIdentityId'
+    put:
+      operationId: MakeUserIdentityPrimary
+      tags:
+        - User Identities
+      summary: Put  Api V2 Users User_id Identities User_identity_id Make_primary
+      description: >
+        Sets the specified identity as primary. To change other attributes, use
+        the [Update  Identity](#update-identity) endpoint. This is a
+        collection-level operation and the correct behavior for an API client is
+        to subsequently reload the entire collection.
+
+
+        The first endpoint is the preferred option if authenticating as an
+        agent. If authenticating as an end user, you can only use the second
+        endpoint. In addition, an end user can only make an email identity
+        primary if the email is verified.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        * Verified end users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserIdentitiesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserIdentitiesResponseExample'
+  /api/v2/users/{user_id}/identities/{user_identity_id}/request_verification:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/UserIdentityId'
+    put:
+      operationId: RequestUserVerfication
+      tags:
+        - User Identities
+      summary: >-
+        Put  Api V2 Users User_id Identities User_identity_id
+        Request_verification
+      description: >
+        Sends the user a verification email with a link to verify ownership of
+        the email address.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/users/{user_id}/identities/{user_identity_id}/verify:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/UserIdentityId'
+    put:
+      operationId: VerifyUserIdentity
+      tags:
+        - User Identities
+      summary: Put  Api V2 Users User_id Identities User_identity_id Verify
+      description: >
+        Sets the specified identity as verified.
+
+
+        For security reasons, you can't use this endpoint to update the email
+        identity of the account owner. To verify the person's identity, send a
+        verification email. See [Verifying the account owner's email
+        address](https://support.zendesk.com/hc/en-us/articles/4408828975130) in
+        Zendesk help.
+
+
+        If [automatic mapping of users to organizations using the email
+        domain](https://support.zendesk.com/hc/en-us/articles/4408882246298-Creating-organizations#topic_nxl_vdt_bc)
+        is enabled and the user is not already a member of an organization, they
+        will be automatically added to the organization associated with the
+        email domain once the email identity is verified.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserIdentityResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserIdentityResponseExample'
+  /api/v2/users/{user_id}/merge:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    put:
+      operationId: MergeEndUsers
+      tags:
+        - Users
+      summary: Put  Api V2 Users User_id Merge
+      description: >
+        Merges the end user specified in the path parameter into the existing
+        end user specified in the request body.
+
+
+        Any two end users can be merged with the exception of end users created
+        by sharing agreements.
+
+
+        To be eligible for merging, the user in the path parameter must be a
+        requester on 10,000 or fewer tickets. Otherwise, the merge will be
+        blocked.
+
+
+        Agents, admins, and users with more than 10,000 requested tickets cannot
+        be merged.
+
+
+        For more information about how user data is merged, see [Merging a
+        user's duplicate
+        account](https://support.zendesk.com/hc/en-us/articles/4408887695898) in
+        Zendesk help.
+
+
+        #### Allowed For
+
+
+        * Admins or agents with permission to edit end users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/MergeEndUsersRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserResponseExample'
+  /api/v2/users/{user_id}/organization_memberships/{organization_membership_id}/make_default:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/OrganizationMembershipId'
+    put:
+      operationId: SetOrganizationMembershipAsDefault
+      tags:
+        - Organization Memberships
+      summary: >-
+        Put  Api V2 Users User_id Organization_memberships
+        Organization_membership_id Make_default
+      description: >
+        Sets the default organization membership of a given user.
+
+
+        #### Allowed for
+
+
+        * Admins
+
+        * Agents when setting the default organization membership for an end
+        user
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembershipsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMembershipsResponseExample'
+  /api/v2/users/{user_id}/organizations/{organization_id}:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+      - $ref: '#/components/parameters/UserId'
+    delete:
+      operationId: UnassignOrganization
+      tags:
+        - Organization Memberships
+      summary: Delete  Api V2 Users User_id Organizations Organization_id
+      description: >
+        Immediately removes a user from an organization and schedules a job to
+        unassign all working tickets currently assigned to the user and
+        organization combination. The `organization_id` of the unassigned
+        tickets is set to null.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/users/{user_id}/organizations/{organization_id}/make_default:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/OrganizationId'
+    put:
+      operationId: SetOrganizationAsDefault
+      tags:
+        - Organization Memberships
+      summary: Put  Api V2 Users User_id Organizations Organization_id Make_default
+      description: |
+        Sets the default organization membership of a given user.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembershipResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMembershipResponseExample'
+  /api/v2/users/{user_id}/password:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    post:
+      operationId: SetUserPassword
+      tags:
+        - User Passwords
+      summary: Post  Api V2 Users User_id Password
+      description: >
+        An admin can set a user's password only if the setting is enabled in
+        Zendesk Support under **Settings** > **Security** > **Global**. The
+        setting is off by default. Only the account owner can access and change
+        this setting.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+    put:
+      operationId: ChangeOwnPassword
+      tags:
+        - User Passwords
+      summary: Put  Api V2 Users User_id Password
+      description: >
+        You can only change your own password. Nobody can change the password of
+        another user because it requires knowing the user's existing password.
+        However, an admin can set a new password for another user without
+        knowing the existing password. See [Set a User's
+        Password](#set-a-users-password) above.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        * End Users
+      responses:
+        '200':
+          description: Success description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/users/{user_id}/password/requirements:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: GetUserPasswordRequirements
+      tags:
+        - User Passwords
+      summary: Get  Api V2 Users User_id Password Requirements
+      description: |
+        #### Allowed For
+
+        * Agents
+        * End Users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPasswordRequirementsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/UserPasswordRequirementsResponseExample
+  /api/v2/users/{user_id}/related:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: ShowUserRelated
+      tags:
+        - Users
+      summary: Get  Api V2 Users User_id Related
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRelatedResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserRelatedResponseExample'
+  /api/v2/users/{user_id}/sessions:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    delete:
+      operationId: BulkDeleteSessionsByUserId
+      tags:
+        - Sessions
+      summary: Delete  Api V2 Users User_id Sessions
+      description: |
+        Deletes all the sessions for a user.
+
+        #### Allowed For
+
+        * Admins, Agents, End users
+      responses:
+        '204':
+          description: No Content
+  /api/v2/users/{user_id}/sessions/{session_id}:
+    parameters:
+      - $ref: '#/components/parameters/SessionId'
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: ShowSession
+      tags:
+        - Sessions
+      summary: Get  Api V2 Users User_id Sessions Session_id
+      description: |
+        #### Allowed For
+
+        * Admins, Agents, End users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SessionResponseExample'
+    delete:
+      operationId: DeleteSession
+      tags:
+        - Sessions
+      summary: Delete  Api V2 Users User_id Sessions Session_id
+      description: |
+        #### Allowed For
+
+        * Admins, Agents, End users
+      responses:
+        '204':
+          description: No Content
+  /api/v2/users/{user_id}/skips:
+    parameters:
+      - $ref: '#/components/parameters/SkipTicketUserId'
+      - $ref: '#/components/parameters/TicketSortOrder'
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListTicketSkips
+      tags:
+        - Ticket Skips
+      summary: Get  Api V2 Users User_id Skips
+      description: >
+        Archived tickets are not included in the response. See
+
+        [About archived
+        tickets](https://support.zendesk.com/hc/en-us/articles/203657756) in
+
+        the Support Help Center.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+        * Agents with "View only" or higher reports permissions in Support.
+          These permissions are distinct from Explore permissions.
+        * Agents retrieving their own skips
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketSkipsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketSkipResponseExample'
+  /api/v2/users/autocomplete:
+    get:
+      operationId: AutocompleteUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Users Autocomplete
+      description: >
+        Returns an array of users whose name starts with the value specified in
+        the `name` parameter.
+
+        It only returns users with no foreign identities.
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: name
+          in: query
+          description: |
+            The name to search for the user.
+          required: true
+          schema:
+            type: string
+          example: gil
+        - $ref: >-
+            #/components/parameters/LookupRelationshipAutocompleteFieldIdFragment
+        - $ref: '#/components/parameters/LookupRelationshipAutocompleteSourceFragment'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SearchUsersResponseExample'
+  /api/v2/users/count:
+    get:
+      operationId: CountUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Users Count
+      description: >
+        Returns an approximate count of users. If the count exceeds 100,000, it
+        is updated every 24 hours.
+
+
+        The response includes a `refreshed_at` property in a `count` object that
+        contains a timestamp indicating when the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, the `refreshed_at` property
+        may occasionally be null.
+
+        This indicates that the count is being updated in the background. The
+        `count` object's `value` property is limited to 100,000 until the update
+        is complete.
+
+
+        #### Allowed For
+
+
+        * Admins, Agents and Light Agents
+      parameters:
+        - $ref: '#/components/parameters/UserRoleFilter'
+        - $ref: '#/components/parameters/UserRolesFilter'
+        - $ref: '#/components/parameters/UserPermissionSetFilter'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserCountResponseExample'
+  /api/v2/users/create_many:
+    post:
+      operationId: CreateManyUsers
+      tags:
+        - Users
+      summary: Post  Api V2 Users Create_many
+      description: >
+        Accepts an array of up to 100 user objects.
+
+
+        **Note**: To protect the data in your Zendesk account, bulk user imports
+        are not enabled by default in Zendesk accounts. The account owner must
+        contact [Zendesk Customer
+        Support](https://support.zendesk.com/hc/en-us/articles/4408843597850) to
+        enable the imports. A 403 Forbidden
+
+        error is returned if data imports are not enabled.
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage end users or team members
+
+
+        #### Specifying an organization
+
+
+        You can assign a user to an existing organization by setting an
+
+        `organization_id` property in the user object.
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsersRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UsersCreateManyRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/users/create_or_update:
+    post:
+      operationId: CreateOrUpdateUser
+      tags:
+        - Users
+      summary: Post  Api V2 Users Create_or_update
+      description: >
+        Creates a user if the user does not already exist, or updates an
+        existing user
+
+        identified by e-mail address or external ID.
+
+
+        If you don't specify a role parameter, the new user is assigned the role
+        of end user.
+
+
+        If you need to create users without sending out a verification email,
+        include a `"skip_verify_email": true` property in the body.
+
+
+        #### External ID Case Sensitivity
+
+
+        When providing an external id to identify an existing user to update,
+        the search for the user record is not case sensitive.
+
+
+        However, if an existing user is found, the system will update the user's
+        external id to match the case of the external id used to find the user.
+
+
+        #### Response Status Code
+
+
+        - If the user exists in Zendesk, a successful request returns a 200
+        status code with "Location: /api/v2/users/{user_id}.json".
+
+        - If the user does not exist in Zendesk, a successful request returns a
+        201 status code with "Location: /api/v2/users/{new_user_id}.json".
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage end users or team members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UserRequestExample'
+      responses:
+        '200':
+          description: Successful response, when user exits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserCreateResponseExample'
+        '201':
+          description: Created response, when user is new
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserCreateResponseExample'
+  /api/v2/users/create_or_update_many:
+    post:
+      operationId: CreateOrUpdateManyUsers
+      tags:
+        - Users
+      summary: Post  Api V2 Users Create_or_update_many
+      description: >
+        Accepts an array of up to 100 user objects. For each user, the user is
+        created if it does not
+
+        already exist, or the existing user is updated.
+
+
+        **Note**: To protect the data in your Zendesk account, bulk user imports
+        are not enabled by default in Zendesk accounts. The account owner must
+        contact [Zendesk Customer
+        Support](https://support.zendesk.com/hc/en-us/articles/4408843597850) to
+        enable the imports. A 403 Forbidden
+
+        error is returned if data imports are not enabled.    
+
+
+        Each individual user object can identify an existing user by `email` or
+        by `external_id`.
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage end users or team members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsersRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UsersRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/users/destroy_many:
+    delete:
+      operationId: DestroyManyUsers
+      tags:
+        - Users
+      summary: Delete  Api V2 Users Destroy_many
+      description: >
+        Accepts a comma-separated list of up to 100 user ids.
+
+
+        The request takes an `ids` or an `external_ids` query parameter.
+
+
+        #### Allowed for
+
+
+        - Admins
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+      parameters:
+        - name: ids
+          in: query
+          description: Id of the users to delete. Comma separated
+          schema:
+            type: string
+          example: 1,2,3
+        - name: external_ids
+          in: query
+          description: External Id of the users to delete. Comma separated
+          schema:
+            type: string
+          example: abc,def,ghi
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusBulkDeleteResponseExample'
+  /api/v2/users/logout_many:
+    post:
+      operationId: LogoutManyUsers
+      tags:
+        - Users
+      summary: Post  Api V2 Users Logout_many
+      description: |
+        Accepts a comma-separated list of up to 100 user ids.
+
+        #### Allowed For:
+
+        * Admins
+      parameters:
+        - name: ids
+          in: query
+          description: |
+            Accepts a comma-separated list of up to 100 user ids.
+          schema:
+            type: string
+          example: 1,2
+      responses:
+        '202':
+          description: Accepted response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/users/me:
+    get:
+      operationId: ShowCurrentUser
+      tags:
+        - Users
+      summary: Get  Api V2 Users Me
+      description: >
+        The endpoint returns [user
+        information](/api-reference/ticketing/users/users/) and an
+        `authenticity_token`. 
+
+
+        #### Allowed For
+
+
+        * Anonymous users
+
+
+        #### Authenticity Token
+
+
+        Zendesk API calls made by end users from a Zendesk help center must
+        include `authenticity_token` in the `X-CSRF-Token` HTTP header. This
+        helps prevent [cross-site request forgery
+        (CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
+        attacks.
+
+
+        For an example using an authenticity token, see the AJAX request in the
+        [Upgrading from Templating API
+        v1](https://developer.zendesk.com/documentation/help_center/help-center-templates/v1#jquery)
+        documentation.
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentUserResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CurrentUserResponseExample'
+  /api/v2/users/me/logout:
+    delete:
+      operationId: DeleteAuthenticatedSession
+      tags:
+        - Sessions
+      summary: Delete  Api V2 Users Me Logout
+      description: >
+        Deletes the current session. In practice, this only works when using
+        session auth for requests, such as client-side requests
+
+        made from a Zendesk app. When using OAuth or basic authentication, you
+        don't have a current session so this endpoint has no effect.
+
+
+        #### Allowed For
+
+
+        * Admins, Agents, End users
+      responses:
+        '204':
+          description: No Content
+  /api/v2/users/me/session:
+    get:
+      operationId: ShowCurrentlyAuthenticatedSession
+      tags:
+        - Sessions
+      summary: Get  Api V2 Users Me Session
+      description: |
+        #### Allowed For
+
+        * Admins, Agents, End users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SessionResponseExample'
+  /api/v2/users/me/session/renew:
+    get:
+      operationId: RenewCurrentSession
+      tags:
+        - Sessions
+      summary: Get  Api V2 Users Me Session Renew
+      description: |
+        #### Allowed For
+
+        * Admins, Agents, End users
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RenewSessionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/RenewSessionResponseExample'
+  /api/v2/users/request_create:
+    post:
+      operationId: RequestUserCreate
+      tags:
+        - Users
+      summary: Post  Api V2 Users Request_create
+      description: >
+        Sends the owner a reminder email to update their subscription so more
+        agents can be created.
+
+
+        #### Allowed For
+
+
+        * Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/RequestUserCreateRequestExample'
+      responses:
+        '200':
+          description: description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/users/search:
+    get:
+      operationId: SearchUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Users Search
+      description: >
+        Returns an array of users who meet the search criteria.
+
+
+        Returns up to 100 records per page to a maximum of 10,000 records per
+        query. See [Using offset
+        pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+      parameters:
+        - name: query
+          in: query
+          description: >
+            The `query` parameter supports the Zendesk search syntax for more
+            advanced
+
+            user searches. It can specify a partial or full value of any
+
+            user property, including name, email address, notes, or phone.
+            Example:
+
+            `query="jdoe"`.
+
+            See the [Search
+            API](/api-reference/ticketing/ticket-management/search/).
+          schema:
+            type: string
+          example: jdoe
+        - name: external_id
+          in: query
+          description: >
+            The `external_id` parameter does not support the search syntax. It
+            only accepts ids.
+          schema:
+            type: string
+          example: abc124
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SearchUsersResponseExample'
+  /api/v2/users/show_many:
+    get:
+      operationId: ShowManyUsers
+      tags:
+        - Users
+      summary: Get  Api V2 Users Show_many
+      description: |
+        Accepts a comma-separated list of up to 100 user ids or external ids.
+
+        #### Allowed For:
+
+        * Agents
+      parameters:
+        - name: ids
+          in: query
+          description: |
+            Accepts a comma-separated list of up to 100 user ids.
+          schema:
+            type: string
+          example: 1,2
+        - name: external_ids
+          in: query
+          description: |
+            Accepts a comma-separated list of up to 100 external ids.
+          schema:
+            type: string
+          example: abc,def
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ShowManyUsersResponseExample'
+  /api/v2/users/update_many:
+    put:
+      operationId: UpdateManyUsers
+      tags:
+        - Users
+      summary: Put  Api V2 Users Update_many
+      parameters:
+        - name: ids
+          in: query
+          description: Id of the users to update. Comma separated
+          schema:
+            type: string
+          example: 1,2,3
+        - name: external_ids
+          in: query
+          description: External Id of the users to update. Comma separated
+          schema:
+            type: string
+          example: abc,def,ghi
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/UserRequest'
+                - $ref: '#/components/schemas/UsersRequest'
+              additionalProperties: true
+            examples:
+              default:
+                $ref: '#/components/examples/UpdateManyUsersRequestExample'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+components:
+  schemas:
+    TimeBasedExportIncrementalUsersResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        end_of_stream:
+          type: boolean
+        end_time:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserObject'
+      example:
+        count: 1
+        end_of_stream: true
+        end_time: 1601357503
+        next_page: >-
+          https://example.zendesk.com/api/v2/incremental/ticket_events.json?start_time=1601357503
+        users:
+          - active: true
+            alias: Mr. Johnny
+            created_at: '2009-07-20T22:55:29Z'
+            custom_role_id: 9373643
+            details: ''
+            email: johnny@example.com
+            external_id: sai989sur98w9
+            id: 35436
+            last_login_at: '2011-05-05T10:38:52Z'
+            locale: en-US
+            locale_id: 1
+            moderator: true
+            name: Johnny Agent
+            notes: Johnny is a nice guy!
+            only_private_comments: false
+            organization_id: 57542
+            phone: '+15551234567'
+            photo:
+              content_type: image/png
+              content_url: https://company.zendesk.com/photos/my_funny_profile_pic.png
+              id: 928374
+              name: my_funny_profile_pic.png
+              size: 166144
+              thumbnails:
+                - content_type: image/png
+                  content_url: >-
+                    https://company.zendesk.com/photos/my_funny_profile_pic_thumb.png
+                  id: 928375
+                  name: my_funny_profile_pic_thumb.png
+                  size: 58298
+            restricted_agent: true
+            role: agent
+            role_type: 0
+            shared: false
+            shared_agent: false
+            signature: Have a nice day, Johnny
+            suspended: true
+            tags:
+              - enterprise
+              - other_tag
+            ticket_restriction: assigned
+            time_zone: Copenhagen
+            updated_at: '2011-05-05T10:38:52Z'
+            url: https://company.zendesk.com/api/v2/users/35436.json
+            user_fields:
+              user_date: '2012-07-23T00:00:00Z'
+              user_decimal: 5.1
+              user_dropdown: option_1
+            verified: true
+    CursorBasedExportIncrementalUsersResponse:
+      type: object
+      properties:
+        after_cursor:
+          type: string
+          nullable: true
+        after_url:
+          type: string
+          nullable: true
+        before_cursor:
+          type: string
+          nullable: true
+        before_url:
+          type: string
+          nullable: true
+        end_of_stream:
+          type: boolean
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserObject'
+      example:
+        after_cursor: MTU3NjYxMzUzOS4wfHw0Njd8
+        after_url: >-
+          https://example.zendesk.com/api/v2/incremental/users/cursor.json?cursor=MTU3NjYxMzUzOS4wfHw0Njd8
+        before_cursor: null
+        before_url: null
+        end_of_stream: true
+        users:
+          - active: true
+            alias: Mr. Johnny
+            created_at: '2009-07-20T22:55:29Z'
+            custom_role_id: 9373643
+            details: ''
+            email: johnny@example.com
+            external_id: sai989sur98w9
+            id: 35436
+            last_login_at: '2011-05-05T10:38:52Z'
+            locale: en-US
+            locale_id: 1
+            moderator: true
+            name: Johnny Agent
+            notes: Johnny is a nice guy!
+            only_private_comments: false
+            organization_id: 57542
+            phone: '+15551234567'
+            photo:
+              content_type: image/png
+              content_url: https://company.zendesk.com/photos/my_funny_profile_pic.png
+              id: 928374
+              name: my_funny_profile_pic.png
+              size: 166144
+              thumbnails:
+                - content_type: image/png
+                  content_url: >-
+                    https://company.zendesk.com/photos/my_funny_profile_pic_thumb.png
+                  id: 928375
+                  name: my_funny_profile_pic_thumb.png
+                  size: 58298
+            restricted_agent: true
+            role: agent
+            role_type: 0
+            shared: false
+            shared_agent: false
+            signature: Have a nice day, Johnny
+            suspended: true
+            tags:
+              - enterprise
+              - other_tag
+            ticket_restriction: assigned
+            time_zone: Copenhagen
+            updated_at: '2011-05-05T10:38:52Z'
+            url: https://company.zendesk.com/api/v2/users/35436.json
+            user_fields:
+              user_date: '2012-07-23T00:00:00Z'
+              user_decimal: 5.1
+              user_dropdown: option_1
+            verified: true
+    UsersResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserObject'
+    UserResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserObject'
+    ComplianceDeletionStatusesResponse:
+      type: object
+      properties:
+        compliance_deletion_statuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComplianceDeletionStatusObject'
+    GroupMembershipsResponse:
+      type: object
+      properties:
+        group_memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMembershipObject'
+    UserIdentitiesResponse:
+      type: object
+      properties:
+        identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserIdentityObject'
+    UserIdentityResponse:
+      type: object
+      properties:
+        identity:
+          $ref: '#/components/schemas/UserIdentityObject'
+    OrganizationMembershipsResponse:
+      type: object
+      properties:
+        organization_memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationMembershipObject'
+    OrganizationMembershipResponse:
+      type: object
+      properties:
+        organization_membership:
+          $ref: '#/components/schemas/OrganizationMembershipObject'
+    UserPasswordRequirementsResponse:
+      type: object
+      properties:
+        requirements:
+          type: array
+          items:
+            type: string
+    UserRelatedResponse:
+      type: object
+      properties:
+        user_related:
+          $ref: '#/components/schemas/UserRelatedObject'
+    SessionResponse:
+      type: object
+      properties:
+        session:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionObject'
+    TicketSkipsResponse:
+      type: object
+      properties:
+        skips:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketSkipObject'
+    CountResponse:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: datetime
+            value:
+              type: integer
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    CurrentUserResponse:
+      type: object
+      properties:
+        user:
+          allOf:
+            - $ref: '#/components/schemas/UserObject'
+            - type: object
+              properties:
+                authenticity_token:
+                  type: string
+                  description: CSRF token required by some Zendesk APIs.
+                  readOnly: true
+    RenewSessionResponse:
+      type: object
+      properties:
+        authenticity_token:
+          type: string
+          description: A token of authenticity for the request

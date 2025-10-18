@@ -1,0 +1,297 @@
+openapi: 3.1.0
+info:
+  title: Ticket Form Statuses
+  description: Needs a description.
+paths:
+  /api/v2/custom_statuses/{custom_status_id}/ticket_form_statuses:
+    parameters:
+      - $ref: '#/components/parameters/CustomStatusId'
+    post:
+      operationId: CreateTicketFormStatusesForCustomStatus
+      tags:
+        - Custom Ticket Statuses
+        - Ticket Form Statuses
+      summary: Post  Api V2 Custom_statuses Custom_status_id Ticket_form_statuses
+      description: >
+        Creates one or many tickets form status associations for a custom
+        status.
+
+
+        #### Allowed For
+
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ticket_form_status:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      ticket_form_id:
+                        type: integer
+                        description: The id of the ticket form
+                        example: 1
+            example:
+              ticket_form_status:
+                - ticket_form_id: 1
+                - ticket_form_id: 2
+                - ticket_form_id: 3
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+  /api/v2/ticket_form_statuses:
+    get:
+      operationId: ListTicketFormStatuses
+      tags:
+        - Ticket Form Statuses
+      summary: Get  Api V2 Ticket_form_statuses
+      description: |
+        Fetches all of the ticket form statuses for the account.
+
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+  /api/v2/ticket_form_statuses/show_many:
+    get:
+      operationId: ShowManyTicketFormStatuses
+      tags:
+        - Ticket Form Statuses
+      summary: Get  Api V2 Ticket_form_statuses Show_many
+      description: >
+        Fetches all of the ticket form statuses specified by a comma separated
+        list of ids.
+
+        #### Allowed For
+
+        * Admins
+
+        * Agents
+      parameters:
+        - name: ids
+          in: query
+          description: Ticket form status ids to retrieve records for
+          required: true
+          schema:
+            type: string
+          example: abc,def,ghi
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+  /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses:
+    parameters:
+      - $ref: '#/components/parameters/TicketFormId'
+    get:
+      operationId: TicketFormTicketFormStatuses
+      tags:
+        - Ticket Forms
+        - Ticket Form Statuses
+      summary: Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: |
+        Fetches all of the associated ticket form statuses of a ticket form.
+
+        #### Allowed For
+
+        * Admins
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    post:
+      operationId: CreateTicketFormStatuses
+      tags:
+        - Ticket Forms
+        - Ticket Form Statuses
+      summary: Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: |
+        Creates one or many ticket form status associations
+
+        #### Allowed For
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketFormStatusesParams'
+            example:
+              ticket_form_status:
+                - custom_status_id: 1234
+                - custom_status_id: 1235
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    put:
+      operationId: UpdateTicketFormStatuses
+      tags:
+        - Ticket Forms
+        - Ticket Form Statuses
+      summary: Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: >
+        Updates or deletes ticket form status associations. This is a bulk
+        operation that can both add and remove ticket form status associations
+        for a form in one call.
+
+
+        #### Allowed For
+
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
+            example:
+              ticket_form_status:
+                - _destroy: '1'
+                  id: abcdef
+                - custom_status_id: 1
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    delete:
+      operationId: DeleteTicketFormStatuses
+      tags:
+        - Ticket Form Statuses
+      summary: Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: |
+        Deletes all of of the ticket form statuses by id.
+
+        #### Allowed For
+
+        * Admins
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: array
+                  description: List of ids to delete
+                  items:
+                    type: string
+            example:
+              id:
+                - abc
+                - def
+                - hij
+      responses:
+        '204':
+          description: Success response
+  /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses/{ticket_form_status_id}:
+    parameters:
+      - $ref: '#/components/parameters/TicketFormId'
+      - $ref: '#/components/parameters/TicketFormStatusId'
+    put:
+      operationId: UpdateTicketFormStatusById
+      tags:
+        - Ticket Forms
+        - Ticket Form Statuses
+      summary: >-
+        Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        Ticket_form_status_id
+      description: |
+        Updates or deletes ticket form status association by id.
+
+        #### Allowed For
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
+            example:
+              ticket_form_status:
+                - custom_status_id: 1
+                - custom_status_id: 2
+                - custom_status_id: 3
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    delete:
+      operationId: DeleteTicketFormStatusById
+      tags:
+        - Ticket Form Statuses
+      summary: >-
+        Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        Ticket_form_status_id
+      description: |
+        Deletes a ticket form status by id.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '204':
+          description: Success response
+components:
+  schemas:
+    TicketFormStatusesResponse:
+      type: object
+      properties:
+        ticket_form_statuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFormStatusObject'
+          maxItems: 1

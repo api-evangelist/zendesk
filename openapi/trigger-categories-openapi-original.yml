@@ -1,0 +1,431 @@
+openapi: 3.1.0
+info:
+  title: Trigger Categories
+  description: Needs a description.
+paths:
+  /api/v2/trigger_categories:
+    get:
+      operationId: ListTriggerCategories
+      tags:
+        - Trigger Categories
+      summary: Get  Api V2 Trigger_categories
+      description: |
+        Returns all the ticket trigger categories in the account.
+
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      parameters:
+        - name: page
+          in: query
+          description: Pagination parameters
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            properties:
+              after:
+                type: string
+              before:
+                type: string
+              size:
+                type: integer
+          example:
+            after: eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9
+            before: eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9
+            size: 50
+        - name: sort
+          in: query
+          description: Sort parameters
+          schema:
+            type: string
+            enum:
+              - position
+              - '-position'
+              - name
+              - '-name'
+              - created_at
+              - '-created_at'
+              - updated_at
+              - '-updated_at'
+        - name: include
+          in: query
+          description: Allowed sideloads
+          schema:
+            type: string
+            enum:
+              - rule_counts
+      responses:
+        '200':
+          description: A paged array of ticket trigger categories
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/TriggerCategoriesResponse'
+                  - $ref: '#/components/schemas/Pagination'
+              example:
+                links:
+                  next: >-
+                    https://{subdomain}.zendesk.com/api/v2/trigger_categories.json?include=rule_counts&page[after]=eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9&page[size]=2&sort=position
+                  prev: >-
+                    https://{subdomain}.zendesk.com/api/v2/trigger_categories.json?include=rule_counts&page[before]=eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9&page[size]=2&sort=position
+                meta:
+                  after_cursor: >-
+                    eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9
+                  before_cursor: >-
+                    eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9
+                  has_more: true
+                trigger_categories:
+                  - created_at: '2020-07-17T01:30:07Z'
+                    id: '10001'
+                    name: Email Triggers
+                    position: 0
+                    updated_at: '2020-07-17T01:30:07Z'
+                  - created_at: '2020-07-17T01:30:07Z'
+                    id: '10002'
+                    name: SMS Triggers
+                    position: 1
+                    updated_at: '2020-07-17T01:30:07Z'
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: InvalidPaginationParameter
+                    title: page[after] is not valid
+        '403':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: TriggerCategoriesNotEnabled
+                    title: Ticket trigger categories are not enabled for your account
+    post:
+      operationId: CreateTriggerCategory
+      tags:
+        - Trigger Categories
+      summary: Post  Api V2 Trigger_categories
+      description: Creates a ticket trigger category.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trigger_category:
+                  allOf:
+                    - $ref: '#/components/schemas/TriggerCategoryRequest'
+                    - $ref: '#/components/schemas/TriggerCategoryRequestRequired'
+            example:
+              trigger_category:
+                name: All Notification Triggers
+                position: 0
+      responses:
+        '200':
+          description: The created ticket trigger category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerCategoryResponse'
+              example:
+                trigger_category:
+                  created_at: '2020-07-17T01:30:07Z'
+                  id: '10001'
+                  name: All Notification Triggers
+                  position: 0
+                  updated_at: '2020-07-17T01:30:07Z'
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: InvalidTriggerCategory
+                    title: Name cannot be blank
+        '403':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: TriggerCategoriesNotEnabled
+                    title: Ticket trigger categories are not enabled for your account
+                  - code: ProductLimitExceeded
+                    title: >-
+                      Your account has reached the limit of 500 ticket trigger
+                      categories.
+  /api/v2/trigger_categories/{trigger_category_id}:
+    get:
+      operationId: ShowTriggerCategoryById
+      tags:
+        - Trigger Categories
+      summary: Get  Api V2 Trigger_categories Trigger_category_id
+      description: Returns the ticket trigger category with the specified ID.
+      parameters:
+        - name: trigger_category_id
+          in: path
+          description: The id of the ticket trigger category to retrieve
+          required: true
+          schema:
+            type: string
+          example: '10001'
+      responses:
+        '200':
+          description: The requested ticket trigger category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerCategoryResponse'
+              example:
+                trigger_category:
+                  created_at: '2020-07-17T01:30:07Z'
+                  id: '10001'
+                  name: All Notification Triggers
+                  position: 0
+                  updated_at: '2020-07-17T01:30:07Z'
+        '404':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: TriggerCategoryNotFound
+                    title: Category can’t be found. Check the ID and try again.
+    patch:
+      operationId: UpdateTriggerCategory
+      tags:
+        - Trigger Categories
+      summary: Patch  Api V2 Trigger_categories Trigger_category_id
+      description: Updates the ticket trigger category with the specified ID.
+      parameters:
+        - name: trigger_category_id
+          in: path
+          description: The id of the ticket trigger category to update
+          required: true
+          schema:
+            type: string
+          example: '10001'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trigger_category:
+                  $ref: '#/components/schemas/TriggerCategoryRequest'
+            example:
+              trigger_category:
+                name: All Notification Triggers Updated
+                position: 10
+      responses:
+        '200':
+          description: The updated trigger category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerCategoryResponse'
+              example:
+                trigger_category:
+                  created_at: '2020-07-17T01:30:07Z'
+                  id: '10001'
+                  name: All Notification Triggers Updated
+                  position: 10
+                  updated_at: '2020-07-18T05:23:32Z'
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: InvalidTriggerCategory
+                    title: Name cannot be blank
+        '404':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: TriggerCategoryNotFound
+                    title: Category can’t be found. Check the ID and try again.
+    delete:
+      operationId: DeleteTriggerCategory
+      tags:
+        - Trigger Categories
+      summary: Delete  Api V2 Trigger_categories Trigger_category_id
+      description: Deletes the ticket trigger category with the specified ID.
+      parameters:
+        - name: trigger_category_id
+          in: path
+          description: The id of the ticket trigger category to delete
+          required: true
+          schema:
+            type: string
+          example: '10001'
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: TriggerCategoryNotEmpty
+                    title: A category with active ticket triggers cannot be deleted.
+        '404':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                errors:
+                  - code: TriggerCategoryNotFound
+                    title: Category can’t be found. Check the ID and try again.
+  /api/v2/trigger_categories/jobs:
+    post:
+      operationId: BatchOperateTriggerCategories
+      tags:
+        - Trigger Categories
+      summary: Post  Api V2 Trigger_categories Jobs
+      description: >-
+        Creates a job that performs a batch operation for the given ticket
+        trigger categories.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchJobRequest'
+            example:
+              job:
+                action: patch
+                items:
+                  trigger_categories:
+                    - id: '10001'
+                      position: 0
+                    - id: '10002'
+                      position: 1
+                  triggers:
+                    - active: false
+                      category_id: '10001'
+                      id: '10011'
+                      position: 10
+                    - active: true
+                      category_id: '10002'
+                      id: '10012'
+                      position: 1
+      responses:
+        '200':
+          description: The response to the batch job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchJobResponse'
+              example:
+                results:
+                  trigger_categories:
+                    - created_at: '2020-07-18T01:24:53Z'
+                      id: '10001'
+                      name: Notifications
+                      position: 0
+                      updated_at: '2020-07-20T01:30:07Z'
+                    - created_at: '2020-07-17T06:31:12Z'
+                      id: '10002'
+                      name: Apply Tags
+                      position: 1
+                      updated_at: '2020-07-20T01:30:07Z'
+                  triggers:
+                    - actions:
+                        - {}
+                      active: true
+                      conditions: {}
+                      created_at: '2012-09-25T22:50:26Z'
+                      description: Notify external target
+                      id: 10012
+                      position: 1
+                      raw_title: Notify target
+                      title: Notify Target
+                      updated_at: '2020-07-20T01:30:07Z'
+                      url: >-
+                        http://{subdomain}.zendesk.com/api/v2/triggers/10012.json
+                    - actions:
+                        - {}
+                      active: false
+                      conditions: {}
+                      created_at: '2012-09-25T22:50:26Z'
+                      description: Close and save a ticket
+                      id: 10011
+                      position: 10
+                      raw_title: Close and Save
+                      title: Close and Save
+                      updated_at: '2020-07-20T01:30:07Z'
+                      url: >-
+                        http://{subdomain}.zendesk.com/api/v2/triggers/10011.json
+                status: complete
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchJobResponse'
+              example:
+                errors:
+                  - code: InvalidTrigger
+                    title: category_id is not valid
+                    trigger_id: '10001'
+                status: failed
+components:
+  schemas:
+    TriggerCategoryResponse:
+      type: object
+      properties:
+        trigger_category:
+          $ref: '#/components/schemas/TriggerCategory'
+    BatchJobResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchErrorItem'
+        results:
+          type: object
+          properties:
+            trigger_categories:
+              type: array
+              items:
+                $ref: '#/components/schemas/TriggerCategory'
+            triggers:
+              type: array
+              items:
+                $ref: '#/components/schemas/TriggerObject'
+        status:
+          type: string
+          enum:
+            - complete
+            - failed

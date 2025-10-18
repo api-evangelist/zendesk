@@ -1,0 +1,315 @@
+openapi: 3.1.0
+info:
+  title: Suspended Tickets
+  description: Needs a description.
+paths:
+  /api/v2/suspended_tickets:
+    parameters:
+      - $ref: '#/components/parameters/SuspendedTicketsSortBy'
+      - $ref: '#/components/parameters/SuspendedTicketsSortOrder'
+    get:
+      operationId: ListSuspendedTickets
+      tags:
+        - Suspended Tickets
+      summary: Get  Api V2 Suspended_tickets
+      description: >
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage suspended tickets on Enterprise plans
+
+        * Unrestricted agents on all other plans
+
+
+        #### Sorting
+
+
+        You can sort the tickets with the `sort_by` and `sort_order` query
+        string parameters.
+
+
+        #### Pagination
+
+
+        * Cursor pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuspendedTicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SuspendedTicketsResponseExample'
+  /api/v2/suspended_tickets/{id}:
+    get:
+      operationId: ShowSuspendedTickets
+      tags:
+        - Suspended Tickets
+      summary: Get  Api V2 Suspended_tickets Id
+      description: >
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage suspended tickets on Enterprise plans
+
+        * Unrestricted agents on all other plans
+      parameters:
+        - $ref: '#/components/parameters/SuspendedTicketId'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuspendedTicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SuspendedTicketsResponseExample'
+    delete:
+      operationId: DeleteSuspendedTicket
+      tags:
+        - Suspended Tickets
+      summary: Delete  Api V2 Suspended_tickets Id
+      description: |
+        #### Allowed For
+
+        * Unrestricted agents
+      parameters:
+        - $ref: '#/components/parameters/SuspendedTicketId'
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/suspended_tickets/{id}/recover:
+    put:
+      operationId: RecoverSuspendedTicket
+      tags:
+        - Suspended Tickets
+      summary: Put  Api V2 Suspended_tickets Id Recover
+      description: >
+        **Note**: During recovery, the API sets the requester to the
+        authenticated agent who called the API, not the original requester. This
+        prevents the ticket from being re-suspended after recovery. To preserve
+        the original requester, use the [Recover Multiple Suspended
+        Tickets](#recover-multiple-suspended-tickets) endpoint with the single
+        ticket.
+
+
+        This endpoint does not queue an asynchronous job that can be tracked
+        from [Job
+        Statuses](/api-reference/ticketing/ticket-management/job_statuses/).
+        Instead, it processes the request with a synchronous response.
+           - If all recoveries are successful, it returns a 200 with a `tickets` array in the response.
+           - If all recoveries fail, it returns a 422 with a `suspended_tickets` array in the response.
+           - If there is a mixture of successes and failures in a single call, it returns a 422 with a `suspended_tickets` array of the failures in the response.
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage suspended tickets on Enterprise plans
+
+        * Unrestricted agents on all other plans
+      parameters:
+        - $ref: '#/components/parameters/SuspendedTicketId'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecoverSuspendedTicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/RecoverSuspendedTicketResponseExample'
+        '422':
+          description: Recovery failed response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RecoverSuspendedTicketUnprocessableContentResponse
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/RecoverSuspendedTicketUnprocessableContentResponseExample
+  /api/v2/suspended_tickets/attachments:
+    parameters:
+      - $ref: '#/components/parameters/SuspendedTicketId'
+    post:
+      operationId: SuspendedTicketsAttachments
+      tags:
+        - Suspended Tickets
+      summary: Post  Api V2 Suspended_tickets Attachments
+      description: >
+        Makes copies of any attachments on a suspended ticket and returns them
+        as [attachment
+        tokens](/api-reference/ticketing/tickets/ticket-attachments/). If the 
+        ticket is manually recovered, you can include the attachment tokens on
+        the new ticket.
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage suspended tickets on Enterprise plans
+
+        * Unrestricted agents on all other plans
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuspendedTicketsAttachmentsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SuspendedTicketsAttachmentsResponseExample
+  /api/v2/suspended_tickets/destroy_many:
+    parameters:
+      - $ref: '#/components/parameters/SuspendedTicketsDeleteIds'
+    delete:
+      operationId: DeleteSuspendedTickets
+      tags:
+        - Suspended Tickets
+      summary: Delete  Api V2 Suspended_tickets Destroy_many
+      description: >
+        Accepts up to 100 ids (the auto-generated id, not the ticket id.)
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage suspended tickets on Enterprise plans
+
+        * Unrestricted agents on all other plans
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/suspended_tickets/export:
+    post:
+      operationId: ExportSuspendedTickets
+      tags:
+        - Suspended Tickets
+      summary: Post  Api V2 Suspended_tickets Export
+      description: >
+        Exports a list of suspended tickets for the Zendesk Support instance. To
+        export the list, the endpoint enqueues a job to create a CSV file with
+        the data. When done, Zendesk sends the requester an email containing a
+        link to the CSV file. In the CSV, tickets are sorted by the update
+        timestamp in ascending order.
+
+         #### Allowed For
+
+         * Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Enterprise plans
+         * Unrestricted agents on all other plans
+
+         #### Rate limits
+
+         Limited to one request per minute and up to one million records in return. The rate-limiting mechanism behaves identically to the one described in [Usage limits](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity).
+         We recommend using the `Retry-After` header value as described in [Catching errors caused by rate limiting](/documentation/ticketing/using-the-zendesk-api/best-practices-for-avoiding-rate-limiting#catch).
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuspendedTicketsExportResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SuspendedTicketsExportResponseExample'
+  /api/v2/suspended_tickets/recover_many:
+    parameters:
+      - $ref: '#/components/parameters/SuspendedTicketsRecoverIds'
+    put:
+      operationId: RecoverSuspendedTickets
+      tags:
+        - Suspended Tickets
+      summary: Put  Api V2 Suspended_tickets Recover_many
+      description: >
+        Accepts up to 100 ids (the auto-generated id, not the ticket id.) Note
+        that suspended tickets that fail to be recovered are still included in
+        the response.
+
+
+        #### Allowed For
+
+
+        * Admins and [agents in custom roles with
+        permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd)
+        to manage suspended tickets on Enterprise plans
+
+        * Unrestricted agents on all other plans
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecoverSuspendedTicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/RecoverSuspendedTicketsResponseExample'
+components:
+  schemas:
+    SuspendedTicketsResponse:
+      type: object
+      properties:
+        suspended_tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/SuspendedTicketObject'
+    RecoverSuspendedTicketResponse:
+      type: object
+      properties:
+        ticket:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketObject'
+    SuspendedTicketsAttachmentsResponse:
+      type: object
+      properties:
+        upload:
+          type: object
+          properties:
+            attachments:
+              type: array
+              items:
+                $ref: '#/components/schemas/AttachmentObject'
+            token:
+              type: string
+              description: Token for subsequent request
+              readOnly: true
+    SuspendedTicketsExportResponse:
+      type: object
+      properties:
+        export:
+          type: object
+          properties:
+            status:
+              type: string
+              readOnly: true
+            view_id:
+              type: string
+              readOnly: true
+    RecoverSuspendedTicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketObject'

@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: Bookmarks
+  description: Needs a description.
+paths:
+  /api/v2/bookmarks:
+    get:
+      operationId: ListBookmarks
+      tags:
+        - Bookmarks
+      summary: Get  Api V2 Bookmarks
+      description: |-
+        #### Allowed For
+        - Agents
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookmarksResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BookmarksResponse'
+    post:
+      operationId: CreateBookmark
+      tags:
+        - Bookmarks
+      summary: Post  Api V2 Bookmarks
+      description: |-
+        #### Allowed For
+        - Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookmarkCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/BookmarkCreateRequest'
+      responses:
+        '200':
+          description: Successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookmarkResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BookmarkResponse'
+        '201':
+          description: Successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookmarkResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BookmarkResponse'
+  /api/v2/bookmarks/{bookmark_id}:
+    parameters:
+      - $ref: '#/components/parameters/BookmarkId'
+    delete:
+      operationId: DeleteBookmark
+      tags:
+        - Bookmarks
+      summary: Delete  Api V2 Bookmarks Bookmark_id
+      description: >-
+        #### Allowed For
+
+        - Agents (own bookmarks only)
+
+
+        If the bookmark already exists with a specified ticket id, the response
+        status will be `http Status: 200 OK`.
+      responses:
+        '204':
+          description: No content
+components:
+  schemas:
+    BookmarksResponse:
+      title: Bookmarks
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/OffsetPaginationObject'
+        - type: object
+          properties:
+            bookmarks:
+              type: array
+              items:
+                $ref: '#/components/schemas/BookmarkObject'
+    BookmarkResponse:
+      type: object
+      properties:
+        bookmark:
+          $ref: '#/components/schemas/BookmarkObject'

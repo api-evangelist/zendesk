@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Sharing Agreements
+  description: Needs a description.
+paths:
+  /api/v2/sharing_agreements:
+    get:
+      operationId: ListSharingAgreements
+      tags:
+        - Sharing Agreements
+      summary: Get  Api V2 Sharing_agreements
+      description: |
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharingAgreementsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SharingAgreementsResponseExample'
+    post:
+      operationId: CreateSharingAgreement
+      tags:
+        - Sharing Agreements
+      summary: Post  Api V2 Sharing_agreements
+      description: |
+        #### Allowed For
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharingAgreementResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SharingAgreementResponseExample'
+  /api/v2/sharing_agreements/{sharing_agreement_id}:
+    parameters:
+      - $ref: '#/components/parameters/SharingAgreementId'
+    get:
+      operationId: ShowSharingAgreement
+      tags:
+        - Sharing Agreements
+      summary: Get  Api V2 Sharing_agreements Sharing_agreement_id
+      description: |
+        Returns a sharing agreement for your account.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharingAgreementResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SharingAgreementResponseExample'
+    put:
+      operationId: UpdateSharingAgreement
+      tags:
+        - Sharing Agreements
+      summary: Put  Api V2 Sharing_agreements Sharing_agreement_id
+      description: >
+        Returns an updated sharing agreement. Only `status` is allowed to be
+        updated.
+
+
+        #### Allowed For
+
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharingAgreementResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SharingAgreementUpdateResponseExample'
+    delete:
+      operationId: DeleteSharingAgreement
+      tags:
+        - Sharing Agreements
+      summary: Delete  Api V2 Sharing_agreements Sharing_agreement_id
+      description: |
+        Deletes a sharing agreement.
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+components:
+  schemas:
+    SharingAgreementsResponse:
+      type: object
+      properties:
+        sharing_agreements:
+          type: array
+          items:
+            $ref: '#/components/schemas/SharingAgreementObject'
+    SharingAgreementResponse:
+      type: object
+      properties:
+        sharing_agreement:
+          $ref: '#/components/schemas/SharingAgreementObject'

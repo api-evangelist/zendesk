@@ -1,0 +1,1721 @@
+openapi: 3.1.0
+info:
+  title: Custom Objects
+  description: Needs a description.
+paths:
+  /api/v2/custom_objects:
+    get:
+      operationId: ListCustomObjects
+      tags:
+        - Custom Objects
+      summary: Get  Api V2 Custom_objects
+      description: |-
+        Lists all undeleted custom objects for the account
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsResponseExample'
+    post:
+      operationId: CreateCustomObject
+      tags:
+        - Custom Objects
+      summary: Post  Api V2 Custom_objects
+      description: >
+        Creates an object describing all the properties required to create a
+        custom object record
+
+        #### Allowed For
+
+        * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectsCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectsCreateRequestExample'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsCreateResponseExample'
+  /api/v2/custom_objects/{custom_object_key}:
+    get:
+      operationId: ShowCustomObject
+      tags:
+        - Custom Objects
+      summary: Get  Api V2 Custom_objects Custom_object_key
+      description: |
+        Returns an object with the specified key
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '200':
+          description: Custom Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsCreateResponseExample'
+    patch:
+      operationId: UpdateCustomObject
+      tags:
+        - Custom Objects
+      summary: Patch  Api V2 Custom_objects Custom_object_key
+      description: |-
+        Updates an individual custom object. The updating rules are as follows:
+        * Takes a `custom_object` object that specifies the properties to update
+        * The `key` property cannot be updated
+        #### Allowed For
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsCreateResponseExample'
+    delete:
+      operationId: DeleteCustomObject
+      tags:
+        - Custom Objects
+      summary: Delete  Api V2 Custom_objects Custom_object_key
+      description: |-
+        Permanently deletes the custom object with the specified key
+        #### Allowed For
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '204':
+          description: No content response
+  /api/v2/custom_objects/{custom_object_key}/fields:
+    get:
+      operationId: ListCustomObjectFields
+      tags:
+        - Custom Object Fields
+      summary: Get  Api V2 Custom_objects Custom_object_key Fields
+      description: |-
+        Lists all undeleted custom fields for the specified object.
+
+        #### Allowed For
+        * Agents
+
+        #### Pagination
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/IncludeStandardFields'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectFieldsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectFieldsResponseExample'
+    post:
+      operationId: CreateCustomObjectField
+      tags:
+        - Custom Object Fields
+      summary: Post  Api V2 Custom_objects Custom_object_key Fields
+      description: >
+        Creates any of the following custom field types:
+
+
+        * text (default when no "type" is specified)
+
+        * textarea
+
+        * checkbox
+
+        * date
+
+        * integer
+
+        * decimal
+
+        * regexp
+
+        * dropdown
+
+        * lookup
+
+        * multiselect
+
+
+        See [About custom field
+        types](https://support.zendesk.com/hc/en-us/articles/203661866) in
+        Zendesk help.
+
+
+        #### Allowed For
+
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectFieldsCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectFieldsCreateRequestExample'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectFieldCreateResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/fields/{custom_object_field_key_or_id}:
+    get:
+      operationId: ShowCustomObjectField
+      tags:
+        - Custom Object Fields
+      summary: >-
+        Get  Api V2 Custom_objects Custom_object_key Fields
+        Custom_object_field_key_or_id
+      description: >
+        Returns a custom field for a specific object using a provided key or id
+        of the field.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/CustomObjectFieldKeyOrId'
+      responses:
+        '200':
+          description: Custom Object Field
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectFieldCreateResponseExample'
+    patch:
+      operationId: UpdateCustomObjectField
+      tags:
+        - Custom Object Fields
+      summary: >-
+        Patch  Api V2 Custom_objects Custom_object_key Fields
+        Custom_object_field_key_or_id
+      description: >-
+        Updates individual custom object fields. The updating rules are as
+        follows:
+
+        * Takes a `custom_object_field` object that specifies the properties to
+        update
+
+        * The `key` property cannot be updated
+
+        * If updating a standard field, only the `title`, `description`, and
+        `properties` attributes can be updated.
+
+        * The `properties` parameter is comprised of four parts and can't be
+        changed if any records exist for the object.
+            * `autoincrement_enabled`: A Boolean that enables and disables autonumbering. Must be false if is_unique is true.
+            * `autoincrement_prefix`: A string value that is used as a prefix to the autogenerated numbers. It can't exceed 30 characters.
+            * `autoincrement_padding`: An integer specifying the starting number of digits in the autogenerated numbers. This value may be between 0-9. However, if you create records in excess of of these digits, additional digits are added as necessary.
+            * `autoincrement_next_sequence`: An integer that will be used as the next number in the autonumbering sequence. It can't be negative or less than the current autonumbering value.
+            * `is_unique`: A Boolean that enforces uniqueness for manually entered record names. When true, custom object record names must be unique. Must be false if autoincrement_enabled is true.
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/CustomObjectFieldKeyOrId'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectFieldResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectFieldCreateResponseExample'
+    delete:
+      operationId: DeleteCustomObjectField
+      tags:
+        - Custom Object Fields
+      summary: >-
+        Delete  Api V2 Custom_objects Custom_object_key Fields
+        Custom_object_field_key_or_id
+      description: >-
+        Deletes a field with the specified key. Note: You can't delete standard
+        fields.
+
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/CustomObjectFieldKeyOrId'
+      responses:
+        '204':
+          description: No content response
+  /api/v2/custom_objects/{custom_object_key}/fields/reorder:
+    put:
+      operationId: ReorderCustomObjectFields
+      tags:
+        - Custom Object Fields
+      summary: Put  Api V2 Custom_objects Custom_object_key Fields Reorder
+      description: >
+        Sets a preferred order of custom fields for a specific object by
+        providing field ids in the desired order.
+
+        #### Allowed For
+
+
+        * Admins
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '200':
+          description: Reordered
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/custom_objects/{custom_object_key}/jobs:
+    post:
+      operationId: CustomObjectRecordBulkJobs
+      tags:
+        - Custom Object Records
+      summary: Post  Api V2 Custom_objects Custom_object_key Jobs
+      description: >
+        Queues a background job to perform bulk actions on up to 100 custom
+        object records per single request.
+
+        Takes a `job` object with two nested fields:
+
+        * `action`, one of:
+            * `"create"`
+            * `"delete"`
+            * `"delete_by_external_id"`
+            * `"create_or_update_by_external_id"`
+            * `"create_or_update_by_name"`
+            * `"update"`
+        * `items`
+            * For a `"create"` action, an array of JSON objects representing the custom object records being created
+            * For a `"delete"` action, an array of strings representing Zendesk record ids
+            * For a `"delete_by_external_id"` action, an array of strings representing external ids
+            * For a `"create_or_update_by_external_id"` action, an array of JSON objects representing the custom object records being created or updated by external id
+            * For a `"create_or_update_by_name"` action, an array of JSON objects representing the custom object records being created or updated by name. The `is_unique` property on the custom object's name field must be enabled.
+            * For an `"update"` action, an array of JSON objects representing the custom object records being updated
+
+        Note: If autonumbering is selected for the custom object's name field,
+        record names aren't allowed in the request body because they are
+        generated automatically. If uniqueness is enabled, the record names must
+        be unique.
+
+
+        #### Allowed For
+
+        * Agents
+
+
+        #### Response ###
+
+        This endpoint returns a `job_status` [JSON
+        object](/api-reference/ticketing/ticket-management/job_statuses/#json-format)
+        and queues a background job to do the work. Use the [Show Job
+        Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status)
+        endpoint to check for the job's completion. Only a certain number of
+        jobs can be queued or running at the same time. See [Job
+        limit](/api-reference/introduction/rate-limits/#job-limit) for more
+        information.
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectRecordsBulkCreateRequest'
+            examples:
+              default:
+                $ref: >-
+                  #/components/examples/CustomObjectRecordsBulkCreateRequestExample
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordsJobsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectRecordsJobsResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/limits/field_limit:
+    get:
+      operationId: CustomObjectFieldsLimit
+      tags:
+        - Custom Object Fields
+      summary: Get  Api V2 Custom_objects Custom_object_key Limits Field_limit
+      description: |-
+        List the current count and the limit for a custom object's fields
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectLimitsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectFieldsLimitResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/records:
+    get:
+      operationId: ListCustomObjectRecords
+      tags:
+        - Custom Object Records
+      summary: Get  Api V2 Custom_objects Custom_object_key Records
+      description: >-
+        Lists all undeleted custom object records for the specified object
+
+         #### Pagination
+
+        * [Cursor
+        pagination](/api-reference/introduction/pagination/#cursor-pagination)
+        only.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - name: filter[ids]
+          in: query
+          description: >-
+            Optional comma-separated list of ids to filter records by. If one or
+            more ids are specified, only matching records are returned. The ids
+            must be unique and are case sensitive.
+          schema:
+            type: string
+          examples:
+            multipleIds:
+              summary: Example of multiple ids
+              value: id_1,id_2,id_3
+            oneId:
+              summary: Example of a single id
+              value: id_1
+        - name: filter[external_ids]
+          in: query
+          description: >-
+            Optional comma-separated list of external ids to filter records by.
+            If one or more ids are specified, only matching records are
+            returned. The ids must be unique and are case sensitive.
+          schema:
+            type: string
+          examples:
+            multipleIds:
+              summary: Example of multiple ids
+              value: ex_id_1,ex_id_2,ex_id_3
+            oneId:
+              summary: Example of a single id
+              value: ex_id_1
+        - name: sort
+          in: query
+          description: >
+            One of `id`, `updated_at`, `-id`, or `-updated_at`. The `-` denotes
+            the sort will be descending.
+          schema:
+            type: string
+        - name: page[before]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.before_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[after]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.after_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[size]
+          in: query
+          description: >
+            Specifies how many records should be returned in the response. You
+            can specify up to 100 records per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsIndexResponseExample
+    post:
+      operationId: CreateCustomObjectRecord
+      tags:
+        - Custom Object Records
+      summary: Post  Api V2 Custom_objects Custom_object_key Records
+      description: >
+        Creates a custom object record according to all the properties described
+        by a custom object definition. If `autoincrement_enabled` is true,
+        record names aren't allowed in the request body because they are
+        generated automatically. If `is_unique` is true, record names must be
+        unique.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectRecordsCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectRecordsCreateRequestExample'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsCreateResponseExample
+    patch:
+      operationId: UpsertCustomObjectRecordByExternalIdOrName
+      tags:
+        - Custom Object Records
+      summary: Patch  Api V2 Custom_objects Custom_object_key Records
+      description: >
+        If a record exists for the given external id or name, updates it. Only
+        the specified attributes are updated. Otherwise, creates a new record
+        with the provided external id, name and other attributes. The
+        `is_unqiue` property on the custom object's name field must be enabled
+        in order to update or create by name. External id and name cannot be
+        used together in the same request.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/CustomObjectRecordExternalId'
+        - $ref: '#/components/parameters/CustomObjectRecordName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectRecordsUpsertRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectRecordsUpsertRequestExample'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsUpsertResponseExample
+    delete:
+      operationId: DeleteCustomObjectRecordByExternalIdOrName
+      tags:
+        - Custom Object Records
+      summary: Delete  Api V2 Custom_objects Custom_object_key Records
+      description: >
+        Deletes a record with the specified external id or name. The `is_unique`
+        property on the custom object's name field must be enabled in order to
+        delete by name. External id and name cannot be used together in the same
+        request.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/CustomObjectRecordExternalId'
+        - $ref: '#/components/parameters/CustomObjectRecordName'
+      responses:
+        '204':
+          description: No content response
+  /api/v2/custom_objects/{custom_object_key}/records/{custom_object_record_id}:
+    get:
+      operationId: ShowCustomObjectRecord
+      tags:
+        - Custom Object Records
+      summary: >-
+        Get  Api V2 Custom_objects Custom_object_key Records
+        Custom_object_record_id
+      description: |
+        Returns a custom record for a specific object using a provided id.
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/CustomObjectRecordId'
+      responses:
+        '200':
+          description: Custom Object Record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsCreateResponseExample
+    patch:
+      operationId: UpdateCustomObjectRecord
+      tags:
+        - Custom Object Records
+      summary: >-
+        Patch  Api V2 Custom_objects Custom_object_key Records
+        Custom_object_record_id
+      description: >-
+        Updates an individual custom object record. The updating rules are as
+        follows:
+
+        * Takes a `custom_object_record` object that specifies the properties to
+        update
+
+        * The custom object fields should be nested inside a
+        `custom_object_fields` object
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/CustomObjectRecordId'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsCreateResponseExample
+    delete:
+      operationId: DeleteCustomObjectRecord
+      tags:
+        - Custom Object Records
+      summary: >-
+        Delete  Api V2 Custom_objects Custom_object_key Records
+        Custom_object_record_id
+      description: |-
+        Deletes a record with the specified id
+        #### Allowed For
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - $ref: '#/components/parameters/CustomObjectRecordId'
+      responses:
+        '204':
+          description: No content response
+  /api/v2/custom_objects/{custom_object_key}/records/autocomplete:
+    get:
+      operationId: AutocompleteCustomObjectRecordSearch
+      tags:
+        - Custom Object Records
+      summary: Get  Api V2 Custom_objects Custom_object_key Records Autocomplete
+      description: >-
+        Retrieves an array of custom object records that have a field value that
+        matches the value specified in the `name` parameter.
+
+
+        #### Pagination
+
+
+        * [Cursor
+        pagination](/api-reference/introduction/pagination/#cursor-pagination)
+        only.
+
+        * Returns the first 10,000 records sorted by relevancy with page limits.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - name: name
+          in: query
+          description: Part of a name of the record you are searching for
+          schema:
+            type: string
+        - name: page[before]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.before_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[after]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.after_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[size]
+          in: query
+          description: >
+            The number of records to return in the response. You can specify up
+            to 100 records per page.
+          schema:
+            type: integer
+        - name: field_id
+          in: query
+          description: >
+            The id of the lookup field. If the field has a relationship filter,
+            the filter is applied to the results. Must be used with `source`
+            param.
+          schema:
+            type: string
+        - name: source
+          in: query
+          description: >
+            One of "zen:user", "zen:ticket", "zen:organization", or
+            "zen:custom_object:CUSTOM_OBJECT_KEY". Represents the object
+            `field_id` belongs to. Must be used with field_id param.
+          schema:
+            type: string
+        - name: filter[dynamic_values]
+          in: query
+          description: >
+            Provided values to be used with [dynamic
+            filters](/api-reference/ticketing/lookup_relationships/lookup_relationships/#using-dynamic-filters).
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            additionalProperties:
+              type: integer
+            example:
+              ticket_fields_123: 123
+        - name: requester_id
+          in: query
+          description: |
+            The id of the requester. For use with dynamic filters.
+          schema:
+            type: integer
+          example: 264817272
+        - name: assignee_id
+          in: query
+          description: |
+            The id of the selected assignee. For use with dynamic filters.
+          schema:
+            type: integer
+          example: 7334148660734
+        - name: organization_id
+          in: query
+          description: >
+            The id of the organization the requester belongs to. For use with
+            dynamic filters.
+          schema:
+            type: integer
+          example: 5633330889598
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsAutocompleteResponseExample
+  /api/v2/custom_objects/{custom_object_key}/records/count:
+    get:
+      operationId: CountCustomObjectRecords
+      tags:
+        - Custom Object Records
+      summary: Get  Api V2 Custom_objects Custom_object_key Records Count
+      description: >-
+        Returns a total count of records for a specific custom object as well as
+        the time the count was refreshed.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: object
+                    additionalProperties:
+                      properties:
+                        refreshed_at:
+                          description: The time the last count was performed
+                          format: date-time
+                          readOnly: true
+                          type: string
+                        value:
+                          description: >-
+                            Number of records at the time of the latest count
+                            operation
+                          readOnly: true
+                          type: integer
+              examples:
+                default:
+                  value:
+                    count:
+                      refreshed_at: '2022-09-02T22:44:35Z'
+                      value: 7
+  /api/v2/custom_objects/{custom_object_key}/records/search:
+    get:
+      operationId: SearchCustomObjectRecords
+      tags:
+        - Custom Object Records
+      summary: Get  Api V2 Custom_objects Custom_object_key Records Search
+      description: >-
+        Returns an array of custom object records that meet the search criteria
+
+
+        #### Pagination
+
+
+        * [Cursor
+        pagination](/api-reference/introduction/pagination/#cursor-pagination)
+        only.
+
+        * Returns the records sorted by relevancy with page limits. Without a
+        `sort` parameter, only the first 10,000 records are returned. With a
+        `sort` parameter, all records are returned.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - name: query
+          in: query
+          description: >
+            The query parameter is used to search text-based fields for records
+            that match specific query terms.
+
+            The query can be multiple words or numbers. Every record that
+            matches the beginning of any word or number in the query string is
+            returned.<br/><br/>
+
+
+            Fuzzy search is supported for the following text-based field types:
+            : Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>
+
+
+            For example, you might want to search for records related to Tesla
+            vehicles: `query=Tesla`. In this example the API would return every
+            record for the given custom object where any of the supported text
+            fields contain the word 'Tesla'.<br/><br/>
+
+
+            You can include multiple words or numbers in your search. For
+            example: `query=Tesla Honda 2020`. This search phrase would be URL
+            encoded as `query=Tesla%20Honda%202020` and return every record for
+            the custom object for which any of the supported text fields
+            contained 'Tesla', 'Honda', or '2020'.
+          schema:
+            type: string
+          example: jdoe
+        - name: sort
+          in: query
+          description: >
+            One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`,
+            or `-updated_at`. The `-` denotes the sort will be descending.
+            Defaults to sorting by relevance.
+          schema:
+            type: string
+        - name: page[before]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.before_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[after]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.after_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[size]
+          in: query
+          description: >
+            Specifies how many records should be returned in the response. You
+            can specify up to 100 records per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsSearchResponseExample
+    post:
+      operationId: FilteredSearchCustomObjectRecords
+      tags:
+        - Custom Object Records
+      summary: Post  Api V2 Custom_objects Custom_object_key Records Search
+      description: >-
+        Returns an array of custom object records that meet the search and
+        filter criteria.
+
+
+        Filters can contain either an individual [comparison
+        object](#comparison-object) or an array of [comparison
+        objects](#comparison-object) within logical namespaces.
+
+
+        A filter is a JSON object that has the following properties:
+
+
+        | Name      | Type   | Required | Description
+
+        | --------- | ------ | -------- | -----------
+
+        | ATTRIBUTE | object | no       | A [comparison
+        object](#comparison-object) specifying an attribute value condition to
+        be met for records to match.<br/><br/>Examples are marked below.
+
+        | $and      | array  | no       | Array of conjunctive filter objects
+        (logical AND)
+
+        | $or       | array  | no       | Array of conjunctive filter objects
+        (logical OR)
+
+
+        ##### Examples
+
+
+
+        ```js
+
+        {
+          "filter": {
+            "custom_object_fields.field_key": { "$eq": "value" } // ATTRIBUTE
+          }
+        }
+
+        ```
+
+
+        ```js
+
+        // $or
+
+        {
+          "filter": {
+            "$or": [
+              { "custom_object_fields.field_key": { "$eq": "value" } }, // ATTRIBUTE
+              { "external_id": { "$eq": "Record123" } } // ATTRIBUTE
+            ]
+          }
+        }
+
+        ```
+
+
+        #### Comparison Object
+
+
+        A comparison object defines a condition a record must meet to be
+        considered a match. The condition is based on an attribute value or
+        object type.
+
+
+        A comparison object is a JSON object that has the following properties:
+
+
+        | Name      | Type          | Required | Description
+
+        | --------- | ------------- | -------- | -----------
+
+        | FIELD_KEY | string        | yes      | When filtering on a custom
+        field, they must be namedspaced with `custom_object_fields.`. ex.
+        `custom_object_fields.field_key`<br/><br/>When filtering on a standard
+        field, no namespace is required. The following fields are considered
+        standard: `created_at`, `updated_at`, `created_by_user`,
+        `updated_by_user`, `name`, `external_id`
+
+        | OPERATOR  | string        | yes      | [Supported
+        operators](/documentation/custom-data/v2/searching-custom-object-records/)
+        vary by the value's data type
+
+        | VALUE     | string, array | yes      | The value you're filtering for
+
+
+        #### Pagination
+
+
+        * [Cursor
+        pagination](/api-reference/introduction/pagination/#cursor-pagination)
+        only.
+
+        * Returns the records sorted by relevancy with page limits. Without a
+        `sort` parameter, only the first 10,000 records are returned. With a
+        `sort` parameter, all records are returned.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        * End users (when an admin
+        [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066)
+        the custom object to be accessible to end users)
+      parameters:
+        - $ref: '#/components/parameters/CustomObjectKey'
+        - name: query
+          in: query
+          description: >
+            The query parameter is used to search text-based fields for records
+            that match specific query terms.
+
+            The query can be multiple words or numbers. Every record that
+            matches the beginning of any word or number in the query string is
+            returned.<br/><br/>
+
+
+            Fuzzy search is supported for the following text-based field types:
+            Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>
+
+
+            For example, you might want to search for records related to Tesla
+            vehicles: `query=Tesla`. In this example the API would return every
+            record for the given custom object where any of the supported text
+            fields contain the word 'Tesla'.<br/><br/>
+
+
+            You can include multiple words or numbers in your search. For
+            example: `query=Tesla Honda 2020`. This search phrase would be URL
+            encoded as `query=Tesla%20Honda%202020` and return every record for
+            the custom object for which any of the supported text fields
+            contained 'Tesla', 'Honda', or '2020'.
+          schema:
+            type: string
+          example: jdoe
+        - name: sort
+          in: query
+          description: >
+            One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`,
+            or `-updated_at`. The `-` denotes the sort will be descending.
+            Defaults to sorting by relevance.
+          schema:
+            type: string
+        - name: page[before]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.before_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[after]
+          in: query
+          description: >
+            A [pagination
+            cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It should be a
+            `meta.after_cursor` value from a previous request. Note:
+            `page[before]` and `page[after]` can't be used together in the same
+            request.
+          schema:
+            type: string
+        - name: page[size]
+          in: query
+          description: >
+            Specifies how many records should be returned in the response. You
+            can specify up to 100 records per page.
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: >-
+                    #/components/schemas/CustomObjectRecordsFilteredSearchRequestBasic
+                - $ref: >-
+                    #/components/schemas/CustomObjectRecordsFilteredSearchRequestComplex
+            examples:
+              default:
+                $ref: >-
+                  #/components/examples/CustomObjectRecordsFilteredSearchRequestExample
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectRecordsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsSearchResponseExample
+  /api/v2/custom_objects/{custom_object_key}/triggers:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+    get:
+      operationId: ListObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers
+      description: |
+        Lists all triggers for the specified custom object.
+
+        #### Allowed For 
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/TriggerActive'
+        - $ref: '#/components/parameters/TriggerSortBy'
+        - $ref: '#/components/parameters/TriggerSortOrder'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersResponseExample'
+    post:
+      operationId: CreateObjectTrigger
+      tags:
+        - Object Triggers
+      summary: Post  Api V2 Custom_objects Custom_object_key Triggers
+      description: >
+        Creates a new object trigger for a specified object.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerRequestExample'
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/{trigger_id}:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerId'
+    get:
+      operationId: GetObjectTrigger
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: |
+        Returns details of a specific object trigger.
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+    put:
+      operationId: UpdateObjectTrigger
+      tags:
+        - Object Triggers
+      summary: Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: >
+        Updates a specified object trigger.
+
+
+        **Note**: Updating a condition or action updates both the conditions and
+        actions arrays,
+
+        clearing all existing values of both arrays. Include all your conditions
+
+        and actions when updating any condition or action.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+    delete:
+      operationId: DeleteObjectTrigger
+      tags:
+        - Object Triggers
+      summary: Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: >
+        Deletes a specified object trigger.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/custom_objects/{custom_object_key}/triggers/active:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+    get:
+      operationId: ListActiveObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Active
+      description: >
+        Lists all active object triggers.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersActiveResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/definitions:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+    get:
+      operationId: ListObjectTriggersDefinitions
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
+      description: >
+        Lists the conditions and actions of all triggers for the specified
+        custom object.
+
+
+        #### Allowed For 
+
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerDefinitionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerDefinitionResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/destroy_many:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerIds'
+    delete:
+      operationId: DeleteManyObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
+      description: >
+        Deletes the object triggers corresponding to the provided
+        comma-separated list of ids. 
+
+
+        **Note**: You can only bulk-delete triggers associated with one object
+        at a time, specified by the `custom_object_key` in the request.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+
+
+        #### Request Parameters
+
+
+        The DELETE request takes an `ids` object that lists the
+
+        object triggers to delete. All of the specified object trigger `ids`
+        must be associated with a single object.
+
+
+        | Name | Description
+
+        | ---- | -----------
+
+        | ids  | The ids of the triggers to delete
+
+
+        #### Example request
+
+
+        ```js
+
+        {
+          "ids": "25,23,27,22"
+        }
+
+        ```
+      responses:
+        '204':
+          description: No content response
+  /api/v2/custom_objects/{custom_object_key}/triggers/search:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      - $ref: '#/components/parameters/TriggerSearchQuery'
+      - $ref: '#/components/parameters/TriggerSearchFilter'
+      - $ref: '#/components/parameters/TriggerActive'
+      - $ref: '#/components/parameters/TriggerSort'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+      - $ref: '#/components/parameters/TriggerInclude'
+    get:
+      operationId: SearchObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Search
+      description: >
+        Returns a list of object triggers that meet your filter or search
+        criteria.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Filter
+
+
+        Use the `filter` query parameter to filter an object trigger search by
+        one or more attributes. For example, the following `filter` argument
+        filters object triggers by the `title` attribute:
+
+
+        ```json
+
+        {
+          "json": {
+            "title": "test"
+          }
+        }
+
+        ```
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersSearchResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/update_many:
+    parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+    put:
+      operationId: UpdateManyObjectTriggers
+      tags:
+        - Object Triggers
+      summary: Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
+      description: >
+        Updates the position or the active status of multiple object triggers.
+        Any additional properties are ignored.
+
+
+        **Note**: You can only bulk-update triggers associated with one object
+        at a time, specified by the `custom_object_key` in the request.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission
+        (Enterprise only)
+
+
+        #### Request Parameters
+
+
+        The PUT request expects a `triggers` object that lists the object
+        triggers to update. All of the specified object trigger `ids` must be
+        associated with a single object.
+
+
+        You can specify the following properties for each object trigger you're
+        updating:
+
+
+        | Name        | Mandatory | Description
+
+        | --------    | --------- | -----------
+
+        | id          | yes       | The ID of the object trigger to update
+
+        | position    | no        | The new position of the object trigger
+
+        | active      | no        | The active status of the object trigger
+        (true or false)
+
+
+        #### Example Request
+
+
+        ```js
+
+        {
+          "triggers": [
+            {"id": 25, "position": 3},
+            {"id": 23, "active": true},
+            {"id": 27, "position": 9, "active": false},
+            {"id": 22, "position": 7}
+          ]
+        }
+
+        ```
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerBulkUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerBulkUpdateRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersResponseExample'
+  /api/v2/custom_objects/limits/object_limit:
+    get:
+      operationId: CustomObjectsLimit
+      tags:
+        - Custom Objects
+      summary: Get  Api V2 Custom_objects Limits Object_limit
+      description: |-
+        List the current count and the limit for custom objects
+        #### Allowed For
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectLimitsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsLimitResponseExample'
+  /api/v2/custom_objects/limits/record_limit:
+    get:
+      operationId: CustomObjectRecordsLimit
+      tags:
+        - Custom Object Records
+      summary: Get  Api V2 Custom_objects Limits Record_limit
+      description: |-
+        List the current count and the limit for custom object records
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectLimitsResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/CustomObjectRecordsLimitResponseExample
+components:
+  schemas:
+    CustomObjectsResponse:
+      type: object
+      properties:
+        custom_objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomObject'
+    CustomObjectResponse:
+      type: object
+      properties:
+        custom_object:
+          $ref: '#/components/schemas/CustomObject'
+    CustomObjectFieldsResponse:
+      type: object
+      properties:
+        custom_object_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomObjectField'
+    CustomObjectFieldResponse:
+      type: object
+      properties:
+        custom_object_field:
+          $ref: '#/components/schemas/CustomObjectField'
+    CustomObjectLimitsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The current numnber of the requested resource
+          readOnly: true
+        limit:
+          type: integer
+          description: The maximum allowed number for the requested resource
+          readOnly: true
+    CustomObjectRecordsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The number of results returned for the current request
+          readOnly: true
+        custom_object_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomObjectRecord'
+        links:
+          type: object
+          properties:
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+          required:
+            - prev
+            - next
+        meta:
+          type: object
+          properties:
+            after_cursor:
+              type: string
+              nullable: true
+            before_cursor:
+              type: string
+              nullable: true
+            has_more:
+              type: boolean
+          required:
+            - has_more
+            - after_cursor
+            - before_cursor
+    CustomObjectRecordResponse:
+      type: object
+      properties:
+        custom_object_record:
+          $ref: '#/components/schemas/CustomObjectRecord'
+    ObjectTriggersResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectTriggerObject'
+    ObjectTriggerResponse:
+      type: object
+      properties:
+        trigger:
+          $ref: '#/components/schemas/ObjectTriggerObject'
+    ObjectTriggerDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          $ref: '#/components/schemas/ObjectTriggerDefinitionObject'

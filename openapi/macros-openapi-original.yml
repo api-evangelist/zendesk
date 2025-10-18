@@ -1,0 +1,673 @@
+openapi: 3.1.0
+info:
+  title: Macros
+  description: Needs a description.
+paths:
+  /api/v2/macros:
+    get:
+      operationId: ListMacros
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros
+      description: >
+        Lists all shared and personal macros available to the current user. For
+        admins, the API returns all macros for the account, including the
+        personal macros of agents and other admins.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/MacroInclude'
+        - $ref: '#/components/parameters/MacroAccess'
+        - $ref: '#/components/parameters/MacroActive'
+        - $ref: '#/components/parameters/MacroCategory'
+        - $ref: '#/components/parameters/MacroGroupId'
+        - $ref: '#/components/parameters/MacroOnlyViewable'
+        - $ref: '#/components/parameters/MacroSortBy'
+        - $ref: '#/components/parameters/MacroSortOrder'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacrosResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacrosResponseExample'
+    post:
+      operationId: CreateMacro
+      tags:
+        - Macros
+      summary: Post  Api V2 Macros
+      description: |
+        #### Allowed For
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                macro:
+                  $ref: '#/components/schemas/MacroInput'
+            examples:
+              default:
+                value:
+                  macro:
+                    actions:
+                      - field: status
+                        value: solved
+                    title: Roger Wilco
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  macro:
+                    $ref: '#/components/schemas/MacroObject'
+              examples:
+                default:
+                  $ref: '#/components/examples/CreateMacroResponseExample'
+  /api/v2/macros/{macro_id}:
+    parameters:
+      - $ref: '#/components/parameters/MacroId'
+    get:
+      operationId: ShowMacro
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Macro_id
+      description: |
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroResponseExample'
+    put:
+      operationId: UpdateMacro
+      tags:
+        - Macros
+      summary: Put  Api V2 Macros Macro_id
+      description: |
+        #### Allowed For
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                macro:
+                  $ref: '#/components/schemas/MacroInput'
+            examples:
+              default:
+                value:
+                  macro:
+                    actions:
+                      - field: status
+                        value: solved
+                    title: Sets the ticket status to `solved`
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  macro:
+                    $ref: '#/components/schemas/MacroObject'
+              examples:
+                default:
+                  $ref: '#/components/examples/UpdateMacroResponseExample'
+    delete:
+      operationId: DeleteMacro
+      tags:
+        - Macros
+      summary: Delete  Api V2 Macros Macro_id
+      description: |
+        #### Allowed For
+        * Agents, with restrictions applying on certain actions
+      responses:
+        '204':
+          description: No Content
+  /api/v2/macros/{macro_id}/apply:
+    parameters:
+      - $ref: '#/components/parameters/MacroId'
+    get:
+      operationId: ShowChangesToTicket
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Macro_id Apply
+      description: >
+        Returns the changes the macro would make to a ticket. It doesn't
+        actually
+
+        change a ticket. You can use the response data in a subsequent API call
+
+        to the [Tickets](/api-reference/ticketing/tickets/tickets/) endpoint to
+        update the ticket.
+
+
+        The response includes only the ticket fields that would be changed by
+        the
+
+        macro. To get the full ticket object after the macro is applied,
+
+        see [Show Ticket After Changes](#show-ticket-after-changes).
+
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroApplyTicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroChangesToTicketsResponseExample'
+  /api/v2/macros/{macro_id}/attachments:
+    parameters:
+      - $ref: '#/components/parameters/MacroId'
+    get:
+      operationId: ListMacroAttachments
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Macro_id Attachments
+      description: |
+        Lists the attachments associated with a macro.
+
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroAttachmentsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroAttachmentsResponseExample'
+    post:
+      operationId: CreateAssociatedMacroAttachment
+      tags:
+        - Macros
+      summary: Post  Api V2 Macros Macro_id Attachments
+      description: >
+        Allows an attachment to be uploaded and associated with a macro at the
+        same time.
+
+
+        **Note:** A macro can be associated with up to five attachments.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '201':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroAttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroAttachmentResponseExample'
+  /api/v2/macros/actions:
+    get:
+      operationId: ListMacrosActions
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Actions
+      description: |
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroActionsResponseExample'
+  /api/v2/macros/active:
+    get:
+      operationId: ListActiveMacros
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Active
+      description: >
+        Lists all active shared and personal macros available to the current
+        user.
+
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - $ref: '#/components/parameters/MacroInclude'
+        - $ref: '#/components/parameters/MacroAccess'
+        - $ref: '#/components/parameters/MacroCategory'
+        - $ref: '#/components/parameters/MacroGroupId'
+        - $ref: '#/components/parameters/MacroSortBy'
+        - $ref: '#/components/parameters/MacroSortOrder'
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacrosResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacrosResponseExample'
+  /api/v2/macros/attachments:
+    post:
+      operationId: CreateMacroAttachment
+      tags:
+        - Macros
+      summary: Post  Api V2 Macros Attachments
+      description: >
+        Allows an attachment to be uploaded that can be associated with a macro
+        at a later time.
+
+
+        **Note:** To ensure an uploaded attachment is not lost, associate it
+        with a macro as soon as possible. From time to time, old attachments
+        that are not not associated with any macro are purged.
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '201':
+          description: Created Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroAttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroAttachmentResponseExample'
+  /api/v2/macros/attachments/{attachment_id}:
+    parameters:
+      - $ref: '#/components/parameters/AttachmentId'
+    get:
+      operationId: ShowMacroAttachment
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Attachments Attachment_id
+      description: |
+        Shows the properties of the specified macro attachment.
+
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroAttachmentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroAttachmentResponseExample'
+  /api/v2/macros/categories:
+    get:
+      operationId: ListMacroCategories
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Categories
+      description: |
+        Lists all macro categories available to the current user.
+
+        #### Allowed For
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroCategoriesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroCategoriesResponseExample'
+  /api/v2/macros/definitions:
+    get:
+      operationId: ListMacroActionDefinitions
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Definitions
+      description: >
+        Returns the definitions of the actions a macro can perform. For example,
+
+        one action can set the status of a ticket. The definition of the action
+
+        includes a title ("Status"), a type ("list"), and possible values. For a
+
+        list of support actions, see [Actions
+        reference](/documentation/ticketing/reference-guides/actions-reference).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  definitions:
+                    type: object
+                    properties:
+                      actions:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+              examples:
+                default:
+                  $ref: '#/components/examples/ShowDerivedMacroResponseExample'
+  /api/v2/macros/destroy_many:
+    delete:
+      operationId: DeleteManyMacros
+      tags:
+        - Macros
+      summary: Delete  Api V2 Macros Destroy_many
+      description: >
+        Deletes the macros corresponding to the provided comma-separated list of
+        IDs.
+
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - name: ids
+          in: query
+          description: The IDs of the macros to delete
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+          example:
+            - 1
+            - 2
+            - 3
+      responses:
+        '204':
+          description: No Content
+  /api/v2/macros/new:
+    parameters:
+      - $ref: '#/components/parameters/MacroIdQuery'
+      - name: ticket_id
+        in: query
+        description: The ID of the ticket from which to build a macro replica
+        required: true
+        schema:
+          type: integer
+        example: 35436
+    get:
+      operationId: ShowDerivedMacro
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros New
+      description: >
+        Returns an unpersisted macro representation derived from a ticket or
+        macro.
+
+
+        The endpoint takes one of the following query parameters: `macro_id` or
+        `ticket_id`. If you include both, `macro_id` is used.
+
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroResponseExample'
+  /api/v2/macros/search:
+    parameters:
+      - $ref: '#/components/parameters/MacroInclude'
+      - $ref: '#/components/parameters/MacroAccess'
+      - $ref: '#/components/parameters/MacroActive'
+      - $ref: '#/components/parameters/MacroCategory'
+      - $ref: '#/components/parameters/MacroGroupId'
+      - $ref: '#/components/parameters/MacroOnlyViewable'
+      - $ref: '#/components/parameters/MacroSearchSortBy'
+      - $ref: '#/components/parameters/MacroSortOrder'
+      - $ref: '#/components/parameters/MacroQuery'
+    get:
+      operationId: SearchMacro
+      tags:
+        - Macros
+      summary: Get  Api V2 Macros Search
+      description: >
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset
+        Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacrosResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacrosResponseExample'
+  /api/v2/macros/update_many:
+    put:
+      operationId: UpdateManyMacros
+      tags:
+        - Macros
+      summary: Put  Api V2 Macros Update_many
+      description: |
+        Updates the provided macros with the specified changes.
+
+        #### Allowed For
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MacroUpdateManyInput'
+            examples:
+              default:
+                value:
+                  macros:
+                    - active: false
+                      id: 25
+                    - id: 23
+                      position: 5
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacrosResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacrosResponseExample'
+  /api/v2/tickets/{ticket_id}/macros/{macro_id}/apply:
+    parameters:
+      - $ref: '#/components/parameters/MacroId'
+      - name: ticket_id
+        in: path
+        description: The ID of the ticket
+        required: true
+        schema:
+          type: integer
+        example: 35436
+    get:
+      operationId: ShowTicketAfterChanges
+      tags:
+        - Macros
+      summary: Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
+      description: >
+        Returns the full ticket object as it would be after applying the macro
+        to the ticket.
+
+        It doesn't actually change the ticket.
+
+
+        To get only the ticket fields that would be changed by the macro,
+
+        see [Show Changes to Ticket](#show-changes-to-ticket).
+
+
+        #### Allowed For
+
+
+        * Agents
+      responses:
+        '200':
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MacroApplyTicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/MacroChangesToTicketsResponseExample'
+components:
+  schemas:
+    MacrosResponse:
+      type: object
+      allOf:
+        - type: object
+          properties:
+            macros:
+              type: array
+              items:
+                $ref: '#/components/schemas/MacroObject'
+        - $ref: '#/components/schemas/OffsetPaginationObject'
+    MacroResponse:
+      type: object
+      properties:
+        macro:
+          $ref: '#/components/schemas/MacroObject'
+    MacroApplyTicketResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            ticket:
+              type: object
+              properties:
+                assignee_id:
+                  type: integer
+                comment:
+                  type: object
+                  properties:
+                    body:
+                      type: string
+                    public:
+                      type: boolean
+                    scoped_body:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: string
+                fields:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    value:
+                      type: string
+                group_id:
+                  type: integer
+                id:
+                  type: integer
+                url:
+                  type: string
+    MacroAttachmentsResponse:
+      type: object
+      properties:
+        macro_attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/MacroAttachmentObject'
+    MacroAttachmentResponse:
+      type: object
+      properties:
+        macro_attachment:
+          $ref: '#/components/schemas/MacroAttachmentObject'
+    MacroCategoriesResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            type: string

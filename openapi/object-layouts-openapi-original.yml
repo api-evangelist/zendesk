@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Object Layouts
+  description: Needs a description.
+paths:
+  /api/v2/object_layouts/{object_type}/essentials_card:
+    parameters:
+      - $ref: '#/components/parameters/EssentialsCardKey'
+    get:
+      operationId: ShowEssentialsCard
+      tags:
+        - Essentials Card
+      summary: Get  Api V2 Object_layouts Object_type Essentials_card
+      description: |
+        Gets the essentials card for an object type.
+        #### Allowed For
+        * Admins and agents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EssentialsCardResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/EssentialsCardExample'
+    put:
+      operationId: UpdateEssentialsCard
+      tags:
+        - Essentials Card
+      summary: Put  Api V2 Object_layouts Object_type Essentials_card
+      description: |
+        Updates the essentials card for an object type.
+        #### Allowed For
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EssentialsCardResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/EssentialsCardExample'
+    delete:
+      operationId: DeleteEssentialsCard
+      tags:
+        - Essentials Card
+      summary: Delete  Api V2 Object_layouts Object_type Essentials_card
+      description: |
+        Delete the essentials card for an object type.
+        #### Allowed For
+        * Admins and agents
+      responses:
+        '204':
+          description: Success response
+  /api/v2/object_layouts/essentials_cards:
+    get:
+      operationId: ShowEssentialsCards
+      tags:
+        - Essentials Card
+      summary: Get  Api V2 Object_layouts Essentials_cards
+      description: |
+        Gets the list of essentials cards.
+        #### Allowed For
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EssentialsCardsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/EssentialsCardsExample'
+components:
+  schemas:
+    EssentialsCardResponse:
+      type: object
+      properties:
+        object_layout:
+          $ref: '#/components/schemas/EssentialsCardObject'
+    EssentialsCardsResponse:
+      type: object
+      properties:
+        object_layouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/EssentialsCardObject'

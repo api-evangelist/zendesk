@@ -1,0 +1,283 @@
+openapi: 3.1.0
+info:
+  title: Slas
+  description: Needs a description.
+paths:
+  /api/v2/slas/policies:
+    get:
+      operationId: ListSLAPolicies
+      tags:
+        - SLA Policies
+      summary: Get  Api V2 Slas Policies
+      description: |
+        #### Availability
+
+        * Accounts on the Support Professional or Suite Growth plan or above
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SLAPoliciesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SLAPoliciesResponseExample'
+    post:
+      operationId: CreateSLAPolicy
+      tags:
+        - SLA Policies
+      summary: Post  Api V2 Slas Policies
+      description: |
+        #### Availability
+
+        * Accounts on the Support Professional or Suite Growth plan or above
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SLAPolicyResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SLAPolicyCreateResponse'
+  /api/v2/slas/policies/{sla_policy_id}:
+    parameters:
+      - $ref: '#/components/parameters/SLAPolicyId'
+    get:
+      operationId: ShowSLAPolicy
+      tags:
+        - SLA Policies
+      summary: Get  Api V2 Slas Policies Sla_policy_id
+      description: |
+        #### Availability
+
+        * Accounts on the Support Professional or Suite Growth plan or above
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SLAPolicyResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SLAPolicyResponseExample'
+    put:
+      operationId: UpdateSLAPolicy
+      tags:
+        - SLA Policies
+      summary: Put  Api V2 Slas Policies Sla_policy_id
+      description: |
+        Updates the specified policy.
+
+        #### Availability
+
+        * Accounts on the Support Professional or Suite Growth plan or above
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SLAPolicyResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SLAPolicyUpdateResponse'
+    delete:
+      operationId: DeleteSLAPolicy
+      tags:
+        - SLA Policies
+      summary: Delete  Api V2 Slas Policies Sla_policy_id
+      description: |
+        #### Availability
+
+        * Accounts on the Support Professional or Suite Growth plan or above
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/slas/policies/definitions:
+    get:
+      operationId: RetrieveSLAPolicyFilterDefinitionItems
+      tags:
+        - SLA Policies
+      summary: Get  Api V2 Slas Policies Definitions
+      description: |
+        #### Availability
+
+        * Accounts on the Support Professional or Suite Growth plan or above
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SLAPolicyFilterDefinitionResponse'
+              examples:
+                default:
+                  $ref: >-
+                    #/components/examples/SLAPolicyFilterDefinitionResponseExample
+  /api/v2/slas/policies/reorder:
+    put:
+      operationId: ReorderSLAPolicies
+      tags:
+        - SLA Policies
+      summary: Put  Api V2 Slas Policies Reorder
+      description: |
+        #### Availability
+
+        * Accounts on the Support Professional or Suite Growth plan or above
+
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - name: sla_policy_ids
+          in: query
+          description: The IDs of the SLA Policies to reorder
+          schema:
+            type: array
+            items:
+              type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+components:
+  schemas:
+    SLAPoliciesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+        sla_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/SLAPolicyObject'
+    SLAPolicyResponse:
+      type: object
+      properties:
+        sla_policy:
+          $ref: '#/components/schemas/SLAPolicyObject'
+    SLAPolicyFilterDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          type: object
+          properties:
+            all:
+              type: array
+              items:
+                type: object
+                properties:
+                  group:
+                    type: string
+                  operators:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        value:
+                          type: string
+                  target:
+                    type: string
+                    nullable: true
+                  title:
+                    type: string
+                  value:
+                    type: string
+                  values:
+                    type: object
+                    properties:
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                            value:
+                              type: string
+                              nullable: true
+                      type:
+                        type: string
+            any:
+              type: array
+              items:
+                type: object
+                properties:
+                  group:
+                    type: string
+                  operators:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        value:
+                          type: string
+                  target:
+                    type: string
+                    nullable: true
+                  title:
+                    type: string
+                  value:
+                    type: string
+                  values:
+                    type: object
+                    properties:
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                            value:
+                              type: string
+                              nullable: true
+                      type:
+                        type: string

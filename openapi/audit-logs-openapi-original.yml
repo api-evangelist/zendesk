@@ -1,0 +1,183 @@
+openapi: 3.1.0
+info:
+  title: Audit Logs
+  description: Needs a description.
+paths:
+  /api/v2/audit_logs:
+    get:
+      operationId: ListAuditLogs
+      tags:
+        - Audit Logs
+      summary: Get  Api V2 Audit_logs
+      description: |
+        #### Allowed For
+
+        * Admins on accounts that have audit log access
+
+        #### Pagination
+
+        * Cursor pagination (recommended)
+        * Offset pagination
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        Returns a maximum of 100 records per page.
+      parameters:
+        - name: filter[source_type]
+          in: query
+          description: Filter audit logs by the source type. For example, user or rule
+          schema:
+            type: string
+        - name: filter[source_id]
+          in: query
+          description: >-
+            Filter audit logs by the source id. Requires `filter[source_type]`
+            to also be set
+          schema:
+            type: integer
+        - name: filter[actor_id]
+          in: query
+          description: Filter audit logs by the actor id
+          schema:
+            type: integer
+        - name: filter[ip_address]
+          in: query
+          description: Filter audit logs by the ip address
+          schema:
+            type: string
+        - name: filter[created_at]
+          in: query
+          description: >-
+            Filter audit logs by the time of creation. When used, you must
+            specify `filter[created_at]` twice in your request, first with the
+            start time and again with an end time
+          schema:
+            type: string
+        - name: filter[action]
+          in: query
+          description: Filter audit logs by the action
+          schema:
+            type: string
+        - name: sort_by
+          in: query
+          description: >-
+            Offset pagination only. Sort audit logs. Default is
+            `sort_by=created_at`
+          schema:
+            type: string
+        - name: sort_order
+          in: query
+          description: >-
+            Offset pagination only. Sort audit logs. Default is
+            `sort_order=desc`
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: >-
+            Cursor pagination only. Sort audit logs. Default is
+            `sort=-created_at`
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditLogsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AuditLogsResponseExample'
+  /api/v2/audit_logs/{audit_log_id}:
+    parameters:
+      - $ref: '#/components/parameters/AuditLogId'
+    get:
+      operationId: ShowAuditLog
+      tags:
+        - Audit Logs
+      summary: Get  Api V2 Audit_logs Audit_log_id
+      description: |
+        #### Allowed For
+
+        * Admins on accounts that have audit-log access
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditLogResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AuditLogResponseExample'
+  /api/v2/audit_logs/export:
+    post:
+      operationId: ExportAuditLogs
+      tags:
+        - Audit Logs
+      summary: Post  Api V2 Audit_logs Export
+      description: |
+        #### Allowed For
+
+        * Admins on accounts that have audit log access
+      parameters:
+        - name: filter[source_type]
+          in: query
+          description: Filter audit logs by the source type. For example, user or rule
+          schema:
+            type: string
+        - name: filter[source_id]
+          in: query
+          description: >-
+            Filter audit logs by the source id. Requires `filter[source_type]`
+            to also be set.
+          schema:
+            type: integer
+        - name: filter[actor_id]
+          in: query
+          description: Filter audit logs by the actor id
+          schema:
+            type: integer
+        - name: filter[ip_address]
+          in: query
+          description: Filter audit logs by the ip address
+          schema:
+            type: string
+        - name: filter[created_at]
+          in: query
+          description: >-
+            Filter audit logs by the time of creation. When used, you must
+            specify `filter[created_at]` twice in your request, first with the
+            start time and again with an end time
+          schema:
+            type: string
+        - name: filter[action]
+          in: query
+          description: Filter audit logs by the action
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Accepted description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+components:
+  schemas:
+    AuditLogsResponse:
+      type: object
+      properties:
+        audit_logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLogObject'
+    AuditLogResponse:
+      type: object
+      properties:
+        audit_log:
+          $ref: '#/components/schemas/AuditLogObject'

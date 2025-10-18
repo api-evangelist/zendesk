@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: Satisfaction Reasons
+  description: Needs a description.
+paths:
+  /api/v2/satisfaction_reasons:
+    get:
+      operationId: ListSatisfactionRatingReasons
+      tags:
+        - Satisfaction Reasons
+      summary: Get  Api V2 Satisfaction_reasons
+      description: |
+        List all reasons for an account
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SatisfactionReasonsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SatisfactionReasonsResponseExample'
+  /api/v2/satisfaction_reasons/{satisfaction_reason_id}:
+    get:
+      operationId: ShowSatisfactionRatings
+      tags:
+        - Satisfaction Reasons
+      summary: Get  Api V2 Satisfaction_reasons Satisfaction_reason_id
+      description: |
+        #### Allowed For
+
+        * Admins
+      parameters:
+        - name: satisfaction_reason_id
+          in: path
+          description: The id of the satisfaction rating reason
+          required: true
+          schema:
+            type: integer
+          example: 35121
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SatisfactionReasonResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SatisfactionReasonResponseExample'
+components:
+  schemas:
+    SatisfactionReasonsResponse:
+      type: object
+      properties:
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionReasonObject'
+    SatisfactionReasonResponse:
+      type: object
+      properties:
+        reason:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionReasonObject'
