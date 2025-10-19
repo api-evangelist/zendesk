@@ -1500,7 +1500,18 @@ apis:
         type: Documentation
       - url: properties/ticket-content-pins-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Ticket Content Pins API lets you programmatically manage the
+      pinned references that keep important information visible on a support
+      ticket. With it, you can create, list, reorder, and remove pins that point
+      to helpful resources (such as Help Center articles or other relevant
+      content) or key pieces of ticket context, so agents and collaborators
+      always see the most important guidance first. This enables teams to
+      automate pinning based on business rules, surface consistent answers
+      across escalations, and analyze which content is most often pinned to
+      improve knowledge quality. The API respects existing permissions and
+      records metadata (for example, who pinned an item and when), making it
+      easier to govern and audit knowledge-use on tickets.
   - aid: zendesk:ticket-fields
     name: Zendesk Ticket Fields API
     tags:
@@ -1513,7 +1524,17 @@ apis:
         type: Documentation
       - url: properties/ticket-fields-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Ticket Fields API lets you programmatically manage the
+      structured fields that appear on Zendesk Support tickets. With it, you can
+      list, create, update, delete, and reorder ticket fields; define field
+      types (such as text, textarea, checkbox, date, dropdown, or multiselect)
+      and options for picklists; control properties like title and description,
+      position, active/required status, and visibility/editability for agents
+      and end users; localize labels; and retrieve both custom and system
+      fields. Teams use it to standardize data capture, automate configuration
+      across environments, and keep field definitions in sync with external
+      tools and workflows.
   - aid: zendesk:ticket-form-statuses
     name: Zendesk Ticket Form Statuses API
     tags:
@@ -1527,7 +1548,21 @@ apis:
         type: Documentation
       - url: properties/ticket-form-statuses-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Ticket Form Statuses API lets you control which ticket
+      statuses (including custom ticket statuses) are available on each ticket
+      form, so you can tailor status options to different request types or
+      brands. With it, admins can retrieve the current status configuration for
+      a form and update which statuses are enabled or hidden from agents and end
+      users, helping simplify workflows and reduce confusion. The API returns
+      details such as status IDs, names, and their category (for example, New,
+      Open, Pending, On-hold, Solved), making it clear how each status maps to
+      broader lifecycle stages. It doesnt create or manage the statuses
+      themselvesthats handled by the Ticket Statuses/Custom Ticket Statuses
+      APIrather, it manages the association between forms and statuses. Typical
+      uses include limiting irrelevant statuses on specific forms, ensuring
+      consistent agent experiences, and aligning form behavior with business
+      processes, all under standard admin permissions and rate limits.
   - aid: zendesk:ticket-forms
     name: Zendesk Ticket Forms API
     tags:
@@ -1541,7 +1576,19 @@ apis:
         type: Documentation
       - url: properties/ticket-forms-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Ticket Forms API lets you programmatically create, read,
+      update, delete, and reorder the ticket forms that shape how tickets are
+      submitted and displayed in Zendesk Support. Each form defines which ticket
+      fields appear and in what order, enabling you to tailor the submission
+      experience for different request types, workflows, or brands. You can
+      control properties such as the forms name and display name, whether its
+      visible to end users, its default status, and its position. The API also
+      supports assigning forms to brands and specifying the set of
+      ticket_field_ids a form uses, so you can maintain distinct configurations
+      across products or audiences. In short, it provides end-to-end management
+      of the forms that drive consistent, contextual data collection from both
+      customers and agents.
   - aid: zendesk:ticket-metrics
     name: Zendesk Ticket Metrics API
     tags:
@@ -1555,7 +1602,18 @@ apis:
         type: Documentation
       - url: properties/ticket-metrics-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Ticket Metrics API lets you programmatically access the
+      operational and SLA metrics that Zendesk calculates for each support
+      ticket. It provides perticket summaries such as first reply time, full
+      resolution time, requester and agent wait times, onhold time, number of
+      replies and reopens, and key timestamps (for example, assigned and
+      solved), often available in both calendar and business minutes. In
+      addition to these summaries, an incremental Ticket Metric Events endpoint
+      streams metric changes over time, enabling nearrealtime monitoring and
+      reliable ETL into analytics tools. Teams use the API to build custom
+      dashboards, track SLA compliance, analyze trends, and join metrics to
+      tickets by ticket_id for full context.
   - aid: zendesk:tickets
     name: Zendesk Tickets API
     tags:
@@ -1568,7 +1626,21 @@ apis:
         type: Documentation
       - url: properties/tickets-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Tickets API is the primary REST interface for managing support
+      tickets programmatically. It lets you create, read, update, and delete
+      tickets; set core and custom fields (status, priority, type, assignee,
+      requester, organization, tags); and add public or internal comments with
+      file attachments. You can manage participants (CCs,
+      followers/collaborators), retrieve full ticket audits to see change and
+      comment history, access satisfaction ratings, perform bulk updates or
+      merges via asynchronous jobs, and keep external systems in sync using
+      incremental ticket and ticket-event exports. Many endpoints support
+      sideloading related users, groups, and organizations to reduce round
+      trips, and standard features like pagination, sorting, and rate limits
+      apply. The API uses JSON over HTTPS and supports authentication with OAuth
+      or API tokens, making it a common backbone for integrating CRMs, issue
+      trackers, custom portals, and automation workflows with Zendesk Support.
   - aid: zendesk:trigger-categories
     name: Zendesk Trigger Categories API
     tags:
@@ -1582,7 +1654,15 @@ apis:
         type: Documentation
       - url: properties/trigger-categories-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Trigger Categories API lets you programmatically organize
+      Zendesk Support triggers into logical groups, making large sets of
+      business rules easier to manage at scale. It provides endpoints to list
+      and retrieve categories, create, rename, reorder, and delete them, and to
+      assign or move triggers between categories or fetch the triggers within a
+      category. This enables automated provisioning and cleanup, consistent
+      organization across environments (such as staging and production), and
+      bulk maintenance of triggers without relying on the Admin Center UI.
   - aid: zendesk:triggers
     name: Zendesk Triggers API
     tags:
@@ -1595,7 +1675,20 @@ apis:
         type: Documentation
       - url: properties/triggers-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Triggers API lets you programmatically manage the ticket
+      triggers that power automation in Zendesk Support. Triggers are
+      eventbased business rules that run immediately after a ticket is created
+      or updated; when their conditions match, they perform actions like
+      assigning or routing tickets, adding/removing tags, setting fields or
+      status, sending notifications, and invoking webhooks. Through the API you
+      can list and retrieve triggers, create and update them (including their
+      all/any conditions and actions), enable or disable them, delete them, and
+      reorder their execution priority; you can also organize triggers via
+      categories. Its a REST/JSON interface that requires admin credentials
+      (API token or OAuth), making it useful for versioning and deploying
+      workflows, syncing configurations across environments, or integrating
+      Zendesk ticket flows with external systems.
   - aid: zendesk:uploads
     name: Zendesk Uploads API
     tags:
@@ -1608,7 +1701,16 @@ apis:
         type: Documentation
       - url: properties/uploads-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Uploads API lets you upload files to Zendesk Support so they
+      can be attached to tickets or embedded inline in ticket comments. When you
+      POST a file, the API creates an upload and returns metadata plus a
+      short-lived token. You then include one or more of these tokens when
+      creating or updating a ticket to add the files as attachments. The API
+      supports single-shot and chunked uploads (for large files), and provides
+      endpoints to check an uploads details or delete it. Its commonly used to
+      handle user-provided screenshots, logs, and other assets, and to insert
+      inline images in rich-text comments via the returned content URLs.
   - aid: zendesk:user-fields
     name: Zendesk User Fields API
     tags:
@@ -1621,7 +1723,17 @@ apis:
         type: Documentation
       - url: properties/user-fields-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk User Fields API lets you programmatically define and manage
+      the custom attributes you store on users in Zendesk Support. You can list,
+      create, update, and delete user fields (such as text, number, date,
+      checkbox, or dropdown), which become part of your user schema and appear
+      on user profiles for agents. After defining fields, you read and write
+      their values through the Users API (in the user_fields object) to enrich
+      profiles with data like plan, region, lifecycle stage, or account owner.
+      These attributes can then be surfaced in the agent experience and used by
+      business rules, views, and reporting to segment users, personalize
+      workflows, and drive routing and automation.
   - aid: zendesk:users
     name: Zendesk Users API
     tags:
@@ -1634,7 +1746,18 @@ apis:
         type: Documentation
       - url: properties/users-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Users API is part of the Zendesk Support REST API and lets you
+      programmatically manage the people in your accountend users, agents, and
+      admins. It provides endpoints to list, search, create, update, and delete
+      users; manage roles, tags, custom fields, organization and group
+      memberships; handle user identities (such as email addresses and phone
+      numbers) and verification; set avatars; suspend or reactivate accounts;
+      and merge duplicate users. It also supports bulk create/update/delete and
+      incremental exports for large-scale synchronization. Common uses include
+      keeping your user directory in sync with external systems, automating
+      provisioning and deprovisioning, and enriching support workflows that
+      depend on requester or assignee data.
   - aid: zendesk:views
     name: Zendesk Views API
     tags:
@@ -1647,7 +1770,18 @@ apis:
         type: Documentation
       - url: properties/views-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Views API lets you programmatically manage and use ticket
+      viewsthe saved sets of filtering, sorting, and column rules that define
+      agent queues. With it, you can list and fetch views (personal or shared),
+      create, update, delete, and reorder them, and execute a view to retrieve
+      the current tickets that match its conditions along with counts. It also
+      supports previewing a set of conditions before saving a view, exporting
+      view results (e.g., for reporting), and accessing metadata like counts for
+      dashboards. This enables automation of queue setup, custom dashboards,
+      scheduled exports, and other workflow integrations, all under Zendesks
+      authentication and permission model (e.g., admins managing shared views,
+      agents managing personal views).
   - aid: zendesk:workspaces
     name: Zendesk Workspaces API
     tags:
@@ -1660,7 +1794,16 @@ apis:
         type: Documentation
       - url: properties/workspaces-openapi-original.yml
         type: OpenAPI
-    description: Needs a description
+    description: >-
+      The Zendesk Workspaces API lets you programmatically create, read, update,
+      delete, and prioritize contextual workspaces that shape the Agent
+      Workspace experience. With it, admins define the conditions under which a
+      workspace applies (for example by brand, channel, group, ticket form, or
+      other ticket attributes) and configure what agents see and use when
+      handling a ticketsuch as the ticket layout and fields, which sidebar apps
+      open or are shown, and available tools or macros. This makes it easier to
+      standardize, version, and automate agent UI configurations across teams,
+      brands, and environments.
 name: Zendesk
 tags:
   - Support
