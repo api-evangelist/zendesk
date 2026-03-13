@@ -1,0 +1,310 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "zendesk": "https://developer.zendesk.com/api-reference/ticketing/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "org": "http://www.w3.org/ns/org#",
+
+    "Ticket": {
+      "@id": "zendesk:tickets/tickets/#ticket",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:integer"
+        },
+        "url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "externalId": {
+          "@id": "zendesk:tickets/tickets/#external_id",
+          "@type": "xsd:string"
+        },
+        "type": {
+          "@id": "dcterms:type",
+          "@type": "xsd:string"
+        },
+        "subject": {
+          "@id": "dcterms:title",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string"
+        },
+        "priority": {
+          "@id": "zendesk:tickets/tickets/#priority",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "zendesk:tickets/tickets/#status",
+          "@type": "xsd:string"
+        },
+        "requesterId": {
+          "@id": "zendesk:tickets/tickets/#requester_id",
+          "@type": "xsd:integer"
+        },
+        "submitterId": {
+          "@id": "zendesk:tickets/tickets/#submitter_id",
+          "@type": "xsd:integer"
+        },
+        "assigneeId": {
+          "@id": "zendesk:tickets/tickets/#assignee_id",
+          "@type": "xsd:integer"
+        },
+        "organizationId": {
+          "@id": "zendesk:tickets/tickets/#organization_id",
+          "@type": "xsd:integer"
+        },
+        "groupId": {
+          "@id": "zendesk:tickets/tickets/#group_id",
+          "@type": "xsd:integer"
+        },
+        "tags": {
+          "@id": "zendesk:tickets/tickets/#tags",
+          "@container": "@set"
+        },
+        "dueAt": {
+          "@id": "zendesk:tickets/tickets/#due_at",
+          "@type": "xsd:dateTime"
+        },
+        "brandId": {
+          "@id": "zendesk:tickets/tickets/#brand_id",
+          "@type": "xsd:integer"
+        },
+        "ticketFormId": {
+          "@id": "zendesk:tickets/tickets/#ticket_form_id",
+          "@type": "xsd:integer"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "User": {
+      "@id": "zendesk:users/users/#user",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:integer"
+        },
+        "url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "name": {
+          "@id": "foaf:name",
+          "@type": "xsd:string"
+        },
+        "email": {
+          "@id": "foaf:mbox",
+          "@type": "xsd:string"
+        },
+        "phone": {
+          "@id": "vcard:tel",
+          "@type": "xsd:string"
+        },
+        "role": {
+          "@id": "zendesk:users/users/#role",
+          "@type": "xsd:string"
+        },
+        "organizationId": {
+          "@id": "zendesk:users/users/#organization_id",
+          "@type": "xsd:integer"
+        },
+        "externalId": {
+          "@id": "zendesk:users/users/#external_id",
+          "@type": "xsd:string"
+        },
+        "alias": {
+          "@id": "zendesk:users/users/#alias",
+          "@type": "xsd:string"
+        },
+        "verified": {
+          "@id": "zendesk:users/users/#verified",
+          "@type": "xsd:boolean"
+        },
+        "active": {
+          "@id": "zendesk:users/users/#active",
+          "@type": "xsd:boolean"
+        },
+        "suspended": {
+          "@id": "zendesk:users/users/#suspended",
+          "@type": "xsd:boolean"
+        },
+        "tags": {
+          "@id": "zendesk:users/users/#tags",
+          "@container": "@set"
+        },
+        "locale": {
+          "@id": "zendesk:users/users/#locale",
+          "@type": "xsd:string"
+        },
+        "timeZone": {
+          "@id": "zendesk:users/users/#time_zone",
+          "@type": "xsd:string"
+        },
+        "signature": {
+          "@id": "zendesk:users/users/#signature",
+          "@type": "xsd:string"
+        },
+        "details": {
+          "@id": "zendesk:users/users/#details",
+          "@type": "xsd:string"
+        },
+        "notes": {
+          "@id": "zendesk:users/users/#notes",
+          "@type": "xsd:string"
+        },
+        "lastLoginAt": {
+          "@id": "zendesk:users/users/#last_login_at",
+          "@type": "xsd:dateTime"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Organization": {
+      "@id": "zendesk:organizations/organizations/#organization",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:integer"
+        },
+        "url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "name": {
+          "@id": "org:name",
+          "@type": "xsd:string"
+        },
+        "details": {
+          "@id": "zendesk:organizations/organizations/#details",
+          "@type": "xsd:string"
+        },
+        "notes": {
+          "@id": "zendesk:organizations/organizations/#notes",
+          "@type": "xsd:string"
+        },
+        "domainNames": {
+          "@id": "zendesk:organizations/organizations/#domain_names",
+          "@container": "@set"
+        },
+        "groupId": {
+          "@id": "zendesk:organizations/organizations/#group_id",
+          "@type": "xsd:integer"
+        },
+        "sharedTickets": {
+          "@id": "zendesk:organizations/organizations/#shared_tickets",
+          "@type": "xsd:boolean"
+        },
+        "sharedComments": {
+          "@id": "zendesk:organizations/organizations/#shared_comments",
+          "@type": "xsd:boolean"
+        },
+        "externalId": {
+          "@id": "zendesk:organizations/organizations/#external_id",
+          "@type": "xsd:string"
+        },
+        "tags": {
+          "@id": "zendesk:organizations/organizations/#tags",
+          "@container": "@set"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Comment": {
+      "@id": "zendesk:tickets/ticket_comments/#comment",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:integer"
+        },
+        "body": {
+          "@id": "schema:text",
+          "@type": "xsd:string"
+        },
+        "htmlBody": {
+          "@id": "zendesk:tickets/ticket_comments/#html_body",
+          "@type": "xsd:string"
+        },
+        "public": {
+          "@id": "zendesk:tickets/ticket_comments/#public",
+          "@type": "xsd:boolean"
+        },
+        "authorId": {
+          "@id": "dcterms:creator",
+          "@type": "xsd:integer"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "SatisfactionRating": {
+      "@id": "zendesk:tickets/satisfaction_ratings/#satisfaction_rating",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:integer"
+        },
+        "score": {
+          "@id": "schema:ratingValue",
+          "@type": "xsd:string"
+        },
+        "comment": {
+          "@id": "schema:reviewBody",
+          "@type": "xsd:string"
+        },
+        "ticketId": {
+          "@id": "zendesk:tickets/satisfaction_ratings/#ticket_id",
+          "@type": "xsd:integer"
+        },
+        "requesterId": {
+          "@id": "zendesk:tickets/satisfaction_ratings/#requester_id",
+          "@type": "xsd:integer"
+        },
+        "assigneeId": {
+          "@id": "zendesk:tickets/satisfaction_ratings/#assignee_id",
+          "@type": "xsd:integer"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}

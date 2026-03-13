@@ -1,0 +1,1878 @@
+openapi: 3.1.0
+info:
+  title: Zendesk Support API
+  description: >-
+    The Zendesk Support API provides programmatic access to the core resources
+    of the Zendesk Support platform, including tickets, users, and
+    organizations. It enables creating, reading, updating, and deleting
+    support records, managing relationships between entities, and integrating
+    Zendesk Support with external systems. The API uses JSON over HTTPS and
+    supports authentication via OAuth 2.0 or API tokens.
+  version: 2.0.0
+  contact:
+    name: Zendesk Developer Support
+    url: https://developer.zendesk.com
+  license:
+    name: Zendesk API Terms
+    url: https://www.zendesk.com/company/agreements-and-terms/
+  x-logo:
+    url: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+
+externalDocs:
+  description: Zendesk Support API Reference
+  url: https://developer.zendesk.com/api-reference/ticketing/introduction/
+
+servers:
+  - url: https://{subdomain}.zendesk.com/api/v2
+    description: Zendesk Support API
+    variables:
+      subdomain:
+        default: your-subdomain
+        description: Your Zendesk subdomain
+
+security:
+  - basicAuth: []
+  - bearerAuth: []
+
+tags:
+  - name: Tickets
+    description: Manage support tickets
+    externalDocs:
+      url: https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/
+  - name: Users
+    description: Manage users (end users, agents, admins)
+    externalDocs:
+      url: https://developer.zendesk.com/api-reference/ticketing/users/users/
+  - name: Organizations
+    description: Manage organizations
+    externalDocs:
+      url: https://developer.zendesk.com/api-reference/ticketing/organizations/organizations/
+
+paths:
+  /tickets:
+    get:
+      operationId: listTickets
+      summary: List Tickets
+      description: >-
+        Returns a paginated list of tickets in the account. Tickets are sorted
+        by created date in ascending order by default. Supports sideloading
+        of related users, groups, and organizations.
+      tags:
+        - Tickets
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/PerPageParam'
+        - name: sort_by
+          in: query
+          description: The field to sort tickets by.
+          schema:
+            type: string
+            enum:
+              - created_at
+              - updated_at
+              - priority
+              - status
+              - ticket_type
+            default: created_at
+        - name: sort_order
+          in: query
+          description: The sort order.
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+        - name: external_id
+          in: query
+          description: Filter tickets by external ID.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tickets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Ticket'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: createTicket
+      summary: Create Ticket
+      description: >-
+        Creates a new ticket. You can set the requester, subject, description,
+        priority, type, status, tags, custom fields, and other properties.
+        Comments can be added during creation.
+      tags:
+        - Tickets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ticket
+              properties:
+                ticket:
+                  $ref: '#/components/schemas/TicketCreate'
+      responses:
+        '201':
+          description: Ticket created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket:
+                    $ref: '#/components/schemas/Ticket'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /tickets/{ticket_id}:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: getTicket
+      summary: Show Ticket
+      description: Returns the details of a specific ticket.
+      tags:
+        - Tickets
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket:
+                    $ref: '#/components/schemas/Ticket'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    put:
+      operationId: updateTicket
+      summary: Update Ticket
+      description: >-
+        Updates a ticket. You can update the status, priority, assignee,
+        tags, custom fields, and add comments. Setting the status to
+        "solved" or "closed" resolves or closes the ticket.
+      tags:
+        - Tickets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ticket
+              properties:
+                ticket:
+                  $ref: '#/components/schemas/TicketUpdate'
+      responses:
+        '200':
+          description: Ticket updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket:
+                    $ref: '#/components/schemas/Ticket'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: deleteTicket
+      summary: Delete Ticket
+      description: >-
+        Permanently deletes a ticket. This operation cannot be undone.
+        Deleted tickets are not recoverable.
+      tags:
+        - Tickets
+      responses:
+        '204':
+          description: Ticket deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /tickets/{ticket_id}/comments:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: listTicketComments
+      summary: List Ticket Comments
+      description: Returns the comments on a specific ticket.
+      tags:
+        - Tickets
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/PerPageParam'
+        - name: sort_order
+          in: query
+          description: Sort order for comments.
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Comment'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /users:
+    get:
+      operationId: listUsers
+      summary: List Users
+      description: >-
+        Returns a paginated list of all users in the account, including
+        end users, agents, and admins. Supports filtering by role and
+        permission set.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/PerPageParam'
+        - name: role
+          in: query
+          description: Filter by user role.
+          schema:
+            type: string
+            enum:
+              - end-user
+              - agent
+              - admin
+        - name: permission_set
+          in: query
+          description: >-
+            For custom roles, filter by the permission set ID.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: createUser
+      summary: Create User
+      description: >-
+        Creates a new user. You must provide at least a name and an email
+        address or phone number. The user role defaults to end-user.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - user
+              properties:
+                user:
+                  $ref: '#/components/schemas/UserCreate'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /users/{user_id}:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: getUser
+      summary: Show User
+      description: Returns the details of a specific user.
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    put:
+      operationId: updateUser
+      summary: Update User
+      description: >-
+        Updates a user. You can update the name, email, role, organization,
+        tags, custom fields, and other properties.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - user
+              properties:
+                user:
+                  $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: deleteUser
+      summary: Delete User
+      description: >-
+        Deletes a user. The user is soft-deleted and can be recovered
+        within a limited time. Agents and admins can only be deleted by
+        admins.
+      tags:
+        - Users
+      responses:
+        '200':
+          description: User deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /users/search:
+    get:
+      operationId: searchUsers
+      summary: Search Users
+      description: >-
+        Searches for users by name, email, external ID, or other criteria.
+        Returns a paginated list of matching users.
+      tags:
+        - Users
+      parameters:
+        - name: query
+          in: query
+          required: true
+          description: >-
+            The search query. Supports name, email, phone, external_id,
+            and other fields.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/PerPageParam'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: List Organizations
+      description: >-
+        Returns a paginated list of all organizations in the account.
+      tags:
+        - Organizations
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/PerPageParam'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: createOrganization
+      summary: Create Organization
+      description: >-
+        Creates a new organization. You must provide a name. You can
+        optionally set domains, tags, notes, and custom fields.
+      tags:
+        - Organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - organization
+              properties:
+                organization:
+                  $ref: '#/components/schemas/OrganizationCreate'
+      responses:
+        '201':
+          description: Organization created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /organizations/{organization_id}:
+    parameters:
+      - $ref: '#/components/parameters/OrganizationId'
+    get:
+      operationId: getOrganization
+      summary: Show Organization
+      description: Returns the details of a specific organization.
+      tags:
+        - Organizations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    put:
+      operationId: updateOrganization
+      summary: Update Organization
+      description: >-
+        Updates an organization. You can update the name, domains, notes,
+        tags, details, and custom fields.
+      tags:
+        - Organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - organization
+              properties:
+                organization:
+                  $ref: '#/components/schemas/OrganizationUpdate'
+      responses:
+        '200':
+          description: Organization updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: deleteOrganization
+      summary: Delete Organization
+      description: >-
+        Permanently deletes an organization. Users associated with the
+        organization are not deleted, but their organization membership
+        is removed.
+      tags:
+        - Organizations
+      responses:
+        '204':
+          description: Organization deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /organizations/search:
+    get:
+      operationId: searchOrganizations
+      summary: Search Organizations
+      description: >-
+        Searches for organizations by name or external ID.
+      tags:
+        - Organizations
+      parameters:
+        - name: external_id
+          in: query
+          description: Search by external ID.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /organizations/autocomplete:
+    get:
+      operationId: autocompleteOrganizations
+      summary: Autocomplete Organizations
+      description: >-
+        Returns organizations whose names start with the given string.
+        Useful for building type-ahead search interfaces.
+      tags:
+        - Organizations
+      parameters:
+        - name: name
+          in: query
+          required: true
+          description: The prefix to match against organization names.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        Use your Zendesk email address followed by /token and your API
+        token as the password. For example: user@example.com/token:api_token
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token
+
+  parameters:
+    TicketId:
+      name: ticket_id
+      in: path
+      required: true
+      description: The ID of the ticket.
+      schema:
+        type: integer
+        format: int64
+    UserId:
+      name: user_id
+      in: path
+      required: true
+      description: The ID of the user.
+      schema:
+        type: integer
+        format: int64
+    OrganizationId:
+      name: organization_id
+      in: path
+      required: true
+      description: The ID of the organization.
+      schema:
+        type: integer
+        format: int64
+    PageParam:
+      name: page
+      in: query
+      description: The page number.
+      schema:
+        type: integer
+        default: 1
+    PerPageParam:
+      name: per_page
+      in: query
+      description: The number of results per page (max 100).
+      schema:
+        type: integer
+        default: 100
+        maximum: 100
+
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: >-
+        The request was well-formed but could not be processed due to
+        validation errors.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit exceeded. Check the Retry-After header.
+      headers:
+        Retry-After:
+          description: Number of seconds to wait before making another request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Ticket:
+      type: object
+      description: A Zendesk Support ticket representing a customer service request.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned ticket ID.
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          description: The API URL of the ticket.
+          readOnly: true
+        external_id:
+          type: string
+          nullable: true
+          description: An ID from an external system.
+        type:
+          type: string
+          enum:
+            - problem
+            - incident
+            - question
+            - task
+          nullable: true
+          description: The type of the ticket.
+        subject:
+          type: string
+          description: The subject of the ticket.
+        raw_subject:
+          type: string
+          description: The original subject of the ticket as entered by the requester.
+          readOnly: true
+        description:
+          type: string
+          description: The first comment on the ticket (read-only after creation).
+          readOnly: true
+        priority:
+          type: string
+          enum:
+            - urgent
+            - high
+            - normal
+            - low
+          nullable: true
+          description: The urgency of the ticket.
+        status:
+          type: string
+          enum:
+            - new
+            - open
+            - pending
+            - hold
+            - solved
+            - closed
+          description: The current status of the ticket.
+        recipient:
+          type: string
+          format: email
+          nullable: true
+          description: The original recipient email address of the ticket.
+          readOnly: true
+        requester_id:
+          type: integer
+          format: int64
+          description: The ID of the user who requested the ticket.
+        submitter_id:
+          type: integer
+          format: int64
+          description: The ID of the user who submitted the ticket.
+          readOnly: true
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the agent assigned to the ticket.
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the organization associated with the ticket.
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the group assigned to the ticket.
+        collaborator_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of users currently CC'd on the ticket.
+        follower_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of agents currently following the ticket.
+          readOnly: true
+        email_cc_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of agents or end users currently CC'd on the ticket.
+        forum_topic_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the topic in the community forum, if applicable.
+          readOnly: true
+        problem_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: >-
+            For incident tickets, the ID of the associated problem ticket.
+        has_incidents:
+          type: boolean
+          description: Whether the ticket has been marked as a problem with incidents.
+          readOnly: true
+        is_public:
+          type: boolean
+          description: Whether the ticket has a public comment.
+          readOnly: true
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: The due date for task tickets (ISO 8601).
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags applied to the ticket.
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+          description: Custom field key-value pairs.
+        satisfaction_rating:
+          type: object
+          nullable: true
+          description: The satisfaction rating of the ticket, if rated.
+          readOnly: true
+          properties:
+            score:
+              type: string
+              enum:
+                - offered
+                - unoffered
+                - good
+                - bad
+            comment:
+              type: string
+        sharing_agreement_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of sharing agreements used for the ticket.
+          readOnly: true
+        custom_status_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of a custom ticket status.
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+          description: Custom field values (alias for custom_fields).
+          readOnly: true
+        followup_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of follow-up tickets created from this ticket.
+          readOnly: true
+        ticket_form_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the ticket form used for this ticket.
+        brand_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the brand this ticket is associated with.
+        allow_channelback:
+          type: boolean
+          description: Whether channelback is enabled.
+          readOnly: true
+        allow_attachments:
+          type: boolean
+          description: Whether the ticket allows attachments.
+          readOnly: true
+        from_messaging_channel:
+          type: boolean
+          description: Whether the ticket originated from a messaging channel.
+          readOnly: true
+        via:
+          $ref: '#/components/schemas/Via'
+        created_at:
+          type: string
+          format: date-time
+          description: When the ticket was created (ISO 8601).
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When the ticket was last updated (ISO 8601).
+          readOnly: true
+
+    TicketCreate:
+      type: object
+      description: Payload for creating a new ticket.
+      properties:
+        subject:
+          type: string
+          description: The subject of the ticket.
+        comment:
+          type: object
+          required:
+            - body
+          description: The initial comment (description) of the ticket.
+          properties:
+            body:
+              type: string
+              description: The body of the comment.
+            html_body:
+              type: string
+              description: The HTML body of the comment.
+            public:
+              type: boolean
+              default: true
+              description: Whether the comment is public.
+            uploads:
+              type: array
+              items:
+                type: string
+              description: Upload tokens for attachments.
+        requester_id:
+          type: integer
+          format: int64
+          description: The ID of the requester.
+        requester:
+          type: object
+          description: >-
+            Requester details for creating a new user inline. Use either
+            requester_id or requester, not both.
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+              format: email
+            locale_id:
+              type: integer
+        submitter_id:
+          type: integer
+          format: int64
+          description: The ID of the submitter.
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the assigned agent.
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the assigned group.
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+        type:
+          type: string
+          enum:
+            - problem
+            - incident
+            - question
+            - task
+          nullable: true
+        priority:
+          type: string
+          enum:
+            - urgent
+            - high
+            - normal
+            - low
+          nullable: true
+        status:
+          type: string
+          enum:
+            - new
+            - open
+            - pending
+            - hold
+            - solved
+          default: new
+        tags:
+          type: array
+          items:
+            type: string
+        external_id:
+          type: string
+          nullable: true
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+        ticket_form_id:
+          type: integer
+          format: int64
+          nullable: true
+        brand_id:
+          type: integer
+          format: int64
+          nullable: true
+        collaborator_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        email_cc_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        problem_id:
+          type: integer
+          format: int64
+          nullable: true
+
+    TicketUpdate:
+      type: object
+      description: Payload for updating an existing ticket.
+      properties:
+        subject:
+          type: string
+        comment:
+          type: object
+          description: A new comment to add to the ticket.
+          properties:
+            body:
+              type: string
+            html_body:
+              type: string
+            public:
+              type: boolean
+              default: true
+            author_id:
+              type: integer
+              format: int64
+            uploads:
+              type: array
+              items:
+                type: string
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+        type:
+          type: string
+          enum:
+            - problem
+            - incident
+            - question
+            - task
+          nullable: true
+        priority:
+          type: string
+          enum:
+            - urgent
+            - high
+            - normal
+            - low
+          nullable: true
+        status:
+          type: string
+          enum:
+            - new
+            - open
+            - pending
+            - hold
+            - solved
+            - closed
+        tags:
+          type: array
+          items:
+            type: string
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+        problem_id:
+          type: integer
+          format: int64
+          nullable: true
+        collaborator_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        email_cc_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        external_id:
+          type: string
+          nullable: true
+
+    User:
+      type: object
+      description: >-
+        A Zendesk user representing an end user, agent, or admin in the
+        account.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned user ID.
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          description: The API URL of the user.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the user.
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: The primary email address of the user.
+        phone:
+          type: string
+          nullable: true
+          description: The primary phone number of the user.
+        photo:
+          type: object
+          nullable: true
+          description: The user's profile photo.
+          readOnly: true
+          properties:
+            id:
+              type: integer
+              format: int64
+            file_name:
+              type: string
+            content_url:
+              type: string
+              format: uri
+            content_type:
+              type: string
+            size:
+              type: integer
+            thumbnails:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  file_name:
+                    type: string
+                  content_url:
+                    type: string
+                    format: uri
+                  content_type:
+                    type: string
+                  size:
+                    type: integer
+        locale_id:
+          type: integer
+          nullable: true
+          description: The locale ID of the user.
+        locale:
+          type: string
+          description: The locale of the user (e.g., en-US).
+          readOnly: true
+        time_zone:
+          type: string
+          nullable: true
+          description: The time zone of the user.
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the user's default organization.
+        role:
+          type: string
+          enum:
+            - end-user
+            - agent
+            - admin
+          description: The role of the user.
+        custom_role_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: >-
+            The custom role ID for agents with custom roles.
+        verified:
+          type: boolean
+          description: Whether the user's identity has been verified.
+        external_id:
+          type: string
+          nullable: true
+          description: An external ID for the user from an integrated system.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags applied to the user.
+        alias:
+          type: string
+          nullable: true
+          description: An alias displayed instead of the agent's name.
+        active:
+          type: boolean
+          description: Whether the user account is active.
+          readOnly: true
+        shared:
+          type: boolean
+          description: Whether the user is shared from a different Zendesk Support instance.
+          readOnly: true
+        shared_agent:
+          type: boolean
+          description: Whether the user is a shared agent from a different instance.
+          readOnly: true
+        shared_phone_number:
+          type: boolean
+          nullable: true
+          description: Whether the phone number is shared.
+          readOnly: true
+        signature:
+          type: string
+          nullable: true
+          description: The signature text appended to the agent's comments.
+        details:
+          type: string
+          nullable: true
+          description: Details about the user visible only to agents.
+        notes:
+          type: string
+          nullable: true
+          description: Notes about the user visible only to agents.
+        restricted_agent:
+          type: boolean
+          description: >-
+            Whether the agent has restrictions (true for agents in a custom
+            role with restrictions).
+          readOnly: true
+        suspended:
+          type: boolean
+          description: Whether the user is suspended.
+        default_group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The default group ID for the agent.
+        report_csv:
+          type: boolean
+          description: Whether the user can access the CSV report.
+          readOnly: true
+        only_private_comments:
+          type: boolean
+          description: >-
+            Whether the user can only create private comments (for
+            restricted end users).
+        ticket_restriction:
+          type: string
+          enum:
+            - organization
+            - groups
+            - assigned
+            - requested
+          nullable: true
+          description: The ticket access restriction for the agent.
+        moderator:
+          type: boolean
+          description: Whether the user has community moderator privileges.
+        chat_only:
+          type: boolean
+          description: Whether the user is a chat-only agent.
+          readOnly: true
+        two_factor_auth_enabled:
+          type: boolean
+          nullable: true
+          description: Whether two-factor authentication is enabled.
+          readOnly: true
+        user_fields:
+          type: object
+          additionalProperties: true
+          description: Custom user field values (key-value pairs).
+        last_login_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: The last time the user signed in (ISO 8601).
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: When the user was created (ISO 8601).
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When the user was last updated (ISO 8601).
+          readOnly: true
+
+    UserCreate:
+      type: object
+      description: Payload for creating a new user.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The name of the user.
+        email:
+          type: string
+          format: email
+          description: The user's email address.
+        phone:
+          type: string
+          nullable: true
+          description: The user's phone number.
+        role:
+          type: string
+          enum:
+            - end-user
+            - agent
+            - admin
+          default: end-user
+        custom_role_id:
+          type: integer
+          format: int64
+          nullable: true
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+        external_id:
+          type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+        locale_id:
+          type: integer
+          nullable: true
+        time_zone:
+          type: string
+          nullable: true
+        details:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        alias:
+          type: string
+          nullable: true
+        signature:
+          type: string
+          nullable: true
+        verified:
+          type: boolean
+          default: false
+        user_fields:
+          type: object
+          additionalProperties: true
+
+    UserUpdate:
+      type: object
+      description: Payload for updating an existing user.
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        role:
+          type: string
+          enum:
+            - end-user
+            - agent
+            - admin
+        custom_role_id:
+          type: integer
+          format: int64
+          nullable: true
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+        external_id:
+          type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+        locale_id:
+          type: integer
+          nullable: true
+        time_zone:
+          type: string
+          nullable: true
+        details:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        alias:
+          type: string
+          nullable: true
+        signature:
+          type: string
+          nullable: true
+        suspended:
+          type: boolean
+        user_fields:
+          type: object
+          additionalProperties: true
+
+    Organization:
+      type: object
+      description: >-
+        A Zendesk organization representing a company or group of users.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned organization ID.
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          description: The API URL of the organization.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the organization.
+        details:
+          type: string
+          nullable: true
+          description: Details about the organization.
+        notes:
+          type: string
+          nullable: true
+          description: Notes about the organization visible only to agents.
+        domain_names:
+          type: array
+          items:
+            type: string
+          description: >-
+            Domain names associated with the organization. Users with
+            matching email domains can be auto-assigned.
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: >-
+            The default group assigned to tickets from this organization.
+        shared_tickets:
+          type: boolean
+          description: >-
+            Whether end users in the organization can see each other's
+            tickets.
+        shared_comments:
+          type: boolean
+          description: >-
+            Whether end users in the organization can see each other's
+            comments on tickets.
+        external_id:
+          type: string
+          nullable: true
+          description: An external ID from an integrated system.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags applied to the organization.
+        organization_fields:
+          type: object
+          additionalProperties: true
+          description: Custom organization field values (key-value pairs).
+        created_at:
+          type: string
+          format: date-time
+          description: When the organization was created (ISO 8601).
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When the organization was last updated (ISO 8601).
+          readOnly: true
+
+    OrganizationCreate:
+      type: object
+      description: Payload for creating a new organization.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The name of the organization.
+        details:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        domain_names:
+          type: array
+          items:
+            type: string
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+        shared_tickets:
+          type: boolean
+          default: false
+        shared_comments:
+          type: boolean
+          default: false
+        external_id:
+          type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+        organization_fields:
+          type: object
+          additionalProperties: true
+
+    OrganizationUpdate:
+      type: object
+      description: Payload for updating an existing organization.
+      properties:
+        name:
+          type: string
+        details:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        domain_names:
+          type: array
+          items:
+            type: string
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+        shared_tickets:
+          type: boolean
+        shared_comments:
+          type: boolean
+        external_id:
+          type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+        organization_fields:
+          type: object
+          additionalProperties: true
+
+    Comment:
+      type: object
+      description: A comment on a ticket.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the comment.
+          readOnly: true
+        type:
+          type: string
+          enum:
+            - Comment
+            - VoiceComment
+          description: The type of the comment.
+          readOnly: true
+        body:
+          type: string
+          description: The plain text body of the comment.
+        html_body:
+          type: string
+          description: The HTML body of the comment.
+        plain_body:
+          type: string
+          description: The plain text body with formatting stripped.
+          readOnly: true
+        public:
+          type: boolean
+          description: Whether the comment is public (visible to the requester).
+        author_id:
+          type: integer
+          format: int64
+          description: The ID of the comment author.
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+          description: Attachments on the comment.
+          readOnly: true
+        via:
+          $ref: '#/components/schemas/Via'
+        created_at:
+          type: string
+          format: date-time
+          description: When the comment was created (ISO 8601).
+          readOnly: true
+
+    Attachment:
+      type: object
+      description: A file attachment.
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+        file_name:
+          type: string
+        content_url:
+          type: string
+          format: uri
+        content_type:
+          type: string
+        size:
+          type: integer
+          description: The size of the file in bytes.
+        thumbnails:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                format: int64
+              file_name:
+                type: string
+              content_url:
+                type: string
+                format: uri
+              content_type:
+                type: string
+              size:
+                type: integer
+
+    Via:
+      type: object
+      description: How the ticket or comment was created.
+      properties:
+        channel:
+          type: string
+          description: >-
+            The channel the ticket or comment came through (e.g., web, email,
+            api, chat, voice).
+        source:
+          type: object
+          properties:
+            from:
+              type: object
+              additionalProperties: true
+            to:
+              type: object
+              additionalProperties: true
+            rel:
+              type: string
+              nullable: true
+
+    CustomField:
+      type: object
+      description: A custom field key-value pair.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the custom field.
+        value:
+          description: The value of the custom field.
+          oneOf:
+            - type: string
+            - type: number
+            - type: boolean
+            - type: array
+              items:
+                type: string
+          nullable: true
+
+    Error:
+      type: object
+      description: An error response from the Zendesk API.
+      properties:
+        error:
+          type: string
+          description: The error type identifier.
+        description:
+          type: string
+          description: A human-readable description of the error.
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional details about the error.

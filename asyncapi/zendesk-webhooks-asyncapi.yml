@@ -1,0 +1,586 @@
+asyncapi: 3.0.0
+info:
+  title: Zendesk Webhooks
+  version: 1.0.0
+  description: >-
+    Zendesk Webhooks allow you to receive real-time HTTP notifications when
+    events occur in your Zendesk account. Webhooks are the modern replacement
+    for legacy targets and support event types for tickets, users,
+    organizations, and messaging. When an event fires, Zendesk sends an HTTP
+    POST request with a JSON payload to your configured endpoint URL.
+    Webhooks can be connected to triggers, automations, and other Zendesk
+    business rules.
+  contact:
+    name: Zendesk Developer Support
+    url: https://developer.zendesk.com
+  license:
+    name: Zendesk API Terms
+    url: https://www.zendesk.com/company/agreements-and-terms/
+  externalDocs:
+    description: Zendesk Webhooks Documentation
+    url: https://developer.zendesk.com/documentation/webhooks/
+
+defaultContentType: application/json
+
+servers:
+  zendeskWebhook:
+    host: '{your-endpoint-host}'
+    pathname: '{your-endpoint-path}'
+    protocol: https
+    description: >-
+      Your webhook endpoint that receives HTTP POST requests from Zendesk.
+      You configure this URL when creating a webhook in Zendesk.
+    variables:
+      your-endpoint-host:
+        default: example.com
+        description: The hostname of your webhook receiver.
+      your-endpoint-path:
+        default: /webhooks/zendesk
+        description: The path on your server that handles webhook payloads.
+
+channels:
+  ticketCreated:
+    address: /webhooks/zendesk/tickets/created
+    description: >-
+      Channel for receiving notifications when a new ticket is created in
+      Zendesk Support.
+    messages:
+      ticketCreatedMessage:
+        $ref: '#/components/messages/TicketEvent'
+    servers:
+      - $ref: '#/servers/zendeskWebhook'
+
+  ticketUpdated:
+    address: /webhooks/zendesk/tickets/updated
+    description: >-
+      Channel for receiving notifications when a ticket is updated,
+      including status changes, reassignments, and new comments.
+    messages:
+      ticketUpdatedMessage:
+        $ref: '#/components/messages/TicketEvent'
+    servers:
+      - $ref: '#/servers/zendeskWebhook'
+
+  ticketSolved:
+    address: /webhooks/zendesk/tickets/solved
+    description: >-
+      Channel for receiving notifications when a ticket is solved by an
+      agent or automation.
+    messages:
+      ticketSolvedMessage:
+        $ref: '#/components/messages/TicketEvent'
+    servers:
+      - $ref: '#/servers/zendeskWebhook'
+
+  userCreated:
+    address: /webhooks/zendesk/users/created
+    description: >-
+      Channel for receiving notifications when a new user is created in
+      Zendesk.
+    messages:
+      userCreatedMessage:
+        $ref: '#/components/messages/UserEvent'
+    servers:
+      - $ref: '#/servers/zendeskWebhook'
+
+  userUpdated:
+    address: /webhooks/zendesk/users/updated
+    description: >-
+      Channel for receiving notifications when a user is updated.
+    messages:
+      userUpdatedMessage:
+        $ref: '#/components/messages/UserEvent'
+    servers:
+      - $ref: '#/servers/zendeskWebhook'
+
+  organizationCreated:
+    address: /webhooks/zendesk/organizations/created
+    description: >-
+      Channel for receiving notifications when a new organization is
+      created.
+    messages:
+      organizationCreatedMessage:
+        $ref: '#/components/messages/OrganizationEvent'
+    servers:
+      - $ref: '#/servers/zendeskWebhook'
+
+  organizationUpdated:
+    address: /webhooks/zendesk/organizations/updated
+    description: >-
+      Channel for receiving notifications when an organization is updated.
+    messages:
+      organizationUpdatedMessage:
+        $ref: '#/components/messages/OrganizationEvent'
+    servers:
+      - $ref: '#/servers/zendeskWebhook'
+
+  satisfactionRatingCreated:
+    address: /webhooks/zendesk/satisfaction-ratings/created
+    description: >-
+      Channel for receiving notifications when a customer submits a
+      satisfaction rating on a ticket.
+    messages:
+      satisfactionRatingMessage:
+        $ref: '#/components/messages/SatisfactionRatingEvent'
+    servers:
+      - $ref: '#/servers/zendeskWebhook'
+
+operations:
+  receiveTicketCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/ticketCreated'
+    title: Ticket Created
+    summary: Receive notification when a ticket is created.
+    messages:
+      - $ref: '#/channels/ticketCreated/messages/ticketCreatedMessage'
+
+  receiveTicketUpdated:
+    action: receive
+    channel:
+      $ref: '#/channels/ticketUpdated'
+    title: Ticket Updated
+    summary: Receive notification when a ticket is updated.
+    messages:
+      - $ref: '#/channels/ticketUpdated/messages/ticketUpdatedMessage'
+
+  receiveTicketSolved:
+    action: receive
+    channel:
+      $ref: '#/channels/ticketSolved'
+    title: Ticket Solved
+    summary: Receive notification when a ticket is solved.
+    messages:
+      - $ref: '#/channels/ticketSolved/messages/ticketSolvedMessage'
+
+  receiveUserCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/userCreated'
+    title: User Created
+    summary: Receive notification when a user is created.
+    messages:
+      - $ref: '#/channels/userCreated/messages/userCreatedMessage'
+
+  receiveUserUpdated:
+    action: receive
+    channel:
+      $ref: '#/channels/userUpdated'
+    title: User Updated
+    summary: Receive notification when a user is updated.
+    messages:
+      - $ref: '#/channels/userUpdated/messages/userUpdatedMessage'
+
+  receiveOrganizationCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/organizationCreated'
+    title: Organization Created
+    summary: Receive notification when an organization is created.
+    messages:
+      - $ref: '#/channels/organizationCreated/messages/organizationCreatedMessage'
+
+  receiveOrganizationUpdated:
+    action: receive
+    channel:
+      $ref: '#/channels/organizationUpdated'
+    title: Organization Updated
+    summary: Receive notification when an organization is updated.
+    messages:
+      - $ref: '#/channels/organizationUpdated/messages/organizationUpdatedMessage'
+
+  receiveSatisfactionRating:
+    action: receive
+    channel:
+      $ref: '#/channels/satisfactionRatingCreated'
+    title: Satisfaction Rating Created
+    summary: Receive notification when a satisfaction rating is submitted.
+    messages:
+      - $ref: '#/channels/satisfactionRatingCreated/messages/satisfactionRatingMessage'
+
+components:
+  messages:
+    TicketEvent:
+      name: TicketEvent
+      title: Ticket Event
+      summary: >-
+        A webhook payload sent when a ticket-related event occurs in Zendesk.
+        The payload contents are determined by the webhook's configured body
+        template, which can include Zendesk placeholders for ticket, user,
+        and organization data.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          x-zendesk-webhook-signature:
+            type: string
+            description: >-
+              HMAC SHA-256 signature for verifying the webhook payload
+              authenticity.
+          x-zendesk-webhook-signature-timestamp:
+            type: string
+            description: >-
+              Timestamp used in signature verification to prevent replay
+              attacks.
+          x-zendesk-webhook-id:
+            type: string
+            format: uuid
+            description: Unique identifier for the webhook configuration.
+          x-zendesk-webhook-invocation-id:
+            type: string
+            format: uuid
+            description: Unique identifier for this specific invocation.
+      payload:
+        $ref: '#/components/schemas/TicketEventPayload'
+
+    UserEvent:
+      name: UserEvent
+      title: User Event
+      summary: >-
+        A webhook payload sent when a user-related event occurs in Zendesk.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          x-zendesk-webhook-signature:
+            type: string
+          x-zendesk-webhook-signature-timestamp:
+            type: string
+          x-zendesk-webhook-id:
+            type: string
+            format: uuid
+          x-zendesk-webhook-invocation-id:
+            type: string
+            format: uuid
+      payload:
+        $ref: '#/components/schemas/UserEventPayload'
+
+    OrganizationEvent:
+      name: OrganizationEvent
+      title: Organization Event
+      summary: >-
+        A webhook payload sent when an organization-related event occurs in
+        Zendesk.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          x-zendesk-webhook-signature:
+            type: string
+          x-zendesk-webhook-signature-timestamp:
+            type: string
+          x-zendesk-webhook-id:
+            type: string
+            format: uuid
+          x-zendesk-webhook-invocation-id:
+            type: string
+            format: uuid
+      payload:
+        $ref: '#/components/schemas/OrganizationEventPayload'
+
+    SatisfactionRatingEvent:
+      name: SatisfactionRatingEvent
+      title: Satisfaction Rating Event
+      summary: >-
+        A webhook payload sent when a satisfaction rating is submitted by a
+        customer.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          x-zendesk-webhook-signature:
+            type: string
+          x-zendesk-webhook-signature-timestamp:
+            type: string
+          x-zendesk-webhook-id:
+            type: string
+            format: uuid
+          x-zendesk-webhook-invocation-id:
+            type: string
+            format: uuid
+      payload:
+        $ref: '#/components/schemas/SatisfactionRatingPayload'
+
+  schemas:
+    TicketEventPayload:
+      type: object
+      description: >-
+        The payload for a ticket webhook event. Fields depend on the
+        webhook body template configuration. This schema represents the
+        default payload structure.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ticket ID.
+        external_id:
+          type: string
+          nullable: true
+          description: External ID for the ticket.
+        title:
+          type: string
+          description: The subject/title of the ticket.
+        description:
+          type: string
+          description: The ticket description (first comment).
+        status:
+          type: string
+          enum:
+            - new
+            - open
+            - pending
+            - hold
+            - solved
+            - closed
+          description: The current status of the ticket.
+        priority:
+          type: string
+          enum:
+            - urgent
+            - high
+            - normal
+            - low
+          nullable: true
+          description: The priority of the ticket.
+        type:
+          type: string
+          enum:
+            - problem
+            - incident
+            - question
+            - task
+          nullable: true
+          description: The type of the ticket.
+        requester_id:
+          type: integer
+          format: int64
+          description: The ID of the requester.
+        requester_email:
+          type: string
+          format: email
+          description: The email of the requester.
+        requester_name:
+          type: string
+          description: The name of the requester.
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the assigned agent.
+        assignee_email:
+          type: string
+          format: email
+          nullable: true
+          description: The email of the assigned agent.
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the assigned group.
+        group_name:
+          type: string
+          nullable: true
+          description: The name of the assigned group.
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The organization ID.
+        organization_name:
+          type: string
+          nullable: true
+          description: The organization name.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags on the ticket.
+        via:
+          type: string
+          description: The channel the ticket came through.
+        brand_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The brand ID.
+        ticket_form_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ticket form ID.
+        latest_comment:
+          type: object
+          nullable: true
+          description: The most recent comment on the ticket.
+          properties:
+            body:
+              type: string
+            public:
+              type: boolean
+            author_id:
+              type: integer
+              format: int64
+        created_at:
+          type: string
+          format: date-time
+          description: When the ticket was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: When the ticket was last updated.
+
+    UserEventPayload:
+      type: object
+      description: The payload for a user webhook event.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The user ID.
+        name:
+          type: string
+          description: The name of the user.
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: The email of the user.
+        phone:
+          type: string
+          nullable: true
+          description: The phone number of the user.
+        role:
+          type: string
+          enum:
+            - end-user
+            - agent
+            - admin
+          description: The role of the user.
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The default organization ID of the user.
+        external_id:
+          type: string
+          nullable: true
+          description: External ID for the user.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags on the user.
+        active:
+          type: boolean
+          description: Whether the user is active.
+        suspended:
+          type: boolean
+          description: Whether the user is suspended.
+        verified:
+          type: boolean
+          description: Whether the user is verified.
+        created_at:
+          type: string
+          format: date-time
+          description: When the user was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: When the user was last updated.
+
+    OrganizationEventPayload:
+      type: object
+      description: The payload for an organization webhook event.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The organization ID.
+        name:
+          type: string
+          description: The name of the organization.
+        details:
+          type: string
+          nullable: true
+          description: Organization details.
+        notes:
+          type: string
+          nullable: true
+          description: Internal notes.
+        domain_names:
+          type: array
+          items:
+            type: string
+          description: Associated domain names.
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: Default group ID.
+        shared_tickets:
+          type: boolean
+          description: Whether shared tickets is enabled.
+        shared_comments:
+          type: boolean
+          description: Whether shared comments is enabled.
+        external_id:
+          type: string
+          nullable: true
+          description: External ID.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags on the organization.
+        created_at:
+          type: string
+          format: date-time
+          description: When the organization was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: When the organization was last updated.
+
+    SatisfactionRatingPayload:
+      type: object
+      description: The payload for a satisfaction rating webhook event.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The satisfaction rating ID.
+        ticket_id:
+          type: integer
+          format: int64
+          description: The associated ticket ID.
+        score:
+          type: string
+          enum:
+            - good
+            - bad
+          description: The satisfaction score.
+        comment:
+          type: string
+          nullable: true
+          description: The comment provided with the rating.
+        requester_id:
+          type: integer
+          format: int64
+          description: The ID of the user who submitted the rating.
+        assignee_id:
+          type: integer
+          format: int64
+          description: The ID of the agent assigned when the rating was given.
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The group ID at the time of the rating.
+        created_at:
+          type: string
+          format: date-time
+          description: When the rating was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: When the rating was last updated.

@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zendesk/refs/heads/main/json-schema/zendesk-ticket-schema.json",
+  "title": "Zendesk Ticket",
+  "description": "A Zendesk Support ticket representing a customer service request. Tickets are the core entity in Zendesk Support, capturing the communication between a customer and support agents. Each ticket has a lifecycle from creation through resolution, with statuses, priorities, assignees, and a full audit trail of changes and comments.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Automatically assigned unique identifier for the ticket.",
+      "readOnly": true
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL of the ticket resource.",
+      "readOnly": true
+    },
+    "external_id": {
+      "type": ["string", "null"],
+      "description": "An optional ID from an external system used to link the ticket to records outside Zendesk."
+    },
+    "type": {
+      "type": ["string", "null"],
+      "enum": ["problem", "incident", "question", "task", null],
+      "description": "The classification of the ticket. 'problem' tickets can have linked 'incident' tickets. 'task' tickets support due dates."
+    },
+    "subject": {
+      "type": "string",
+      "maxLength": 150,
+      "description": "The subject line of the ticket, typically a brief summary of the issue."
+    },
+    "raw_subject": {
+      "type": "string",
+      "description": "The original subject as entered by the requester, before any processing by Zendesk.",
+      "readOnly": true
+    },
+    "description": {
+      "type": "string",
+      "description": "The first comment on the ticket, set at creation time. Read-only after the ticket is created.",
+      "readOnly": true
+    },
+    "priority": {
+      "type": ["string", "null"],
+      "enum": ["urgent", "high", "normal", "low", null],
+      "description": "The urgency level of the ticket."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["new", "open", "pending", "hold", "solved", "closed"],
+      "description": "The current state of the ticket in its lifecycle."
+    },
+    "recipient": {
+      "type": ["string", "null"],
+      "format": "email",
+      "description": "The original recipient email address of the ticket.",
+      "readOnly": true
+    },
+    "requester_id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The ID of the user who requested the ticket (the customer)."
+    },
+    "submitter_id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The ID of the user who submitted the ticket. Can differ from the requester when an agent creates a ticket on behalf of a customer.",
+      "readOnly": true
+    },
+    "assignee_id": {
+      "type": ["integer", "null"],
+      "format": "int64",
+      "description": "The ID of the agent currently assigned to the ticket."
+    },
+    "organization_id": {
+      "type": ["integer", "null"],
+      "format": "int64",
+      "description": "The ID of the organization associated with the ticket."
+    },
+    "group_id": {
+      "type": ["integer", "null"],
+      "format": "int64",
+      "description": "The ID of the agent group assigned to the ticket."
+    },
+    "collaborator_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "description": "IDs of users currently CC'd on the ticket."
+    },
+    "follower_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "description": "IDs of agents currently following the ticket for internal notifications.",
+      "readOnly": true
+    },
+    "email_cc_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "description": "IDs of agents or end users currently CC'd on the ticket via email."
+    },
+    "forum_topic_id": {
+      "type": ["integer", "null"],
+      "format": "int64",
+      "description": "The ID of the associated community forum topic, if the ticket originated from a forum post.",
+      "readOnly": true
+    },
+    "problem_id": {
+      "type": ["integer", "null"],
+      "format": "int64",
+      "description": "For incident tickets, the ID of the problem ticket this incident is linked to."
+    },
+    "has_incidents": {
+      "type": "boolean",
+      "description": "Whether this problem ticket has associated incident tickets.",
+      "readOnly": true
+    },
+    "is_public": {
+      "type": "boolean",
+      "description": "Whether the ticket has any public-facing comments.",
+      "readOnly": true
+    },
+    "due_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "The due date for task-type tickets, in ISO 8601 format."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags applied to the ticket for categorization and routing."
+    },
+    "custom_fields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CustomField"
+      },
+      "description": "Custom field values set on the ticket."
+    },
+    "satisfaction_rating": {
+      "type": ["object", "null"],
+      "description": "The satisfaction rating left by the customer, if any.",
+      "readOnly": true,
+      "properties": {
+        "score": {
+          "type": "string",
+          "enum": ["offered", "unoffered", "good", "bad"]
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    },
+    "sharing_agreement_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "description": "IDs of sharing agreements used for the ticket.",
+      "readOnly": true
+    },
+    "custom_status_id": {
+      "type": ["integer", "null"],
+      "format": "int64",
+      "description": "The ID of the custom ticket status, if custom statuses are enabled."
+    },
+    "followup_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "description": "IDs of follow-up tickets created from this closed ticket.",
+      "readOnly": true
+    },
+    "ticket_form_id": {
+      "type": ["integer", "null"],
+      "format": "int64",
+      "description": "The ID of the ticket form used for this ticket."
+    },
+    "brand_id": {
+      "type": ["integer", "null"],
+      "format": "int64",
+      "description": "The ID of the brand associated with this ticket."
+    },
+    "allow_channelback": {
+      "type": "boolean",
+      "description": "Whether channelback is enabled for this ticket.",
+      "readOnly": true
+    },
+    "allow_attachments": {
+      "type": "boolean",
+      "description": "Whether the ticket allows file attachments.",
+      "readOnly": true
+    },
+    "from_messaging_channel": {
+      "type": "boolean",
+      "description": "Whether the ticket originated from a messaging channel.",
+      "readOnly": true
+    },
+    "via": {
+      "$ref": "#/$defs/Via",
+      "description": "How the ticket was created (e.g., web, email, API, chat)."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the ticket was created, in ISO 8601 format.",
+      "readOnly": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the ticket was last updated, in ISO 8601 format.",
+      "readOnly": true
+    }
+  },
+  "required": ["id", "status", "requester_id"],
+  "$defs": {
+    "CustomField": {
+      "type": "object",
+      "description": "A custom field key-value pair on the ticket.",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The ID of the custom field."
+        },
+        "value": {
+          "description": "The value of the custom field.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "boolean" },
+            { "type": "array", "items": { "type": "string" } },
+            { "type": "null" }
+          ]
+        }
+      },
+      "required": ["id", "value"]
+    },
+    "Via": {
+      "type": "object",
+      "description": "Describes how the ticket was created or a comment was made.",
+      "properties": {
+        "channel": {
+          "type": "string",
+          "description": "The channel through which the ticket was created (e.g., web, email, api, chat, voice, mobile, closed_ticket, any_channel)."
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "to": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "rel": {
+              "type": ["string", "null"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
