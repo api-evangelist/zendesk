@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Custom Objects
+  title: Zendesk Custom Objects
   description: Needs a description.
 paths:
   /api/v2/custom_objects:
@@ -8,7 +8,7 @@ paths:
       operationId: ListCustomObjects
       tags:
         - Custom Objects
-      summary: Get  Api V2 Custom_objects
+      summary: Zendesk Get  Api V2 Custom_objects
       description: |-
         Lists all undeleted custom objects for the account
         #### Allowed For
@@ -27,7 +27,7 @@ paths:
       operationId: CreateCustomObject
       tags:
         - Custom Objects
-      summary: Post  Api V2 Custom_objects
+      summary: Zendesk Post  Api V2 Custom_objects
       description: >
         Creates an object describing all the properties required to create a
         custom object record
@@ -58,7 +58,7 @@ paths:
       operationId: ShowCustomObject
       tags:
         - Custom Objects
-      summary: Get  Api V2 Custom_objects Custom_object_key
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key
       description: |
         Returns an object with the specified key
         #### Allowed For
@@ -79,7 +79,7 @@ paths:
       operationId: UpdateCustomObject
       tags:
         - Custom Objects
-      summary: Patch  Api V2 Custom_objects Custom_object_key
+      summary: Zendesk Patch  Api V2 Custom_objects Custom_object_key
       description: |-
         Updates an individual custom object. The updating rules are as follows:
         * Takes a `custom_object` object that specifies the properties to update
@@ -102,7 +102,7 @@ paths:
       operationId: DeleteCustomObject
       tags:
         - Custom Objects
-      summary: Delete  Api V2 Custom_objects Custom_object_key
+      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key
       description: |-
         Permanently deletes the custom object with the specified key
         #### Allowed For
@@ -117,7 +117,7 @@ paths:
       operationId: ListCustomObjectFields
       tags:
         - Custom Object Fields
-      summary: Get  Api V2 Custom_objects Custom_object_key Fields
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Fields
       description: |-
         Lists all undeleted custom fields for the specified object.
 
@@ -146,7 +146,7 @@ paths:
       operationId: CreateCustomObjectField
       tags:
         - Custom Object Fields
-      summary: Post  Api V2 Custom_objects Custom_object_key Fields
+      summary: Zendesk Post  Api V2 Custom_objects Custom_object_key Fields
       description: >
         Creates any of the following custom field types:
 
@@ -207,8 +207,7 @@ paths:
       tags:
         - Custom Object Fields
       summary: >-
-        Get  Api V2 Custom_objects Custom_object_key Fields
-        Custom_object_field_key_or_id
+        Zendesk Get  Api V2 Custom_objects Custom_object_key Fields Custom_object_field_key_or_id
       description: >
         Returns a custom field for a specific object using a provided key or id
         of the field.
@@ -234,8 +233,7 @@ paths:
       tags:
         - Custom Object Fields
       summary: >-
-        Patch  Api V2 Custom_objects Custom_object_key Fields
-        Custom_object_field_key_or_id
+        Zendesk Patch  Api V2 Custom_objects Custom_object_key Fields Custom_object_field_key_or_id
       description: >-
         Updates individual custom object fields. The updating rules are as
         follows:
@@ -276,8 +274,7 @@ paths:
       tags:
         - Custom Object Fields
       summary: >-
-        Delete  Api V2 Custom_objects Custom_object_key Fields
-        Custom_object_field_key_or_id
+        Zendesk Delete  Api V2 Custom_objects Custom_object_key Fields Custom_object_field_key_or_id
       description: >-
         Deletes a field with the specified key. Note: You can't delete standard
         fields.
@@ -296,7 +293,7 @@ paths:
       operationId: ReorderCustomObjectFields
       tags:
         - Custom Object Fields
-      summary: Put  Api V2 Custom_objects Custom_object_key Fields Reorder
+      summary: Zendesk Put  Api V2 Custom_objects Custom_object_key Fields Reorder
       description: >
         Sets a preferred order of custom fields for a specific object by
         providing field ids in the desired order.
@@ -322,7 +319,7 @@ paths:
       operationId: CustomObjectRecordBulkJobs
       tags:
         - Custom Object Records
-      summary: Post  Api V2 Custom_objects Custom_object_key Jobs
+      summary: Zendesk Post  Api V2 Custom_objects Custom_object_key Jobs
       description: >
         Queues a background job to perform bulk actions on up to 100 custom
         object records per single request.
@@ -391,7 +388,7 @@ paths:
       operationId: CustomObjectFieldsLimit
       tags:
         - Custom Object Fields
-      summary: Get  Api V2 Custom_objects Custom_object_key Limits Field_limit
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Limits Field_limit
       description: |-
         List the current count and the limit for a custom object's fields
         #### Allowed For
@@ -413,7 +410,7 @@ paths:
       operationId: ListCustomObjectRecords
       tags:
         - Custom Object Records
-      summary: Get  Api V2 Custom_objects Custom_object_key Records
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Records
       description: >-
         Lists all undeleted custom object records for the specified object
 
@@ -509,7 +506,7 @@ paths:
       operationId: CreateCustomObjectRecord
       tags:
         - Custom Object Records
-      summary: Post  Api V2 Custom_objects Custom_object_key Records
+      summary: Zendesk Post  Api V2 Custom_objects Custom_object_key Records
       description: >
         Creates a custom object record according to all the properties described
         by a custom object definition. If `autoincrement_enabled` is true,
@@ -545,7 +542,7 @@ paths:
       operationId: UpsertCustomObjectRecordByExternalIdOrName
       tags:
         - Custom Object Records
-      summary: Patch  Api V2 Custom_objects Custom_object_key Records
+      summary: Zendesk Patch  Api V2 Custom_objects Custom_object_key Records
       description: >
         If a record exists for the given external id or name, updates it. Only
         the specified attributes are updated. Otherwise, creates a new record
@@ -584,7 +581,7 @@ paths:
       operationId: DeleteCustomObjectRecordByExternalIdOrName
       tags:
         - Custom Object Records
-      summary: Delete  Api V2 Custom_objects Custom_object_key Records
+      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key Records
       description: >
         Deletes a record with the specified external id or name. The `is_unique`
         property on the custom object's name field must be enabled in order to
@@ -607,8 +604,7 @@ paths:
       tags:
         - Custom Object Records
       summary: >-
-        Get  Api V2 Custom_objects Custom_object_key Records
-        Custom_object_record_id
+        Zendesk Get  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
       description: |
         Returns a custom record for a specific object using a provided id.
         #### Allowed For
@@ -632,8 +628,7 @@ paths:
       tags:
         - Custom Object Records
       summary: >-
-        Patch  Api V2 Custom_objects Custom_object_key Records
-        Custom_object_record_id
+        Zendesk Patch  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
       description: >-
         Updates an individual custom object record. The updating rules are as
         follows:
@@ -666,8 +661,7 @@ paths:
       tags:
         - Custom Object Records
       summary: >-
-        Delete  Api V2 Custom_objects Custom_object_key Records
-        Custom_object_record_id
+        Zendesk Delete  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
       description: |-
         Deletes a record with the specified id
         #### Allowed For
@@ -683,7 +677,7 @@ paths:
       operationId: AutocompleteCustomObjectRecordSearch
       tags:
         - Custom Object Records
-      summary: Get  Api V2 Custom_objects Custom_object_key Records Autocomplete
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Autocomplete
       description: >-
         Retrieves an array of custom object records that have a field value that
         matches the value specified in the `name` parameter.
@@ -804,7 +798,7 @@ paths:
       operationId: CountCustomObjectRecords
       tags:
         - Custom Object Records
-      summary: Get  Api V2 Custom_objects Custom_object_key Records Count
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Count
       description: >-
         Returns a total count of records for a specific custom object as well as
         the time the count was refreshed.
@@ -848,7 +842,7 @@ paths:
       operationId: SearchCustomObjectRecords
       tags:
         - Custom Object Records
-      summary: Get  Api V2 Custom_objects Custom_object_key Records Search
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search
       description: >-
         Returns an array of custom object records that meet the search criteria
 
@@ -950,7 +944,7 @@ paths:
       operationId: FilteredSearchCustomObjectRecords
       tags:
         - Custom Object Records
-      summary: Post  Api V2 Custom_objects Custom_object_key Records Search
+      summary: Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search
       description: >-
         Returns an array of custom object records that meet the search and
         filter criteria.
@@ -1158,7 +1152,7 @@ paths:
       operationId: ListObjectTriggers
       tags:
         - Object Triggers
-      summary: Get  Api V2 Custom_objects Custom_object_key Triggers
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers
       description: |
         Lists all triggers for the specified custom object.
 
@@ -1182,7 +1176,7 @@ paths:
       operationId: CreateObjectTrigger
       tags:
         - Object Triggers
-      summary: Post  Api V2 Custom_objects Custom_object_key Triggers
+      summary: Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers
       description: >
         Creates a new object trigger for a specified object.
 
@@ -1221,7 +1215,7 @@ paths:
       operationId: GetObjectTrigger
       tags:
         - Object Triggers
-      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
       description: |
         Returns details of a specific object trigger.
         #### Allowed For
@@ -1241,7 +1235,7 @@ paths:
       operationId: UpdateObjectTrigger
       tags:
         - Object Triggers
-      summary: Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      summary: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
       description: >
         Updates a specified object trigger.
 
@@ -1284,7 +1278,7 @@ paths:
       operationId: DeleteObjectTrigger
       tags:
         - Object Triggers
-      summary: Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
       description: >
         Deletes a specified object trigger.
 
@@ -1308,7 +1302,7 @@ paths:
       operationId: ListActiveObjectTriggers
       tags:
         - Object Triggers
-      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Active
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active
       description: >
         Lists all active object triggers.
 
@@ -1351,7 +1345,7 @@ paths:
       operationId: ListObjectTriggersDefinitions
       tags:
         - Object Triggers
-      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
       description: >
         Lists the conditions and actions of all triggers for the specified
         custom object.
@@ -1378,7 +1372,7 @@ paths:
       operationId: DeleteManyObjectTriggers
       tags:
         - Object Triggers
-      summary: Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
+      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
       description: >
         Deletes the object triggers corresponding to the provided
         comma-separated list of ids. 
@@ -1440,7 +1434,7 @@ paths:
       operationId: SearchObjectTriggers
       tags:
         - Object Triggers
-      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Search
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
       description: >
         Returns a list of object triggers that meet your filter or search
         criteria.
@@ -1496,7 +1490,7 @@ paths:
       operationId: UpdateManyObjectTriggers
       tags:
         - Object Triggers
-      summary: Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
+      summary: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
       description: >
         Updates the position or the active status of multiple object triggers.
         Any additional properties are ignored.
@@ -1578,7 +1572,7 @@ paths:
       operationId: CustomObjectsLimit
       tags:
         - Custom Objects
-      summary: Get  Api V2 Custom_objects Limits Object_limit
+      summary: Zendesk Get  Api V2 Custom_objects Limits Object_limit
       description: |-
         List the current count and the limit for custom objects
         #### Allowed For
@@ -1598,7 +1592,7 @@ paths:
       operationId: CustomObjectRecordsLimit
       tags:
         - Custom Object Records
-      summary: Get  Api V2 Custom_objects Limits Record_limit
+      summary: Zendesk Get  Api V2 Custom_objects Limits Record_limit
       description: |-
         List the current count and the limit for custom object records
         #### Allowed For

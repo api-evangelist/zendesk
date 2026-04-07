@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Users
+  title: Zendesk Users
   description: Needs a description.
 paths:
   /api/v2/channels/voice/agents/{agent_id}/users/{user_id}/display:
@@ -8,7 +8,7 @@ paths:
       operationId: OpenUsersProfileInAgentBrowser
       tags:
         - Basics
-      summary: Post  Api V2 Channels Voice Agents Agent_id Users User_id Display
+      summary: Zendesk Post  Api V2 Channels Voice Agents Agent_id Users User_id Display
       description: |-
         Allows you to instruct an agent's browser to open a user's profile.
 
@@ -56,7 +56,7 @@ paths:
       operationId: IncrementalUserExportTime
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Users
+      summary: Zendesk Get  Api V2 Incremental Users
       description: >
         #### Allowed For
 
@@ -87,7 +87,7 @@ paths:
       operationId: IncrementalUserExportCursor
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Users Cursor
+      summary: Zendesk Get  Api V2 Incremental Users Cursor
       description: >
         #### Allowed For
 
@@ -114,7 +114,7 @@ paths:
       operationId: ListUsers
       tags:
         - Users
-      summary: Get  Api V2 Users
+      summary: Zendesk Get  Api V2 Users
       description: |
         #### Pagination
 
@@ -147,7 +147,7 @@ paths:
       operationId: CreateUser
       tags:
         - Users
-      summary: Post  Api V2 Users
+      summary: Zendesk Post  Api V2 Users
       requestBody:
         required: true
         content:
@@ -174,7 +174,7 @@ paths:
       operationId: ShowUser
       tags:
         - Users
-      summary: Get  Api V2 Users User_id
+      summary: Zendesk Get  Api V2 Users User_id
       description: |
         #### Allowed For
 
@@ -193,7 +193,7 @@ paths:
       operationId: UpdateUser
       tags:
         - Users
-      summary: Put  Api V2 Users User_id
+      summary: Zendesk Put  Api V2 Users User_id
       requestBody:
         required: true
         content:
@@ -217,7 +217,7 @@ paths:
       operationId: DeleteUser
       tags:
         - Users
-      summary: Delete  Api V2 Users User_id
+      summary: Zendesk Delete  Api V2 Users User_id
       description: >
         Deletes the user and associated records from the account.
 
@@ -260,7 +260,7 @@ paths:
       operationId: ShowUserComplianceDeletionStatuses
       tags:
         - Users
-      summary: Get  Api V2 Users User_id Compliance_deletion_statuses
+      summary: Zendesk Get  Api V2 Users User_id Compliance_deletion_statuses
       description: >
         Returns the GDPR status for each user per area of compliance. A Zendesk
         area of compliance is typically a product like "support/explore" but can
@@ -324,8 +324,7 @@ paths:
       tags:
         - Group Memberships
       summary: >-
-        Put  Api V2 Users User_id Group_memberships Group_membership_id
-        Make_default
+        Zendesk Put  Api V2 Users User_id Group_memberships Group_membership_id Make_default
       description: |
         #### Allowed For:
 
@@ -363,7 +362,7 @@ paths:
       operationId: ListUserIdentities
       tags:
         - User Identities
-      summary: Get  Api V2 Users User_id Identities
+      summary: Zendesk Get  Api V2 Users User_id Identities
       description: >
         Returns a list of identities for the given user.
 
@@ -407,7 +406,7 @@ paths:
       operationId: CreateUserIdentity
       tags:
         - User Identities
-      summary: Post  Api V2 Users User_id Identities
+      summary: Zendesk Post  Api V2 Users User_id Identities
       description: >
         Adds an identity to a user's profile. An agent can add an identity to
         any user profile.
@@ -466,7 +465,7 @@ paths:
       operationId: ShowUserIdentity
       tags:
         - User Identities
-      summary: Get  Api V2 Users User_id Identities User_identity_id
+      summary: Zendesk Get  Api V2 Users User_id Identities User_identity_id
       description: >
         Shows the identity with the given id for a given user.
 
@@ -496,7 +495,7 @@ paths:
       operationId: UpdateUserIdentity
       tags:
         - User Identities
-      summary: Put  Api V2 Users User_id Identities User_identity_id
+      summary: Zendesk Put  Api V2 Users User_id Identities User_identity_id
       description: >
         This endpoint allows you to:
 
@@ -533,7 +532,7 @@ paths:
       operationId: DeleteUserIdentity
       tags:
         - User Identities
-      summary: Delete  Api V2 Users User_id Identities User_identity_id
+      summary: Zendesk Delete  Api V2 Users User_id Identities User_identity_id
       description: >
         Deletes the identity for a given user.
 
@@ -564,7 +563,7 @@ paths:
       operationId: MakeUserIdentityPrimary
       tags:
         - User Identities
-      summary: Put  Api V2 Users User_id Identities User_identity_id Make_primary
+      summary: Zendesk Put  Api V2 Users User_id Identities User_identity_id Make_primary
       description: >
         Sets the specified identity as primary. To change other attributes, use
         the [Update  Identity](#update-identity) endpoint. This is a
@@ -603,8 +602,7 @@ paths:
       tags:
         - User Identities
       summary: >-
-        Put  Api V2 Users User_id Identities User_identity_id
-        Request_verification
+        Zendesk Put  Api V2 Users User_id Identities User_identity_id Request_verification
       description: >
         Sends the user a verification email with a link to verify ownership of
         the email address.
@@ -632,7 +630,7 @@ paths:
       operationId: VerifyUserIdentity
       tags:
         - User Identities
-      summary: Put  Api V2 Users User_id Identities User_identity_id Verify
+      summary: Zendesk Put  Api V2 Users User_id Identities User_identity_id Verify
       description: >
         Sets the specified identity as verified.
 
@@ -672,7 +670,7 @@ paths:
       operationId: MergeEndUsers
       tags:
         - Users
-      summary: Put  Api V2 Users User_id Merge
+      summary: Zendesk Put  Api V2 Users User_id Merge
       description: >
         Merges the end user specified in the path parameter into the existing
         end user specified in the request body.
@@ -729,8 +727,7 @@ paths:
       tags:
         - Organization Memberships
       summary: >-
-        Put  Api V2 Users User_id Organization_memberships
-        Organization_membership_id Make_default
+        Zendesk Put  Api V2 Users User_id Organization_memberships Organization_membership_id Make_default
       description: >
         Sets the default organization membership of a given user.
 
@@ -760,7 +757,7 @@ paths:
       operationId: UnassignOrganization
       tags:
         - Organization Memberships
-      summary: Delete  Api V2 Users User_id Organizations Organization_id
+      summary: Zendesk Delete  Api V2 Users User_id Organizations Organization_id
       description: >
         Immediately removes a user from an organization and schedules a job to
         unassign all working tickets currently assigned to the user and
@@ -783,7 +780,7 @@ paths:
       operationId: SetOrganizationAsDefault
       tags:
         - Organization Memberships
-      summary: Put  Api V2 Users User_id Organizations Organization_id Make_default
+      summary: Zendesk Put  Api V2 Users User_id Organizations Organization_id Make_default
       description: |
         Sets the default organization membership of a given user.
 
@@ -807,7 +804,7 @@ paths:
       operationId: SetUserPassword
       tags:
         - User Passwords
-      summary: Post  Api V2 Users User_id Password
+      summary: Zendesk Post  Api V2 Users User_id Password
       description: >
         An admin can set a user's password only if the setting is enabled in
         Zendesk Support under **Settings** > **Security** > **Global**. The
@@ -833,7 +830,7 @@ paths:
       operationId: ChangeOwnPassword
       tags:
         - User Passwords
-      summary: Put  Api V2 Users User_id Password
+      summary: Zendesk Put  Api V2 Users User_id Password
       description: >
         You can only change your own password. Nobody can change the password of
         another user because it requires knowing the user's existing password.
@@ -865,7 +862,7 @@ paths:
       operationId: GetUserPasswordRequirements
       tags:
         - User Passwords
-      summary: Get  Api V2 Users User_id Password Requirements
+      summary: Zendesk Get  Api V2 Users User_id Password Requirements
       description: |
         #### Allowed For
 
@@ -889,7 +886,7 @@ paths:
       operationId: ShowUserRelated
       tags:
         - Users
-      summary: Get  Api V2 Users User_id Related
+      summary: Zendesk Get  Api V2 Users User_id Related
       responses:
         '200':
           description: Success response
@@ -907,7 +904,7 @@ paths:
       operationId: BulkDeleteSessionsByUserId
       tags:
         - Sessions
-      summary: Delete  Api V2 Users User_id Sessions
+      summary: Zendesk Delete  Api V2 Users User_id Sessions
       description: |
         Deletes all the sessions for a user.
 
@@ -925,7 +922,7 @@ paths:
       operationId: ShowSession
       tags:
         - Sessions
-      summary: Get  Api V2 Users User_id Sessions Session_id
+      summary: Zendesk Get  Api V2 Users User_id Sessions Session_id
       description: |
         #### Allowed For
 
@@ -944,7 +941,7 @@ paths:
       operationId: DeleteSession
       tags:
         - Sessions
-      summary: Delete  Api V2 Users User_id Sessions Session_id
+      summary: Zendesk Delete  Api V2 Users User_id Sessions Session_id
       description: |
         #### Allowed For
 
@@ -961,7 +958,7 @@ paths:
       operationId: ListTicketSkips
       tags:
         - Ticket Skips
-      summary: Get  Api V2 Users User_id Skips
+      summary: Zendesk Get  Api V2 Users User_id Skips
       description: >
         Archived tickets are not included in the response. See
 
@@ -1005,7 +1002,7 @@ paths:
       operationId: AutocompleteUsers
       tags:
         - Users
-      summary: Get  Api V2 Users Autocomplete
+      summary: Zendesk Get  Api V2 Users Autocomplete
       description: >
         Returns an array of users whose name starts with the value specified in
         the `name` parameter.
@@ -1044,7 +1041,7 @@ paths:
       operationId: CountUsers
       tags:
         - Users
-      summary: Get  Api V2 Users Count
+      summary: Zendesk Get  Api V2 Users Count
       description: >
         Returns an approximate count of users. If the count exceeds 100,000, it
         is updated every 24 hours.
@@ -1085,7 +1082,7 @@ paths:
       operationId: CreateManyUsers
       tags:
         - Users
-      summary: Post  Api V2 Users Create_many
+      summary: Zendesk Post  Api V2 Users Create_many
       description: >
         Accepts an array of up to 100 user objects.
 
@@ -1150,7 +1147,7 @@ paths:
       operationId: CreateOrUpdateUser
       tags:
         - Users
-      summary: Post  Api V2 Users Create_or_update
+      summary: Zendesk Post  Api V2 Users Create_or_update
       description: >
         Creates a user if the user does not already exist, or updates an
         existing user
@@ -1226,7 +1223,7 @@ paths:
       operationId: CreateOrUpdateManyUsers
       tags:
         - Users
-      summary: Post  Api V2 Users Create_or_update_many
+      summary: Zendesk Post  Api V2 Users Create_or_update_many
       description: >
         Accepts an array of up to 100 user objects. For each user, the user is
         created if it does not
@@ -1287,7 +1284,7 @@ paths:
       operationId: DestroyManyUsers
       tags:
         - Users
-      summary: Delete  Api V2 Users Destroy_many
+      summary: Zendesk Delete  Api V2 Users Destroy_many
       description: >
         Accepts a comma-separated list of up to 100 user ids.
 
@@ -1340,7 +1337,7 @@ paths:
       operationId: LogoutManyUsers
       tags:
         - Users
-      summary: Post  Api V2 Users Logout_many
+      summary: Zendesk Post  Api V2 Users Logout_many
       description: |
         Accepts a comma-separated list of up to 100 user ids.
 
@@ -1370,7 +1367,7 @@ paths:
       operationId: ShowCurrentUser
       tags:
         - Users
-      summary: Get  Api V2 Users Me
+      summary: Zendesk Get  Api V2 Users Me
       description: >
         The endpoint returns [user
         information](/api-reference/ticketing/users/users/) and an
@@ -1412,7 +1409,7 @@ paths:
       operationId: DeleteAuthenticatedSession
       tags:
         - Sessions
-      summary: Delete  Api V2 Users Me Logout
+      summary: Zendesk Delete  Api V2 Users Me Logout
       description: >
         Deletes the current session. In practice, this only works when using
         session auth for requests, such as client-side requests
@@ -1433,7 +1430,7 @@ paths:
       operationId: ShowCurrentlyAuthenticatedSession
       tags:
         - Sessions
-      summary: Get  Api V2 Users Me Session
+      summary: Zendesk Get  Api V2 Users Me Session
       description: |
         #### Allowed For
 
@@ -1453,7 +1450,7 @@ paths:
       operationId: RenewCurrentSession
       tags:
         - Sessions
-      summary: Get  Api V2 Users Me Session Renew
+      summary: Zendesk Get  Api V2 Users Me Session Renew
       description: |
         #### Allowed For
 
@@ -1473,7 +1470,7 @@ paths:
       operationId: RequestUserCreate
       tags:
         - Users
-      summary: Post  Api V2 Users Request_create
+      summary: Zendesk Post  Api V2 Users Request_create
       description: >
         Sends the owner a reminder email to update their subscription so more
         agents can be created.
@@ -1507,7 +1504,7 @@ paths:
       operationId: SearchUsers
       tags:
         - Users
-      summary: Get  Api V2 Users Search
+      summary: Zendesk Get  Api V2 Users Search
       description: >
         Returns an array of users who meet the search criteria.
 
@@ -1573,7 +1570,7 @@ paths:
       operationId: ShowManyUsers
       tags:
         - Users
-      summary: Get  Api V2 Users Show_many
+      summary: Zendesk Get  Api V2 Users Show_many
       description: |
         Accepts a comma-separated list of up to 100 user ids or external ids.
 
@@ -1610,7 +1607,7 @@ paths:
       operationId: UpdateManyUsers
       tags:
         - Users
-      summary: Put  Api V2 Users Update_many
+      summary: Zendesk Put  Api V2 Users Update_many
       parameters:
         - name: ids
           in: query
@@ -1745,8 +1742,8 @@ components:
         after_cursor: MTU3NjYxMzUzOS4wfHw0Njd8
         after_url: >-
           https://example.zendesk.com/api/v2/incremental/users/cursor.json?cursor=MTU3NjYxMzUzOS4wfHw0Njd8
-        before_cursor: null
-        before_url: null
+        before_cursor:
+        before_url:
         end_of_stream: true
         users:
           - active: true

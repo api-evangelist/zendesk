@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Routing
+  title: Zendesk Routing
   description: Needs a description.
 paths:
   /api/v2/incremental/routing/attribute_values:
@@ -8,7 +8,7 @@ paths:
       operationId: IncrementalSkilBasedRoutingAttributeValuesExport
       tags:
         - Incremental Skill Based Routing
-      summary: Get  Api V2 Incremental Routing Attribute_values
+      summary: Zendesk Get  Api V2 Incremental Routing Attribute_values
       description: >
         Returns a stream of changes that occurred on routing attribute values.
 
@@ -49,7 +49,7 @@ paths:
       operationId: IncrementalSkilBasedRoutingAttributesExport
       tags:
         - Incremental Skill Based Routing
-      summary: Get  Api V2 Incremental Routing Attributes
+      summary: Zendesk Get  Api V2 Incremental Routing Attributes
       description: >
         Returns a stream of changes that occurred on routing attributes.
 
@@ -91,7 +91,7 @@ paths:
       operationId: IncrementalSkilBasedRoutingInstanceValuesExport
       tags:
         - Incremental Skill Based Routing
-      summary: Get  Api V2 Incremental Routing Instance_values
+      summary: Zendesk Get  Api V2 Incremental Routing Instance_values
       description: >
         Returns a stream of changes that occurred on routing instance values.
         Changes are grouped by `attribute_value_id`,
@@ -138,7 +138,7 @@ paths:
       operationId: ListAGentAttributeValues
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Agents User_id Instance_values
+      summary: Zendesk Get  Api V2 Routing Agents User_id Instance_values
       description: |
         Returns an attribute value.
 
@@ -160,7 +160,7 @@ paths:
       operationId: SetAgentAttributeValues
       tags:
         - Skill Based Routing
-      summary: Post  Api V2 Routing Agents User_id Instance_values
+      summary: Zendesk Post  Api V2 Routing Agents User_id Instance_values
       description: >
         Adds the specified attributes if no attributes exists, or replaces all
         existing attributes with the specified attributes.
@@ -186,7 +186,7 @@ paths:
       operationId: ListManyAgentsAttributeValues
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Agents Instance_values
+      summary: Zendesk Get  Api V2 Routing Agents Instance_values
       description: >
         Accepts a comma-separated list of up to 100 agent ids and returns
         attribute values for each agent in the list.
@@ -270,7 +270,7 @@ paths:
       tags:
         - Skill Based Routing
         - Job Statuses
-      summary: Post  Api V2 Routing Agents Instance_values Job
+      summary: Zendesk Post  Api V2 Routing Agents Instance_values Job
       description: >
         Adds, replaces or removes multiple attributes for up to 100 agents.
 
@@ -289,8 +289,7 @@ paths:
         The request takes a data object with the following properties:
 
         | Name       | Type   | Required |
-        Description                                                                                      
-        |
+        Description                                                                                       |
 
         | ---------- | ------ | -------- |
         -------------------------------------------------------------------------------------------------
@@ -303,8 +302,7 @@ paths:
         [Attribute Values](#attribute-values)                         |
 
         | items      | array  | true     | The list of agent
-        ids                                                                            
-        |
+        ids                                                                             |
 
 
         Action can be one of the following:
@@ -353,7 +351,7 @@ paths:
       operationId: ListAccountAttributes
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Attributes
+      summary: Zendesk Get  Api V2 Routing Attributes
       description: |
         Returns a list of attributes for the account.
 
@@ -383,7 +381,7 @@ paths:
       operationId: CreateAttribute
       tags:
         - Skill Based Routing
-      summary: Post  Api V2 Routing Attributes
+      summary: Zendesk Post  Api V2 Routing Attributes
       description: |
         Creates an attribute.
 
@@ -408,7 +406,7 @@ paths:
       operationId: ShowAttribute
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Attributes Attribute_id
+      summary: Zendesk Get  Api V2 Routing Attributes Attribute_id
       description: |
         Returns an attribute.
 
@@ -430,7 +428,7 @@ paths:
       operationId: UpdateAttribute
       tags:
         - Skill Based Routing
-      summary: Put  Api V2 Routing Attributes Attribute_id
+      summary: Zendesk Put  Api V2 Routing Attributes Attribute_id
       description: |
         Updates an attribute.
 
@@ -452,7 +450,7 @@ paths:
       operationId: DeleteAttribute
       tags:
         - Skill Based Routing
-      summary: Delete  Api V2 Routing Attributes Attribute_id
+      summary: Zendesk Delete  Api V2 Routing Attributes Attribute_id
       description: |
         Deletes an attribute.
 
@@ -469,7 +467,7 @@ paths:
       operationId: ListAttributeValues
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Attributes Attribute_id Values
+      summary: Zendesk Get  Api V2 Routing Attributes Attribute_id Values
       description: |
         Returns a list of attribute values for a provided attribute.
 
@@ -491,7 +489,7 @@ paths:
       operationId: CreateAttributeValue
       tags:
         - Skill Based Routing
-      summary: Post  Api V2 Routing Attributes Attribute_id Values
+      summary: Zendesk Post  Api V2 Routing Attributes Attribute_id Values
       description: |
         Creates an attribute value.
 
@@ -517,7 +515,7 @@ paths:
       operationId: ShowAttributeValue
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      summary: Zendesk Get  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
       description: |
         Returns an attribute value.
 
@@ -539,7 +537,7 @@ paths:
       operationId: UpdateAttributeValue
       tags:
         - Skill Based Routing
-      summary: Patch  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      summary: Zendesk Patch  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
       description: >
         Updates the name and ticket conditions of a skill. When a ticket is
         created, the skill is applied to a ticket  if the ticket meets the
@@ -567,7 +565,7 @@ paths:
       operationId: DeleteAttributeValue
       tags:
         - Skill Based Routing
-      summary: Delete  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      summary: Zendesk Delete  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
       description: |
         Deletes an attribute value.
 
@@ -582,7 +580,7 @@ paths:
       operationId: ListRoutingAttributeDefinitions
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Attributes Definitions
+      summary: Zendesk Get  Api V2 Routing Attributes Definitions
       description: >
         Returns the condition definitions that can be configured to apply
         attributes to a ticket.
@@ -608,7 +606,7 @@ paths:
       operationId: ListTicketsFullfilledByUser
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Requirements Fulfilled
+      summary: Zendesk Get  Api V2 Routing Requirements Fulfilled
       description: >
         Returns a list of ticket ids that contain attributes matching the
         current user's attributes. Accepts a `ticket_ids` parameter for relevant
@@ -645,7 +643,7 @@ paths:
       operationId: ListTicketAttributeValues
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Tickets Ticket_id Instance_values
+      summary: Zendesk Get  Api V2 Routing Tickets Ticket_id Instance_values
       description: |
         Returns a list of attributes values for the ticket.
 
@@ -667,7 +665,7 @@ paths:
       operationId: SetTicketAttributeValues
       tags:
         - Skill Based Routing
-      summary: Post  Api V2 Routing Tickets Ticket_id Instance_values
+      summary: Zendesk Post  Api V2 Routing Tickets Ticket_id Instance_values
       description: >
         Adds the specified attributes if no attributes exists, or replaces all
         existing attributes with the specified attributes.

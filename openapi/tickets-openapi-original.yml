@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Tickets
+  title: Zendesk Tickets
   description: Needs a description.
 paths:
   /api/v2/channels/twitter/tickets:
@@ -8,7 +8,7 @@ paths:
       operationId: CreateTicketFromTweet
       tags:
         - X Channel
-      summary: Post  Api V2 Channels Twitter Tickets
+      summary: Zendesk Post  Api V2 Channels Twitter Tickets
       description: >
         Turns a tweet into a ticket. You must provide the tweet id as well as
         the id of a monitored X (formerly Twitter) handle configured for your
@@ -40,7 +40,7 @@ paths:
       operationId: GettingTwicketStatus
       tags:
         - X Channel
-      summary: Get  Api V2 Channels Twitter Tickets Comment_id Statuses
+      summary: Zendesk Get  Api V2 Channels Twitter Tickets Comment_id Statuses
       description: |
         #### Allowed For
 
@@ -70,7 +70,7 @@ paths:
       operationId: OpenTicketInAgentBrowser
       tags:
         - Basics
-      summary: Post  Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
+      summary: Zendesk Post  Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
       description: |-
         Allows you to instruct an agent's browser to open a ticket.
 
@@ -115,7 +115,7 @@ paths:
       operationId: CreateTicketOrVoicemailTicket
       tags:
         - Basics
-      summary: Post  Api V2 Channels Voice Tickets
+      summary: Zendesk Post  Api V2 Channels Voice Tickets
       description: >-
         #### Allowed For
 
@@ -250,7 +250,7 @@ paths:
       operationId: TicketImport
       tags:
         - Ticket Import
-      summary: Post  Api V2 Imports Tickets
+      summary: Zendesk Post  Api V2 Imports Tickets
       description: |-
         #### Allowed For
 
@@ -280,7 +280,7 @@ paths:
       operationId: TicketBulkImport
       tags:
         - Ticket Import
-      summary: Post  Api V2 Imports Tickets Create_many
+      summary: Zendesk Post  Api V2 Imports Tickets Create_many
       description: |-
         Accepts an array of up to 100 ticket objects.
 
@@ -314,7 +314,7 @@ paths:
       operationId: IncrementalTicketExportTime
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Tickets
+      summary: Zendesk Get  Api V2 Incremental Tickets
       description: >
         Returns the tickets that changed since the start time. For more
         information,
@@ -398,7 +398,7 @@ paths:
       operationId: IncrementalTicketExportCursor
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Tickets Cursor
+      summary: Zendesk Get  Api V2 Incremental Tickets Cursor
       description: >
         Returns the tickets that changed since the start time. For more
         information,
@@ -453,7 +453,7 @@ paths:
       operationId: ListTicketAttributeValues
       tags:
         - Skill Based Routing
-      summary: Get  Api V2 Routing Tickets Ticket_id Instance_values
+      summary: Zendesk Get  Api V2 Routing Tickets Ticket_id Instance_values
       description: |
         Returns a list of attributes values for the ticket.
 
@@ -475,7 +475,7 @@ paths:
       operationId: SetTicketAttributeValues
       tags:
         - Skill Based Routing
-      summary: Post  Api V2 Routing Tickets Ticket_id Instance_values
+      summary: Zendesk Post  Api V2 Routing Tickets Ticket_id Instance_values
       description: >
         Adds the specified attributes if no attributes exists, or replaces all
         existing attributes with the specified attributes.
@@ -504,7 +504,7 @@ paths:
       operationId: ListTickets
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets
+      summary: Zendesk Get  Api V2 Tickets
       parameters:
         - name: external_id
           in: query
@@ -528,7 +528,7 @@ paths:
       operationId: CreateTicket
       tags:
         - Tickets
-      summary: Post  Api V2 Tickets
+      summary: Zendesk Post  Api V2 Tickets
       requestBody:
         content:
           application/json:
@@ -558,7 +558,7 @@ paths:
       operationId: ShowTicket
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets Ticket_id
+      summary: Zendesk Get  Api V2 Tickets Ticket_id
       description: >-
         Returns a number of ticket properties though not the ticket comments. To
         get the comments, use [List
@@ -584,7 +584,7 @@ paths:
       operationId: UpdateTicket
       tags:
         - Tickets
-      summary: Put  Api V2 Tickets Ticket_id
+      summary: Zendesk Put  Api V2 Tickets Ticket_id
       parameters:
         - $ref: '#/components/parameters/TicketId'
       requestBody:
@@ -609,7 +609,7 @@ paths:
       operationId: DeleteTicket
       tags:
         - Tickets
-      summary: Delete  Api V2 Tickets Ticket_id
+      summary: Zendesk Delete  Api V2 Tickets Ticket_id
       description: >-
         #### Allowed For
 
@@ -653,7 +653,7 @@ paths:
       operationId: ListAuditsForTicket
       tags:
         - Ticket Audits
-      summary: Get  Api V2 Tickets Ticket_id Audits
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits
       description: >
         Lists the audits for a specified ticket.
 
@@ -699,7 +699,7 @@ paths:
       operationId: ShowTicketAudit
       tags:
         - Ticket Audits
-      summary: Get  Api V2 Tickets Ticket_id Audits Ticket_audit_id
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits Ticket_audit_id
       description: |
         #### Allowed for
 
@@ -722,7 +722,7 @@ paths:
       operationId: MakeTicketCommentPrivateFromAudits
       tags:
         - Ticket Audits
-      summary: Put  Api V2 Tickets Ticket_id Audits Ticket_audit_id Make_private
+      summary: Zendesk Put  Api V2 Tickets Ticket_id Audits Ticket_audit_id Make_private
       description: |
         #### Allowed for
 
@@ -744,7 +744,7 @@ paths:
       operationId: CountAuditsForTicket
       tags:
         - Ticket Audits
-      summary: Get  Api V2 Tickets Ticket_id Audits Count
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits Count
       description: >
         Returns an approximate count of audits for a specified ticket. If the
         count exceeds 100,000, the count will return a cached result.  This
@@ -782,7 +782,7 @@ paths:
       operationId: ListTicketCollaborators
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets Ticket_id Collaborators
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Collaborators
       description: |-
         #### Allowed For
 
@@ -806,7 +806,7 @@ paths:
       operationId: ListTicketComments
       tags:
         - Ticket Comments
-      summary: Get  Api V2 Tickets Ticket_id Comments
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Comments
       description: >
         Returns the comments added to the ticket.
 
@@ -905,8 +905,7 @@ paths:
       tags:
         - Attachments
       summary: >-
-        Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments
-        Attachment_id Redact
+        Zendesk Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments Attachment_id Redact
       description: >
         Redaction allows you to permanently remove attachments from an existing
         comment on a ticket. Once removed from a comment, the attachment is
@@ -953,7 +952,7 @@ paths:
       operationId: MakeTicketCommentPrivate
       tags:
         - Ticket Comments
-      summary: Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Make_private
+      summary: Zendesk Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Make_private
       description: |
         #### Allowed For
 
@@ -976,7 +975,7 @@ paths:
       operationId: RedactStringInComment
       tags:
         - Ticket Comments
-      summary: Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Redact
+      summary: Zendesk Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Redact
       description: >
         Permanently removes words or strings from a ticket comment. Specify the
         string to redact in an object with a `text` property. Example:
@@ -1023,7 +1022,7 @@ paths:
       operationId: CountTicketComments
       tags:
         - Ticket Comments
-      summary: Get  Api V2 Tickets Ticket_id Comments Count
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Comments Count
       description: >-
         Returns an approximate count of the comments added to the ticket. If the
         count exceeds 100,000, the count will return a cached result.  This
@@ -1061,7 +1060,7 @@ paths:
       operationId: ListConversationLogForTicket
       tags:
         - Conversation Log
-      summary: Get  Api V2 Tickets Ticket_id Conversation_log
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Conversation_log
       description: |
         Lists the conversation log events for a specified ticket.
 
@@ -1093,7 +1092,7 @@ paths:
       operationId: ListTicketEmailCCs
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets Ticket_id Email_ccs
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Email_ccs
       description: >-
         Returns any users cc'd on the ticket.
 
@@ -1133,7 +1132,7 @@ paths:
       operationId: ListTicketFollowers
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets Ticket_id Followers
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Followers
       description: >-
         Returns any users who follow the ticket.
 
@@ -1167,7 +1166,7 @@ paths:
       operationId: ListTicketIncidents
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets Ticket_id Incidents
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Incidents
       description: |-
         #### Allowed For
 
@@ -1204,7 +1203,7 @@ paths:
       operationId: ShowTicketAfterChanges
       tags:
         - Macros
-      summary: Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
       description: >
         Returns the full ticket object as it would be after applying the macro
         to the ticket.
@@ -1236,7 +1235,7 @@ paths:
       operationId: MarkTicketAsSpamAndSuspendRequester
       tags:
         - Tickets
-      summary: Put  Api V2 Tickets Ticket_id Mark_as_spam
+      summary: Zendesk Put  Api V2 Tickets Ticket_id Mark_as_spam
       description: |-
         #### Allowed For
 
@@ -1257,7 +1256,7 @@ paths:
       operationId: MergeTicketsIntoTargetTicket
       tags:
         - Tickets
-      summary: Post  Api V2 Tickets Ticket_id Merge
+      summary: Zendesk Post  Api V2 Tickets Ticket_id Merge
       description: >-
         Merges one or more tickets into the ticket with the specified id.
 
@@ -1362,7 +1361,7 @@ paths:
       operationId: TicketRelatedInformation
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets Ticket_id Related
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Related
       description: >-
         The request returns a data object with the following properties:
 
@@ -1414,7 +1413,7 @@ paths:
       operationId: CreateTicketSatisfactionRating
       tags:
         - Satisfaction Ratings
-      summary: Post  Api V2 Tickets Ticket_id Satisfaction_rating
+      summary: Zendesk Post  Api V2 Tickets Ticket_id Satisfaction_rating
       description: >
         Creates a CSAT rating for a solved ticket, or for a ticket that was
         previously
@@ -1455,7 +1454,7 @@ paths:
       operationId: ListResourceTags
       tags:
         - Tags
-      summary: Get  Api V2 Tickets Ticket_id Tags
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Tags
       description: |
         #### Allowed For
 
@@ -1474,7 +1473,7 @@ paths:
       operationId: SetTagsTicket
       tags:
         - Tags
-      summary: Post  Api V2 Tickets Ticket_id Tags
+      summary: Zendesk Post  Api V2 Tickets Ticket_id Tags
       description: |
         #### Allowed For
 
@@ -1493,7 +1492,7 @@ paths:
       operationId: PutTagsTicket
       tags:
         - Tags
-      summary: Put  Api V2 Tickets Ticket_id Tags
+      summary: Zendesk Put  Api V2 Tickets Ticket_id Tags
       description: >
         You can also add tags to multiple tickets with the [Update Many
 
@@ -1566,7 +1565,7 @@ paths:
       operationId: DeleteTagsTicket
       tags:
         - Tags
-      summary: Delete  Api V2 Tickets Ticket_id Tags
+      summary: Zendesk Delete  Api V2 Tickets Ticket_id Tags
       description: >
         You can also delete tags from multiple tickets with the
 
@@ -1598,7 +1597,7 @@ paths:
       operationId: CountTickets
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets Count
+      summary: Zendesk Get  Api V2 Tickets Count
       description: >-
         Returns an approximate count of tickets in the account. If the count
         exceeds 100,000, it is updated every 24 hours.
@@ -1648,7 +1647,7 @@ paths:
       operationId: TicketsCreateMany
       tags:
         - Tickets
-      summary: Post  Api V2 Tickets Create_many
+      summary: Zendesk Post  Api V2 Tickets Create_many
       description: >-
         Accepts an array of up to 100 ticket objects. **Note**: Every ticket
         created with this endpoint may be affected by your business rules, which
@@ -1695,7 +1694,7 @@ paths:
       operationId: BulkDeleteTickets
       tags:
         - Tickets
-      summary: Delete  Api V2 Tickets Destroy_many
+      summary: Zendesk Delete  Api V2 Tickets Destroy_many
       description: >-
         Accepts a comma-separated list of up to 100 ticket ids.
 
@@ -1741,7 +1740,7 @@ paths:
       operationId: MarkManyTicketsAsSpam
       tags:
         - Tickets
-      summary: Put  Api V2 Tickets Mark_many_as_spam
+      summary: Zendesk Put  Api V2 Tickets Mark_many_as_spam
       description: >-
         Accepts a comma-separated list of up to 100 ticket ids.
 
@@ -1777,7 +1776,7 @@ paths:
       operationId: TicketsShowMany
       tags:
         - Tickets
-      summary: Get  Api V2 Tickets Show_many
+      summary: Zendesk Get  Api V2 Tickets Show_many
       description: |-
         Accepts a comma-separated list of ticket ids to return.
 
@@ -1802,7 +1801,7 @@ paths:
       operationId: TicketsUpdateMany
       tags:
         - Tickets
-      summary: Put  Api V2 Tickets Update_many
+      summary: Zendesk Put  Api V2 Tickets Update_many
       description: >-
         Accepts an array of up to 100 ticket objects, or a comma-separated list
         of up to 100 ticket ids.
@@ -1830,7 +1829,7 @@ paths:
       operationId: ListTicketsFromView
       tags:
         - Views
-      summary: Get  Api V2 Views View_id Tickets
+      summary: Zendesk Get  Api V2 Views View_id Tickets
       description: |
         #### Allowed For
 
@@ -1927,7 +1926,7 @@ components:
               - id: 27648
                 value: 'yes'
             description: The fire is very colorful.
-            due_at: null
+            due_at:
             external_id: ahg35h3jh
             follower_ids:
               - 35334
@@ -1987,8 +1986,8 @@ components:
         after_cursor: MTU3NjYxMzUzOS4wfHw0Njd8
         after_url: >-
           https://{subdomain}.zendesk.com/api/v2/incremental/tickets/cursor.json?cursor=MTU3NjYxMzUzOS4wfHw0Njd8
-        before_cursor: null
-        before_url: null
+        before_cursor:
+        before_url:
         end_of_stream: true
         tickets:
           - assignee_id: 235323
@@ -2002,7 +2001,7 @@ components:
               - id: 27648
                 value: 'yes'
             description: The fire is very colorful.
-            due_at: null
+            due_at:
             external_id: ahg35h3jh
             follower_ids:
               - 35334

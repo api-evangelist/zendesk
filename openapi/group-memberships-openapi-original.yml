@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Group Memberships
+  title: Zendesk Group Memberships
   description: Needs a description.
 paths:
   /api/v2/group_memberships:
@@ -8,7 +8,7 @@ paths:
       operationId: ListGroupMemberships
       tags:
         - Group Memberships
-      summary: Get  Api V2 Group_memberships
+      summary: Zendesk Get  Api V2 Group_memberships
       description: |
         #### Pagination
 
@@ -39,7 +39,7 @@ paths:
       operationId: CreateGroupMembership
       tags:
         - Group Memberships
-      summary: Post  Api V2 Group_memberships
+      summary: Zendesk Post  Api V2 Group_memberships
       description: >
         Assigns an agent to a given group.
 
@@ -69,7 +69,7 @@ paths:
       operationId: ShowGroupMembershipById
       tags:
         - Group Memberships
-      summary: Get  Api V2 Group_memberships Group_membership_id
+      summary: Zendesk Get  Api V2 Group_memberships Group_membership_id
       description: |
         The 'id' is the group membership id, not a group id.
 
@@ -90,7 +90,7 @@ paths:
       operationId: DeleteGroupMembership
       tags:
         - Group Memberships
-      summary: Delete  Api V2 Group_memberships Group_membership_id
+      summary: Zendesk Delete  Api V2 Group_memberships Group_membership_id
       description: >
         Immediately removes a user from a group and schedules a job to unassign
         all working tickets that are assigned to the given user and group
@@ -112,7 +112,7 @@ paths:
       operationId: ListAssignableGroupMemberships
       tags:
         - Group Memberships
-      summary: Get  Api V2 Group_memberships Assignable
+      summary: Zendesk Get  Api V2 Group_memberships Assignable
       description: |
         Returns a maximum of 100 group memberships per page.
 
@@ -143,7 +143,7 @@ paths:
       operationId: GroupMembershipBulkCreate
       tags:
         - Group Memberships
-      summary: Post  Api V2 Group_memberships Create_many
+      summary: Zendesk Post  Api V2 Group_memberships Create_many
       description: >
         Assigns up to 100 agents to given groups.
 
@@ -180,7 +180,7 @@ paths:
       operationId: GroupMembershipBulkDelete
       tags:
         - Group Memberships
-      summary: Delete  Api V2 Group_memberships Destroy_many
+      summary: Zendesk Delete  Api V2 Group_memberships Destroy_many
       description: >
         Immediately removes users from groups and schedules a job to unassign
         all working tickets that are assigned to the given user and group
@@ -220,8 +220,7 @@ paths:
       tags:
         - Group Memberships
       summary: >-
-        Put  Api V2 Users User_id Group_memberships Group_membership_id
-        Make_default
+        Zendesk Put  Api V2 Users User_id Group_memberships Group_membership_id Make_default
       description: |
         #### Allowed For:
 

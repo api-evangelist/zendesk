@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Oauth
+  title: Zendesk Oauth
   description: Needs a description.
 paths:
   /api/v2/oauth/clients:
@@ -8,7 +8,7 @@ paths:
       operationId: ListOAuthClients
       tags:
         - OAuth Clients
-      summary: Get  Api V2 Oauth Clients
+      summary: Zendesk Get  Api V2 Oauth Clients
       description: |
         #### Pagination
 
@@ -36,7 +36,7 @@ paths:
       operationId: CreateOAuthClient
       tags:
         - OAuth Clients
-      summary: Post  Api V2 Oauth Clients
+      summary: Zendesk Post  Api V2 Oauth Clients
       description: |
         #### Allowed For
 
@@ -58,7 +58,7 @@ paths:
       operationId: ShowClient
       tags:
         - OAuth Clients
-      summary: Get  Api V2 Oauth Clients Oauth_client_id
+      summary: Zendesk Get  Api V2 Oauth Clients Oauth_client_id
       description: |
         #### Allowed for
         * Admins
@@ -76,7 +76,7 @@ paths:
       operationId: UpdateClient
       tags:
         - OAuth Clients
-      summary: Put  Api V2 Oauth Clients Oauth_client_id
+      summary: Zendesk Put  Api V2 Oauth Clients Oauth_client_id
       description: |
         #### Allowed for
          * Admins
@@ -94,7 +94,7 @@ paths:
       operationId: DeleteClient
       tags:
         - OAuth Clients
-      summary: Delete  Api V2 Oauth Clients Oauth_client_id
+      summary: Zendesk Delete  Api V2 Oauth Clients Oauth_client_id
       description: |
         #### Allowed for
          * Admins
@@ -108,7 +108,7 @@ paths:
       operationId: ClientGenerateSecret
       tags:
         - OAuth Clients
-      summary: Put  Api V2 Oauth Clients Oauth_client_id Generate_secret
+      summary: Zendesk Put  Api V2 Oauth Clients Oauth_client_id Generate_secret
       description: |
         #### Allowed for
          * Admins
@@ -127,7 +127,7 @@ paths:
       operationId: ListGlobalOAuthClients
       tags:
         - Global Clients
-      summary: Get  Api V2 Oauth Global_clients
+      summary: Zendesk Get  Api V2 Oauth Global_clients
       description: >
         Returns all the global OAuth clients that users on your account have
         authorized.
@@ -168,7 +168,7 @@ paths:
       operationId: ShowGlobalClient
       tags:
         - Global Clients
-      summary: Get  Api V2 Oauth Global_clients Global_client_id
+      summary: Zendesk Get  Api V2 Oauth Global_clients Global_client_id
       description: >
         Returns the global OAuth client associated with the ID sent on the
         request.
@@ -196,7 +196,7 @@ paths:
       operationId: GlobalOAuthClientsTokenSummary
       tags:
         - Global Clients
-      summary: Get  Api V2 Oauth Global_clients Token_summary
+      summary: Zendesk Get  Api V2 Oauth Global_clients Token_summary
       description: >
         Returns information about tokens for the global clients that your
         account has authorized.
@@ -240,7 +240,7 @@ paths:
       operationId: ListOAuthTokens
       tags:
         - OAuth Tokens
-      summary: Get  Api V2 Oauth Tokens
+      summary: Zendesk Get  Api V2 Oauth Tokens
       description: >
         Returns the properties of the tokens for the current user. Admins can
         view OAuth token properties for all users using the
@@ -284,7 +284,7 @@ paths:
       operationId: CreateOAuthToken
       tags:
         - OAuth Tokens
-      summary: Post  Api V2 Oauth Tokens
+      summary: Zendesk Post  Api V2 Oauth Tokens
       description: >
         Returns an OAuth access token with a specified [scope](#scopes).
 
@@ -468,7 +468,7 @@ paths:
       operationId: ShowToken
       tags:
         - OAuth Tokens
-      summary: Get  Api V2 Oauth Tokens Oauth_token_id
+      summary: Zendesk Get  Api V2 Oauth Tokens Oauth_token_id
       description: >
         Returns the properties of the specified token. For security reasons,
         only the first 10 characters of the access token are included.
@@ -507,7 +507,7 @@ paths:
       operationId: RevokeOAuthToken
       tags:
         - OAuth Tokens
-      summary: Delete  Api V2 Oauth Tokens Oauth_token_id
+      summary: Zendesk Delete  Api V2 Oauth Tokens Oauth_token_id
       description: |
         #### Allowed for
          * Admins, Agents, End Users
@@ -519,7 +519,7 @@ paths:
       operationId: CreateTokenForGrantType
       tags:
         - Grant Type Tokens
-      summary: Post  Oauth Tokens
+      summary: Zendesk Post  Oauth Tokens
       description: >
         Returns an OAuth access token in exchange for an [authorization
         code](https://support.zendesk.com/hc/en-us/articles/203663836#topic_pvr_ncl_1l)

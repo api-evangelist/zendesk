@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Workspaces
+  title: Zendesk Workspaces
   description: Needs a description.
 paths:
   /api/v2/workspaces:
@@ -8,7 +8,7 @@ paths:
       operationId: ListWorkspaces
       tags:
         - Workspaces
-      summary: Get  Api V2 Workspaces
+      summary: Zendesk Get  Api V2 Workspaces
       description: |
         #### Allowed For
 
@@ -24,8 +24,8 @@ paths:
                 default:
                   value:
                     count: 1
-                    next_page: null
-                    previous_page: null
+                    next_page:
+                    previous_page:
                     workspaces:
                       - activated: true
                         apps:
@@ -51,7 +51,7 @@ paths:
                                 value: solved
                             active: true
                             created_at: '2018-02-08T23:45:30Z'
-                            description: null
+                            description:
                             id: 360005374974
                             position: 9999
                             restriction:
@@ -72,7 +72,7 @@ paths:
       operationId: CreateWorkspace
       tags:
         - Workspaces
-      summary: Post  Api V2 Workspaces
+      summary: Zendesk Post  Api V2 Workspaces
       description: |
         #### Allowed For
 
@@ -135,7 +135,7 @@ paths:
                               value: solved
                           active: true
                           created_at: '2018-02-08T23:45:30Z'
-                          description: null
+                          description:
                           id: 360005374974
                           position: 9999
                           restriction:
@@ -159,7 +159,7 @@ paths:
       operationId: ShowWorkspace
       tags:
         - Workspaces
-      summary: Get  Api V2 Workspaces Workspace_id
+      summary: Zendesk Get  Api V2 Workspaces Workspace_id
       description: |
         #### Allowed For
         * Admins
@@ -198,7 +198,7 @@ paths:
                               value: solved
                           active: true
                           created_at: '2018-02-08T23:45:30Z'
-                          description: null
+                          description:
                           id: 360005374974
                           position: 9999
                           restriction:
@@ -219,7 +219,7 @@ paths:
       operationId: UpdateWorkspace
       tags:
         - Workspaces
-      summary: Put  Api V2 Workspaces Workspace_id
+      summary: Zendesk Put  Api V2 Workspaces Workspace_id
       description: |-
         #### Allowed For
         * Admins
@@ -281,7 +281,7 @@ paths:
                               value: solved
                           active: true
                           created_at: '2018-02-08T23:45:30Z'
-                          description: null
+                          description:
                           id: 360005374974
                           position: 9999
                           restriction:
@@ -302,7 +302,7 @@ paths:
       operationId: DeleteWorkspace
       tags:
         - Workspaces
-      summary: Delete  Api V2 Workspaces Workspace_id
+      summary: Zendesk Delete  Api V2 Workspaces Workspace_id
       description: |
         #### Allowed For
         * Admins
@@ -314,7 +314,7 @@ paths:
       operationId: DestroyManyWorkspaces
       tags:
         - Workspaces
-      summary: Delete  Api V2 Workspaces Destroy_many
+      summary: Zendesk Delete  Api V2 Workspaces Destroy_many
       description: |
         #### Allowed For
         * Admins
@@ -346,7 +346,7 @@ paths:
       operationId: ReorderWorkspaces
       tags:
         - Workspaces
-      summary: Put  Api V2 Workspaces Reorder
+      summary: Zendesk Put  Api V2 Workspaces Reorder
       description: |
         #### Allowed For
         * Admins

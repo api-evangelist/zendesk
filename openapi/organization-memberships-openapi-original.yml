@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Organization Memberships
+  title: Zendesk Organization Memberships
   description: Needs a description.
 paths:
   /api/v2/organization_memberships:
@@ -8,7 +8,7 @@ paths:
       operationId: ListOrganizationMemberships
       tags:
         - Organization Memberships
-      summary: Get  Api V2 Organization_memberships
+      summary: Zendesk Get  Api V2 Organization_memberships
       description: >
         Returns a list of organization memberships for the account, user or
         organization in question.
@@ -53,7 +53,7 @@ paths:
       operationId: CreateOrganizationMembership
       tags:
         - Organization Memberships
-      summary: Post  Api V2 Organization_memberships
+      summary: Zendesk Post  Api V2 Organization_memberships
       description: >
         Assigns a user to a given organization. Returns an error with status 422
         if the user is already assigned to the organization.
@@ -83,7 +83,7 @@ paths:
       operationId: ShowOrganizationMembershipById
       tags:
         - Organization Memberships
-      summary: Get  Api V2 Organization_memberships Organization_membership_id
+      summary: Zendesk Get  Api V2 Organization_memberships Organization_membership_id
       description: |
         #### Allowed for
 
@@ -102,7 +102,7 @@ paths:
       operationId: DeleteOrganizationMembership
       tags:
         - Organization Memberships
-      summary: Delete  Api V2 Organization_memberships Organization_membership_id
+      summary: Zendesk Delete  Api V2 Organization_memberships Organization_membership_id
       description: >
         Immediately removes a user from an organization and schedules a job to
         unassign all working tickets currently assigned to the user and
@@ -124,7 +124,7 @@ paths:
       operationId: CreateManyOrganizationMemberships
       tags:
         - Organization Memberships
-      summary: Post  Api V2 Organization_memberships Create_many
+      summary: Zendesk Post  Api V2 Organization_memberships Create_many
       description: >
         Accepts an array of up to 100 organization membership objects.
 
@@ -160,7 +160,7 @@ paths:
       operationId: DeleteManyOrganizationMemberships
       tags:
         - Organization Memberships
-      summary: Delete  Api V2 Organization_memberships Destroy_many
+      summary: Zendesk Delete  Api V2 Organization_memberships Destroy_many
       description: >
         Immediately removes a user from an organization and schedules a job to
         unassign all working tickets currently assigned to the user and
@@ -212,8 +212,7 @@ paths:
       tags:
         - Organization Memberships
       summary: >-
-        Put  Api V2 Users User_id Organization_memberships
-        Organization_membership_id Make_default
+        Zendesk Put  Api V2 Users User_id Organization_memberships Organization_membership_id Make_default
       description: >
         Sets the default organization membership of a given user.
 

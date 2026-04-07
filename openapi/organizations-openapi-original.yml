@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Organizations
+  title: Zendesk Organizations
   description: Needs a description.
 paths:
   /api/v2/incremental/organizations:
@@ -11,7 +11,7 @@ paths:
       operationId: IncrementalOrganizationExport
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Organizations
+      summary: Zendesk Get  Api V2 Incremental Organizations
       description: >
         #### Allowed For
 
@@ -38,7 +38,7 @@ paths:
       operationId: ListOrganizations
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations
+      summary: Zendesk Get  Api V2 Organizations
       description: >
         #### Pagination
 
@@ -79,7 +79,7 @@ paths:
       operationId: CreateOrganization
       tags:
         - Organizations
-      summary: Post  Api V2 Organizations
+      summary: Zendesk Post  Api V2 Organizations
       description: >
         You must provide a unique `name` for each organization. Normally
 
@@ -131,7 +131,7 @@ paths:
       operationId: ShowOrganization
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations Organization_id
+      summary: Zendesk Get  Api V2 Organizations Organization_id
       description: |
         #### Allowed For
 
@@ -151,7 +151,7 @@ paths:
       operationId: UpdateOrganization
       tags:
         - Organizations
-      summary: Put  Api V2 Organizations Organization_id
+      summary: Zendesk Put  Api V2 Organizations Organization_id
       description: >
         #### Allowed For
 
@@ -208,7 +208,7 @@ paths:
       operationId: DeleteOrganization
       tags:
         - Organizations
-      summary: Delete  Api V2 Organizations Organization_id
+      summary: Zendesk Delete  Api V2 Organizations Organization_id
       description: >
         #### Allowed For
 
@@ -227,7 +227,7 @@ paths:
       operationId: CreateOrganizationMerge
       tags:
         - Organizations
-      summary: Post  Api V2 Organizations Organization_id Merge
+      summary: Zendesk Post  Api V2 Organizations Organization_id Merge
       description: >
         Merges two organizations by moving all users, tickets, and domain names
         from the organization specified by `{organization_id}` to the
@@ -293,7 +293,7 @@ paths:
       operationId: ListOrganizationMerges
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations Organization_id Merges
+      summary: Zendesk Get  Api V2 Organizations Organization_id Merges
       description: >
         Retrieves a list of all organization merge operations associated with a
         given organization. This endpoint allows you to track the history of
@@ -339,7 +339,7 @@ paths:
       operationId: OrganizationRelated
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations Organization_id Related
+      summary: Zendesk Get  Api V2 Organizations Organization_id Related
       description: |
         #### Allowed For
 
@@ -363,7 +363,7 @@ paths:
       operationId: AutocompleteOrganizations
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations Autocomplete
+      summary: Zendesk Get  Api V2 Organizations Autocomplete
       description: >
         Returns an array of organizations whose name starts with the
 
@@ -436,7 +436,7 @@ paths:
       operationId: CountOrganizations
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations Count
+      summary: Zendesk Get  Api V2 Organizations Count
       description: >
         Returns an approximate count of organizations. If the count exceeds
 
@@ -478,7 +478,7 @@ paths:
       operationId: CreateManyOrganizations
       tags:
         - Organizations
-      summary: Post  Api V2 Organizations Create_many
+      summary: Zendesk Post  Api V2 Organizations Create_many
       description: >
         Accepts an array of up to 100 organization objects.
 
@@ -515,7 +515,7 @@ paths:
       operationId: CreateOrUpdateOrganization
       tags:
         - Organizations
-      summary: Post  Api V2 Organizations Create_or_update
+      summary: Zendesk Post  Api V2 Organizations Create_or_update
       description: |
         Creates an organization if it doesn't already exist, or updates
         an existing organization. Using this method means one less call
@@ -554,7 +554,7 @@ paths:
       operationId: DeleteManyOrganizations
       tags:
         - Organizations
-      summary: Delete  Api V2 Organizations Destroy_many
+      summary: Zendesk Delete  Api V2 Organizations Destroy_many
       description: >
         Accepts a comma-separated list of up to 100 organization ids or external
         ids.
@@ -598,7 +598,7 @@ paths:
       operationId: SearchOrganizations
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations Search
+      summary: Zendesk Get  Api V2 Organizations Search
       description: >
         Returns an array of organizations matching the criteria. You may search
         by an organization's `external_id` or `name`, but not both:
@@ -652,7 +652,7 @@ paths:
       operationId: ShowManyOrganizations
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations Show_many
+      summary: Zendesk Get  Api V2 Organizations Show_many
       description: >
         Accepts a comma-separated list of up to 100 organization ids or external
         ids.
@@ -683,7 +683,7 @@ paths:
       operationId: UpdateManyOrganizations
       tags:
         - Organizations
-      summary: Put  Api V2 Organizations Update_many
+      summary: Zendesk Put  Api V2 Organizations Update_many
       description: >
         Bulk or batch updates up to 100 organizations.
 
@@ -772,7 +772,7 @@ paths:
       operationId: UnassignOrganization
       tags:
         - Organization Memberships
-      summary: Delete  Api V2 Users User_id Organizations Organization_id
+      summary: Zendesk Delete  Api V2 Users User_id Organizations Organization_id
       description: >
         Immediately removes a user from an organization and schedules a job to
         unassign all working tickets currently assigned to the user and
@@ -795,7 +795,7 @@ paths:
       operationId: SetOrganizationAsDefault
       tags:
         - Organization Memberships
-      summary: Put  Api V2 Users User_id Organizations Organization_id Make_default
+      summary: Zendesk Put  Api V2 Users User_id Organizations Organization_id Make_default
       description: |
         Sets the default organization membership of a given user.
 

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Suspended Tickets
+  title: Zendesk Suspended Tickets
   description: Needs a description.
 paths:
   /api/v2/suspended_tickets:
@@ -11,7 +11,7 @@ paths:
       operationId: ListSuspendedTickets
       tags:
         - Suspended Tickets
-      summary: Get  Api V2 Suspended_tickets
+      summary: Zendesk Get  Api V2 Suspended_tickets
       description: >
         #### Allowed For
 
@@ -52,7 +52,7 @@ paths:
       operationId: ShowSuspendedTickets
       tags:
         - Suspended Tickets
-      summary: Get  Api V2 Suspended_tickets Id
+      summary: Zendesk Get  Api V2 Suspended_tickets Id
       description: >
         #### Allowed For
 
@@ -78,7 +78,7 @@ paths:
       operationId: DeleteSuspendedTicket
       tags:
         - Suspended Tickets
-      summary: Delete  Api V2 Suspended_tickets Id
+      summary: Zendesk Delete  Api V2 Suspended_tickets Id
       description: |
         #### Allowed For
 
@@ -93,7 +93,7 @@ paths:
       operationId: RecoverSuspendedTicket
       tags:
         - Suspended Tickets
-      summary: Put  Api V2 Suspended_tickets Id Recover
+      summary: Zendesk Put  Api V2 Suspended_tickets Id Recover
       description: >
         **Note**: During recovery, the API sets the requester to the
         authenticated agent who called the API, not the original requester. This
@@ -149,12 +149,11 @@ paths:
       operationId: SuspendedTicketsAttachments
       tags:
         - Suspended Tickets
-      summary: Post  Api V2 Suspended_tickets Attachments
+      summary: Zendesk Post  Api V2 Suspended_tickets Attachments
       description: >
         Makes copies of any attachments on a suspended ticket and returns them
         as [attachment
-        tokens](/api-reference/ticketing/tickets/ticket-attachments/). If the 
-        ticket is manually recovered, you can include the attachment tokens on
+        tokens](/api-reference/ticketing/tickets/ticket-attachments/). If the  ticket is manually recovered, you can include the attachment tokens on
         the new ticket.
 
 
@@ -184,7 +183,7 @@ paths:
       operationId: DeleteSuspendedTickets
       tags:
         - Suspended Tickets
-      summary: Delete  Api V2 Suspended_tickets Destroy_many
+      summary: Zendesk Delete  Api V2 Suspended_tickets Destroy_many
       description: >
         Accepts up to 100 ids (the auto-generated id, not the ticket id.)
 
@@ -205,7 +204,7 @@ paths:
       operationId: ExportSuspendedTickets
       tags:
         - Suspended Tickets
-      summary: Post  Api V2 Suspended_tickets Export
+      summary: Zendesk Post  Api V2 Suspended_tickets Export
       description: >
         Exports a list of suspended tickets for the Zendesk Support instance. To
         export the list, the endpoint enqueues a job to create a CSV file with
@@ -239,7 +238,7 @@ paths:
       operationId: RecoverSuspendedTickets
       tags:
         - Suspended Tickets
-      summary: Put  Api V2 Suspended_tickets Recover_many
+      summary: Zendesk Put  Api V2 Suspended_tickets Recover_many
       description: >
         Accepts up to 100 ids (the auto-generated id, not the ticket id.) Note
         that suspended tickets that fail to be recovered are still included in

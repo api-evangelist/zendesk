@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Account
+  title: Zendesk Account
   description: Needs a description.
 paths:
   /api/v2/account/settings:
@@ -8,7 +8,7 @@ paths:
       operationId: ShowAccountSettings
       tags:
         - Account Settings
-      summary: Get  Api V2 Account Settings
+      summary: Zendesk Get  Api V2 Account Settings
       description: |
         Shows the settings that are available for the account.
 
@@ -29,7 +29,7 @@ paths:
       operationId: UpdateAccountSettings
       tags:
         - Account Settings
-      summary: Put  Api V2 Account Settings
+      summary: Zendesk Put  Api V2 Account Settings
       description: >
         Updates settings for the account. See [JSON Format](#json-format) above
         for the settings you can update.
@@ -54,7 +54,7 @@ paths:
       operationId: CreateTrialAccount
       tags:
         - Reseller
-      summary: Post  Api V2 Accounts
+      summary: Zendesk Post  Api V2 Accounts
       responses:
         '201':
           description: Created response
@@ -70,7 +70,7 @@ paths:
       operationId: VerifySubdomainAvailability
       tags:
         - Reseller
-      summary: Get  Api V2 Accounts Available
+      summary: Zendesk Get  Api V2 Accounts Available
       description: >
         Zendesk Support credentials are not required to access this endpoint.
         You can use any Zendesk Support subdomain.
@@ -167,9 +167,9 @@ components:
           billing:
             backend: zuora
           branding:
-            favicon_url: null
+            favicon_url:
             header_color: 78A300
-            header_logo_url: null
+            header_logo_url:
             page_background_color: '333333'
             tab_background_color: 7FA239
             text_color: FFFFFF
@@ -192,7 +192,7 @@ components:
             welcome_message: Hi there. How can I help today?
           cross_sell:
             show_chat_tooltip: true
-            xsell_source: null
+            xsell_source:
           email:
             accept_wildcard_emails: false
             custom_dkim_domain: false
@@ -243,7 +243,7 @@ components:
               - message: >-
                   This ticket will be marked as solved soon. We hope to hear
                   from you.
-                ticket_status_id: null
+                ticket_status_id:
                 timeout: 300
               - message: >-
                   As we haven't heard from you in a while, we'll be marking this
@@ -256,8 +256,8 @@ components:
             account_size: 100-399
           onboarding:
             checklist_onboarding_version: 2
-            onboarding_segments: null
-            product_sign_up: null
+            onboarding_segments:
+            product_sign_up:
           routing:
             autorouting_tag: ''
             enabled: false

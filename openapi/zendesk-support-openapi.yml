@@ -52,7 +52,7 @@ paths:
   /tickets:
     get:
       operationId: listTickets
-      summary: List Tickets
+      summary: Zendesk List Tickets
       description: >-
         Returns a paginated list of tickets in the account. Tickets are sorted
         by created date in ascending order by default. Supports sideloading
@@ -116,7 +116,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: createTicket
-      summary: Create Ticket
+      summary: Zendesk Create Ticket
       description: >-
         Creates a new ticket. You can set the requester, subject, description,
         priority, type, status, tags, custom fields, and other properties.
@@ -156,7 +156,7 @@ paths:
       - $ref: '#/components/parameters/TicketId'
     get:
       operationId: getTicket
-      summary: Show Ticket
+      summary: Zendesk Show Ticket
       description: Returns the details of a specific ticket.
       tags:
         - Tickets
@@ -178,7 +178,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     put:
       operationId: updateTicket
-      summary: Update Ticket
+      summary: Zendesk Update Ticket
       description: >-
         Updates a ticket. You can update the status, priority, assignee,
         tags, custom fields, and add comments. Setting the status to
@@ -216,7 +216,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: deleteTicket
-      summary: Delete Ticket
+      summary: Zendesk Delete Ticket
       description: >-
         Permanently deletes a ticket. This operation cannot be undone.
         Deleted tickets are not recoverable.
@@ -237,7 +237,7 @@ paths:
       - $ref: '#/components/parameters/TicketId'
     get:
       operationId: listTicketComments
-      summary: List Ticket Comments
+      summary: Zendesk List Ticket Comments
       description: Returns the comments on a specific ticket.
       tags:
         - Tickets
@@ -285,7 +285,7 @@ paths:
   /users:
     get:
       operationId: listUsers
-      summary: List Users
+      summary: Zendesk List Users
       description: >-
         Returns a paginated list of all users in the account, including
         end users, agents, and admins. Supports filtering by role and
@@ -338,7 +338,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: createUser
-      summary: Create User
+      summary: Zendesk Create User
       description: >-
         Creates a new user. You must provide at least a name and an email
         address or phone number. The user role defaults to end-user.
@@ -377,7 +377,7 @@ paths:
       - $ref: '#/components/parameters/UserId'
     get:
       operationId: getUser
-      summary: Show User
+      summary: Zendesk Show User
       description: Returns the details of a specific user.
       tags:
         - Users
@@ -399,7 +399,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     put:
       operationId: updateUser
-      summary: Update User
+      summary: Zendesk Update User
       description: >-
         Updates a user. You can update the name, email, role, organization,
         tags, custom fields, and other properties.
@@ -436,7 +436,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: deleteUser
-      summary: Delete User
+      summary: Zendesk Delete User
       description: >-
         Deletes a user. The user is soft-deleted and can be recovered
         within a limited time. Agents and admins can only be deleted by
@@ -463,7 +463,7 @@ paths:
   /users/search:
     get:
       operationId: searchUsers
-      summary: Search Users
+      summary: Zendesk Search Users
       description: >-
         Searches for users by name, email, external ID, or other criteria.
         Returns a paginated list of matching users.
@@ -510,7 +510,7 @@ paths:
   /organizations:
     get:
       operationId: listOrganizations
-      summary: List Organizations
+      summary: Zendesk List Organizations
       description: >-
         Returns a paginated list of all organizations in the account.
       tags:
@@ -546,7 +546,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: createOrganization
-      summary: Create Organization
+      summary: Zendesk Create Organization
       description: >-
         Creates a new organization. You must provide a name. You can
         optionally set domains, tags, notes, and custom fields.
@@ -585,7 +585,7 @@ paths:
       - $ref: '#/components/parameters/OrganizationId'
     get:
       operationId: getOrganization
-      summary: Show Organization
+      summary: Zendesk Show Organization
       description: Returns the details of a specific organization.
       tags:
         - Organizations
@@ -607,7 +607,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     put:
       operationId: updateOrganization
-      summary: Update Organization
+      summary: Zendesk Update Organization
       description: >-
         Updates an organization. You can update the name, domains, notes,
         tags, details, and custom fields.
@@ -644,7 +644,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: deleteOrganization
-      summary: Delete Organization
+      summary: Zendesk Delete Organization
       description: >-
         Permanently deletes an organization. Users associated with the
         organization are not deleted, but their organization membership
@@ -664,7 +664,7 @@ paths:
   /organizations/search:
     get:
       operationId: searchOrganizations
-      summary: Search Organizations
+      summary: Zendesk Search Organizations
       description: >-
         Searches for organizations by name or external ID.
       tags:
@@ -705,7 +705,7 @@ paths:
   /organizations/autocomplete:
     get:
       operationId: autocompleteOrganizations
-      summary: Autocomplete Organizations
+      summary: Zendesk Autocomplete Organizations
       description: >-
         Returns organizations whose names start with the given string.
         Useful for building type-ahead search interfaces.

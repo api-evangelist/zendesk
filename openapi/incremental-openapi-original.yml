@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Incremental
+  title: Zendesk Incremental
   description: Needs a description.
 paths:
   /api/v2/incremental/{incremental_resource}/sample:
@@ -11,7 +11,7 @@ paths:
       operationId: IncrementalSampleExport
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Incremental_resource Sample
+      summary: Zendesk Get  Api V2 Incremental Incremental_resource Sample
       description: >
         Use this endpoint to test the incremental export format. It's more
         strict in terms of rate limiting,
@@ -44,7 +44,7 @@ paths:
       operationId: IncrementalOrganizationExport
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Organizations
+      summary: Zendesk Get  Api V2 Incremental Organizations
       description: >
         #### Allowed For
 
@@ -71,7 +71,7 @@ paths:
       operationId: IncrementalSkilBasedRoutingAttributeValuesExport
       tags:
         - Incremental Skill Based Routing
-      summary: Get  Api V2 Incremental Routing Attribute_values
+      summary: Zendesk Get  Api V2 Incremental Routing Attribute_values
       description: >
         Returns a stream of changes that occurred on routing attribute values.
 
@@ -112,7 +112,7 @@ paths:
       operationId: IncrementalSkilBasedRoutingAttributesExport
       tags:
         - Incremental Skill Based Routing
-      summary: Get  Api V2 Incremental Routing Attributes
+      summary: Zendesk Get  Api V2 Incremental Routing Attributes
       description: >
         Returns a stream of changes that occurred on routing attributes.
 
@@ -154,7 +154,7 @@ paths:
       operationId: IncrementalSkilBasedRoutingInstanceValuesExport
       tags:
         - Incremental Skill Based Routing
-      summary: Get  Api V2 Incremental Routing Instance_values
+      summary: Zendesk Get  Api V2 Incremental Routing Instance_values
       description: >
         Returns a stream of changes that occurred on routing instance values.
         Changes are grouped by `attribute_value_id`,
@@ -201,7 +201,7 @@ paths:
       operationId: IncrementalTicketEvents
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Ticket_events
+      summary: Zendesk Get  Api V2 Incremental Ticket_events
       description: >
         Returns a stream of changes that occurred on tickets, excluding events
         occuring within one minute of the request. Each event is tied
@@ -293,7 +293,7 @@ paths:
       operationId: ListTicketMetricEvents
       tags:
         - Ticket Metric Events
-      summary: Get  Api V2 Incremental Ticket_metric_events
+      summary: Zendesk Get  Api V2 Incremental Ticket_metric_events
       description: >-
         Returns ticket metric events that occurred on or after the start time.
 
@@ -356,7 +356,7 @@ paths:
       operationId: IncrementalTicketExportTime
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Tickets
+      summary: Zendesk Get  Api V2 Incremental Tickets
       description: >
         Returns the tickets that changed since the start time. For more
         information,
@@ -440,7 +440,7 @@ paths:
       operationId: IncrementalTicketExportCursor
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Tickets Cursor
+      summary: Zendesk Get  Api V2 Incremental Tickets Cursor
       description: >
         Returns the tickets that changed since the start time. For more
         information,
@@ -496,7 +496,7 @@ paths:
       operationId: IncrementalUserExportTime
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Users
+      summary: Zendesk Get  Api V2 Incremental Users
       description: >
         #### Allowed For
 
@@ -527,7 +527,7 @@ paths:
       operationId: IncrementalUserExportCursor
       tags:
         - Incremental Export
-      summary: Get  Api V2 Incremental Users Cursor
+      summary: Zendesk Get  Api V2 Incremental Users Cursor
       description: >
         #### Allowed For
 
@@ -588,7 +588,7 @@ components:
               - id: 27648
                 value: 'yes'
             description: The fire is very colorful.
-            due_at: null
+            due_at:
             external_id: ahg35h3jh
             follower_ids:
               - 35334
@@ -770,8 +770,8 @@ components:
         after_cursor: MTU3NjYxMzUzOS4wfHw0Njd8
         after_url: >-
           https://{subdomain}.zendesk.com/api/v2/incremental/tickets/cursor.json?cursor=MTU3NjYxMzUzOS4wfHw0Njd8
-        before_cursor: null
-        before_url: null
+        before_cursor:
+        before_url:
         end_of_stream: true
         tickets:
           - assignee_id: 235323
@@ -785,7 +785,7 @@ components:
               - id: 27648
                 value: 'yes'
             description: The fire is very colorful.
-            due_at: null
+            due_at:
             external_id: ahg35h3jh
             follower_ids:
               - 35334
@@ -914,8 +914,8 @@ components:
         after_cursor: MTU3NjYxMzUzOS4wfHw0Njd8
         after_url: >-
           https://example.zendesk.com/api/v2/incremental/users/cursor.json?cursor=MTU3NjYxMzUzOS4wfHw0Njd8
-        before_cursor: null
-        before_url: null
+        before_cursor:
+        before_url:
         end_of_stream: true
         users:
           - active: true

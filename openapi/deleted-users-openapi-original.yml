@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Deleted Users
+  title: Zendesk Deleted Users
   description: Needs a description.
 paths:
   /api/v2/deleted_users:
@@ -8,7 +8,7 @@ paths:
       operationId: ListDeletedUsers
       tags:
         - Users
-      summary: Get  Api V2 Deleted_users
+      summary: Zendesk Get  Api V2 Deleted_users
       description: |
         Returns deleted users, including permanently deleted users.
 
@@ -45,7 +45,7 @@ paths:
       operationId: ShowDeletedUser
       tags:
         - Users
-      summary: Get  Api V2 Deleted_users Deleted_user_id
+      summary: Zendesk Get  Api V2 Deleted_users Deleted_user_id
       description: >
         Returns users that have been deleted but not permanently yet. See
         [Permanently Delete User](#permanently-delete-user).
@@ -69,7 +69,7 @@ paths:
       operationId: PermanentlyDeleteUser
       tags:
         - Users
-      summary: Delete  Api V2 Deleted_users Deleted_user_id
+      summary: Zendesk Delete  Api V2 Deleted_users Deleted_user_id
       description: >
         Before permanently deleting a user, you must delete the user first. See
         [Delete User](/api-reference/ticketing/users/users/#delete-user).
@@ -114,7 +114,7 @@ paths:
       operationId: CountDeletedUsers
       tags:
         - Users
-      summary: Get  Api V2 Deleted_users Count
+      summary: Zendesk Get  Api V2 Deleted_users Count
       description: >
         Returns an approximate count of deleted users, including permanently
         deleted users. If the count exceeds 100,000, it is updated every 24

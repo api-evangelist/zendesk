@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Dynamic Content
+  title: Zendesk Dynamic Content
   description: Needs a description.
 paths:
   /api/v2/dynamic_content/items:
@@ -8,7 +8,7 @@ paths:
       operationId: ListDynamicContents
       tags:
         - Dynamic Content
-      summary: Get  Api V2 Dynamic_content Items
+      summary: Zendesk Get  Api V2 Dynamic_content Items
       description: >
         Returns a list of all dynamic content items for your account if accessed
         as an admin or agents who have permission to manage dynamic content.
@@ -43,7 +43,7 @@ paths:
       operationId: CreateDynamicContent
       tags:
         - Dynamic Content
-      summary: Post  Api V2 Dynamic_content Items
+      summary: Zendesk Post  Api V2 Dynamic_content Items
       description: >
         Create a new content item, with one or more variants in the item's
         `variants` array. See [Specifying item
@@ -77,7 +77,7 @@ paths:
       operationId: ShowDynamicContentItem
       tags:
         - Dynamic Content
-      summary: Get  Api V2 Dynamic_content Items Dynamic_content_item_id
+      summary: Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id
       description: |
         #### Allowed For
 
@@ -96,7 +96,7 @@ paths:
       operationId: UpdateDynamicContentItem
       tags:
         - Dynamic Content
-      summary: Put  Api V2 Dynamic_content Items Dynamic_content_item_id
+      summary: Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id
       description: >
         The only attribute you can change is the name.
 
@@ -124,7 +124,7 @@ paths:
       operationId: DeleteDynamicContentItem
       tags:
         - Dynamic Content
-      summary: Delete  Api V2 Dynamic_content Items Dynamic_content_item_id
+      summary: Zendesk Delete  Api V2 Dynamic_content Items Dynamic_content_item_id
       description: |
         #### Allowed For
 
@@ -139,7 +139,7 @@ paths:
       operationId: DynamicContentListVariants
       tags:
         - Dynamic Content Item Variants
-      summary: Get  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
+      summary: Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
       description: |
         Returns all the variants of the specified dynamic content item.
 
@@ -167,7 +167,7 @@ paths:
       operationId: CreateDynamicContentVariant
       tags:
         - Dynamic Content Item Variants
-      summary: Post  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
+      summary: Zendesk Post  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
       description: >
         You can only create one variant for each locale id. If a locale variant
         already exists, the request is rejected.
@@ -196,8 +196,7 @@ paths:
       tags:
         - Dynamic Content Item Variants
       summary: >-
-        Get  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
-        Dynamic_content_variant_id
+        Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
       description: |
         #### Allowed For
 
@@ -217,8 +216,7 @@ paths:
       tags:
         - Dynamic Content Item Variants
       summary: >-
-        Put  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
-        Dynamic_content_variant_id
+        Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
       description: >
         Updates the specified variant. You don't need to include all the
         properties. If you just want to update content, for example, then
@@ -250,8 +248,7 @@ paths:
       tags:
         - Dynamic Content Item Variants
       summary: >-
-        Delete  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
-        Dynamic_content_variant_id
+        Zendesk Delete  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
       description: |
         #### Allowed For
 
@@ -267,8 +264,7 @@ paths:
       tags:
         - Dynamic Content Item Variants
       summary: >-
-        Post  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
-        Create_many
+        Zendesk Post  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Create_many
       description: |
         #### Allowed For
 
@@ -292,8 +288,7 @@ paths:
       tags:
         - Dynamic Content Item Variants
       summary: >-
-        Put  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
-        Update_many
+        Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Update_many
       description: >
         Updates one or more variants. See [Update
         Variant](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/#update-variant).
@@ -324,7 +319,7 @@ paths:
       operationId: ShowManyDynamicContents
       tags:
         - Dynamic Content
-      summary: Get  Api V2 Dynamic_content Items Show_many
+      summary: Zendesk Get  Api V2 Dynamic_content Items Show_many
       description: |
         #### Stability
 

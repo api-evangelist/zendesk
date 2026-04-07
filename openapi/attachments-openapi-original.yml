@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Attachments
+  title: Zendesk Attachments
   description: Needs a description.
 paths:
   /api/v2/attachments/{attachment_id}:
@@ -8,7 +8,7 @@ paths:
       operationId: ShowAttachment
       tags:
         - Attachments
-      summary: Get  Api V2 Attachments Attachment_id
+      summary: Zendesk Get  Api V2 Attachments Attachment_id
       description: >
         Shows attachment details. You can get the value of the `attachment_id`
         parameter by listing the ticket's comments.
@@ -40,7 +40,7 @@ paths:
       operationId: UpdateAttachment
       tags:
         - Attachments
-      summary: Put  Api V2 Attachments Attachment_id
+      summary: Zendesk Put  Api V2 Attachments Attachment_id
       description: >
         Toggles enabling or restricting agent access to attachments with
         detected malware.
@@ -77,7 +77,7 @@ paths:
       operationId: ListMacroAttachments
       tags:
         - Macros
-      summary: Get  Api V2 Macros Macro_id Attachments
+      summary: Zendesk Get  Api V2 Macros Macro_id Attachments
       description: |
         Lists the attachments associated with a macro.
 
@@ -97,7 +97,7 @@ paths:
       operationId: CreateAssociatedMacroAttachment
       tags:
         - Macros
-      summary: Post  Api V2 Macros Macro_id Attachments
+      summary: Zendesk Post  Api V2 Macros Macro_id Attachments
       description: >
         Allows an attachment to be uploaded and associated with a macro at the
         same time.
@@ -125,7 +125,7 @@ paths:
       operationId: CreateMacroAttachment
       tags:
         - Macros
-      summary: Post  Api V2 Macros Attachments
+      summary: Zendesk Post  Api V2 Macros Attachments
       description: >
         Allows an attachment to be uploaded that can be associated with a macro
         at a later time.
@@ -157,7 +157,7 @@ paths:
       operationId: ShowMacroAttachment
       tags:
         - Macros
-      summary: Get  Api V2 Macros Attachments Attachment_id
+      summary: Zendesk Get  Api V2 Macros Attachments Attachment_id
       description: |
         Shows the properties of the specified macro attachment.
 
@@ -180,12 +180,11 @@ paths:
       operationId: SuspendedTicketsAttachments
       tags:
         - Suspended Tickets
-      summary: Post  Api V2 Suspended_tickets Attachments
+      summary: Zendesk Post  Api V2 Suspended_tickets Attachments
       description: >
         Makes copies of any attachments on a suspended ticket and returns them
         as [attachment
-        tokens](/api-reference/ticketing/tickets/ticket-attachments/). If the 
-        ticket is manually recovered, you can include the attachment tokens on
+        tokens](/api-reference/ticketing/tickets/ticket-attachments/). If the  ticket is manually recovered, you can include the attachment tokens on
         the new ticket.
 
 
@@ -218,8 +217,7 @@ paths:
       tags:
         - Attachments
       summary: >-
-        Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments
-        Attachment_id Redact
+        Zendesk Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments Attachment_id Redact
       description: >
         Redaction allows you to permanently remove attachments from an existing
         comment on a ticket. Once removed from a comment, the attachment is

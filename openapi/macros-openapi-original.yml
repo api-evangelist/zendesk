@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Macros
+  title: Zendesk Macros
   description: Needs a description.
 paths:
   /api/v2/macros:
@@ -8,7 +8,7 @@ paths:
       operationId: ListMacros
       tags:
         - Macros
-      summary: Get  Api V2 Macros
+      summary: Zendesk Get  Api V2 Macros
       description: >
         Lists all shared and personal macros available to the current user. For
         admins, the API returns all macros for the account, including the
@@ -55,7 +55,7 @@ paths:
       operationId: CreateMacro
       tags:
         - Macros
-      summary: Post  Api V2 Macros
+      summary: Zendesk Post  Api V2 Macros
       description: |
         #### Allowed For
         * Agents
@@ -95,7 +95,7 @@ paths:
       operationId: ShowMacro
       tags:
         - Macros
-      summary: Get  Api V2 Macros Macro_id
+      summary: Zendesk Get  Api V2 Macros Macro_id
       description: |
         #### Allowed For
         * Agents
@@ -113,7 +113,7 @@ paths:
       operationId: UpdateMacro
       tags:
         - Macros
-      summary: Put  Api V2 Macros Macro_id
+      summary: Zendesk Put  Api V2 Macros Macro_id
       description: |
         #### Allowed For
         * Agents
@@ -150,7 +150,7 @@ paths:
       operationId: DeleteMacro
       tags:
         - Macros
-      summary: Delete  Api V2 Macros Macro_id
+      summary: Zendesk Delete  Api V2 Macros Macro_id
       description: |
         #### Allowed For
         * Agents, with restrictions applying on certain actions
@@ -164,7 +164,7 @@ paths:
       operationId: ShowChangesToTicket
       tags:
         - Macros
-      summary: Get  Api V2 Macros Macro_id Apply
+      summary: Zendesk Get  Api V2 Macros Macro_id Apply
       description: >
         Returns the changes the macro would make to a ticket. It doesn't
         actually
@@ -203,7 +203,7 @@ paths:
       operationId: ListMacroAttachments
       tags:
         - Macros
-      summary: Get  Api V2 Macros Macro_id Attachments
+      summary: Zendesk Get  Api V2 Macros Macro_id Attachments
       description: |
         Lists the attachments associated with a macro.
 
@@ -223,7 +223,7 @@ paths:
       operationId: CreateAssociatedMacroAttachment
       tags:
         - Macros
-      summary: Post  Api V2 Macros Macro_id Attachments
+      summary: Zendesk Post  Api V2 Macros Macro_id Attachments
       description: >
         Allows an attachment to be uploaded and associated with a macro at the
         same time.
@@ -251,7 +251,7 @@ paths:
       operationId: ListMacrosActions
       tags:
         - Macros
-      summary: Get  Api V2 Macros Actions
+      summary: Zendesk Get  Api V2 Macros Actions
       description: |
         #### Allowed For
         * Agents
@@ -276,7 +276,7 @@ paths:
       operationId: ListActiveMacros
       tags:
         - Macros
-      summary: Get  Api V2 Macros Active
+      summary: Zendesk Get  Api V2 Macros Active
       description: >
         Lists all active shared and personal macros available to the current
         user.
@@ -307,7 +307,7 @@ paths:
       operationId: CreateMacroAttachment
       tags:
         - Macros
-      summary: Post  Api V2 Macros Attachments
+      summary: Zendesk Post  Api V2 Macros Attachments
       description: >
         Allows an attachment to be uploaded that can be associated with a macro
         at a later time.
@@ -339,7 +339,7 @@ paths:
       operationId: ShowMacroAttachment
       tags:
         - Macros
-      summary: Get  Api V2 Macros Attachments Attachment_id
+      summary: Zendesk Get  Api V2 Macros Attachments Attachment_id
       description: |
         Shows the properties of the specified macro attachment.
 
@@ -360,7 +360,7 @@ paths:
       operationId: ListMacroCategories
       tags:
         - Macros
-      summary: Get  Api V2 Macros Categories
+      summary: Zendesk Get  Api V2 Macros Categories
       description: |
         Lists all macro categories available to the current user.
 
@@ -381,7 +381,7 @@ paths:
       operationId: ListMacroActionDefinitions
       tags:
         - Macros
-      summary: Get  Api V2 Macros Definitions
+      summary: Zendesk Get  Api V2 Macros Definitions
       description: >
         Returns the definitions of the actions a macro can perform. For example,
 
@@ -421,7 +421,7 @@ paths:
       operationId: DeleteManyMacros
       tags:
         - Macros
-      summary: Delete  Api V2 Macros Destroy_many
+      summary: Zendesk Delete  Api V2 Macros Destroy_many
       description: >
         Deletes the macros corresponding to the provided comma-separated list of
         IDs.
@@ -460,7 +460,7 @@ paths:
       operationId: ShowDerivedMacro
       tags:
         - Macros
-      summary: Get  Api V2 Macros New
+      summary: Zendesk Get  Api V2 Macros New
       description: >
         Returns an unpersisted macro representation derived from a ticket or
         macro.
@@ -498,7 +498,7 @@ paths:
       operationId: SearchMacro
       tags:
         - Macros
-      summary: Get  Api V2 Macros Search
+      summary: Zendesk Get  Api V2 Macros Search
       description: >
         #### Pagination
 
@@ -528,7 +528,7 @@ paths:
       operationId: UpdateManyMacros
       tags:
         - Macros
-      summary: Put  Api V2 Macros Update_many
+      summary: Zendesk Put  Api V2 Macros Update_many
       description: |
         Updates the provided macros with the specified changes.
 
@@ -571,7 +571,7 @@ paths:
       operationId: ShowTicketAfterChanges
       tags:
         - Macros
-      summary: Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
       description: >
         Returns the full ticket object as it would be after applying the macro
         to the ticket.

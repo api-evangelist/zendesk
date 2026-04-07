@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Groups
+  title: Zendesk Groups
   description: Needs a description.
 paths:
   /api/lotus/assignables/groups.json:
@@ -8,7 +8,7 @@ paths:
       operationId: ListAssigneeFieldAssignableGroups
       tags:
         - AssigneeFieldAssignableAgents
-      summary: Get  Api Lotus Assignables Groups.json
+      summary: Zendesk Get  Api Lotus Assignables Groups.json
       description: |
         List assignable groups on the AssigneeField
 
@@ -31,7 +31,7 @@ paths:
       operationId: ListAssigneeFieldAssignableGroupAgents
       tags:
         - AssigneeFieldAssignableAgents
-      summary: Get  Api Lotus Assignables Groups Group_id Agents.json
+      summary: Zendesk Get  Api Lotus Assignables Groups Group_id Agents.json
       description: |
         List assignable agents from a group on the AssigneeField
 
@@ -57,7 +57,7 @@ paths:
       operationId: ListGroups
       tags:
         - Groups
-      summary: Get  Api V2 Groups
+      summary: Zendesk Get  Api V2 Groups
       description: |
         #### Pagination
 
@@ -89,7 +89,7 @@ paths:
       operationId: CreateGroup
       tags:
         - Groups
-      summary: Post  Api V2 Groups
+      summary: Zendesk Post  Api V2 Groups
       description: >
         #### Allowed For
 
@@ -115,7 +115,7 @@ paths:
       operationId: ShowGroupById
       tags:
         - Groups
-      summary: Get  Api V2 Groups Group_id
+      summary: Zendesk Get  Api V2 Groups Group_id
       description: |
         #### Allowed For
 
@@ -135,7 +135,7 @@ paths:
       operationId: UpdateGroup
       tags:
         - Groups
-      summary: Put  Api V2 Groups Group_id
+      summary: Zendesk Put  Api V2 Groups Group_id
       description: |
         #### Allowed For
 
@@ -154,7 +154,7 @@ paths:
       operationId: DeleteGroup
       tags:
         - Groups
-      summary: Delete  Api V2 Groups Group_id
+      summary: Zendesk Delete  Api V2 Groups Group_id
       description: >
         #### Allowed For
 
@@ -171,7 +171,7 @@ paths:
       operationId: ListAssignableGroups
       tags:
         - Groups
-      summary: Get  Api V2 Groups Assignable
+      summary: Zendesk Get  Api V2 Groups Assignable
       description: |
         #### Pagination
 
@@ -203,7 +203,7 @@ paths:
       operationId: CountGroups
       tags:
         - Groups
-      summary: Get  Api V2 Groups Count
+      summary: Zendesk Get  Api V2 Groups Count
       description: >
         Returns an approximate count of groups. If the count exceeds 100,000, it
         is updated every 24 hours.
@@ -267,8 +267,8 @@ components:
           - description: Customer Support
             id: 5519283746
             name: Group for customer inquiries
-        next_page: null
-        previous_page: null
+        next_page:
+        previous_page:
     AssigneeFieldAssignableGroupAgentsResponse:
       type: object
       properties:
@@ -302,8 +302,8 @@ components:
             id: 1928373460
             name: Cookie Monster
         count: 3
-        next_page: null
-        previous_page: null
+        next_page:
+        previous_page:
     GroupsResponse:
       type: object
       properties:

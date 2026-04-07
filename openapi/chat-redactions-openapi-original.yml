@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Chat Redactions
+  title: Zendesk Chat Redactions
   description: Needs a description.
 paths:
   /api/v2/chat_redactions/{ticket_id}:
@@ -10,7 +10,7 @@ paths:
       operationId: RedactChatComment
       tags:
         - Ticket Comments
-      summary: Put  Api V2 Chat_redactions Ticket_id
+      summary: Zendesk Put  Api V2 Chat_redactions Ticket_id
       description: >
         Permanently removes words or strings from a chat ticket's comment. 
 
@@ -52,8 +52,7 @@ paths:
 
 
         | Name                     | Type    | Required |
-        Description                                                                                                                                                                                                                                      
-        |
+        Description                                                                                                                                                                                                                                       |
 
         | ------------------------ | ------- | -------- |
         -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -61,15 +60,13 @@ paths:
 
         | chat_id                  | string  | true     | The `chat_id` in the
         `ChatStartedEvent` event in the ticket audit. See [Ticket
-        Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                           
-        |
+        Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                            |
 
         | chat_index               | integer | false    | The `chat_index` in
         the `ChatMessage` event in the ticket audit. See [Ticket
         Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if
         `message_id` is not
-        used                                                                      
-        |
+        used                                                                       |
 
         | message_id               | string  | false    | The `message_id` of
         the `ChatMessage` event in the ticket audit that is part of a
@@ -81,8 +78,7 @@ paths:
         `ChatMessage` event in the ticket audit. See [Ticket
         Audits](/api-reference/ticketing/tickets/ticket_audits).  Wrap `message`
         with `<redact>`
-        tags                                                                          
-        |
+        tags                                                                           |
 
 
         To get the required body properties, make a request to the [Ticket

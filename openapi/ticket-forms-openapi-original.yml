@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Ticket Forms
+  title: Zendesk Ticket Forms
   description: Needs a description.
 paths:
   /api/v2/ticket_forms:
@@ -8,7 +8,7 @@ paths:
       operationId: ListTicketForms
       tags:
         - Ticket Forms
-      summary: Get  Api V2 Ticket_forms
+      summary: Zendesk Get  Api V2 Ticket_forms
       description: >
         Returns a list of all ticket forms for your account if accessed as an
         admin or agent. End users only see ticket forms that have
@@ -64,7 +64,7 @@ paths:
       operationId: CreateTicketForm
       tags:
         - Ticket Forms
-      summary: Post  Api V2 Ticket_forms
+      summary: Zendesk Post  Api V2 Ticket_forms
       description: |
         #### Allowed For
 
@@ -86,7 +86,7 @@ paths:
       operationId: ShowTicketForm
       tags:
         - Ticket Forms
-      summary: Get  Api V2 Ticket_forms Ticket_form_id
+      summary: Zendesk Get  Api V2 Ticket_forms Ticket_form_id
       description: |
         #### Allowed For
 
@@ -105,7 +105,7 @@ paths:
       operationId: UpdateTicketForm
       tags:
         - Ticket Forms
-      summary: Put  Api V2 Ticket_forms Ticket_form_id
+      summary: Zendesk Put  Api V2 Ticket_forms Ticket_form_id
       description: |
         #### Allowed For
         * Admins
@@ -123,7 +123,7 @@ paths:
       operationId: DeleteTicketForm
       tags:
         - Ticket Forms
-      summary: Delete  Api V2 Ticket_forms Ticket_form_id
+      summary: Zendesk Delete  Api V2 Ticket_forms Ticket_form_id
       description: |
         #### Allowed For
         * Admins
@@ -137,7 +137,7 @@ paths:
       operationId: CloneTicketForm
       tags:
         - Ticket Forms
-      summary: Post  Api V2 Ticket_forms Ticket_form_id Clone
+      summary: Zendesk Post  Api V2 Ticket_forms Ticket_form_id Clone
       description: |
         #### Allowed For
 
@@ -160,7 +160,7 @@ paths:
       tags:
         - Ticket Forms
         - Ticket Form Statuses
-      summary: Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      summary: Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
       description: |
         Fetches all of the associated ticket form statuses of a ticket form.
 
@@ -183,7 +183,7 @@ paths:
       tags:
         - Ticket Forms
         - Ticket Form Statuses
-      summary: Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      summary: Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
       description: |
         Creates one or many ticket form status associations
 
@@ -214,7 +214,7 @@ paths:
       tags:
         - Ticket Forms
         - Ticket Form Statuses
-      summary: Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      summary: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
       description: >
         Updates or deletes ticket form status associations. This is a bulk
         operation that can both add and remove ticket form status associations
@@ -249,7 +249,7 @@ paths:
       operationId: DeleteTicketFormStatuses
       tags:
         - Ticket Form Statuses
-      summary: Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      summary: Zendesk Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
       description: |
         Deletes all of of the ticket form statuses by id.
 
@@ -286,8 +286,7 @@ paths:
         - Ticket Forms
         - Ticket Form Statuses
       summary: >-
-        Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
-        Ticket_form_status_id
+        Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id
       description: |
         Updates or deletes ticket form status association by id.
 
@@ -319,8 +318,7 @@ paths:
       tags:
         - Ticket Form Statuses
       summary: >-
-        Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
-        Ticket_form_status_id
+        Zendesk Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id
       description: |
         Deletes a ticket form status by id.
 
@@ -335,7 +333,7 @@ paths:
       operationId: ReorderTicketForms
       tags:
         - Ticket Forms
-      summary: Put  Api V2 Ticket_forms Reorder
+      summary: Zendesk Put  Api V2 Ticket_forms Reorder
       description: >
         #### Allowed For
 
@@ -369,7 +367,7 @@ paths:
       operationId: ShowManyTicketForms
       tags:
         - Ticket Forms
-      summary: Get  Api V2 Ticket_forms Show_many
+      summary: Zendesk Get  Api V2 Ticket_forms Show_many
       description: >
         Takes an `ids` query parameter that accepts a comma-separated list of up
         to 100 ticket form ids. This endpoint is used primarily by the [mobile

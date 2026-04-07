@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Comment Redactions
+  title: Zendesk Comment Redactions
   description: Needs a description.
 paths:
   /api/v2/comment_redactions/{ticket_comment_id}:
@@ -10,7 +10,7 @@ paths:
       operationId: RedactTicketCommentInAgentWorkspace
       tags:
         - Ticket Comments
-      summary: Put  Api V2 Comment_redactions Ticket_comment_id
+      summary: Zendesk Put  Api V2 Comment_redactions Ticket_comment_id
       description: >
         Redaction allows you to permanently remove words, strings, or
         attachments from a ticket comment.
@@ -93,16 +93,14 @@ paths:
 
 
         | Name                     | Type    | Required |
-        Description                                                                                                                                     
-        |
+        Description                                                                                                                                      |
 
         | -------------------------| ------- | -------- |
         ------------------------------------------------------------------------------------------------------------------------------------------------
         |
 
         | ticket_id                | integer | true     | The ID of the
-        ticket                                                                                                                            
-        |
+        ticket                                                                                                                             |
 
         | html_body                | string  | false    | The `html_body` of the
         comment containing `<redact>` tags or `redact`

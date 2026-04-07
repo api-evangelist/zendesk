@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Activities
+  title: Zendesk Activities
   description: Needs a description.
 paths:
   /api/v2/activities:
@@ -10,7 +10,7 @@ paths:
       operationId: ListActivities
       tags:
         - Activity Stream
-      summary: Get  Api V2 Activities
+      summary: Zendesk Get  Api V2 Activities
       description: >
         Lists ticket activities in the last 30 days affecting the agent making
         the request.
@@ -58,7 +58,7 @@ paths:
       operationId: ShowActivity
       tags:
         - Activity Stream
-      summary: Get  Api V2 Activities Activity_id
+      summary: Zendesk Get  Api V2 Activities Activity_id
       description: |
         Lists a specific activity.
 
@@ -80,7 +80,7 @@ paths:
       operationId: CountActivities
       tags:
         - Activity Stream
-      summary: Get  Api V2 Activities Count
+      summary: Zendesk Get  Api V2 Activities Count
       description: >-
         Returns an approximate count of ticket activities in the last 30 days
         affecting the agent making the request. If the count exceeds 100,000,
@@ -151,11 +151,11 @@ components:
               active: true
               alias: ''
               created_at: '2020-11-17T00:32:12Z'
-              custom_role_id: null
+              custom_role_id:
               default_group_id: 1873
               details: ''
               email: cgoddard+ted@zendesk.com
-              external_id: null
+              external_id:
               iana_time_zone: America/Juneau
               id: 158488612
               last_login_at: '2020-11-17T00:33:44Z'
@@ -165,28 +165,28 @@ components:
               name: Tedd
               notes: ''
               only_private_comments: false
-              organization_id: null
-              phone: null
-              photo: null
+              organization_id:
+              phone:
+              photo:
               report_csv: true
               restricted_agent: false
               role: admin
-              role_type: null
+              role_type:
               shared: false
               shared_agent: false
-              shared_phone_number: null
+              shared_phone_number:
               signature: ''
               suspended: false
               tags: []
-              ticket_restriction: null
+              ticket_restriction:
               time_zone: Alaska
-              two_factor_auth_enabled: null
+              two_factor_auth_enabled:
               updated_at: '2020-11-17T00:34:38Z'
               url: https://example.zendesk.com/api/v2/users/158488612.json
               user_fields:
-                its_remember_september: null
-                skittles: null
-                user_field_1: null
+                its_remember_september:
+                skittles:
+                user_field_1:
               verified: true
             actor_id: 158488612
             created_at: '2020-11-17T00:34:40Z'
@@ -206,7 +206,7 @@ components:
               active: true
               alias: test
               created_at: '2017-08-14T20:13:53Z'
-              custom_role_id: null
+              custom_role_id:
               default_group_id: 1873
               details: ''
               email: user@zendesk.com
@@ -221,7 +221,7 @@ components:
               notes: test
               only_private_comments: false
               organization_id: 1873
-              phone: null
+              phone:
               photo:
                 content_type: image/gif
                 content_url: >-
@@ -254,21 +254,21 @@ components:
               report_csv: true
               restricted_agent: false
               role: admin
-              role_type: null
+              role_type:
               shared: false
               shared_agent: false
-              shared_phone_number: null
+              shared_phone_number:
               signature: test
               suspended: false
               tags:
                 - '101'
-              ticket_restriction: null
+              ticket_restriction:
               time_zone: American Samoa
-              two_factor_auth_enabled: null
+              two_factor_auth_enabled:
               updated_at: '2020-11-17T00:33:55Z'
               url: https://example.zendesk.com/api/v2/users/3343.json
               user_fields:
-                its_remember_september: null
+                its_remember_september:
                 skittles: '2018-09-14T00:00:00+00:00'
                 user_field_1: '101'
               verified: true
@@ -278,11 +278,11 @@ components:
           - active: true
             alias: ''
             created_at: '2020-11-17T00:32:12Z'
-            custom_role_id: null
+            custom_role_id:
             default_group_id: 1873
             details: ''
             email: cgoddard+ted@zendesk.com
-            external_id: null
+            external_id:
             iana_time_zone: America/Juneau
             id: 158488612
             last_login_at: '2020-11-17T00:33:44Z'
@@ -292,37 +292,37 @@ components:
             name: Tedd
             notes: ''
             only_private_comments: false
-            organization_id: null
-            phone: null
-            photo: null
+            organization_id:
+            phone:
+            photo:
             report_csv: true
             restricted_agent: false
             role: admin
-            role_type: null
+            role_type:
             shared: false
             shared_agent: false
-            shared_phone_number: null
+            shared_phone_number:
             signature: ''
             suspended: false
             tags: []
-            ticket_restriction: null
+            ticket_restriction:
             time_zone: Alaska
-            two_factor_auth_enabled: null
+            two_factor_auth_enabled:
             updated_at: '2020-11-17T00:34:38Z'
             url: https://example.zendesk.com/api/v2/users/158488612.json
             user_fields:
-              its_remember_september: null
-              skittles: null
-              user_field_1: null
+              its_remember_september:
+              skittles:
+              user_field_1:
             verified: true
         count: 1
-        next_page: null
-        previous_page: null
+        next_page:
+        previous_page:
         users:
           - active: true
             alias: test
             created_at: '2017-08-14T20:13:53Z'
-            custom_role_id: null
+            custom_role_id:
             default_group_id: 1873
             details: ''
             email: user@zendesk.com
@@ -337,7 +337,7 @@ components:
             notes: test
             only_private_comments: false
             organization_id: 1873
-            phone: null
+            phone:
             photo:
               content_type: image/gif
               content_url: >-
@@ -369,21 +369,21 @@ components:
             report_csv: true
             restricted_agent: false
             role: admin
-            role_type: null
+            role_type:
             shared: false
             shared_agent: false
-            shared_phone_number: null
+            shared_phone_number:
             signature: test
             suspended: false
             tags:
               - '101'
-            ticket_restriction: null
+            ticket_restriction:
             time_zone: American Samoa
-            two_factor_auth_enabled: null
+            two_factor_auth_enabled:
             updated_at: '2020-11-17T00:33:55Z'
             url: https://example.zendesk.com/api/v2/users/3343.json
             user_fields:
-              its_remember_september: null
+              its_remember_september:
               skittles: '2018-09-14T00:00:00+00:00'
               user_field_1: '101'
             verified: true
@@ -398,11 +398,11 @@ components:
             active: true
             alias: ''
             created_at: '2020-11-17T00:32:12Z'
-            custom_role_id: null
+            custom_role_id:
             default_group_id: 1873
             details: ''
             email: cgoddard+ted@zendesk.com
-            external_id: null
+            external_id:
             iana_time_zone: America/Juneau
             id: 158488612
             last_login_at: '2020-11-17T00:33:44Z'
@@ -412,28 +412,28 @@ components:
             name: Tedd
             notes: ''
             only_private_comments: false
-            organization_id: null
-            phone: null
-            photo: null
+            organization_id:
+            phone:
+            photo:
             report_csv: true
             restricted_agent: false
             role: admin
-            role_type: null
+            role_type:
             shared: false
             shared_agent: false
-            shared_phone_number: null
+            shared_phone_number:
             signature: ''
             suspended: false
             tags: []
-            ticket_restriction: null
+            ticket_restriction:
             time_zone: Alaska
-            two_factor_auth_enabled: null
+            two_factor_auth_enabled:
             updated_at: '2020-11-17T00:34:38Z'
             url: https://example.zendesk.com/api/v2/users/158488612.json
             user_fields:
-              its_remember_september: null
-              skittles: null
-              user_field_1: null
+              its_remember_september:
+              skittles:
+              user_field_1:
             verified: true
           actor_id: 158488612
           created_at: '2020-11-17T00:34:40Z'
@@ -453,7 +453,7 @@ components:
             active: true
             alias: test
             created_at: '2017-08-14T20:13:53Z'
-            custom_role_id: null
+            custom_role_id:
             default_group_id: 1873
             details: ''
             email: user@zendesk.com
@@ -468,7 +468,7 @@ components:
             notes: test
             only_private_comments: false
             organization_id: 1873
-            phone: null
+            phone:
             photo:
               content_type: image/gif
               content_url: >-
@@ -500,21 +500,21 @@ components:
             report_csv: true
             restricted_agent: false
             role: admin
-            role_type: null
+            role_type:
             shared: false
             shared_agent: false
-            shared_phone_number: null
+            shared_phone_number:
             signature: test
             suspended: false
             tags:
               - '101'
-            ticket_restriction: null
+            ticket_restriction:
             time_zone: American Samoa
-            two_factor_auth_enabled: null
+            two_factor_auth_enabled:
             updated_at: '2020-11-17T00:33:55Z'
             url: https://example.zendesk.com/api/v2/users/3343.json
             user_fields:
-              its_remember_september: null
+              its_remember_september:
               skittles: '2018-09-14T00:00:00+00:00'
               user_field_1: '101'
             verified: true

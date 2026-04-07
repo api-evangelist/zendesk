@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Search
+  title: Zendesk Search
   description: Needs a description.
 paths:
   /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/search:
@@ -11,8 +11,7 @@ paths:
       tags:
         - Approval Requests
       summary: >-
-        Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id
-        Approval_requests Search
+        Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search
       description: >
         Returns a list of approvals associated with a specific workflow
         instance. Results can be filtered by approval request status.
@@ -43,7 +42,7 @@ paths:
       operationId: SearchAutomations
       tags:
         - Automations
-      summary: Get  Api V2 Automations Search
+      summary: Zendesk Get  Api V2 Automations Search
       description: >
         #### Pagination
 
@@ -103,7 +102,7 @@ paths:
       operationId: SearchCustomObjectRecords
       tags:
         - Custom Object Records
-      summary: Get  Api V2 Custom_objects Custom_object_key Records Search
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search
       description: >-
         Returns an array of custom object records that meet the search criteria
 
@@ -205,7 +204,7 @@ paths:
       operationId: FilteredSearchCustomObjectRecords
       tags:
         - Custom Object Records
-      summary: Post  Api V2 Custom_objects Custom_object_key Records Search
+      summary: Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search
       description: >-
         Returns an array of custom object records that meet the search and
         filter criteria.
@@ -420,7 +419,7 @@ paths:
       operationId: SearchObjectTriggers
       tags:
         - Object Triggers
-      summary: Get  Api V2 Custom_objects Custom_object_key Triggers Search
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
       description: >
         Returns a list of object triggers that meet your filter or search
         criteria.
@@ -484,7 +483,7 @@ paths:
       operationId: SearchMacro
       tags:
         - Macros
-      summary: Get  Api V2 Macros Search
+      summary: Zendesk Get  Api V2 Macros Search
       description: >
         #### Pagination
 
@@ -517,7 +516,7 @@ paths:
       operationId: SearchOrganizations
       tags:
         - Organizations
-      summary: Get  Api V2 Organizations Search
+      summary: Zendesk Get  Api V2 Organizations Search
       description: >
         Returns an array of organizations matching the criteria. You may search
         by an organization's `external_id` or `name`, but not both:
@@ -568,7 +567,7 @@ paths:
       operationId: SearchRequests
       tags:
         - Requests
-      summary: Get  Api V2 Requests Search
+      summary: Zendesk Get  Api V2 Requests Search
       description: >
         Examples:
 
@@ -633,7 +632,7 @@ paths:
       operationId: ListSearchResults
       tags:
         - Search
-      summary: Get  Api V2 Search
+      summary: Zendesk Get  Api V2 Search
       description: >
         Returns the search results. See [Query basics](#query-basics) for the
         syntax of the `query` parameter.
@@ -740,7 +739,7 @@ paths:
       operationId: CountSearchResults
       tags:
         - Search
-      summary: Get  Api V2 Search Count
+      summary: Zendesk Get  Api V2 Search Count
       description: >
         Returns the number of items matching the query rather than the items.
         The search string works the same as a regular search.
@@ -775,7 +774,7 @@ paths:
       operationId: ExportSearchResults
       tags:
         - Search
-      summary: Get  Api V2 Search Export
+      summary: Zendesk Get  Api V2 Search Export
       description: >
         Exports a set of results. See [Query syntax](#query-syntax) for the
         syntax of the `query` parameter.
@@ -925,7 +924,7 @@ paths:
       operationId: SearchTriggers
       tags:
         - Triggers
-      summary: Get  Api V2 Triggers Search
+      summary: Zendesk Get  Api V2 Triggers Search
       description: >
         #### Pagination
 
@@ -1004,7 +1003,7 @@ paths:
       operationId: SearchUsers
       tags:
         - Users
-      summary: Get  Api V2 Users Search
+      summary: Zendesk Get  Api V2 Users Search
       description: >
         Returns an array of users who meet the search criteria.
 
@@ -1070,7 +1069,7 @@ paths:
       operationId: SearchViews
       tags:
         - Views
-      summary: Get  Api V2 Views Search
+      summary: Zendesk Get  Api V2 Views Search
       description: >
         #### Pagination
 
@@ -1348,9 +1347,9 @@ components:
           readOnly: true
       example:
         count: 1
-        facets: null
-        next_page: null
-        previous_page: null
+        facets:
+        next_page:
+        previous_page:
         results:
           - created_at: '2018-04-06T03:17:05Z'
             default: false
@@ -1417,15 +1416,15 @@ components:
             $ref: '#/components/schemas/SearchResultObject'
           readOnly: true
       example:
-        facets: null
+        facets:
         links:
           next: >-
             https://example.zendesk.com/api/v2/search/export.json?filter%5Btype%5D=ticket&page%5Bafter%5D=eyJmaWVsZCI6ImNyZWF0ZWRfYXQiLCJkZXNjIjp0cnVlLCJ0aWVCcmVha0ZpZWxkIjoiaWQiLCJ0aWVCcmVha0Rlc2MiOmZhbHNlLCJzb3J0VmFsdWVzIjpudWxsLCJleHBvcnRlZFRodXNGYXIiOjAsInNlc3Npb25TdGFydCI6MTYwNzAzOTI1Mzk4NSwiY3JlYXRlZEF0IjoxNjA3MDM5MjUzOTg1LCJzYWx0ZWRSZXF1ZXN0SGFzaCI6LTQ5ODM0ODc3LCJzYWx0ZWRDdXJzb3JIYXNoIjotMjQwMzQ4MjgwfQ%3D%3D&page%5Bsize%5D=100&query=hello%26page%5Bsize%5D%3D100%26filter%5Btype%5D%3Dticket
-          prev: null
+          prev:
         meta:
           after_cursor: >-
             eyJmaWVsZCI6ImNyZWF0ZWRfYXQiLCJkZXNjIjp0cnVlLCJ0aWVCcmVha0ZpZWxkIjoiaWQiLCJ0aWVCcmVha0Rlc2MiOmZhbHNlLCJzb3J0VmFsdWVzIjpudWxsLCJleHBvcnRlZFRodXNGYXIiOjAsInNlc3Npb25TdGFydCI6MTYwNzAzOTI1Mzk4NSwiY3JlYXRlZEF0IjoxNjA3MDM5MjUzOTg1LCJzYWx0ZWRSZXF1ZXN0SGFzaCI6LTQ5ODM0ODc3LCJzYWx0ZWRDdXJzb3JIYXNoIjotMjQwMzQ4MjgwfQ==
-          before_cursor: null
+          before_cursor:
           has_more: true
         results: []
     TriggersResponse:
