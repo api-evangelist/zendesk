@@ -113,8 +113,8 @@ paths:
     get:
       operationId: TicketFormTicketFormStatuses
       tags:
-        - Ticket Forms
         - Ticket Form Statuses
+        - Ticket Forms
       summary: Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
       description: |
         Fetches all of the associated ticket form statuses of a ticket form.
@@ -136,8 +136,8 @@ paths:
     post:
       operationId: CreateTicketFormStatuses
       tags:
-        - Ticket Forms
         - Ticket Form Statuses
+        - Ticket Forms
       summary: Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
       description: |
         Creates one or many ticket form status associations
@@ -167,8 +167,8 @@ paths:
     put:
       operationId: UpdateTicketFormStatuses
       tags:
-        - Ticket Forms
         - Ticket Form Statuses
+        - Ticket Forms
       summary: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
       description: >
         Updates or deletes ticket form status associations. This is a bulk
@@ -238,8 +238,8 @@ paths:
     put:
       operationId: UpdateTicketFormStatusById
       tags:
-        - Ticket Forms
         - Ticket Form Statuses
+        - Ticket Forms
       summary: >-
         Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id
       description: |
@@ -293,3 +293,7 @@ components:
           items:
             $ref: '#/components/schemas/TicketFormStatusObject'
           maxItems: 1
+tags:
+  - name: Custom Ticket Statuses
+  - name: Ticket Form Statuses
+  - name: Ticket Forms

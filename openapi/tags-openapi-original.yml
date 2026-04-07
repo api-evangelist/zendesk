@@ -8,8 +8,7 @@ paths:
       - $ref: '#/components/parameters/TagNameFragment'
     get:
       operationId: AutocompleteTags
-      tags:
-        - Tags
+      tags: []
       summary: Zendesk Get  Api V2 Autocomplete Tags
       description: >
         Returns an array of registered and recent tag names that start with the
@@ -45,8 +44,7 @@ paths:
   /api/v2/tags:
     get:
       operationId: ListTags
-      tags:
-        - Tags
+      tags: []
       summary: Zendesk Get  Api V2 Tags
       description: >
         Lists up to the 20,000 most popular tags in the last 60 days, in
@@ -84,8 +82,7 @@ paths:
   /api/v2/tags/count:
     get:
       operationId: CountTags
-      tags:
-        - Tags
+      tags: []
       summary: Zendesk Get  Api V2 Tags Count
       description: >
         Returns an approximate count of tags. If the count exceeds 100,000, it
@@ -129,8 +126,7 @@ paths:
       - $ref: '#/components/parameters/TicketId'
     get:
       operationId: ListResourceTags
-      tags:
-        - Tags
+      tags: []
       summary: Zendesk Get  Api V2 Tickets Ticket_id Tags
       description: |
         #### Allowed For
@@ -148,8 +144,7 @@ paths:
                   $ref: '#/components/examples/TagsByObjectIdResponse'
     post:
       operationId: SetTagsTicket
-      tags:
-        - Tags
+      tags: []
       summary: Zendesk Post  Api V2 Tickets Ticket_id Tags
       description: |
         #### Allowed For
@@ -167,8 +162,7 @@ paths:
                   $ref: '#/components/examples/TagsByObjectIdResponse'
     put:
       operationId: PutTagsTicket
-      tags:
-        - Tags
+      tags: []
       summary: Zendesk Put  Api V2 Tickets Ticket_id Tags
       description: >
         You can also add tags to multiple tickets with the [Update Many
@@ -240,8 +234,7 @@ paths:
                   $ref: '#/components/examples/TagsByObjectIdResponse'
     delete:
       operationId: DeleteTagsTicket
-      tags:
-        - Tags
+      tags: []
       summary: Zendesk Delete  Api V2 Tickets Ticket_id Tags
       description: >
         You can also delete tags from multiple tickets with the

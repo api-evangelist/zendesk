@@ -7,8 +7,8 @@ paths:
     get:
       operationId: ListAssigneeFieldAssignableGroupsAndAgentsSearch
       tags:
-        - AssigneeFieldAssignableGroups
         - AssigneeFieldAssignableAgents
+        - AssigneeFieldAssignableGroups
       summary: Zendesk Get  Api Lotus Assignables Autocomplete.json
       description: |
         List assignable groups and agents based on query matched against name
@@ -35,8 +35,7 @@ paths:
       - $ref: '#/components/parameters/TagNameFragment'
     get:
       operationId: AutocompleteTags
-      tags:
-        - Tags
+      tags: []
       summary: Zendesk Get  Api V2 Autocomplete Tags
       description: >
         Returns an array of registered and recent tag names that start with the
@@ -456,3 +455,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserObject'
+tags:
+  - name: AssigneeFieldAssignableAgents
+  - name: AssigneeFieldAssignableGroups
+  - name: Custom Object Records
+  - name: Organizations
+  - name: Tickets
+  - name: Users
