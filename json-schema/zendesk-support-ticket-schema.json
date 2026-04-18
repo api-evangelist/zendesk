@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ticket",
+  "type": "object",
+  "description": "A Zendesk Support ticket representing a customer service request.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Automatically assigned ticket ID."
+    },
+    "url": {
+      "type": "string",
+      "description": "The API URL of the ticket."
+    },
+    "external_id": {
+      "type": "string",
+      "description": "An ID from an external system."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of the ticket."
+    },
+    "subject": {
+      "type": "string",
+      "description": "The subject of the ticket."
+    },
+    "raw_subject": {
+      "type": "string",
+      "description": "The original subject of the ticket as entered by the requester."
+    },
+    "description": {
+      "type": "string",
+      "description": "The first comment on the ticket (read-only after creation)."
+    },
+    "priority": {
+      "type": "string",
+      "description": "The urgency of the ticket."
+    },
+    "status": {
+      "type": "string",
+      "description": "The current status of the ticket."
+    },
+    "recipient": {
+      "type": "string",
+      "description": "The original recipient email address of the ticket."
+    },
+    "requester_id": {
+      "type": "integer",
+      "description": "The ID of the user who requested the ticket."
+    },
+    "submitter_id": {
+      "type": "integer",
+      "description": "The ID of the user who submitted the ticket."
+    },
+    "assignee_id": {
+      "type": "integer",
+      "description": "The ID of the agent assigned to the ticket."
+    },
+    "organization_id": {
+      "type": "integer",
+      "description": "The ID of the organization associated with the ticket."
+    },
+    "group_id": {
+      "type": "integer",
+      "description": "The ID of the group assigned to the ticket."
+    },
+    "collaborator_ids": {
+      "type": "array",
+      "description": "IDs of users currently CC'd on the ticket."
+    },
+    "follower_ids": {
+      "type": "array",
+      "description": "IDs of agents currently following the ticket."
+    },
+    "email_cc_ids": {
+      "type": "array",
+      "description": "IDs of agents or end users currently CC'd on the ticket."
+    },
+    "forum_topic_id": {
+      "type": "integer",
+      "description": "The ID of the topic in the community forum, if applicable."
+    },
+    "problem_id": {
+      "type": "integer",
+      "description": "For incident tickets, the ID of the associated problem ticket."
+    },
+    "has_incidents": {
+      "type": "boolean",
+      "description": "Whether the ticket has been marked as a problem with incidents."
+    },
+    "is_public": {
+      "type": "boolean",
+      "description": "Whether the ticket has a public comment."
+    },
+    "due_at": {
+      "type": "string",
+      "description": "The due date for task tickets (ISO 8601)."
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags applied to the ticket."
+    },
+    "custom_fields": {
+      "type": "array",
+      "description": "Custom field key-value pairs."
+    },
+    "satisfaction_rating": {
+      "type": "object",
+      "description": "The satisfaction rating of the ticket, if rated."
+    },
+    "sharing_agreement_ids": {
+      "type": "array",
+      "description": "IDs of sharing agreements used for the ticket."
+    },
+    "custom_status_id": {
+      "type": "integer",
+      "description": "The ID of a custom ticket status."
+    },
+    "fields": {
+      "type": "array",
+      "description": "Custom field values (alias for custom_fields)."
+    },
+    "followup_ids": {
+      "type": "array",
+      "description": "IDs of follow-up tickets created from this ticket."
+    },
+    "ticket_form_id": {
+      "type": "integer",
+      "description": "The ID of the ticket form used for this ticket."
+    },
+    "brand_id": {
+      "type": "integer",
+      "description": "The ID of the brand this ticket is associated with."
+    },
+    "allow_channelback": {
+      "type": "boolean",
+      "description": "Whether channelback is enabled."
+    },
+    "allow_attachments": {
+      "type": "boolean",
+      "description": "Whether the ticket allows attachments."
+    },
+    "from_messaging_channel": {
+      "type": "boolean",
+      "description": "Whether the ticket originated from a messaging channel."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "When the ticket was created (ISO 8601)."
+    },
+    "updated_at": {
+      "type": "string",
+      "description": "When the ticket was last updated (ISO 8601)."
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Organization",
+  "type": "object",
+  "description": "A Zendesk organization representing a company or group of users.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Automatically assigned organization ID."
+    },
+    "url": {
+      "type": "string",
+      "description": "The API URL of the organization."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the organization."
+    },
+    "details": {
+      "type": "string",
+      "description": "Details about the organization."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Notes about the organization visible only to agents."
+    },
+    "domain_names": {
+      "type": "array",
+      "description": "Domain names associated with the organization. Users with matching email domains can be auto-assigned."
+    },
+    "group_id": {
+      "type": "integer",
+      "description": "The default group assigned to tickets from this organization."
+    },
+    "shared_tickets": {
+      "type": "boolean",
+      "description": "Whether end users in the organization can see each other's tickets."
+    },
+    "shared_comments": {
+      "type": "boolean",
+      "description": "Whether end users in the organization can see each other's comments on tickets."
+    },
+    "external_id": {
+      "type": "string",
+      "description": "An external ID from an integrated system."
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags applied to the organization."
+    },
+    "organization_fields": {
+      "type": "object",
+      "description": "Custom organization field values (key-value pairs)."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "When the organization was created (ISO 8601)."
+    },
+    "updated_at": {
+      "type": "string",
+      "description": "When the organization was last updated (ISO 8601)."
+    }
+  }
+}

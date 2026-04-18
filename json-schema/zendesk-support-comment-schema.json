@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Comment",
+  "type": "object",
+  "description": "A comment on a ticket.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The ID of the comment."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of the comment."
+    },
+    "body": {
+      "type": "string",
+      "description": "The plain text body of the comment."
+    },
+    "html_body": {
+      "type": "string",
+      "description": "The HTML body of the comment."
+    },
+    "plain_body": {
+      "type": "string",
+      "description": "The plain text body with formatting stripped."
+    },
+    "public": {
+      "type": "boolean",
+      "description": "Whether the comment is public (visible to the requester)."
+    },
+    "author_id": {
+      "type": "integer",
+      "description": "The ID of the comment author."
+    },
+    "attachments": {
+      "type": "array",
+      "description": "Attachments on the comment."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "When the comment was created (ISO 8601)."
+    }
+  }
+}

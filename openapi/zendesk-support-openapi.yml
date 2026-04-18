@@ -23,31 +23,31 @@ externalDocs:
   url: https://developer.zendesk.com/api-reference/ticketing/introduction/
 
 servers:
-  - url: https://{subdomain}.zendesk.com/api/v2
-    description: Zendesk Support API
-    variables:
-      subdomain:
-        default: your-subdomain
-        description: Your Zendesk subdomain
+- url: https://{subdomain}.zendesk.com/api/v2
+  description: Zendesk Support API
+  variables:
+    subdomain:
+      default: your-subdomain
+      description: Your Zendesk subdomain
 
 security:
-  - basicAuth: []
-  - bearerAuth: []
+- basicAuth: []
+- bearerAuth: []
 
 tags:
-  - name: Organizations
-    description: Manage organizations
-    externalDocs:
-      url: https://developer.zendesk.com/api-reference/ticketing/organizations/organizations/
+- name: Organizations
+  description: Manage organizations
+  externalDocs:
+    url: https://developer.zendesk.com/api-reference/ticketing/organizations/organizations/
 
-  - name: Tickets
-    description: Manage support tickets
-    externalDocs:
-      url: https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/
-  - name: Users
-    description: Manage users (end users, agents, admins)
-    externalDocs:
-      url: https://developer.zendesk.com/api-reference/ticketing/users/users/
+- name: Tickets
+  description: Manage support tickets
+  externalDocs:
+    url: https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/
+- name: Users
+  description: Manage users (end users, agents, admins)
+  externalDocs:
+    url: https://developer.zendesk.com/api-reference/ticketing/users/users/
 paths:
   /tickets:
     get:
@@ -58,36 +58,39 @@ paths:
         by created date in ascending order by default. Supports sideloading
         of related users, groups, and organizations.
       tags:
-        - Tickets
+      - Tickets
       parameters:
-        - $ref: '#/components/parameters/PageParam'
-        - $ref: '#/components/parameters/PerPageParam'
-        - name: sort_by
-          in: query
-          description: The field to sort tickets by.
-          schema:
-            type: string
-            enum:
-              - created_at
-              - updated_at
-              - priority
-              - status
-              - ticket_type
-            default: created_at
-        - name: sort_order
-          in: query
-          description: The sort order.
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-            default: asc
-        - name: external_id
-          in: query
-          description: Filter tickets by external ID.
-          schema:
-            type: string
+      - $ref: '#/components/parameters/PageParam'
+      - $ref: '#/components/parameters/PerPageParam'
+      - name: sort_by
+        in: query
+        description: The field to sort tickets by.
+        schema:
+          type: string
+          enum:
+          - created_at
+          - updated_at
+          - priority
+          - status
+          - ticket_type
+          default: created_at
+        example: created_at
+      - name: sort_order
+        in: query
+        description: The sort order.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+        example: asc
+      - name: external_id
+        in: query
+        description: Filter tickets by external ID.
+        schema:
+          type: string
+        example: '500123'
       responses:
         '200':
           description: Successful response
@@ -110,10 +113,69 @@ paths:
                     nullable: true
                   count:
                     type: integer
+              examples:
+                Listtickets200Example:
+                  summary: Default listTickets 200 response
+                  x-microcks-default: true
+                  value:
+                    tickets:
+                    - id: abc123
+                      url: https://www.example.com
+                      external_id: '500123'
+                      type: problem
+                      subject: example_value
+                      raw_subject: example_value
+                      description: A sample description.
+                      priority: urgent
+                      status: new
+                      recipient: example_value
+                      requester_id: '500123'
+                      submitter_id: '500123'
+                      assignee_id: '500123'
+                      organization_id: '500123'
+                      group_id: '500123'
+                      collaborator_ids:
+                      - {}
+                      follower_ids:
+                      - {}
+                      email_cc_ids:
+                      - {}
+                      forum_topic_id: '500123'
+                      problem_id: '500123'
+                      has_incidents: true
+                      is_public: true
+                      due_at: '2026-01-15T10:30:00Z'
+                      tags:
+                      - {}
+                      custom_fields:
+                      - {}
+                      satisfaction_rating:
+                        score: offered
+                        comment: example_value
+                      sharing_agreement_ids:
+                      - {}
+                      custom_status_id: '500123'
+                      fields:
+                      - {}
+                      followup_ids:
+                      - {}
+                      ticket_form_id: '500123'
+                      brand_id: '500123'
+                      allow_channelback: true
+                      allow_attachments: true
+                      from_messaging_channel: true
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createTicket
       summary: Zendesk Create Ticket
@@ -122,7 +184,7 @@ paths:
         priority, type, status, tags, custom fields, and other properties.
         Comments can be added during creation.
       tags:
-        - Tickets
+      - Tickets
       requestBody:
         required: true
         content:
@@ -130,10 +192,48 @@ paths:
             schema:
               type: object
               required:
-                - ticket
+              - ticket
               properties:
                 ticket:
                   $ref: '#/components/schemas/TicketCreate'
+            examples:
+              CreateticketRequestExample:
+                summary: Default createTicket request
+                x-microcks-default: true
+                value:
+                  ticket:
+                    subject: example_value
+                    comment:
+                      body: example_value
+                      html_body: example_value
+                      public: true
+                      uploads:
+                      - {}
+                    requester_id: '500123'
+                    requester:
+                      name: Example Title
+                      email: user@example.com
+                      locale_id: '500123'
+                    submitter_id: '500123'
+                    assignee_id: '500123'
+                    group_id: '500123'
+                    organization_id: '500123'
+                    type: problem
+                    priority: urgent
+                    status: new
+                    tags:
+                    - example_value
+                    external_id: '500123'
+                    custom_fields:
+                    - {}
+                    due_at: '2026-01-15T10:30:00Z'
+                    ticket_form_id: '500123'
+                    brand_id: '500123'
+                    collaborator_ids:
+                    - 10
+                    email_cc_ids:
+                    - 10
+                    problem_id: '500123'
       responses:
         '201':
           description: Ticket created
@@ -144,6 +244,62 @@ paths:
                 properties:
                   ticket:
                     $ref: '#/components/schemas/Ticket'
+              examples:
+                Createticket201Example:
+                  summary: Default createTicket 201 response
+                  x-microcks-default: true
+                  value:
+                    ticket:
+                      id: abc123
+                      url: https://www.example.com
+                      external_id: '500123'
+                      type: problem
+                      subject: example_value
+                      raw_subject: example_value
+                      description: A sample description.
+                      priority: urgent
+                      status: new
+                      recipient: example_value
+                      requester_id: '500123'
+                      submitter_id: '500123'
+                      assignee_id: '500123'
+                      organization_id: '500123'
+                      group_id: '500123'
+                      collaborator_ids:
+                      - 10
+                      follower_ids:
+                      - 10
+                      email_cc_ids:
+                      - 10
+                      forum_topic_id: '500123'
+                      problem_id: '500123'
+                      has_incidents: true
+                      is_public: true
+                      due_at: '2026-01-15T10:30:00Z'
+                      tags:
+                      - example_value
+                      custom_fields:
+                      - {}
+                      satisfaction_rating:
+                        score: offered
+                        comment: example_value
+                      sharing_agreement_ids:
+                      - 10
+                      custom_status_id: '500123'
+                      fields:
+                      - {}
+                      followup_ids:
+                      - 10
+                      ticket_form_id: '500123'
+                      brand_id: '500123'
+                      allow_channelback: true
+                      allow_attachments: true
+                      from_messaging_channel: true
+                      via:
+                        channel: example_value
+                        source: {}
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '422':
@@ -151,15 +307,18 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /tickets/{ticket_id}:
     parameters:
-      - $ref: '#/components/parameters/TicketId'
+    - $ref: '#/components/parameters/TicketId'
     get:
       operationId: getTicket
       summary: Zendesk Show Ticket
       description: Returns the details of a specific ticket.
       tags:
-        - Tickets
+      - Tickets
       responses:
         '200':
           description: Successful response
@@ -170,12 +329,71 @@ paths:
                 properties:
                   ticket:
                     $ref: '#/components/schemas/Ticket'
+              examples:
+                Getticket200Example:
+                  summary: Default getTicket 200 response
+                  x-microcks-default: true
+                  value:
+                    ticket:
+                      id: abc123
+                      url: https://www.example.com
+                      external_id: '500123'
+                      type: problem
+                      subject: example_value
+                      raw_subject: example_value
+                      description: A sample description.
+                      priority: urgent
+                      status: new
+                      recipient: example_value
+                      requester_id: '500123'
+                      submitter_id: '500123'
+                      assignee_id: '500123'
+                      organization_id: '500123'
+                      group_id: '500123'
+                      collaborator_ids:
+                      - 10
+                      follower_ids:
+                      - 10
+                      email_cc_ids:
+                      - 10
+                      forum_topic_id: '500123'
+                      problem_id: '500123'
+                      has_incidents: true
+                      is_public: true
+                      due_at: '2026-01-15T10:30:00Z'
+                      tags:
+                      - example_value
+                      custom_fields:
+                      - {}
+                      satisfaction_rating:
+                        score: offered
+                        comment: example_value
+                      sharing_agreement_ids:
+                      - 10
+                      custom_status_id: '500123'
+                      fields:
+                      - {}
+                      followup_ids:
+                      - 10
+                      ticket_form_id: '500123'
+                      brand_id: '500123'
+                      allow_channelback: true
+                      allow_attachments: true
+                      from_messaging_channel: true
+                      via:
+                        channel: example_value
+                        source: {}
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateTicket
       summary: Zendesk Update Ticket
@@ -184,7 +402,7 @@ paths:
         tags, custom fields, and add comments. Setting the status to
         "solved" or "closed" resolves or closes the ticket.
       tags:
-        - Tickets
+      - Tickets
       requestBody:
         required: true
         content:
@@ -192,10 +410,41 @@ paths:
             schema:
               type: object
               required:
-                - ticket
+              - ticket
               properties:
                 ticket:
                   $ref: '#/components/schemas/TicketUpdate'
+            examples:
+              UpdateticketRequestExample:
+                summary: Default updateTicket request
+                x-microcks-default: true
+                value:
+                  ticket:
+                    subject: example_value
+                    comment:
+                      body: example_value
+                      html_body: example_value
+                      public: true
+                      author_id: '500123'
+                      uploads:
+                      - {}
+                    assignee_id: '500123'
+                    group_id: '500123'
+                    organization_id: '500123'
+                    type: problem
+                    priority: urgent
+                    status: new
+                    tags:
+                    - example_value
+                    custom_fields:
+                    - {}
+                    due_at: '2026-01-15T10:30:00Z'
+                    problem_id: '500123'
+                    collaborator_ids:
+                    - 10
+                    email_cc_ids:
+                    - 10
+                    external_id: '500123'
       responses:
         '200':
           description: Ticket updated
@@ -206,6 +455,62 @@ paths:
                 properties:
                   ticket:
                     $ref: '#/components/schemas/Ticket'
+              examples:
+                Updateticket200Example:
+                  summary: Default updateTicket 200 response
+                  x-microcks-default: true
+                  value:
+                    ticket:
+                      id: abc123
+                      url: https://www.example.com
+                      external_id: '500123'
+                      type: problem
+                      subject: example_value
+                      raw_subject: example_value
+                      description: A sample description.
+                      priority: urgent
+                      status: new
+                      recipient: example_value
+                      requester_id: '500123'
+                      submitter_id: '500123'
+                      assignee_id: '500123'
+                      organization_id: '500123'
+                      group_id: '500123'
+                      collaborator_ids:
+                      - 10
+                      follower_ids:
+                      - 10
+                      email_cc_ids:
+                      - 10
+                      forum_topic_id: '500123'
+                      problem_id: '500123'
+                      has_incidents: true
+                      is_public: true
+                      due_at: '2026-01-15T10:30:00Z'
+                      tags:
+                      - example_value
+                      custom_fields:
+                      - {}
+                      satisfaction_rating:
+                        score: offered
+                        comment: example_value
+                      sharing_agreement_ids:
+                      - 10
+                      custom_status_id: '500123'
+                      fields:
+                      - {}
+                      followup_ids:
+                      - 10
+                      ticket_form_id: '500123'
+                      brand_id: '500123'
+                      allow_channelback: true
+                      allow_attachments: true
+                      from_messaging_channel: true
+                      via:
+                        channel: example_value
+                        source: {}
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -214,6 +519,9 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteTicket
       summary: Zendesk Delete Ticket
@@ -221,7 +529,7 @@ paths:
         Permanently deletes a ticket. This operation cannot be undone.
         Deleted tickets are not recoverable.
       tags:
-        - Tickets
+      - Tickets
       responses:
         '204':
           description: Ticket deleted
@@ -232,27 +540,31 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /tickets/{ticket_id}/comments:
     parameters:
-      - $ref: '#/components/parameters/TicketId'
+    - $ref: '#/components/parameters/TicketId'
     get:
       operationId: listTicketComments
       summary: Zendesk List Ticket Comments
       description: Returns the comments on a specific ticket.
       tags:
-        - Tickets
+      - Tickets
       parameters:
-        - $ref: '#/components/parameters/PageParam'
-        - $ref: '#/components/parameters/PerPageParam'
-        - name: sort_order
-          in: query
-          description: Sort order for comments.
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-            default: asc
+      - $ref: '#/components/parameters/PageParam'
+      - $ref: '#/components/parameters/PerPageParam'
+      - name: sort_order
+        in: query
+        description: Sort order for comments.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+        example: asc
       responses:
         '200':
           description: Successful response
@@ -275,6 +587,25 @@ paths:
                     nullable: true
                   count:
                     type: integer
+              examples:
+                Listticketcomments200Example:
+                  summary: Default listTicketComments 200 response
+                  x-microcks-default: true
+                  value:
+                    comments:
+                    - id: abc123
+                      type: Comment
+                      body: example_value
+                      html_body: example_value
+                      plain_body: example_value
+                      public: true
+                      author_id: '500123'
+                      attachments:
+                      - {}
+                      created_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -282,6 +613,9 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /users:
     get:
       operationId: listUsers
@@ -291,25 +625,27 @@ paths:
         end users, agents, and admins. Supports filtering by role and
         permission set.
       tags:
-        - Users
+      - Users
       parameters:
-        - $ref: '#/components/parameters/PageParam'
-        - $ref: '#/components/parameters/PerPageParam'
-        - name: role
-          in: query
-          description: Filter by user role.
-          schema:
-            type: string
-            enum:
-              - end-user
-              - agent
-              - admin
-        - name: permission_set
-          in: query
-          description: >-
-            For custom roles, filter by the permission set ID.
-          schema:
-            type: integer
+      - $ref: '#/components/parameters/PageParam'
+      - $ref: '#/components/parameters/PerPageParam'
+      - name: role
+        in: query
+        description: Filter by user role.
+        schema:
+          type: string
+          enum:
+          - end-user
+          - agent
+          - admin
+        example: end-user
+      - name: permission_set
+        in: query
+        description: >-
+          For custom roles, filter by the permission set ID.
+        schema:
+          type: integer
+        example: 10
       responses:
         '200':
           description: Successful response
@@ -332,10 +668,65 @@ paths:
                     nullable: true
                   count:
                     type: integer
+              examples:
+                Listusers200Example:
+                  summary: Default listUsers 200 response
+                  x-microcks-default: true
+                  value:
+                    users:
+                    - id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      email: user@example.com
+                      phone: example_value
+                      photo:
+                        id: abc123
+                        file_name: example_value
+                        content_url: https://www.example.com
+                        content_type: example_value
+                        size: 10
+                        thumbnails: {}
+                      locale_id: '500123'
+                      locale: example_value
+                      time_zone: example_value
+                      organization_id: '500123'
+                      role: end-user
+                      custom_role_id: '500123'
+                      verified: true
+                      external_id: '500123'
+                      tags:
+                      - {}
+                      alias: example_value
+                      active: true
+                      shared: true
+                      shared_agent: true
+                      shared_phone_number: true
+                      signature: example_value
+                      details: example_value
+                      notes: example_value
+                      restricted_agent: true
+                      suspended: true
+                      default_group_id: '500123'
+                      report_csv: true
+                      only_private_comments: true
+                      ticket_restriction: organization
+                      moderator: true
+                      chat_only: true
+                      two_factor_auth_enabled: true
+                      user_fields: example_value
+                      last_login_at: '2026-01-15T10:30:00Z'
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createUser
       summary: Zendesk Create User
@@ -343,7 +734,7 @@ paths:
         Creates a new user. You must provide at least a name and an email
         address or phone number. The user role defaults to end-user.
       tags:
-        - Users
+      - Users
       requestBody:
         required: true
         content:
@@ -351,10 +742,33 @@ paths:
             schema:
               type: object
               required:
-                - user
+              - user
               properties:
                 user:
                   $ref: '#/components/schemas/UserCreate'
+            examples:
+              CreateuserRequestExample:
+                summary: Default createUser request
+                x-microcks-default: true
+                value:
+                  user:
+                    name: Example Title
+                    email: user@example.com
+                    phone: example_value
+                    role: end-user
+                    custom_role_id: '500123'
+                    organization_id: '500123'
+                    external_id: '500123'
+                    tags:
+                    - example_value
+                    locale_id: '500123'
+                    time_zone: example_value
+                    details: example_value
+                    notes: example_value
+                    alias: example_value
+                    signature: example_value
+                    verified: true
+                    user_fields: example_value
       responses:
         '201':
           description: User created
@@ -365,6 +779,56 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/User'
+              examples:
+                Createuser201Example:
+                  summary: Default createUser 201 response
+                  x-microcks-default: true
+                  value:
+                    user:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      email: user@example.com
+                      phone: example_value
+                      photo:
+                        id: abc123
+                        file_name: example_value
+                        content_url: https://www.example.com
+                        content_type: example_value
+                        size: 10
+                        thumbnails:
+                        - {}
+                      locale_id: '500123'
+                      locale: example_value
+                      time_zone: example_value
+                      organization_id: '500123'
+                      role: end-user
+                      custom_role_id: '500123'
+                      verified: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      alias: example_value
+                      active: true
+                      shared: true
+                      shared_agent: true
+                      shared_phone_number: true
+                      signature: example_value
+                      details: example_value
+                      notes: example_value
+                      restricted_agent: true
+                      suspended: true
+                      default_group_id: '500123'
+                      report_csv: true
+                      only_private_comments: true
+                      ticket_restriction: organization
+                      moderator: true
+                      chat_only: true
+                      two_factor_auth_enabled: true
+                      user_fields: example_value
+                      last_login_at: '2026-01-15T10:30:00Z'
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '422':
@@ -372,15 +836,18 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /users/{user_id}:
     parameters:
-      - $ref: '#/components/parameters/UserId'
+    - $ref: '#/components/parameters/UserId'
     get:
       operationId: getUser
       summary: Zendesk Show User
       description: Returns the details of a specific user.
       tags:
-        - Users
+      - Users
       responses:
         '200':
           description: Successful response
@@ -391,12 +858,65 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/User'
+              examples:
+                Getuser200Example:
+                  summary: Default getUser 200 response
+                  x-microcks-default: true
+                  value:
+                    user:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      email: user@example.com
+                      phone: example_value
+                      photo:
+                        id: abc123
+                        file_name: example_value
+                        content_url: https://www.example.com
+                        content_type: example_value
+                        size: 10
+                        thumbnails:
+                        - {}
+                      locale_id: '500123'
+                      locale: example_value
+                      time_zone: example_value
+                      organization_id: '500123'
+                      role: end-user
+                      custom_role_id: '500123'
+                      verified: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      alias: example_value
+                      active: true
+                      shared: true
+                      shared_agent: true
+                      shared_phone_number: true
+                      signature: example_value
+                      details: example_value
+                      notes: example_value
+                      restricted_agent: true
+                      suspended: true
+                      default_group_id: '500123'
+                      report_csv: true
+                      only_private_comments: true
+                      ticket_restriction: organization
+                      moderator: true
+                      chat_only: true
+                      two_factor_auth_enabled: true
+                      user_fields: example_value
+                      last_login_at: '2026-01-15T10:30:00Z'
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateUser
       summary: Zendesk Update User
@@ -404,7 +924,7 @@ paths:
         Updates a user. You can update the name, email, role, organization,
         tags, custom fields, and other properties.
       tags:
-        - Users
+      - Users
       requestBody:
         required: true
         content:
@@ -412,10 +932,33 @@ paths:
             schema:
               type: object
               required:
-                - user
+              - user
               properties:
                 user:
                   $ref: '#/components/schemas/UserUpdate'
+            examples:
+              UpdateuserRequestExample:
+                summary: Default updateUser request
+                x-microcks-default: true
+                value:
+                  user:
+                    name: Example Title
+                    email: user@example.com
+                    phone: example_value
+                    role: end-user
+                    custom_role_id: '500123'
+                    organization_id: '500123'
+                    external_id: '500123'
+                    tags:
+                    - example_value
+                    locale_id: '500123'
+                    time_zone: example_value
+                    details: example_value
+                    notes: example_value
+                    alias: example_value
+                    signature: example_value
+                    suspended: true
+                    user_fields: example_value
       responses:
         '200':
           description: User updated
@@ -426,6 +969,56 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/User'
+              examples:
+                Updateuser200Example:
+                  summary: Default updateUser 200 response
+                  x-microcks-default: true
+                  value:
+                    user:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      email: user@example.com
+                      phone: example_value
+                      photo:
+                        id: abc123
+                        file_name: example_value
+                        content_url: https://www.example.com
+                        content_type: example_value
+                        size: 10
+                        thumbnails:
+                        - {}
+                      locale_id: '500123'
+                      locale: example_value
+                      time_zone: example_value
+                      organization_id: '500123'
+                      role: end-user
+                      custom_role_id: '500123'
+                      verified: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      alias: example_value
+                      active: true
+                      shared: true
+                      shared_agent: true
+                      shared_phone_number: true
+                      signature: example_value
+                      details: example_value
+                      notes: example_value
+                      restricted_agent: true
+                      suspended: true
+                      default_group_id: '500123'
+                      report_csv: true
+                      only_private_comments: true
+                      ticket_restriction: organization
+                      moderator: true
+                      chat_only: true
+                      two_factor_auth_enabled: true
+                      user_fields: example_value
+                      last_login_at: '2026-01-15T10:30:00Z'
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -434,6 +1027,9 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteUser
       summary: Zendesk Delete User
@@ -442,7 +1038,7 @@ paths:
         within a limited time. Agents and admins can only be deleted by
         admins.
       tags:
-        - Users
+      - Users
       responses:
         '200':
           description: User deleted
@@ -453,6 +1049,56 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/User'
+              examples:
+                Deleteuser200Example:
+                  summary: Default deleteUser 200 response
+                  x-microcks-default: true
+                  value:
+                    user:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      email: user@example.com
+                      phone: example_value
+                      photo:
+                        id: abc123
+                        file_name: example_value
+                        content_url: https://www.example.com
+                        content_type: example_value
+                        size: 10
+                        thumbnails:
+                        - {}
+                      locale_id: '500123'
+                      locale: example_value
+                      time_zone: example_value
+                      organization_id: '500123'
+                      role: end-user
+                      custom_role_id: '500123'
+                      verified: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      alias: example_value
+                      active: true
+                      shared: true
+                      shared_agent: true
+                      shared_phone_number: true
+                      signature: example_value
+                      details: example_value
+                      notes: example_value
+                      restricted_agent: true
+                      suspended: true
+                      default_group_id: '500123'
+                      report_csv: true
+                      only_private_comments: true
+                      ticket_restriction: organization
+                      moderator: true
+                      chat_only: true
+                      two_factor_auth_enabled: true
+                      user_fields: example_value
+                      last_login_at: '2026-01-15T10:30:00Z'
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -460,6 +1106,9 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /users/search:
     get:
       operationId: searchUsers
@@ -468,18 +1117,19 @@ paths:
         Searches for users by name, email, external ID, or other criteria.
         Returns a paginated list of matching users.
       tags:
-        - Users
+      - Users
       parameters:
-        - name: query
-          in: query
-          required: true
-          description: >-
-            The search query. Supports name, email, phone, external_id,
-            and other fields.
-          schema:
-            type: string
-        - $ref: '#/components/parameters/PageParam'
-        - $ref: '#/components/parameters/PerPageParam'
+      - name: query
+        in: query
+        required: true
+        description: >-
+          The search query. Supports name, email, phone, external_id,
+          and other fields.
+        schema:
+          type: string
+        example: example_value
+      - $ref: '#/components/parameters/PageParam'
+      - $ref: '#/components/parameters/PerPageParam'
       responses:
         '200':
           description: Successful response
@@ -502,11 +1152,66 @@ paths:
                     nullable: true
                   count:
                     type: integer
+              examples:
+                Searchusers200Example:
+                  summary: Default searchUsers 200 response
+                  x-microcks-default: true
+                  value:
+                    users:
+                    - id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      email: user@example.com
+                      phone: example_value
+                      photo:
+                        id: abc123
+                        file_name: example_value
+                        content_url: https://www.example.com
+                        content_type: example_value
+                        size: 10
+                        thumbnails: {}
+                      locale_id: '500123'
+                      locale: example_value
+                      time_zone: example_value
+                      organization_id: '500123'
+                      role: end-user
+                      custom_role_id: '500123'
+                      verified: true
+                      external_id: '500123'
+                      tags:
+                      - {}
+                      alias: example_value
+                      active: true
+                      shared: true
+                      shared_agent: true
+                      shared_phone_number: true
+                      signature: example_value
+                      details: example_value
+                      notes: example_value
+                      restricted_agent: true
+                      suspended: true
+                      default_group_id: '500123'
+                      report_csv: true
+                      only_private_comments: true
+                      ticket_restriction: organization
+                      moderator: true
+                      chat_only: true
+                      two_factor_auth_enabled: true
+                      user_fields: example_value
+                      last_login_at: '2026-01-15T10:30:00Z'
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /organizations:
     get:
       operationId: listOrganizations
@@ -514,10 +1219,10 @@ paths:
       description: >-
         Returns a paginated list of all organizations in the account.
       tags:
-        - Organizations
+      - Organizations
       parameters:
-        - $ref: '#/components/parameters/PageParam'
-        - $ref: '#/components/parameters/PerPageParam'
+      - $ref: '#/components/parameters/PageParam'
+      - $ref: '#/components/parameters/PerPageParam'
       responses:
         '200':
           description: Successful response
@@ -540,10 +1245,38 @@ paths:
                     nullable: true
                   count:
                     type: integer
+              examples:
+                Listorganizations200Example:
+                  summary: Default listOrganizations 200 response
+                  x-microcks-default: true
+                  value:
+                    organizations:
+                    - id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - {}
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - {}
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createOrganization
       summary: Zendesk Create Organization
@@ -551,7 +1284,7 @@ paths:
         Creates a new organization. You must provide a name. You can
         optionally set domains, tags, notes, and custom fields.
       tags:
-        - Organizations
+      - Organizations
       requestBody:
         required: true
         content:
@@ -559,10 +1292,28 @@ paths:
             schema:
               type: object
               required:
-                - organization
+              - organization
               properties:
                 organization:
                   $ref: '#/components/schemas/OrganizationCreate'
+            examples:
+              CreateorganizationRequestExample:
+                summary: Default createOrganization request
+                x-microcks-default: true
+                value:
+                  organization:
+                    name: Example Title
+                    details: example_value
+                    notes: example_value
+                    domain_names:
+                    - example_value
+                    group_id: '500123'
+                    shared_tickets: true
+                    shared_comments: true
+                    external_id: '500123'
+                    tags:
+                    - example_value
+                    organization_fields: example_value
       responses:
         '201':
           description: Organization created
@@ -573,6 +1324,28 @@ paths:
                 properties:
                   organization:
                     $ref: '#/components/schemas/Organization'
+              examples:
+                Createorganization201Example:
+                  summary: Default createOrganization 201 response
+                  x-microcks-default: true
+                  value:
+                    organization:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - example_value
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '422':
@@ -580,15 +1353,18 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /organizations/{organization_id}:
     parameters:
-      - $ref: '#/components/parameters/OrganizationId'
+    - $ref: '#/components/parameters/OrganizationId'
     get:
       operationId: getOrganization
       summary: Zendesk Show Organization
       description: Returns the details of a specific organization.
       tags:
-        - Organizations
+      - Organizations
       responses:
         '200':
           description: Successful response
@@ -599,12 +1375,37 @@ paths:
                 properties:
                   organization:
                     $ref: '#/components/schemas/Organization'
+              examples:
+                Getorganization200Example:
+                  summary: Default getOrganization 200 response
+                  x-microcks-default: true
+                  value:
+                    organization:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - example_value
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateOrganization
       summary: Zendesk Update Organization
@@ -612,7 +1413,7 @@ paths:
         Updates an organization. You can update the name, domains, notes,
         tags, details, and custom fields.
       tags:
-        - Organizations
+      - Organizations
       requestBody:
         required: true
         content:
@@ -620,10 +1421,28 @@ paths:
             schema:
               type: object
               required:
-                - organization
+              - organization
               properties:
                 organization:
                   $ref: '#/components/schemas/OrganizationUpdate'
+            examples:
+              UpdateorganizationRequestExample:
+                summary: Default updateOrganization request
+                x-microcks-default: true
+                value:
+                  organization:
+                    name: Example Title
+                    details: example_value
+                    notes: example_value
+                    domain_names:
+                    - example_value
+                    group_id: '500123'
+                    shared_tickets: true
+                    shared_comments: true
+                    external_id: '500123'
+                    tags:
+                    - example_value
+                    organization_fields: example_value
       responses:
         '200':
           description: Organization updated
@@ -634,6 +1453,28 @@ paths:
                 properties:
                   organization:
                     $ref: '#/components/schemas/Organization'
+              examples:
+                Updateorganization200Example:
+                  summary: Default updateOrganization 200 response
+                  x-microcks-default: true
+                  value:
+                    organization:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - example_value
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -642,6 +1483,9 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteOrganization
       summary: Zendesk Delete Organization
@@ -650,7 +1494,7 @@ paths:
         organization are not deleted, but their organization membership
         is removed.
       tags:
-        - Organizations
+      - Organizations
       responses:
         '204':
           description: Organization deleted
@@ -661,6 +1505,9 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /organizations/search:
     get:
       operationId: searchOrganizations
@@ -668,13 +1515,14 @@ paths:
       description: >-
         Searches for organizations by name or external ID.
       tags:
-        - Organizations
+      - Organizations
       parameters:
-        - name: external_id
-          in: query
-          description: Search by external ID.
-          schema:
-            type: string
+      - name: external_id
+        in: query
+        description: Search by external ID.
+        schema:
+          type: string
+        example: '500123'
       responses:
         '200':
           description: Successful response
@@ -697,11 +1545,39 @@ paths:
                     nullable: true
                   count:
                     type: integer
+              examples:
+                Searchorganizations200Example:
+                  summary: Default searchOrganizations 200 response
+                  x-microcks-default: true
+                  value:
+                    organizations:
+                    - id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - {}
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - {}
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /organizations/autocomplete:
     get:
       operationId: autocompleteOrganizations
@@ -710,14 +1586,15 @@ paths:
         Returns organizations whose names start with the given string.
         Useful for building type-ahead search interfaces.
       tags:
-        - Organizations
+      - Organizations
       parameters:
-        - name: name
-          in: query
-          required: true
-          description: The prefix to match against organization names.
-          schema:
-            type: string
+      - name: name
+        in: query
+        required: true
+        description: The prefix to match against organization names.
+        schema:
+          type: string
+        example: Example Title
       responses:
         '200':
           description: Successful response
@@ -740,11 +1617,39 @@ paths:
                     nullable: true
                   count:
                     type: integer
+              examples:
+                Autocompleteorganizations200Example:
+                  summary: Default autocompleteOrganizations 200 response
+                  x-microcks-default: true
+                  value:
+                    organizations:
+                    - id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - {}
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - {}
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     basicAuth:
@@ -842,90 +1747,106 @@ components:
           format: int64
           description: Automatically assigned ticket ID.
           readOnly: true
+          example: abc123
         url:
           type: string
           format: uri
           description: The API URL of the ticket.
           readOnly: true
+          example: https://www.example.com
         external_id:
           type: string
           nullable: true
           description: An ID from an external system.
+          example: '500123'
         type:
           type: string
           enum:
-            - problem
-            - incident
-            - question
-            - task
+          - problem
+          - incident
+          - question
+          - task
           nullable: true
           description: The type of the ticket.
+          example: problem
         subject:
           type: string
           description: The subject of the ticket.
+          example: example_value
         raw_subject:
           type: string
           description: The original subject of the ticket as entered by the requester.
           readOnly: true
+          example: example_value
         description:
           type: string
           description: The first comment on the ticket (read-only after creation).
           readOnly: true
+          example: A sample description.
         priority:
           type: string
           enum:
-            - urgent
-            - high
-            - normal
-            - low
+          - urgent
+          - high
+          - normal
+          - low
           nullable: true
           description: The urgency of the ticket.
+          example: urgent
         status:
           type: string
           enum:
-            - new
-            - open
-            - pending
-            - hold
-            - solved
-            - closed
+          - new
+          - open
+          - pending
+          - hold
+          - solved
+          - closed
           description: The current status of the ticket.
+          example: new
         recipient:
           type: string
           format: email
           nullable: true
           description: The original recipient email address of the ticket.
           readOnly: true
+          example: example_value
         requester_id:
           type: integer
           format: int64
           description: The ID of the user who requested the ticket.
+          example: '500123'
         submitter_id:
           type: integer
           format: int64
           description: The ID of the user who submitted the ticket.
           readOnly: true
+          example: '500123'
         assignee_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the agent assigned to the ticket.
+          example: '500123'
         organization_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the organization associated with the ticket.
+          example: '500123'
         group_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the group assigned to the ticket.
+          example: '500123'
         collaborator_ids:
           type: array
           items:
             type: integer
             format: int64
           description: IDs of users currently CC'd on the ticket.
+          example: []
         follower_ids:
           type: array
           items:
@@ -933,47 +1854,56 @@ components:
             format: int64
           description: IDs of agents currently following the ticket.
           readOnly: true
+          example: []
         email_cc_ids:
           type: array
           items:
             type: integer
             format: int64
           description: IDs of agents or end users currently CC'd on the ticket.
+          example: user@example.com
         forum_topic_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the topic in the community forum, if applicable.
           readOnly: true
+          example: '500123'
         problem_id:
           type: integer
           format: int64
           nullable: true
           description: >-
             For incident tickets, the ID of the associated problem ticket.
+          example: '500123'
         has_incidents:
           type: boolean
           description: Whether the ticket has been marked as a problem with incidents.
           readOnly: true
+          example: true
         is_public:
           type: boolean
           description: Whether the ticket has a public comment.
           readOnly: true
+          example: true
         due_at:
           type: string
           format: date-time
           nullable: true
           description: The due date for task tickets (ISO 8601).
+          example: '2026-01-15T10:30:00Z'
         tags:
           type: array
           items:
             type: string
           description: Tags applied to the ticket.
+          example: []
         custom_fields:
           type: array
           items:
             $ref: '#/components/schemas/CustomField'
           description: Custom field key-value pairs.
+          example: []
         satisfaction_rating:
           type: object
           nullable: true
@@ -983,12 +1913,13 @@ components:
             score:
               type: string
               enum:
-                - offered
-                - unoffered
-                - good
-                - bad
+              - offered
+              - unoffered
+              - good
+              - bad
             comment:
               type: string
+          example: example_value
         sharing_agreement_ids:
           type: array
           items:
@@ -996,17 +1927,20 @@ components:
             format: int64
           description: IDs of sharing agreements used for the ticket.
           readOnly: true
+          example: []
         custom_status_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of a custom ticket status.
+          example: '500123'
         fields:
           type: array
           items:
             $ref: '#/components/schemas/CustomField'
           description: Custom field values (alias for custom_fields).
           readOnly: true
+          example: []
         followup_ids:
           type: array
           items:
@@ -1014,28 +1948,34 @@ components:
             format: int64
           description: IDs of follow-up tickets created from this ticket.
           readOnly: true
+          example: []
         ticket_form_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the ticket form used for this ticket.
+          example: '500123'
         brand_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the brand this ticket is associated with.
+          example: '500123'
         allow_channelback:
           type: boolean
           description: Whether channelback is enabled.
           readOnly: true
+          example: true
         allow_attachments:
           type: boolean
           description: Whether the ticket allows attachments.
           readOnly: true
+          example: true
         from_messaging_channel:
           type: boolean
           description: Whether the ticket originated from a messaging channel.
           readOnly: true
+          example: true
         via:
           $ref: '#/components/schemas/Via'
         created_at:
@@ -1043,12 +1983,14 @@ components:
           format: date-time
           description: When the ticket was created (ISO 8601).
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         updated_at:
           type: string
           format: date-time
           description: When the ticket was last updated (ISO 8601).
           readOnly: true
 
+          example: '2026-01-15T10:30:00Z'
     TicketCreate:
       type: object
       description: Payload for creating a new ticket.
@@ -1056,10 +1998,11 @@ components:
         subject:
           type: string
           description: The subject of the ticket.
+          example: example_value
         comment:
           type: object
           required:
-            - body
+          - body
           description: The initial comment (description) of the ticket.
           properties:
             body:
@@ -1077,10 +2020,12 @@ components:
               items:
                 type: string
               description: Upload tokens for attachments.
+          example: example_value
         requester_id:
           type: integer
           format: int64
           description: The ID of the requester.
+          example: '500123'
         requester:
           type: object
           description: >-
@@ -1094,93 +2039,111 @@ components:
               format: email
             locale_id:
               type: integer
+          example: example_value
         submitter_id:
           type: integer
           format: int64
           description: The ID of the submitter.
+          example: '500123'
         assignee_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the assigned agent.
+          example: '500123'
         group_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the assigned group.
+          example: '500123'
         organization_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         type:
           type: string
           enum:
-            - problem
-            - incident
-            - question
-            - task
+          - problem
+          - incident
+          - question
+          - task
           nullable: true
+          example: problem
         priority:
           type: string
           enum:
-            - urgent
-            - high
-            - normal
-            - low
+          - urgent
+          - high
+          - normal
+          - low
           nullable: true
+          example: urgent
         status:
           type: string
           enum:
-            - new
-            - open
-            - pending
-            - hold
-            - solved
+          - new
+          - open
+          - pending
+          - hold
+          - solved
           default: new
+          example: new
         tags:
           type: array
           items:
             type: string
+          example: []
         external_id:
           type: string
           nullable: true
+          example: '500123'
         custom_fields:
           type: array
           items:
             $ref: '#/components/schemas/CustomField'
+          example: []
         due_at:
           type: string
           format: date-time
           nullable: true
+          example: '2026-01-15T10:30:00Z'
         ticket_form_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         brand_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         collaborator_ids:
           type: array
           items:
             type: integer
             format: int64
+          example: []
         email_cc_ids:
           type: array
           items:
             type: integer
             format: int64
+          example: user@example.com
         problem_id:
           type: integer
           format: int64
           nullable: true
 
+          example: '500123'
     TicketUpdate:
       type: object
       description: Payload for updating an existing ticket.
       properties:
         subject:
           type: string
+          example: example_value
         comment:
           type: object
           description: A new comment to add to the ticket.
@@ -1199,73 +2162,87 @@ components:
               type: array
               items:
                 type: string
+          example: example_value
         assignee_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         group_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         organization_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         type:
           type: string
           enum:
-            - problem
-            - incident
-            - question
-            - task
+          - problem
+          - incident
+          - question
+          - task
           nullable: true
+          example: problem
         priority:
           type: string
           enum:
-            - urgent
-            - high
-            - normal
-            - low
+          - urgent
+          - high
+          - normal
+          - low
           nullable: true
+          example: urgent
         status:
           type: string
           enum:
-            - new
-            - open
-            - pending
-            - hold
-            - solved
-            - closed
+          - new
+          - open
+          - pending
+          - hold
+          - solved
+          - closed
+          example: new
         tags:
           type: array
           items:
             type: string
+          example: []
         custom_fields:
           type: array
           items:
             $ref: '#/components/schemas/CustomField'
+          example: []
         due_at:
           type: string
           format: date-time
           nullable: true
+          example: '2026-01-15T10:30:00Z'
         problem_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         collaborator_ids:
           type: array
           items:
             type: integer
             format: int64
+          example: []
         email_cc_ids:
           type: array
           items:
             type: integer
             format: int64
+          example: user@example.com
         external_id:
           type: string
           nullable: true
 
+          example: '500123'
     User:
       type: object
       description: >-
@@ -1277,23 +2254,28 @@ components:
           format: int64
           description: Automatically assigned user ID.
           readOnly: true
+          example: abc123
         url:
           type: string
           format: uri
           description: The API URL of the user.
           readOnly: true
+          example: https://www.example.com
         name:
           type: string
           description: The name of the user.
+          example: Example Title
         email:
           type: string
           format: email
           nullable: true
           description: The primary email address of the user.
+          example: user@example.com
         phone:
           type: string
           nullable: true
           description: The primary phone number of the user.
+          example: example_value
         photo:
           type: object
           nullable: true
@@ -1329,267 +2311,330 @@ components:
                     type: string
                   size:
                     type: integer
+          example: example_value
         locale_id:
           type: integer
           nullable: true
           description: The locale ID of the user.
+          example: '500123'
         locale:
           type: string
           description: The locale of the user (e.g., en-US).
           readOnly: true
+          example: example_value
         time_zone:
           type: string
           nullable: true
           description: The time zone of the user.
+          example: example_value
         organization_id:
           type: integer
           format: int64
           nullable: true
           description: The ID of the user's default organization.
+          example: '500123'
         role:
           type: string
           enum:
-            - end-user
-            - agent
-            - admin
+          - end-user
+          - agent
+          - admin
           description: The role of the user.
+          example: end-user
         custom_role_id:
           type: integer
           format: int64
           nullable: true
           description: >-
             The custom role ID for agents with custom roles.
+          example: '500123'
         verified:
           type: boolean
           description: Whether the user's identity has been verified.
+          example: true
         external_id:
           type: string
           nullable: true
           description: An external ID for the user from an integrated system.
+          example: '500123'
         tags:
           type: array
           items:
             type: string
           description: Tags applied to the user.
+          example: []
         alias:
           type: string
           nullable: true
           description: An alias displayed instead of the agent's name.
+          example: example_value
         active:
           type: boolean
           description: Whether the user account is active.
           readOnly: true
+          example: true
         shared:
           type: boolean
           description: Whether the user is shared from a different Zendesk Support instance.
           readOnly: true
+          example: true
         shared_agent:
           type: boolean
           description: Whether the user is a shared agent from a different instance.
           readOnly: true
+          example: true
         shared_phone_number:
           type: boolean
           nullable: true
           description: Whether the phone number is shared.
           readOnly: true
+          example: true
         signature:
           type: string
           nullable: true
           description: The signature text appended to the agent's comments.
+          example: example_value
         details:
           type: string
           nullable: true
           description: Details about the user visible only to agents.
+          example: example_value
         notes:
           type: string
           nullable: true
           description: Notes about the user visible only to agents.
+          example: example_value
         restricted_agent:
           type: boolean
           description: >-
             Whether the agent has restrictions (true for agents in a custom
             role with restrictions).
           readOnly: true
+          example: true
         suspended:
           type: boolean
           description: Whether the user is suspended.
+          example: true
         default_group_id:
           type: integer
           format: int64
           nullable: true
           description: The default group ID for the agent.
+          example: '500123'
         report_csv:
           type: boolean
           description: Whether the user can access the CSV report.
           readOnly: true
+          example: true
         only_private_comments:
           type: boolean
           description: >-
             Whether the user can only create private comments (for
             restricted end users).
+          example: true
         ticket_restriction:
           type: string
           enum:
-            - organization
-            - groups
-            - assigned
-            - requested
+          - organization
+          - groups
+          - assigned
+          - requested
           nullable: true
           description: The ticket access restriction for the agent.
+          example: organization
         moderator:
           type: boolean
           description: Whether the user has community moderator privileges.
+          example: true
         chat_only:
           type: boolean
           description: Whether the user is a chat-only agent.
           readOnly: true
+          example: true
         two_factor_auth_enabled:
           type: boolean
           nullable: true
           description: Whether two-factor authentication is enabled.
           readOnly: true
+          example: true
         user_fields:
           type: object
           additionalProperties: true
           description: Custom user field values (key-value pairs).
+          example: example_value
         last_login_at:
           type: string
           format: date-time
           nullable: true
           description: The last time the user signed in (ISO 8601).
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         created_at:
           type: string
           format: date-time
           description: When the user was created (ISO 8601).
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         updated_at:
           type: string
           format: date-time
           description: When the user was last updated (ISO 8601).
           readOnly: true
 
+          example: '2026-01-15T10:30:00Z'
     UserCreate:
       type: object
       description: Payload for creating a new user.
       required:
-        - name
+      - name
       properties:
         name:
           type: string
           description: The name of the user.
+          example: Example Title
         email:
           type: string
           format: email
           description: The user's email address.
+          example: user@example.com
         phone:
           type: string
           nullable: true
           description: The user's phone number.
+          example: example_value
         role:
           type: string
           enum:
-            - end-user
-            - agent
-            - admin
+          - end-user
+          - agent
+          - admin
           default: end-user
+          example: end-user
         custom_role_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         organization_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         external_id:
           type: string
           nullable: true
+          example: '500123'
         tags:
           type: array
           items:
             type: string
+          example: []
         locale_id:
           type: integer
           nullable: true
+          example: '500123'
         time_zone:
           type: string
           nullable: true
+          example: example_value
         details:
           type: string
           nullable: true
+          example: example_value
         notes:
           type: string
           nullable: true
+          example: example_value
         alias:
           type: string
           nullable: true
+          example: example_value
         signature:
           type: string
           nullable: true
+          example: example_value
         verified:
           type: boolean
           default: false
+          example: true
         user_fields:
           type: object
           additionalProperties: true
 
+          example: example_value
     UserUpdate:
       type: object
       description: Payload for updating an existing user.
       properties:
         name:
           type: string
+          example: Example Title
         email:
           type: string
           format: email
+          example: user@example.com
         phone:
           type: string
           nullable: true
+          example: example_value
         role:
           type: string
           enum:
-            - end-user
-            - agent
-            - admin
+          - end-user
+          - agent
+          - admin
+          example: end-user
         custom_role_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         organization_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         external_id:
           type: string
           nullable: true
+          example: '500123'
         tags:
           type: array
           items:
             type: string
+          example: []
         locale_id:
           type: integer
           nullable: true
+          example: '500123'
         time_zone:
           type: string
           nullable: true
+          example: example_value
         details:
           type: string
           nullable: true
+          example: example_value
         notes:
           type: string
           nullable: true
+          example: example_value
         alias:
           type: string
           nullable: true
+          example: example_value
         signature:
           type: string
           nullable: true
+          example: example_value
         suspended:
           type: boolean
+          example: true
         user_fields:
           type: object
           additionalProperties: true
 
+          example: example_value
     Organization:
       type: object
       description: >-
@@ -1600,22 +2645,27 @@ components:
           format: int64
           description: Automatically assigned organization ID.
           readOnly: true
+          example: abc123
         url:
           type: string
           format: uri
           description: The API URL of the organization.
           readOnly: true
+          example: https://www.example.com
         name:
           type: string
           description: The name of the organization.
+          example: Example Title
         details:
           type: string
           nullable: true
           description: Details about the organization.
+          example: example_value
         notes:
           type: string
           nullable: true
           description: Notes about the organization visible only to agents.
+          example: example_value
         domain_names:
           type: array
           items:
@@ -1623,121 +2673,150 @@ components:
           description: >-
             Domain names associated with the organization. Users with
             matching email domains can be auto-assigned.
+          example: []
         group_id:
           type: integer
           format: int64
           nullable: true
           description: >-
             The default group assigned to tickets from this organization.
+          example: '500123'
         shared_tickets:
           type: boolean
           description: >-
             Whether end users in the organization can see each other's
             tickets.
+          example: true
         shared_comments:
           type: boolean
           description: >-
             Whether end users in the organization can see each other's
             comments on tickets.
+          example: true
         external_id:
           type: string
           nullable: true
           description: An external ID from an integrated system.
+          example: '500123'
         tags:
           type: array
           items:
             type: string
           description: Tags applied to the organization.
+          example: []
         organization_fields:
           type: object
           additionalProperties: true
           description: Custom organization field values (key-value pairs).
+          example: example_value
         created_at:
           type: string
           format: date-time
           description: When the organization was created (ISO 8601).
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         updated_at:
           type: string
           format: date-time
           description: When the organization was last updated (ISO 8601).
           readOnly: true
 
+          example: '2026-01-15T10:30:00Z'
     OrganizationCreate:
       type: object
       description: Payload for creating a new organization.
       required:
-        - name
+      - name
       properties:
         name:
           type: string
           description: The name of the organization.
+          example: Example Title
         details:
           type: string
           nullable: true
+          example: example_value
         notes:
           type: string
           nullable: true
+          example: example_value
         domain_names:
           type: array
           items:
             type: string
+          example: []
         group_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         shared_tickets:
           type: boolean
           default: false
+          example: true
         shared_comments:
           type: boolean
           default: false
+          example: true
         external_id:
           type: string
           nullable: true
+          example: '500123'
         tags:
           type: array
           items:
             type: string
+          example: []
         organization_fields:
           type: object
           additionalProperties: true
 
+          example: example_value
     OrganizationUpdate:
       type: object
       description: Payload for updating an existing organization.
       properties:
         name:
           type: string
+          example: Example Title
         details:
           type: string
           nullable: true
+          example: example_value
         notes:
           type: string
           nullable: true
+          example: example_value
         domain_names:
           type: array
           items:
             type: string
+          example: []
         group_id:
           type: integer
           format: int64
           nullable: true
+          example: '500123'
         shared_tickets:
           type: boolean
+          example: true
         shared_comments:
           type: boolean
+          example: true
         external_id:
           type: string
           nullable: true
+          example: '500123'
         tags:
           type: array
           items:
             type: string
+          example: []
         organization_fields:
           type: object
           additionalProperties: true
 
+          example: example_value
     Comment:
       type: object
       description: A comment on a ticket.
@@ -1747,36 +2826,44 @@ components:
           format: int64
           description: The ID of the comment.
           readOnly: true
+          example: abc123
         type:
           type: string
           enum:
-            - Comment
-            - VoiceComment
+          - Comment
+          - VoiceComment
           description: The type of the comment.
           readOnly: true
+          example: Comment
         body:
           type: string
           description: The plain text body of the comment.
+          example: example_value
         html_body:
           type: string
           description: The HTML body of the comment.
+          example: example_value
         plain_body:
           type: string
           description: The plain text body with formatting stripped.
           readOnly: true
+          example: example_value
         public:
           type: boolean
           description: Whether the comment is public (visible to the requester).
+          example: true
         author_id:
           type: integer
           format: int64
           description: The ID of the comment author.
+          example: '500123'
         attachments:
           type: array
           items:
             $ref: '#/components/schemas/Attachment'
           description: Attachments on the comment.
           readOnly: true
+          example: []
         via:
           $ref: '#/components/schemas/Via'
         created_at:
@@ -1785,6 +2872,7 @@ components:
           description: When the comment was created (ISO 8601).
           readOnly: true
 
+          example: '2026-01-15T10:30:00Z'
     Attachment:
       type: object
       description: A file attachment.
@@ -1793,16 +2881,21 @@ components:
           type: integer
           format: int64
           readOnly: true
+          example: abc123
         file_name:
           type: string
+          example: example_value
         content_url:
           type: string
           format: uri
+          example: https://www.example.com
         content_type:
           type: string
+          example: example_value
         size:
           type: integer
           description: The size of the file in bytes.
+          example: 10
         thumbnails:
           type: array
           items:
@@ -1821,6 +2914,7 @@ components:
               size:
                 type: integer
 
+          example: []
     Via:
       type: object
       description: How the ticket or comment was created.
@@ -1830,6 +2924,7 @@ components:
           description: >-
             The channel the ticket or comment came through (e.g., web, email,
             api, chat, voice).
+          example: example_value
         source:
           type: object
           properties:
@@ -1843,6 +2938,7 @@ components:
               type: string
               nullable: true
 
+          example: example_value
     CustomField:
       type: object
       description: A custom field key-value pair.
@@ -1851,17 +2947,19 @@ components:
           type: integer
           format: int64
           description: The ID of the custom field.
+          example: abc123
         value:
           description: The value of the custom field.
           oneOf:
-            - type: string
-            - type: number
-            - type: boolean
-            - type: array
-              items:
-                type: string
+          - type: string
+          - type: number
+          - type: boolean
+          - type: array
+            items:
+              type: string
           nullable: true
 
+          example: example_value
     Error:
       type: object
       description: An error response from the Zendesk API.
@@ -1869,10 +2967,13 @@ components:
         error:
           type: string
           description: The error type identifier.
+          example: example_value
         description:
           type: string
           description: A human-readable description of the error.
+          example: A sample description.
         details:
           type: object
           additionalProperties: true
           description: Additional details about the error.
+          example: example_value

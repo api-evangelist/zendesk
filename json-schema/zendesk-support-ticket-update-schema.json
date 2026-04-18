@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TicketUpdate",
+  "type": "object",
+  "description": "Payload for updating an existing ticket.",
+  "properties": {
+    "subject": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "object",
+      "description": "A new comment to add to the ticket."
+    },
+    "assignee_id": {
+      "type": "integer"
+    },
+    "group_id": {
+      "type": "integer"
+    },
+    "organization_id": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "custom_fields": {
+      "type": "array"
+    },
+    "due_at": {
+      "type": "string"
+    },
+    "problem_id": {
+      "type": "integer"
+    },
+    "collaborator_ids": {
+      "type": "array"
+    },
+    "email_cc_ids": {
+      "type": "array"
+    },
+    "external_id": {
+      "type": "string"
+    }
+  }
+}

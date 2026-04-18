@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TicketCreate",
+  "type": "object",
+  "description": "Payload for creating a new ticket.",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "The subject of the ticket."
+    },
+    "comment": {
+      "type": "object",
+      "description": "The initial comment (description) of the ticket."
+    },
+    "requester_id": {
+      "type": "integer",
+      "description": "The ID of the requester."
+    },
+    "requester": {
+      "type": "object",
+      "description": "Requester details for creating a new user inline. Use either requester_id or requester, not both."
+    },
+    "submitter_id": {
+      "type": "integer",
+      "description": "The ID of the submitter."
+    },
+    "assignee_id": {
+      "type": "integer",
+      "description": "The ID of the assigned agent."
+    },
+    "group_id": {
+      "type": "integer",
+      "description": "The ID of the assigned group."
+    },
+    "organization_id": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "external_id": {
+      "type": "string"
+    },
+    "custom_fields": {
+      "type": "array"
+    },
+    "due_at": {
+      "type": "string"
+    },
+    "ticket_form_id": {
+      "type": "integer"
+    },
+    "brand_id": {
+      "type": "integer"
+    },
+    "collaborator_ids": {
+      "type": "array"
+    },
+    "email_cc_ids": {
+      "type": "array"
+    },
+    "problem_id": {
+      "type": "integer"
+    }
+  }
+}
