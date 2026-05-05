@@ -1,0 +1,1139 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Zendesk
+providerId: zendesk
+publisherName: Zendesk
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Chat
+  - CRM
+  - Help Center
+  - Sell
+  - Support
+  - T1
+  - Talk
+  - Ticketing
+  - Tickets
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Zendesk API surface. Provides a FOCUS-aligned mapping
+  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Zendesk
+  ServiceCategory: Developer Tools / API
+  ProviderName: Zendesk
+  PublisherName: Zendesk
+  InvoiceIssuerName: Zendesk
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: Zendesk Assignables API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Assignables
+    serviceName: Zendesk Assignables API
+    serviceCategory: API
+  - name: Zendesk Target Type API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Target Types
+    serviceName: Zendesk Target Type API
+    serviceCategory: API
+  - name: Zendesk Account API
+    baseURL: https://api.getbase.com
+    tags:
+      - Accounts
+    serviceName: Zendesk Account API
+    serviceCategory: API
+  - name: Zendesk Accounts API
+    baseURL: https://api.getbase.com
+    tags:
+      - Accounts
+    serviceName: Zendesk Accounts API
+    serviceCategory: API
+  - name: Zendesk Activities API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Activities
+    serviceName: Zendesk Activities API
+    serviceCategory: API
+  - name: Zendesk Any Channel API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Channels
+    serviceName: Zendesk Any Channel API
+    serviceCategory: API
+  - name: Zendesk Approval Workflow Instances API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Approvals
+      - Instances
+      - Workflows
+    serviceName: Zendesk Approval Workflow Instances API
+    serviceCategory: API
+  - name: Zendesk Attachments API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Attachments
+    serviceName: Zendesk Attachments API
+    serviceCategory: API
+  - name: Zendesk Audit Logs API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Audit Logs
+      - Audits
+    serviceName: Zendesk Audit Logs API
+    serviceCategory: API
+  - name: Zendesk Autocomplete API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Autocomplete
+    serviceName: Zendesk Autocomplete API
+    serviceCategory: API
+  - name: Zendesk Automations API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Automations
+    serviceName: Zendesk Automations API
+    serviceCategory: API
+  - name: Zendesk Bookmarks API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Bookmarks
+    serviceName: Zendesk Bookmarks API
+    serviceCategory: API
+  - name: Zendesk Brand Agents API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Brand Agents
+    serviceName: Zendesk Brand Agents API
+    serviceCategory: API
+  - name: Zendesk Brands API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Brands
+    serviceName: Zendesk Brands API
+    serviceCategory: API
+  - name: Zendesk Channels API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Channels
+    serviceName: Zendesk Channels API
+    serviceCategory: API
+  - name: Zendesk Chat File Redactions API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Chats
+      - Fiiles
+      - Redactions
+    serviceName: Zendesk Chat File Redactions API
+    serviceCategory: API
+  - name: Zendesk Chat Redactions API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Chats
+      - Redactions
+    serviceName: Zendesk Chat Redactions API
+    serviceCategory: API
+  - name: Zendesk Comment Redactions API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Comments
+      - Redactions
+    serviceName: Zendesk Comment Redactions API
+    serviceCategory: API
+  - name: Zendesk Custom Objects API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Custom Objects
+    serviceName: Zendesk Custom Objects API
+    serviceCategory: API
+  - name: Zendesk Custom Roles API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Custom Roles
+    serviceName: Zendesk Custom Roles API
+    serviceCategory: API
+  - name: Zendesk Custom Status API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Custom Status
+    serviceName: Zendesk Custom Status API
+    serviceCategory: API
+  - name: Zendesk Custom Statuses API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Custom Statuses
+    serviceName: Zendesk Custom Statuses API
+    serviceCategory: API
+  - name: Zendesk Deleted Tickets API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Deleted Tickets
+      - Tickets
+    serviceName: Zendesk Deleted Tickets API
+    serviceCategory: API
+  - name: Zendesk Deleted Users API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Deleted Users
+      - Users
+    serviceName: Zendesk Deleted Users API
+    serviceCategory: API
+  - name: Zendesk Deletion Schedules API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Deletion Schedules
+      - Schedules
+    serviceName: Zendesk Deletion Schedules API
+    serviceCategory: API
+  - name: Zendesk Dynamic Content API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Content
+      - Dynamic Content
+    serviceName: Zendesk Dynamic Content API
+    serviceCategory: API
+  - name: Zendesk Email Notifications API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Email
+      - Notifications
+    serviceName: Zendesk Email Notifications API
+    serviceCategory: API
+  - name: Zendesk Group Memberships API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Groups
+      - Memberships
+    serviceName: Zendesk Group Memberships API
+    serviceCategory: API
+  - name: Zendesk Group SLAs API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Groups
+      - Service Level Agreements
+      - SLA
+    serviceName: Zendesk Group SLAs API
+    serviceCategory: API
+  - name: Zendesk Groups API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Groups
+    serviceName: Zendesk Groups API
+    serviceCategory: API
+  - name: Zendesk Imports API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Imports
+    serviceName: Zendesk Imports API
+    serviceCategory: API
+  - name: Zendesk Incremental API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Incremental
+    serviceName: Zendesk Incremental API
+    serviceCategory: API
+  - name: Zendesk Job Statuses
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Jobs
+      - Statuses
+    serviceName: Zendesk Job Statuses
+    serviceCategory: API
+  - name: Zendesk Locales API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Locales
+    serviceName: Zendesk Locales API
+    serviceCategory: API
+  - name: Zendesk Macros API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Macros
+    serviceName: Zendesk Macros API
+    serviceCategory: API
+  - name: Zendesk Oauth API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Authentication
+      - Authorization
+      - Oauth
+    serviceName: Zendesk Oauth API
+    serviceCategory: API
+  - name: Zendesk Object Layouts API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Object Layouts
+    serviceName: Zendesk Object Layouts API
+    serviceCategory: API
+  - name: Zendesk Organization Fields API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Organization Fields
+    serviceName: Zendesk Organization Fields API
+    serviceCategory: API
+  - name: Zendesk Organization Memberships API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Organization Memberships
+    serviceName: Zendesk Organization Memberships API
+    serviceCategory: API
+  - name: Zendesk Organization Merges API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Organization Merges
+    serviceName: Zendesk Organization Merges API
+    serviceCategory: API
+  - name: Zendesk Organization Subscriptions API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Organization Subscriptions
+    serviceName: Zendesk Organization Subscriptions API
+    serviceCategory: API
+  - name: Zendesk Organizations API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Organizations
+    serviceName: Zendesk Organizations API
+    serviceCategory: API
+  - name: Zendesk Problems API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Problems
+    serviceName: Zendesk Problems API
+    serviceCategory: API
+  - name: Zendesk Push Notification Devices API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Devices
+      - Push Notifications
+    serviceName: Zendesk Push Notification Devices API
+    serviceCategory: API
+  - name: Zendesk Queues API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Queues
+    serviceName: Zendesk Queues API
+    serviceCategory: API
+  - name: Zendesk Recipient Addresses API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Addresses
+      - Recipients
+    serviceName: Zendesk Recipient Addresses API
+    serviceCategory: API
+  - name: Zendesk Relationships API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Relationships
+    serviceName: Zendesk Relationships API
+    serviceCategory: API
+  - name: Zendesk Requests API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Requests
+    serviceName: Zendesk Requests API
+    serviceCategory: API
+  - name: Zendesk Resource Collections API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Collections
+      - Resources
+    serviceName: Zendesk Resource Collections API
+    serviceCategory: API
+  - name: Zendesk Routing API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Routing
+    serviceName: Zendesk Routing API
+    serviceCategory: API
+  - name: Zendesk Satisfaction Ratings API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Satisfaction Ratings
+    serviceName: Zendesk Satisfaction Ratings API
+    serviceCategory: API
+  - name: Zendesk Satisfaction Reasons API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Satisfaction Reasons
+    serviceName: Zendesk Satisfaction Reasons API
+    serviceCategory: API
+  - name: Zendesk Search API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Search
+    serviceName: Zendesk Search API
+    serviceCategory: API
+  - name: Zendesk Sessions API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Sessions
+    serviceName: Zendesk Sessions API
+    serviceCategory: API
+  - name: Zendesk Sharing Agreements API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Sharing Agreements
+    serviceName: Zendesk Sharing Agreements API
+    serviceCategory: API
+  - name: Zendesk Skips API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Skips
+    serviceName: Zendesk Skips API
+    serviceCategory: API
+  - name: Zendesk SLAs API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Service Level Agreements
+      - SLAs
+    serviceName: Zendesk SLAs API
+    serviceCategory: API
+  - name: Zendesk Suspended Tickets API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Suspended Tickets
+    serviceName: Zendesk Suspended Tickets API
+    serviceCategory: API
+  - name: Zendesk Tags API
+    baseURL: https://{subdomain}.zendesk.com
+    tags: []
+    serviceName: Zendesk Tags API
+    serviceCategory: API
+  - name: Zendesk Target Failures API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Target Failures
+    serviceName: Zendesk Target Failures API
+    serviceCategory: API
+  - name: Zendesk Targets API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Targets
+    serviceName: Zendesk Targets API
+    serviceCategory: API
+  - name: Zendesk Ticket Audits API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Audits
+      - Ticket Audits
+    serviceName: Zendesk Ticket Audits API
+    serviceCategory: API
+  - name: Zendesk Ticket Content Pins API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Pins
+      - Ticket Content
+    serviceName: Zendesk Ticket Content Pins API
+    serviceCategory: API
+  - name: Zendesk Ticket Fields API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Ticket Fields
+    serviceName: Zendesk Ticket Fields API
+    serviceCategory: API
+  - name: Zendesk Ticket Form Statuses API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Statuses
+      - Ticket Forms
+    serviceName: Zendesk Ticket Form Statuses API
+    serviceCategory: API
+  - name: Zendesk Ticket Forms API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Forms
+      - Tickets
+    serviceName: Zendesk Ticket Forms API
+    serviceCategory: API
+  - name: Zendesk Ticket Metrics API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Metrics
+      - Tickets
+    serviceName: Zendesk Ticket Metrics API
+    serviceCategory: API
+  - name: Zendesk Tickets API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Tickets
+    serviceName: Zendesk Tickets API
+    serviceCategory: API
+  - name: Zendesk Trigger Categories API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Categories
+      - Triggers
+    serviceName: Zendesk Trigger Categories API
+    serviceCategory: API
+  - name: Zendesk Triggers API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Triggers
+    serviceName: Zendesk Triggers API
+    serviceCategory: API
+  - name: Zendesk Uploads API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Uploads
+    serviceName: Zendesk Uploads API
+    serviceCategory: API
+  - name: Zendesk User Fields API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - User Fields
+    serviceName: Zendesk User Fields API
+    serviceCategory: API
+  - name: Zendesk Users API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Users
+    serviceName: Zendesk Users API
+    serviceCategory: API
+  - name: Zendesk Views API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Views
+    serviceName: Zendesk Views API
+    serviceCategory: API
+  - name: Zendesk Workspaces API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Workspaces
+    serviceName: Zendesk Workspaces API
+    serviceCategory: API
+  - name: Zendesk Help Center Articles API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Articles
+      - Help Center
+      - Knowledge Base
+    serviceName: Zendesk Help Center Articles API
+    serviceCategory: API
+  - name: Zendesk Help Center Sections API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Help Center
+      - Knowledge Base
+      - Sections
+    serviceName: Zendesk Help Center Sections API
+    serviceCategory: API
+  - name: Zendesk Help Center Categories API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Categories
+      - Help Center
+      - Knowledge Base
+    serviceName: Zendesk Help Center Categories API
+    serviceCategory: API
+  - name: Zendesk Help Center Translations API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Help Center
+      - Localization
+      - Translations
+    serviceName: Zendesk Help Center Translations API
+    serviceCategory: API
+  - name: Zendesk Help Center Article Attachments API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Articles
+      - Attachments
+      - Help Center
+    serviceName: Zendesk Help Center Article Attachments API
+    serviceCategory: API
+  - name: Zendesk Help Center Article Comments API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Articles
+      - Comments
+      - Help Center
+    serviceName: Zendesk Help Center Article Comments API
+    serviceCategory: API
+  - name: Zendesk Help Center Article Labels API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Articles
+      - Help Center
+      - Labels
+    serviceName: Zendesk Help Center Article Labels API
+    serviceCategory: API
+  - name: Zendesk Help Center Topics API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Community
+      - Help Center
+      - Topics
+    serviceName: Zendesk Help Center Topics API
+    serviceCategory: API
+  - name: Zendesk Help Center Posts API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Community
+      - Help Center
+      - Posts
+    serviceName: Zendesk Help Center Posts API
+    serviceCategory: API
+  - name: Zendesk Help Center Post Comments API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Comments
+      - Community
+      - Help Center
+    serviceName: Zendesk Help Center Post Comments API
+    serviceCategory: API
+  - name: Zendesk Help Center Votes API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Help Center
+      - Votes
+    serviceName: Zendesk Help Center Votes API
+    serviceCategory: API
+  - name: Zendesk Help Center Content Subscriptions API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Help Center
+      - Subscriptions
+    serviceName: Zendesk Help Center Content Subscriptions API
+    serviceCategory: API
+  - name: Zendesk Help Center User Segments API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Help Center
+      - Permissions
+      - User Segments
+    serviceName: Zendesk Help Center User Segments API
+    serviceCategory: API
+  - name: Zendesk Help Center Permission Groups API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Help Center
+      - Management
+      - Permissions
+    serviceName: Zendesk Help Center Permission Groups API
+    serviceCategory: API
+  - name: Zendesk Help Center Search API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Help Center
+      - Search
+    serviceName: Zendesk Help Center Search API
+    serviceCategory: API
+  - name: Zendesk Talk API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Phone
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk API
+    serviceCategory: API
+  - name: Zendesk Talk Phone Numbers API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Phone Numbers
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Phone Numbers API
+    serviceCategory: API
+  - name: Zendesk Talk Greetings API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Greetings
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Greetings API
+    serviceCategory: API
+  - name: Zendesk Talk IVRs API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - IVR
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk IVRs API
+    serviceCategory: API
+  - name: Zendesk Talk Recordings API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Recordings
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Recordings API
+    serviceCategory: API
+  - name: Zendesk Talk Stats API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Statistics
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Stats API
+    serviceCategory: API
+  - name: Zendesk Talk Availabilities API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Availabilities
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Availabilities API
+    serviceCategory: API
+  - name: Zendesk Talk Lines API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Lines
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Lines API
+    serviceCategory: API
+  - name: Zendesk Talk Digital Lines API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Digital Lines
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Digital Lines API
+    serviceCategory: API
+  - name: Zendesk Talk Voice Settings API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Settings
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Voice Settings API
+    serviceCategory: API
+  - name: Zendesk Talk Partner Edition API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Partner Edition
+      - Talk
+      - Voice
+    serviceName: Zendesk Talk Partner Edition API
+    serviceCategory: API
+  - name: Zendesk Chat Accounts API
+    baseURL: https://www.zopim.com
+    tags:
+      - Accounts
+      - Chat
+    serviceName: Zendesk Chat Accounts API
+    serviceCategory: API
+  - name: Zendesk Chat Agents API
+    baseURL: https://www.zopim.com
+    tags:
+      - Agents
+      - Chat
+    serviceName: Zendesk Chat Agents API
+    serviceCategory: API
+  - name: Zendesk Chat Visitors API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Visitors
+    serviceName: Zendesk Chat Visitors API
+    serviceCategory: API
+  - name: Zendesk Chat Chats API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Conversations
+    serviceName: Zendesk Chat Chats API
+    serviceCategory: API
+  - name: Zendesk Chat Departments API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Departments
+    serviceName: Zendesk Chat Departments API
+    serviceCategory: API
+  - name: Zendesk Chat Shortcuts API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Shortcuts
+    serviceName: Zendesk Chat Shortcuts API
+    serviceCategory: API
+  - name: Zendesk Chat Triggers API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Triggers
+    serviceName: Zendesk Chat Triggers API
+    serviceCategory: API
+  - name: Zendesk Chat Bans API
+    baseURL: https://www.zopim.com
+    tags:
+      - Bans
+      - Chat
+    serviceName: Zendesk Chat Bans API
+    serviceCategory: API
+  - name: Zendesk Chat Roles API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Roles
+    serviceName: Zendesk Chat Roles API
+    serviceCategory: API
+  - name: Zendesk Chat Skills API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Skills
+    serviceName: Zendesk Chat Skills API
+    serviceCategory: API
+  - name: Zendesk Chat Goals API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Goals
+    serviceName: Zendesk Chat Goals API
+    serviceCategory: API
+  - name: Zendesk Chat Routing Settings API
+    baseURL: https://www.zopim.com
+    tags:
+      - Chat
+      - Routing
+    serviceName: Zendesk Chat Routing Settings API
+    serviceCategory: API
+  - name: Zendesk Real-Time Chat API
+    baseURL: https://rtm.zopim.com
+    tags:
+      - Chat
+      - Real-Time
+      - Streaming
+    serviceName: Zendesk Real-Time Chat API
+    serviceCategory: API
+  - name: Zendesk Chat Conversations API
+    baseURL: https://chat-api.zopim.com
+    tags:
+      - Chat
+      - Conversations
+      - GraphQL
+    serviceName: Zendesk Chat Conversations API
+    serviceCategory: API
+  - name: Zendesk Webhooks API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Webhooks
+    serviceName: Zendesk Webhooks API
+    serviceCategory: API
+  - name: Zendesk Sell Contacts API
+    baseURL: https://api.getbase.com
+    tags:
+      - Contacts
+      - CRM
+      - Sell
+    serviceName: Zendesk Sell Contacts API
+    serviceCategory: API
+  - name: Zendesk Sell Leads API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Leads
+      - Sell
+    serviceName: Zendesk Sell Leads API
+    serviceCategory: API
+  - name: Zendesk Sell Deals API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Deals
+      - Sell
+    serviceName: Zendesk Sell Deals API
+    serviceCategory: API
+  - name: Zendesk Sell Pipelines API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Pipelines
+      - Sell
+    serviceName: Zendesk Sell Pipelines API
+    serviceCategory: API
+  - name: Zendesk Sell Stages API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Sell
+      - Stages
+    serviceName: Zendesk Sell Stages API
+    serviceCategory: API
+  - name: Zendesk Sell Tasks API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Sell
+      - Tasks
+    serviceName: Zendesk Sell Tasks API
+    serviceCategory: API
+  - name: Zendesk Sell Notes API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Notes
+      - Sell
+    serviceName: Zendesk Sell Notes API
+    serviceCategory: API
+  - name: Zendesk Sell Calls API
+    baseURL: https://api.getbase.com
+    tags:
+      - Calls
+      - CRM
+      - Sell
+    serviceName: Zendesk Sell Calls API
+    serviceCategory: API
+  - name: Zendesk Sell Text Messages API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Sell
+      - Text Messages
+    serviceName: Zendesk Sell Text Messages API
+    serviceCategory: API
+  - name: Zendesk Sell Products API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Products
+      - Sell
+    serviceName: Zendesk Sell Products API
+    serviceCategory: API
+  - name: Zendesk Sell Orders API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Orders
+      - Sell
+    serviceName: Zendesk Sell Orders API
+    serviceCategory: API
+  - name: Zendesk Sell Line Items API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Line Items
+      - Sell
+    serviceName: Zendesk Sell Line Items API
+    serviceCategory: API
+  - name: Zendesk Sell Collaborations API
+    baseURL: https://api.getbase.com
+    tags:
+      - Collaborations
+      - CRM
+      - Sell
+    serviceName: Zendesk Sell Collaborations API
+    serviceCategory: API
+  - name: Zendesk Sell Sequences API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Sell
+      - Sequences
+    serviceName: Zendesk Sell Sequences API
+    serviceCategory: API
+  - name: Zendesk Sell Lead Sources API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Lead Sources
+      - Sell
+    serviceName: Zendesk Sell Lead Sources API
+    serviceCategory: API
+  - name: Zendesk Sell Deal Sources API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Deal Sources
+      - Sell
+    serviceName: Zendesk Sell Deal Sources API
+    serviceCategory: API
+  - name: Zendesk Sell Lead Conversions API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Lead Conversions
+      - Sell
+    serviceName: Zendesk Sell Lead Conversions API
+    serviceCategory: API
+  - name: Zendesk Sell Tags API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Sell
+    serviceName: Zendesk Sell Tags API
+    serviceCategory: API
+  - name: Zendesk Sell Custom Fields API
+    baseURL: https://api.getbase.com
+    tags:
+      - CRM
+      - Custom Fields
+      - Sell
+    serviceName: Zendesk Sell Custom Fields API
+    serviceCategory: API
+  - name: Zendesk Sunshine Conversations API
+    baseURL: https://api.smooch.io
+    tags:
+      - Conversations
+      - Messaging
+      - Sunshine
+    serviceName: Zendesk Sunshine Conversations API
+    serviceCategory: API
+  - name: Zendesk Omnichannel API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Agent Availability
+      - Omnichannel
+      - Routing
+    serviceName: Zendesk Omnichannel API
+    serviceCategory: API
+  - name: Zendesk Unified Agent Statuses API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Agent Status
+      - Omnichannel
+    serviceName: Zendesk Unified Agent Statuses API
+    serviceCategory: API
+  - name: Zendesk Omnichannel Engagements API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Engagements
+      - Omnichannel
+    serviceName: Zendesk Omnichannel Engagements API
+    serviceCategory: API
+  - name: Zendesk Apps API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Apps
+      - Marketplace
+    serviceName: Zendesk Apps API
+    serviceCategory: API
+  - name: Zendesk Account Settings API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Account Settings
+      - Configuration
+    serviceName: Zendesk Account Settings API
+    serviceCategory: API
+  - name: Zendesk Schedules API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Business Hours
+      - Schedules
+    serviceName: Zendesk Schedules API
+    serviceCategory: API
+  - name: Zendesk User Identities API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Identities
+      - Users
+    serviceName: Zendesk User Identities API
+    serviceCategory: API
+  - name: Zendesk Ticket Comments API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Comments
+      - Tickets
+    serviceName: Zendesk Ticket Comments API
+    serviceCategory: API
+  - name: Zendesk Skill-Based Routing API
+    baseURL: https://{subdomain}.zendesk.com
+    tags:
+      - Routing
+      - Skills
+    serviceName: Zendesk Skill-Based Routing API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

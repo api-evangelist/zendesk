@@ -1,0 +1,482 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Zendesk
+providerId: zendesk
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Chat
+  - CRM
+  - Help Center
+  - Sell
+  - Support
+  - T1
+  - Talk
+  - Ticketing
+  - Tickets
+description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
+  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+plans:
+  - id: zendesk-free
+    name: Free
+    type: freemium
+    description: Free entry tier for the Zendesk API surface. Intended for evaluation, prototyping, and
+      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
+      plan documentation.
+    entries:
+      - label: API Requests
+        description: Monthly API request quota across all included endpoints
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: 1000
+        timeFrame: month
+        geo: global
+        domains:
+          - https://{subdomain}.zendesk.com
+          - https://api.getbase.com
+          - https://www.zopim.com
+          - https://rtm.zopim.com
+          - https://chat-api.zopim.com
+          - https://api.smooch.io
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per minute on the free tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 10
+        timeFrame: minute
+        geo: global
+        domains:
+          - https://{subdomain}.zendesk.com
+          - https://api.getbase.com
+          - https://www.zopim.com
+          - https://rtm.zopim.com
+          - https://chat-api.zopim.com
+          - https://api.smooch.io
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Public Documentation
+      - name: Community Support
+      - name: Sandbox Access
+      - name: Zendesk Assignables API
+      - name: Zendesk Target Type API
+      - name: Zendesk Account API
+      - name: Zendesk Accounts API
+      - name: Zendesk Activities API
+      - name: Zendesk Any Channel API
+      - name: Zendesk Approval Workflow Instances API
+      - name: Zendesk Attachments API
+  - id: zendesk-pro
+    name: Professional
+    type: paid
+    description: Production tier for Zendesk. Provides higher quotas, priority support, and access to
+      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+    entries:
+      - label: API Requests
+        description: Monthly API request quota
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: 100000
+        timeFrame: month
+        geo: global
+        domains:
+          - https://{subdomain}.zendesk.com
+          - https://api.getbase.com
+          - https://www.zopim.com
+          - https://rtm.zopim.com
+          - https://chat-api.zopim.com
+          - https://api.smooch.io
+        unit: 1
+        price: TBD
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per minute on the professional tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 100
+        timeFrame: minute
+        geo: global
+        domains:
+          - https://{subdomain}.zendesk.com
+          - https://api.getbase.com
+          - https://www.zopim.com
+          - https://rtm.zopim.com
+          - https://chat-api.zopim.com
+          - https://api.smooch.io
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Overage
+        description: Per-request price after monthly quota is exceeded
+        name: overage
+        type: metered
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://{subdomain}.zendesk.com
+          - https://api.getbase.com
+          - https://www.zopim.com
+          - https://rtm.zopim.com
+          - https://chat-api.zopim.com
+          - https://api.smooch.io
+        unit: 1000
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: All Production Endpoints
+      - name: Email Support
+      - name: SLA Targets
+      - name: Webhook Subscriptions
+      - name: Zendesk Assignables API
+      - name: Zendesk Target Type API
+      - name: Zendesk Account API
+      - name: Zendesk Accounts API
+      - name: Zendesk Activities API
+      - name: Zendesk Any Channel API
+      - name: Zendesk Approval Workflow Instances API
+      - name: Zendesk Attachments API
+      - name: Zendesk Audit Logs API
+      - name: Zendesk Autocomplete API
+      - name: Zendesk Automations API
+      - name: Zendesk Bookmarks API
+      - name: Zendesk Brand Agents API
+      - name: Zendesk Brands API
+      - name: Zendesk Channels API
+      - name: Zendesk Chat File Redactions API
+      - name: Zendesk Chat Redactions API
+      - name: Zendesk Comment Redactions API
+      - name: Zendesk Custom Objects API
+      - name: Zendesk Custom Roles API
+      - name: Zendesk Custom Status API
+      - name: Zendesk Custom Statuses API
+      - name: Zendesk Deleted Tickets API
+      - name: Zendesk Deleted Users API
+      - name: Zendesk Deletion Schedules API
+      - name: Zendesk Dynamic Content API
+      - name: Zendesk Email Notifications API
+      - name: Zendesk Group Memberships API
+      - name: Zendesk Group SLAs API
+      - name: Zendesk Groups API
+      - name: Zendesk Imports API
+      - name: Zendesk Incremental API
+      - name: Zendesk Job Statuses
+      - name: Zendesk Locales API
+      - name: Zendesk Macros API
+      - name: Zendesk Oauth API
+      - name: Zendesk Object Layouts API
+      - name: Zendesk Organization Fields API
+      - name: Zendesk Organization Memberships API
+      - name: Zendesk Organization Merges API
+      - name: Zendesk Organization Subscriptions API
+      - name: Zendesk Organizations API
+      - name: Zendesk Problems API
+      - name: Zendesk Push Notification Devices API
+      - name: Zendesk Queues API
+      - name: Zendesk Recipient Addresses API
+      - name: Zendesk Relationships API
+      - name: Zendesk Requests API
+      - name: Zendesk Resource Collections API
+      - name: Zendesk Routing API
+      - name: Zendesk Satisfaction Ratings API
+      - name: Zendesk Satisfaction Reasons API
+      - name: Zendesk Search API
+      - name: Zendesk Sessions API
+      - name: Zendesk Sharing Agreements API
+      - name: Zendesk Skips API
+      - name: Zendesk SLAs API
+      - name: Zendesk Suspended Tickets API
+      - name: Zendesk Tags API
+      - name: Zendesk Target Failures API
+      - name: Zendesk Targets API
+      - name: Zendesk Ticket Audits API
+      - name: Zendesk Ticket Content Pins API
+      - name: Zendesk Ticket Fields API
+      - name: Zendesk Ticket Form Statuses API
+      - name: Zendesk Ticket Forms API
+      - name: Zendesk Ticket Metrics API
+      - name: Zendesk Tickets API
+      - name: Zendesk Trigger Categories API
+      - name: Zendesk Triggers API
+      - name: Zendesk Uploads API
+      - name: Zendesk User Fields API
+      - name: Zendesk Users API
+      - name: Zendesk Views API
+      - name: Zendesk Workspaces API
+      - name: Zendesk Help Center Articles API
+      - name: Zendesk Help Center Sections API
+      - name: Zendesk Help Center Categories API
+      - name: Zendesk Help Center Translations API
+      - name: Zendesk Help Center Article Attachments API
+      - name: Zendesk Help Center Article Comments API
+      - name: Zendesk Help Center Article Labels API
+      - name: Zendesk Help Center Topics API
+      - name: Zendesk Help Center Posts API
+      - name: Zendesk Help Center Post Comments API
+      - name: Zendesk Help Center Votes API
+      - name: Zendesk Help Center Content Subscriptions API
+      - name: Zendesk Help Center User Segments API
+      - name: Zendesk Help Center Permission Groups API
+      - name: Zendesk Help Center Search API
+      - name: Zendesk Talk API
+      - name: Zendesk Talk Phone Numbers API
+      - name: Zendesk Talk Greetings API
+      - name: Zendesk Talk IVRs API
+      - name: Zendesk Talk Recordings API
+      - name: Zendesk Talk Stats API
+      - name: Zendesk Talk Availabilities API
+      - name: Zendesk Talk Lines API
+      - name: Zendesk Talk Digital Lines API
+      - name: Zendesk Talk Voice Settings API
+      - name: Zendesk Talk Partner Edition API
+      - name: Zendesk Chat Accounts API
+      - name: Zendesk Chat Agents API
+      - name: Zendesk Chat Visitors API
+      - name: Zendesk Chat Chats API
+      - name: Zendesk Chat Departments API
+      - name: Zendesk Chat Shortcuts API
+      - name: Zendesk Chat Triggers API
+      - name: Zendesk Chat Bans API
+      - name: Zendesk Chat Roles API
+      - name: Zendesk Chat Skills API
+      - name: Zendesk Chat Goals API
+      - name: Zendesk Chat Routing Settings API
+      - name: Zendesk Real-Time Chat API
+      - name: Zendesk Chat Conversations API
+      - name: Zendesk Webhooks API
+      - name: Zendesk Sell Contacts API
+      - name: Zendesk Sell Leads API
+      - name: Zendesk Sell Deals API
+      - name: Zendesk Sell Pipelines API
+      - name: Zendesk Sell Stages API
+      - name: Zendesk Sell Tasks API
+      - name: Zendesk Sell Notes API
+      - name: Zendesk Sell Calls API
+      - name: Zendesk Sell Text Messages API
+      - name: Zendesk Sell Products API
+      - name: Zendesk Sell Orders API
+      - name: Zendesk Sell Line Items API
+      - name: Zendesk Sell Collaborations API
+      - name: Zendesk Sell Sequences API
+      - name: Zendesk Sell Lead Sources API
+      - name: Zendesk Sell Deal Sources API
+      - name: Zendesk Sell Lead Conversions API
+      - name: Zendesk Sell Tags API
+      - name: Zendesk Sell Custom Fields API
+      - name: Zendesk Sunshine Conversations API
+      - name: Zendesk Omnichannel API
+      - name: Zendesk Unified Agent Statuses API
+      - name: Zendesk Omnichannel Engagements API
+      - name: Zendesk Apps API
+      - name: Zendesk Account Settings API
+      - name: Zendesk Schedules API
+      - name: Zendesk User Identities API
+      - name: Zendesk Ticket Comments API
+      - name: Zendesk Skill-Based Routing API
+  - id: zendesk-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom-negotiated tier for Zendesk. Includes dedicated capacity, contractual SLAs, security
+      review, data residency options, and named technical account management.
+    entries:
+      - label: API Requests
+        description: Negotiated request volume; -1 indicates uncapped subject to fair use
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: configurable
+        domains:
+          - https://{subdomain}.zendesk.com
+          - https://api.getbase.com
+          - https://www.zopim.com
+          - https://rtm.zopim.com
+          - https://chat-api.zopim.com
+          - https://api.smooch.io
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Rate Limit
+        description: Negotiated burst and steady-state rate
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 1000
+        timeFrame: minute
+        geo: configurable
+        domains:
+          - https://{subdomain}.zendesk.com
+          - https://api.getbase.com
+          - https://www.zopim.com
+          - https://rtm.zopim.com
+          - https://chat-api.zopim.com
+          - https://api.smooch.io
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Unlimited / Negotiated Volume
+      - name: 24/7 Dedicated Support
+      - name: Contractual SLA
+      - name: Security & Compliance Review
+      - name: Dedicated Account Manager
+      - name: Custom Data Residency
+      - name: Zendesk Assignables API
+      - name: Zendesk Target Type API
+      - name: Zendesk Account API
+      - name: Zendesk Accounts API
+      - name: Zendesk Activities API
+      - name: Zendesk Any Channel API
+      - name: Zendesk Approval Workflow Instances API
+      - name: Zendesk Attachments API
+      - name: Zendesk Audit Logs API
+      - name: Zendesk Autocomplete API
+      - name: Zendesk Automations API
+      - name: Zendesk Bookmarks API
+      - name: Zendesk Brand Agents API
+      - name: Zendesk Brands API
+      - name: Zendesk Channels API
+      - name: Zendesk Chat File Redactions API
+      - name: Zendesk Chat Redactions API
+      - name: Zendesk Comment Redactions API
+      - name: Zendesk Custom Objects API
+      - name: Zendesk Custom Roles API
+      - name: Zendesk Custom Status API
+      - name: Zendesk Custom Statuses API
+      - name: Zendesk Deleted Tickets API
+      - name: Zendesk Deleted Users API
+      - name: Zendesk Deletion Schedules API
+      - name: Zendesk Dynamic Content API
+      - name: Zendesk Email Notifications API
+      - name: Zendesk Group Memberships API
+      - name: Zendesk Group SLAs API
+      - name: Zendesk Groups API
+      - name: Zendesk Imports API
+      - name: Zendesk Incremental API
+      - name: Zendesk Job Statuses
+      - name: Zendesk Locales API
+      - name: Zendesk Macros API
+      - name: Zendesk Oauth API
+      - name: Zendesk Object Layouts API
+      - name: Zendesk Organization Fields API
+      - name: Zendesk Organization Memberships API
+      - name: Zendesk Organization Merges API
+      - name: Zendesk Organization Subscriptions API
+      - name: Zendesk Organizations API
+      - name: Zendesk Problems API
+      - name: Zendesk Push Notification Devices API
+      - name: Zendesk Queues API
+      - name: Zendesk Recipient Addresses API
+      - name: Zendesk Relationships API
+      - name: Zendesk Requests API
+      - name: Zendesk Resource Collections API
+      - name: Zendesk Routing API
+      - name: Zendesk Satisfaction Ratings API
+      - name: Zendesk Satisfaction Reasons API
+      - name: Zendesk Search API
+      - name: Zendesk Sessions API
+      - name: Zendesk Sharing Agreements API
+      - name: Zendesk Skips API
+      - name: Zendesk SLAs API
+      - name: Zendesk Suspended Tickets API
+      - name: Zendesk Tags API
+      - name: Zendesk Target Failures API
+      - name: Zendesk Targets API
+      - name: Zendesk Ticket Audits API
+      - name: Zendesk Ticket Content Pins API
+      - name: Zendesk Ticket Fields API
+      - name: Zendesk Ticket Form Statuses API
+      - name: Zendesk Ticket Forms API
+      - name: Zendesk Ticket Metrics API
+      - name: Zendesk Tickets API
+      - name: Zendesk Trigger Categories API
+      - name: Zendesk Triggers API
+      - name: Zendesk Uploads API
+      - name: Zendesk User Fields API
+      - name: Zendesk Users API
+      - name: Zendesk Views API
+      - name: Zendesk Workspaces API
+      - name: Zendesk Help Center Articles API
+      - name: Zendesk Help Center Sections API
+      - name: Zendesk Help Center Categories API
+      - name: Zendesk Help Center Translations API
+      - name: Zendesk Help Center Article Attachments API
+      - name: Zendesk Help Center Article Comments API
+      - name: Zendesk Help Center Article Labels API
+      - name: Zendesk Help Center Topics API
+      - name: Zendesk Help Center Posts API
+      - name: Zendesk Help Center Post Comments API
+      - name: Zendesk Help Center Votes API
+      - name: Zendesk Help Center Content Subscriptions API
+      - name: Zendesk Help Center User Segments API
+      - name: Zendesk Help Center Permission Groups API
+      - name: Zendesk Help Center Search API
+      - name: Zendesk Talk API
+      - name: Zendesk Talk Phone Numbers API
+      - name: Zendesk Talk Greetings API
+      - name: Zendesk Talk IVRs API
+      - name: Zendesk Talk Recordings API
+      - name: Zendesk Talk Stats API
+      - name: Zendesk Talk Availabilities API
+      - name: Zendesk Talk Lines API
+      - name: Zendesk Talk Digital Lines API
+      - name: Zendesk Talk Voice Settings API
+      - name: Zendesk Talk Partner Edition API
+      - name: Zendesk Chat Accounts API
+      - name: Zendesk Chat Agents API
+      - name: Zendesk Chat Visitors API
+      - name: Zendesk Chat Chats API
+      - name: Zendesk Chat Departments API
+      - name: Zendesk Chat Shortcuts API
+      - name: Zendesk Chat Triggers API
+      - name: Zendesk Chat Bans API
+      - name: Zendesk Chat Roles API
+      - name: Zendesk Chat Skills API
+      - name: Zendesk Chat Goals API
+      - name: Zendesk Chat Routing Settings API
+      - name: Zendesk Real-Time Chat API
+      - name: Zendesk Chat Conversations API
+      - name: Zendesk Webhooks API
+      - name: Zendesk Sell Contacts API
+      - name: Zendesk Sell Leads API
+      - name: Zendesk Sell Deals API
+      - name: Zendesk Sell Pipelines API
+      - name: Zendesk Sell Stages API
+      - name: Zendesk Sell Tasks API
+      - name: Zendesk Sell Notes API
+      - name: Zendesk Sell Calls API
+      - name: Zendesk Sell Text Messages API
+      - name: Zendesk Sell Products API
+      - name: Zendesk Sell Orders API
+      - name: Zendesk Sell Line Items API
+      - name: Zendesk Sell Collaborations API
+      - name: Zendesk Sell Sequences API
+      - name: Zendesk Sell Lead Sources API
+      - name: Zendesk Sell Deal Sources API
+      - name: Zendesk Sell Lead Conversions API
+      - name: Zendesk Sell Tags API
+      - name: Zendesk Sell Custom Fields API
+      - name: Zendesk Sunshine Conversations API
+      - name: Zendesk Omnichannel API
+      - name: Zendesk Unified Agent Statuses API
+      - name: Zendesk Omnichannel Engagements API
+      - name: Zendesk Apps API
+      - name: Zendesk Account Settings API
+      - name: Zendesk Schedules API
+      - name: Zendesk User Identities API
+      - name: Zendesk Ticket Comments API
+      - name: Zendesk Skill-Based Routing API
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
