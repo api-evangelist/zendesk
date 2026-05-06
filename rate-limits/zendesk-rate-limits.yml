@@ -4,810 +4,132 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Zendesk
 providerId: zendesk
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Chat
-  - CRM
+  - Customer Service
   - Help Center
-  - Sell
-  - Support
-  - T1
-  - Talk
   - Ticketing
-  - Tickets
+  - CRM
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Zendesk API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
+description: |
+  Zendesk publishes per-plan account-wide API rate limits in requests per minute,
+  with additional endpoint-specific limits, a job-queue cap, and an account-wide
+  spike-protection ceiling. Limits scale with the Suite / Support tier; the High
+  Volume API add-on lifts qualifying plans to 2,500 req/min.
+sources:
+  - https://developer.zendesk.com/api-reference/introduction/rate-limits/
+  - https://www.zendesk.com/pricing/
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
+  limit: X-Rate-Limit
   retryAfter: Retry-After
-  policy: RateLimit-Policy
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
+  - name: Suite Team
+    scope: account
+    metric: requests_per_minute
+    limit: 200
+    timeFrame: minute
+  - name: Suite Growth
+    scope: account
+    metric: requests_per_minute
+    limit: 400
+    timeFrame: minute
+  - name: Suite Professional
+    scope: account
+    metric: requests_per_minute
+    limit: 400
+    timeFrame: minute
+  - name: Suite Enterprise
+    scope: account
+    metric: requests_per_minute
+    limit: 700
+    timeFrame: minute
+  - name: Suite Enterprise Plus
+    scope: account
+    metric: requests_per_minute
+    limit: 2500
+    timeFrame: minute
+  - name: Support Essential (legacy)
+    scope: account
     metric: requests_per_minute
     limit: 10
-    burst: 20
     timeFrame: minute
-    applies:
-      - Zendesk Assignables API
-      - Zendesk Target Type API
-      - Zendesk Account API
-      - Zendesk Accounts API
-      - Zendesk Activities API
-      - Zendesk Any Channel API
-      - Zendesk Approval Workflow Instances API
-      - Zendesk Attachments API
-      - Zendesk Audit Logs API
-      - Zendesk Autocomplete API
-      - Zendesk Automations API
-      - Zendesk Bookmarks API
-      - Zendesk Brand Agents API
-      - Zendesk Brands API
-      - Zendesk Channels API
-      - Zendesk Chat File Redactions API
-      - Zendesk Chat Redactions API
-      - Zendesk Comment Redactions API
-      - Zendesk Custom Objects API
-      - Zendesk Custom Roles API
-      - Zendesk Custom Status API
-      - Zendesk Custom Statuses API
-      - Zendesk Deleted Tickets API
-      - Zendesk Deleted Users API
-      - Zendesk Deletion Schedules API
-      - Zendesk Dynamic Content API
-      - Zendesk Email Notifications API
-      - Zendesk Group Memberships API
-      - Zendesk Group SLAs API
-      - Zendesk Groups API
-      - Zendesk Imports API
-      - Zendesk Incremental API
-      - Zendesk Job Statuses
-      - Zendesk Locales API
-      - Zendesk Macros API
-      - Zendesk Oauth API
-      - Zendesk Object Layouts API
-      - Zendesk Organization Fields API
-      - Zendesk Organization Memberships API
-      - Zendesk Organization Merges API
-      - Zendesk Organization Subscriptions API
-      - Zendesk Organizations API
-      - Zendesk Problems API
-      - Zendesk Push Notification Devices API
-      - Zendesk Queues API
-      - Zendesk Recipient Addresses API
-      - Zendesk Relationships API
-      - Zendesk Requests API
-      - Zendesk Resource Collections API
-      - Zendesk Routing API
-      - Zendesk Satisfaction Ratings API
-      - Zendesk Satisfaction Reasons API
-      - Zendesk Search API
-      - Zendesk Sessions API
-      - Zendesk Sharing Agreements API
-      - Zendesk Skips API
-      - Zendesk SLAs API
-      - Zendesk Suspended Tickets API
-      - Zendesk Tags API
-      - Zendesk Target Failures API
-      - Zendesk Targets API
-      - Zendesk Ticket Audits API
-      - Zendesk Ticket Content Pins API
-      - Zendesk Ticket Fields API
-      - Zendesk Ticket Form Statuses API
-      - Zendesk Ticket Forms API
-      - Zendesk Ticket Metrics API
-      - Zendesk Tickets API
-      - Zendesk Trigger Categories API
-      - Zendesk Triggers API
-      - Zendesk Uploads API
-      - Zendesk User Fields API
-      - Zendesk Users API
-      - Zendesk Views API
-      - Zendesk Workspaces API
-      - Zendesk Help Center Articles API
-      - Zendesk Help Center Sections API
-      - Zendesk Help Center Categories API
-      - Zendesk Help Center Translations API
-      - Zendesk Help Center Article Attachments API
-      - Zendesk Help Center Article Comments API
-      - Zendesk Help Center Article Labels API
-      - Zendesk Help Center Topics API
-      - Zendesk Help Center Posts API
-      - Zendesk Help Center Post Comments API
-      - Zendesk Help Center Votes API
-      - Zendesk Help Center Content Subscriptions API
-      - Zendesk Help Center User Segments API
-      - Zendesk Help Center Permission Groups API
-      - Zendesk Help Center Search API
-      - Zendesk Talk API
-      - Zendesk Talk Phone Numbers API
-      - Zendesk Talk Greetings API
-      - Zendesk Talk IVRs API
-      - Zendesk Talk Recordings API
-      - Zendesk Talk Stats API
-      - Zendesk Talk Availabilities API
-      - Zendesk Talk Lines API
-      - Zendesk Talk Digital Lines API
-      - Zendesk Talk Voice Settings API
-      - Zendesk Talk Partner Edition API
-      - Zendesk Chat Accounts API
-      - Zendesk Chat Agents API
-      - Zendesk Chat Visitors API
-      - Zendesk Chat Chats API
-      - Zendesk Chat Departments API
-      - Zendesk Chat Shortcuts API
-      - Zendesk Chat Triggers API
-      - Zendesk Chat Bans API
-      - Zendesk Chat Roles API
-      - Zendesk Chat Skills API
-      - Zendesk Chat Goals API
-      - Zendesk Chat Routing Settings API
-      - Zendesk Real-Time Chat API
-      - Zendesk Chat Conversations API
-      - Zendesk Webhooks API
-      - Zendesk Sell Contacts API
-      - Zendesk Sell Leads API
-      - Zendesk Sell Deals API
-      - Zendesk Sell Pipelines API
-      - Zendesk Sell Stages API
-      - Zendesk Sell Tasks API
-      - Zendesk Sell Notes API
-      - Zendesk Sell Calls API
-      - Zendesk Sell Text Messages API
-      - Zendesk Sell Products API
-      - Zendesk Sell Orders API
-      - Zendesk Sell Line Items API
-      - Zendesk Sell Collaborations API
-      - Zendesk Sell Sequences API
-      - Zendesk Sell Lead Sources API
-      - Zendesk Sell Deal Sources API
-      - Zendesk Sell Lead Conversions API
-      - Zendesk Sell Tags API
-      - Zendesk Sell Custom Fields API
-      - Zendesk Sunshine Conversations API
-      - Zendesk Omnichannel API
-      - Zendesk Unified Agent Statuses API
-      - Zendesk Omnichannel Engagements API
-      - Zendesk Apps API
-      - Zendesk Account Settings API
-      - Zendesk Schedules API
-      - Zendesk User Identities API
-      - Zendesk Ticket Comments API
-      - Zendesk Skill-Based Routing API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Zendesk Assignables API
-      - Zendesk Target Type API
-      - Zendesk Account API
-      - Zendesk Accounts API
-      - Zendesk Activities API
-      - Zendesk Any Channel API
-      - Zendesk Approval Workflow Instances API
-      - Zendesk Attachments API
-      - Zendesk Audit Logs API
-      - Zendesk Autocomplete API
-      - Zendesk Automations API
-      - Zendesk Bookmarks API
-      - Zendesk Brand Agents API
-      - Zendesk Brands API
-      - Zendesk Channels API
-      - Zendesk Chat File Redactions API
-      - Zendesk Chat Redactions API
-      - Zendesk Comment Redactions API
-      - Zendesk Custom Objects API
-      - Zendesk Custom Roles API
-      - Zendesk Custom Status API
-      - Zendesk Custom Statuses API
-      - Zendesk Deleted Tickets API
-      - Zendesk Deleted Users API
-      - Zendesk Deletion Schedules API
-      - Zendesk Dynamic Content API
-      - Zendesk Email Notifications API
-      - Zendesk Group Memberships API
-      - Zendesk Group SLAs API
-      - Zendesk Groups API
-      - Zendesk Imports API
-      - Zendesk Incremental API
-      - Zendesk Job Statuses
-      - Zendesk Locales API
-      - Zendesk Macros API
-      - Zendesk Oauth API
-      - Zendesk Object Layouts API
-      - Zendesk Organization Fields API
-      - Zendesk Organization Memberships API
-      - Zendesk Organization Merges API
-      - Zendesk Organization Subscriptions API
-      - Zendesk Organizations API
-      - Zendesk Problems API
-      - Zendesk Push Notification Devices API
-      - Zendesk Queues API
-      - Zendesk Recipient Addresses API
-      - Zendesk Relationships API
-      - Zendesk Requests API
-      - Zendesk Resource Collections API
-      - Zendesk Routing API
-      - Zendesk Satisfaction Ratings API
-      - Zendesk Satisfaction Reasons API
-      - Zendesk Search API
-      - Zendesk Sessions API
-      - Zendesk Sharing Agreements API
-      - Zendesk Skips API
-      - Zendesk SLAs API
-      - Zendesk Suspended Tickets API
-      - Zendesk Tags API
-      - Zendesk Target Failures API
-      - Zendesk Targets API
-      - Zendesk Ticket Audits API
-      - Zendesk Ticket Content Pins API
-      - Zendesk Ticket Fields API
-      - Zendesk Ticket Form Statuses API
-      - Zendesk Ticket Forms API
-      - Zendesk Ticket Metrics API
-      - Zendesk Tickets API
-      - Zendesk Trigger Categories API
-      - Zendesk Triggers API
-      - Zendesk Uploads API
-      - Zendesk User Fields API
-      - Zendesk Users API
-      - Zendesk Views API
-      - Zendesk Workspaces API
-      - Zendesk Help Center Articles API
-      - Zendesk Help Center Sections API
-      - Zendesk Help Center Categories API
-      - Zendesk Help Center Translations API
-      - Zendesk Help Center Article Attachments API
-      - Zendesk Help Center Article Comments API
-      - Zendesk Help Center Article Labels API
-      - Zendesk Help Center Topics API
-      - Zendesk Help Center Posts API
-      - Zendesk Help Center Post Comments API
-      - Zendesk Help Center Votes API
-      - Zendesk Help Center Content Subscriptions API
-      - Zendesk Help Center User Segments API
-      - Zendesk Help Center Permission Groups API
-      - Zendesk Help Center Search API
-      - Zendesk Talk API
-      - Zendesk Talk Phone Numbers API
-      - Zendesk Talk Greetings API
-      - Zendesk Talk IVRs API
-      - Zendesk Talk Recordings API
-      - Zendesk Talk Stats API
-      - Zendesk Talk Availabilities API
-      - Zendesk Talk Lines API
-      - Zendesk Talk Digital Lines API
-      - Zendesk Talk Voice Settings API
-      - Zendesk Talk Partner Edition API
-      - Zendesk Chat Accounts API
-      - Zendesk Chat Agents API
-      - Zendesk Chat Visitors API
-      - Zendesk Chat Chats API
-      - Zendesk Chat Departments API
-      - Zendesk Chat Shortcuts API
-      - Zendesk Chat Triggers API
-      - Zendesk Chat Bans API
-      - Zendesk Chat Roles API
-      - Zendesk Chat Skills API
-      - Zendesk Chat Goals API
-      - Zendesk Chat Routing Settings API
-      - Zendesk Real-Time Chat API
-      - Zendesk Chat Conversations API
-      - Zendesk Webhooks API
-      - Zendesk Sell Contacts API
-      - Zendesk Sell Leads API
-      - Zendesk Sell Deals API
-      - Zendesk Sell Pipelines API
-      - Zendesk Sell Stages API
-      - Zendesk Sell Tasks API
-      - Zendesk Sell Notes API
-      - Zendesk Sell Calls API
-      - Zendesk Sell Text Messages API
-      - Zendesk Sell Products API
-      - Zendesk Sell Orders API
-      - Zendesk Sell Line Items API
-      - Zendesk Sell Collaborations API
-      - Zendesk Sell Sequences API
-      - Zendesk Sell Lead Sources API
-      - Zendesk Sell Deal Sources API
-      - Zendesk Sell Lead Conversions API
-      - Zendesk Sell Tags API
-      - Zendesk Sell Custom Fields API
-      - Zendesk Sunshine Conversations API
-      - Zendesk Omnichannel API
-      - Zendesk Unified Agent Statuses API
-      - Zendesk Omnichannel Engagements API
-      - Zendesk Apps API
-      - Zendesk Account Settings API
-      - Zendesk Schedules API
-      - Zendesk User Identities API
-      - Zendesk Ticket Comments API
-      - Zendesk Skill-Based Routing API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
+  - name: Support Team
+    scope: account
+    metric: requests_per_minute
+    limit: 200
+    timeFrame: minute
+  - name: Support Professional
+    scope: account
+    metric: requests_per_minute
+    limit: 400
+    timeFrame: minute
+  - name: Support Enterprise
+    scope: account
+    metric: requests_per_minute
+    limit: 700
+    timeFrame: minute
+  - name: High Volume API add-on
+    scope: account
+    metric: requests_per_minute
+    limit: 2500
+    timeFrame: minute
+    notes: Available on Growth+ (Suite) or Professional+ (Support); minimum 10 agent
+      seats.
+  - name: Update Ticket (per user, per ticket)
+    scope: account
+    metric: requests_per_minute
+    limit: 30
+    timeFrame: minute
+    notes: 30 updates per 10 minutes per user per ticket; 100 requests/min account-wide.
+  - name: Incremental Exports
+    scope: account
+    metric: requests_per_minute
+    limit: 10
+    timeFrame: minute
+    notes: 30/min with the High Volume API add-on.
+  - name: Update User (per user)
+    scope: account
+    metric: requests_per_minute
+    limit: 5
+    timeFrame: minute
+  - name: Get Ticket Attachment Content
+    scope: account
+    metric: requests_per_minute
+    limit: 2500
+    timeFrame: minute
+  - name: Job Queue depth
+    scope: account
+    metric: concurrent_requests
+    limit: 30
+    notes: Maximum concurrent queued or running jobs.
+  - name: Account-wide spike protection
+    scope: account
+    metric: requests_per_minute
+    limit: 100000
+    timeFrame: minute
+    notes: Hard ceiling that triggers spike-protection for unusual activity.
+  - name: Apps API (per user / per app)
+    scope: key
     metric: requests_per_minute
     limit: 100
-    burst: 200
     timeFrame: minute
-    applies:
-      - Zendesk Assignables API
-      - Zendesk Target Type API
-      - Zendesk Account API
-      - Zendesk Accounts API
-      - Zendesk Activities API
-      - Zendesk Any Channel API
-      - Zendesk Approval Workflow Instances API
-      - Zendesk Attachments API
-      - Zendesk Audit Logs API
-      - Zendesk Autocomplete API
-      - Zendesk Automations API
-      - Zendesk Bookmarks API
-      - Zendesk Brand Agents API
-      - Zendesk Brands API
-      - Zendesk Channels API
-      - Zendesk Chat File Redactions API
-      - Zendesk Chat Redactions API
-      - Zendesk Comment Redactions API
-      - Zendesk Custom Objects API
-      - Zendesk Custom Roles API
-      - Zendesk Custom Status API
-      - Zendesk Custom Statuses API
-      - Zendesk Deleted Tickets API
-      - Zendesk Deleted Users API
-      - Zendesk Deletion Schedules API
-      - Zendesk Dynamic Content API
-      - Zendesk Email Notifications API
-      - Zendesk Group Memberships API
-      - Zendesk Group SLAs API
-      - Zendesk Groups API
-      - Zendesk Imports API
-      - Zendesk Incremental API
-      - Zendesk Job Statuses
-      - Zendesk Locales API
-      - Zendesk Macros API
-      - Zendesk Oauth API
-      - Zendesk Object Layouts API
-      - Zendesk Organization Fields API
-      - Zendesk Organization Memberships API
-      - Zendesk Organization Merges API
-      - Zendesk Organization Subscriptions API
-      - Zendesk Organizations API
-      - Zendesk Problems API
-      - Zendesk Push Notification Devices API
-      - Zendesk Queues API
-      - Zendesk Recipient Addresses API
-      - Zendesk Relationships API
-      - Zendesk Requests API
-      - Zendesk Resource Collections API
-      - Zendesk Routing API
-      - Zendesk Satisfaction Ratings API
-      - Zendesk Satisfaction Reasons API
-      - Zendesk Search API
-      - Zendesk Sessions API
-      - Zendesk Sharing Agreements API
-      - Zendesk Skips API
-      - Zendesk SLAs API
-      - Zendesk Suspended Tickets API
-      - Zendesk Tags API
-      - Zendesk Target Failures API
-      - Zendesk Targets API
-      - Zendesk Ticket Audits API
-      - Zendesk Ticket Content Pins API
-      - Zendesk Ticket Fields API
-      - Zendesk Ticket Form Statuses API
-      - Zendesk Ticket Forms API
-      - Zendesk Ticket Metrics API
-      - Zendesk Tickets API
-      - Zendesk Trigger Categories API
-      - Zendesk Triggers API
-      - Zendesk Uploads API
-      - Zendesk User Fields API
-      - Zendesk Users API
-      - Zendesk Views API
-      - Zendesk Workspaces API
-      - Zendesk Help Center Articles API
-      - Zendesk Help Center Sections API
-      - Zendesk Help Center Categories API
-      - Zendesk Help Center Translations API
-      - Zendesk Help Center Article Attachments API
-      - Zendesk Help Center Article Comments API
-      - Zendesk Help Center Article Labels API
-      - Zendesk Help Center Topics API
-      - Zendesk Help Center Posts API
-      - Zendesk Help Center Post Comments API
-      - Zendesk Help Center Votes API
-      - Zendesk Help Center Content Subscriptions API
-      - Zendesk Help Center User Segments API
-      - Zendesk Help Center Permission Groups API
-      - Zendesk Help Center Search API
-      - Zendesk Talk API
-      - Zendesk Talk Phone Numbers API
-      - Zendesk Talk Greetings API
-      - Zendesk Talk IVRs API
-      - Zendesk Talk Recordings API
-      - Zendesk Talk Stats API
-      - Zendesk Talk Availabilities API
-      - Zendesk Talk Lines API
-      - Zendesk Talk Digital Lines API
-      - Zendesk Talk Voice Settings API
-      - Zendesk Talk Partner Edition API
-      - Zendesk Chat Accounts API
-      - Zendesk Chat Agents API
-      - Zendesk Chat Visitors API
-      - Zendesk Chat Chats API
-      - Zendesk Chat Departments API
-      - Zendesk Chat Shortcuts API
-      - Zendesk Chat Triggers API
-      - Zendesk Chat Bans API
-      - Zendesk Chat Roles API
-      - Zendesk Chat Skills API
-      - Zendesk Chat Goals API
-      - Zendesk Chat Routing Settings API
-      - Zendesk Real-Time Chat API
-      - Zendesk Chat Conversations API
-      - Zendesk Webhooks API
-      - Zendesk Sell Contacts API
-      - Zendesk Sell Leads API
-      - Zendesk Sell Deals API
-      - Zendesk Sell Pipelines API
-      - Zendesk Sell Stages API
-      - Zendesk Sell Tasks API
-      - Zendesk Sell Notes API
-      - Zendesk Sell Calls API
-      - Zendesk Sell Text Messages API
-      - Zendesk Sell Products API
-      - Zendesk Sell Orders API
-      - Zendesk Sell Line Items API
-      - Zendesk Sell Collaborations API
-      - Zendesk Sell Sequences API
-      - Zendesk Sell Lead Sources API
-      - Zendesk Sell Deal Sources API
-      - Zendesk Sell Lead Conversions API
-      - Zendesk Sell Tags API
-      - Zendesk Sell Custom Fields API
-      - Zendesk Sunshine Conversations API
-      - Zendesk Omnichannel API
-      - Zendesk Unified Agent Statuses API
-      - Zendesk Omnichannel Engagements API
-      - Zendesk Apps API
-      - Zendesk Account Settings API
-      - Zendesk Schedules API
-      - Zendesk User Identities API
-      - Zendesk Ticket Comments API
-      - Zendesk Skill-Based Routing API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Zendesk Assignables API
-      - Zendesk Target Type API
-      - Zendesk Account API
-      - Zendesk Accounts API
-      - Zendesk Activities API
-      - Zendesk Any Channel API
-      - Zendesk Approval Workflow Instances API
-      - Zendesk Attachments API
-      - Zendesk Audit Logs API
-      - Zendesk Autocomplete API
-      - Zendesk Automations API
-      - Zendesk Bookmarks API
-      - Zendesk Brand Agents API
-      - Zendesk Brands API
-      - Zendesk Channels API
-      - Zendesk Chat File Redactions API
-      - Zendesk Chat Redactions API
-      - Zendesk Comment Redactions API
-      - Zendesk Custom Objects API
-      - Zendesk Custom Roles API
-      - Zendesk Custom Status API
-      - Zendesk Custom Statuses API
-      - Zendesk Deleted Tickets API
-      - Zendesk Deleted Users API
-      - Zendesk Deletion Schedules API
-      - Zendesk Dynamic Content API
-      - Zendesk Email Notifications API
-      - Zendesk Group Memberships API
-      - Zendesk Group SLAs API
-      - Zendesk Groups API
-      - Zendesk Imports API
-      - Zendesk Incremental API
-      - Zendesk Job Statuses
-      - Zendesk Locales API
-      - Zendesk Macros API
-      - Zendesk Oauth API
-      - Zendesk Object Layouts API
-      - Zendesk Organization Fields API
-      - Zendesk Organization Memberships API
-      - Zendesk Organization Merges API
-      - Zendesk Organization Subscriptions API
-      - Zendesk Organizations API
-      - Zendesk Problems API
-      - Zendesk Push Notification Devices API
-      - Zendesk Queues API
-      - Zendesk Recipient Addresses API
-      - Zendesk Relationships API
-      - Zendesk Requests API
-      - Zendesk Resource Collections API
-      - Zendesk Routing API
-      - Zendesk Satisfaction Ratings API
-      - Zendesk Satisfaction Reasons API
-      - Zendesk Search API
-      - Zendesk Sessions API
-      - Zendesk Sharing Agreements API
-      - Zendesk Skips API
-      - Zendesk SLAs API
-      - Zendesk Suspended Tickets API
-      - Zendesk Tags API
-      - Zendesk Target Failures API
-      - Zendesk Targets API
-      - Zendesk Ticket Audits API
-      - Zendesk Ticket Content Pins API
-      - Zendesk Ticket Fields API
-      - Zendesk Ticket Form Statuses API
-      - Zendesk Ticket Forms API
-      - Zendesk Ticket Metrics API
-      - Zendesk Tickets API
-      - Zendesk Trigger Categories API
-      - Zendesk Triggers API
-      - Zendesk Uploads API
-      - Zendesk User Fields API
-      - Zendesk Users API
-      - Zendesk Views API
-      - Zendesk Workspaces API
-      - Zendesk Help Center Articles API
-      - Zendesk Help Center Sections API
-      - Zendesk Help Center Categories API
-      - Zendesk Help Center Translations API
-      - Zendesk Help Center Article Attachments API
-      - Zendesk Help Center Article Comments API
-      - Zendesk Help Center Article Labels API
-      - Zendesk Help Center Topics API
-      - Zendesk Help Center Posts API
-      - Zendesk Help Center Post Comments API
-      - Zendesk Help Center Votes API
-      - Zendesk Help Center Content Subscriptions API
-      - Zendesk Help Center User Segments API
-      - Zendesk Help Center Permission Groups API
-      - Zendesk Help Center Search API
-      - Zendesk Talk API
-      - Zendesk Talk Phone Numbers API
-      - Zendesk Talk Greetings API
-      - Zendesk Talk IVRs API
-      - Zendesk Talk Recordings API
-      - Zendesk Talk Stats API
-      - Zendesk Talk Availabilities API
-      - Zendesk Talk Lines API
-      - Zendesk Talk Digital Lines API
-      - Zendesk Talk Voice Settings API
-      - Zendesk Talk Partner Edition API
-      - Zendesk Chat Accounts API
-      - Zendesk Chat Agents API
-      - Zendesk Chat Visitors API
-      - Zendesk Chat Chats API
-      - Zendesk Chat Departments API
-      - Zendesk Chat Shortcuts API
-      - Zendesk Chat Triggers API
-      - Zendesk Chat Bans API
-      - Zendesk Chat Roles API
-      - Zendesk Chat Skills API
-      - Zendesk Chat Goals API
-      - Zendesk Chat Routing Settings API
-      - Zendesk Real-Time Chat API
-      - Zendesk Chat Conversations API
-      - Zendesk Webhooks API
-      - Zendesk Sell Contacts API
-      - Zendesk Sell Leads API
-      - Zendesk Sell Deals API
-      - Zendesk Sell Pipelines API
-      - Zendesk Sell Stages API
-      - Zendesk Sell Tasks API
-      - Zendesk Sell Notes API
-      - Zendesk Sell Calls API
-      - Zendesk Sell Text Messages API
-      - Zendesk Sell Products API
-      - Zendesk Sell Orders API
-      - Zendesk Sell Line Items API
-      - Zendesk Sell Collaborations API
-      - Zendesk Sell Sequences API
-      - Zendesk Sell Lead Sources API
-      - Zendesk Sell Deal Sources API
-      - Zendesk Sell Lead Conversions API
-      - Zendesk Sell Tags API
-      - Zendesk Sell Custom Fields API
-      - Zendesk Sunshine Conversations API
-      - Zendesk Omnichannel API
-      - Zendesk Unified Agent Statuses API
-      - Zendesk Omnichannel Engagements API
-      - Zendesk Apps API
-      - Zendesk Account Settings API
-      - Zendesk Schedules API
-      - Zendesk User Identities API
-      - Zendesk Ticket Comments API
-      - Zendesk Skill-Based Routing API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Zendesk Assignables API
-      - Zendesk Target Type API
-      - Zendesk Account API
-      - Zendesk Accounts API
-      - Zendesk Activities API
-      - Zendesk Any Channel API
-      - Zendesk Approval Workflow Instances API
-      - Zendesk Attachments API
-      - Zendesk Audit Logs API
-      - Zendesk Autocomplete API
-      - Zendesk Automations API
-      - Zendesk Bookmarks API
-      - Zendesk Brand Agents API
-      - Zendesk Brands API
-      - Zendesk Channels API
-      - Zendesk Chat File Redactions API
-      - Zendesk Chat Redactions API
-      - Zendesk Comment Redactions API
-      - Zendesk Custom Objects API
-      - Zendesk Custom Roles API
-      - Zendesk Custom Status API
-      - Zendesk Custom Statuses API
-      - Zendesk Deleted Tickets API
-      - Zendesk Deleted Users API
-      - Zendesk Deletion Schedules API
-      - Zendesk Dynamic Content API
-      - Zendesk Email Notifications API
-      - Zendesk Group Memberships API
-      - Zendesk Group SLAs API
-      - Zendesk Groups API
-      - Zendesk Imports API
-      - Zendesk Incremental API
-      - Zendesk Job Statuses
-      - Zendesk Locales API
-      - Zendesk Macros API
-      - Zendesk Oauth API
-      - Zendesk Object Layouts API
-      - Zendesk Organization Fields API
-      - Zendesk Organization Memberships API
-      - Zendesk Organization Merges API
-      - Zendesk Organization Subscriptions API
-      - Zendesk Organizations API
-      - Zendesk Problems API
-      - Zendesk Push Notification Devices API
-      - Zendesk Queues API
-      - Zendesk Recipient Addresses API
-      - Zendesk Relationships API
-      - Zendesk Requests API
-      - Zendesk Resource Collections API
-      - Zendesk Routing API
-      - Zendesk Satisfaction Ratings API
-      - Zendesk Satisfaction Reasons API
-      - Zendesk Search API
-      - Zendesk Sessions API
-      - Zendesk Sharing Agreements API
-      - Zendesk Skips API
-      - Zendesk SLAs API
-      - Zendesk Suspended Tickets API
-      - Zendesk Tags API
-      - Zendesk Target Failures API
-      - Zendesk Targets API
-      - Zendesk Ticket Audits API
-      - Zendesk Ticket Content Pins API
-      - Zendesk Ticket Fields API
-      - Zendesk Ticket Form Statuses API
-      - Zendesk Ticket Forms API
-      - Zendesk Ticket Metrics API
-      - Zendesk Tickets API
-      - Zendesk Trigger Categories API
-      - Zendesk Triggers API
-      - Zendesk Uploads API
-      - Zendesk User Fields API
-      - Zendesk Users API
-      - Zendesk Views API
-      - Zendesk Workspaces API
-      - Zendesk Help Center Articles API
-      - Zendesk Help Center Sections API
-      - Zendesk Help Center Categories API
-      - Zendesk Help Center Translations API
-      - Zendesk Help Center Article Attachments API
-      - Zendesk Help Center Article Comments API
-      - Zendesk Help Center Article Labels API
-      - Zendesk Help Center Topics API
-      - Zendesk Help Center Posts API
-      - Zendesk Help Center Post Comments API
-      - Zendesk Help Center Votes API
-      - Zendesk Help Center Content Subscriptions API
-      - Zendesk Help Center User Segments API
-      - Zendesk Help Center Permission Groups API
-      - Zendesk Help Center Search API
-      - Zendesk Talk API
-      - Zendesk Talk Phone Numbers API
-      - Zendesk Talk Greetings API
-      - Zendesk Talk IVRs API
-      - Zendesk Talk Recordings API
-      - Zendesk Talk Stats API
-      - Zendesk Talk Availabilities API
-      - Zendesk Talk Lines API
-      - Zendesk Talk Digital Lines API
-      - Zendesk Talk Voice Settings API
-      - Zendesk Talk Partner Edition API
-      - Zendesk Chat Accounts API
-      - Zendesk Chat Agents API
-      - Zendesk Chat Visitors API
-      - Zendesk Chat Chats API
-      - Zendesk Chat Departments API
-      - Zendesk Chat Shortcuts API
-      - Zendesk Chat Triggers API
-      - Zendesk Chat Bans API
-      - Zendesk Chat Roles API
-      - Zendesk Chat Skills API
-      - Zendesk Chat Goals API
-      - Zendesk Chat Routing Settings API
-      - Zendesk Real-Time Chat API
-      - Zendesk Chat Conversations API
-      - Zendesk Webhooks API
-      - Zendesk Sell Contacts API
-      - Zendesk Sell Leads API
-      - Zendesk Sell Deals API
-      - Zendesk Sell Pipelines API
-      - Zendesk Sell Stages API
-      - Zendesk Sell Tasks API
-      - Zendesk Sell Notes API
-      - Zendesk Sell Calls API
-      - Zendesk Sell Text Messages API
-      - Zendesk Sell Products API
-      - Zendesk Sell Orders API
-      - Zendesk Sell Line Items API
-      - Zendesk Sell Collaborations API
-      - Zendesk Sell Sequences API
-      - Zendesk Sell Lead Sources API
-      - Zendesk Sell Deal Sources API
-      - Zendesk Sell Lead Conversions API
-      - Zendesk Sell Tags API
-      - Zendesk Sell Custom Fields API
-      - Zendesk Sunshine Conversations API
-      - Zendesk Omnichannel API
-      - Zendesk Unified Agent Statuses API
-      - Zendesk Omnichannel Engagements API
-      - Zendesk Apps API
-      - Zendesk Account Settings API
-      - Zendesk Schedules API
-      - Zendesk User Identities API
-      - Zendesk Ticket Comments API
-      - Zendesk Skill-Based Routing API
+    notes: 700 calls per 5 minutes per user per app at the API level.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: 429 + Retry-After
+    description: When the limit is exceeded the API returns 429 Too Many Requests with a
+      Retry-After header indicating how many seconds to wait before retrying.
+  - name: X-Rate-Limit header
+    description: "Responses include an X-Rate-Limit header reflecting the account's
+      current per-minute ceiling (e.g. X-Rate-Limit: 700)."
+  - name: Plan-tier scoping
+    description: Limits are account-wide and scale with the Suite / Support plan tier.
+      Endpoint-specific limits apply on top of the per-plan ceiling.
+  - name: High Volume API uplift
+    description: The High Volume API add-on lifts qualifying plans to 2,500 req/min and
+      also boosts incremental-exports throughput.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
