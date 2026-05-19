@@ -1,0 +1,83 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Autocomplete — Tickets
+  description: 'Zendesk Autocomplete — Tickets. 1 operations. Lead operation: Zendesk Post  Api V2 Problems Autocomplete.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Tickets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: autocomplete-tickets
+    baseUri: ''
+    description: Zendesk Autocomplete — Tickets business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-problems-autocomplete
+      path: /api/v2/problems/autocomplete
+      operations:
+      - name: autocompleteproblems
+        method: POST
+        description: Zendesk Post  Api V2 Problems Autocomplete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: text
+          in: query
+          type: string
+          description: The text to search for
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: autocomplete-tickets-rest
+    port: 8080
+    description: REST adapter for Zendesk Autocomplete — Tickets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/problems/autocomplete
+      name: api-v2-problems-autocomplete
+      description: REST surface for api-v2-problems-autocomplete.
+      operations:
+      - method: POST
+        name: autocompleteproblems
+        description: Zendesk Post  Api V2 Problems Autocomplete
+        call: autocomplete-tickets.autocompleteproblems
+        with:
+          text: rest.text
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: autocomplete-tickets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Autocomplete — Tickets. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-post-api-v2-problems
+      description: Zendesk Post  Api V2 Problems Autocomplete
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: autocomplete-tickets.autocompleteproblems
+      with:
+        text: tools.text
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

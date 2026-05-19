@@ -1,0 +1,156 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Sessions — Sessions
+  description: 'Zendesk Sessions — Sessions. 4 operations. Lead operation: Zendesk Get  Api V2 Sessions. Self-contained Naftiko
+    capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Sessions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sessions-sessions
+    baseUri: ''
+    description: Zendesk Sessions — Sessions business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-sessions
+      path: /api/v2/sessions
+      operations:
+      - name: listsessions
+        method: GET
+        description: Zendesk Get  Api V2 Sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-user_id-sessions
+      path: /api/v2/users/{user_id}/sessions
+      operations:
+      - name: bulkdeletesessionsbyuserid
+        method: DELETE
+        description: Zendesk Delete  Api V2 Users User_id Sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-user_id-sessions-session_id
+      path: /api/v2/users/{user_id}/sessions/{session_id}
+      operations:
+      - name: showsession
+        method: GET
+        description: Zendesk Get  Api V2 Users User_id Sessions Session_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletesession
+        method: DELETE
+        description: Zendesk Delete  Api V2 Users User_id Sessions Session_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: sessions-sessions-rest
+    port: 8080
+    description: REST adapter for Zendesk Sessions — Sessions. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/sessions
+      name: api-v2-sessions
+      description: REST surface for api-v2-sessions.
+      operations:
+      - method: GET
+        name: listsessions
+        description: Zendesk Get  Api V2 Sessions
+        call: sessions-sessions.listsessions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/sessions
+      name: api-v2-users-user-id-sessions
+      description: REST surface for api-v2-users-user_id-sessions.
+      operations:
+      - method: DELETE
+        name: bulkdeletesessionsbyuserid
+        description: Zendesk Delete  Api V2 Users User_id Sessions
+        call: sessions-sessions.bulkdeletesessionsbyuserid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/sessions/{session-id}
+      name: api-v2-users-user-id-sessions-session-id
+      description: REST surface for api-v2-users-user_id-sessions-session_id.
+      operations:
+      - method: GET
+        name: showsession
+        description: Zendesk Get  Api V2 Users User_id Sessions Session_id
+        call: sessions-sessions.showsession
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesession
+        description: Zendesk Delete  Api V2 Users User_id Sessions Session_id
+        call: sessions-sessions.deletesession
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sessions-sessions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Sessions — Sessions. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-sessions
+      description: Zendesk Get  Api V2 Sessions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sessions-sessions.listsessions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-users
+      description: Zendesk Delete  Api V2 Users User_id Sessions
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sessions-sessions.bulkdeletesessionsbyuserid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users
+      description: Zendesk Get  Api V2 Users User_id Sessions Session_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sessions-sessions.showsession
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-users-2
+      description: Zendesk Delete  Api V2 Users User_id Sessions Session_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: sessions-sessions.deletesession
+      outputParameters:
+      - type: object
+        mapping: $.

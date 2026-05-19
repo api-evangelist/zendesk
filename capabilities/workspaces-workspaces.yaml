@@ -1,0 +1,278 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Workspaces — Workspaces
+  description: 'Zendesk Workspaces — Workspaces. 7 operations. Lead operation: Zendesk Get  Api V2 Workspaces. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Workspaces
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: workspaces-workspaces
+    baseUri: ''
+    description: Zendesk Workspaces — Workspaces business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-workspaces
+      path: /api/v2/workspaces
+      operations:
+      - name: listworkspaces
+        method: GET
+        description: Zendesk Get  Api V2 Workspaces
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createworkspace
+        method: POST
+        description: Zendesk Post  Api V2 Workspaces
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v2-workspaces-destroy_many
+      path: /api/v2/workspaces/destroy_many
+      operations:
+      - name: destroymanyworkspaces
+        method: DELETE
+        description: Zendesk Delete  Api V2 Workspaces Destroy_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: array
+          description: The ids of the workspaces to delete
+          required: true
+    - name: api-v2-workspaces-reorder
+      path: /api/v2/workspaces/reorder
+      operations:
+      - name: reorderworkspaces
+        method: PUT
+        description: Zendesk Put  Api V2 Workspaces Reorder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v2-workspaces-workspace_id
+      path: /api/v2/workspaces/{workspace_id}
+      operations:
+      - name: showworkspace
+        method: GET
+        description: Zendesk Get  Api V2 Workspaces Workspace_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateworkspace
+        method: PUT
+        description: Zendesk Put  Api V2 Workspaces Workspace_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteworkspace
+        method: DELETE
+        description: Zendesk Delete  Api V2 Workspaces Workspace_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: workspaces-workspaces-rest
+    port: 8080
+    description: REST adapter for Zendesk Workspaces — Workspaces. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/workspaces
+      name: api-v2-workspaces
+      description: REST surface for api-v2-workspaces.
+      operations:
+      - method: GET
+        name: listworkspaces
+        description: Zendesk Get  Api V2 Workspaces
+        call: workspaces-workspaces.listworkspaces
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createworkspace
+        description: Zendesk Post  Api V2 Workspaces
+        call: workspaces-workspaces.createworkspace
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/workspaces/destroy-many
+      name: api-v2-workspaces-destroy-many
+      description: REST surface for api-v2-workspaces-destroy_many.
+      operations:
+      - method: DELETE
+        name: destroymanyworkspaces
+        description: Zendesk Delete  Api V2 Workspaces Destroy_many
+        call: workspaces-workspaces.destroymanyworkspaces
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/workspaces/reorder
+      name: api-v2-workspaces-reorder
+      description: REST surface for api-v2-workspaces-reorder.
+      operations:
+      - method: PUT
+        name: reorderworkspaces
+        description: Zendesk Put  Api V2 Workspaces Reorder
+        call: workspaces-workspaces.reorderworkspaces
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/workspaces/{workspace-id}
+      name: api-v2-workspaces-workspace-id
+      description: REST surface for api-v2-workspaces-workspace_id.
+      operations:
+      - method: GET
+        name: showworkspace
+        description: Zendesk Get  Api V2 Workspaces Workspace_id
+        call: workspaces-workspaces.showworkspace
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateworkspace
+        description: Zendesk Put  Api V2 Workspaces Workspace_id
+        call: workspaces-workspaces.updateworkspace
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteworkspace
+        description: Zendesk Delete  Api V2 Workspaces Workspace_id
+        call: workspaces-workspaces.deleteworkspace
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: workspaces-workspaces-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Workspaces — Workspaces. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-workspaces
+      description: Zendesk Get  Api V2 Workspaces
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workspaces-workspaces.listworkspaces
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-workspaces
+      description: Zendesk Post  Api V2 Workspaces
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: workspaces-workspaces.createworkspace
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-workspaces
+      description: Zendesk Delete  Api V2 Workspaces Destroy_many
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: workspaces-workspaces.destroymanyworkspaces
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-workspaces
+      description: Zendesk Put  Api V2 Workspaces Reorder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: workspaces-workspaces.reorderworkspaces
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-workspaces-2
+      description: Zendesk Get  Api V2 Workspaces Workspace_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workspaces-workspaces.showworkspace
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-workspaces-2
+      description: Zendesk Put  Api V2 Workspaces Workspace_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: workspaces-workspaces.updateworkspace
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-workspaces-2
+      description: Zendesk Delete  Api V2 Workspaces Workspace_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: workspaces-workspaces.deleteworkspace
+      outputParameters:
+      - type: object
+        mapping: $.

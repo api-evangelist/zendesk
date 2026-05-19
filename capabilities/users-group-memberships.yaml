@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Users — Group Memberships
+  description: 'Zendesk Users — Group Memberships. 1 operations. Lead operation: Zendesk Put  Api V2 Users User_id Group_memberships
+    Group_membership_id Make_default. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Group Memberships
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: users-group-memberships
+    baseUri: ''
+    description: Zendesk Users — Group Memberships business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-users-user_id-group_memberships-group_membership_id-make_default
+      path: /api/v2/users/{user_id}/group_memberships/{group_membership_id}/make_default
+      operations:
+      - name: groupmembershipsetdefault
+        method: PUT
+        description: Zendesk Put  Api V2 Users User_id Group_memberships Group_membership_id Make_default
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: users-group-memberships-rest
+    port: 8080
+    description: REST adapter for Zendesk Users — Group Memberships. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/users/{user-id}/group-memberships/{group-membership-id}/make-default
+      name: api-v2-users-user-id-group-memberships-group-membership-id-make-default
+      description: REST surface for api-v2-users-user_id-group_memberships-group_membership_id-make_default.
+      operations:
+      - method: PUT
+        name: groupmembershipsetdefault
+        description: Zendesk Put  Api V2 Users User_id Group_memberships Group_membership_id Make_default
+        call: users-group-memberships.groupmembershipsetdefault
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: users-group-memberships-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Users — Group Memberships. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-put-api-v2-users
+      description: Zendesk Put  Api V2 Users User_id Group_memberships Group_membership_id Make_default
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: users-group-memberships.groupmembershipsetdefault
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Oauth — Grant Type Tokens
+  description: 'Zendesk Oauth — Grant Type Tokens. 1 operations. Lead operation: Zendesk Post  Oauth Tokens. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Grant Type Tokens
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: oauth-grant-type-tokens
+    baseUri: ''
+    description: Zendesk Oauth — Grant Type Tokens business capability. Self-contained, no shared references.
+    resources:
+    - name: oauth-tokens
+      path: /oauth/tokens
+      operations:
+      - name: createtokenforgranttype
+        method: POST
+        description: Zendesk Post  Oauth Tokens
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: oauth-grant-type-tokens-rest
+    port: 8080
+    description: REST adapter for Zendesk Oauth — Grant Type Tokens. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/oauth/tokens
+      name: oauth-tokens
+      description: REST surface for oauth-tokens.
+      operations:
+      - method: POST
+        name: createtokenforgranttype
+        description: Zendesk Post  Oauth Tokens
+        call: oauth-grant-type-tokens.createtokenforgranttype
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: oauth-grant-type-tokens-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Oauth — Grant Type Tokens. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-post-oauth-tokens
+      description: Zendesk Post  Oauth Tokens
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oauth-grant-type-tokens.createtokenforgranttype
+      outputParameters:
+      - type: object
+        mapping: $.

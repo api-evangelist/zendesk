@@ -1,0 +1,631 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Custom Objects — Custom Object Records
+  description: 'Zendesk Custom Objects — Custom Object Records. 13 operations. Lead operation: Zendesk Get  Api V2 Custom_objects
+    Limits Record_limit. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Custom Object Records
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: custom-objects-custom-object-records
+    baseUri: ''
+    description: Zendesk Custom Objects — Custom Object Records business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-custom_objects-limits-record_limit
+      path: /api/v2/custom_objects/limits/record_limit
+      operations:
+      - name: customobjectrecordslimit
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Limits Record_limit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-custom_objects-custom_object_key-jobs
+      path: /api/v2/custom_objects/{custom_object_key}/jobs
+      operations:
+      - name: customobjectrecordbulkjobs
+        method: POST
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v2-custom_objects-custom_object_key-records
+      path: /api/v2/custom_objects/{custom_object_key}/records
+      operations:
+      - name: listcustomobjectrecords
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter[ids]
+          in: query
+          type: string
+          description: 'Optional comma-separated list of ids to filter records by. If one or more ids are specified, only
+            matching records are returned. The ids must be unique and are '
+        - name: filter[external_ids]
+          in: query
+          type: string
+          description: Optional comma-separated list of external ids to filter records by. If one or more ids are specified,
+            only matching records are returned. The ids must be unique
+        - name: sort
+          in: query
+          type: string
+          description: One of `id`, `updated_at`, `-id`, or `-updated_at`. The `-` denotes the sort will be descending.
+        - name: page[before]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[after]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[size]
+          in: query
+          type: integer
+          description: Specifies how many records should be returned in the response. You can specify up to 100 records per
+            page.
+      - name: createcustomobjectrecord
+        method: POST
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: upsertcustomobjectrecordbyexternalidorname
+        method: PATCH
+        description: Zendesk Patch  Api V2 Custom_objects Custom_object_key Records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletecustomobjectrecordbyexternalidorname
+        method: DELETE
+        description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-custom_objects-custom_object_key-records-autocomplete
+      path: /api/v2/custom_objects/{custom_object_key}/records/autocomplete
+      operations:
+      - name: autocompletecustomobjectrecordsearch
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Autocomplete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Part of a name of the record you are searching for
+        - name: page[before]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[after]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[size]
+          in: query
+          type: integer
+          description: The number of records to return in the response. You can specify up to 100 records per page.
+        - name: field_id
+          in: query
+          type: string
+          description: The id of the lookup field. If the field has a relationship filter, the filter is applied to the results.
+            Must be used with `source` param.
+        - name: source
+          in: query
+          type: string
+          description: One of "zen:user", "zen:ticket", "zen:organization", or "zen:custom_object:CUSTOM_OBJECT_KEY". Represents
+            the object `field_id` belongs to. Must be used with fi
+        - name: filter[dynamic_values]
+          in: query
+          type: object
+          description: Provided values to be used with [dynamic filters](/api-reference/ticketing/lookup_relationships/lookup_relationships/#using-dynamic-filters).
+        - name: requester_id
+          in: query
+          type: integer
+          description: The id of the requester. For use with dynamic filters.
+        - name: assignee_id
+          in: query
+          type: integer
+          description: The id of the selected assignee. For use with dynamic filters.
+        - name: organization_id
+          in: query
+          type: integer
+          description: The id of the organization the requester belongs to. For use with dynamic filters.
+    - name: api-v2-custom_objects-custom_object_key-records-count
+      path: /api/v2/custom_objects/{custom_object_key}/records/count
+      operations:
+      - name: countcustomobjectrecords
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-custom_objects-custom_object_key-records-search
+      path: /api/v2/custom_objects/{custom_object_key}/records/search
+      operations:
+      - name: searchcustomobjectrecords
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The query parameter is used to search text-based fields for records that match specific query terms.
+        - name: sort
+          in: query
+          type: string
+          description: One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes
+            the sort will be descending. Defaults to sorting by relevan
+        - name: page[before]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[after]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[size]
+          in: query
+          type: integer
+          description: Specifies how many records should be returned in the response. You can specify up to 100 records per
+            page.
+      - name: filteredsearchcustomobjectrecords
+        method: POST
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The query parameter is used to search text-based fields for records that match specific query terms.
+        - name: sort
+          in: query
+          type: string
+          description: One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes
+            the sort will be descending. Defaults to sorting by relevan
+        - name: page[before]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[after]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[size]
+          in: query
+          type: integer
+          description: Specifies how many records should be returned in the response. You can specify up to 100 records per
+            page.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v2-custom_objects-custom_object_key-records-custom_object_record_id
+      path: /api/v2/custom_objects/{custom_object_key}/records/{custom_object_record_id}
+      operations:
+      - name: showcustomobjectrecord
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecustomobjectrecord
+        method: PATCH
+        description: Zendesk Patch  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecustomobjectrecord
+        method: DELETE
+        description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: custom-objects-custom-object-records-rest
+    port: 8080
+    description: REST adapter for Zendesk Custom Objects — Custom Object Records. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/custom-objects/limits/record-limit
+      name: api-v2-custom-objects-limits-record-limit
+      description: REST surface for api-v2-custom_objects-limits-record_limit.
+      operations:
+      - method: GET
+        name: customobjectrecordslimit
+        description: Zendesk Get  Api V2 Custom_objects Limits Record_limit
+        call: custom-objects-custom-object-records.customobjectrecordslimit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/jobs
+      name: api-v2-custom-objects-custom-object-key-jobs
+      description: REST surface for api-v2-custom_objects-custom_object_key-jobs.
+      operations:
+      - method: POST
+        name: customobjectrecordbulkjobs
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Jobs
+        call: custom-objects-custom-object-records.customobjectrecordbulkjobs
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/records
+      name: api-v2-custom-objects-custom-object-key-records
+      description: REST surface for api-v2-custom_objects-custom_object_key-records.
+      operations:
+      - method: GET
+        name: listcustomobjectrecords
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records
+        call: custom-objects-custom-object-records.listcustomobjectrecords
+        with:
+          filter[ids]: rest.filter[ids]
+          filter[external_ids]: rest.filter[external_ids]
+          sort: rest.sort
+          page[before]: rest.page[before]
+          page[after]: rest.page[after]
+          page[size]: rest.page[size]
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcustomobjectrecord
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records
+        call: custom-objects-custom-object-records.createcustomobjectrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: upsertcustomobjectrecordbyexternalidorname
+        description: Zendesk Patch  Api V2 Custom_objects Custom_object_key Records
+        call: custom-objects-custom-object-records.upsertcustomobjectrecordbyexternalidorname
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecustomobjectrecordbyexternalidorname
+        description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Records
+        call: custom-objects-custom-object-records.deletecustomobjectrecordbyexternalidorname
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/records/autocomplete
+      name: api-v2-custom-objects-custom-object-key-records-autocomplete
+      description: REST surface for api-v2-custom_objects-custom_object_key-records-autocomplete.
+      operations:
+      - method: GET
+        name: autocompletecustomobjectrecordsearch
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Autocomplete
+        call: custom-objects-custom-object-records.autocompletecustomobjectrecordsearch
+        with:
+          name: rest.name
+          page[before]: rest.page[before]
+          page[after]: rest.page[after]
+          page[size]: rest.page[size]
+          field_id: rest.field_id
+          source: rest.source
+          filter[dynamic_values]: rest.filter[dynamic_values]
+          requester_id: rest.requester_id
+          assignee_id: rest.assignee_id
+          organization_id: rest.organization_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/records/count
+      name: api-v2-custom-objects-custom-object-key-records-count
+      description: REST surface for api-v2-custom_objects-custom_object_key-records-count.
+      operations:
+      - method: GET
+        name: countcustomobjectrecords
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Count
+        call: custom-objects-custom-object-records.countcustomobjectrecords
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/records/search
+      name: api-v2-custom-objects-custom-object-key-records-search
+      description: REST surface for api-v2-custom_objects-custom_object_key-records-search.
+      operations:
+      - method: GET
+        name: searchcustomobjectrecords
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search
+        call: custom-objects-custom-object-records.searchcustomobjectrecords
+        with:
+          query: rest.query
+          sort: rest.sort
+          page[before]: rest.page[before]
+          page[after]: rest.page[after]
+          page[size]: rest.page[size]
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: filteredsearchcustomobjectrecords
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search
+        call: custom-objects-custom-object-records.filteredsearchcustomobjectrecords
+        with:
+          query: rest.query
+          sort: rest.sort
+          page[before]: rest.page[before]
+          page[after]: rest.page[after]
+          page[size]: rest.page[size]
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/records/{custom-object-record-id}
+      name: api-v2-custom-objects-custom-object-key-records-custom-object-record-id
+      description: REST surface for api-v2-custom_objects-custom_object_key-records-custom_object_record_id.
+      operations:
+      - method: GET
+        name: showcustomobjectrecord
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+        call: custom-objects-custom-object-records.showcustomobjectrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecustomobjectrecord
+        description: Zendesk Patch  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+        call: custom-objects-custom-object-records.updatecustomobjectrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecustomobjectrecord
+        description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+        call: custom-objects-custom-object-records.deletecustomobjectrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: custom-objects-custom-object-records-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Custom Objects — Custom Object Records. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-custom
+      description: Zendesk Get  Api V2 Custom_objects Limits Record_limit
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-objects-custom-object-records.customobjectrecordslimit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-custom
+      description: Zendesk Post  Api V2 Custom_objects Custom_object_key Jobs
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: custom-objects-custom-object-records.customobjectrecordbulkjobs
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-2
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-objects-custom-object-records.listcustomobjectrecords
+      with:
+        filter[ids]: tools.filter[ids]
+        filter[external_ids]: tools.filter[external_ids]
+        sort: tools.sort
+        page[before]: tools.page[before]
+        page[after]: tools.page[after]
+        page[size]: tools.page[size]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-custom-2
+      description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: custom-objects-custom-object-records.createcustomobjectrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-patch-api-v2-custom
+      description: Zendesk Patch  Api V2 Custom_objects Custom_object_key Records
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: custom-objects-custom-object-records.upsertcustomobjectrecordbyexternalidorname
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-custom
+      description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Records
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: custom-objects-custom-object-records.deletecustomobjectrecordbyexternalidorname
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-3
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Autocomplete
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-objects-custom-object-records.autocompletecustomobjectrecordsearch
+      with:
+        name: tools.name
+        page[before]: tools.page[before]
+        page[after]: tools.page[after]
+        page[size]: tools.page[size]
+        field_id: tools.field_id
+        source: tools.source
+        filter[dynamic_values]: tools.filter[dynamic_values]
+        requester_id: tools.requester_id
+        assignee_id: tools.assignee_id
+        organization_id: tools.organization_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-4
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-objects-custom-object-records.countcustomobjectrecords
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-5
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-objects-custom-object-records.searchcustomobjectrecords
+      with:
+        query: tools.query
+        sort: tools.sort
+        page[before]: tools.page[before]
+        page[after]: tools.page[after]
+        page[size]: tools.page[size]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-custom-3
+      description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: custom-objects-custom-object-records.filteredsearchcustomobjectrecords
+      with:
+        query: tools.query
+        sort: tools.sort
+        page[before]: tools.page[before]
+        page[after]: tools.page[after]
+        page[size]: tools.page[size]
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-6
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-objects-custom-object-records.showcustomobjectrecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-patch-api-v2-custom-2
+      description: Zendesk Patch  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: custom-objects-custom-object-records.updatecustomobjectrecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-custom-2
+      description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: custom-objects-custom-object-records.deletecustomobjectrecord
+      outputParameters:
+      - type: object
+        mapping: $.

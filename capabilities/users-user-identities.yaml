@@ -1,0 +1,270 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Users — User Identities
+  description: 'Zendesk Users — User Identities. 8 operations. Lead operation: Zendesk Get  Api V2 Users User_id Identities.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - User Identities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: users-user-identities
+    baseUri: ''
+    description: Zendesk Users — User Identities business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-users-user_id-identities
+      path: /api/v2/users/{user_id}/identities
+      operations:
+      - name: listuseridentities
+        method: GET
+        description: Zendesk Get  Api V2 Users User_id Identities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createuseridentity
+        method: POST
+        description: Zendesk Post  Api V2 Users User_id Identities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-user_id-identities-user_identity_id
+      path: /api/v2/users/{user_id}/identities/{user_identity_id}
+      operations:
+      - name: showuseridentity
+        method: GET
+        description: Zendesk Get  Api V2 Users User_id Identities User_identity_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateuseridentity
+        method: PUT
+        description: Zendesk Put  Api V2 Users User_id Identities User_identity_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteuseridentity
+        method: DELETE
+        description: Zendesk Delete  Api V2 Users User_id Identities User_identity_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-user_id-identities-user_identity_id-make_primary
+      path: /api/v2/users/{user_id}/identities/{user_identity_id}/make_primary
+      operations:
+      - name: makeuseridentityprimary
+        method: PUT
+        description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Make_primary
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-user_id-identities-user_identity_id-request_verification
+      path: /api/v2/users/{user_id}/identities/{user_identity_id}/request_verification
+      operations:
+      - name: requestuserverfication
+        method: PUT
+        description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Request_verification
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-user_id-identities-user_identity_id-verify
+      path: /api/v2/users/{user_id}/identities/{user_identity_id}/verify
+      operations:
+      - name: verifyuseridentity
+        method: PUT
+        description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Verify
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: users-user-identities-rest
+    port: 8080
+    description: REST adapter for Zendesk Users — User Identities. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/users/{user-id}/identities
+      name: api-v2-users-user-id-identities
+      description: REST surface for api-v2-users-user_id-identities.
+      operations:
+      - method: GET
+        name: listuseridentities
+        description: Zendesk Get  Api V2 Users User_id Identities
+        call: users-user-identities.listuseridentities
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createuseridentity
+        description: Zendesk Post  Api V2 Users User_id Identities
+        call: users-user-identities.createuseridentity
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/identities/{user-identity-id}
+      name: api-v2-users-user-id-identities-user-identity-id
+      description: REST surface for api-v2-users-user_id-identities-user_identity_id.
+      operations:
+      - method: GET
+        name: showuseridentity
+        description: Zendesk Get  Api V2 Users User_id Identities User_identity_id
+        call: users-user-identities.showuseridentity
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateuseridentity
+        description: Zendesk Put  Api V2 Users User_id Identities User_identity_id
+        call: users-user-identities.updateuseridentity
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuseridentity
+        description: Zendesk Delete  Api V2 Users User_id Identities User_identity_id
+        call: users-user-identities.deleteuseridentity
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/identities/{user-identity-id}/make-primary
+      name: api-v2-users-user-id-identities-user-identity-id-make-primary
+      description: REST surface for api-v2-users-user_id-identities-user_identity_id-make_primary.
+      operations:
+      - method: PUT
+        name: makeuseridentityprimary
+        description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Make_primary
+        call: users-user-identities.makeuseridentityprimary
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/identities/{user-identity-id}/request-verification
+      name: api-v2-users-user-id-identities-user-identity-id-request-verification
+      description: REST surface for api-v2-users-user_id-identities-user_identity_id-request_verification.
+      operations:
+      - method: PUT
+        name: requestuserverfication
+        description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Request_verification
+        call: users-user-identities.requestuserverfication
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/identities/{user-identity-id}/verify
+      name: api-v2-users-user-id-identities-user-identity-id-verify
+      description: REST surface for api-v2-users-user_id-identities-user_identity_id-verify.
+      operations:
+      - method: PUT
+        name: verifyuseridentity
+        description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Verify
+        call: users-user-identities.verifyuseridentity
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: users-user-identities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Users — User Identities. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-users
+      description: Zendesk Get  Api V2 Users User_id Identities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-user-identities.listuseridentities
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-users
+      description: Zendesk Post  Api V2 Users User_id Identities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: users-user-identities.createuseridentity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-2
+      description: Zendesk Get  Api V2 Users User_id Identities User_identity_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-user-identities.showuseridentity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-users
+      description: Zendesk Put  Api V2 Users User_id Identities User_identity_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: users-user-identities.updateuseridentity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-users
+      description: Zendesk Delete  Api V2 Users User_id Identities User_identity_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: users-user-identities.deleteuseridentity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-users-2
+      description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Make_primary
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: users-user-identities.makeuseridentityprimary
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-users-3
+      description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Request_verification
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: users-user-identities.requestuserverfication
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-users-4
+      description: Zendesk Put  Api V2 Users User_id Identities User_identity_id Verify
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: users-user-identities.verifyuseridentity
+      outputParameters:
+      - type: object
+        mapping: $.

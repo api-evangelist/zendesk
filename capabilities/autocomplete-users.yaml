@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Autocomplete — Users
+  description: 'Zendesk Autocomplete — Users. 1 operations. Lead operation: Zendesk Get  Api V2 Users Autocomplete. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: autocomplete-users
+    baseUri: ''
+    description: Zendesk Autocomplete — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-users-autocomplete
+      path: /api/v2/users/autocomplete
+      operations:
+      - name: autocompleteusers
+        method: GET
+        description: Zendesk Get  Api V2 Users Autocomplete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: The name to search for the user.
+          required: true
+  exposes:
+  - type: rest
+    namespace: autocomplete-users-rest
+    port: 8080
+    description: REST adapter for Zendesk Autocomplete — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/users/autocomplete
+      name: api-v2-users-autocomplete
+      description: REST surface for api-v2-users-autocomplete.
+      operations:
+      - method: GET
+        name: autocompleteusers
+        description: Zendesk Get  Api V2 Users Autocomplete
+        call: autocomplete-users.autocompleteusers
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: autocomplete-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Autocomplete — Users. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-users
+      description: Zendesk Get  Api V2 Users Autocomplete
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: autocomplete-users.autocompleteusers
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.

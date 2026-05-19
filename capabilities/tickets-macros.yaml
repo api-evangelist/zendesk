@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Tickets — Macros
+  description: 'Zendesk Tickets — Macros. 1 operations. Lead operation: Zendesk Get  Api V2 Tickets Ticket_id Macros Macro_id
+    Apply. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Macros
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tickets-macros
+    baseUri: ''
+    description: Zendesk Tickets — Macros business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-tickets-ticket_id-macros-macro_id-apply
+      path: /api/v2/tickets/{ticket_id}/macros/{macro_id}/apply
+      operations:
+      - name: showticketafterchanges
+        method: GET
+        description: Zendesk Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: tickets-macros-rest
+    port: 8080
+    description: REST adapter for Zendesk Tickets — Macros. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/tickets/{ticket-id}/macros/{macro-id}/apply
+      name: api-v2-tickets-ticket-id-macros-macro-id-apply
+      description: REST surface for api-v2-tickets-ticket_id-macros-macro_id-apply.
+      operations:
+      - method: GET
+        name: showticketafterchanges
+        description: Zendesk Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
+        call: tickets-macros.showticketafterchanges
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tickets-macros-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Tickets — Macros. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-tickets
+      description: Zendesk Get  Api V2 Tickets Ticket_id Macros Macro_id Apply
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tickets-macros.showticketafterchanges
+      outputParameters:
+      - type: object
+        mapping: $.

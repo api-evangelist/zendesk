@@ -1,0 +1,156 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Deleted Users — Users
+  description: 'Zendesk Deleted Users — Users. 4 operations. Lead operation: Zendesk Get  Api V2 Deleted_users. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: deleted-users-users
+    baseUri: ''
+    description: Zendesk Deleted Users — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-deleted_users
+      path: /api/v2/deleted_users
+      operations:
+      - name: listdeletedusers
+        method: GET
+        description: Zendesk Get  Api V2 Deleted_users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-deleted_users-count
+      path: /api/v2/deleted_users/count
+      operations:
+      - name: countdeletedusers
+        method: GET
+        description: Zendesk Get  Api V2 Deleted_users Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-deleted_users-deleted_user_id
+      path: /api/v2/deleted_users/{deleted_user_id}
+      operations:
+      - name: showdeleteduser
+        method: GET
+        description: Zendesk Get  Api V2 Deleted_users Deleted_user_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: permanentlydeleteuser
+        method: DELETE
+        description: Zendesk Delete  Api V2 Deleted_users Deleted_user_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: deleted-users-users-rest
+    port: 8080
+    description: REST adapter for Zendesk Deleted Users — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/deleted-users
+      name: api-v2-deleted-users
+      description: REST surface for api-v2-deleted_users.
+      operations:
+      - method: GET
+        name: listdeletedusers
+        description: Zendesk Get  Api V2 Deleted_users
+        call: deleted-users-users.listdeletedusers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/deleted-users/count
+      name: api-v2-deleted-users-count
+      description: REST surface for api-v2-deleted_users-count.
+      operations:
+      - method: GET
+        name: countdeletedusers
+        description: Zendesk Get  Api V2 Deleted_users Count
+        call: deleted-users-users.countdeletedusers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/deleted-users/{deleted-user-id}
+      name: api-v2-deleted-users-deleted-user-id
+      description: REST surface for api-v2-deleted_users-deleted_user_id.
+      operations:
+      - method: GET
+        name: showdeleteduser
+        description: Zendesk Get  Api V2 Deleted_users Deleted_user_id
+        call: deleted-users-users.showdeleteduser
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: permanentlydeleteuser
+        description: Zendesk Delete  Api V2 Deleted_users Deleted_user_id
+        call: deleted-users-users.permanentlydeleteuser
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: deleted-users-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Deleted Users — Users. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-deleted
+      description: Zendesk Get  Api V2 Deleted_users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: deleted-users-users.listdeletedusers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-deleted-2
+      description: Zendesk Get  Api V2 Deleted_users Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: deleted-users-users.countdeletedusers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-deleted-3
+      description: Zendesk Get  Api V2 Deleted_users Deleted_user_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: deleted-users-users.showdeleteduser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-deleted
+      description: Zendesk Delete  Api V2 Deleted_users Deleted_user_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: deleted-users-users.permanentlydeleteuser
+      outputParameters:
+      - type: object
+        mapping: $.

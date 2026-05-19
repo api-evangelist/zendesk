@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Search — Users
+  description: 'Zendesk Search — Users. 1 operations. Lead operation: Zendesk Get  Api V2 Users Search. Self-contained Naftiko
+    capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-users
+    baseUri: ''
+    description: Zendesk Search — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-users-search
+      path: /api/v2/users/search
+      operations:
+      - name: searchusers
+        method: GET
+        description: Zendesk Get  Api V2 Users Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The `query` parameter supports the Zendesk search syntax for more advanced
+        - name: external_id
+          in: query
+          type: string
+          description: The `external_id` parameter does not support the search syntax. It only accepts ids.
+  exposes:
+  - type: rest
+    namespace: search-users-rest
+    port: 8080
+    description: REST adapter for Zendesk Search — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/users/search
+      name: api-v2-users-search
+      description: REST surface for api-v2-users-search.
+      operations:
+      - method: GET
+        name: searchusers
+        description: Zendesk Get  Api V2 Users Search
+        call: search-users.searchusers
+        with:
+          query: rest.query
+          external_id: rest.external_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Search — Users. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-users
+      description: Zendesk Get  Api V2 Users Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-users.searchusers
+      with:
+        query: tools.query
+        external_id: tools.external_id
+      outputParameters:
+      - type: object
+        mapping: $.

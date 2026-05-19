@@ -1,0 +1,131 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Incremental — Incremental Skill Based Routing
+  description: 'Zendesk Incremental — Incremental Skill Based Routing. 3 operations. Lead operation: Zendesk Get  Api V2 Incremental
+    Routing Attribute_values. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Incremental Skill Based Routing
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: incremental-incremental-skill-based-routing
+    baseUri: ''
+    description: Zendesk Incremental — Incremental Skill Based Routing business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-incremental-routing-attribute_values
+      path: /api/v2/incremental/routing/attribute_values
+      operations:
+      - name: incrementalskilbasedroutingattributevaluesexport
+        method: GET
+        description: Zendesk Get  Api V2 Incremental Routing Attribute_values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-incremental-routing-attributes
+      path: /api/v2/incremental/routing/attributes
+      operations:
+      - name: incrementalskilbasedroutingattributesexport
+        method: GET
+        description: Zendesk Get  Api V2 Incremental Routing Attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-incremental-routing-instance_values
+      path: /api/v2/incremental/routing/instance_values
+      operations:
+      - name: incrementalskilbasedroutinginstancevaluesexport
+        method: GET
+        description: Zendesk Get  Api V2 Incremental Routing Instance_values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: incremental-incremental-skill-based-routing-rest
+    port: 8080
+    description: REST adapter for Zendesk Incremental — Incremental Skill Based Routing. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/incremental/routing/attribute-values
+      name: api-v2-incremental-routing-attribute-values
+      description: REST surface for api-v2-incremental-routing-attribute_values.
+      operations:
+      - method: GET
+        name: incrementalskilbasedroutingattributevaluesexport
+        description: Zendesk Get  Api V2 Incremental Routing Attribute_values
+        call: incremental-incremental-skill-based-routing.incrementalskilbasedroutingattributevaluesexport
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/incremental/routing/attributes
+      name: api-v2-incremental-routing-attributes
+      description: REST surface for api-v2-incremental-routing-attributes.
+      operations:
+      - method: GET
+        name: incrementalskilbasedroutingattributesexport
+        description: Zendesk Get  Api V2 Incremental Routing Attributes
+        call: incremental-incremental-skill-based-routing.incrementalskilbasedroutingattributesexport
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/incremental/routing/instance-values
+      name: api-v2-incremental-routing-instance-values
+      description: REST surface for api-v2-incremental-routing-instance_values.
+      operations:
+      - method: GET
+        name: incrementalskilbasedroutinginstancevaluesexport
+        description: Zendesk Get  Api V2 Incremental Routing Instance_values
+        call: incremental-incremental-skill-based-routing.incrementalskilbasedroutinginstancevaluesexport
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: incremental-incremental-skill-based-routing-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Incremental — Incremental Skill Based Routing. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-incremental
+      description: Zendesk Get  Api V2 Incremental Routing Attribute_values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: incremental-incremental-skill-based-routing.incrementalskilbasedroutingattributevaluesexport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-incremental-2
+      description: Zendesk Get  Api V2 Incremental Routing Attributes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: incremental-incremental-skill-based-routing.incrementalskilbasedroutingattributesexport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-incremental-3
+      description: Zendesk Get  Api V2 Incremental Routing Instance_values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: incremental-incremental-skill-based-routing.incrementalskilbasedroutinginstancevaluesexport
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,234 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Custom Statuses — Custom Ticket Statuses
+  description: 'Zendesk Custom Statuses — Custom Ticket Statuses. 5 operations. Lead operation: Zendesk Get  Api V2 Custom_statuses.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Custom Ticket Statuses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: custom-statuses-custom-ticket-statuses
+    baseUri: ''
+    description: Zendesk Custom Statuses — Custom Ticket Statuses business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-custom_statuses
+      path: /api/v2/custom_statuses
+      operations:
+      - name: listcustomstatuses
+        method: GET
+        description: Zendesk Get  Api V2 Custom_statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: status_categories
+          in: query
+          type: string
+          description: Filter the list of custom ticket statuses by a comma-separated list of status categories
+        - name: active
+          in: query
+          type: boolean
+          description: If true, show only active custom ticket statuses. If false, show only inactive custom ticket statuses.
+            If the filter is not used, show all custom ticket statuse
+        - name: default
+          in: query
+          type: boolean
+          description: If true, show only default custom ticket statuses. If false, show only non-default custom ticket statuses.
+            If the filter is not used, show all custom ticket sta
+      - name: createcustomstatus
+        method: POST
+        description: Zendesk Post  Api V2 Custom_statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v2-custom_statuses-custom_status_id
+      path: /api/v2/custom_statuses/{custom_status_id}
+      operations:
+      - name: showcustomstatus
+        method: GET
+        description: Zendesk Get  Api V2 Custom_statuses Custom_status_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecustomstatus
+        method: PUT
+        description: Zendesk Put  Api V2 Custom_statuses Custom_status_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v2-custom_statuses-custom_status_id-ticket_form_statuses
+      path: /api/v2/custom_statuses/{custom_status_id}/ticket_form_statuses
+      operations:
+      - name: createticketformstatusesforcustomstatus
+        method: POST
+        description: Zendesk Post  Api V2 Custom_statuses Custom_status_id Ticket_form_statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: custom-statuses-custom-ticket-statuses-rest
+    port: 8080
+    description: REST adapter for Zendesk Custom Statuses — Custom Ticket Statuses. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/custom-statuses
+      name: api-v2-custom-statuses
+      description: REST surface for api-v2-custom_statuses.
+      operations:
+      - method: GET
+        name: listcustomstatuses
+        description: Zendesk Get  Api V2 Custom_statuses
+        call: custom-statuses-custom-ticket-statuses.listcustomstatuses
+        with:
+          status_categories: rest.status_categories
+          active: rest.active
+          default: rest.default
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcustomstatus
+        description: Zendesk Post  Api V2 Custom_statuses
+        call: custom-statuses-custom-ticket-statuses.createcustomstatus
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-statuses/{custom-status-id}
+      name: api-v2-custom-statuses-custom-status-id
+      description: REST surface for api-v2-custom_statuses-custom_status_id.
+      operations:
+      - method: GET
+        name: showcustomstatus
+        description: Zendesk Get  Api V2 Custom_statuses Custom_status_id
+        call: custom-statuses-custom-ticket-statuses.showcustomstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecustomstatus
+        description: Zendesk Put  Api V2 Custom_statuses Custom_status_id
+        call: custom-statuses-custom-ticket-statuses.updatecustomstatus
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-statuses/{custom-status-id}/ticket-form-statuses
+      name: api-v2-custom-statuses-custom-status-id-ticket-form-statuses
+      description: REST surface for api-v2-custom_statuses-custom_status_id-ticket_form_statuses.
+      operations:
+      - method: POST
+        name: createticketformstatusesforcustomstatus
+        description: Zendesk Post  Api V2 Custom_statuses Custom_status_id Ticket_form_statuses
+        call: custom-statuses-custom-ticket-statuses.createticketformstatusesforcustomstatus
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: custom-statuses-custom-ticket-statuses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Custom Statuses — Custom Ticket Statuses. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-custom
+      description: Zendesk Get  Api V2 Custom_statuses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-statuses-custom-ticket-statuses.listcustomstatuses
+      with:
+        status_categories: tools.status_categories
+        active: tools.active
+        default: tools.default
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-custom
+      description: Zendesk Post  Api V2 Custom_statuses
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: custom-statuses-custom-ticket-statuses.createcustomstatus
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-2
+      description: Zendesk Get  Api V2 Custom_statuses Custom_status_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-statuses-custom-ticket-statuses.showcustomstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-custom
+      description: Zendesk Put  Api V2 Custom_statuses Custom_status_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: custom-statuses-custom-ticket-statuses.updatecustomstatus
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-custom-2
+      description: Zendesk Post  Api V2 Custom_statuses Custom_status_id Ticket_form_statuses
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: custom-statuses-custom-ticket-statuses.createticketformstatusesforcustomstatus
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

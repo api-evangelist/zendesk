@@ -1,0 +1,364 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Triggers — Object Triggers
+  description: 'Zendesk Triggers — Object Triggers. 10 operations. Lead operation: Zendesk Get  Api V2 Custom_objects Custom_object_key
+    Triggers. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Object Triggers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: triggers-object-triggers
+    baseUri: ''
+    description: Zendesk Triggers — Object Triggers business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-custom_objects-custom_object_key-triggers
+      path: /api/v2/custom_objects/{custom_object_key}/triggers
+      operations:
+      - name: listobjecttriggers
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createobjecttrigger
+        method: POST
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-custom_objects-custom_object_key-triggers-active
+      path: /api/v2/custom_objects/{custom_object_key}/triggers/active
+      operations:
+      - name: listactiveobjecttriggers
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-custom_objects-custom_object_key-triggers-definitions
+      path: /api/v2/custom_objects/{custom_object_key}/triggers/definitions
+      operations:
+      - name: listobjecttriggersdefinitions
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-custom_objects-custom_object_key-triggers-destroy_many
+      path: /api/v2/custom_objects/{custom_object_key}/triggers/destroy_many
+      operations:
+      - name: deletemanyobjecttriggers
+        method: DELETE
+        description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-custom_objects-custom_object_key-triggers-search
+      path: /api/v2/custom_objects/{custom_object_key}/triggers/search
+      operations:
+      - name: searchobjecttriggers
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-custom_objects-custom_object_key-triggers-update_many
+      path: /api/v2/custom_objects/{custom_object_key}/triggers/update_many
+      operations:
+      - name: updatemanyobjecttriggers
+        method: PUT
+        description: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-custom_objects-custom_object_key-triggers-trigger_id
+      path: /api/v2/custom_objects/{custom_object_key}/triggers/{trigger_id}
+      operations:
+      - name: getobjecttrigger
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateobjecttrigger
+        method: PUT
+        description: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteobjecttrigger
+        method: DELETE
+        description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: triggers-object-triggers-rest
+    port: 8080
+    description: REST adapter for Zendesk Triggers — Object Triggers. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/triggers
+      name: api-v2-custom-objects-custom-object-key-triggers
+      description: REST surface for api-v2-custom_objects-custom_object_key-triggers.
+      operations:
+      - method: GET
+        name: listobjecttriggers
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers
+        call: triggers-object-triggers.listobjecttriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createobjecttrigger
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers
+        call: triggers-object-triggers.createobjecttrigger
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/triggers/active
+      name: api-v2-custom-objects-custom-object-key-triggers-active
+      description: REST surface for api-v2-custom_objects-custom_object_key-triggers-active.
+      operations:
+      - method: GET
+        name: listactiveobjecttriggers
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active
+        call: triggers-object-triggers.listactiveobjecttriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/triggers/definitions
+      name: api-v2-custom-objects-custom-object-key-triggers-definitions
+      description: REST surface for api-v2-custom_objects-custom_object_key-triggers-definitions.
+      operations:
+      - method: GET
+        name: listobjecttriggersdefinitions
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
+        call: triggers-object-triggers.listobjecttriggersdefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/triggers/destroy-many
+      name: api-v2-custom-objects-custom-object-key-triggers-destroy-many
+      description: REST surface for api-v2-custom_objects-custom_object_key-triggers-destroy_many.
+      operations:
+      - method: DELETE
+        name: deletemanyobjecttriggers
+        description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
+        call: triggers-object-triggers.deletemanyobjecttriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/triggers/search
+      name: api-v2-custom-objects-custom-object-key-triggers-search
+      description: REST surface for api-v2-custom_objects-custom_object_key-triggers-search.
+      operations:
+      - method: GET
+        name: searchobjecttriggers
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
+        call: triggers-object-triggers.searchobjecttriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/triggers/update-many
+      name: api-v2-custom-objects-custom-object-key-triggers-update-many
+      description: REST surface for api-v2-custom_objects-custom_object_key-triggers-update_many.
+      operations:
+      - method: PUT
+        name: updatemanyobjecttriggers
+        description: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
+        call: triggers-object-triggers.updatemanyobjecttriggers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/triggers/{trigger-id}
+      name: api-v2-custom-objects-custom-object-key-triggers-trigger-id
+      description: REST surface for api-v2-custom_objects-custom_object_key-triggers-trigger_id.
+      operations:
+      - method: GET
+        name: getobjecttrigger
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+        call: triggers-object-triggers.getobjecttrigger
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateobjecttrigger
+        description: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+        call: triggers-object-triggers.updateobjecttrigger
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteobjecttrigger
+        description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+        call: triggers-object-triggers.deleteobjecttrigger
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: triggers-object-triggers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Triggers — Object Triggers. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-custom
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-object-triggers.listobjecttriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-custom
+      description: Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: triggers-object-triggers.createobjecttrigger
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-2
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-object-triggers.listactiveobjecttriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-3
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-object-triggers.listobjecttriggersdefinitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-custom
+      description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: triggers-object-triggers.deletemanyobjecttriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-4
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-object-triggers.searchobjecttriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-custom
+      description: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: triggers-object-triggers.updatemanyobjecttriggers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-5
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-object-triggers.getobjecttrigger
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-custom-2
+      description: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: triggers-object-triggers.updateobjecttrigger
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-custom-2
+      description: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: triggers-object-triggers.deleteobjecttrigger
+      outputParameters:
+      - type: object
+        mapping: $.

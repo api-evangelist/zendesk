@@ -1,0 +1,194 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Deletion Schedules — Deletion Schedules
+  description: 'Zendesk Deletion Schedules — Deletion Schedules. 5 operations. Lead operation: Zendesk Get  Api V2 Deletion_schedules.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Deletion Schedules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: deletion-schedules-deletion-schedules
+    baseUri: ''
+    description: Zendesk Deletion Schedules — Deletion Schedules business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-deletion_schedules
+      path: /api/v2/deletion_schedules
+      operations:
+      - name: listdeletionschedules
+        method: GET
+        description: Zendesk Get  Api V2 Deletion_schedules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdeletionschedule
+        method: POST
+        description: Zendesk Post  Api V2 Deletion_schedules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-deletion_schedules-deletion_schedule_id
+      path: /api/v2/deletion_schedules/{deletion_schedule_id}
+      operations:
+      - name: getdeletionschedule
+        method: GET
+        description: Zendesk Get  Api V2 Deletion_schedules Deletion_schedule_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatedeletionschedule
+        method: PUT
+        description: Zendesk Put  Api V2 Deletion_schedules Deletion_schedule_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedeletionschedule
+        method: DELETE
+        description: Zendesk Delete  Api V2 Deletion_schedules Deletion_schedule_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: deletion-schedules-deletion-schedules-rest
+    port: 8080
+    description: REST adapter for Zendesk Deletion Schedules — Deletion Schedules. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/deletion-schedules
+      name: api-v2-deletion-schedules
+      description: REST surface for api-v2-deletion_schedules.
+      operations:
+      - method: GET
+        name: listdeletionschedules
+        description: Zendesk Get  Api V2 Deletion_schedules
+        call: deletion-schedules-deletion-schedules.listdeletionschedules
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdeletionschedule
+        description: Zendesk Post  Api V2 Deletion_schedules
+        call: deletion-schedules-deletion-schedules.createdeletionschedule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/deletion-schedules/{deletion-schedule-id}
+      name: api-v2-deletion-schedules-deletion-schedule-id
+      description: REST surface for api-v2-deletion_schedules-deletion_schedule_id.
+      operations:
+      - method: GET
+        name: getdeletionschedule
+        description: Zendesk Get  Api V2 Deletion_schedules Deletion_schedule_id
+        call: deletion-schedules-deletion-schedules.getdeletionschedule
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatedeletionschedule
+        description: Zendesk Put  Api V2 Deletion_schedules Deletion_schedule_id
+        call: deletion-schedules-deletion-schedules.updatedeletionschedule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedeletionschedule
+        description: Zendesk Delete  Api V2 Deletion_schedules Deletion_schedule_id
+        call: deletion-schedules-deletion-schedules.deletedeletionschedule
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: deletion-schedules-deletion-schedules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Deletion Schedules — Deletion Schedules. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-deletion
+      description: Zendesk Get  Api V2 Deletion_schedules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: deletion-schedules-deletion-schedules.listdeletionschedules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-deletion
+      description: Zendesk Post  Api V2 Deletion_schedules
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: deletion-schedules-deletion-schedules.createdeletionschedule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-deletion-2
+      description: Zendesk Get  Api V2 Deletion_schedules Deletion_schedule_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: deletion-schedules-deletion-schedules.getdeletionschedule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-deletion
+      description: Zendesk Put  Api V2 Deletion_schedules Deletion_schedule_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: deletion-schedules-deletion-schedules.updatedeletionschedule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-deletion
+      description: Zendesk Delete  Api V2 Deletion_schedules Deletion_schedule_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: deletion-schedules-deletion-schedules.deletedeletionschedule
+      outputParameters:
+      - type: object
+        mapping: $.

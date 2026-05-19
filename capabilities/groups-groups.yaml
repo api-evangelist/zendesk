@@ -1,0 +1,238 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Groups — Groups
+  description: 'Zendesk Groups — Groups. 7 operations. Lead operation: Zendesk Get  Api V2 Groups. Self-contained Naftiko
+    capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: groups-groups
+    baseUri: ''
+    description: Zendesk Groups — Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-groups
+      path: /api/v2/groups
+      operations:
+      - name: listgroups
+        method: GET
+        description: Zendesk Get  Api V2 Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: creategroup
+        method: POST
+        description: Zendesk Post  Api V2 Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-groups-assignable
+      path: /api/v2/groups/assignable
+      operations:
+      - name: listassignablegroups
+        method: GET
+        description: Zendesk Get  Api V2 Groups Assignable
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-groups-count
+      path: /api/v2/groups/count
+      operations:
+      - name: countgroups
+        method: GET
+        description: Zendesk Get  Api V2 Groups Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-groups-group_id
+      path: /api/v2/groups/{group_id}
+      operations:
+      - name: showgroupbyid
+        method: GET
+        description: Zendesk Get  Api V2 Groups Group_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updategroup
+        method: PUT
+        description: Zendesk Put  Api V2 Groups Group_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletegroup
+        method: DELETE
+        description: Zendesk Delete  Api V2 Groups Group_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: groups-groups-rest
+    port: 8080
+    description: REST adapter for Zendesk Groups — Groups. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/groups
+      name: api-v2-groups
+      description: REST surface for api-v2-groups.
+      operations:
+      - method: GET
+        name: listgroups
+        description: Zendesk Get  Api V2 Groups
+        call: groups-groups.listgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creategroup
+        description: Zendesk Post  Api V2 Groups
+        call: groups-groups.creategroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/groups/assignable
+      name: api-v2-groups-assignable
+      description: REST surface for api-v2-groups-assignable.
+      operations:
+      - method: GET
+        name: listassignablegroups
+        description: Zendesk Get  Api V2 Groups Assignable
+        call: groups-groups.listassignablegroups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/groups/count
+      name: api-v2-groups-count
+      description: REST surface for api-v2-groups-count.
+      operations:
+      - method: GET
+        name: countgroups
+        description: Zendesk Get  Api V2 Groups Count
+        call: groups-groups.countgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/groups/{group-id}
+      name: api-v2-groups-group-id
+      description: REST surface for api-v2-groups-group_id.
+      operations:
+      - method: GET
+        name: showgroupbyid
+        description: Zendesk Get  Api V2 Groups Group_id
+        call: groups-groups.showgroupbyid
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updategroup
+        description: Zendesk Put  Api V2 Groups Group_id
+        call: groups-groups.updategroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegroup
+        description: Zendesk Delete  Api V2 Groups Group_id
+        call: groups-groups.deletegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: groups-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Groups — Groups. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-groups
+      description: Zendesk Get  Api V2 Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: groups-groups.listgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-groups
+      description: Zendesk Post  Api V2 Groups
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: groups-groups.creategroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-groups-2
+      description: Zendesk Get  Api V2 Groups Assignable
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: groups-groups.listassignablegroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-groups-3
+      description: Zendesk Get  Api V2 Groups Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: groups-groups.countgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-groups-4
+      description: Zendesk Get  Api V2 Groups Group_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: groups-groups.showgroupbyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-groups
+      description: Zendesk Put  Api V2 Groups Group_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: groups-groups.updategroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-groups
+      description: Zendesk Delete  Api V2 Groups Group_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: groups-groups.deletegroup
+      outputParameters:
+      - type: object
+        mapping: $.

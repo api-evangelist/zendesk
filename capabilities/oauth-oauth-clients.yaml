@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Oauth — OAuth Clients
+  description: 'Zendesk Oauth — OAuth Clients. 6 operations. Lead operation: Zendesk Get  Api V2 Oauth Clients. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - OAuth Clients
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: oauth-oauth-clients
+    baseUri: ''
+    description: Zendesk Oauth — OAuth Clients business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-oauth-clients
+      path: /api/v2/oauth/clients
+      operations:
+      - name: listoauthclients
+        method: GET
+        description: Zendesk Get  Api V2 Oauth Clients
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createoauthclient
+        method: POST
+        description: Zendesk Post  Api V2 Oauth Clients
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-oauth-clients-oauth_client_id
+      path: /api/v2/oauth/clients/{oauth_client_id}
+      operations:
+      - name: showclient
+        method: GET
+        description: Zendesk Get  Api V2 Oauth Clients Oauth_client_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateclient
+        method: PUT
+        description: Zendesk Put  Api V2 Oauth Clients Oauth_client_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteclient
+        method: DELETE
+        description: Zendesk Delete  Api V2 Oauth Clients Oauth_client_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-oauth-clients-oauth_client_id-generate_secret
+      path: /api/v2/oauth/clients/{oauth_client_id}/generate_secret
+      operations:
+      - name: clientgeneratesecret
+        method: PUT
+        description: Zendesk Put  Api V2 Oauth Clients Oauth_client_id Generate_secret
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: oauth-oauth-clients-rest
+    port: 8080
+    description: REST adapter for Zendesk Oauth — OAuth Clients. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/oauth/clients
+      name: api-v2-oauth-clients
+      description: REST surface for api-v2-oauth-clients.
+      operations:
+      - method: GET
+        name: listoauthclients
+        description: Zendesk Get  Api V2 Oauth Clients
+        call: oauth-oauth-clients.listoauthclients
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createoauthclient
+        description: Zendesk Post  Api V2 Oauth Clients
+        call: oauth-oauth-clients.createoauthclient
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/oauth/clients/{oauth-client-id}
+      name: api-v2-oauth-clients-oauth-client-id
+      description: REST surface for api-v2-oauth-clients-oauth_client_id.
+      operations:
+      - method: GET
+        name: showclient
+        description: Zendesk Get  Api V2 Oauth Clients Oauth_client_id
+        call: oauth-oauth-clients.showclient
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateclient
+        description: Zendesk Put  Api V2 Oauth Clients Oauth_client_id
+        call: oauth-oauth-clients.updateclient
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteclient
+        description: Zendesk Delete  Api V2 Oauth Clients Oauth_client_id
+        call: oauth-oauth-clients.deleteclient
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/oauth/clients/{oauth-client-id}/generate-secret
+      name: api-v2-oauth-clients-oauth-client-id-generate-secret
+      description: REST surface for api-v2-oauth-clients-oauth_client_id-generate_secret.
+      operations:
+      - method: PUT
+        name: clientgeneratesecret
+        description: Zendesk Put  Api V2 Oauth Clients Oauth_client_id Generate_secret
+        call: oauth-oauth-clients.clientgeneratesecret
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: oauth-oauth-clients-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Oauth — OAuth Clients. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-oauth
+      description: Zendesk Get  Api V2 Oauth Clients
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oauth-oauth-clients.listoauthclients
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-oauth
+      description: Zendesk Post  Api V2 Oauth Clients
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oauth-oauth-clients.createoauthclient
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-oauth-2
+      description: Zendesk Get  Api V2 Oauth Clients Oauth_client_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oauth-oauth-clients.showclient
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-oauth
+      description: Zendesk Put  Api V2 Oauth Clients Oauth_client_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oauth-oauth-clients.updateclient
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-oauth
+      description: Zendesk Delete  Api V2 Oauth Clients Oauth_client_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: oauth-oauth-clients.deleteclient
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-oauth-2
+      description: Zendesk Put  Api V2 Oauth Clients Oauth_client_id Generate_secret
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oauth-oauth-clients.clientgeneratesecret
+      outputParameters:
+      - type: object
+        mapping: $.

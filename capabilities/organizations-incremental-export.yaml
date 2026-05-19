@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Organizations — Incremental Export
+  description: 'Zendesk Organizations — Incremental Export. 1 operations. Lead operation: Zendesk Get  Api V2 Incremental
+    Organizations. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Incremental Export
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: organizations-incremental-export
+    baseUri: ''
+    description: Zendesk Organizations — Incremental Export business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-incremental-organizations
+      path: /api/v2/incremental/organizations
+      operations:
+      - name: incrementalorganizationexport
+        method: GET
+        description: Zendesk Get  Api V2 Incremental Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: organizations-incremental-export-rest
+    port: 8080
+    description: REST adapter for Zendesk Organizations — Incremental Export. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/incremental/organizations
+      name: api-v2-incremental-organizations
+      description: REST surface for api-v2-incremental-organizations.
+      operations:
+      - method: GET
+        name: incrementalorganizationexport
+        description: Zendesk Get  Api V2 Incremental Organizations
+        call: organizations-incremental-export.incrementalorganizationexport
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: organizations-incremental-export-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Organizations — Incremental Export. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-incremental
+      description: Zendesk Get  Api V2 Incremental Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: organizations-incremental-export.incrementalorganizationexport
+      outputParameters:
+      - type: object
+        mapping: $.

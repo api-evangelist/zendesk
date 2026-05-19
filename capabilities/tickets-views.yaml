@@ -1,0 +1,83 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Tickets — Views
+  description: 'Zendesk Tickets — Views. 1 operations. Lead operation: Zendesk Get  Api V2 Views View_id Tickets. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Views
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tickets-views
+    baseUri: ''
+    description: Zendesk Tickets — Views business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-views-view_id-tickets
+      path: /api/v2/views/{view_id}/tickets
+      operations:
+      - name: listticketsfromview
+        method: GET
+        description: Zendesk Get  Api V2 Views View_id Tickets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sort_by
+          in: query
+          type: string
+          description: Sort or group the tickets by a column in the [View columns](#view-columns) table. The `subject` and
+            `submitter` columns are not supported
+        - name: sort_order
+          in: query
+          type: string
+          description: One of "asc" or "desc". Defaults to "asc" for alphabetical and position sort, "desc" for all others
+  exposes:
+  - type: rest
+    namespace: tickets-views-rest
+    port: 8080
+    description: REST adapter for Zendesk Tickets — Views. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/views/{view-id}/tickets
+      name: api-v2-views-view-id-tickets
+      description: REST surface for api-v2-views-view_id-tickets.
+      operations:
+      - method: GET
+        name: listticketsfromview
+        description: Zendesk Get  Api V2 Views View_id Tickets
+        call: tickets-views.listticketsfromview
+        with:
+          sort_by: rest.sort_by
+          sort_order: rest.sort_order
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tickets-views-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Tickets — Views. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-views
+      description: Zendesk Get  Api V2 Views View_id Tickets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tickets-views.listticketsfromview
+      with:
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+      outputParameters:
+      - type: object
+        mapping: $.

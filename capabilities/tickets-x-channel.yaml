@@ -1,0 +1,108 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Tickets — X Channel
+  description: 'Zendesk Tickets — X Channel. 2 operations. Lead operation: Zendesk Post  Api V2 Channels Twitter Tickets.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - X Channel
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tickets-x-channel
+    baseUri: ''
+    description: Zendesk Tickets — X Channel business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-channels-twitter-tickets
+      path: /api/v2/channels/twitter/tickets
+      operations:
+      - name: createticketfromtweet
+        method: POST
+        description: Zendesk Post  Api V2 Channels Twitter Tickets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-channels-twitter-tickets-comment_id-statuses
+      path: /api/v2/channels/twitter/tickets/{comment_id}/statuses
+      operations:
+      - name: gettingtwicketstatus
+        method: GET
+        description: Zendesk Get  Api V2 Channels Twitter Tickets Comment_id Statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: Optional comment ids to retrieve tweet information for only particular comments
+  exposes:
+  - type: rest
+    namespace: tickets-x-channel-rest
+    port: 8080
+    description: REST adapter for Zendesk Tickets — X Channel. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/channels/twitter/tickets
+      name: api-v2-channels-twitter-tickets
+      description: REST surface for api-v2-channels-twitter-tickets.
+      operations:
+      - method: POST
+        name: createticketfromtweet
+        description: Zendesk Post  Api V2 Channels Twitter Tickets
+        call: tickets-x-channel.createticketfromtweet
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/channels/twitter/tickets/{comment-id}/statuses
+      name: api-v2-channels-twitter-tickets-comment-id-statuses
+      description: REST surface for api-v2-channels-twitter-tickets-comment_id-statuses.
+      operations:
+      - method: GET
+        name: gettingtwicketstatus
+        description: Zendesk Get  Api V2 Channels Twitter Tickets Comment_id Statuses
+        call: tickets-x-channel.gettingtwicketstatus
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tickets-x-channel-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Tickets — X Channel. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-post-api-v2-channels
+      description: Zendesk Post  Api V2 Channels Twitter Tickets
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tickets-x-channel.createticketfromtweet
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-channels
+      description: Zendesk Get  Api V2 Channels Twitter Tickets Comment_id Statuses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tickets-x-channel.gettingtwicketstatus
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.

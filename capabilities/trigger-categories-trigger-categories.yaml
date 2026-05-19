@@ -1,0 +1,284 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Trigger Categories — Trigger Categories
+  description: 'Zendesk Trigger Categories — Trigger Categories. 6 operations. Lead operation: Zendesk Get  Api V2 Trigger_categories.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Trigger Categories
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: trigger-categories-trigger-categories
+    baseUri: ''
+    description: Zendesk Trigger Categories — Trigger Categories business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-trigger_categories
+      path: /api/v2/trigger_categories
+      operations:
+      - name: listtriggercategories
+        method: GET
+        description: Zendesk Get  Api V2 Trigger_categories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: object
+          description: Pagination parameters
+        - name: sort
+          in: query
+          type: string
+          description: Sort parameters
+        - name: include
+          in: query
+          type: string
+          description: Allowed sideloads
+      - name: createtriggercategory
+        method: POST
+        description: Zendesk Post  Api V2 Trigger_categories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-trigger_categories-jobs
+      path: /api/v2/trigger_categories/jobs
+      operations:
+      - name: batchoperatetriggercategories
+        method: POST
+        description: Zendesk Post  Api V2 Trigger_categories Jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-trigger_categories-trigger_category_id
+      path: /api/v2/trigger_categories/{trigger_category_id}
+      operations:
+      - name: showtriggercategorybyid
+        method: GET
+        description: Zendesk Get  Api V2 Trigger_categories Trigger_category_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: trigger_category_id
+          in: path
+          type: string
+          description: The id of the ticket trigger category to retrieve
+          required: true
+      - name: updatetriggercategory
+        method: PATCH
+        description: Zendesk Patch  Api V2 Trigger_categories Trigger_category_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: trigger_category_id
+          in: path
+          type: string
+          description: The id of the ticket trigger category to update
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetriggercategory
+        method: DELETE
+        description: Zendesk Delete  Api V2 Trigger_categories Trigger_category_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: trigger_category_id
+          in: path
+          type: string
+          description: The id of the ticket trigger category to delete
+          required: true
+  exposes:
+  - type: rest
+    namespace: trigger-categories-trigger-categories-rest
+    port: 8080
+    description: REST adapter for Zendesk Trigger Categories — Trigger Categories. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/trigger-categories
+      name: api-v2-trigger-categories
+      description: REST surface for api-v2-trigger_categories.
+      operations:
+      - method: GET
+        name: listtriggercategories
+        description: Zendesk Get  Api V2 Trigger_categories
+        call: trigger-categories-trigger-categories.listtriggercategories
+        with:
+          page: rest.page
+          sort: rest.sort
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtriggercategory
+        description: Zendesk Post  Api V2 Trigger_categories
+        call: trigger-categories-trigger-categories.createtriggercategory
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/trigger-categories/jobs
+      name: api-v2-trigger-categories-jobs
+      description: REST surface for api-v2-trigger_categories-jobs.
+      operations:
+      - method: POST
+        name: batchoperatetriggercategories
+        description: Zendesk Post  Api V2 Trigger_categories Jobs
+        call: trigger-categories-trigger-categories.batchoperatetriggercategories
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/trigger-categories/{trigger-category-id}
+      name: api-v2-trigger-categories-trigger-category-id
+      description: REST surface for api-v2-trigger_categories-trigger_category_id.
+      operations:
+      - method: GET
+        name: showtriggercategorybyid
+        description: Zendesk Get  Api V2 Trigger_categories Trigger_category_id
+        call: trigger-categories-trigger-categories.showtriggercategorybyid
+        with:
+          trigger_category_id: rest.trigger_category_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetriggercategory
+        description: Zendesk Patch  Api V2 Trigger_categories Trigger_category_id
+        call: trigger-categories-trigger-categories.updatetriggercategory
+        with:
+          trigger_category_id: rest.trigger_category_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetriggercategory
+        description: Zendesk Delete  Api V2 Trigger_categories Trigger_category_id
+        call: trigger-categories-trigger-categories.deletetriggercategory
+        with:
+          trigger_category_id: rest.trigger_category_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: trigger-categories-trigger-categories-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Trigger Categories — Trigger Categories. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-trigger
+      description: Zendesk Get  Api V2 Trigger_categories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trigger-categories-trigger-categories.listtriggercategories
+      with:
+        page: tools.page
+        sort: tools.sort
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-trigger
+      description: Zendesk Post  Api V2 Trigger_categories
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: trigger-categories-trigger-categories.createtriggercategory
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-trigger-2
+      description: Zendesk Post  Api V2 Trigger_categories Jobs
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: trigger-categories-trigger-categories.batchoperatetriggercategories
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-trigger-2
+      description: Zendesk Get  Api V2 Trigger_categories Trigger_category_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trigger-categories-trigger-categories.showtriggercategorybyid
+      with:
+        trigger_category_id: tools.trigger_category_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-patch-api-v2-trigger
+      description: Zendesk Patch  Api V2 Trigger_categories Trigger_category_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: trigger-categories-trigger-categories.updatetriggercategory
+      with:
+        trigger_category_id: tools.trigger_category_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-trigger
+      description: Zendesk Delete  Api V2 Trigger_categories Trigger_category_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: trigger-categories-trigger-categories.deletetriggercategory
+      with:
+        trigger_category_id: tools.trigger_category_id
+      outputParameters:
+      - type: object
+        mapping: $.

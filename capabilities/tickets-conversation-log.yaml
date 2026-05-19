@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Tickets — Conversation Log
+  description: 'Zendesk Tickets — Conversation Log. 1 operations. Lead operation: Zendesk Get  Api V2 Tickets Ticket_id Conversation_log.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Conversation Log
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tickets-conversation-log
+    baseUri: ''
+    description: Zendesk Tickets — Conversation Log business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-tickets-ticket_id-conversation_log
+      path: /api/v2/tickets/{ticket_id}/conversation_log
+      operations:
+      - name: listconversationlogforticket
+        method: GET
+        description: Zendesk Get  Api V2 Tickets Ticket_id Conversation_log
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: tickets-conversation-log-rest
+    port: 8080
+    description: REST adapter for Zendesk Tickets — Conversation Log. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/tickets/{ticket-id}/conversation-log
+      name: api-v2-tickets-ticket-id-conversation-log
+      description: REST surface for api-v2-tickets-ticket_id-conversation_log.
+      operations:
+      - method: GET
+        name: listconversationlogforticket
+        description: Zendesk Get  Api V2 Tickets Ticket_id Conversation_log
+        call: tickets-conversation-log.listconversationlogforticket
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tickets-conversation-log-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Tickets — Conversation Log. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-tickets
+      description: Zendesk Get  Api V2 Tickets Ticket_id Conversation_log
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tickets-conversation-log.listconversationlogforticket
+      outputParameters:
+      - type: object
+        mapping: $.

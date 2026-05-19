@@ -1,0 +1,280 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Support API — Organizations
+  description: 'Zendesk Support API — Organizations. 7 operations. Lead operation: Zendesk List Organizations. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Organizations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: support-organizations
+    baseUri: https://{subdomain}.zendesk.com/api/v2
+    description: Zendesk Support API — Organizations business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations
+      path: /organizations
+      operations:
+      - name: listorganizations
+        method: GET
+        description: Zendesk List Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorganization
+        method: POST
+        description: Zendesk Create Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: organizations-autocomplete
+      path: /organizations/autocomplete
+      operations:
+      - name: autocompleteorganizations
+        method: GET
+        description: Zendesk Autocomplete Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: The prefix to match against organization names.
+          required: true
+    - name: organizations-search
+      path: /organizations/search
+      operations:
+      - name: searchorganizations
+        method: GET
+        description: Zendesk Search Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: external_id
+          in: query
+          type: string
+          description: Search by external ID.
+    - name: organizations-organization_id
+      path: /organizations/{organization_id}
+      operations:
+      - name: getorganization
+        method: GET
+        description: Zendesk Show Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateorganization
+        method: PUT
+        description: Zendesk Update Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteorganization
+        method: DELETE
+        description: Zendesk Delete Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ZENDESK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: support-organizations-rest
+    port: 8080
+    description: REST adapter for Zendesk Support API — Organizations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/organizations
+      name: organizations
+      description: REST surface for organizations.
+      operations:
+      - method: GET
+        name: listorganizations
+        description: Zendesk List Organizations
+        call: support-organizations.listorganizations
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorganization
+        description: Zendesk Create Organization
+        call: support-organizations.createorganization
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/autocomplete
+      name: organizations-autocomplete
+      description: REST surface for organizations-autocomplete.
+      operations:
+      - method: GET
+        name: autocompleteorganizations
+        description: Zendesk Autocomplete Organizations
+        call: support-organizations.autocompleteorganizations
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/search
+      name: organizations-search
+      description: REST surface for organizations-search.
+      operations:
+      - method: GET
+        name: searchorganizations
+        description: Zendesk Search Organizations
+        call: support-organizations.searchorganizations
+        with:
+          external_id: rest.external_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/{organization-id}
+      name: organizations-organization-id
+      description: REST surface for organizations-organization_id.
+      operations:
+      - method: GET
+        name: getorganization
+        description: Zendesk Show Organization
+        call: support-organizations.getorganization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateorganization
+        description: Zendesk Update Organization
+        call: support-organizations.updateorganization
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteorganization
+        description: Zendesk Delete Organization
+        call: support-organizations.deleteorganization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: support-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Support API — Organizations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-list-organizations
+      description: Zendesk List Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: support-organizations.listorganizations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-create-organization
+      description: Zendesk Create Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: support-organizations.createorganization
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-autocomplete-organizations
+      description: Zendesk Autocomplete Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: support-organizations.autocompleteorganizations
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-search-organizations
+      description: Zendesk Search Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: support-organizations.searchorganizations
+      with:
+        external_id: tools.external_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-show-organization
+      description: Zendesk Show Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: support-organizations.getorganization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-update-organization
+      description: Zendesk Update Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: support-organizations.updateorganization
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-organization
+      description: Zendesk Delete Organization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: support-organizations.deleteorganization
+      outputParameters:
+      - type: object
+        mapping: $.

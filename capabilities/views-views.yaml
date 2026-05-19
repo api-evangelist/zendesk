@@ -1,0 +1,805 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Views — Views
+  description: 'Zendesk Views — Views. 19 operations. Lead operation: Zendesk Get  Api V2 Views. Self-contained Naftiko capability
+    covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Views
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: views-views
+    baseUri: ''
+    description: Zendesk Views — Views business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-views
+      path: /api/v2/views
+      operations:
+      - name: listviews
+        method: GET
+        description: Zendesk Get  Api V2 Views
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: access
+          in: query
+          type: string
+          description: Only views with given access. May be "personal", "shared", or "account"
+        - name: active
+          in: query
+          type: boolean
+          description: Only active views if true, inactive views if false
+        - name: group_id
+          in: query
+          type: integer
+          description: Only views belonging to given group
+        - name: sort
+          in: query
+          type: string
+          description: The sort parameter used with cursor pagination. Defaults to "created_at". Prefix with '-' for descending
+            order
+        - name: sort_by
+          in: query
+          type: string
+          description: The sort_by parameter used with offset pagination. Possible values are "alphabetical", "created_at",
+            or "updated_at". Defaults to "position"
+        - name: sort_order
+          in: query
+          type: string
+          description: The sort_order parameter used with offset pagination. One of "asc" or "desc". Defaults to "asc" for
+            alphabetical and position sort, "desc" for all others
+      - name: createview
+        method: POST
+        description: Zendesk Post  Api V2 Views
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-active
+      path: /api/v2/views/active
+      operations:
+      - name: listactiveviews
+        method: GET
+        description: Zendesk Get  Api V2 Views Active
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: access
+          in: query
+          type: string
+          description: Only views with given access. May be "personal", "shared", or "account"
+        - name: group_id
+          in: query
+          type: integer
+          description: Only views belonging to given group
+        - name: sort_by
+          in: query
+          type: string
+          description: Possible values are "alphabetical", "created_at", or "updated_at". Defaults to "position"
+        - name: sort_order
+          in: query
+          type: string
+          description: One of "asc" or "desc". Defaults to "asc" for alphabetical and position sort, "desc" for all others
+    - name: api-v2-views-compact
+      path: /api/v2/views/compact
+      operations:
+      - name: listcompactviews
+        method: GET
+        description: Zendesk Get  Api V2 Views Compact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-count
+      path: /api/v2/views/count
+      operations:
+      - name: countviews
+        method: GET
+        description: Zendesk Get  Api V2 Views Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-count_many
+      path: /api/v2/views/count_many
+      operations:
+      - name: getviewcounts
+        method: GET
+        description: Zendesk Get  Api V2 Views Count_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: List of view's ids separated by commas.
+          required: true
+    - name: api-v2-views-destroy_many
+      path: /api/v2/views/destroy_many
+      operations:
+      - name: bulkdeleteviews
+        method: DELETE
+        description: Zendesk Delete  Api V2 Views Destroy_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: The IDs of the views to delete
+          required: true
+    - name: api-v2-views-preview
+      path: /api/v2/views/preview
+      operations:
+      - name: previewviews
+        method: POST
+        description: Zendesk Post  Api V2 Views Preview
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-preview-count
+      path: /api/v2/views/preview/count
+      operations:
+      - name: previewcount
+        method: POST
+        description: Zendesk Post  Api V2 Views Preview Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-search
+      path: /api/v2/views/search
+      operations:
+      - name: searchviews
+        method: GET
+        description: Zendesk Get  Api V2 Views Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: Query string used to find all views with matching title
+          required: true
+        - name: access
+          in: query
+          type: string
+          description: Filter views by access. May be "personal", "shared", or "account"
+        - name: active
+          in: query
+          type: boolean
+          description: Filter by active views if true or inactive views if false
+        - name: group_id
+          in: query
+          type: integer
+          description: Filter views by group
+        - name: sort_by
+          in: query
+          type: string
+          description: Possible values are "alphabetical", "created_at", "updated_at", and "position". If unspecified, the
+            views are sorted by relevance
+        - name: sort_order
+          in: query
+          type: string
+          description: One of "asc" or "desc". Defaults to "asc" for alphabetical and position sort, "desc" for all others
+        - name: include
+          in: query
+          type: string
+          description: A sideload to include in the response. See [Sideloads](#sideloads-3)
+    - name: api-v2-views-show_many
+      path: /api/v2/views/show_many
+      operations:
+      - name: listviewsbyid
+        method: GET
+        description: Zendesk Get  Api V2 Views Show_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: List of view's ids separated by commas.
+          required: true
+        - name: active
+          in: query
+          type: boolean
+          description: Only active views if true, inactive views if false
+    - name: api-v2-views-update_many
+      path: /api/v2/views/update_many
+      operations:
+      - name: updatemanyviews
+        method: PUT
+        description: Zendesk Put  Api V2 Views Update_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-view_id
+      path: /api/v2/views/{view_id}
+      operations:
+      - name: showview
+        method: GET
+        description: Zendesk Get  Api V2 Views View_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateview
+        method: PUT
+        description: Zendesk Put  Api V2 Views View_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteview
+        method: DELETE
+        description: Zendesk Delete  Api V2 Views View_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-view_id-count
+      path: /api/v2/views/{view_id}/count
+      operations:
+      - name: getviewcount
+        method: GET
+        description: Zendesk Get  Api V2 Views View_id Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-view_id-execute
+      path: /api/v2/views/{view_id}/execute
+      operations:
+      - name: executeview
+        method: GET
+        description: Zendesk Get  Api V2 Views View_id Execute
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sort_by
+          in: query
+          type: string
+          description: The ticket field used for sorting. This will either be a title or a custom field id.
+        - name: sort_order
+          in: query
+          type: string
+          description: The direction the tickets are sorted. May be one of 'asc' or 'desc'
+    - name: api-v2-views-view_id-export
+      path: /api/v2/views/{view_id}/export
+      operations:
+      - name: exportview
+        method: GET
+        description: Zendesk Get  Api V2 Views View_id Export
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-views-view_id-tickets
+      path: /api/v2/views/{view_id}/tickets
+      operations:
+      - name: listticketsfromview
+        method: GET
+        description: Zendesk Get  Api V2 Views View_id Tickets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sort_by
+          in: query
+          type: string
+          description: Sort or group the tickets by a column in the [View columns](#view-columns) table. The `subject` and
+            `submitter` columns are not supported
+        - name: sort_order
+          in: query
+          type: string
+          description: One of "asc" or "desc". Defaults to "asc" for alphabetical and position sort, "desc" for all others
+  exposes:
+  - type: rest
+    namespace: views-views-rest
+    port: 8080
+    description: REST adapter for Zendesk Views — Views. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/views
+      name: api-v2-views
+      description: REST surface for api-v2-views.
+      operations:
+      - method: GET
+        name: listviews
+        description: Zendesk Get  Api V2 Views
+        call: views-views.listviews
+        with:
+          access: rest.access
+          active: rest.active
+          group_id: rest.group_id
+          sort: rest.sort
+          sort_by: rest.sort_by
+          sort_order: rest.sort_order
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createview
+        description: Zendesk Post  Api V2 Views
+        call: views-views.createview
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/active
+      name: api-v2-views-active
+      description: REST surface for api-v2-views-active.
+      operations:
+      - method: GET
+        name: listactiveviews
+        description: Zendesk Get  Api V2 Views Active
+        call: views-views.listactiveviews
+        with:
+          access: rest.access
+          group_id: rest.group_id
+          sort_by: rest.sort_by
+          sort_order: rest.sort_order
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/compact
+      name: api-v2-views-compact
+      description: REST surface for api-v2-views-compact.
+      operations:
+      - method: GET
+        name: listcompactviews
+        description: Zendesk Get  Api V2 Views Compact
+        call: views-views.listcompactviews
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/count
+      name: api-v2-views-count
+      description: REST surface for api-v2-views-count.
+      operations:
+      - method: GET
+        name: countviews
+        description: Zendesk Get  Api V2 Views Count
+        call: views-views.countviews
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/count-many
+      name: api-v2-views-count-many
+      description: REST surface for api-v2-views-count_many.
+      operations:
+      - method: GET
+        name: getviewcounts
+        description: Zendesk Get  Api V2 Views Count_many
+        call: views-views.getviewcounts
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/destroy-many
+      name: api-v2-views-destroy-many
+      description: REST surface for api-v2-views-destroy_many.
+      operations:
+      - method: DELETE
+        name: bulkdeleteviews
+        description: Zendesk Delete  Api V2 Views Destroy_many
+        call: views-views.bulkdeleteviews
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/preview
+      name: api-v2-views-preview
+      description: REST surface for api-v2-views-preview.
+      operations:
+      - method: POST
+        name: previewviews
+        description: Zendesk Post  Api V2 Views Preview
+        call: views-views.previewviews
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/preview/count
+      name: api-v2-views-preview-count
+      description: REST surface for api-v2-views-preview-count.
+      operations:
+      - method: POST
+        name: previewcount
+        description: Zendesk Post  Api V2 Views Preview Count
+        call: views-views.previewcount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/search
+      name: api-v2-views-search
+      description: REST surface for api-v2-views-search.
+      operations:
+      - method: GET
+        name: searchviews
+        description: Zendesk Get  Api V2 Views Search
+        call: views-views.searchviews
+        with:
+          query: rest.query
+          access: rest.access
+          active: rest.active
+          group_id: rest.group_id
+          sort_by: rest.sort_by
+          sort_order: rest.sort_order
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/show-many
+      name: api-v2-views-show-many
+      description: REST surface for api-v2-views-show_many.
+      operations:
+      - method: GET
+        name: listviewsbyid
+        description: Zendesk Get  Api V2 Views Show_many
+        call: views-views.listviewsbyid
+        with:
+          ids: rest.ids
+          active: rest.active
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/update-many
+      name: api-v2-views-update-many
+      description: REST surface for api-v2-views-update_many.
+      operations:
+      - method: PUT
+        name: updatemanyviews
+        description: Zendesk Put  Api V2 Views Update_many
+        call: views-views.updatemanyviews
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/{view-id}
+      name: api-v2-views-view-id
+      description: REST surface for api-v2-views-view_id.
+      operations:
+      - method: GET
+        name: showview
+        description: Zendesk Get  Api V2 Views View_id
+        call: views-views.showview
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateview
+        description: Zendesk Put  Api V2 Views View_id
+        call: views-views.updateview
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteview
+        description: Zendesk Delete  Api V2 Views View_id
+        call: views-views.deleteview
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/{view-id}/count
+      name: api-v2-views-view-id-count
+      description: REST surface for api-v2-views-view_id-count.
+      operations:
+      - method: GET
+        name: getviewcount
+        description: Zendesk Get  Api V2 Views View_id Count
+        call: views-views.getviewcount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/{view-id}/execute
+      name: api-v2-views-view-id-execute
+      description: REST surface for api-v2-views-view_id-execute.
+      operations:
+      - method: GET
+        name: executeview
+        description: Zendesk Get  Api V2 Views View_id Execute
+        call: views-views.executeview
+        with:
+          sort_by: rest.sort_by
+          sort_order: rest.sort_order
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/{view-id}/export
+      name: api-v2-views-view-id-export
+      description: REST surface for api-v2-views-view_id-export.
+      operations:
+      - method: GET
+        name: exportview
+        description: Zendesk Get  Api V2 Views View_id Export
+        call: views-views.exportview
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/views/{view-id}/tickets
+      name: api-v2-views-view-id-tickets
+      description: REST surface for api-v2-views-view_id-tickets.
+      operations:
+      - method: GET
+        name: listticketsfromview
+        description: Zendesk Get  Api V2 Views View_id Tickets
+        call: views-views.listticketsfromview
+        with:
+          sort_by: rest.sort_by
+          sort_order: rest.sort_order
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: views-views-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Views — Views. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-views
+      description: Zendesk Get  Api V2 Views
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.listviews
+      with:
+        access: tools.access
+        active: tools.active
+        group_id: tools.group_id
+        sort: tools.sort
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-views
+      description: Zendesk Post  Api V2 Views
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: views-views.createview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-2
+      description: Zendesk Get  Api V2 Views Active
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.listactiveviews
+      with:
+        access: tools.access
+        group_id: tools.group_id
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-3
+      description: Zendesk Get  Api V2 Views Compact
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.listcompactviews
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-4
+      description: Zendesk Get  Api V2 Views Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.countviews
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-5
+      description: Zendesk Get  Api V2 Views Count_many
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.getviewcounts
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-views
+      description: Zendesk Delete  Api V2 Views Destroy_many
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: views-views.bulkdeleteviews
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-views-2
+      description: Zendesk Post  Api V2 Views Preview
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: views-views.previewviews
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-views-3
+      description: Zendesk Post  Api V2 Views Preview Count
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: views-views.previewcount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-6
+      description: Zendesk Get  Api V2 Views Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.searchviews
+      with:
+        query: tools.query
+        access: tools.access
+        active: tools.active
+        group_id: tools.group_id
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-7
+      description: Zendesk Get  Api V2 Views Show_many
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.listviewsbyid
+      with:
+        ids: tools.ids
+        active: tools.active
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-views
+      description: Zendesk Put  Api V2 Views Update_many
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: views-views.updatemanyviews
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-8
+      description: Zendesk Get  Api V2 Views View_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.showview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-views-2
+      description: Zendesk Put  Api V2 Views View_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: views-views.updateview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-views-2
+      description: Zendesk Delete  Api V2 Views View_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: views-views.deleteview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-9
+      description: Zendesk Get  Api V2 Views View_id Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.getviewcount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-10
+      description: Zendesk Get  Api V2 Views View_id Execute
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.executeview
+      with:
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-11
+      description: Zendesk Get  Api V2 Views View_id Export
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.exportview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-views-12
+      description: Zendesk Get  Api V2 Views View_id Tickets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: views-views.listticketsfromview
+      with:
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+      outputParameters:
+      - type: object
+        mapping: $.

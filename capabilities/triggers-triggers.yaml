@@ -1,0 +1,460 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Triggers — Triggers
+  description: 'Zendesk Triggers — Triggers. 13 operations. Lead operation: Zendesk Get  Api V2 Triggers. Self-contained Naftiko
+    capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Triggers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: triggers-triggers
+    baseUri: ''
+    description: Zendesk Triggers — Triggers business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-triggers
+      path: /api/v2/triggers
+      operations:
+      - name: listtriggers
+        method: GET
+        description: Zendesk Get  Api V2 Triggers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createtrigger
+        method: POST
+        description: Zendesk Post  Api V2 Triggers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-triggers-active
+      path: /api/v2/triggers/active
+      operations:
+      - name: listactivetriggers
+        method: GET
+        description: Zendesk Get  Api V2 Triggers Active
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-triggers-definitions
+      path: /api/v2/triggers/definitions
+      operations:
+      - name: listtriggeractionconditiondefinitions
+        method: GET
+        description: Zendesk Get  Api V2 Triggers Definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-triggers-destroy_many
+      path: /api/v2/triggers/destroy_many
+      operations:
+      - name: deletemanytriggers
+        method: DELETE
+        description: Zendesk Delete  Api V2 Triggers Destroy_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-triggers-reorder
+      path: /api/v2/triggers/reorder
+      operations:
+      - name: reordertriggers
+        method: PUT
+        description: Zendesk Put  Api V2 Triggers Reorder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-triggers-search
+      path: /api/v2/triggers/search
+      operations:
+      - name: searchtriggers
+        method: GET
+        description: Zendesk Get  Api V2 Triggers Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-triggers-update_many
+      path: /api/v2/triggers/update_many
+      operations:
+      - name: updatemanytriggers
+        method: PUT
+        description: Zendesk Put  Api V2 Triggers Update_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-triggers-trigger_id
+      path: /api/v2/triggers/{trigger_id}
+      operations:
+      - name: gettrigger
+        method: GET
+        description: Zendesk Get  Api V2 Triggers Trigger_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetrigger
+        method: PUT
+        description: Zendesk Put  Api V2 Triggers Trigger_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetrigger
+        method: DELETE
+        description: Zendesk Delete  Api V2 Triggers Trigger_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-triggers-trigger_id-revisions
+      path: /api/v2/triggers/{trigger_id}/revisions
+      operations:
+      - name: listtriggerrevisions
+        method: GET
+        description: Zendesk Get  Api V2 Triggers Trigger_id Revisions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-triggers-trigger_id-revisions-trigger_revision_id
+      path: /api/v2/triggers/{trigger_id}/revisions/{trigger_revision_id}
+      operations:
+      - name: triggerrevision
+        method: GET
+        description: Zendesk Get  Api V2 Triggers Trigger_id Revisions Trigger_revision_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: triggers-triggers-rest
+    port: 8080
+    description: REST adapter for Zendesk Triggers — Triggers. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/triggers
+      name: api-v2-triggers
+      description: REST surface for api-v2-triggers.
+      operations:
+      - method: GET
+        name: listtriggers
+        description: Zendesk Get  Api V2 Triggers
+        call: triggers-triggers.listtriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtrigger
+        description: Zendesk Post  Api V2 Triggers
+        call: triggers-triggers.createtrigger
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/active
+      name: api-v2-triggers-active
+      description: REST surface for api-v2-triggers-active.
+      operations:
+      - method: GET
+        name: listactivetriggers
+        description: Zendesk Get  Api V2 Triggers Active
+        call: triggers-triggers.listactivetriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/definitions
+      name: api-v2-triggers-definitions
+      description: REST surface for api-v2-triggers-definitions.
+      operations:
+      - method: GET
+        name: listtriggeractionconditiondefinitions
+        description: Zendesk Get  Api V2 Triggers Definitions
+        call: triggers-triggers.listtriggeractionconditiondefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/destroy-many
+      name: api-v2-triggers-destroy-many
+      description: REST surface for api-v2-triggers-destroy_many.
+      operations:
+      - method: DELETE
+        name: deletemanytriggers
+        description: Zendesk Delete  Api V2 Triggers Destroy_many
+        call: triggers-triggers.deletemanytriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/reorder
+      name: api-v2-triggers-reorder
+      description: REST surface for api-v2-triggers-reorder.
+      operations:
+      - method: PUT
+        name: reordertriggers
+        description: Zendesk Put  Api V2 Triggers Reorder
+        call: triggers-triggers.reordertriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/search
+      name: api-v2-triggers-search
+      description: REST surface for api-v2-triggers-search.
+      operations:
+      - method: GET
+        name: searchtriggers
+        description: Zendesk Get  Api V2 Triggers Search
+        call: triggers-triggers.searchtriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/update-many
+      name: api-v2-triggers-update-many
+      description: REST surface for api-v2-triggers-update_many.
+      operations:
+      - method: PUT
+        name: updatemanytriggers
+        description: Zendesk Put  Api V2 Triggers Update_many
+        call: triggers-triggers.updatemanytriggers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/{trigger-id}
+      name: api-v2-triggers-trigger-id
+      description: REST surface for api-v2-triggers-trigger_id.
+      operations:
+      - method: GET
+        name: gettrigger
+        description: Zendesk Get  Api V2 Triggers Trigger_id
+        call: triggers-triggers.gettrigger
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetrigger
+        description: Zendesk Put  Api V2 Triggers Trigger_id
+        call: triggers-triggers.updatetrigger
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetrigger
+        description: Zendesk Delete  Api V2 Triggers Trigger_id
+        call: triggers-triggers.deletetrigger
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/{trigger-id}/revisions
+      name: api-v2-triggers-trigger-id-revisions
+      description: REST surface for api-v2-triggers-trigger_id-revisions.
+      operations:
+      - method: GET
+        name: listtriggerrevisions
+        description: Zendesk Get  Api V2 Triggers Trigger_id Revisions
+        call: triggers-triggers.listtriggerrevisions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/triggers/{trigger-id}/revisions/{trigger-revision-id}
+      name: api-v2-triggers-trigger-id-revisions-trigger-revision-id
+      description: REST surface for api-v2-triggers-trigger_id-revisions-trigger_revision_id.
+      operations:
+      - method: GET
+        name: triggerrevision
+        description: Zendesk Get  Api V2 Triggers Trigger_id Revisions Trigger_revision_id
+        call: triggers-triggers.triggerrevision
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: triggers-triggers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Triggers — Triggers. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-triggers
+      description: Zendesk Get  Api V2 Triggers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.listtriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-triggers
+      description: Zendesk Post  Api V2 Triggers
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: triggers-triggers.createtrigger
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-triggers-2
+      description: Zendesk Get  Api V2 Triggers Active
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.listactivetriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-triggers-3
+      description: Zendesk Get  Api V2 Triggers Definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.listtriggeractionconditiondefinitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-triggers
+      description: Zendesk Delete  Api V2 Triggers Destroy_many
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: triggers-triggers.deletemanytriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-triggers
+      description: Zendesk Put  Api V2 Triggers Reorder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.reordertriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-triggers-4
+      description: Zendesk Get  Api V2 Triggers Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.searchtriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-triggers-2
+      description: Zendesk Put  Api V2 Triggers Update_many
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.updatemanytriggers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-triggers-5
+      description: Zendesk Get  Api V2 Triggers Trigger_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.gettrigger
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-triggers-3
+      description: Zendesk Put  Api V2 Triggers Trigger_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.updatetrigger
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-triggers-2
+      description: Zendesk Delete  Api V2 Triggers Trigger_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: triggers-triggers.deletetrigger
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-triggers-6
+      description: Zendesk Get  Api V2 Triggers Trigger_id Revisions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.listtriggerrevisions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-triggers-7
+      description: Zendesk Get  Api V2 Triggers Trigger_id Revisions Trigger_revision_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: triggers-triggers.triggerrevision
+      outputParameters:
+      - type: object
+        mapping: $.

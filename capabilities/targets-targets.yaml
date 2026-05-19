@@ -1,0 +1,174 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Targets — Targets
+  description: 'Zendesk Targets — Targets. 5 operations. Lead operation: Zendesk Get  Api V2 Targets. Self-contained Naftiko
+    capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Targets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: targets-targets
+    baseUri: ''
+    description: Zendesk Targets — Targets business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-targets
+      path: /api/v2/targets
+      operations:
+      - name: listtargets
+        method: GET
+        description: Zendesk Get  Api V2 Targets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createtarget
+        method: POST
+        description: Zendesk Post  Api V2 Targets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-targets-target_id
+      path: /api/v2/targets/{target_id}
+      operations:
+      - name: showtarget
+        method: GET
+        description: Zendesk Get  Api V2 Targets Target_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetarget
+        method: PUT
+        description: Zendesk Put  Api V2 Targets Target_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletetarget
+        method: DELETE
+        description: Zendesk Delete  Api V2 Targets Target_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: targets-targets-rest
+    port: 8080
+    description: REST adapter for Zendesk Targets — Targets. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/targets
+      name: api-v2-targets
+      description: REST surface for api-v2-targets.
+      operations:
+      - method: GET
+        name: listtargets
+        description: Zendesk Get  Api V2 Targets
+        call: targets-targets.listtargets
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtarget
+        description: Zendesk Post  Api V2 Targets
+        call: targets-targets.createtarget
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/targets/{target-id}
+      name: api-v2-targets-target-id
+      description: REST surface for api-v2-targets-target_id.
+      operations:
+      - method: GET
+        name: showtarget
+        description: Zendesk Get  Api V2 Targets Target_id
+        call: targets-targets.showtarget
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetarget
+        description: Zendesk Put  Api V2 Targets Target_id
+        call: targets-targets.updatetarget
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetarget
+        description: Zendesk Delete  Api V2 Targets Target_id
+        call: targets-targets.deletetarget
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: targets-targets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Targets — Targets. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-targets
+      description: Zendesk Get  Api V2 Targets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: targets-targets.listtargets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-targets
+      description: Zendesk Post  Api V2 Targets
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: targets-targets.createtarget
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-targets-2
+      description: Zendesk Get  Api V2 Targets Target_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: targets-targets.showtarget
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-targets
+      description: Zendesk Put  Api V2 Targets Target_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: targets-targets.updatetarget
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-targets
+      description: Zendesk Delete  Api V2 Targets Target_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: targets-targets.deletetarget
+      outputParameters:
+      - type: object
+        mapping: $.

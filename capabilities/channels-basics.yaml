@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Channels — Basics
+  description: 'Zendesk Channels — Basics. 3 operations. Lead operation: Zendesk Post  Api V2 Channels Voice Agents Agent_id
+    Tickets Ticket_id Display. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Basics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: channels-basics
+    baseUri: ''
+    description: Zendesk Channels — Basics business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-channels-voice-agents-agent_id-tickets-ticket_id-display
+      path: /api/v2/channels/voice/agents/{agent_id}/tickets/{ticket_id}/display
+      operations:
+      - name: openticketinagentbrowser
+        method: POST
+        description: Zendesk Post  Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-channels-voice-agents-agent_id-users-user_id-display
+      path: /api/v2/channels/voice/agents/{agent_id}/users/{user_id}/display
+      operations:
+      - name: openusersprofileinagentbrowser
+        method: POST
+        description: Zendesk Post  Api V2 Channels Voice Agents Agent_id Users User_id Display
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-channels-voice-tickets
+      path: /api/v2/channels/voice/tickets
+      operations:
+      - name: createticketorvoicemailticket
+        method: POST
+        description: Zendesk Post  Api V2 Channels Voice Tickets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: channels-basics-rest
+    port: 8080
+    description: REST adapter for Zendesk Channels — Basics. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/channels/voice/agents/{agent-id}/tickets/{ticket-id}/display
+      name: api-v2-channels-voice-agents-agent-id-tickets-ticket-id-display
+      description: REST surface for api-v2-channels-voice-agents-agent_id-tickets-ticket_id-display.
+      operations:
+      - method: POST
+        name: openticketinagentbrowser
+        description: Zendesk Post  Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
+        call: channels-basics.openticketinagentbrowser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/channels/voice/agents/{agent-id}/users/{user-id}/display
+      name: api-v2-channels-voice-agents-agent-id-users-user-id-display
+      description: REST surface for api-v2-channels-voice-agents-agent_id-users-user_id-display.
+      operations:
+      - method: POST
+        name: openusersprofileinagentbrowser
+        description: Zendesk Post  Api V2 Channels Voice Agents Agent_id Users User_id Display
+        call: channels-basics.openusersprofileinagentbrowser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/channels/voice/tickets
+      name: api-v2-channels-voice-tickets
+      description: REST surface for api-v2-channels-voice-tickets.
+      operations:
+      - method: POST
+        name: createticketorvoicemailticket
+        description: Zendesk Post  Api V2 Channels Voice Tickets
+        call: channels-basics.createticketorvoicemailticket
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: channels-basics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Channels — Basics. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-post-api-v2-channels
+      description: Zendesk Post  Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: channels-basics.openticketinagentbrowser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-channels-2
+      description: Zendesk Post  Api V2 Channels Voice Agents Agent_id Users User_id Display
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: channels-basics.openusersprofileinagentbrowser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-channels-3
+      description: Zendesk Post  Api V2 Channels Voice Tickets
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: channels-basics.createticketorvoicemailticket
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Autocomplete — Organizations
+  description: 'Zendesk Autocomplete — Organizations. 1 operations. Lead operation: Zendesk Get  Api V2 Organizations Autocomplete.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Organizations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: autocomplete-organizations
+    baseUri: ''
+    description: Zendesk Autocomplete — Organizations business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-organizations-autocomplete
+      path: /api/v2/organizations/autocomplete
+      operations:
+      - name: autocompleteorganizations
+        method: GET
+        description: Zendesk Get  Api V2 Organizations Autocomplete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: autocomplete-organizations-rest
+    port: 8080
+    description: REST adapter for Zendesk Autocomplete — Organizations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/organizations/autocomplete
+      name: api-v2-organizations-autocomplete
+      description: REST surface for api-v2-organizations-autocomplete.
+      operations:
+      - method: GET
+        name: autocompleteorganizations
+        description: Zendesk Get  Api V2 Organizations Autocomplete
+        call: autocomplete-organizations.autocompleteorganizations
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: autocomplete-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Autocomplete — Organizations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-organizations
+      description: Zendesk Get  Api V2 Organizations Autocomplete
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: autocomplete-organizations.autocompleteorganizations
+      outputParameters:
+      - type: object
+        mapping: $.

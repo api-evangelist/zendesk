@@ -1,0 +1,160 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Organization Subscriptions — Organization Subscriptions
+  description: 'Zendesk Organization Subscriptions — Organization Subscriptions. 4 operations. Lead operation: Zendesk Get  Api
+    V2 Organization_subscriptions. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Organization Subscriptions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: organization-subscriptions-organization-subscriptions
+    baseUri: ''
+    description: Zendesk Organization Subscriptions — Organization Subscriptions business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: api-v2-organization_subscriptions
+      path: /api/v2/organization_subscriptions
+      operations:
+      - name: listorganizationsubscriptions
+        method: GET
+        description: Zendesk Get  Api V2 Organization_subscriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorganizationsubscription
+        method: POST
+        description: Zendesk Post  Api V2 Organization_subscriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v2-organization_subscriptions-organization_subscription_id
+      path: /api/v2/organization_subscriptions/{organization_subscription_id}
+      operations:
+      - name: showorganizationsubscription
+        method: GET
+        description: Zendesk Get  Api V2 Organization_subscriptions Organization_subscription_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteorganizationsubscription
+        method: DELETE
+        description: Zendesk Delete  Api V2 Organization_subscriptions Organization_subscription_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: organization-subscriptions-organization-subscriptions-rest
+    port: 8080
+    description: REST adapter for Zendesk Organization Subscriptions — Organization Subscriptions. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/organization-subscriptions
+      name: api-v2-organization-subscriptions
+      description: REST surface for api-v2-organization_subscriptions.
+      operations:
+      - method: GET
+        name: listorganizationsubscriptions
+        description: Zendesk Get  Api V2 Organization_subscriptions
+        call: organization-subscriptions-organization-subscriptions.listorganizationsubscriptions
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorganizationsubscription
+        description: Zendesk Post  Api V2 Organization_subscriptions
+        call: organization-subscriptions-organization-subscriptions.createorganizationsubscription
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/organization-subscriptions/{organization-subscription-id}
+      name: api-v2-organization-subscriptions-organization-subscription-id
+      description: REST surface for api-v2-organization_subscriptions-organization_subscription_id.
+      operations:
+      - method: GET
+        name: showorganizationsubscription
+        description: Zendesk Get  Api V2 Organization_subscriptions Organization_subscription_id
+        call: organization-subscriptions-organization-subscriptions.showorganizationsubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteorganizationsubscription
+        description: Zendesk Delete  Api V2 Organization_subscriptions Organization_subscription_id
+        call: organization-subscriptions-organization-subscriptions.deleteorganizationsubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: organization-subscriptions-organization-subscriptions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Organization Subscriptions — Organization Subscriptions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-organization
+      description: Zendesk Get  Api V2 Organization_subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: organization-subscriptions-organization-subscriptions.listorganizationsubscriptions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-organization
+      description: Zendesk Post  Api V2 Organization_subscriptions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: organization-subscriptions-organization-subscriptions.createorganizationsubscription
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-organization-2
+      description: Zendesk Get  Api V2 Organization_subscriptions Organization_subscription_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: organization-subscriptions-organization-subscriptions.showorganizationsubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-organization
+      description: Zendesk Delete  Api V2 Organization_subscriptions Organization_subscription_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: organization-subscriptions-organization-subscriptions.deleteorganizationsubscription
+      outputParameters:
+      - type: object
+        mapping: $.

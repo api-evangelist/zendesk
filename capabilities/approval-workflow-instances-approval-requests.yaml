@@ -1,0 +1,145 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Approval Workflow Instances — Approval Requests
+  description: 'Zendesk Approval Workflow Instances — Approval Requests. 3 operations. Lead operation: Zendesk Post  Api V2
+    Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search. Self-contained Naftiko capability
+    covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Approval Requests
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: approval-workflow-instances-approval-requests
+    baseUri: ''
+    description: Zendesk Approval Workflow Instances — Approval Requests business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-approval_workflow_instances-approval_workflow_instance_id-approval_reques
+      path: /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/search
+      operations:
+      - name: searchapprovals
+        method: POST
+        description: Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-approval_workflow_instances-approval_workflow_instance_id-approval_reques
+      path: /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/{approval_request_id}
+      operations:
+      - name: showapprovalrequest
+        method: GET
+        description: Zendesk Get  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-approval_workflow_instances-approval_workflow_instance_id-approval_reques
+      path: /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/{approval_request_id}/decision
+      operations:
+      - name: updatedecisionapprovalrequest
+        method: PATCH
+        description: Zendesk Patch  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id
+          Decision
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: approval-workflow-instances-approval-requests-rest
+    port: 8080
+    description: REST adapter for Zendesk Approval Workflow Instances — Approval Requests. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/approval-workflow-instances/{approval-workflow-instance-id}/approval-requests/search
+      name: api-v2-approval-workflow-instances-approval-workflow-instance-id-approval-reques
+      description: REST surface for api-v2-approval_workflow_instances-approval_workflow_instance_id-approval_reques.
+      operations:
+      - method: POST
+        name: searchapprovals
+        description: Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search
+        call: approval-workflow-instances-approval-requests.searchapprovals
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/approval-workflow-instances/{approval-workflow-instance-id}/approval-requests/{approval-request-id}
+      name: api-v2-approval-workflow-instances-approval-workflow-instance-id-approval-reques
+      description: REST surface for api-v2-approval_workflow_instances-approval_workflow_instance_id-approval_reques.
+      operations:
+      - method: GET
+        name: showapprovalrequest
+        description: Zendesk Get  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id
+        call: approval-workflow-instances-approval-requests.showapprovalrequest
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/approval-workflow-instances/{approval-workflow-instance-id}/approval-requests/{approval-request-id}/decision
+      name: api-v2-approval-workflow-instances-approval-workflow-instance-id-approval-reques
+      description: REST surface for api-v2-approval_workflow_instances-approval_workflow_instance_id-approval_reques.
+      operations:
+      - method: PATCH
+        name: updatedecisionapprovalrequest
+        description: Zendesk Patch  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id
+          Decision
+        call: approval-workflow-instances-approval-requests.updatedecisionapprovalrequest
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: approval-workflow-instances-approval-requests-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Approval Workflow Instances — Approval Requests. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: zendesk-post-api-v2-approval
+      description: Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: approval-workflow-instances-approval-requests.searchapprovals
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-approval
+      description: Zendesk Get  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: approval-workflow-instances-approval-requests.showapprovalrequest
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-patch-api-v2-approval
+      description: Zendesk Patch  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id
+        Decision
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: approval-workflow-instances-approval-requests.updatedecisionapprovalrequest
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,131 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Any Channel — Channel Framework
+  description: 'Zendesk Any Channel — Channel Framework. 3 operations. Lead operation: Zendesk Post  Api V2 Any_channel Channelback
+    Report_error. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Channel Framework
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: any-channel-channel-framework
+    baseUri: ''
+    description: Zendesk Any Channel — Channel Framework business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-any_channel-channelback-report_error
+      path: /api/v2/any_channel/channelback/report_error
+      operations:
+      - name: reportchannelbackerror
+        method: POST
+        description: Zendesk Post  Api V2 Any_channel Channelback Report_error
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-any_channel-push
+      path: /api/v2/any_channel/push
+      operations:
+      - name: pushcontenttosupport
+        method: POST
+        description: Zendesk Post  Api V2 Any_channel Push
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-any_channel-validate_token
+      path: /api/v2/any_channel/validate_token
+      operations:
+      - name: validatetoken
+        method: POST
+        description: Zendesk Post  Api V2 Any_channel Validate_token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: any-channel-channel-framework-rest
+    port: 8080
+    description: REST adapter for Zendesk Any Channel — Channel Framework. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/any-channel/channelback/report-error
+      name: api-v2-any-channel-channelback-report-error
+      description: REST surface for api-v2-any_channel-channelback-report_error.
+      operations:
+      - method: POST
+        name: reportchannelbackerror
+        description: Zendesk Post  Api V2 Any_channel Channelback Report_error
+        call: any-channel-channel-framework.reportchannelbackerror
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/any-channel/push
+      name: api-v2-any-channel-push
+      description: REST surface for api-v2-any_channel-push.
+      operations:
+      - method: POST
+        name: pushcontenttosupport
+        description: Zendesk Post  Api V2 Any_channel Push
+        call: any-channel-channel-framework.pushcontenttosupport
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/any-channel/validate-token
+      name: api-v2-any-channel-validate-token
+      description: REST surface for api-v2-any_channel-validate_token.
+      operations:
+      - method: POST
+        name: validatetoken
+        description: Zendesk Post  Api V2 Any_channel Validate_token
+        call: any-channel-channel-framework.validatetoken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: any-channel-channel-framework-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Any Channel — Channel Framework. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-post-api-v2-any
+      description: Zendesk Post  Api V2 Any_channel Channelback Report_error
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: any-channel-channel-framework.reportchannelbackerror
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-any-2
+      description: Zendesk Post  Api V2 Any_channel Push
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: any-channel-channel-framework.pushcontenttosupport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-any-3
+      description: Zendesk Post  Api V2 Any_channel Validate_token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: any-channel-channel-framework.validatetoken
+      outputParameters:
+      - type: object
+        mapping: $.

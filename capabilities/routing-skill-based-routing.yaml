@@ -1,0 +1,605 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Routing — Skill Based Routing
+  description: 'Zendesk Routing — Skill Based Routing. 18 operations. Lead operation: Zendesk Get  Api V2 Routing Agents Instance_values.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Skill Based Routing
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: routing-skill-based-routing
+    baseUri: ''
+    description: Zendesk Routing — Skill Based Routing business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-routing-agents-instance_values
+      path: /api/v2/routing/agents/instance_values
+      operations:
+      - name: listmanyagentsattributevalues
+        method: GET
+        description: Zendesk Get  Api V2 Routing Agents Instance_values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter[agent_ids]
+          in: query
+          type: string
+          description: A comma-separated list of agent ids
+          required: true
+        - name: page[before]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[after]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[size]
+          in: query
+          type: integer
+          description: The number of items to return per page
+    - name: api-v2-routing-agents-instance_values-job
+      path: /api/v2/routing/agents/instance_values/job
+      operations:
+      - name: bulksetagentattributevaluesjob
+        method: POST
+        description: Zendesk Post  Api V2 Routing Agents Instance_values Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-routing-agents-user_id-instance_values
+      path: /api/v2/routing/agents/{user_id}/instance_values
+      operations:
+      - name: listagentattributevalues
+        method: GET
+        description: Zendesk Get  Api V2 Routing Agents User_id Instance_values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: setagentattributevalues
+        method: POST
+        description: Zendesk Post  Api V2 Routing Agents User_id Instance_values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-routing-attributes
+      path: /api/v2/routing/attributes
+      operations:
+      - name: listaccountattributes
+        method: GET
+        description: Zendesk Get  Api V2 Routing Attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createattribute
+        method: POST
+        description: Zendesk Post  Api V2 Routing Attributes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-routing-attributes-definitions
+      path: /api/v2/routing/attributes/definitions
+      operations:
+      - name: listroutingattributedefinitions
+        method: GET
+        description: Zendesk Get  Api V2 Routing Attributes Definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-routing-attributes-attribute_id
+      path: /api/v2/routing/attributes/{attribute_id}
+      operations:
+      - name: showattribute
+        method: GET
+        description: Zendesk Get  Api V2 Routing Attributes Attribute_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateattribute
+        method: PUT
+        description: Zendesk Put  Api V2 Routing Attributes Attribute_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteattribute
+        method: DELETE
+        description: Zendesk Delete  Api V2 Routing Attributes Attribute_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-routing-attributes-attribute_id-values
+      path: /api/v2/routing/attributes/{attribute_id}/values
+      operations:
+      - name: listattributevalues
+        method: GET
+        description: Zendesk Get  Api V2 Routing Attributes Attribute_id Values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createattributevalue
+        method: POST
+        description: Zendesk Post  Api V2 Routing Attributes Attribute_id Values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-routing-attributes-attribute_id-values-attribute_value_id
+      path: /api/v2/routing/attributes/{attribute_id}/values/{attribute_value_id}
+      operations:
+      - name: showattributevalue
+        method: GET
+        description: Zendesk Get  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateattributevalue
+        method: PATCH
+        description: Zendesk Patch  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteattributevalue
+        method: DELETE
+        description: Zendesk Delete  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-routing-requirements-fulfilled
+      path: /api/v2/routing/requirements/fulfilled
+      operations:
+      - name: listticketsfullfilledbyuser
+        method: GET
+        description: Zendesk Get  Api V2 Routing Requirements Fulfilled
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ticket_ids
+          in: query
+          type: integer
+          description: The IDs of the relevant tickets to check for matching attributes
+          required: true
+    - name: api-v2-routing-tickets-ticket_id-instance_values
+      path: /api/v2/routing/tickets/{ticket_id}/instance_values
+      operations:
+      - name: listticketattributevalues
+        method: GET
+        description: Zendesk Get  Api V2 Routing Tickets Ticket_id Instance_values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: setticketattributevalues
+        method: POST
+        description: Zendesk Post  Api V2 Routing Tickets Ticket_id Instance_values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: routing-skill-based-routing-rest
+    port: 8080
+    description: REST adapter for Zendesk Routing — Skill Based Routing. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/routing/agents/instance-values
+      name: api-v2-routing-agents-instance-values
+      description: REST surface for api-v2-routing-agents-instance_values.
+      operations:
+      - method: GET
+        name: listmanyagentsattributevalues
+        description: Zendesk Get  Api V2 Routing Agents Instance_values
+        call: routing-skill-based-routing.listmanyagentsattributevalues
+        with:
+          filter[agent_ids]: rest.filter[agent_ids]
+          page[before]: rest.page[before]
+          page[after]: rest.page[after]
+          page[size]: rest.page[size]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/agents/instance-values/job
+      name: api-v2-routing-agents-instance-values-job
+      description: REST surface for api-v2-routing-agents-instance_values-job.
+      operations:
+      - method: POST
+        name: bulksetagentattributevaluesjob
+        description: Zendesk Post  Api V2 Routing Agents Instance_values Job
+        call: routing-skill-based-routing.bulksetagentattributevaluesjob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/agents/{user-id}/instance-values
+      name: api-v2-routing-agents-user-id-instance-values
+      description: REST surface for api-v2-routing-agents-user_id-instance_values.
+      operations:
+      - method: GET
+        name: listagentattributevalues
+        description: Zendesk Get  Api V2 Routing Agents User_id Instance_values
+        call: routing-skill-based-routing.listagentattributevalues
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: setagentattributevalues
+        description: Zendesk Post  Api V2 Routing Agents User_id Instance_values
+        call: routing-skill-based-routing.setagentattributevalues
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/attributes
+      name: api-v2-routing-attributes
+      description: REST surface for api-v2-routing-attributes.
+      operations:
+      - method: GET
+        name: listaccountattributes
+        description: Zendesk Get  Api V2 Routing Attributes
+        call: routing-skill-based-routing.listaccountattributes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createattribute
+        description: Zendesk Post  Api V2 Routing Attributes
+        call: routing-skill-based-routing.createattribute
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/attributes/definitions
+      name: api-v2-routing-attributes-definitions
+      description: REST surface for api-v2-routing-attributes-definitions.
+      operations:
+      - method: GET
+        name: listroutingattributedefinitions
+        description: Zendesk Get  Api V2 Routing Attributes Definitions
+        call: routing-skill-based-routing.listroutingattributedefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/attributes/{attribute-id}
+      name: api-v2-routing-attributes-attribute-id
+      description: REST surface for api-v2-routing-attributes-attribute_id.
+      operations:
+      - method: GET
+        name: showattribute
+        description: Zendesk Get  Api V2 Routing Attributes Attribute_id
+        call: routing-skill-based-routing.showattribute
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateattribute
+        description: Zendesk Put  Api V2 Routing Attributes Attribute_id
+        call: routing-skill-based-routing.updateattribute
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteattribute
+        description: Zendesk Delete  Api V2 Routing Attributes Attribute_id
+        call: routing-skill-based-routing.deleteattribute
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/attributes/{attribute-id}/values
+      name: api-v2-routing-attributes-attribute-id-values
+      description: REST surface for api-v2-routing-attributes-attribute_id-values.
+      operations:
+      - method: GET
+        name: listattributevalues
+        description: Zendesk Get  Api V2 Routing Attributes Attribute_id Values
+        call: routing-skill-based-routing.listattributevalues
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createattributevalue
+        description: Zendesk Post  Api V2 Routing Attributes Attribute_id Values
+        call: routing-skill-based-routing.createattributevalue
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/attributes/{attribute-id}/values/{attribute-value-id}
+      name: api-v2-routing-attributes-attribute-id-values-attribute-value-id
+      description: REST surface for api-v2-routing-attributes-attribute_id-values-attribute_value_id.
+      operations:
+      - method: GET
+        name: showattributevalue
+        description: Zendesk Get  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+        call: routing-skill-based-routing.showattributevalue
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateattributevalue
+        description: Zendesk Patch  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+        call: routing-skill-based-routing.updateattributevalue
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteattributevalue
+        description: Zendesk Delete  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+        call: routing-skill-based-routing.deleteattributevalue
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/requirements/fulfilled
+      name: api-v2-routing-requirements-fulfilled
+      description: REST surface for api-v2-routing-requirements-fulfilled.
+      operations:
+      - method: GET
+        name: listticketsfullfilledbyuser
+        description: Zendesk Get  Api V2 Routing Requirements Fulfilled
+        call: routing-skill-based-routing.listticketsfullfilledbyuser
+        with:
+          ticket_ids: rest.ticket_ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/routing/tickets/{ticket-id}/instance-values
+      name: api-v2-routing-tickets-ticket-id-instance-values
+      description: REST surface for api-v2-routing-tickets-ticket_id-instance_values.
+      operations:
+      - method: GET
+        name: listticketattributevalues
+        description: Zendesk Get  Api V2 Routing Tickets Ticket_id Instance_values
+        call: routing-skill-based-routing.listticketattributevalues
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: setticketattributevalues
+        description: Zendesk Post  Api V2 Routing Tickets Ticket_id Instance_values
+        call: routing-skill-based-routing.setticketattributevalues
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: routing-skill-based-routing-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Routing — Skill Based Routing. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-routing
+      description: Zendesk Get  Api V2 Routing Agents Instance_values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.listmanyagentsattributevalues
+      with:
+        filter[agent_ids]: tools.filter[agent_ids]
+        page[before]: tools.page[before]
+        page[after]: tools.page[after]
+        page[size]: tools.page[size]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-routing
+      description: Zendesk Post  Api V2 Routing Agents Instance_values Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: routing-skill-based-routing.bulksetagentattributevaluesjob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-routing-2
+      description: Zendesk Get  Api V2 Routing Agents User_id Instance_values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.listagentattributevalues
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-routing-2
+      description: Zendesk Post  Api V2 Routing Agents User_id Instance_values
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: routing-skill-based-routing.setagentattributevalues
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-routing-3
+      description: Zendesk Get  Api V2 Routing Attributes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.listaccountattributes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-routing-3
+      description: Zendesk Post  Api V2 Routing Attributes
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: routing-skill-based-routing.createattribute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-routing-4
+      description: Zendesk Get  Api V2 Routing Attributes Definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.listroutingattributedefinitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-routing-5
+      description: Zendesk Get  Api V2 Routing Attributes Attribute_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.showattribute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-routing
+      description: Zendesk Put  Api V2 Routing Attributes Attribute_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.updateattribute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-routing
+      description: Zendesk Delete  Api V2 Routing Attributes Attribute_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: routing-skill-based-routing.deleteattribute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-routing-6
+      description: Zendesk Get  Api V2 Routing Attributes Attribute_id Values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.listattributevalues
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-routing-4
+      description: Zendesk Post  Api V2 Routing Attributes Attribute_id Values
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: routing-skill-based-routing.createattributevalue
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-routing-7
+      description: Zendesk Get  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.showattributevalue
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-patch-api-v2-routing
+      description: Zendesk Patch  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.updateattributevalue
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-routing-2
+      description: Zendesk Delete  Api V2 Routing Attributes Attribute_id Values Attribute_value_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: routing-skill-based-routing.deleteattributevalue
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-routing-8
+      description: Zendesk Get  Api V2 Routing Requirements Fulfilled
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.listticketsfullfilledbyuser
+      with:
+        ticket_ids: tools.ticket_ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-routing-9
+      description: Zendesk Get  Api V2 Routing Tickets Ticket_id Instance_values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: routing-skill-based-routing.listticketattributevalues
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-routing-5
+      description: Zendesk Post  Api V2 Routing Tickets Ticket_id Instance_values
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: routing-skill-based-routing.setticketattributevalues
+      outputParameters:
+      - type: object
+        mapping: $.

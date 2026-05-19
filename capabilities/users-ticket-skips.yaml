@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Users — Ticket Skips
+  description: 'Zendesk Users — Ticket Skips. 1 operations. Lead operation: Zendesk Get  Api V2 Users User_id Skips. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Ticket Skips
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: users-ticket-skips
+    baseUri: ''
+    description: Zendesk Users — Ticket Skips business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-users-user_id-skips
+      path: /api/v2/users/{user_id}/skips
+      operations:
+      - name: listticketskips
+        method: GET
+        description: Zendesk Get  Api V2 Users User_id Skips
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: users-ticket-skips-rest
+    port: 8080
+    description: REST adapter for Zendesk Users — Ticket Skips. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/users/{user-id}/skips
+      name: api-v2-users-user-id-skips
+      description: REST surface for api-v2-users-user_id-skips.
+      operations:
+      - method: GET
+        name: listticketskips
+        description: Zendesk Get  Api V2 Users User_id Skips
+        call: users-ticket-skips.listticketskips
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: users-ticket-skips-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Users — Ticket Skips. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-users
+      description: Zendesk Get  Api V2 Users User_id Skips
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-ticket-skips.listticketskips
+      outputParameters:
+      - type: object
+        mapping: $.

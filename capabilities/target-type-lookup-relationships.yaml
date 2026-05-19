@@ -1,0 +1,146 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Target Type — Lookup Relationships
+  description: 'Zendesk Target Type — Lookup Relationships. 2 operations. Lead operation: Zendesk Get  Api V2 Relationships
+    Definitions Target_type. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Lookup Relationships
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: target-type-lookup-relationships
+    baseUri: ''
+    description: Zendesk Target Type — Lookup Relationships business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-relationships-definitions-target_type
+      path: /api/v2/relationships/definitions/{target_type}
+      operations:
+      - name: getrelationshipfilterdefinitions
+        method: GET
+        description: Zendesk Get  Api V2 Relationships Definitions Target_type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: target_type
+          in: path
+          type: string
+          description: The target type for which you would like to see filter definitions.
+          required: true
+        - name: source_type
+          in: query
+          type: string
+          description: The source type for which you would like to see filter definitions.
+    - name: api-v2-target_type-target_id-relationship_fields-field_id-source_type
+      path: /api/v2/{target_type}/{target_id}/relationship_fields/{field_id}/{source_type}
+      operations:
+      - name: getsourcesbytarget
+        method: GET
+        description: Zendesk Get  Api V2 Target_type Target_id Relationship_fields Field_id Source_type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: target_type
+          in: path
+          type: string
+          description: The type of object the relationship field is targeting.
+          required: true
+        - name: target_id
+          in: path
+          type: integer
+          description: The id of the object the relationship field is targeting
+          required: true
+        - name: field_id
+          in: path
+          type: integer
+          description: The id of the lookup relationship field
+          required: true
+        - name: source_type
+          in: path
+          type: string
+          description: The type of object the relationship field belongs to (example. ticket field belongs to a ticket object).
+          required: true
+  exposes:
+  - type: rest
+    namespace: target-type-lookup-relationships-rest
+    port: 8080
+    description: REST adapter for Zendesk Target Type — Lookup Relationships. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/relationships/definitions/{target-type}
+      name: api-v2-relationships-definitions-target-type
+      description: REST surface for api-v2-relationships-definitions-target_type.
+      operations:
+      - method: GET
+        name: getrelationshipfilterdefinitions
+        description: Zendesk Get  Api V2 Relationships Definitions Target_type
+        call: target-type-lookup-relationships.getrelationshipfilterdefinitions
+        with:
+          target_type: rest.target_type
+          source_type: rest.source_type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/{target-type}/{target-id}/relationship-fields/{field-id}/{source-type}
+      name: api-v2-target-type-target-id-relationship-fields-field-id-source-type
+      description: REST surface for api-v2-target_type-target_id-relationship_fields-field_id-source_type.
+      operations:
+      - method: GET
+        name: getsourcesbytarget
+        description: Zendesk Get  Api V2 Target_type Target_id Relationship_fields Field_id Source_type
+        call: target-type-lookup-relationships.getsourcesbytarget
+        with:
+          target_type: rest.target_type
+          target_id: rest.target_id
+          field_id: rest.field_id
+          source_type: rest.source_type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: target-type-lookup-relationships-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Target Type — Lookup Relationships. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-relationships
+      description: Zendesk Get  Api V2 Relationships Definitions Target_type
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: target-type-lookup-relationships.getrelationshipfilterdefinitions
+      with:
+        target_type: tools.target_type
+        source_type: tools.source_type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-target
+      description: Zendesk Get  Api V2 Target_type Target_id Relationship_fields Field_id Source_type
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: target-type-lookup-relationships.getsourcesbytarget
+      with:
+        target_type: tools.target_type
+        target_id: tools.target_id
+        field_id: tools.field_id
+        source_type: tools.source_type
+      outputParameters:
+      - type: object
+        mapping: $.

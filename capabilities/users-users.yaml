@@ -1,0 +1,819 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Users — Users
+  description: 'Zendesk Users — Users. 20 operations. Lead operation: Zendesk Get  Api V2 Users. Self-contained Naftiko capability
+    covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: users-users
+    baseUri: ''
+    description: Zendesk Users — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-users
+      path: /api/v2/users
+      operations:
+      - name: listusers
+        method: GET
+        description: Zendesk Get  Api V2 Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createuser
+        method: POST
+        description: Zendesk Post  Api V2 Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-autocomplete
+      path: /api/v2/users/autocomplete
+      operations:
+      - name: autocompleteusers
+        method: GET
+        description: Zendesk Get  Api V2 Users Autocomplete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: The name to search for the user.
+          required: true
+    - name: api-v2-users-count
+      path: /api/v2/users/count
+      operations:
+      - name: countusers
+        method: GET
+        description: Zendesk Get  Api V2 Users Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-create_many
+      path: /api/v2/users/create_many
+      operations:
+      - name: createmanyusers
+        method: POST
+        description: Zendesk Post  Api V2 Users Create_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-create_or_update
+      path: /api/v2/users/create_or_update
+      operations:
+      - name: createorupdateuser
+        method: POST
+        description: Zendesk Post  Api V2 Users Create_or_update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-create_or_update_many
+      path: /api/v2/users/create_or_update_many
+      operations:
+      - name: createorupdatemanyusers
+        method: POST
+        description: Zendesk Post  Api V2 Users Create_or_update_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-destroy_many
+      path: /api/v2/users/destroy_many
+      operations:
+      - name: destroymanyusers
+        method: DELETE
+        description: Zendesk Delete  Api V2 Users Destroy_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: Id of the users to delete. Comma separated
+        - name: external_ids
+          in: query
+          type: string
+          description: External Id of the users to delete. Comma separated
+    - name: api-v2-users-logout_many
+      path: /api/v2/users/logout_many
+      operations:
+      - name: logoutmanyusers
+        method: POST
+        description: Zendesk Post  Api V2 Users Logout_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: Accepts a comma-separated list of up to 100 user ids.
+    - name: api-v2-users-me
+      path: /api/v2/users/me
+      operations:
+      - name: showcurrentuser
+        method: GET
+        description: Zendesk Get  Api V2 Users Me
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-request_create
+      path: /api/v2/users/request_create
+      operations:
+      - name: requestusercreate
+        method: POST
+        description: Zendesk Post  Api V2 Users Request_create
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-search
+      path: /api/v2/users/search
+      operations:
+      - name: searchusers
+        method: GET
+        description: Zendesk Get  Api V2 Users Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The `query` parameter supports the Zendesk search syntax for more advanced
+        - name: external_id
+          in: query
+          type: string
+          description: The `external_id` parameter does not support the search syntax. It only accepts ids.
+    - name: api-v2-users-show_many
+      path: /api/v2/users/show_many
+      operations:
+      - name: showmanyusers
+        method: GET
+        description: Zendesk Get  Api V2 Users Show_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: Accepts a comma-separated list of up to 100 user ids.
+        - name: external_ids
+          in: query
+          type: string
+          description: Accepts a comma-separated list of up to 100 external ids.
+    - name: api-v2-users-update_many
+      path: /api/v2/users/update_many
+      operations:
+      - name: updatemanyusers
+        method: PUT
+        description: Zendesk Put  Api V2 Users Update_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: Id of the users to update. Comma separated
+        - name: external_ids
+          in: query
+          type: string
+          description: External Id of the users to update. Comma separated
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-user_id
+      path: /api/v2/users/{user_id}
+      operations:
+      - name: showuser
+        method: GET
+        description: Zendesk Get  Api V2 Users User_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateuser
+        method: PUT
+        description: Zendesk Put  Api V2 Users User_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteuser
+        method: DELETE
+        description: Zendesk Delete  Api V2 Users User_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-user_id-compliance_deletion_statuses
+      path: /api/v2/users/{user_id}/compliance_deletion_statuses
+      operations:
+      - name: showusercompliancedeletionstatuses
+        method: GET
+        description: Zendesk Get  Api V2 Users User_id Compliance_deletion_statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: application
+          in: query
+          type: string
+          description: Area of compliance
+    - name: api-v2-users-user_id-merge
+      path: /api/v2/users/{user_id}/merge
+      operations:
+      - name: mergeendusers
+        method: PUT
+        description: Zendesk Put  Api V2 Users User_id Merge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-user_id-related
+      path: /api/v2/users/{user_id}/related
+      operations:
+      - name: showuserrelated
+        method: GET
+        description: Zendesk Get  Api V2 Users User_id Related
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: users-users-rest
+    port: 8080
+    description: REST adapter for Zendesk Users — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/users
+      name: api-v2-users
+      description: REST surface for api-v2-users.
+      operations:
+      - method: GET
+        name: listusers
+        description: Zendesk Get  Api V2 Users
+        call: users-users.listusers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createuser
+        description: Zendesk Post  Api V2 Users
+        call: users-users.createuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/autocomplete
+      name: api-v2-users-autocomplete
+      description: REST surface for api-v2-users-autocomplete.
+      operations:
+      - method: GET
+        name: autocompleteusers
+        description: Zendesk Get  Api V2 Users Autocomplete
+        call: users-users.autocompleteusers
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/count
+      name: api-v2-users-count
+      description: REST surface for api-v2-users-count.
+      operations:
+      - method: GET
+        name: countusers
+        description: Zendesk Get  Api V2 Users Count
+        call: users-users.countusers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/create-many
+      name: api-v2-users-create-many
+      description: REST surface for api-v2-users-create_many.
+      operations:
+      - method: POST
+        name: createmanyusers
+        description: Zendesk Post  Api V2 Users Create_many
+        call: users-users.createmanyusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/create-or-update
+      name: api-v2-users-create-or-update
+      description: REST surface for api-v2-users-create_or_update.
+      operations:
+      - method: POST
+        name: createorupdateuser
+        description: Zendesk Post  Api V2 Users Create_or_update
+        call: users-users.createorupdateuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/create-or-update-many
+      name: api-v2-users-create-or-update-many
+      description: REST surface for api-v2-users-create_or_update_many.
+      operations:
+      - method: POST
+        name: createorupdatemanyusers
+        description: Zendesk Post  Api V2 Users Create_or_update_many
+        call: users-users.createorupdatemanyusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/destroy-many
+      name: api-v2-users-destroy-many
+      description: REST surface for api-v2-users-destroy_many.
+      operations:
+      - method: DELETE
+        name: destroymanyusers
+        description: Zendesk Delete  Api V2 Users Destroy_many
+        call: users-users.destroymanyusers
+        with:
+          ids: rest.ids
+          external_ids: rest.external_ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/logout-many
+      name: api-v2-users-logout-many
+      description: REST surface for api-v2-users-logout_many.
+      operations:
+      - method: POST
+        name: logoutmanyusers
+        description: Zendesk Post  Api V2 Users Logout_many
+        call: users-users.logoutmanyusers
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/me
+      name: api-v2-users-me
+      description: REST surface for api-v2-users-me.
+      operations:
+      - method: GET
+        name: showcurrentuser
+        description: Zendesk Get  Api V2 Users Me
+        call: users-users.showcurrentuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/request-create
+      name: api-v2-users-request-create
+      description: REST surface for api-v2-users-request_create.
+      operations:
+      - method: POST
+        name: requestusercreate
+        description: Zendesk Post  Api V2 Users Request_create
+        call: users-users.requestusercreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/search
+      name: api-v2-users-search
+      description: REST surface for api-v2-users-search.
+      operations:
+      - method: GET
+        name: searchusers
+        description: Zendesk Get  Api V2 Users Search
+        call: users-users.searchusers
+        with:
+          query: rest.query
+          external_id: rest.external_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/show-many
+      name: api-v2-users-show-many
+      description: REST surface for api-v2-users-show_many.
+      operations:
+      - method: GET
+        name: showmanyusers
+        description: Zendesk Get  Api V2 Users Show_many
+        call: users-users.showmanyusers
+        with:
+          ids: rest.ids
+          external_ids: rest.external_ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/update-many
+      name: api-v2-users-update-many
+      description: REST surface for api-v2-users-update_many.
+      operations:
+      - method: PUT
+        name: updatemanyusers
+        description: Zendesk Put  Api V2 Users Update_many
+        call: users-users.updatemanyusers
+        with:
+          ids: rest.ids
+          external_ids: rest.external_ids
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}
+      name: api-v2-users-user-id
+      description: REST surface for api-v2-users-user_id.
+      operations:
+      - method: GET
+        name: showuser
+        description: Zendesk Get  Api V2 Users User_id
+        call: users-users.showuser
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateuser
+        description: Zendesk Put  Api V2 Users User_id
+        call: users-users.updateuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuser
+        description: Zendesk Delete  Api V2 Users User_id
+        call: users-users.deleteuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/compliance-deletion-statuses
+      name: api-v2-users-user-id-compliance-deletion-statuses
+      description: REST surface for api-v2-users-user_id-compliance_deletion_statuses.
+      operations:
+      - method: GET
+        name: showusercompliancedeletionstatuses
+        description: Zendesk Get  Api V2 Users User_id Compliance_deletion_statuses
+        call: users-users.showusercompliancedeletionstatuses
+        with:
+          application: rest.application
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/merge
+      name: api-v2-users-user-id-merge
+      description: REST surface for api-v2-users-user_id-merge.
+      operations:
+      - method: PUT
+        name: mergeendusers
+        description: Zendesk Put  Api V2 Users User_id Merge
+        call: users-users.mergeendusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/related
+      name: api-v2-users-user-id-related
+      description: REST surface for api-v2-users-user_id-related.
+      operations:
+      - method: GET
+        name: showuserrelated
+        description: Zendesk Get  Api V2 Users User_id Related
+        call: users-users.showuserrelated
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: users-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Users — Users. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-users
+      description: Zendesk Get  Api V2 Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.listusers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-users
+      description: Zendesk Post  Api V2 Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: users-users.createuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-2
+      description: Zendesk Get  Api V2 Users Autocomplete
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.autocompleteusers
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-3
+      description: Zendesk Get  Api V2 Users Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.countusers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-users-2
+      description: Zendesk Post  Api V2 Users Create_many
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: users-users.createmanyusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-users-3
+      description: Zendesk Post  Api V2 Users Create_or_update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: users-users.createorupdateuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-users-4
+      description: Zendesk Post  Api V2 Users Create_or_update_many
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: users-users.createorupdatemanyusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-users
+      description: Zendesk Delete  Api V2 Users Destroy_many
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: users-users.destroymanyusers
+      with:
+        ids: tools.ids
+        external_ids: tools.external_ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-users-5
+      description: Zendesk Post  Api V2 Users Logout_many
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: users-users.logoutmanyusers
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-4
+      description: Zendesk Get  Api V2 Users Me
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.showcurrentuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-users-6
+      description: Zendesk Post  Api V2 Users Request_create
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: users-users.requestusercreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-5
+      description: Zendesk Get  Api V2 Users Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.searchusers
+      with:
+        query: tools.query
+        external_id: tools.external_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-6
+      description: Zendesk Get  Api V2 Users Show_many
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.showmanyusers
+      with:
+        ids: tools.ids
+        external_ids: tools.external_ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-users
+      description: Zendesk Put  Api V2 Users Update_many
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: users-users.updatemanyusers
+      with:
+        ids: tools.ids
+        external_ids: tools.external_ids
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-7
+      description: Zendesk Get  Api V2 Users User_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.showuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-users-2
+      description: Zendesk Put  Api V2 Users User_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: users-users.updateuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-users-2
+      description: Zendesk Delete  Api V2 Users User_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: users-users.deleteuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-8
+      description: Zendesk Get  Api V2 Users User_id Compliance_deletion_statuses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.showusercompliancedeletionstatuses
+      with:
+        application: tools.application
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-users-3
+      description: Zendesk Put  Api V2 Users User_id Merge
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: users-users.mergeendusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users-9
+      description: Zendesk Get  Api V2 Users User_id Related
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-users.showuserrelated
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Attachments — Suspended Tickets
+  description: 'Zendesk Attachments — Suspended Tickets. 1 operations. Lead operation: Zendesk Post  Api V2 Suspended_tickets
+    Attachments. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Suspended Tickets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: attachments-suspended-tickets
+    baseUri: ''
+    description: Zendesk Attachments — Suspended Tickets business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-suspended_tickets-attachments
+      path: /api/v2/suspended_tickets/attachments
+      operations:
+      - name: suspendedticketsattachments
+        method: POST
+        description: Zendesk Post  Api V2 Suspended_tickets Attachments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: attachments-suspended-tickets-rest
+    port: 8080
+    description: REST adapter for Zendesk Attachments — Suspended Tickets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/suspended-tickets/attachments
+      name: api-v2-suspended-tickets-attachments
+      description: REST surface for api-v2-suspended_tickets-attachments.
+      operations:
+      - method: POST
+        name: suspendedticketsattachments
+        description: Zendesk Post  Api V2 Suspended_tickets Attachments
+        call: attachments-suspended-tickets.suspendedticketsattachments
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: attachments-suspended-tickets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Attachments — Suspended Tickets. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-post-api-v2-suspended
+      description: Zendesk Post  Api V2 Suspended_tickets Attachments
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: attachments-suspended-tickets.suspendedticketsattachments
+      outputParameters:
+      - type: object
+        mapping: $.

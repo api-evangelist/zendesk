@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Search — Object Triggers
+  description: 'Zendesk Search — Object Triggers. 1 operations. Lead operation: Zendesk Get  Api V2 Custom_objects Custom_object_key
+    Triggers Search. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Object Triggers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-object-triggers
+    baseUri: ''
+    description: Zendesk Search — Object Triggers business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-custom_objects-custom_object_key-triggers-search
+      path: /api/v2/custom_objects/{custom_object_key}/triggers/search
+      operations:
+      - name: searchobjecttriggers
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: search-object-triggers-rest
+    port: 8080
+    description: REST adapter for Zendesk Search — Object Triggers. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/triggers/search
+      name: api-v2-custom-objects-custom-object-key-triggers-search
+      description: REST surface for api-v2-custom_objects-custom_object_key-triggers-search.
+      operations:
+      - method: GET
+        name: searchobjecttriggers
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
+        call: search-object-triggers.searchobjecttriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-object-triggers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Search — Object Triggers. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-custom
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-object-triggers.searchobjecttriggers
+      outputParameters:
+      - type: object
+        mapping: $.

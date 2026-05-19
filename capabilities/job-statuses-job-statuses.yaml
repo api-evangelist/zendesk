@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Job Statuses — Job Statuses
+  description: 'Zendesk Job Statuses — Job Statuses. 3 operations. Lead operation: Zendesk Get  Api V2 Job_statuses. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Job Statuses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: job-statuses-job-statuses
+    baseUri: ''
+    description: Zendesk Job Statuses — Job Statuses business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-job_statuses
+      path: /api/v2/job_statuses
+      operations:
+      - name: listjobstatuses
+        method: GET
+        description: Zendesk Get  Api V2 Job_statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-job_statuses-show_many
+      path: /api/v2/job_statuses/show_many
+      operations:
+      - name: showmanyjobstatuses
+        method: GET
+        description: Zendesk Get  Api V2 Job_statuses Show_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: Comma-separated list of job status ids.
+          required: true
+    - name: api-v2-job_statuses-job_status_id
+      path: /api/v2/job_statuses/{job_status_id}
+      operations:
+      - name: showjobstatus
+        method: GET
+        description: Zendesk Get  Api V2 Job_statuses Job_status_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: job-statuses-job-statuses-rest
+    port: 8080
+    description: REST adapter for Zendesk Job Statuses — Job Statuses. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/job-statuses
+      name: api-v2-job-statuses
+      description: REST surface for api-v2-job_statuses.
+      operations:
+      - method: GET
+        name: listjobstatuses
+        description: Zendesk Get  Api V2 Job_statuses
+        call: job-statuses-job-statuses.listjobstatuses
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/job-statuses/show-many
+      name: api-v2-job-statuses-show-many
+      description: REST surface for api-v2-job_statuses-show_many.
+      operations:
+      - method: GET
+        name: showmanyjobstatuses
+        description: Zendesk Get  Api V2 Job_statuses Show_many
+        call: job-statuses-job-statuses.showmanyjobstatuses
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/job-statuses/{job-status-id}
+      name: api-v2-job-statuses-job-status-id
+      description: REST surface for api-v2-job_statuses-job_status_id.
+      operations:
+      - method: GET
+        name: showjobstatus
+        description: Zendesk Get  Api V2 Job_statuses Job_status_id
+        call: job-statuses-job-statuses.showjobstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: job-statuses-job-statuses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Job Statuses — Job Statuses. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-job
+      description: Zendesk Get  Api V2 Job_statuses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: job-statuses-job-statuses.listjobstatuses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-job-2
+      description: Zendesk Get  Api V2 Job_statuses Show_many
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: job-statuses-job-statuses.showmanyjobstatuses
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-job-3
+      description: Zendesk Get  Api V2 Job_statuses Job_status_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: job-statuses-job-statuses.showjobstatus
+      outputParameters:
+      - type: object
+        mapping: $.

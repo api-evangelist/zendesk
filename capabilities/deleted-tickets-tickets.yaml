@@ -1,0 +1,195 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Deleted Tickets — Tickets
+  description: 'Zendesk Deleted Tickets — Tickets. 5 operations. Lead operation: Zendesk Get  Api V2 Deleted_tickets. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Tickets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: deleted-tickets-tickets
+    baseUri: ''
+    description: Zendesk Deleted Tickets — Tickets business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-deleted_tickets
+      path: /api/v2/deleted_tickets
+      operations:
+      - name: listdeletedtickets
+        method: GET
+        description: Zendesk Get  Api V2 Deleted_tickets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-deleted_tickets-destroy_many
+      path: /api/v2/deleted_tickets/destroy_many
+      operations:
+      - name: bulkpermanentlydeletetickets
+        method: DELETE
+        description: Zendesk Delete  Api V2 Deleted_tickets Destroy_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-deleted_tickets-restore_many
+      path: /api/v2/deleted_tickets/restore_many
+      operations:
+      - name: bulkrestoredeletedtickets
+        method: PUT
+        description: Zendesk Put  Api V2 Deleted_tickets Restore_many
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-deleted_tickets-ticket_id
+      path: /api/v2/deleted_tickets/{ticket_id}
+      operations:
+      - name: deleteticketpermanently
+        method: DELETE
+        description: Zendesk Delete  Api V2 Deleted_tickets Ticket_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-deleted_tickets-ticket_id-restore
+      path: /api/v2/deleted_tickets/{ticket_id}/restore
+      operations:
+      - name: restoredeletedticket
+        method: PUT
+        description: Zendesk Put  Api V2 Deleted_tickets Ticket_id Restore
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: deleted-tickets-tickets-rest
+    port: 8080
+    description: REST adapter for Zendesk Deleted Tickets — Tickets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/deleted-tickets
+      name: api-v2-deleted-tickets
+      description: REST surface for api-v2-deleted_tickets.
+      operations:
+      - method: GET
+        name: listdeletedtickets
+        description: Zendesk Get  Api V2 Deleted_tickets
+        call: deleted-tickets-tickets.listdeletedtickets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/deleted-tickets/destroy-many
+      name: api-v2-deleted-tickets-destroy-many
+      description: REST surface for api-v2-deleted_tickets-destroy_many.
+      operations:
+      - method: DELETE
+        name: bulkpermanentlydeletetickets
+        description: Zendesk Delete  Api V2 Deleted_tickets Destroy_many
+        call: deleted-tickets-tickets.bulkpermanentlydeletetickets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/deleted-tickets/restore-many
+      name: api-v2-deleted-tickets-restore-many
+      description: REST surface for api-v2-deleted_tickets-restore_many.
+      operations:
+      - method: PUT
+        name: bulkrestoredeletedtickets
+        description: Zendesk Put  Api V2 Deleted_tickets Restore_many
+        call: deleted-tickets-tickets.bulkrestoredeletedtickets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/deleted-tickets/{ticket-id}
+      name: api-v2-deleted-tickets-ticket-id
+      description: REST surface for api-v2-deleted_tickets-ticket_id.
+      operations:
+      - method: DELETE
+        name: deleteticketpermanently
+        description: Zendesk Delete  Api V2 Deleted_tickets Ticket_id
+        call: deleted-tickets-tickets.deleteticketpermanently
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/deleted-tickets/{ticket-id}/restore
+      name: api-v2-deleted-tickets-ticket-id-restore
+      description: REST surface for api-v2-deleted_tickets-ticket_id-restore.
+      operations:
+      - method: PUT
+        name: restoredeletedticket
+        description: Zendesk Put  Api V2 Deleted_tickets Ticket_id Restore
+        call: deleted-tickets-tickets.restoredeletedticket
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: deleted-tickets-tickets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Deleted Tickets — Tickets. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-deleted
+      description: Zendesk Get  Api V2 Deleted_tickets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: deleted-tickets-tickets.listdeletedtickets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-deleted
+      description: Zendesk Delete  Api V2 Deleted_tickets Destroy_many
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: deleted-tickets-tickets.bulkpermanentlydeletetickets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-deleted
+      description: Zendesk Put  Api V2 Deleted_tickets Restore_many
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: deleted-tickets-tickets.bulkrestoredeletedtickets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-deleted-2
+      description: Zendesk Delete  Api V2 Deleted_tickets Ticket_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: deleted-tickets-tickets.deleteticketpermanently
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-deleted-2
+      description: Zendesk Put  Api V2 Deleted_tickets Ticket_id Restore
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: deleted-tickets-tickets.restoredeletedticket
+      outputParameters:
+      - type: object
+        mapping: $.

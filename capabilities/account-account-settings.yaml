@@ -1,0 +1,92 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Account — Account Settings
+  description: 'Zendesk Account — Account Settings. 2 operations. Lead operation: Zendesk Get  Api V2 Account Settings. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Account Settings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: account-account-settings
+    baseUri: ''
+    description: Zendesk Account — Account Settings business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-account-settings
+      path: /api/v2/account/settings
+      operations:
+      - name: showaccountsettings
+        method: GET
+        description: Zendesk Get  Api V2 Account Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateaccountsettings
+        method: PUT
+        description: Zendesk Put  Api V2 Account Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: account-account-settings-rest
+    port: 8080
+    description: REST adapter for Zendesk Account — Account Settings. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/account/settings
+      name: api-v2-account-settings
+      description: REST surface for api-v2-account-settings.
+      operations:
+      - method: GET
+        name: showaccountsettings
+        description: Zendesk Get  Api V2 Account Settings
+        call: account-account-settings.showaccountsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateaccountsettings
+        description: Zendesk Put  Api V2 Account Settings
+        call: account-account-settings.updateaccountsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: account-account-settings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Account — Account Settings. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-account
+      description: Zendesk Get  Api V2 Account Settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-account-settings.showaccountsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-account
+      description: Zendesk Put  Api V2 Account Settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: account-account-settings.updateaccountsettings
+      outputParameters:
+      - type: object
+        mapping: $.

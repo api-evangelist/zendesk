@@ -1,0 +1,174 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Custom Roles — Custom Roles
+  description: 'Zendesk Custom Roles — Custom Roles. 5 operations. Lead operation: Zendesk Get  Api V2 Custom_roles. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Custom Roles
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: custom-roles-custom-roles
+    baseUri: ''
+    description: Zendesk Custom Roles — Custom Roles business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-custom_roles
+      path: /api/v2/custom_roles
+      operations:
+      - name: listcustomroles
+        method: GET
+        description: Zendesk Get  Api V2 Custom_roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcustomrole
+        method: POST
+        description: Zendesk Post  Api V2 Custom_roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-custom_roles-custom_role_id
+      path: /api/v2/custom_roles/{custom_role_id}
+      operations:
+      - name: showcustomrolebyid
+        method: GET
+        description: Zendesk Get  Api V2 Custom_roles Custom_role_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecustomrolebyid
+        method: PUT
+        description: Zendesk Put  Api V2 Custom_roles Custom_role_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecustomrolebyid
+        method: DELETE
+        description: Zendesk Delete  Api V2 Custom_roles Custom_role_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: custom-roles-custom-roles-rest
+    port: 8080
+    description: REST adapter for Zendesk Custom Roles — Custom Roles. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/custom-roles
+      name: api-v2-custom-roles
+      description: REST surface for api-v2-custom_roles.
+      operations:
+      - method: GET
+        name: listcustomroles
+        description: Zendesk Get  Api V2 Custom_roles
+        call: custom-roles-custom-roles.listcustomroles
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcustomrole
+        description: Zendesk Post  Api V2 Custom_roles
+        call: custom-roles-custom-roles.createcustomrole
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/custom-roles/{custom-role-id}
+      name: api-v2-custom-roles-custom-role-id
+      description: REST surface for api-v2-custom_roles-custom_role_id.
+      operations:
+      - method: GET
+        name: showcustomrolebyid
+        description: Zendesk Get  Api V2 Custom_roles Custom_role_id
+        call: custom-roles-custom-roles.showcustomrolebyid
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecustomrolebyid
+        description: Zendesk Put  Api V2 Custom_roles Custom_role_id
+        call: custom-roles-custom-roles.updatecustomrolebyid
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecustomrolebyid
+        description: Zendesk Delete  Api V2 Custom_roles Custom_role_id
+        call: custom-roles-custom-roles.deletecustomrolebyid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: custom-roles-custom-roles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Custom Roles — Custom Roles. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-custom
+      description: Zendesk Get  Api V2 Custom_roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-roles-custom-roles.listcustomroles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-custom
+      description: Zendesk Post  Api V2 Custom_roles
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: custom-roles-custom-roles.createcustomrole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-custom-2
+      description: Zendesk Get  Api V2 Custom_roles Custom_role_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: custom-roles-custom-roles.showcustomrolebyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-custom
+      description: Zendesk Put  Api V2 Custom_roles Custom_role_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: custom-roles-custom-roles.updatecustomrolebyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-custom
+      description: Zendesk Delete  Api V2 Custom_roles Custom_role_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: custom-roles-custom-roles.deletecustomrolebyid
+      outputParameters:
+      - type: object
+        mapping: $.

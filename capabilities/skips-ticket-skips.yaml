@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Skips — Ticket Skips
+  description: 'Zendesk Skips — Ticket Skips. 2 operations. Lead operation: Zendesk Post  Api V2 Skips. Self-contained Naftiko
+    capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Ticket Skips
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: skips-ticket-skips
+    baseUri: ''
+    description: Zendesk Skips — Ticket Skips business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-skips
+      path: /api/v2/skips
+      operations:
+      - name: recordnewskip
+        method: POST
+        description: Zendesk Post  Api V2 Skips
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-users-user_id-skips
+      path: /api/v2/users/{user_id}/skips
+      operations:
+      - name: listticketskips
+        method: GET
+        description: Zendesk Get  Api V2 Users User_id Skips
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: skips-ticket-skips-rest
+    port: 8080
+    description: REST adapter for Zendesk Skips — Ticket Skips. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/skips
+      name: api-v2-skips
+      description: REST surface for api-v2-skips.
+      operations:
+      - method: POST
+        name: recordnewskip
+        description: Zendesk Post  Api V2 Skips
+        call: skips-ticket-skips.recordnewskip
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/skips
+      name: api-v2-users-user-id-skips
+      description: REST surface for api-v2-users-user_id-skips.
+      operations:
+      - method: GET
+        name: listticketskips
+        description: Zendesk Get  Api V2 Users User_id Skips
+        call: skips-ticket-skips.listticketskips
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: skips-ticket-skips-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Skips — Ticket Skips. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zendesk-post-api-v2-skips
+      description: Zendesk Post  Api V2 Skips
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: skips-ticket-skips.recordnewskip
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-users
+      description: Zendesk Get  Api V2 Users User_id Skips
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: skips-ticket-skips.listticketskips
+      outputParameters:
+      - type: object
+        mapping: $.

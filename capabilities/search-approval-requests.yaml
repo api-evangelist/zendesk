@@ -1,0 +1,68 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Search — Approval Requests
+  description: 'Zendesk Search — Approval Requests. 1 operations. Lead operation: Zendesk Post  Api V2 Approval_workflow_instances
+    Approval_workflow_instance_id Approval_requests Search. Self-contained Naftiko capability covering one Zendesk business
+    surface.'
+  tags:
+  - Zendesk
+  - Approval Requests
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-approval-requests
+    baseUri: ''
+    description: Zendesk Search — Approval Requests business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-approval_workflow_instances-approval_workflow_instance_id-approval_reques
+      path: /api/v2/approval_workflow_instances/{approval_workflow_instance_id}/approval_requests/search
+      operations:
+      - name: searchapprovals
+        method: POST
+        description: Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: search-approval-requests-rest
+    port: 8080
+    description: REST adapter for Zendesk Search — Approval Requests. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/approval-workflow-instances/{approval-workflow-instance-id}/approval-requests/search
+      name: api-v2-approval-workflow-instances-approval-workflow-instance-id-approval-reques
+      description: REST surface for api-v2-approval_workflow_instances-approval_workflow_instance_id-approval_reques.
+      operations:
+      - method: POST
+        name: searchapprovals
+        description: Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search
+        call: search-approval-requests.searchapprovals
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-approval-requests-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Search — Approval Requests. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-post-api-v2-approval
+      description: Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: search-approval-requests.searchapprovals
+      outputParameters:
+      - type: object
+        mapping: $.

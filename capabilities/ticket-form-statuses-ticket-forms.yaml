@@ -1,0 +1,179 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Ticket Form Statuses — Ticket Forms
+  description: 'Zendesk Ticket Form Statuses — Ticket Forms. 4 operations. Lead operation: Zendesk Get  Api V2 Ticket_forms
+    Ticket_form_id Ticket_form_statuses. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Ticket Forms
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ticket-form-statuses-ticket-forms
+    baseUri: ''
+    description: Zendesk Ticket Form Statuses — Ticket Forms business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-ticket_forms-ticket_form_id-ticket_form_statuses
+      path: /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses
+      operations:
+      - name: ticketformticketformstatuses
+        method: GET
+        description: Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createticketformstatuses
+        method: POST
+        description: Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updateticketformstatuses
+        method: PUT
+        description: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-v2-ticket_forms-ticket_form_id-ticket_form_statuses-ticket_form_status_id
+      path: /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses/{ticket_form_status_id}
+      operations:
+      - name: updateticketformstatusbyid
+        method: PUT
+        description: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: ticket-form-statuses-ticket-forms-rest
+    port: 8080
+    description: REST adapter for Zendesk Ticket Form Statuses — Ticket Forms. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/ticket-forms/{ticket-form-id}/ticket-form-statuses
+      name: api-v2-ticket-forms-ticket-form-id-ticket-form-statuses
+      description: REST surface for api-v2-ticket_forms-ticket_form_id-ticket_form_statuses.
+      operations:
+      - method: GET
+        name: ticketformticketformstatuses
+        description: Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        call: ticket-form-statuses-ticket-forms.ticketformticketformstatuses
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createticketformstatuses
+        description: Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        call: ticket-form-statuses-ticket-forms.createticketformstatuses
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateticketformstatuses
+        description: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+        call: ticket-form-statuses-ticket-forms.updateticketformstatuses
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/ticket-forms/{ticket-form-id}/ticket-form-statuses/{ticket-form-status-id}
+      name: api-v2-ticket-forms-ticket-form-id-ticket-form-statuses-ticket-form-status-id
+      description: REST surface for api-v2-ticket_forms-ticket_form_id-ticket_form_statuses-ticket_form_status_id.
+      operations:
+      - method: PUT
+        name: updateticketformstatusbyid
+        description: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id
+        call: ticket-form-statuses-ticket-forms.updateticketformstatusbyid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ticket-form-statuses-ticket-forms-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Ticket Form Statuses — Ticket Forms. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-ticket
+      description: Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ticket-form-statuses-ticket-forms.ticketformticketformstatuses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-ticket
+      description: Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ticket-form-statuses-ticket-forms.createticketformstatuses
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-ticket
+      description: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ticket-form-statuses-ticket-forms.updateticketformstatuses
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-ticket-2
+      description: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ticket-form-statuses-ticket-forms.updateticketformstatusbyid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

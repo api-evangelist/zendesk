@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Search — Requests
+  description: 'Zendesk Search — Requests. 1 operations. Lead operation: Zendesk Get  Api V2 Requests Search. Self-contained
+    Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Requests
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-requests
+    baseUri: ''
+    description: Zendesk Search — Requests business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-requests-search
+      path: /api/v2/requests/search
+      operations:
+      - name: searchrequests
+        method: GET
+        description: Zendesk Get  Api V2 Requests Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The syntax and matching logic for the string is detailed in the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226).
+            See
+  exposes:
+  - type: rest
+    namespace: search-requests-rest
+    port: 8080
+    description: REST adapter for Zendesk Search — Requests. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/requests/search
+      name: api-v2-requests-search
+      description: REST surface for api-v2-requests-search.
+      operations:
+      - method: GET
+        name: searchrequests
+        description: Zendesk Get  Api V2 Requests Search
+        call: search-requests.searchrequests
+        with:
+          query: rest.query
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-requests-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Search — Requests. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-requests
+      description: Zendesk Get  Api V2 Requests Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-requests.searchrequests
+      with:
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,187 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Search — Search
+  description: 'Zendesk Search — Search. 3 operations. Lead operation: Zendesk Get  Api V2 Search. Self-contained Naftiko
+    capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-search
+    baseUri: ''
+    description: Zendesk Search — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-search
+      path: /api/v2/search
+      operations:
+      - name: listsearchresults
+        method: GET
+        description: Zendesk Get  Api V2 Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The search query. See [Query basics](#query-basics) above. For details on the query syntax, see the
+            [Zendesk Support search reference](https://support.zendesk.c
+          required: true
+        - name: sort_by
+          in: query
+          type: string
+          description: One of `updated_at`, `created_at`, `priority`, `status`, or `ticket_type`. Defaults to sorting by relevance
+        - name: sort_order
+          in: query
+          type: string
+          description: One of `asc` or `desc`.  Defaults to `desc`
+    - name: api-v2-search-count
+      path: /api/v2/search/count
+      operations:
+      - name: countsearchresults
+        method: GET
+        description: Zendesk Get  Api V2 Search Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The search query
+          required: true
+    - name: api-v2-search-export
+      path: /api/v2/search/export
+      operations:
+      - name: exportsearchresults
+        method: GET
+        description: Zendesk Get  Api V2 Search Export
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The search query. See [Query basics](#query-basics) above. For details on the query syntax, see the
+            [Zendesk Support search reference](https://support.zendesk.c
+          required: true
+        - name: page[size]
+          in: query
+          type: integer
+          description: The number of results shown in a page.
+        - name: filter[type]
+          in: query
+          type: string
+          description: The object type returned by the export query. Can be `ticket`, `organization`, `user`, or `group`.
+  exposes:
+  - type: rest
+    namespace: search-search-rest
+    port: 8080
+    description: REST adapter for Zendesk Search — Search. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/search
+      name: api-v2-search
+      description: REST surface for api-v2-search.
+      operations:
+      - method: GET
+        name: listsearchresults
+        description: Zendesk Get  Api V2 Search
+        call: search-search.listsearchresults
+        with:
+          query: rest.query
+          sort_by: rest.sort_by
+          sort_order: rest.sort_order
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/search/count
+      name: api-v2-search-count
+      description: REST surface for api-v2-search-count.
+      operations:
+      - method: GET
+        name: countsearchresults
+        description: Zendesk Get  Api V2 Search Count
+        call: search-search.countsearchresults
+        with:
+          query: rest.query
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/search/export
+      name: api-v2-search-export
+      description: REST surface for api-v2-search-export.
+      operations:
+      - method: GET
+        name: exportsearchresults
+        description: Zendesk Get  Api V2 Search Export
+        call: search-search.exportsearchresults
+        with:
+          query: rest.query
+          page[size]: rest.page[size]
+          filter[type]: rest.filter[type]
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Search — Search. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-search
+      description: Zendesk Get  Api V2 Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-search.listsearchresults
+      with:
+        query: tools.query
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-search-2
+      description: Zendesk Get  Api V2 Search Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-search.countsearchresults
+      with:
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-search-3
+      description: Zendesk Get  Api V2 Search Export
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-search.exportsearchresults
+      with:
+        query: tools.query
+        page[size]: tools.page[size]
+        filter[type]: tools.filter[type]
+      outputParameters:
+      - type: object
+        mapping: $.

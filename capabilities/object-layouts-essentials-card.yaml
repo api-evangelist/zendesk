@@ -1,0 +1,149 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Object Layouts — Essentials Card
+  description: 'Zendesk Object Layouts — Essentials Card. 4 operations. Lead operation: Zendesk Get  Api V2 Object_layouts
+    Essentials_cards. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Essentials Card
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: object-layouts-essentials-card
+    baseUri: ''
+    description: Zendesk Object Layouts — Essentials Card business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-object_layouts-essentials_cards
+      path: /api/v2/object_layouts/essentials_cards
+      operations:
+      - name: showessentialscards
+        method: GET
+        description: Zendesk Get  Api V2 Object_layouts Essentials_cards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-object_layouts-object_type-essentials_card
+      path: /api/v2/object_layouts/{object_type}/essentials_card
+      operations:
+      - name: showessentialscard
+        method: GET
+        description: Zendesk Get  Api V2 Object_layouts Object_type Essentials_card
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateessentialscard
+        method: PUT
+        description: Zendesk Put  Api V2 Object_layouts Object_type Essentials_card
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteessentialscard
+        method: DELETE
+        description: Zendesk Delete  Api V2 Object_layouts Object_type Essentials_card
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: object-layouts-essentials-card-rest
+    port: 8080
+    description: REST adapter for Zendesk Object Layouts — Essentials Card. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/object-layouts/essentials-cards
+      name: api-v2-object-layouts-essentials-cards
+      description: REST surface for api-v2-object_layouts-essentials_cards.
+      operations:
+      - method: GET
+        name: showessentialscards
+        description: Zendesk Get  Api V2 Object_layouts Essentials_cards
+        call: object-layouts-essentials-card.showessentialscards
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/object-layouts/{object-type}/essentials-card
+      name: api-v2-object-layouts-object-type-essentials-card
+      description: REST surface for api-v2-object_layouts-object_type-essentials_card.
+      operations:
+      - method: GET
+        name: showessentialscard
+        description: Zendesk Get  Api V2 Object_layouts Object_type Essentials_card
+        call: object-layouts-essentials-card.showessentialscard
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateessentialscard
+        description: Zendesk Put  Api V2 Object_layouts Object_type Essentials_card
+        call: object-layouts-essentials-card.updateessentialscard
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteessentialscard
+        description: Zendesk Delete  Api V2 Object_layouts Object_type Essentials_card
+        call: object-layouts-essentials-card.deleteessentialscard
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: object-layouts-essentials-card-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Object Layouts — Essentials Card. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-object
+      description: Zendesk Get  Api V2 Object_layouts Essentials_cards
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: object-layouts-essentials-card.showessentialscards
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-object-2
+      description: Zendesk Get  Api V2 Object_layouts Object_type Essentials_card
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: object-layouts-essentials-card.showessentialscard
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-object
+      description: Zendesk Put  Api V2 Object_layouts Object_type Essentials_card
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: object-layouts-essentials-card.updateessentialscard
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-object
+      description: Zendesk Delete  Api V2 Object_layouts Object_type Essentials_card
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: object-layouts-essentials-card.deleteessentialscard
+      outputParameters:
+      - type: object
+        mapping: $.

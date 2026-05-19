@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Tickets — Incremental Export
+  description: 'Zendesk Tickets — Incremental Export. 2 operations. Lead operation: Zendesk Get  Api V2 Incremental Tickets.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Incremental Export
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tickets-incremental-export
+    baseUri: ''
+    description: Zendesk Tickets — Incremental Export business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-incremental-tickets
+      path: /api/v2/incremental/tickets
+      operations:
+      - name: incrementalticketexporttime
+        method: GET
+        description: Zendesk Get  Api V2 Incremental Tickets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-incremental-tickets-cursor
+      path: /api/v2/incremental/tickets/cursor
+      operations:
+      - name: incrementalticketexportcursor
+        method: GET
+        description: Zendesk Get  Api V2 Incremental Tickets Cursor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: tickets-incremental-export-rest
+    port: 8080
+    description: REST adapter for Zendesk Tickets — Incremental Export. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/incremental/tickets
+      name: api-v2-incremental-tickets
+      description: REST surface for api-v2-incremental-tickets.
+      operations:
+      - method: GET
+        name: incrementalticketexporttime
+        description: Zendesk Get  Api V2 Incremental Tickets
+        call: tickets-incremental-export.incrementalticketexporttime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/incremental/tickets/cursor
+      name: api-v2-incremental-tickets-cursor
+      description: REST surface for api-v2-incremental-tickets-cursor.
+      operations:
+      - method: GET
+        name: incrementalticketexportcursor
+        description: Zendesk Get  Api V2 Incremental Tickets Cursor
+        call: tickets-incremental-export.incrementalticketexportcursor
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tickets-incremental-export-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Tickets — Incremental Export. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-incremental
+      description: Zendesk Get  Api V2 Incremental Tickets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tickets-incremental-export.incrementalticketexporttime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-incremental-2
+      description: Zendesk Get  Api V2 Incremental Tickets Cursor
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tickets-incremental-export.incrementalticketexportcursor
+      outputParameters:
+      - type: object
+        mapping: $.

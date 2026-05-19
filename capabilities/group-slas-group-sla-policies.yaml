@@ -1,0 +1,247 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Group Slas — Group SLA Policies
+  description: 'Zendesk Group Slas — Group SLA Policies. 7 operations. Lead operation: Zendesk Get  Api V2 Group_slas Policies.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Group SLA Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: group-slas-group-sla-policies
+    baseUri: ''
+    description: Zendesk Group Slas — Group SLA Policies business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-group_slas-policies
+      path: /api/v2/group_slas/policies
+      operations:
+      - name: listgroupslapolicies
+        method: GET
+        description: Zendesk Get  Api V2 Group_slas Policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: creategroupslapolicy
+        method: POST
+        description: Zendesk Post  Api V2 Group_slas Policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-group_slas-policies-definitions
+      path: /api/v2/group_slas/policies/definitions
+      operations:
+      - name: retrievegroupslapolicyfilterdefinitionitems
+        method: GET
+        description: Zendesk Get  Api V2 Group_slas Policies Definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-group_slas-policies-reorder
+      path: /api/v2/group_slas/policies/reorder
+      operations:
+      - name: reordergroupslapolicies
+        method: PUT
+        description: Zendesk Put  Api V2 Group_slas Policies Reorder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_sla_policy_ids
+          in: query
+          type: array
+          description: The ids of the Group SLA policies to reorder
+    - name: api-v2-group_slas-policies-group_sla_policy_id
+      path: /api/v2/group_slas/policies/{group_sla_policy_id}
+      operations:
+      - name: showgroupslapolicy
+        method: GET
+        description: Zendesk Get  Api V2 Group_slas Policies Group_sla_policy_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updategroupslapolicy
+        method: PUT
+        description: Zendesk Put  Api V2 Group_slas Policies Group_sla_policy_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletegroupslapolicy
+        method: DELETE
+        description: Zendesk Delete  Api V2 Group_slas Policies Group_sla_policy_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: group-slas-group-sla-policies-rest
+    port: 8080
+    description: REST adapter for Zendesk Group Slas — Group SLA Policies. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/group-slas/policies
+      name: api-v2-group-slas-policies
+      description: REST surface for api-v2-group_slas-policies.
+      operations:
+      - method: GET
+        name: listgroupslapolicies
+        description: Zendesk Get  Api V2 Group_slas Policies
+        call: group-slas-group-sla-policies.listgroupslapolicies
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creategroupslapolicy
+        description: Zendesk Post  Api V2 Group_slas Policies
+        call: group-slas-group-sla-policies.creategroupslapolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/group-slas/policies/definitions
+      name: api-v2-group-slas-policies-definitions
+      description: REST surface for api-v2-group_slas-policies-definitions.
+      operations:
+      - method: GET
+        name: retrievegroupslapolicyfilterdefinitionitems
+        description: Zendesk Get  Api V2 Group_slas Policies Definitions
+        call: group-slas-group-sla-policies.retrievegroupslapolicyfilterdefinitionitems
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/group-slas/policies/reorder
+      name: api-v2-group-slas-policies-reorder
+      description: REST surface for api-v2-group_slas-policies-reorder.
+      operations:
+      - method: PUT
+        name: reordergroupslapolicies
+        description: Zendesk Put  Api V2 Group_slas Policies Reorder
+        call: group-slas-group-sla-policies.reordergroupslapolicies
+        with:
+          group_sla_policy_ids: rest.group_sla_policy_ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/group-slas/policies/{group-sla-policy-id}
+      name: api-v2-group-slas-policies-group-sla-policy-id
+      description: REST surface for api-v2-group_slas-policies-group_sla_policy_id.
+      operations:
+      - method: GET
+        name: showgroupslapolicy
+        description: Zendesk Get  Api V2 Group_slas Policies Group_sla_policy_id
+        call: group-slas-group-sla-policies.showgroupslapolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updategroupslapolicy
+        description: Zendesk Put  Api V2 Group_slas Policies Group_sla_policy_id
+        call: group-slas-group-sla-policies.updategroupslapolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegroupslapolicy
+        description: Zendesk Delete  Api V2 Group_slas Policies Group_sla_policy_id
+        call: group-slas-group-sla-policies.deletegroupslapolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: group-slas-group-sla-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Group Slas — Group SLA Policies. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-group
+      description: Zendesk Get  Api V2 Group_slas Policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: group-slas-group-sla-policies.listgroupslapolicies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-group
+      description: Zendesk Post  Api V2 Group_slas Policies
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: group-slas-group-sla-policies.creategroupslapolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-group-2
+      description: Zendesk Get  Api V2 Group_slas Policies Definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: group-slas-group-sla-policies.retrievegroupslapolicyfilterdefinitionitems
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-group
+      description: Zendesk Put  Api V2 Group_slas Policies Reorder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: group-slas-group-sla-policies.reordergroupslapolicies
+      with:
+        group_sla_policy_ids: tools.group_sla_policy_ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-group-3
+      description: Zendesk Get  Api V2 Group_slas Policies Group_sla_policy_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: group-slas-group-sla-policies.showgroupslapolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-group-2
+      description: Zendesk Put  Api V2 Group_slas Policies Group_sla_policy_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: group-slas-group-sla-policies.updategroupslapolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-group
+      description: Zendesk Delete  Api V2 Group_slas Policies Group_sla_policy_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: group-slas-group-sla-policies.deletegroupslapolicy
+      outputParameters:
+      - type: object
+        mapping: $.

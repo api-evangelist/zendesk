@@ -1,0 +1,173 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Search — Custom Object Records
+  description: 'Zendesk Search — Custom Object Records. 2 operations. Lead operation: Zendesk Get  Api V2 Custom_objects Custom_object_key
+    Records Search. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Custom Object Records
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-custom-object-records
+    baseUri: ''
+    description: Zendesk Search — Custom Object Records business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-custom_objects-custom_object_key-records-search
+      path: /api/v2/custom_objects/{custom_object_key}/records/search
+      operations:
+      - name: searchcustomobjectrecords
+        method: GET
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The query parameter is used to search text-based fields for records that match specific query terms.
+        - name: sort
+          in: query
+          type: string
+          description: One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes
+            the sort will be descending. Defaults to sorting by relevan
+        - name: page[before]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[after]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[size]
+          in: query
+          type: integer
+          description: Specifies how many records should be returned in the response. You can specify up to 100 records per
+            page.
+      - name: filteredsearchcustomobjectrecords
+        method: POST
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: The query parameter is used to search text-based fields for records that match specific query terms.
+        - name: sort
+          in: query
+          type: string
+          description: One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes
+            the sort will be descending. Defaults to sorting by relevan
+        - name: page[before]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[after]
+          in: query
+          type: string
+          description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)
+            that tells the endpoint which page to start on. It '
+        - name: page[size]
+          in: query
+          type: integer
+          description: Specifies how many records should be returned in the response. You can specify up to 100 records per
+            page.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: search-custom-object-records-rest
+    port: 8080
+    description: REST adapter for Zendesk Search — Custom Object Records. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/custom-objects/{custom-object-key}/records/search
+      name: api-v2-custom-objects-custom-object-key-records-search
+      description: REST surface for api-v2-custom_objects-custom_object_key-records-search.
+      operations:
+      - method: GET
+        name: searchcustomobjectrecords
+        description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search
+        call: search-custom-object-records.searchcustomobjectrecords
+        with:
+          query: rest.query
+          sort: rest.sort
+          page[before]: rest.page[before]
+          page[after]: rest.page[after]
+          page[size]: rest.page[size]
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: filteredsearchcustomobjectrecords
+        description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search
+        call: search-custom-object-records.filteredsearchcustomobjectrecords
+        with:
+          query: rest.query
+          sort: rest.sort
+          page[before]: rest.page[before]
+          page[after]: rest.page[after]
+          page[size]: rest.page[size]
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-custom-object-records-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Search — Custom Object Records. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-custom
+      description: Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-custom-object-records.searchcustomobjectrecords
+      with:
+        query: tools.query
+        sort: tools.sort
+        page[before]: tools.page[before]
+        page[after]: tools.page[after]
+        page[size]: tools.page[size]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-custom
+      description: Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: search-custom-object-records.filteredsearchcustomobjectrecords
+      with:
+        query: tools.query
+        sort: tools.sort
+        page[before]: tools.page[before]
+        page[after]: tools.page[after]
+        page[size]: tools.page[size]
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

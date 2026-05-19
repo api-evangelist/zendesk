@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Recipient Addresses — Support Addresses
+  description: 'Zendesk Recipient Addresses — Support Addresses. 6 operations. Lead operation: Zendesk Get  Api V2 Recipient_addresses.
+    Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Support Addresses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: recipient-addresses-support-addresses
+    baseUri: ''
+    description: Zendesk Recipient Addresses — Support Addresses business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-recipient_addresses
+      path: /api/v2/recipient_addresses
+      operations:
+      - name: listsupportaddresses
+        method: GET
+        description: Zendesk Get  Api V2 Recipient_addresses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsupportaddress
+        method: POST
+        description: Zendesk Post  Api V2 Recipient_addresses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-recipient_addresses-support_address_id
+      path: /api/v2/recipient_addresses/{support_address_id}
+      operations:
+      - name: showsupportaddress
+        method: GET
+        description: Zendesk Get  Api V2 Recipient_addresses Support_address_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesupportaddress
+        method: PUT
+        description: Zendesk Put  Api V2 Recipient_addresses Support_address_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleterecipientaddress
+        method: DELETE
+        description: Zendesk Delete  Api V2 Recipient_addresses Support_address_id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-recipient_addresses-support_address_id-verify
+      path: /api/v2/recipient_addresses/{support_address_id}/verify
+      operations:
+      - name: verifysupportaddressforwarding
+        method: PUT
+        description: Zendesk Put  Api V2 Recipient_addresses Support_address_id Verify
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: recipient-addresses-support-addresses-rest
+    port: 8080
+    description: REST adapter for Zendesk Recipient Addresses — Support Addresses. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/recipient-addresses
+      name: api-v2-recipient-addresses
+      description: REST surface for api-v2-recipient_addresses.
+      operations:
+      - method: GET
+        name: listsupportaddresses
+        description: Zendesk Get  Api V2 Recipient_addresses
+        call: recipient-addresses-support-addresses.listsupportaddresses
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsupportaddress
+        description: Zendesk Post  Api V2 Recipient_addresses
+        call: recipient-addresses-support-addresses.createsupportaddress
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/recipient-addresses/{support-address-id}
+      name: api-v2-recipient-addresses-support-address-id
+      description: REST surface for api-v2-recipient_addresses-support_address_id.
+      operations:
+      - method: GET
+        name: showsupportaddress
+        description: Zendesk Get  Api V2 Recipient_addresses Support_address_id
+        call: recipient-addresses-support-addresses.showsupportaddress
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesupportaddress
+        description: Zendesk Put  Api V2 Recipient_addresses Support_address_id
+        call: recipient-addresses-support-addresses.updatesupportaddress
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleterecipientaddress
+        description: Zendesk Delete  Api V2 Recipient_addresses Support_address_id
+        call: recipient-addresses-support-addresses.deleterecipientaddress
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/recipient-addresses/{support-address-id}/verify
+      name: api-v2-recipient-addresses-support-address-id-verify
+      description: REST surface for api-v2-recipient_addresses-support_address_id-verify.
+      operations:
+      - method: PUT
+        name: verifysupportaddressforwarding
+        description: Zendesk Put  Api V2 Recipient_addresses Support_address_id Verify
+        call: recipient-addresses-support-addresses.verifysupportaddressforwarding
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: recipient-addresses-support-addresses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Recipient Addresses — Support Addresses. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-recipient
+      description: Zendesk Get  Api V2 Recipient_addresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: recipient-addresses-support-addresses.listsupportaddresses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-post-api-v2-recipient
+      description: Zendesk Post  Api V2 Recipient_addresses
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: recipient-addresses-support-addresses.createsupportaddress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-get-api-v2-recipient-2
+      description: Zendesk Get  Api V2 Recipient_addresses Support_address_id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: recipient-addresses-support-addresses.showsupportaddress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-recipient
+      description: Zendesk Put  Api V2 Recipient_addresses Support_address_id
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: recipient-addresses-support-addresses.updatesupportaddress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-delete-api-v2-recipient
+      description: Zendesk Delete  Api V2 Recipient_addresses Support_address_id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: recipient-addresses-support-addresses.deleterecipientaddress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zendesk-put-api-v2-recipient-2
+      description: Zendesk Put  Api V2 Recipient_addresses Support_address_id Verify
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: recipient-addresses-support-addresses.verifysupportaddressforwarding
+      outputParameters:
+      - type: object
+        mapping: $.

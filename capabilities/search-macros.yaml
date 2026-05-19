@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Search — Macros
+  description: 'Zendesk Search — Macros. 1 operations. Lead operation: Zendesk Get  Api V2 Macros Search. Self-contained Naftiko
+    capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Macros
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: search-macros
+    baseUri: ''
+    description: Zendesk Search — Macros business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-macros-search
+      path: /api/v2/macros/search
+      operations:
+      - name: searchmacro
+        method: GET
+        description: Zendesk Get  Api V2 Macros Search
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: search-macros-rest
+    port: 8080
+    description: REST adapter for Zendesk Search — Macros. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/macros/search
+      name: api-v2-macros-search
+      description: REST surface for api-v2-macros-search.
+      operations:
+      - method: GET
+        name: searchmacro
+        description: Zendesk Get  Api V2 Macros Search
+        call: search-macros.searchmacro
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: search-macros-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Search — Macros. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: zendesk-get-api-v2-macros
+      description: Zendesk Get  Api V2 Macros Search
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: search-macros.searchmacro
+      outputParameters:
+      - type: object
+        mapping: $.

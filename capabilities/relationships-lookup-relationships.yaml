@@ -1,0 +1,83 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zendesk Relationships — Lookup Relationships
+  description: 'Zendesk Relationships — Lookup Relationships. 1 operations. Lead operation: Zendesk Get  Api V2 Relationships
+    Definitions Target_type. Self-contained Naftiko capability covering one Zendesk business surface.'
+  tags:
+  - Zendesk
+  - Lookup Relationships
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZENDESK_API_KEY: ZENDESK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: relationships-lookup-relationships
+    baseUri: ''
+    description: Zendesk Relationships — Lookup Relationships business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-relationships-definitions-target_type
+      path: /api/v2/relationships/definitions/{target_type}
+      operations:
+      - name: getrelationshipfilterdefinitions
+        method: GET
+        description: Zendesk Get  Api V2 Relationships Definitions Target_type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: target_type
+          in: path
+          type: string
+          description: The target type for which you would like to see filter definitions.
+          required: true
+        - name: source_type
+          in: query
+          type: string
+          description: The source type for which you would like to see filter definitions.
+  exposes:
+  - type: rest
+    namespace: relationships-lookup-relationships-rest
+    port: 8080
+    description: REST adapter for Zendesk Relationships — Lookup Relationships. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v2/relationships/definitions/{target-type}
+      name: api-v2-relationships-definitions-target-type
+      description: REST surface for api-v2-relationships-definitions-target_type.
+      operations:
+      - method: GET
+        name: getrelationshipfilterdefinitions
+        description: Zendesk Get  Api V2 Relationships Definitions Target_type
+        call: relationships-lookup-relationships.getrelationshipfilterdefinitions
+        with:
+          target_type: rest.target_type
+          source_type: rest.source_type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: relationships-lookup-relationships-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zendesk Relationships — Lookup Relationships. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: zendesk-get-api-v2-relationships
+      description: Zendesk Get  Api V2 Relationships Definitions Target_type
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: relationships-lookup-relationships.getrelationshipfilterdefinitions
+      with:
+        target_type: tools.target_type
+        source_type: tools.source_type
+      outputParameters:
+      - type: object
+        mapping: $.
