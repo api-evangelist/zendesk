@@ -2545,6 +2545,66 @@ kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/zendesk-add-comment-to-ticket-workflow.yml
+      name: Zendesk Add Comment to Ticket
+      summary: Confirm a ticket exists, then append a public or private comment to it.
+    - url: arazzo/zendesk-apply-macro-to-ticket-workflow.yml
+      name: Zendesk Apply Macro to Ticket
+      summary: Preview the changes a macro would make to a ticket, then commit them.
+    - url: arazzo/zendesk-assign-organization-ticket-workflow.yml
+      name: Zendesk Assign Organization to Ticket
+      summary: Find an organization by name, then attach a ticket to it for shared visibility.
+    - url: arazzo/zendesk-create-custom-ticket-field-workflow.yml
+      name: Zendesk Create and Verify Custom Ticket Field
+      summary: Create a custom ticket field, then confirm it appears in the account's field list.
+    - url: arazzo/zendesk-create-macro-and-preview-workflow.yml
+      name: Zendesk Create Macro and Preview on Ticket
+      summary: Create a macro, then preview the changes it would make to a sample ticket.
+    - url: arazzo/zendesk-create-organization-and-user-workflow.yml
+      name: Zendesk Create Organization and User
+      summary: Create an organization, then create an end user that belongs to it.
+    - url: arazzo/zendesk-create-ticket-assign-group-workflow.yml
+      name: Zendesk Create Ticket and Assign Group
+      summary: Look up a support group by name, then open a ticket assigned to that group.
+    - url: arazzo/zendesk-create-user-and-ticket-workflow.yml
+      name: Zendesk Create User and Open Ticket
+      summary: Create an end user, then open a support ticket with that user as the requester.
+    - url: arazzo/zendesk-escalate-ticket-workflow.yml
+      name: Zendesk Escalate Ticket
+      summary: Load a ticket and escalate it by raising priority, opening it, and adding a note.
+    - url: arazzo/zendesk-find-macro-and-apply-workflow.yml
+      name: Zendesk Find Macro and Apply to Ticket
+      summary: Search macros by text, preview the match against a ticket, then commit the changes.
+    - url: arazzo/zendesk-find-user-and-open-ticket-workflow.yml
+      name: Zendesk Find User and Open Ticket
+      summary: Search for an existing user, then open a ticket requested by that user.
+    - url: arazzo/zendesk-merge-duplicate-organizations-workflow.yml
+      name: Zendesk Merge Duplicate Organizations
+      summary: Find a duplicate organization by name, then merge it into a winning organization.
+    - url: arazzo/zendesk-onboard-customer-workflow.yml
+      name: Zendesk Onboard New Customer
+      summary: Create an organization, add a user to it, and open their first support ticket.
+    - url: arazzo/zendesk-reassign-ticket-to-agent-workflow.yml
+      name: Zendesk Reassign Ticket to Agent
+      summary: Find an agent by name or email, then reassign a ticket to that agent.
+    - url: arazzo/zendesk-solve-ticket-from-search-workflow.yml
+      name: Zendesk Solve Ticket from Search
+      summary: Search for a ticket, then solve it with a closing public comment.
+    - url: arazzo/zendesk-tag-and-prioritize-ticket-workflow.yml
+      name: Zendesk Tag and Prioritize New Ticket
+      summary: Open a ticket, set tags on it, then raise its priority and status.
+    - url: arazzo/zendesk-triage-tickets-from-view-workflow.yml
+      name: Zendesk Triage Tickets from a View
+      summary: List the tickets in a view and update the first one to assign and prioritize it.
+    - url: arazzo/zendesk-upsert-organization-by-name-workflow.yml
+      name: Zendesk Upsert Organization by Name
+      summary: Find an organization by exact name and update it if found, otherwise create it.
+    - url: arazzo/zendesk-upsert-user-by-email-workflow.yml
+      name: Zendesk Upsert User by Email
+      summary: Find a user by email and update them if found, otherwise create a new user.
   - type: LinkedIn
     url: https://www.linkedin.com/company/zendesk
   - url: https://www.zendesk.com/company/agreements-and-terms/privacy-notice/

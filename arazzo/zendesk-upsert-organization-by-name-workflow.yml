@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Upsert Organization by Name
+  summary: Find an organization by exact name and update it if found, otherwise create it.
+  description: >-
+    A deduplicating provisioning pattern for Zendesk Support organizations. The
+    workflow searches for an organization by exact name, then branches: when a
+    match is found it updates the existing organization, and when none is found
+    it creates a new one. Request bodies use the documented {organization:{...}}
+    envelope and every step spells out its request inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/organizations-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: upsert-organization-by-name
+  summary: Upsert a Zendesk organization keyed on its unique name.
+  description: >-
+    Searches for an existing organization by name and either updates the matched
+    organization or creates a new one.
+  inputs:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: The exact organization name to search for and set.
+      details:
+        type: string
+        description: Optional details text to set on the organization.
+      notes:
+        type: string
+        description: Optional internal notes to set on the organization.
+  steps:
+  - stepId: findOrganization
+    description: Search for an organization whose name exactly matches the input.
+    operationId: SearchOrganizations
+    parameters:
+    - name: name
+      in: query
+      value: $inputs.name
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedOrganizationId: $response.body#/organizations/0/id
+    onSuccess:
+    - name: organizationExists
+      type: goto
+      stepId: updateExisting
+      criteria:
+      - context: $response.body
+        condition: $.organizations.length > 0
+        type: jsonpath
+    - name: organizationMissing
+      type: goto
+      stepId: createNew
+      criteria:
+      - context: $response.body
+        condition: $.organizations.length == 0
+        type: jsonpath
+  - stepId: updateExisting
+    description: Update the matched organization with the supplied fields.
+    operationId: UpdateOrganization
+    parameters:
+    - name: organization_id
+      in: path
+      value: $steps.findOrganization.outputs.matchedOrganizationId
+    requestBody:
+      contentType: application/json
+      payload:
+        organization:
+          details: $inputs.details
+          notes: $inputs.notes
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organizationId: $response.body#/organization/id
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: createNew
+    description: Create a new organization when no existing one matched the name.
+    operationId: CreateOrganization
+    requestBody:
+      contentType: application/json
+      payload:
+        organization:
+          name: $inputs.name
+          details: $inputs.details
+          notes: $inputs.notes
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      organizationId: $response.body#/organization/id
+  outputs:
+    updatedOrganizationId: $steps.updateExisting.outputs.organizationId
+    createdOrganizationId: $steps.createNew.outputs.organizationId

@@ -1,0 +1,71 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Create Organization and User
+  summary: Create an organization, then create an end user that belongs to it.
+  description: >-
+    A two-step provisioning chain that creates a Zendesk organization and then
+    creates an end user assigned to that organization via the organization_id
+    field. Both Zendesk request bodies are inlined using the documented
+    {organization:{...}} and {user:{...}} envelopes so the flow can be executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/organizations-openapi-original.yml
+  type: openapi
+- name: usersApi
+  url: ../openapi/users-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-organization-and-user
+  summary: Create an organization and a user belonging to that organization.
+  description: >-
+    Creates a Zendesk organization and an end user inside it, returning both
+    identifiers.
+  inputs:
+    type: object
+    required:
+    - organizationName
+    - userName
+    - userEmail
+    properties:
+      organizationName:
+        type: string
+        description: The unique name of the organization to create.
+      userName:
+        type: string
+        description: The full name of the end user to create.
+      userEmail:
+        type: string
+        description: The email address of the end user to create.
+  steps:
+  - stepId: createOrganization
+    description: Create the organization.
+    operationId: CreateOrganization
+    requestBody:
+      contentType: application/json
+      payload:
+        organization:
+          name: $inputs.organizationName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      organizationId: $response.body#/organization/id
+  - stepId: createUser
+    description: Create the end user inside the new organization.
+    operationId: CreateUser
+    requestBody:
+      contentType: application/json
+      payload:
+        user:
+          name: $inputs.userName
+          email: $inputs.userEmail
+          role: end-user
+          organization_id: $steps.createOrganization.outputs.organizationId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      userId: $response.body#/user/id
+  outputs:
+    organizationId: $steps.createOrganization.outputs.organizationId
+    userId: $steps.createUser.outputs.userId

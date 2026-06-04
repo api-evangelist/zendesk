@@ -1,0 +1,79 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Apply Macro to Ticket
+  summary: Preview the changes a macro would make to a ticket, then commit them.
+  description: >-
+    Zendesk macros are applied client-side: the API returns the ticket changes a
+    macro would produce, and the caller then persists them. This workflow first
+    requests the macro preview for a ticket, capturing the resulting status and
+    comment body, and then commits those changes back to the ticket through a
+    ticket update using the documented {ticket:{...}} envelope.
+  version: 1.0.0
+sourceDescriptions:
+- name: macrosApi
+  url: ../openapi/macros-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: apply-macro-to-ticket
+  summary: Preview a macro against a ticket and persist its resulting changes.
+  description: >-
+    Requests the macro preview for a ticket and then commits the resulting
+    status and comment back to the ticket.
+  inputs:
+    type: object
+    required:
+    - ticketId
+    - macroId
+    properties:
+      ticketId:
+        type: integer
+        description: The id of the ticket to apply the macro to.
+      macroId:
+        type: integer
+        description: The id of the macro to apply.
+  steps:
+  - stepId: previewMacro
+    description: >-
+      Request the ticket as it would appear after applying the macro. This does
+      not change the ticket; it returns the proposed changes. The operationId
+      ShowTicketAfterChanges is non-unique across the sourced specs, so it is
+      referenced by operationPath against the macros description.
+    operationPath: '{$sourceDescriptions.macrosApi.url}#/paths/~1api~1v2~1tickets~1{ticket_id}~1macros~1{macro_id}~1apply/get'
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.ticketId
+    - name: macro_id
+      in: path
+      value: $inputs.macroId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      proposedStatus: $response.body#/result/ticket/status
+      proposedComment: $response.body#/result/ticket/comment/body
+  - stepId: commitChanges
+    description: Persist the macro's proposed status and comment to the ticket.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.ticketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          status: $steps.previewMacro.outputs.proposedStatus
+          comment:
+            body: $steps.previewMacro.outputs.proposedComment
+            public: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      ticketStatus: $response.body#/ticket/status
+  outputs:
+    ticketId: $steps.commitChanges.outputs.ticketId
+    ticketStatus: $steps.commitChanges.outputs.ticketStatus

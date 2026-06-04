@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Create User and Open Ticket
+  summary: Create an end user, then open a support ticket with that user as the requester.
+  description: >-
+    A foundational Zendesk Support intake pattern. The workflow first creates an
+    end user from the supplied name and email, captures the new user id, and then
+    opens a ticket with that user set as the requester. Both Zendesk request
+    bodies are spelled out inline using the documented {user:{...}} and
+    {ticket:{...}} envelopes so the flow can be executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: usersApi
+  url: ../openapi/users-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-user-and-ticket
+  summary: Create an end user and open a ticket requested by that user.
+  description: >-
+    Creates a Zendesk end user and then opens a new ticket that names the
+    freshly created user as the requester, returning both the user id and the
+    ticket id.
+  inputs:
+    type: object
+    required:
+    - name
+    - email
+    - subject
+    - commentBody
+    properties:
+      name:
+        type: string
+        description: The full name of the end user to create.
+      email:
+        type: string
+        description: The email address of the end user to create.
+      subject:
+        type: string
+        description: The subject line of the new ticket.
+      commentBody:
+        type: string
+        description: The body of the first public comment on the ticket.
+      priority:
+        type: string
+        description: Optional ticket priority (urgent, high, normal, low).
+  steps:
+  - stepId: createUser
+    description: Create the end user from the supplied name and email.
+    operationId: CreateUser
+    requestBody:
+      contentType: application/json
+      payload:
+        user:
+          name: $inputs.name
+          email: $inputs.email
+          role: end-user
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      userId: $response.body#/user/id
+  - stepId: createTicket
+    description: Open a ticket with the new user as the requester.
+    operationId: CreateTicket
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          subject: $inputs.subject
+          comment:
+            body: $inputs.commentBody
+            public: true
+          requester_id: $steps.createUser.outputs.userId
+          priority: $inputs.priority
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      ticketId: $response.body#/ticket/id
+      ticketStatus: $response.body#/ticket/status
+  outputs:
+    userId: $steps.createUser.outputs.userId
+    ticketId: $steps.createTicket.outputs.ticketId

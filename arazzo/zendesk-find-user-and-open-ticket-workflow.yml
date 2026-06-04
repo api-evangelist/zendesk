@@ -1,0 +1,78 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Find User and Open Ticket
+  summary: Search for an existing user, then open a ticket requested by that user.
+  description: >-
+    A find-then-act intake pattern for Zendesk Support. The workflow searches
+    users for the requester, branches on whether a match was found, and when
+    found opens a ticket with that user set as the requester. The ticket body
+    uses the documented {ticket:{...}} envelope and is spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: usersApi
+  url: ../openapi/users-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: find-user-and-open-ticket
+  summary: Resolve a requester by query and open a ticket for them.
+  description: >-
+    Searches users for the requester and, when found, opens a ticket requested
+    by that user.
+  inputs:
+    type: object
+    required:
+    - userQuery
+    - subject
+    - commentBody
+    properties:
+      userQuery:
+        type: string
+        description: A name, email, or other query identifying the requester.
+      subject:
+        type: string
+        description: The subject line of the new ticket.
+      commentBody:
+        type: string
+        description: The body of the first public comment on the ticket.
+  steps:
+  - stepId: findUser
+    description: Search users for the requester.
+    operationId: SearchUsers
+    parameters:
+    - name: query
+      in: query
+      value: $inputs.userQuery
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      requesterId: $response.body#/users/0/id
+    onSuccess:
+    - name: userFound
+      type: goto
+      stepId: openTicket
+      criteria:
+      - context: $response.body
+        condition: $.users.length > 0
+        type: jsonpath
+  - stepId: openTicket
+    description: Open a ticket with the resolved user as the requester.
+    operationId: CreateTicket
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          subject: $inputs.subject
+          comment:
+            body: $inputs.commentBody
+            public: true
+          requester_id: $steps.findUser.outputs.requesterId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      ticketId: $response.body#/ticket/id
+  outputs:
+    requesterId: $steps.findUser.outputs.requesterId
+    ticketId: $steps.openTicket.outputs.ticketId

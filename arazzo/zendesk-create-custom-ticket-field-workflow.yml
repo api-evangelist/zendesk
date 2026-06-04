@@ -1,0 +1,61 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Create and Verify Custom Ticket Field
+  summary: Create a custom ticket field, then confirm it appears in the account's field list.
+  description: >-
+    A configuration pattern for Zendesk Support. The workflow creates a custom
+    ticket field of the supplied type and title, captures the new field id, and
+    then lists all ticket fields to verify the field is present. The create body
+    uses the documented {ticket_field:{...}} envelope and is spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: ticketFieldsApi
+  url: ../openapi/ticket-fields-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-custom-ticket-field
+  summary: Create a custom ticket field and verify it in the field list.
+  description: >-
+    Creates a custom ticket field and then lists ticket fields to confirm it was
+    registered.
+  inputs:
+    type: object
+    required:
+    - type
+    - title
+    properties:
+      type:
+        type: string
+        description: >-
+          The custom field type (text, textarea, checkbox, date, integer,
+          decimal, regexp, multiselect, tagger, lookup).
+      title:
+        type: string
+        description: The title shown to agents for the field.
+      titleInPortal:
+        type: string
+        description: Optional title shown to end users in the help center portal.
+  steps:
+  - stepId: createField
+    description: Create the custom ticket field.
+    operationId: CreateTicketField
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket_field:
+          type: $inputs.type
+          title: $inputs.title
+          title_in_portal: $inputs.titleInPortal
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      fieldId: $response.body#/ticket_field/id
+  - stepId: verifyField
+    description: List ticket fields to confirm the new field is registered.
+    operationId: ListTicketFields
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      fields: $response.body#/ticket_fields
+  outputs:
+    fieldId: $steps.createField.outputs.fieldId

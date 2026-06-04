@@ -1,0 +1,71 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Add Comment to Ticket
+  summary: Confirm a ticket exists, then append a public or private comment to it.
+  description: >-
+    A focused conversation pattern for Zendesk Support. The workflow first shows
+    the ticket to confirm it exists and capture its current status, then updates
+    the ticket by appending a comment. In Zendesk a comment is added through the
+    ticket update endpoint using the {ticket:{comment:{...}}} envelope, which the
+    update step spells out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: add-comment-to-ticket
+  summary: Append a comment to an existing ticket after confirming it exists.
+  description: >-
+    Shows the ticket to verify it exists, then adds a public or private comment
+    via a ticket update.
+  inputs:
+    type: object
+    required:
+    - ticketId
+    - commentBody
+    properties:
+      ticketId:
+        type: integer
+        description: The id of the ticket to comment on.
+      commentBody:
+        type: string
+        description: The body text of the comment to add.
+      isPublic:
+        type: boolean
+        description: Whether the comment is public (true) or internal (false).
+  steps:
+  - stepId: showTicket
+    description: Load the ticket to confirm it exists before commenting.
+    operationId: ShowTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.ticketId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      currentStatus: $response.body#/ticket/status
+  - stepId: addComment
+    description: Append the comment to the ticket via a ticket update.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $steps.showTicket.outputs.ticketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          comment:
+            body: $inputs.commentBody
+            public: $inputs.isPublic
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      ticketStatus: $response.body#/ticket/status
+  outputs:
+    ticketId: $steps.addComment.outputs.ticketId
+    ticketStatus: $steps.addComment.outputs.ticketStatus

@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Create Macro and Preview on Ticket
+  summary: Create a macro, then preview the changes it would make to a sample ticket.
+  description: >-
+    A macro authoring-and-validation pattern for Zendesk Support. The workflow
+    creates a macro with the supplied title and actions, captures its id, and
+    then requests a preview of the changes that macro would make to a sample
+    ticket without persisting them. The create body uses the documented
+    {macro:{...}} envelope and is spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: macrosApi
+  url: ../openapi/macros-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-macro-and-preview
+  summary: Create a macro and preview its effect on a sample ticket.
+  description: >-
+    Creates a macro, then dry-runs it against a sample ticket to confirm the
+    changes it would produce.
+  inputs:
+    type: object
+    required:
+    - title
+    - actions
+    - sampleTicketId
+    properties:
+      title:
+        type: string
+        description: The title of the macro to create.
+      actions:
+        type: array
+        description: >-
+          The macro actions, each an object with field and value, e.g.
+          [{"field":"status","value":"solved"}].
+        items:
+          type: object
+      sampleTicketId:
+        type: integer
+        description: The id of a ticket to preview the macro against.
+  steps:
+  - stepId: createMacro
+    description: Create the macro from the supplied title and actions.
+    operationId: CreateMacro
+    requestBody:
+      contentType: application/json
+      payload:
+        macro:
+          title: $inputs.title
+          actions: $inputs.actions
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      macroId: $response.body#/macro/id
+  - stepId: previewOnTicket
+    description: >-
+      Preview the changes the new macro would make to the sample ticket without
+      persisting them.
+    operationId: ShowTicketAfterChanges
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.sampleTicketId
+    - name: macro_id
+      in: path
+      value: $steps.createMacro.outputs.macroId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      proposedStatus: $response.body#/result/ticket/status
+      proposedComment: $response.body#/result/ticket/comment/body
+  outputs:
+    macroId: $steps.createMacro.outputs.macroId
+    proposedStatus: $steps.previewOnTicket.outputs.proposedStatus

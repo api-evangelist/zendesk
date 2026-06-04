@@ -1,0 +1,82 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Triage Tickets from a View
+  summary: List the tickets in a view and update the first one to assign and prioritize it.
+  description: >-
+    A queue-triage pattern for Zendesk Support. The workflow lists the full
+    ticket objects belonging to a view, captures the first ticket, and updates it
+    to assign an agent, set status open, and raise priority. Both operations live
+    in the tickets description so operationIds resolve unambiguously, and the
+    update body uses the documented {ticket:{...}} envelope inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: triage-tickets-from-view
+  summary: Pull the tickets in a view and triage the first one.
+  description: >-
+    Lists the tickets in a view, then assigns and prioritizes the first ticket
+    in the result set.
+  inputs:
+    type: object
+    required:
+    - viewId
+    - assigneeId
+    - priority
+    properties:
+      viewId:
+        type: integer
+        description: The id of the view whose tickets are triaged.
+      assigneeId:
+        type: integer
+        description: The id of the agent to assign the ticket to.
+      priority:
+        type: string
+        description: The priority to set on the ticket (urgent, high, normal, low).
+  steps:
+  - stepId: listViewTickets
+    description: List the full ticket objects in the view, newest activity first.
+    operationId: ListTicketsFromView
+    parameters:
+    - name: view_id
+      in: path
+      value: $inputs.viewId
+    - name: sort_order
+      in: query
+      value: desc
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstTicketId: $response.body#/tickets/0/id
+    onSuccess:
+    - name: hasTickets
+      type: goto
+      stepId: triageTicket
+      criteria:
+      - context: $response.body
+        condition: $.tickets.length > 0
+        type: jsonpath
+  - stepId: triageTicket
+    description: Assign, open, and prioritize the first ticket in the view.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $steps.listViewTickets.outputs.firstTicketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          assignee_id: $inputs.assigneeId
+          status: open
+          priority: $inputs.priority
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      assigneeId: $response.body#/ticket/assignee_id
+  outputs:
+    triagedTicketId: $steps.triageTicket.outputs.ticketId
+    assigneeId: $steps.triageTicket.outputs.assigneeId

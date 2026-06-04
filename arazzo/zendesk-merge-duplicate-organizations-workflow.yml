@@ -1,0 +1,74 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Merge Duplicate Organizations
+  summary: Find a duplicate organization by name, then merge it into a winning organization.
+  description: >-
+    A deduplication pattern for Zendesk Support. The workflow searches for an
+    organization by its exact name, and when the duplicate is found it merges
+    that organization (the loser, identified by path) into the supplied winning
+    organization. The merge moves all users, tickets, and domains to the winner
+    and deletes the loser. The merge body uses the documented {winner_id} field
+    inline and the operation is irreversible.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/organizations-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: merge-duplicate-organizations
+  summary: Locate a duplicate organization by name and merge it into a winner.
+  description: >-
+    Searches for an organization by name and, when found, merges it into the
+    supplied winning organization.
+  inputs:
+    type: object
+    required:
+    - duplicateName
+    - winnerId
+    properties:
+      duplicateName:
+        type: string
+        description: The exact name of the duplicate (losing) organization.
+      winnerId:
+        type: integer
+        description: The id of the organization that survives the merge.
+  steps:
+  - stepId: findDuplicate
+    description: Search for the duplicate organization by exact name.
+    operationId: SearchOrganizations
+    parameters:
+    - name: name
+      in: query
+      value: $inputs.duplicateName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      loserId: $response.body#/organizations/0/id
+    onSuccess:
+    - name: duplicateFound
+      type: goto
+      stepId: mergeOrganizations
+      criteria:
+      - context: $response.body
+        condition: $.organizations.length > 0
+        type: jsonpath
+  - stepId: mergeOrganizations
+    description: >-
+      Merge the matched duplicate (loser, by path) into the winning
+      organization. This is irreversible.
+    operationId: CreateOrganizationMerge
+    parameters:
+    - name: organization_id
+      in: path
+      value: $steps.findDuplicate.outputs.loserId
+    requestBody:
+      contentType: application/json
+      payload:
+        winner_id: $inputs.winnerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mergeStatus: $response.body#/organization_merge/status
+  outputs:
+    loserId: $steps.findDuplicate.outputs.loserId
+    mergeStatus: $steps.mergeOrganizations.outputs.mergeStatus

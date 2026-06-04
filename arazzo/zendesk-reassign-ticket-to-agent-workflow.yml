@@ -1,0 +1,76 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Reassign Ticket to Agent
+  summary: Find an agent by name or email, then reassign a ticket to that agent.
+  description: >-
+    A find-then-act assignment pattern for Zendesk Support. The workflow searches
+    users for the target agent, branches on whether a match was found, and when
+    found reassigns the ticket to that agent and reopens it. The update body uses
+    the documented {ticket:{...}} envelope and is spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: usersApi
+  url: ../openapi/users-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: reassign-ticket-to-agent
+  summary: Resolve an agent by query and reassign a ticket to them.
+  description: >-
+    Searches users for the agent, and when found reassigns the supplied ticket
+    to that agent and sets it open.
+  inputs:
+    type: object
+    required:
+    - agentQuery
+    - ticketId
+    properties:
+      agentQuery:
+        type: string
+        description: A name, email, or other query identifying the target agent.
+      ticketId:
+        type: integer
+        description: The id of the ticket to reassign.
+  steps:
+  - stepId: findAgent
+    description: Search users for the target agent.
+    operationId: SearchUsers
+    parameters:
+    - name: query
+      in: query
+      value: $inputs.agentQuery
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      agentId: $response.body#/users/0/id
+    onSuccess:
+    - name: agentFound
+      type: goto
+      stepId: reassignTicket
+      criteria:
+      - context: $response.body
+        condition: $.users.length > 0
+        type: jsonpath
+  - stepId: reassignTicket
+    description: Reassign the ticket to the resolved agent and set it open.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.ticketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          assignee_id: $steps.findAgent.outputs.agentId
+          status: open
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      assigneeId: $response.body#/ticket/assignee_id
+  outputs:
+    agentId: $steps.findAgent.outputs.agentId
+    reassignedTicketId: $steps.reassignTicket.outputs.ticketId

@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Assign Organization to Ticket
+  summary: Find an organization by name, then attach a ticket to it for shared visibility.
+  description: >-
+    A scoping pattern for Zendesk Support. The workflow searches organizations by
+    exact name, branches on whether a match was found, and when found updates the
+    ticket to attach it to that organization. The update body uses the documented
+    {ticket:{...}} envelope and is spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/organizations-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: assign-organization-ticket
+  summary: Resolve an organization by name and attach a ticket to it.
+  description: >-
+    Searches organizations by name and, when found, updates the supplied ticket
+    to belong to that organization.
+  inputs:
+    type: object
+    required:
+    - organizationName
+    - ticketId
+    properties:
+      organizationName:
+        type: string
+        description: The exact name of the organization to attach.
+      ticketId:
+        type: integer
+        description: The id of the ticket to scope to the organization.
+  steps:
+  - stepId: findOrganization
+    description: Search for the organization by exact name.
+    operationId: SearchOrganizations
+    parameters:
+    - name: name
+      in: query
+      value: $inputs.organizationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organizationId: $response.body#/organizations/0/id
+    onSuccess:
+    - name: organizationFound
+      type: goto
+      stepId: attachOrganization
+      criteria:
+      - context: $response.body
+        condition: $.organizations.length > 0
+        type: jsonpath
+  - stepId: attachOrganization
+    description: Update the ticket to belong to the resolved organization.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.ticketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          organization_id: $steps.findOrganization.outputs.organizationId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      organizationId: $response.body#/ticket/organization_id
+  outputs:
+    organizationId: $steps.findOrganization.outputs.organizationId
+    ticketId: $steps.attachOrganization.outputs.ticketId

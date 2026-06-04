@@ -1,0 +1,76 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Create Ticket and Assign Group
+  summary: Look up a support group by name, then open a ticket assigned to that group.
+  description: >-
+    A routing pattern for Zendesk Support. The workflow lists the account's
+    groups, selects the one whose name matches the supplied value, and when found
+    opens a new ticket assigned to that group via the group_id field. The ticket
+    request body uses the documented {ticket:{...}} envelope and is spelled out
+    inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: groupsApi
+  url: ../openapi/groups-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-ticket-assign-group
+  summary: Resolve a group by name and open a ticket assigned to it.
+  description: >-
+    Lists groups, finds the one matching the supplied name, and opens a ticket
+    routed to that group.
+  inputs:
+    type: object
+    required:
+    - groupName
+    - subject
+    - commentBody
+    properties:
+      groupName:
+        type: string
+        description: The name of the group to route the ticket to.
+      subject:
+        type: string
+        description: The subject line of the new ticket.
+      commentBody:
+        type: string
+        description: The body of the first public comment on the ticket.
+  steps:
+  - stepId: listGroups
+    description: List the account's groups so the target group can be resolved.
+    operationId: ListGroups
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      groups: $response.body#/groups
+    onSuccess:
+    - name: groupsLoaded
+      type: goto
+      stepId: createTicket
+      criteria:
+      - context: $response.body
+        condition: $.groups[?(@.name == '$inputs.groupName')]
+        type: jsonpath
+  - stepId: createTicket
+    description: Open a ticket assigned to the resolved group.
+    operationId: CreateTicket
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          subject: $inputs.subject
+          comment:
+            body: $inputs.commentBody
+            public: true
+          group_id: $steps.listGroups.outputs.groups[0].id
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      ticketId: $response.body#/ticket/id
+      assignedGroupId: $response.body#/ticket/group_id
+  outputs:
+    ticketId: $steps.createTicket.outputs.ticketId
+    assignedGroupId: $steps.createTicket.outputs.assignedGroupId

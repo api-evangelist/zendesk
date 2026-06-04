@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Upsert User by Email
+  summary: Find a user by email and update them if found, otherwise create a new user.
+  description: >-
+    A common identity-management pattern for Zendesk Support. The workflow
+    searches for a user by email, then branches: when a match is found it updates
+    the existing user, and when no match is found it creates a new end user.
+    Request bodies use the documented {user:{...}} envelope and every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: usersApi
+  url: ../openapi/users-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: upsert-user-by-email
+  summary: Upsert a Zendesk end user keyed on email address.
+  description: >-
+    Searches for an existing user by email and either updates the matched user
+    or creates a new one.
+  inputs:
+    type: object
+    required:
+    - email
+    - name
+    properties:
+      email:
+        type: string
+        description: The email address used to find an existing user.
+      name:
+        type: string
+        description: The full name to set on the user.
+      phone:
+        type: string
+        description: Optional phone number to set on the user.
+      notes:
+        type: string
+        description: Optional internal notes to set on the user.
+  steps:
+  - stepId: findUser
+    description: Search for an existing user whose properties match the email.
+    operationId: SearchUsers
+    parameters:
+    - name: query
+      in: query
+      value: $inputs.email
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedUserId: $response.body#/users/0/id
+    onSuccess:
+    - name: userExists
+      type: goto
+      stepId: updateExisting
+      criteria:
+      - context: $response.body
+        condition: $.users.length > 0
+        type: jsonpath
+    - name: userMissing
+      type: goto
+      stepId: createNew
+      criteria:
+      - context: $response.body
+        condition: $.users.length == 0
+        type: jsonpath
+  - stepId: updateExisting
+    description: Update the matched user with the supplied fields.
+    operationId: UpdateUser
+    parameters:
+    - name: user_id
+      in: path
+      value: $steps.findUser.outputs.matchedUserId
+    requestBody:
+      contentType: application/json
+      payload:
+        user:
+          name: $inputs.name
+          phone: $inputs.phone
+          notes: $inputs.notes
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/user/id
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: createNew
+    description: Create a new end user when no existing user matched the email.
+    operationId: CreateUser
+    requestBody:
+      contentType: application/json
+      payload:
+        user:
+          name: $inputs.name
+          email: $inputs.email
+          phone: $inputs.phone
+          notes: $inputs.notes
+          role: end-user
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      userId: $response.body#/user/id
+  outputs:
+    updatedUserId: $steps.updateExisting.outputs.userId
+    createdUserId: $steps.createNew.outputs.userId

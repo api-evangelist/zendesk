@@ -1,0 +1,76 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Escalate Ticket
+  summary: Load a ticket and escalate it by raising priority, opening it, and adding a note.
+  description: >-
+    An escalation pattern for Zendesk Support. The workflow shows the ticket to
+    confirm it exists, then updates it to raise priority, set status to open, add
+    an "escalated" tag, and append an internal note. The update uses the
+    documented {ticket:{...}} envelope and is spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: escalate-ticket
+  summary: Escalate a ticket by raising priority and adding an internal note.
+  description: >-
+    Shows the ticket, then updates it with a higher priority, an open status, an
+    escalated tag, and an internal note.
+  inputs:
+    type: object
+    required:
+    - ticketId
+    - priority
+    - escalationNote
+    properties:
+      ticketId:
+        type: integer
+        description: The id of the ticket to escalate.
+      priority:
+        type: string
+        description: The priority to set (urgent, high, normal, low).
+      escalationNote:
+        type: string
+        description: The internal note explaining the escalation.
+  steps:
+  - stepId: showTicket
+    description: Load the ticket to confirm it exists before escalating.
+    operationId: ShowTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.ticketId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      currentPriority: $response.body#/ticket/priority
+  - stepId: escalate
+    description: Raise priority, set status open, tag, and add an internal note.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $steps.showTicket.outputs.ticketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          priority: $inputs.priority
+          status: open
+          tags:
+          - escalated
+          comment:
+            body: $inputs.escalationNote
+            public: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      ticketPriority: $response.body#/ticket/priority
+      ticketStatus: $response.body#/ticket/status
+  outputs:
+    ticketId: $steps.escalate.outputs.ticketId
+    ticketPriority: $steps.escalate.outputs.ticketPriority

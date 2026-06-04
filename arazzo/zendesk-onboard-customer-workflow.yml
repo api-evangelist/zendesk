@@ -1,0 +1,100 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Onboard New Customer
+  summary: Create an organization, add a user to it, and open their first support ticket.
+  description: >-
+    A full new-customer onboarding chain for Zendesk Support. The workflow
+    creates an organization, creates an end user assigned to that organization,
+    and then opens an initial ticket requested by that user and scoped to the new
+    organization. Each Zendesk request body is inlined with the documented
+    {organization:{...}}, {user:{...}}, and {ticket:{...}} envelopes.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/organizations-openapi-original.yml
+  type: openapi
+- name: usersApi
+  url: ../openapi/users-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: onboard-customer
+  summary: Provision an organization, a user, and an opening ticket in one pass.
+  description: >-
+    Creates a Zendesk organization, adds an end user to it, then opens that
+    user's first ticket scoped to the organization.
+  inputs:
+    type: object
+    required:
+    - organizationName
+    - userName
+    - userEmail
+    - subject
+    - commentBody
+    properties:
+      organizationName:
+        type: string
+        description: The unique name of the organization to create.
+      userName:
+        type: string
+        description: The full name of the end user to create.
+      userEmail:
+        type: string
+        description: The email address of the end user to create.
+      subject:
+        type: string
+        description: The subject line of the onboarding ticket.
+      commentBody:
+        type: string
+        description: The body of the first public comment on the ticket.
+  steps:
+  - stepId: createOrganization
+    description: Create the customer organization.
+    operationId: CreateOrganization
+    requestBody:
+      contentType: application/json
+      payload:
+        organization:
+          name: $inputs.organizationName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      organizationId: $response.body#/organization/id
+  - stepId: createUser
+    description: Create the end user inside the new organization.
+    operationId: CreateUser
+    requestBody:
+      contentType: application/json
+      payload:
+        user:
+          name: $inputs.userName
+          email: $inputs.userEmail
+          role: end-user
+          organization_id: $steps.createOrganization.outputs.organizationId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      userId: $response.body#/user/id
+  - stepId: createTicket
+    description: Open the onboarding ticket for the new user and organization.
+    operationId: CreateTicket
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          subject: $inputs.subject
+          comment:
+            body: $inputs.commentBody
+            public: true
+          requester_id: $steps.createUser.outputs.userId
+          organization_id: $steps.createOrganization.outputs.organizationId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      ticketId: $response.body#/ticket/id
+  outputs:
+    organizationId: $steps.createOrganization.outputs.organizationId
+    userId: $steps.createUser.outputs.userId
+    ticketId: $steps.createTicket.outputs.ticketId

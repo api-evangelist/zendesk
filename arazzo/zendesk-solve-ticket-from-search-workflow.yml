@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Solve Ticket from Search
+  summary: Search for a ticket, then solve it with a closing public comment.
+  description: >-
+    A find-then-act resolution pattern for Zendesk Support. The workflow runs a
+    free-text search scoped to tickets, branches on whether a result was found,
+    and when a ticket is matched it updates that ticket to the solved status with
+    a closing public comment. The update request body uses the documented
+    {ticket:{...}} envelope and is spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: searchApi
+  url: ../openapi/search-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: solve-ticket-from-search
+  summary: Find a ticket via search and mark it solved with a closing comment.
+  description: >-
+    Searches tickets with the supplied query, and when a match is found updates
+    that ticket to solved with a public comment.
+  inputs:
+    type: object
+    required:
+    - query
+    - closingComment
+    properties:
+      query:
+        type: string
+        description: >-
+          The Zendesk search query, e.g. "type:ticket status:open
+          subject:refund".
+      closingComment:
+        type: string
+        description: The public comment to add when solving the ticket.
+  steps:
+  - stepId: searchTickets
+    description: Run the Zendesk search and capture the first matching ticket id.
+    operationId: ListSearchResults
+    parameters:
+    - name: query
+      in: query
+      value: $inputs.query
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedTicketId: $response.body#/results/0/id
+    onSuccess:
+    - name: resultFound
+      type: goto
+      stepId: solveTicket
+      criteria:
+      - context: $response.body
+        condition: $.results.length > 0
+        type: jsonpath
+  - stepId: solveTicket
+    description: Update the matched ticket to solved with a closing public comment.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $steps.searchTickets.outputs.matchedTicketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          status: solved
+          comment:
+            body: $inputs.closingComment
+            public: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      ticketStatus: $response.body#/ticket/status
+  outputs:
+    matchedTicketId: $steps.searchTickets.outputs.matchedTicketId
+    solvedTicketId: $steps.solveTicket.outputs.ticketId

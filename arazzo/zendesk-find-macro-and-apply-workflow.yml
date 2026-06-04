@@ -1,0 +1,97 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Find Macro and Apply to Ticket
+  summary: Search macros by text, preview the match against a ticket, then commit the changes.
+  description: >-
+    A find-then-act automation pattern for Zendesk Support. The workflow searches
+    macros by query text, branches on whether a match was found, previews the
+    matched macro against a ticket, and then commits the previewed status and
+    comment back to the ticket. The commit body uses the documented
+    {ticket:{...}} envelope and is spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: macrosApi
+  url: ../openapi/macros-openapi-original.yml
+  type: openapi
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: find-macro-and-apply
+  summary: Locate a macro by search and apply its changes to a ticket.
+  description: >-
+    Searches macros by text, previews the first match against a ticket, and
+    persists the resulting status and comment.
+  inputs:
+    type: object
+    required:
+    - macroQuery
+    - ticketId
+    properties:
+      macroQuery:
+        type: string
+        description: The text query used to find the macro.
+      ticketId:
+        type: integer
+        description: The id of the ticket to apply the matched macro to.
+  steps:
+  - stepId: searchMacro
+    description: Search macros for the supplied query text.
+    operationId: SearchMacro
+    parameters:
+    - name: query
+      in: query
+      value: $inputs.macroQuery
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      macroId: $response.body#/macros/0/id
+    onSuccess:
+    - name: macroFound
+      type: goto
+      stepId: previewMacro
+      criteria:
+      - context: $response.body
+        condition: $.macros.length > 0
+        type: jsonpath
+  - stepId: previewMacro
+    description: >-
+      Preview the changes the matched macro would make to the ticket without
+      persisting them. ShowTicketAfterChanges is non-unique across the sourced
+      specs, so it is referenced by operationPath against the macros description.
+    operationPath: '{$sourceDescriptions.macrosApi.url}#/paths/~1api~1v2~1tickets~1{ticket_id}~1macros~1{macro_id}~1apply/get'
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.ticketId
+    - name: macro_id
+      in: path
+      value: $steps.searchMacro.outputs.macroId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      proposedStatus: $response.body#/result/ticket/status
+      proposedComment: $response.body#/result/ticket/comment/body
+  - stepId: commitChanges
+    description: Persist the macro's proposed status and comment to the ticket.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $inputs.ticketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          status: $steps.previewMacro.outputs.proposedStatus
+          comment:
+            body: $steps.previewMacro.outputs.proposedComment
+            public: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      ticketStatus: $response.body#/ticket/status
+  outputs:
+    macroId: $steps.searchMacro.outputs.macroId
+    ticketId: $steps.commitChanges.outputs.ticketId

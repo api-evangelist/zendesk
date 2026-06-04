@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Zendesk Tag and Prioritize New Ticket
+  summary: Open a ticket, set tags on it, then raise its priority and status.
+  description: >-
+    A three-step intake-and-classify chain for Zendesk Support. The workflow
+    opens a new ticket, sets a list of tags on it through the dedicated ticket
+    tags endpoint, and then updates the ticket to raise priority and open it. The
+    create and update bodies use the documented {ticket:{...}} envelope and the
+    tags body uses the documented {tags:[...]} shape, all spelled out inline.
+  version: 1.0.0
+sourceDescriptions:
+- name: ticketsApi
+  url: ../openapi/tickets-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: tag-and-prioritize-ticket
+  summary: Create a ticket, tag it, then set its priority.
+  description: >-
+    Opens a ticket, applies a set of tags via the tags endpoint, and then raises
+    the ticket priority.
+  inputs:
+    type: object
+    required:
+    - subject
+    - commentBody
+    - tags
+    - priority
+    properties:
+      subject:
+        type: string
+        description: The subject line of the new ticket.
+      commentBody:
+        type: string
+        description: The body of the first public comment on the ticket.
+      tags:
+        type: array
+        description: The list of tags to set on the ticket.
+        items:
+          type: string
+      priority:
+        type: string
+        description: The priority to set (urgent, high, normal, low).
+  steps:
+  - stepId: createTicket
+    description: Open the new ticket.
+    operationId: CreateTicket
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          subject: $inputs.subject
+          comment:
+            body: $inputs.commentBody
+            public: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      ticketId: $response.body#/ticket/id
+  - stepId: setTags
+    description: Set the supplied tags on the ticket via the tags endpoint.
+    operationId: SetTagsTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $steps.createTicket.outputs.ticketId
+    requestBody:
+      contentType: application/json
+      payload:
+        tags: $inputs.tags
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      tags: $response.body#/tags
+  - stepId: prioritize
+    description: Raise the ticket priority and set it to open.
+    operationId: UpdateTicket
+    parameters:
+    - name: ticket_id
+      in: path
+      value: $steps.createTicket.outputs.ticketId
+    requestBody:
+      contentType: application/json
+      payload:
+        ticket:
+          priority: $inputs.priority
+          status: open
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ticketId: $response.body#/ticket/id
+      ticketPriority: $response.body#/ticket/priority
+  outputs:
+    ticketId: $steps.createTicket.outputs.ticketId
+    ticketPriority: $steps.prioritize.outputs.ticketPriority
