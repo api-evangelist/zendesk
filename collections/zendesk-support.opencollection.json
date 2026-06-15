@@ -1,0 +1,480 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Support API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tickets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk List Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/tickets",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              },
+              {
+                "name": "sort_by",
+                "value": "created_at",
+                "type": "query",
+                "description": "The field to sort tickets by."
+              },
+              {
+                "name": "sort_order",
+                "value": "asc",
+                "type": "query",
+                "description": "The sort order."
+              },
+              {
+                "name": "external_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Filter tickets by external ID."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of tickets in the account. Tickets are sorted by created date in ascending order by default. Supports sideloading of related users, groups, and organizations."
+        },
+        {
+          "info": {
+            "name": "Zendesk Create Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.zendesk.com/api/v2/tickets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ticket. You can set the requester, subject, description, priority, type, status, tags, custom fields, and other properties. Comments can be added during creation."
+        },
+        {
+          "info": {
+            "name": "Zendesk Show Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific ticket."
+        },
+        {
+          "info": {
+            "name": "Zendesk Update Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{subdomain}.zendesk.com/api/v2/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a ticket. You can update the status, priority, assignee, tags, custom fields, and add comments. Setting the status to \"solved\" or \"closed\" resolves or closes the ticket."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.zendesk.com/api/v2/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a ticket. This operation cannot be undone. Deleted tickets are not recoverable."
+        },
+        {
+          "info": {
+            "name": "Zendesk List Ticket Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/tickets/:ticket_id/comments",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              },
+              {
+                "name": "sort_order",
+                "value": "asc",
+                "type": "query",
+                "description": "Sort order for comments."
+              }
+            ]
+          },
+          "docs": "Returns the comments on a specific ticket."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              },
+              {
+                "name": "role",
+                "value": "end-user",
+                "type": "query",
+                "description": "Filter by user role."
+              },
+              {
+                "name": "permission_set",
+                "value": "10",
+                "type": "query",
+                "description": "For custom roles, filter by the permission set ID."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all users in the account, including end users, agents, and admins. Supports filtering by role and permission set."
+        },
+        {
+          "info": {
+            "name": "Zendesk Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.zendesk.com/api/v2/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user. You must provide at least a name and an email address or phone number. The user role defaults to end-user."
+        },
+        {
+          "info": {
+            "name": "Zendesk Show User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific user."
+        },
+        {
+          "info": {
+            "name": "Zendesk Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{subdomain}.zendesk.com/api/v2/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a user. You can update the name, email, role, organization, tags, custom fields, and other properties."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.zendesk.com/api/v2/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ]
+          },
+          "docs": "Deletes a user. The user is soft-deleted and can be recovered within a limited time. Agents and admins can only be deleted by admins."
+        },
+        {
+          "info": {
+            "name": "Zendesk Search Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/users/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "The search query. Supports name, email, phone, external_id, and other fields."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              }
+            ]
+          },
+          "docs": "Searches for users by name, email, external ID, or other criteria. Returns a paginated list of matching users."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk List Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/organizations",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all organizations in the account."
+        },
+        {
+          "info": {
+            "name": "Zendesk Create Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.zendesk.com/api/v2/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new organization. You must provide a name. You can optionally set domains, tags, notes, and custom fields."
+        },
+        {
+          "info": {
+            "name": "Zendesk Show Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific organization."
+        },
+        {
+          "info": {
+            "name": "Zendesk Update Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{subdomain}.zendesk.com/api/v2/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an organization. You can update the name, domains, notes, tags, details, and custom fields."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.zendesk.com/api/v2/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "Permanently deletes an organization. Users associated with the organization are not deleted, but their organization membership is removed."
+        },
+        {
+          "info": {
+            "name": "Zendesk Search Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/organizations/search",
+            "params": [
+              {
+                "name": "external_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Search by external ID."
+              }
+            ]
+          },
+          "docs": "Searches for organizations by name or external ID."
+        },
+        {
+          "info": {
+            "name": "Zendesk Autocomplete Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.zendesk.com/api/v2/organizations/autocomplete",
+            "params": [
+              {
+                "name": "name",
+                "value": "Example Title",
+                "type": "query",
+                "description": "The prefix to match against organization names."
+              }
+            ]
+          },
+          "docs": "Returns organizations whose names start with the given string. Useful for building type-ahead search interfaces."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

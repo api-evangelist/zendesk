@@ -1,0 +1,351 @@
+{
+  "info": {
+    "_postman_id": "4d3be4d4-eacd-4a9c-968d-a5ad66638b08",
+    "name": "Zendesk Bookmarks",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:27.000Z",
+    "updatedAt": "2026-06-05T15:22:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4d3be4d4-eacd-4a9c-968d-a5ad66638b08"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "bookmarks",
+              "item": [
+                {
+                  "name": "{bookmark_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Bookmarks Bookmark_id",
+                      "id": "5fcc67ff-3336-4c11-bfaf-fc93208dbba5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/bookmarks/:bookmark_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "bookmarks",
+                            ":bookmark_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fdacd870-09d6-4b11-8cc6-4d15732b0a7a",
+                              "key": "bookmark_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n- Agents (own bookmarks only)\n\nIf the bookmark already exists with a specified ticket id, the response status will be `http Status: 200 OK`."
+                      },
+                      "response": [
+                        {
+                          "id": "6bd816b6-4310-4f7d-9e0f-3f8524938616",
+                          "name": "No content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/bookmarks/:bookmark_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "bookmarks",
+                                ":bookmark_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "bookmark_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:22:27.000Z",
+                          "updatedAt": "2026-06-05T15:22:27.000Z",
+                          "uid": "35240-6bd816b6-4310-4f7d-9e0f-3f8524938616"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:27.000Z",
+                      "updatedAt": "2026-06-05T15:22:27.000Z",
+                      "uid": "35240-5fcc67ff-3336-4c11-bfaf-fc93208dbba5"
+                    }
+                  ],
+                  "id": "023cb09f-16bc-4a89-b765-154a94084c03",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-023cb09f-16bc-4a89-b765-154a94084c03"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Bookmarks",
+                  "id": "545a9f4c-654a-4541-bf8a-c18a63b77c03",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/bookmarks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "bookmarks"
+                      ]
+                    },
+                    "description": "#### Allowed For\n- Agents"
+                  },
+                  "response": [
+                    {
+                      "id": "82ec6476-7c44-4413-870f-213457f2d0db",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/bookmarks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "bookmarks"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"bookmarks\": [\n    {\n      \"value\": \"reference #/components/schemas/BookmarkObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/BookmarkObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:27.000Z",
+                      "updatedAt": "2026-06-05T15:22:27.000Z",
+                      "uid": "35240-82ec6476-7c44-4413-870f-213457f2d0db"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-545a9f4c-654a-4541-bf8a-c18a63b77c03"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Bookmarks",
+                  "id": "01a15f76-9970-4fa7-b596-93ceb44972ca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference #/components/schemas/BookmarkCreateRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/bookmarks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "bookmarks"
+                      ]
+                    },
+                    "description": "#### Allowed For\n- Agents"
+                  },
+                  "response": [
+                    {
+                      "id": "6d17d78f-5076-4583-ba7a-b26fe97be392",
+                      "name": "Successfully created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/BookmarkCreateRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/bookmarks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "bookmarks"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"bookmark\": {\n    \"value\": \"reference #/components/schemas/BookmarkObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:27.000Z",
+                      "updatedAt": "2026-06-05T15:22:27.000Z",
+                      "uid": "35240-6d17d78f-5076-4583-ba7a-b26fe97be392"
+                    },
+                    {
+                      "id": "c8dd4c10-5d51-4808-8b7b-166f7cdbf699",
+                      "name": "Successfully created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/BookmarkCreateRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/bookmarks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "bookmarks"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"bookmark\": {\n    \"value\": \"reference #/components/schemas/BookmarkObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:27.000Z",
+                      "updatedAt": "2026-06-05T15:22:27.000Z",
+                      "uid": "35240-c8dd4c10-5d51-4808-8b7b-166f7cdbf699"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-01a15f76-9970-4fa7-b596-93ceb44972ca"
+                }
+              ],
+              "id": "054f6a8c-593c-4c67-9fac-03eb840948ac",
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-054f6a8c-593c-4c67-9fac-03eb840948ac"
+            }
+          ],
+          "id": "5d246e3b-2c3e-42be-9338-3711bd10f128",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-5d246e3b-2c3e-42be-9338-3711bd10f128"
+        }
+      ],
+      "id": "21d0b0b1-df98-4b72-b910-880d4e89e76f",
+      "createdAt": "2026-06-05T15:22:27.000Z",
+      "updatedAt": "2026-06-05T15:22:27.000Z",
+      "uid": "35240-21d0b0b1-df98-4b72-b910-880d4e89e76f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

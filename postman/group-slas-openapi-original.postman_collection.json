@@ -1,0 +1,648 @@
+{
+  "info": {
+    "_postman_id": "5f7f81ed-7d46-4a94-91ba-7708923119ed",
+    "name": "Zendesk Group Slas",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:47.000Z",
+    "updatedAt": "2026-06-05T15:22:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5f7f81ed-7d46-4a94-91ba-7708923119ed"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "group_slas",
+              "item": [
+                {
+                  "name": "policies",
+                  "item": [
+                    {
+                      "name": "{group_sla_policy_id}",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Group_slas Policies Group_sla_policy_id",
+                          "id": "1383aae6-2bc0-4c4e-a1de-97c167d4e687",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_slas",
+                                "policies",
+                                ":group_sla_policy_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "42a917ef-3b0e-4601-91f2-24e05feb527a",
+                                  "key": "group_sla_policy_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "81aac5ae-f695-4c9c-8c65-772ddc71df28",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "group_slas",
+                                    "policies",
+                                    ":group_sla_policy_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "group_sla_policy_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"group_sla_policy\": {\n    \"value\": \"reference #/components/schemas/GroupSLAPolicyObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:48.000Z",
+                              "updatedAt": "2026-06-05T15:22:48.000Z",
+                              "uid": "35240-81aac5ae-f695-4c9c-8c65-772ddc71df28"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:48.000Z",
+                          "updatedAt": "2026-06-05T15:22:48.000Z",
+                          "uid": "35240-1383aae6-2bc0-4c4e-a1de-97c167d4e687"
+                        },
+                        {
+                          "name": "Zendesk Put  Api V2 Group_slas Policies Group_sla_policy_id",
+                          "id": "d2ac7f11-1e94-40c1-b639-4da050cd47ef",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_slas",
+                                "policies",
+                                ":group_sla_policy_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0e0c16cc-0ad8-4de3-9ca9-0c03f9ccacf0",
+                                  "key": "group_sla_policy_id"
+                                }
+                              ]
+                            },
+                            "description": "Updates the specified policy.\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "c0d45315-716a-4d31-baa2-6ffdc8217bce",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "group_slas",
+                                    "policies",
+                                    ":group_sla_policy_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "group_sla_policy_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"group_sla_policy\": {\n    \"value\": \"reference #/components/schemas/GroupSLAPolicyObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:48.000Z",
+                              "updatedAt": "2026-06-05T15:22:48.000Z",
+                              "uid": "35240-c0d45315-716a-4d31-baa2-6ffdc8217bce"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:48.000Z",
+                          "updatedAt": "2026-06-05T15:22:48.000Z",
+                          "uid": "35240-d2ac7f11-1e94-40c1-b639-4da050cd47ef"
+                        },
+                        {
+                          "name": "Zendesk Delete  Api V2 Group_slas Policies Group_sla_policy_id",
+                          "id": "9b9429e1-1cec-4e2e-a1ca-9a44ce5c35e8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_slas",
+                                "policies",
+                                ":group_sla_policy_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3c597a65-d981-47e7-857d-87ab54f07fa9",
+                                  "key": "group_sla_policy_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "a8002ca1-309f-41a2-b207-21c96f8805eb",
+                              "name": "No Content response",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "group_slas",
+                                    "policies",
+                                    ":group_sla_policy_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "group_sla_policy_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:22:48.000Z",
+                              "updatedAt": "2026-06-05T15:22:48.000Z",
+                              "uid": "35240-a8002ca1-309f-41a2-b207-21c96f8805eb"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:48.000Z",
+                          "updatedAt": "2026-06-05T15:22:48.000Z",
+                          "uid": "35240-9b9429e1-1cec-4e2e-a1ca-9a44ce5c35e8"
+                        }
+                      ],
+                      "id": "29dd9283-2a7b-47de-8564-1dea53655bc6",
+                      "createdAt": "2026-06-05T15:22:48.000Z",
+                      "updatedAt": "2026-06-05T15:22:48.000Z",
+                      "uid": "35240-29dd9283-2a7b-47de-8564-1dea53655bc6"
+                    },
+                    {
+                      "name": "definitions",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Group_slas Policies Definitions",
+                          "id": "82dfa9d3-963b-495f-84e4-aa8f732fb8c6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_slas/policies/definitions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_slas",
+                                "policies",
+                                "definitions"
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "aea65a0c-9746-4fb5-9b2f-a0d7527d4a33",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/group_slas/policies/definitions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "group_slas",
+                                    "policies",
+                                    "definitions"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"definitions\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"all\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"group\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"operators\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"title\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  },\n                  \"value\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  }\n                }\n              }\n            },\n            \"title\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"value\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"values\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"list\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                      \"title\": {\n                        \"type\": \"string\",\n                        \"default\": \"<string>\"\n                      },\n                      \"value\": {\n                        \"type\": \"integer\",\n                        \"nullable\": true,\n                        \"default\": \"<integer>\"\n                      }\n                    }\n                  }\n                },\n                \"type\": {\n                  \"type\": \"string\",\n                  \"default\": \"<string>\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:48.000Z",
+                              "updatedAt": "2026-06-05T15:22:48.000Z",
+                              "uid": "35240-aea65a0c-9746-4fb5-9b2f-a0d7527d4a33"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:48.000Z",
+                          "updatedAt": "2026-06-05T15:22:48.000Z",
+                          "uid": "35240-82dfa9d3-963b-495f-84e4-aa8f732fb8c6"
+                        }
+                      ],
+                      "id": "86891751-8b8e-472e-af21-54fcc947fcde",
+                      "createdAt": "2026-06-05T15:22:48.000Z",
+                      "updatedAt": "2026-06-05T15:22:48.000Z",
+                      "uid": "35240-86891751-8b8e-472e-af21-54fcc947fcde"
+                    },
+                    {
+                      "name": "reorder",
+                      "item": [
+                        {
+                          "name": "Zendesk Put  Api V2 Group_slas Policies Reorder",
+                          "id": "903affa9-48b7-434a-bed6-a54365841a5d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_slas/policies/reorder?group_sla_policy_ids=<string>&group_sla_policy_ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_slas",
+                                "policies",
+                                "reorder"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The ids of the Group SLA policies to reorder",
+                                  "key": "group_sla_policy_ids",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ids of the Group SLA policies to reorder",
+                                  "key": "group_sla_policy_ids",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "1d2b62ac-d2f3-4469-a375-48e0ca76e1bc",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/group_slas/policies/reorder?group_sla_policy_ids=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "group_slas",
+                                    "policies",
+                                    "reorder"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The ids of the Group SLA policies to reorder",
+                                      "key": "group_sla_policy_ids",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-06-05T15:22:48.000Z",
+                              "updatedAt": "2026-06-05T15:22:48.000Z",
+                              "uid": "35240-1d2b62ac-d2f3-4469-a375-48e0ca76e1bc"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:48.000Z",
+                          "updatedAt": "2026-06-05T15:22:48.000Z",
+                          "uid": "35240-903affa9-48b7-434a-bed6-a54365841a5d"
+                        }
+                      ],
+                      "id": "363ca913-f1a1-4de8-8762-06c90670bd4a",
+                      "createdAt": "2026-06-05T15:22:48.000Z",
+                      "updatedAt": "2026-06-05T15:22:48.000Z",
+                      "uid": "35240-363ca913-f1a1-4de8-8762-06c90670bd4a"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Group_slas Policies",
+                      "id": "0ce70aeb-2b70-42f4-bfcd-9e63ffe64faf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_slas/policies",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_slas",
+                            "policies"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "5fceb86b-2121-4bf8-9d2d-8f7236d7091d",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_slas/policies",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_slas",
+                                "policies"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"group_sla_policies\": [\n    {\n      \"value\": \"reference #/components/schemas/GroupSLAPolicyObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/GroupSLAPolicyObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:22:48.000Z",
+                          "updatedAt": "2026-06-05T15:22:48.000Z",
+                          "uid": "35240-5fceb86b-2121-4bf8-9d2d-8f7236d7091d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:48.000Z",
+                      "updatedAt": "2026-06-05T15:22:48.000Z",
+                      "uid": "35240-0ce70aeb-2b70-42f4-bfcd-9e63ffe64faf"
+                    },
+                    {
+                      "name": "Zendesk Post  Api V2 Group_slas Policies",
+                      "id": "a6ad61df-59d3-4714-bd63-0df76218438b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_slas/policies",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_slas",
+                            "policies"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3ce3bf33-6083-44d2-9e6b-d037d89ba6da",
+                          "name": "Created response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_slas/policies",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_slas",
+                                "policies"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"group_sla_policy\": {\n    \"value\": \"reference #/components/schemas/GroupSLAPolicyObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:48.000Z",
+                          "updatedAt": "2026-06-05T15:22:48.000Z",
+                          "uid": "35240-3ce3bf33-6083-44d2-9e6b-d037d89ba6da"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:48.000Z",
+                      "updatedAt": "2026-06-05T15:22:48.000Z",
+                      "uid": "35240-a6ad61df-59d3-4714-bd63-0df76218438b"
+                    }
+                  ],
+                  "id": "f5166a5b-837e-4baa-8418-cada87181765",
+                  "createdAt": "2026-06-05T15:22:48.000Z",
+                  "updatedAt": "2026-06-05T15:22:48.000Z",
+                  "uid": "35240-f5166a5b-837e-4baa-8418-cada87181765"
+                }
+              ],
+              "id": "5ae71ea4-2271-48fd-8045-d2dfb5b4ae91",
+              "createdAt": "2026-06-05T15:22:48.000Z",
+              "updatedAt": "2026-06-05T15:22:48.000Z",
+              "uid": "35240-5ae71ea4-2271-48fd-8045-d2dfb5b4ae91"
+            }
+          ],
+          "id": "73a34846-c13f-445a-96d5-c2b2fc7d0536",
+          "createdAt": "2026-06-05T15:22:48.000Z",
+          "updatedAt": "2026-06-05T15:22:48.000Z",
+          "uid": "35240-73a34846-c13f-445a-96d5-c2b2fc7d0536"
+        }
+      ],
+      "id": "cfbc1ecd-ba9f-4bb2-93a2-39c1905050f4",
+      "createdAt": "2026-06-05T15:22:48.000Z",
+      "updatedAt": "2026-06-05T15:22:48.000Z",
+      "uid": "35240-cfbc1ecd-ba9f-4bb2-93a2-39c1905050f4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "info": {
+    "_postman_id": "3fac7698-fb56-4501-8641-d5a30bf21eba",
+    "name": "Zendesk Activities",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:46.000Z",
+    "updatedAt": "2026-06-05T15:21:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3fac7698-fb56-4501-8641-d5a30bf21eba"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "activities",
+              "item": [
+                {
+                  "name": "{activity_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Activities Activity_id",
+                      "id": "f3652fc6-11b8-4ecf-8461-307687b786ef",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/activities/:activity_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "activities",
+                            ":activity_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "06faed45-995e-4af2-ad18-f4cca96c31c5",
+                              "key": "activity_id"
+                            }
+                          ]
+                        },
+                        "description": "Lists a specific activity.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "78085aa4-8f30-43a8-b509-515e88fe1c12",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/activities/:activity_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "activities",
+                                ":activity_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "activity_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"activity\": {\n    \"value\": \"reference #/components/schemas/ActivityObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:46.000Z",
+                          "updatedAt": "2026-06-05T15:21:46.000Z",
+                          "uid": "35240-78085aa4-8f30-43a8-b509-515e88fe1c12"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:46.000Z",
+                      "updatedAt": "2026-06-05T15:21:46.000Z",
+                      "uid": "35240-f3652fc6-11b8-4ecf-8461-307687b786ef"
+                    }
+                  ],
+                  "id": "dc20ecff-8878-4b11-aa03-40ad91e3ceb4",
+                  "createdAt": "2026-06-05T15:21:46.000Z",
+                  "updatedAt": "2026-06-05T15:21:46.000Z",
+                  "uid": "35240-dc20ecff-8878-4b11-aa03-40ad91e3ceb4"
+                },
+                {
+                  "name": "count",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Activities Count",
+                      "id": "0cc12a66-fda5-40aa-9f36-7acb017af0a4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/activities/count",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "activities",
+                            "count"
+                          ]
+                        },
+                        "description": "Returns an approximate count of ticket activities in the last 30 days affecting the agent making the request. If the count exceeds 100,000, the count will return a cached result. This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.\n\n#### Allowed For\n* Agents"
+                      },
+                      "response": [
+                        {
+                          "id": "5181dd10-f424-4df6-9260-7a300253a640",
+                          "name": "Count of ticket activities",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/activities/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "activities",
+                                "count"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": {\n    \"refreshed_at\": \"<dateTime>\",\n    \"value\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:46.000Z",
+                          "updatedAt": "2026-06-05T15:21:46.000Z",
+                          "uid": "35240-5181dd10-f424-4df6-9260-7a300253a640"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:46.000Z",
+                      "updatedAt": "2026-06-05T15:21:46.000Z",
+                      "uid": "35240-0cc12a66-fda5-40aa-9f36-7acb017af0a4"
+                    }
+                  ],
+                  "id": "4a09e850-1315-43f0-b176-ee07d8dadbb9",
+                  "createdAt": "2026-06-05T15:21:46.000Z",
+                  "updatedAt": "2026-06-05T15:21:46.000Z",
+                  "uid": "35240-4a09e850-1315-43f0-b176-ee07d8dadbb9"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Activities",
+                  "id": "0edc55fb-a3ea-49f6-a72e-7619c05a4207",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/activities",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "activities"
+                      ]
+                    },
+                    "description": "Lists ticket activities in the last 30 days affecting the agent making the request.\nAlso sideloads the following arrays of user records:\n\n- actors - All actors involved in the listed activities\n- users - All users involved in the listed activities\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "83684b60-8168-4aef-a40c-321246738b04",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/activities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "activities"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"activities\": [\n    {\n      \"value\": \"reference #/components/schemas/ActivityObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ActivityObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"actors\": [\n    {\n      \"in_3fb\": -94596984\n    },\n    {\n      \"fugiata\": false\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"users\": [\n    {\n      \"consequatd2e\": \"Duis Lorem occaecat exercitation\"\n    },\n    {\n      \"laboris_4\": \"dolor Duis qui nulla\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:46.000Z",
+                      "updatedAt": "2026-06-05T15:21:46.000Z",
+                      "uid": "35240-83684b60-8168-4aef-a40c-321246738b04"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:46.000Z",
+                  "updatedAt": "2026-06-05T15:21:46.000Z",
+                  "uid": "35240-0edc55fb-a3ea-49f6-a72e-7619c05a4207"
+                }
+              ],
+              "id": "a57675ac-4fae-42b2-91ba-ddd2bcb91005",
+              "createdAt": "2026-06-05T15:21:46.000Z",
+              "updatedAt": "2026-06-05T15:21:46.000Z",
+              "uid": "35240-a57675ac-4fae-42b2-91ba-ddd2bcb91005"
+            }
+          ],
+          "id": "96f2b260-d43d-4be6-836f-408817f83a6c",
+          "createdAt": "2026-06-05T15:21:46.000Z",
+          "updatedAt": "2026-06-05T15:21:46.000Z",
+          "uid": "35240-96f2b260-d43d-4be6-836f-408817f83a6c"
+        }
+      ],
+      "id": "b2bdba31-3b2c-475e-9386-8a26890af67c",
+      "createdAt": "2026-06-05T15:21:46.000Z",
+      "updatedAt": "2026-06-05T15:21:46.000Z",
+      "uid": "35240-b2bdba31-3b2c-475e-9386-8a26890af67c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

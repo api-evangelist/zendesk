@@ -1,0 +1,200 @@
+{
+  "info": {
+    "_postman_id": "a332346d-2f37-4c2a-bd59-af976605dedc",
+    "name": "Zendesk Uploads",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:52.000Z",
+    "updatedAt": "2026-06-05T15:23:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a332346d-2f37-4c2a-bd59-af976605dedc"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "uploads",
+              "item": [
+                {
+                  "name": "{token}",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Uploads Token",
+                      "id": "eae7dbd9-1b4b-4cd0-8cfb-4a612572deb2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/uploads/:token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "uploads",
+                            ":token"
+                          ],
+                          "variable": [
+                            {
+                              "id": "650809b4-f6ef-4a30-9a36-50094777b704",
+                              "key": "token",
+                              "value": "<string>",
+                              "description": "(Required) The token of the uploaded attachment"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed for\n\n* End Users\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0260b162-7f7b-4dc3-9730-d3898e397c66",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/uploads/:token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "uploads",
+                                ":token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "token"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:53.000Z",
+                          "updatedAt": "2026-06-05T15:23:53.000Z",
+                          "uid": "35240-0260b162-7f7b-4dc3-9730-d3898e397c66"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:53.000Z",
+                      "updatedAt": "2026-06-05T15:23:53.000Z",
+                      "uid": "35240-eae7dbd9-1b4b-4cd0-8cfb-4a612572deb2"
+                    }
+                  ],
+                  "id": "78740ef6-ff41-43b7-84fb-cbaeb10f6d54",
+                  "createdAt": "2026-06-05T15:23:53.000Z",
+                  "updatedAt": "2026-06-05T15:23:53.000Z",
+                  "uid": "35240-78740ef6-ff41-43b7-84fb-cbaeb10f6d54"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Uploads",
+                  "id": "8299e594-9a5c-43bc-b0cf-40bb48f16fb5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/uploads",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "uploads"
+                      ]
+                    },
+                    "description": "Uploads a file that can be attached to a ticket comment. It doesn't attach the file to the comment. For details and examples, see [Attaching ticket comments with the API](/documentation/ticketing/using-the-zendesk-api/adding-ticket-attachments-with-the-api).\n\nThe endpoint has a required `filename` query parameter. The parameter specifies what the file will be named when attached to the ticket comment (to give the agent more context about the file). The parameter does not specify the file on the local system to be uploaded. While the two names can be different, their file extensions must be the same. If they don't match, the agent's browser or file reader could give an error when attempting to open the attachment.\n\nThe `Content-Type` header must contain a recognized MIME type that correctly describes the type of the uploaded file. Failing to send a recognized, correct type may cause undesired behavior. For example, in-browser audio playback may be interrupted by the browser's security mechanisms for MP3s uploaded with an incorrect type.\n\nAdding multiple files to the same upload is handled by splitting requests and passing the API token received from the first request to each subsequent request. The token is valid for 60 minutes.\n\n**Note**: Even if [private attachments](https://support.zendesk.com/hc/en-us/articles/204265396) are enabled in the Zendesk Support instance, uploaded files are visible to any authenticated user at the `content_URL` specified in the [JSON response](#json-format) until the upload token is consumed. Once a file is associated with a ticket or post, visibility is restricted to users with access to the ticket or post with the attachment.\n\n#### Allowed For\n\n* End users\n"
+                  },
+                  "response": [
+                    {
+                      "id": "2f07d391-cb3f-4702-b186-dce6a567b9c5",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/uploads",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "uploads"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/AttachmentUploadResponse not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:23:53.000Z",
+                      "updatedAt": "2026-06-05T15:23:53.000Z",
+                      "uid": "35240-2f07d391-cb3f-4702-b186-dce6a567b9c5"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:53.000Z",
+                  "updatedAt": "2026-06-05T15:23:53.000Z",
+                  "uid": "35240-8299e594-9a5c-43bc-b0cf-40bb48f16fb5"
+                }
+              ],
+              "id": "78b08b81-2e7d-465d-a79e-4deb9ef31537",
+              "createdAt": "2026-06-05T15:23:53.000Z",
+              "updatedAt": "2026-06-05T15:23:53.000Z",
+              "uid": "35240-78b08b81-2e7d-465d-a79e-4deb9ef31537"
+            }
+          ],
+          "id": "4de09aba-4663-4730-aa1e-214ed2f76c19",
+          "createdAt": "2026-06-05T15:23:53.000Z",
+          "updatedAt": "2026-06-05T15:23:53.000Z",
+          "uid": "35240-4de09aba-4663-4730-aa1e-214ed2f76c19"
+        }
+      ],
+      "id": "e03f3cb6-ccf4-4aaa-96a0-b9c541e9a917",
+      "createdAt": "2026-06-05T15:23:53.000Z",
+      "updatedAt": "2026-06-05T15:23:53.000Z",
+      "uid": "35240-e03f3cb6-ccf4-4aaa-96a0-b9c541e9a917"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

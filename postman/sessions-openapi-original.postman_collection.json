@@ -1,0 +1,404 @@
+{
+  "info": {
+    "_postman_id": "3cf432a5-decd-4bb0-a673-c13a48b30e3c",
+    "name": "Zendesk Sessions",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:20.000Z",
+    "updatedAt": "2026-06-05T15:23:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3cf432a5-decd-4bb0-a673-c13a48b30e3c"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "sessions",
+              "item": [
+                {
+                  "name": "Zendesk Get  Api V2 Sessions",
+                  "id": "5ac82991-a9da-45a6-be3d-a98bc89c6bf2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "sessions"
+                      ]
+                    },
+                    "description": "If authenticated as an admin, returns all the account's sessions. If authenticated as an agent or end user, returns only the sessions of the user making the request.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Allowed For\n\n* Admins, Agents, End users\n"
+                  },
+                  "response": [
+                    {
+                      "id": "29ec015e-3d33-43ca-a50e-69885c5a6dd0",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/sessions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "sessions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sessions\": [\n    {\n      \"value\": \"reference #/components/schemas/SessionObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SessionObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:21.000Z",
+                      "updatedAt": "2026-06-05T15:23:21.000Z",
+                      "uid": "35240-29ec015e-3d33-43ca-a50e-69885c5a6dd0"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:21.000Z",
+                  "updatedAt": "2026-06-05T15:23:21.000Z",
+                  "uid": "35240-5ac82991-a9da-45a6-be3d-a98bc89c6bf2"
+                }
+              ],
+              "id": "400b0ba9-6214-4c63-9c41-6a384bf4ecf9",
+              "createdAt": "2026-06-05T15:23:21.000Z",
+              "updatedAt": "2026-06-05T15:23:21.000Z",
+              "uid": "35240-400b0ba9-6214-4c63-9c41-6a384bf4ecf9"
+            },
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{user_id}",
+                  "item": [
+                    {
+                      "name": "sessions",
+                      "item": [
+                        {
+                          "name": "{session_id}",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Users User_id Sessions Session_id",
+                              "id": "f153e875-fa23-4811-8337-8688d454aae6",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/users/:user_id/sessions/:session_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "users",
+                                    ":user_id",
+                                    "sessions",
+                                    ":session_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "d4b80087-041f-4d49-b0d3-f7e5ad28b1ea",
+                                      "key": "user_id"
+                                    },
+                                    {
+                                      "id": "b85429e3-cfcb-4abc-b0c4-76ea3c76c0d7",
+                                      "key": "session_id"
+                                    }
+                                  ]
+                                },
+                                "description": "#### Allowed For\n\n* Admins, Agents, End users\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "ad79efd9-94bb-4747-b987-46a614d4e218",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/users/:user_id/sessions/:session_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "users",
+                                        ":user_id",
+                                        "sessions",
+                                        ":session_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "user_id"
+                                        },
+                                        {
+                                          "key": "session_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"session\": [\n    {\n      \"value\": \"reference #/components/schemas/SessionObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SessionObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:21.000Z",
+                                  "updatedAt": "2026-06-05T15:23:21.000Z",
+                                  "uid": "35240-ad79efd9-94bb-4747-b987-46a614d4e218"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:21.000Z",
+                              "updatedAt": "2026-06-05T15:23:21.000Z",
+                              "uid": "35240-f153e875-fa23-4811-8337-8688d454aae6"
+                            },
+                            {
+                              "name": "Zendesk Delete  Api V2 Users User_id Sessions Session_id",
+                              "id": "6c24380c-0bce-408d-bcbb-59a16c17d2d4",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/users/:user_id/sessions/:session_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "users",
+                                    ":user_id",
+                                    "sessions",
+                                    ":session_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "a48cf3f7-dad1-4502-ae69-2f50ec9f6549",
+                                      "key": "user_id"
+                                    },
+                                    {
+                                      "id": "df185fa0-8202-4f71-a273-e0943f4ecb38",
+                                      "key": "session_id"
+                                    }
+                                  ]
+                                },
+                                "description": "#### Allowed For\n\n* Admins, Agents, End users\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "fb270404-a9b5-4e96-a67e-5525f092bb90",
+                                  "name": "No Content",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/users/:user_id/sessions/:session_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "users",
+                                        ":user_id",
+                                        "sessions",
+                                        ":session_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "user_id"
+                                        },
+                                        {
+                                          "key": "session_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:23:21.000Z",
+                                  "updatedAt": "2026-06-05T15:23:21.000Z",
+                                  "uid": "35240-fb270404-a9b5-4e96-a67e-5525f092bb90"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:21.000Z",
+                              "updatedAt": "2026-06-05T15:23:21.000Z",
+                              "uid": "35240-6c24380c-0bce-408d-bcbb-59a16c17d2d4"
+                            }
+                          ],
+                          "id": "f5fa5667-80bf-42a9-94d6-80467999f420",
+                          "createdAt": "2026-06-05T15:23:21.000Z",
+                          "updatedAt": "2026-06-05T15:23:21.000Z",
+                          "uid": "35240-f5fa5667-80bf-42a9-94d6-80467999f420"
+                        },
+                        {
+                          "name": "Zendesk Delete  Api V2 Users User_id Sessions",
+                          "id": "12849dd9-b72c-4504-b088-a72014a26b3f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/users/:user_id/sessions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "users",
+                                ":user_id",
+                                "sessions"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "582aabdc-8ee3-4b6d-8106-c29f8b4ed505",
+                                  "key": "user_id"
+                                }
+                              ]
+                            },
+                            "description": "Deletes all the sessions for a user.\n\n#### Allowed For\n\n* Admins, Agents, End users\n"
+                          },
+                          "response": [
+                            {
+                              "id": "6920a5ec-4870-43fb-b806-36e4299bef68",
+                              "name": "No Content",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/users/:user_id/sessions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "users",
+                                    ":user_id",
+                                    "sessions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:23:21.000Z",
+                              "updatedAt": "2026-06-05T15:23:21.000Z",
+                              "uid": "35240-6920a5ec-4870-43fb-b806-36e4299bef68"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:21.000Z",
+                          "updatedAt": "2026-06-05T15:23:21.000Z",
+                          "uid": "35240-12849dd9-b72c-4504-b088-a72014a26b3f"
+                        }
+                      ],
+                      "id": "3c8fcafd-fca2-4a01-ba29-03757bed9dd9",
+                      "createdAt": "2026-06-05T15:23:21.000Z",
+                      "updatedAt": "2026-06-05T15:23:21.000Z",
+                      "uid": "35240-3c8fcafd-fca2-4a01-ba29-03757bed9dd9"
+                    }
+                  ],
+                  "id": "8588543e-0699-4269-831a-a30402ff9845",
+                  "createdAt": "2026-06-05T15:23:21.000Z",
+                  "updatedAt": "2026-06-05T15:23:21.000Z",
+                  "uid": "35240-8588543e-0699-4269-831a-a30402ff9845"
+                }
+              ],
+              "id": "02d69d00-bc52-45d9-a00e-27e092b1f6e0",
+              "createdAt": "2026-06-05T15:23:21.000Z",
+              "updatedAt": "2026-06-05T15:23:21.000Z",
+              "uid": "35240-02d69d00-bc52-45d9-a00e-27e092b1f6e0"
+            }
+          ],
+          "id": "e5e2fc3f-1c5a-453e-b550-b4f0a9f72e19",
+          "createdAt": "2026-06-05T15:23:21.000Z",
+          "updatedAt": "2026-06-05T15:23:21.000Z",
+          "uid": "35240-e5e2fc3f-1c5a-453e-b550-b4f0a9f72e19"
+        }
+      ],
+      "id": "73c8698d-d6c4-4f59-92a9-90bda81108a2",
+      "createdAt": "2026-06-05T15:23:21.000Z",
+      "updatedAt": "2026-06-05T15:23:21.000Z",
+      "uid": "35240-73c8698d-d6c4-4f59-92a9-90bda81108a2"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

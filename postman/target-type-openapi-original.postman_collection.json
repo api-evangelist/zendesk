@@ -1,0 +1,333 @@
+{
+  "info": {
+    "_postman_id": "74882acf-d9de-4cd8-8113-0e744de73dbf",
+    "name": "Zendesk Target Type",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:43.000Z",
+    "updatedAt": "2026-06-05T15:21:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74882acf-d9de-4cd8-8113-0e744de73dbf"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "{target_type}",
+              "item": [
+                {
+                  "name": "{target_id}",
+                  "item": [
+                    {
+                      "name": "relationship_fields",
+                      "item": [
+                        {
+                          "name": "{field_id}",
+                          "item": [
+                            {
+                              "name": "{source_type}",
+                              "item": [
+                                {
+                                  "name": "Zendesk Get  Api V2 Target_type Target_id Relationship_fields Field_id Source_type",
+                                  "id": "90b9fe44-05e4-4ff1-b874-657c04a51178",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/:target_type/:target_id/relationship_fields/:field_id/:source_type",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        ":target_type",
+                                        ":target_id",
+                                        "relationship_fields",
+                                        ":field_id",
+                                        ":source_type"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "1699dcd2-16bc-48ac-ae55-e4239c7ff559",
+                                          "key": "target_type",
+                                          "value": "<string>",
+                                          "description": "(Required) The type of object the relationship field is targeting.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                                        },
+                                        {
+                                          "id": "01abc060-433c-45ae-b6db-52e1bc688433",
+                                          "key": "target_id",
+                                          "value": "<integer>",
+                                          "description": "(Required) The id of the object the relationship field is targeting\n"
+                                        },
+                                        {
+                                          "id": "45cf6407-38e6-4bcb-bc28-67985c887656",
+                                          "key": "field_id",
+                                          "value": "<integer>",
+                                          "description": "(Required) The id of the lookup relationship field\n"
+                                        },
+                                        {
+                                          "id": "5e52af10-c76d-4759-9a2d-fa52ed9ae2cd",
+                                          "key": "source_type",
+                                          "value": "<string>",
+                                          "description": "(Required) The type of object the relationship field belongs to (example. ticket field belongs to a ticket object).\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns a list of source objects whose values are populated with the id of a related target object.  For example,\nif you have a lookup field called \"Success Manager\" on a ticket, this endpoint can answer the question,\n\"What tickets (sources) is this user (found by `target_type` and `target_id`)\nassigned as the 'Success Manager' (field referenced by `field_id`)?\"\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "155ce7a7-bdc1-469a-aeef-4be8791d5613",
+                                      "name": "Success response",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/:target_type/:target_id/relationship_fields/:field_id/:source_type",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            ":target_type",
+                                            ":target_id",
+                                            "relationship_fields",
+                                            ":field_id",
+                                            ":source_type"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "target_type"
+                                            },
+                                            {
+                                              "key": "target_id"
+                                            },
+                                            {
+                                              "key": "field_id"
+                                            },
+                                            {
+                                              "key": "source_type"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": \"reference #/components/schemas/UsersResponse not found in the OpenAPI spec\"\n}",
+                                      "createdAt": "2026-06-05T15:21:43.000Z",
+                                      "updatedAt": "2026-06-05T15:21:43.000Z",
+                                      "uid": "35240-155ce7a7-bdc1-469a-aeef-4be8791d5613"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:21:43.000Z",
+                                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                                  "uid": "35240-90b9fe44-05e4-4ff1-b874-657c04a51178"
+                                }
+                              ],
+                              "id": "af124e59-d477-4079-abe4-76d155b1524d",
+                              "createdAt": "2026-06-05T15:21:43.000Z",
+                              "updatedAt": "2026-06-05T15:21:43.000Z",
+                              "uid": "35240-af124e59-d477-4079-abe4-76d155b1524d"
+                            }
+                          ],
+                          "id": "05c2eb10-de03-4080-941c-782b49ce9e15",
+                          "createdAt": "2026-06-05T15:21:43.000Z",
+                          "updatedAt": "2026-06-05T15:21:43.000Z",
+                          "uid": "35240-05c2eb10-de03-4080-941c-782b49ce9e15"
+                        }
+                      ],
+                      "id": "aa8c6040-316c-487e-b368-4e499ecb9958",
+                      "createdAt": "2026-06-05T15:21:43.000Z",
+                      "updatedAt": "2026-06-05T15:21:43.000Z",
+                      "uid": "35240-aa8c6040-316c-487e-b368-4e499ecb9958"
+                    }
+                  ],
+                  "id": "c86b8710-f50c-449b-8950-d513a4bd5790",
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-c86b8710-f50c-449b-8950-d513a4bd5790"
+                }
+              ],
+              "id": "06909b44-7f75-4029-a457-960d6ed4c22d",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-06909b44-7f75-4029-a457-960d6ed4c22d"
+            },
+            {
+              "name": "relationships",
+              "item": [
+                {
+                  "name": "definitions",
+                  "item": [
+                    {
+                      "name": "{target_type}",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Relationships Definitions Target_type",
+                          "id": "0330f25b-af84-4813-9bdc-785c2dd2ed70",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/relationships/definitions/:target_type?source_type=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "relationships",
+                                "definitions",
+                                ":target_type"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The source type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", and \"zen:organization\"\n",
+                                  "key": "source_type",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7f9273cb-806c-48a8-a723-c6f92207fc32",
+                                  "key": "target_type",
+                                  "value": "<string>",
+                                  "description": "(Required) The target type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                                }
+                              ]
+                            },
+                            "description": "Returns filter definitions based on the given target type.  Target types\ninclude users (zen:user), tickets (zen:ticket), organizations (zen:organization), or custom objects (zen:custom_object:CUSTOM_OBJECT_KEY).\nThe returned filter definitions are the options that you can use to build a custom field or ticket field's\n`relationship_filter`.\n"
+                          },
+                          "response": [
+                            {
+                              "id": "1554aaf5-36c8-458f-ab9c-b82e7d9b5c61",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/relationships/definitions/:target_type?source_type=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "relationships",
+                                    "definitions",
+                                    ":target_type"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The source type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", and \"zen:organization\"\n",
+                                      "key": "source_type",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "target_type"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"definitions\": {\n    \"value\": \"reference #/components/schemas/RelationshipFilterDefinition not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:21:43.000Z",
+                              "updatedAt": "2026-06-05T15:21:43.000Z",
+                              "uid": "35240-1554aaf5-36c8-458f-ab9c-b82e7d9b5c61"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:43.000Z",
+                          "updatedAt": "2026-06-05T15:21:43.000Z",
+                          "uid": "35240-0330f25b-af84-4813-9bdc-785c2dd2ed70"
+                        }
+                      ],
+                      "id": "e304f789-f61c-42d9-bf65-dcf9903a74c9",
+                      "createdAt": "2026-06-05T15:21:43.000Z",
+                      "updatedAt": "2026-06-05T15:21:43.000Z",
+                      "uid": "35240-e304f789-f61c-42d9-bf65-dcf9903a74c9"
+                    }
+                  ],
+                  "id": "3c6cbc27-5563-449e-91ee-f62e52f62ad2",
+                  "createdAt": "2026-06-05T15:21:43.000Z",
+                  "updatedAt": "2026-06-05T15:21:43.000Z",
+                  "uid": "35240-3c6cbc27-5563-449e-91ee-f62e52f62ad2"
+                }
+              ],
+              "id": "0d9e6a4f-60c3-4515-9a41-d8c3cc0977d4",
+              "createdAt": "2026-06-05T15:21:43.000Z",
+              "updatedAt": "2026-06-05T15:21:43.000Z",
+              "uid": "35240-0d9e6a4f-60c3-4515-9a41-d8c3cc0977d4"
+            }
+          ],
+          "id": "cc2d7c97-da09-4c27-b192-6ff70dbeac7b",
+          "createdAt": "2026-06-05T15:21:43.000Z",
+          "updatedAt": "2026-06-05T15:21:43.000Z",
+          "uid": "35240-cc2d7c97-da09-4c27-b192-6ff70dbeac7b"
+        }
+      ],
+      "id": "18b6acb8-36ff-4999-9115-56806affe140",
+      "createdAt": "2026-06-05T15:21:43.000Z",
+      "updatedAt": "2026-06-05T15:21:43.000Z",
+      "uid": "35240-18b6acb8-36ff-4999-9115-56806affe140"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

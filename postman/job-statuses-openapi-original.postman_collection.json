@@ -1,0 +1,310 @@
+{
+  "info": {
+    "_postman_id": "8bb44c4e-79c7-4020-aa27-16be5d6b8a25",
+    "name": "Zendesk Job Statuses",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:52.000Z",
+    "updatedAt": "2026-06-05T15:22:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8bb44c4e-79c7-4020-aa27-16be5d6b8a25"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "job_statuses",
+              "item": [
+                {
+                  "name": "{job_status_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Job_statuses Job_status_id",
+                      "id": "07e3e8e6-a591-4189-9929-a2486dde14b5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/job_statuses/:job_status_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "job_statuses",
+                            ":job_status_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6da098f4-cb42-40d9-9371-5f213332edc7",
+                              "key": "job_status_id"
+                            }
+                          ]
+                        },
+                        "description": "Shows the status of a background job.\n\n#### Allowed For:\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "17266104-4963-4d8e-90b3-a03614079fb3",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/job_statuses/:job_status_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "job_statuses",
+                                ":job_status_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "job_status_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:52.000Z",
+                          "updatedAt": "2026-06-05T15:22:52.000Z",
+                          "uid": "35240-17266104-4963-4d8e-90b3-a03614079fb3"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:52.000Z",
+                      "updatedAt": "2026-06-05T15:22:52.000Z",
+                      "uid": "35240-07e3e8e6-a591-4189-9929-a2486dde14b5"
+                    }
+                  ],
+                  "id": "81a90730-3618-4b20-a0bf-1c7a82583cfa",
+                  "createdAt": "2026-06-05T15:22:52.000Z",
+                  "updatedAt": "2026-06-05T15:22:52.000Z",
+                  "uid": "35240-81a90730-3618-4b20-a0bf-1c7a82583cfa"
+                },
+                {
+                  "name": "show_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Job_statuses Show_many",
+                      "id": "04bb015e-704b-4925-b237-975e1594382f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/job_statuses/show_many?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "job_statuses",
+                            "show_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Comma-separated list of job status ids.",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Accepts a comma-separated list of job status ids.\n\n#### Allowed For:\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "e5288df5-1fd7-4eb8-98b3-a842bb5f4197",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/job_statuses/show_many?ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "job_statuses",
+                                "show_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Comma-separated list of job status ids.",
+                                  "key": "ids",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_statuses\": [\n    {\n      \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:52.000Z",
+                          "updatedAt": "2026-06-05T15:22:52.000Z",
+                          "uid": "35240-e5288df5-1fd7-4eb8-98b3-a842bb5f4197"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:52.000Z",
+                      "updatedAt": "2026-06-05T15:22:52.000Z",
+                      "uid": "35240-04bb015e-704b-4925-b237-975e1594382f"
+                    }
+                  ],
+                  "id": "2044da3f-e510-4283-a406-2732696b7f40",
+                  "createdAt": "2026-06-05T15:22:52.000Z",
+                  "updatedAt": "2026-06-05T15:22:52.000Z",
+                  "uid": "35240-2044da3f-e510-4283-a406-2732696b7f40"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Job_statuses",
+                  "id": "56473da2-3180-48e9-b62d-bc30a1976b13",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/job_statuses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "job_statuses"
+                      ]
+                    },
+                    "description": "Shows the statuses for background jobs. Statuses are sorted first by completion date and then by creation date in descending order.\n\n#### Allowed For:\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+                  },
+                  "response": [
+                    {
+                      "id": "ab3015a6-86e3-4c4d-970d-38354fe2e4ea",
+                      "name": "Success Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/job_statuses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "job_statuses"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"job_statuses\": [\n    {\n      \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:52.000Z",
+                      "updatedAt": "2026-06-05T15:22:52.000Z",
+                      "uid": "35240-ab3015a6-86e3-4c4d-970d-38354fe2e4ea"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:52.000Z",
+                  "updatedAt": "2026-06-05T15:22:52.000Z",
+                  "uid": "35240-56473da2-3180-48e9-b62d-bc30a1976b13"
+                }
+              ],
+              "id": "af12b924-8759-408f-a605-81dea7ee3357",
+              "createdAt": "2026-06-05T15:22:52.000Z",
+              "updatedAt": "2026-06-05T15:22:52.000Z",
+              "uid": "35240-af12b924-8759-408f-a605-81dea7ee3357"
+            }
+          ],
+          "id": "de11de4e-3115-41a1-bbc9-d1cbc877babe",
+          "createdAt": "2026-06-05T15:22:52.000Z",
+          "updatedAt": "2026-06-05T15:22:52.000Z",
+          "uid": "35240-de11de4e-3115-41a1-bbc9-d1cbc877babe"
+        }
+      ],
+      "id": "6d20cb45-c86f-48bf-b77e-8ce5557253c5",
+      "createdAt": "2026-06-05T15:22:52.000Z",
+      "updatedAt": "2026-06-05T15:22:52.000Z",
+      "uid": "35240-6d20cb45-c86f-48bf-b77e-8ce5557253c5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

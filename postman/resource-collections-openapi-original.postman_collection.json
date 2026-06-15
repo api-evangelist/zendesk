@@ -1,0 +1,455 @@
+{
+  "info": {
+    "_postman_id": "7bd95953-c6a7-48d1-9291-68dfb6f188fe",
+    "name": "Zendesk Resource Collections",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:14.000Z",
+    "updatedAt": "2026-06-05T15:23:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7bd95953-c6a7-48d1-9291-68dfb6f188fe"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "resource_collections",
+              "item": [
+                {
+                  "name": "{resource_collection_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Resource_collections Resource_collection_id",
+                      "id": "6daf10af-d263-4a34-8813-7711b13aaa50",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "resource_collections",
+                            ":resource_collection_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ebeecbf8-c72b-4c06-a497-94f3d44d1e2f",
+                              "key": "resource_collection_id"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details for a specified resource collection.\n\n#### Allowed for\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "707f4968-71a9-4709-af83-d0a66e4a903d",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "resource_collections",
+                                ":resource_collection_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "resource_collection_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"resource_collection\": {\n    \"value\": \"reference #/components/schemas/ResourceCollectionObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:14.000Z",
+                          "updatedAt": "2026-06-05T15:23:14.000Z",
+                          "uid": "35240-707f4968-71a9-4709-af83-d0a66e4a903d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:14.000Z",
+                      "updatedAt": "2026-06-05T15:23:14.000Z",
+                      "uid": "35240-6daf10af-d263-4a34-8813-7711b13aaa50"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Resource_collections Resource_collection_id",
+                      "id": "8407c5d5-3f66-4e78-9e5b-968fb715bb60",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "resource_collections",
+                            ":resource_collection_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "aa65655e-9f7f-4688-a578-bd2f61e4b368",
+                              "key": "resource_collection_id"
+                            }
+                          ]
+                        },
+                        "description": "Updates a resource collection using a provided `payload` object. The `payload` object  is specified the same way as the content of a requirements.json file in a Zendesk app. See [Specifying Apps Requirements](/documentation/apps/app-developer-guide/apps_requirements/) in the Zendesk Apps framework docs.\n\nThe response includes a [job\nstatus](/api-reference/ticketing/ticket-management/job_statuses/) for the resource updates.\n\n#### Allowed for\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3998d11b-d4ea-4091-ad3e-317a891f0f11",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "resource_collections",
+                                ":resource_collection_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "resource_collection_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:14.000Z",
+                          "updatedAt": "2026-06-05T15:23:14.000Z",
+                          "uid": "35240-3998d11b-d4ea-4091-ad3e-317a891f0f11"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:14.000Z",
+                      "updatedAt": "2026-06-05T15:23:14.000Z",
+                      "uid": "35240-8407c5d5-3f66-4e78-9e5b-968fb715bb60"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Resource_collections Resource_collection_id",
+                      "id": "1f7e36c5-3ae1-48eb-b5b7-b50c4f1f23d0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "resource_collections",
+                            ":resource_collection_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3bf31366-78ff-4ba3-a7c6-6397671a83bd",
+                              "key": "resource_collection_id"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a specified resource collection.\n\nThe response includes a [job\nstatus](/api-reference/ticketing/ticket-management/job_statuses/) for deletion of the collection's resources.\n\n#### Allowed for\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "4ce5f58e-53bc-41a4-97b5-bcf0a12d7b4a",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "resource_collections",
+                                ":resource_collection_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "resource_collection_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:14.000Z",
+                          "updatedAt": "2026-06-05T15:23:14.000Z",
+                          "uid": "35240-4ce5f58e-53bc-41a4-97b5-bcf0a12d7b4a"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:14.000Z",
+                      "updatedAt": "2026-06-05T15:23:14.000Z",
+                      "uid": "35240-1f7e36c5-3ae1-48eb-b5b7-b50c4f1f23d0"
+                    }
+                  ],
+                  "id": "f369bc27-e6f2-42a3-833a-a20b993e9904",
+                  "createdAt": "2026-06-05T15:23:14.000Z",
+                  "updatedAt": "2026-06-05T15:23:14.000Z",
+                  "uid": "35240-f369bc27-e6f2-42a3-833a-a20b993e9904"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Resource_collections",
+                  "id": "1ed6d260-88dd-4977-be45-6ebb8f98a344",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/resource_collections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "resource_collections"
+                      ]
+                    },
+                    "description": "Lists resource collections for the account.\n\n#### Allowed for\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "bd0c5e10-c5a9-4f9c-9a78-ce337966a555",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/resource_collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "resource_collections"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"resource_collections\": [\n    {\n      \"value\": \"reference #/components/schemas/ResourceCollectionObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ResourceCollectionObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:14.000Z",
+                      "updatedAt": "2026-06-05T15:23:14.000Z",
+                      "uid": "35240-bd0c5e10-c5a9-4f9c-9a78-ce337966a555"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:14.000Z",
+                  "updatedAt": "2026-06-05T15:23:14.000Z",
+                  "uid": "35240-1ed6d260-88dd-4977-be45-6ebb8f98a344"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Resource_collections",
+                  "id": "a7b1550b-1f98-4d21-a500-2521becf2645",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/resource_collections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "resource_collections"
+                      ]
+                    },
+                    "description": "Creates a resource collection from a provided `payload` object. The `payload` object is specified the same way as the content of a requirements.json file in a Zendesk app. See [Specifying Apps Requirements](/documentation/apps/app-developer-guide/apps_requirements/) in the Zendesk Apps framework docs.\n\nThe response includes a [job\nstatus](/api-reference/ticketing/ticket-management/job_statuses/) for creation of the specified resources.\n\n#### Allowed for\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "584d159f-8304-4719-a80d-2dfc46088b23",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/resource_collections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "resource_collections"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:14.000Z",
+                      "updatedAt": "2026-06-05T15:23:14.000Z",
+                      "uid": "35240-584d159f-8304-4719-a80d-2dfc46088b23"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:14.000Z",
+                  "updatedAt": "2026-06-05T15:23:14.000Z",
+                  "uid": "35240-a7b1550b-1f98-4d21-a500-2521becf2645"
+                }
+              ],
+              "id": "dc4fd489-d880-43a9-a0aa-cd422def0b4b",
+              "createdAt": "2026-06-05T15:23:14.000Z",
+              "updatedAt": "2026-06-05T15:23:14.000Z",
+              "uid": "35240-dc4fd489-d880-43a9-a0aa-cd422def0b4b"
+            }
+          ],
+          "id": "656c0902-992b-416a-a29d-7cfed588430c",
+          "createdAt": "2026-06-05T15:23:14.000Z",
+          "updatedAt": "2026-06-05T15:23:14.000Z",
+          "uid": "35240-656c0902-992b-416a-a29d-7cfed588430c"
+        }
+      ],
+      "id": "65c28a20-b208-4ae7-b845-471d51f4c66d",
+      "createdAt": "2026-06-05T15:23:14.000Z",
+      "updatedAt": "2026-06-05T15:23:14.000Z",
+      "uid": "35240-65c28a20-b208-4ae7-b845-471d51f4c66d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

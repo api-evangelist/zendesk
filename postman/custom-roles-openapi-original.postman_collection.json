@@ -1,0 +1,440 @@
+{
+  "info": {
+    "_postman_id": "b4ae825c-f615-4156-aa27-6bbc8e95b018",
+    "name": "Zendesk Custom Roles",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:37.000Z",
+    "updatedAt": "2026-06-05T15:22:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b4ae825c-f615-4156-aa27-6bbc8e95b018"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "custom_roles",
+              "item": [
+                {
+                  "name": "{custom_role_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Custom_roles Custom_role_id",
+                      "id": "b34a04a9-f783-4719-a293-3b773ff8e5e6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "custom_roles",
+                            ":custom_role_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "dc4a61dc-9fb2-486a-aa24-a286ed5f83b8",
+                              "key": "custom_role_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\n* Agents with the `manage_roles` permission\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b48ba655-5716-45f7-a409-b840e87e76b2",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "custom_roles",
+                                ":custom_role_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "custom_role_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"custom_role\": {\n    \"value\": \"reference #/components/schemas/CustomRoleObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:38.000Z",
+                          "updatedAt": "2026-06-05T15:22:38.000Z",
+                          "uid": "35240-b48ba655-5716-45f7-a409-b840e87e76b2"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:38.000Z",
+                      "updatedAt": "2026-06-05T15:22:38.000Z",
+                      "uid": "35240-b34a04a9-f783-4719-a293-3b773ff8e5e6"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Custom_roles Custom_role_id",
+                      "id": "2ba2ee63-b99d-45e7-859b-29c40445d661",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "custom_roles",
+                            ":custom_role_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fcba057e-328d-43ae-8138-c3bc66190a75",
+                              "key": "custom_role_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\nAgents with the `manage_roles` permission\n"
+                      },
+                      "response": [
+                        {
+                          "id": "5eb981a5-5cd9-4013-8a43-0d893e5f4330",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "custom_roles",
+                                ":custom_role_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "custom_role_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"custom_role\": {\n    \"value\": \"reference #/components/schemas/CustomRoleObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:38.000Z",
+                          "updatedAt": "2026-06-05T15:22:38.000Z",
+                          "uid": "35240-5eb981a5-5cd9-4013-8a43-0d893e5f4330"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:38.000Z",
+                      "updatedAt": "2026-06-05T15:22:38.000Z",
+                      "uid": "35240-2ba2ee63-b99d-45e7-859b-29c40445d661"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Custom_roles Custom_role_id",
+                      "id": "4bf4a206-bcb2-4e91-8727-b64e00038af4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "custom_roles",
+                            ":custom_role_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f37da615-2ddc-4b87-9216-9ed9a4b75bc9",
+                              "key": "custom_role_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\n* Agents with the `manage_roles` permission\n"
+                      },
+                      "response": [
+                        {
+                          "id": "404418c8-f531-4fd8-afbc-396763e8a806",
+                          "name": "No Contetnt response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "custom_roles",
+                                ":custom_role_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "custom_role_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:22:38.000Z",
+                          "updatedAt": "2026-06-05T15:22:38.000Z",
+                          "uid": "35240-404418c8-f531-4fd8-afbc-396763e8a806"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:38.000Z",
+                      "updatedAt": "2026-06-05T15:22:38.000Z",
+                      "uid": "35240-4bf4a206-bcb2-4e91-8727-b64e00038af4"
+                    }
+                  ],
+                  "id": "cccb5ad2-3fac-4156-ac21-7e08d11ad22e",
+                  "createdAt": "2026-06-05T15:22:38.000Z",
+                  "updatedAt": "2026-06-05T15:22:38.000Z",
+                  "uid": "35240-cccb5ad2-3fac-4156-ac21-7e08d11ad22e"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Custom_roles",
+                  "id": "ff782ea3-1f6f-4c5f-9ec9-1fd80d66d9ae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/custom_roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "custom_roles"
+                      ]
+                    },
+                    "description": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "7cece9f1-d284-4fb8-bd5f-daac36c12b15",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/custom_roles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "custom_roles"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"custom_roles\": [\n    {\n      \"value\": \"reference #/components/schemas/CustomRoleObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/CustomRoleObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:38.000Z",
+                      "updatedAt": "2026-06-05T15:22:38.000Z",
+                      "uid": "35240-7cece9f1-d284-4fb8-bd5f-daac36c12b15"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:38.000Z",
+                  "updatedAt": "2026-06-05T15:22:38.000Z",
+                  "uid": "35240-ff782ea3-1f6f-4c5f-9ec9-1fd80d66d9ae"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Custom_roles",
+                  "id": "00348d2d-f2e7-4301-830d-cd9e5e52ddfd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/custom_roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "custom_roles"
+                      ]
+                    },
+                    "description": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\n* Agents with the `manage_roles` permission\n"
+                  },
+                  "response": [
+                    {
+                      "id": "4d3a9daf-3bd9-4301-90cd-10b9539932b1",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/custom_roles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "custom_roles"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"custom_role\": {\n    \"value\": \"reference #/components/schemas/CustomRoleObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:38.000Z",
+                      "updatedAt": "2026-06-05T15:22:38.000Z",
+                      "uid": "35240-4d3a9daf-3bd9-4301-90cd-10b9539932b1"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:38.000Z",
+                  "updatedAt": "2026-06-05T15:22:38.000Z",
+                  "uid": "35240-00348d2d-f2e7-4301-830d-cd9e5e52ddfd"
+                }
+              ],
+              "id": "b5cd7f57-eb43-432c-80f7-4a80546b2681",
+              "createdAt": "2026-06-05T15:22:38.000Z",
+              "updatedAt": "2026-06-05T15:22:38.000Z",
+              "uid": "35240-b5cd7f57-eb43-432c-80f7-4a80546b2681"
+            }
+          ],
+          "id": "da72020a-782a-41c6-b4f6-9f3f7e1a907a",
+          "createdAt": "2026-06-05T15:22:38.000Z",
+          "updatedAt": "2026-06-05T15:22:38.000Z",
+          "uid": "35240-da72020a-782a-41c6-b4f6-9f3f7e1a907a"
+        }
+      ],
+      "id": "8289c9ef-8329-4472-812d-952ab3c01da5",
+      "createdAt": "2026-06-05T15:22:38.000Z",
+      "updatedAt": "2026-06-05T15:22:38.000Z",
+      "uid": "35240-8289c9ef-8329-4472-812d-952ab3c01da5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

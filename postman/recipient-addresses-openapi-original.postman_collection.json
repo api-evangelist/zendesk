@@ -1,0 +1,536 @@
+{
+  "info": {
+    "_postman_id": "72c41bb0-87a5-4d66-89e3-ac33b805b443",
+    "name": "Zendesk Recipient Addresses",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:10.000Z",
+    "updatedAt": "2026-06-05T15:23:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-72c41bb0-87a5-4d66-89e3-ac33b805b443"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "recipient_addresses",
+              "item": [
+                {
+                  "name": "{support_address_id}",
+                  "item": [
+                    {
+                      "name": "verify",
+                      "item": [
+                        {
+                          "name": "Zendesk Put  Api V2 Recipient_addresses Support_address_id Verify",
+                          "id": "39ddbe01-ec55-41a6-9f4a-6b4cc08ad0db",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id/verify",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "recipient_addresses",
+                                ":support_address_id",
+                                "verify"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "25fd3cce-903b-4418-8b14-1db0ec38f36b",
+                                  "key": "support_address_id"
+                                }
+                              ]
+                            },
+                            "description": "Sends a test email to the specified support address to verify that email forwarding for the address works. An external support address won't work in Zendesk Support until it's verified.\n\n**Note**: You don't need to verify Zendesk system support addresses.\n\nThe endpoint takes the following body: `{\"type\": \"forwarding\"}`. The value of the `type` property defaults to \"forwarding\" if none is specified, but the values \"spf\" and \"dns\" are also accepted.\n\nUse this endpoint after [adding](#create-support-address) an external support address to Zendesk Support and setting up forwarding on your email server. See [Forwarding incoming email to Zendesk Support](https://support.zendesk.com/hc/en-us/articles/203663266).\n\nThe endpoint doesn't return the results of the test. Instead, use the [Show Support Address](#show-support-address) endpoint to check that the `forwarding_status` property is \"verified\".\n\nOther verification checks can also be performed using this API. These include SPF checks and DNS checks.\n\nWhen calling the endpoint with `type` set to \"spf\", it will queries the DNS records to check that the SPF records for Zendesk are present for outbound emails.\n\nWhen calling the endpoint with `type` set to \"dns\", it runs checks on your CNAME records to make sure they are set up properly in your DNS.\n\n#### Allowed For\n\n* Admins\n* Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center\n"
+                          },
+                          "response": [
+                            {
+                              "id": "a238f925-c16e-4d7f-a0db-834e6bde9707",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id/verify",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "recipient_addresses",
+                                    ":support_address_id",
+                                    "verify"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "support_address_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-06-05T15:23:11.000Z",
+                              "updatedAt": "2026-06-05T15:23:11.000Z",
+                              "uid": "35240-a238f925-c16e-4d7f-a0db-834e6bde9707"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:11.000Z",
+                          "updatedAt": "2026-06-05T15:23:11.000Z",
+                          "uid": "35240-39ddbe01-ec55-41a6-9f4a-6b4cc08ad0db"
+                        }
+                      ],
+                      "id": "dab81678-73bf-4b77-ba6e-0f8c42603a30",
+                      "createdAt": "2026-06-05T15:23:11.000Z",
+                      "updatedAt": "2026-06-05T15:23:11.000Z",
+                      "uid": "35240-dab81678-73bf-4b77-ba6e-0f8c42603a30"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Recipient_addresses Support_address_id",
+                      "id": "8e4a9ca7-e0f2-4164-98fc-3167f530feb9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "recipient_addresses",
+                            ":support_address_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e5494290-4267-424d-ad8f-1440dca97de4",
+                              "key": "support_address_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "d2a07350-5a1f-45ad-bfb7-a7abf10eb1b3",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "recipient_addresses",
+                                ":support_address_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "support_address_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"recipient_address\": {\n    \"value\": \"reference #/components/schemas/SupportAddressObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:11.000Z",
+                          "updatedAt": "2026-06-05T15:23:11.000Z",
+                          "uid": "35240-d2a07350-5a1f-45ad-bfb7-a7abf10eb1b3"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:11.000Z",
+                      "updatedAt": "2026-06-05T15:23:11.000Z",
+                      "uid": "35240-8e4a9ca7-e0f2-4164-98fc-3167f530feb9"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Recipient_addresses Support_address_id",
+                      "id": "fa70b59e-344c-487a-b182-c2e2e4e4e412",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "recipient_addresses",
+                            ":support_address_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "529f6d8c-3f1e-499c-a992-55d44ca1e6de",
+                              "key": "support_address_id"
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing support address for your account.\n\nYou can't use this endpoint to update a support address's `email` property.\nInstead, you can create a new address using the [Create Support\nAddress](#create-support-address) endpoint.\n\n#### Allowed For\n\n* Admins\n* Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center\n"
+                      },
+                      "response": [
+                        {
+                          "id": "84db2b1b-edbc-4b6c-b077-23d2f5f5f0ac",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "recipient_addresses",
+                                ":support_address_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "support_address_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"recipient_address\": {\n    \"value\": \"reference #/components/schemas/SupportAddressObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:11.000Z",
+                          "updatedAt": "2026-06-05T15:23:11.000Z",
+                          "uid": "35240-84db2b1b-edbc-4b6c-b077-23d2f5f5f0ac"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:11.000Z",
+                      "updatedAt": "2026-06-05T15:23:11.000Z",
+                      "uid": "35240-fa70b59e-344c-487a-b182-c2e2e4e4e412"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Recipient_addresses Support_address_id",
+                      "id": "7fb5a420-b349-45ac-82e5-860784dfa06b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "recipient_addresses",
+                            ":support_address_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "57acad1e-4a0a-4074-a1da-c3fb63b6e328",
+                              "key": "support_address_id"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a support address.\n\n#### Allowed For\n\n* Admins\n* Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center\n"
+                      },
+                      "response": [
+                        {
+                          "id": "e667c92e-a9bb-44b3-9e48-20575ff79d14",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "recipient_addresses",
+                                ":support_address_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "support_address_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:11.000Z",
+                          "updatedAt": "2026-06-05T15:23:11.000Z",
+                          "uid": "35240-e667c92e-a9bb-44b3-9e48-20575ff79d14"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:11.000Z",
+                      "updatedAt": "2026-06-05T15:23:11.000Z",
+                      "uid": "35240-7fb5a420-b349-45ac-82e5-860784dfa06b"
+                    }
+                  ],
+                  "id": "416fe20b-eef8-4ee7-a628-dc20eb300cff",
+                  "createdAt": "2026-06-05T15:23:11.000Z",
+                  "updatedAt": "2026-06-05T15:23:11.000Z",
+                  "uid": "35240-416fe20b-eef8-4ee7-a628-dc20eb300cff"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Recipient_addresses",
+                  "id": "95f4a828-7c4e-4b96-ba1c-bea58f0e1e61",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/recipient_addresses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "recipient_addresses"
+                      ]
+                    },
+                    "description": "Lists all the support addresses for the account.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "d4d6a25a-12b9-4da4-94bf-0539d19cc74a",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/recipient_addresses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "recipient_addresses"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"recipient_addresses\": [\n    {\n      \"value\": \"reference #/components/schemas/SupportAddressObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SupportAddressObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:11.000Z",
+                      "updatedAt": "2026-06-05T15:23:11.000Z",
+                      "uid": "35240-d4d6a25a-12b9-4da4-94bf-0539d19cc74a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:11.000Z",
+                  "updatedAt": "2026-06-05T15:23:11.000Z",
+                  "uid": "35240-95f4a828-7c4e-4b96-ba1c-bea58f0e1e61"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Recipient_addresses",
+                  "id": "9ed98fec-c907-47ca-9068-bd42b57c9f15",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/recipient_addresses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "recipient_addresses"
+                      ]
+                    },
+                    "description": "Adds a Zendesk or external support address to your account.\n\nTo add a Zendesk address, use the following syntax: `{local-part}@{accountname}.zendesk.com`.\nExample: 'sales-team@example.zendesk.com'. The [local-part](https://en.wikipedia.org/wiki/Email_address#Local-part) can be anything you like.\n\nTo add an external email address such as help@omniwearshop.com, the email must already exist and you must set up forwarding on your email server. The exact steps depend on your mail server. See [Forwarding incoming email to Zendesk Support](https://support.zendesk.com/hc/en-us/articles/203663266). After setting up forwarding, run the [Verify Support Address Forwarding](#verify-support-address-forwarding) endpoint. The address won't work in Zendesk Support until it's been verified.\n\n#### Allowed For\n\n* Admins\n* Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center\n"
+                  },
+                  "response": [
+                    {
+                      "id": "f842ef5e-9e91-4f03-b73b-e108df94cd11",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/recipient_addresses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "recipient_addresses"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"recipient_address\": {\n    \"value\": \"reference #/components/schemas/SupportAddressObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:11.000Z",
+                      "updatedAt": "2026-06-05T15:23:11.000Z",
+                      "uid": "35240-f842ef5e-9e91-4f03-b73b-e108df94cd11"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:11.000Z",
+                  "updatedAt": "2026-06-05T15:23:11.000Z",
+                  "uid": "35240-9ed98fec-c907-47ca-9068-bd42b57c9f15"
+                }
+              ],
+              "id": "3ca9f841-12d4-41d7-ab12-cf2b5ebe3221",
+              "createdAt": "2026-06-05T15:23:11.000Z",
+              "updatedAt": "2026-06-05T15:23:11.000Z",
+              "uid": "35240-3ca9f841-12d4-41d7-ab12-cf2b5ebe3221"
+            }
+          ],
+          "id": "2c21df1a-df58-43d7-be83-9847e067ee38",
+          "createdAt": "2026-06-05T15:23:11.000Z",
+          "updatedAt": "2026-06-05T15:23:11.000Z",
+          "uid": "35240-2c21df1a-df58-43d7-be83-9847e067ee38"
+        }
+      ],
+      "id": "adc91bbe-c86e-4b33-a471-78218f8bdfc9",
+      "createdAt": "2026-06-05T15:23:11.000Z",
+      "updatedAt": "2026-06-05T15:23:11.000Z",
+      "uid": "35240-adc91bbe-c86e-4b33-a471-78218f8bdfc9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

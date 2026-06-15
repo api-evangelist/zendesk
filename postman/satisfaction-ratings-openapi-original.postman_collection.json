@@ -1,0 +1,298 @@
+{
+  "info": {
+    "_postman_id": "6e62848f-fc02-4c84-ae34-5f8ac88ddf3b",
+    "name": "Zendesk Satisfaction Ratings",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:16.000Z",
+    "updatedAt": "2026-06-05T15:23:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e62848f-fc02-4c84-ae34-5f8ac88ddf3b"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "satisfaction_ratings",
+              "item": [
+                {
+                  "name": "{satisfaction_rating_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Satisfaction_ratings Satisfaction_rating_id",
+                      "id": "2961be0c-b8cd-4ffa-abd7-40b8365998e5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/satisfaction_ratings/:satisfaction_rating_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "satisfaction_ratings",
+                            ":satisfaction_rating_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "421cffad-9e60-4885-9354-bc5f99d544d7",
+                              "key": "satisfaction_rating_id",
+                              "value": "<integer>",
+                              "description": "(Required) The id of the satisfaction rating to retrieve"
+                            }
+                          ]
+                        },
+                        "description": "Returns a specific satisfaction rating. You can get the id from\nthe [List Satisfaction Ratings](#list-satisfaction-ratings) endpoint.\n\n#### Allowed For\n\n * Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "f6204484-6af3-4cf8-9070-070a526e22c0",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/satisfaction_ratings/:satisfaction_rating_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "satisfaction_ratings",
+                                ":satisfaction_rating_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "satisfaction_rating_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"satisfaction_rating\": [\n    {\n      \"value\": \"reference #/components/schemas/SatisfactionRatingObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SatisfactionRatingObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:17.000Z",
+                          "updatedAt": "2026-06-05T15:23:17.000Z",
+                          "uid": "35240-f6204484-6af3-4cf8-9070-070a526e22c0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:17.000Z",
+                      "updatedAt": "2026-06-05T15:23:17.000Z",
+                      "uid": "35240-2961be0c-b8cd-4ffa-abd7-40b8365998e5"
+                    }
+                  ],
+                  "id": "4f2d7a06-34dc-4ad5-a58c-e6a0c945ef35",
+                  "createdAt": "2026-06-05T15:23:17.000Z",
+                  "updatedAt": "2026-06-05T15:23:17.000Z",
+                  "uid": "35240-4f2d7a06-34dc-4ad5-a58c-e6a0c945ef35"
+                },
+                {
+                  "name": "count",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Satisfaction_ratings Count",
+                      "id": "32f2c44a-c79c-429a-af65-1295c2b5a20d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/satisfaction_ratings/count",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "satisfaction_ratings",
+                            "count"
+                          ]
+                        },
+                        "description": "Returns an approximate count of satisfaction ratings in the account. If the count exceeds 100,000, the count will return a cached result. This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.\n\n#### Allowed For\n* Admins"
+                      },
+                      "response": [
+                        {
+                          "id": "7b20f665-771e-49fd-9aa9-f9ebec26dc6f",
+                          "name": "Count of satisfaction ratings",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/satisfaction_ratings/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "satisfaction_ratings",
+                                "count"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": {\n    \"refreshed_at\": \"<dateTime>\",\n    \"value\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:17.000Z",
+                          "updatedAt": "2026-06-05T15:23:17.000Z",
+                          "uid": "35240-7b20f665-771e-49fd-9aa9-f9ebec26dc6f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:17.000Z",
+                      "updatedAt": "2026-06-05T15:23:17.000Z",
+                      "uid": "35240-32f2c44a-c79c-429a-af65-1295c2b5a20d"
+                    }
+                  ],
+                  "id": "98d35917-9c93-42df-b784-647331ef2b85",
+                  "createdAt": "2026-06-05T15:23:17.000Z",
+                  "updatedAt": "2026-06-05T15:23:17.000Z",
+                  "uid": "35240-98d35917-9c93-42df-b784-647331ef2b85"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Satisfaction_ratings",
+                  "id": "b1725b0c-0e20-48c8-8921-1abfeb64d4e3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/satisfaction_ratings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "satisfaction_ratings"
+                      ]
+                    },
+                    "description": "#### Allowed For\n* Admins\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Filters\n\n| Parameter  | Value\n| ---------- | -----\n| score      | offered, unoffered, received, received\\_with\\_comment, received\\_without\\_comment,<br/>good, good\\_with\\_comment, good\\_without\\_comment,<br/>bad, bad\\_with\\_comment, bad\\_without\\_comment\n| start_time | Time of the oldest satisfaction rating, as a [Unix epoch time](https://www.epochconverter.com/)\n| end_time   | Time of the most recent satisfaction rating, as a [Unix epoch time](https://www.epochconverter.com/)\n\nIf you specify an unqualified score such as `good`, the results include all the records with and without comments.\n\nExamples:\n\n* `/api/v2/satisfaction_ratings.json?score=bad`\n* `/api/v2/satisfaction_ratings.json?score=bad&start_time=1498151194`\n* `/api/v2/satisfaction_ratings.json?start_time=1340384793&end_time=1371920793`\n"
+                  },
+                  "response": [
+                    {
+                      "id": "beb46c25-c93b-4f44-8ecd-d838378e0a08",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/satisfaction_ratings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "satisfaction_ratings"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"satisfaction_ratings\": [\n    {\n      \"value\": \"reference #/components/schemas/SatisfactionRatingObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SatisfactionRatingObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:17.000Z",
+                      "updatedAt": "2026-06-05T15:23:17.000Z",
+                      "uid": "35240-beb46c25-c93b-4f44-8ecd-d838378e0a08"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:17.000Z",
+                  "updatedAt": "2026-06-05T15:23:17.000Z",
+                  "uid": "35240-b1725b0c-0e20-48c8-8921-1abfeb64d4e3"
+                }
+              ],
+              "id": "8a027b34-6b30-4685-a952-4f6728f9b476",
+              "createdAt": "2026-06-05T15:23:17.000Z",
+              "updatedAt": "2026-06-05T15:23:17.000Z",
+              "uid": "35240-8a027b34-6b30-4685-a952-4f6728f9b476"
+            }
+          ],
+          "id": "cde4605f-2180-4171-b7a2-979922b72f96",
+          "createdAt": "2026-06-05T15:23:17.000Z",
+          "updatedAt": "2026-06-05T15:23:17.000Z",
+          "uid": "35240-cde4605f-2180-4171-b7a2-979922b72f96"
+        }
+      ],
+      "id": "34ebfb6b-3d82-4201-8be8-1d4a538af56a",
+      "createdAt": "2026-06-05T15:23:17.000Z",
+      "updatedAt": "2026-06-05T15:23:17.000Z",
+      "uid": "35240-34ebfb6b-3d82-4201-8be8-1d4a538af56a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

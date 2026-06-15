@@ -1,0 +1,403 @@
+{
+  "info": {
+    "_postman_id": "fb71a3b0-6716-4191-a419-c2998cfefa85",
+    "name": "Zendesk Approval Workflow Instances",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:48.000Z",
+    "updatedAt": "2026-06-05T15:21:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fb71a3b0-6716-4191-a419-c2998cfefa85"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "approval_workflow_instances",
+              "item": [
+                {
+                  "name": "{approval_workflow_instance_id}",
+                  "item": [
+                    {
+                      "name": "approval_requests",
+                      "item": [
+                        {
+                          "name": "{approval_request_id}",
+                          "item": [
+                            {
+                              "name": "decision",
+                              "item": [
+                                {
+                                  "name": "Zendesk Patch  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id Decision",
+                                  "id": "c323cc13-c09b-45cd-9950-a40ae0d0a6a5",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"notes\": \"<string>\",\n  \"status\": \"approved\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/:approval_request_id/decision",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "approval_workflow_instances",
+                                        ":approval_workflow_instance_id",
+                                        "approval_requests",
+                                        ":approval_request_id",
+                                        "decision"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "99ebc243-b466-496f-853f-8f1d15dee930",
+                                          "key": "approval_workflow_instance_id"
+                                        },
+                                        {
+                                          "id": "f9cb3341-f7de-4547-b64a-7f97b755dcd2",
+                                          "key": "approval_request_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Updates the  approver's decision about an approval request.\n\n#### Allowed For\n\n* Agents\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "49f7aa08-e095-48b8-861e-b8b34555a7d6",
+                                      "name": "Success response",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"notes\": \"<string>\",\n  \"status\": \"approved\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/:approval_request_id/decision",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "approval_workflow_instances",
+                                            ":approval_workflow_instance_id",
+                                            "approval_requests",
+                                            ":approval_request_id",
+                                            "decision"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "approval_workflow_instance_id"
+                                            },
+                                            {
+                                              "key": "approval_request_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"approval_request\": {\n    \"assignee_user\": {\n      \"value\": \"reference #/components/schemas/ApprovalRequestUser not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"<dateTime>\",\n    \"created_by_user\": {\n      \"value\": \"reference #/components/schemas/ApprovalRequestUser not found in the OpenAPI spec\"\n    },\n    \"decided_at\": \"<dateTime>\",\n    \"decisions\": [\n      {\n        \"value\": \"reference #/components/schemas/ApprovalRequestDecision not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/components/schemas/ApprovalRequestDecision not found in the OpenAPI spec\"\n      }\n    ],\n    \"id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"ticket_details\": {\n      \"value\": \"reference #/components/schemas/ApprovalTicketDetails not found in the OpenAPI spec\"\n    },\n    \"withdrawn_reason\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-06-05T15:21:48.000Z",
+                                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                                      "uid": "35240-49f7aa08-e095-48b8-861e-b8b34555a7d6"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:21:48.000Z",
+                                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                                  "uid": "35240-c323cc13-c09b-45cd-9950-a40ae0d0a6a5"
+                                }
+                              ],
+                              "id": "d3fbc916-1c40-4cad-85ab-8023de1d3273",
+                              "createdAt": "2026-06-05T15:21:48.000Z",
+                              "updatedAt": "2026-06-05T15:21:48.000Z",
+                              "uid": "35240-d3fbc916-1c40-4cad-85ab-8023de1d3273"
+                            },
+                            {
+                              "name": "Zendesk Get  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id",
+                              "id": "85d56eb0-c1e9-45b2-8634-2701caa8972b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/:approval_request_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "approval_workflow_instances",
+                                    ":approval_workflow_instance_id",
+                                    "approval_requests",
+                                    ":approval_request_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "0d35f084-c46e-47b0-aadc-005509b2d0be",
+                                      "key": "approval_workflow_instance_id"
+                                    },
+                                    {
+                                      "id": "9866bd9c-9f87-4ad4-837f-539963edc5ce",
+                                      "key": "approval_request_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Shows an approval request.\n\n#### Allowed For\n\n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "f3ebcca5-4db5-45d1-9d43-327caeac154f",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/:approval_request_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "approval_workflow_instances",
+                                        ":approval_workflow_instance_id",
+                                        "approval_requests",
+                                        ":approval_request_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "approval_workflow_instance_id"
+                                        },
+                                        {
+                                          "key": "approval_request_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"approval_request\": {\n    \"assignee_user\": {\n      \"value\": \"reference #/components/schemas/ApprovalRequestUser not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"<dateTime>\",\n    \"created_by_user\": {\n      \"value\": \"reference #/components/schemas/ApprovalRequestUser not found in the OpenAPI spec\"\n    },\n    \"decided_at\": \"<dateTime>\",\n    \"decisions\": [\n      {\n        \"value\": \"reference #/components/schemas/ApprovalRequestDecision not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/components/schemas/ApprovalRequestDecision not found in the OpenAPI spec\"\n      }\n    ],\n    \"id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"ticket_details\": {\n      \"value\": \"reference #/components/schemas/ApprovalTicketDetails not found in the OpenAPI spec\"\n    },\n    \"withdrawn_reason\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:21:48.000Z",
+                                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                                  "uid": "35240-f3ebcca5-4db5-45d1-9d43-327caeac154f"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:21:48.000Z",
+                              "updatedAt": "2026-06-05T15:21:48.000Z",
+                              "uid": "35240-85d56eb0-c1e9-45b2-8634-2701caa8972b"
+                            }
+                          ],
+                          "id": "6bfafb9d-085e-4e69-b12e-b7a98b4dbe21",
+                          "createdAt": "2026-06-05T15:21:48.000Z",
+                          "updatedAt": "2026-06-05T15:21:48.000Z",
+                          "uid": "35240-6bfafb9d-085e-4e69-b12e-b7a98b4dbe21"
+                        },
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search",
+                              "id": "c341af1a-9af4-4332-b23c-eb34f81c1d77",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/search",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "approval_workflow_instances",
+                                    ":approval_workflow_instance_id",
+                                    "approval_requests",
+                                    "search"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "61ac34a2-b750-43be-8077-363edd4e59f3",
+                                      "key": "approval_workflow_instance_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a list of approvals associated with a specific workflow instance. Results can be filtered by approval request status.\n\n#### Allowed For\n\n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "b36787c0-71ad-4a7b-b483-d15d6c5c7489",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "approval_workflow_instances",
+                                        ":approval_workflow_instance_id",
+                                        "approval_requests",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "approval_workflow_instance_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"after_cursor\": \"<string>\",\n  \"after_url\": \"<string>\",\n  \"approval_requests\": [\n    {\n      \"approval_workflow_instance_id\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"message\": \"<string>\",\n      \"requester_name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subject\": \"<string>\"\n    },\n    {\n      \"approval_workflow_instance_id\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"message\": \"<string>\",\n      \"requester_name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subject\": \"<string>\"\n    }\n  ],\n  \"before_cursor\": \"<string>\",\n  \"before_url\": \"<string>\"\n}",
+                                  "createdAt": "2026-06-05T15:21:48.000Z",
+                                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                                  "uid": "35240-b36787c0-71ad-4a7b-b483-d15d6c5c7489"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:21:48.000Z",
+                              "updatedAt": "2026-06-05T15:21:48.000Z",
+                              "uid": "35240-c341af1a-9af4-4332-b23c-eb34f81c1d77"
+                            }
+                          ],
+                          "id": "0c82ba26-379f-40c5-ad4b-04d51cdd3779",
+                          "createdAt": "2026-06-05T15:21:48.000Z",
+                          "updatedAt": "2026-06-05T15:21:48.000Z",
+                          "uid": "35240-0c82ba26-379f-40c5-ad4b-04d51cdd3779"
+                        }
+                      ],
+                      "id": "cd8061ae-cc4e-490f-aa64-c5214fb6ab56",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-cd8061ae-cc4e-490f-aa64-c5214fb6ab56"
+                    }
+                  ],
+                  "id": "e2cb5cf6-0027-4ec8-80fd-05e6c2efe83a",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-e2cb5cf6-0027-4ec8-80fd-05e6c2efe83a"
+                }
+              ],
+              "id": "5ba0194b-363a-4a2c-9ebf-e52532f3b57d",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-5ba0194b-363a-4a2c-9ebf-e52532f3b57d"
+            }
+          ],
+          "id": "cef9474d-6f19-48df-9674-f30b8192b216",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-cef9474d-6f19-48df-9674-f30b8192b216"
+        }
+      ],
+      "id": "60dc3b1b-2fe0-4b5d-81f0-94c8639e6dcb",
+      "createdAt": "2026-06-05T15:21:48.000Z",
+      "updatedAt": "2026-06-05T15:21:48.000Z",
+      "uid": "35240-60dc3b1b-2fe0-4b5d-81f0-94c8639e6dcb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

@@ -1,0 +1,1705 @@
+{
+  "info": {
+    "_postman_id": "5d4e1d41-b37a-4add-87ab-a4d7a2c5b1e1",
+    "name": "Zendesk Search",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:18.000Z",
+    "updatedAt": "2026-06-05T15:23:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5d4e1d41-b37a-4add-87ab-a4d7a2c5b1e1"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "approval_workflow_instances",
+              "item": [
+                {
+                  "name": "{approval_workflow_instance_id}",
+                  "item": [
+                    {
+                      "name": "approval_requests",
+                      "item": [
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search",
+                              "id": "dadf4107-0f0f-4b6c-a3f0-69b6418ecba2",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/search",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "approval_workflow_instances",
+                                    ":approval_workflow_instance_id",
+                                    "approval_requests",
+                                    "search"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "fe7c891d-a1d9-4455-859b-995680096c41",
+                                      "key": "approval_workflow_instance_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a list of approvals associated with a specific workflow instance. Results can be filtered by approval request status.\n\n#### Allowed For\n\n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "7e20bf79-35c8-4ad1-8cfe-f598baeb141e",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "approval_workflow_instances",
+                                        ":approval_workflow_instance_id",
+                                        "approval_requests",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "approval_workflow_instance_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"after_cursor\": \"<string>\",\n  \"after_url\": \"<string>\",\n  \"approval_requests\": [\n    {\n      \"approval_workflow_instance_id\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"message\": \"<string>\",\n      \"requester_name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subject\": \"<string>\"\n    },\n    {\n      \"approval_workflow_instance_id\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"created_by_name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"message\": \"<string>\",\n      \"requester_name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subject\": \"<string>\"\n    }\n  ],\n  \"before_cursor\": \"<string>\",\n  \"before_url\": \"<string>\"\n}",
+                                  "createdAt": "2026-06-05T15:23:19.000Z",
+                                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                                  "uid": "35240-7e20bf79-35c8-4ad1-8cfe-f598baeb141e"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:19.000Z",
+                              "updatedAt": "2026-06-05T15:23:19.000Z",
+                              "uid": "35240-dadf4107-0f0f-4b6c-a3f0-69b6418ecba2"
+                            }
+                          ],
+                          "id": "fada6d5f-223b-4c9a-8a16-d9fbb5cb7573",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-fada6d5f-223b-4c9a-8a16-d9fbb5cb7573"
+                        }
+                      ],
+                      "id": "d3dbd8aa-209b-4c07-a69c-2b1fa79eee9c",
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-d3dbd8aa-209b-4c07-a69c-2b1fa79eee9c"
+                    }
+                  ],
+                  "id": "3cbe7b35-4e26-4674-9473-7dcaf1848768",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-3cbe7b35-4e26-4674-9473-7dcaf1848768"
+                }
+              ],
+              "id": "49ff43dc-4ab0-46f0-b542-18a8a6c2ee14",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-49ff43dc-4ab0-46f0-b542-18a8a6c2ee14"
+            },
+            {
+              "name": "automations",
+              "item": [
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Automations Search",
+                      "id": "e4bd66ef-73f1-495f-a0f2-99529f1e8e20",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations",
+                            "search"
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each automation, if present\n| permissions      | The permissions for each automation\n| usage_1h         | The number of times each automation has been used in the past hour\n| usage_24h        | The number of times each automation has been used in the past day\n| usage_7d         | The number of times each automation has been used in the past week\n| usage_30d        | The number of times each automation has been used in the past thirty days\n"
+                      },
+                      "response": [
+                        {
+                          "id": "bf4a9cdf-edf9-492d-86af-4732f41d1601",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/automations/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "automations",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"automations\": [\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-bf4a9cdf-edf9-492d-86af-4732f41d1601"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-e4bd66ef-73f1-495f-a0f2-99529f1e8e20"
+                    }
+                  ],
+                  "id": "05f65f43-a88f-4591-a8e7-53576cf6499d",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-05f65f43-a88f-4591-a8e7-53576cf6499d"
+                }
+              ],
+              "id": "1b1ee329-741c-4614-bab5-87536715b41f",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-1b1ee329-741c-4614-bab5-87536715b41f"
+            },
+            {
+              "name": "custom_objects",
+              "item": [
+                {
+                  "name": "{custom_object_key}",
+                  "item": [
+                    {
+                      "name": "records",
+                      "item": [
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search",
+                              "id": "248a506a-e522-43bf-a3ec-0bf101936f67",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/search?query=<string>&sort=<string>&page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "records",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: : Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n",
+                                      "key": "query",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes the sort will be descending. Defaults to sorting by relevance.\n",
+                                      "key": "sort",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                                      "key": "page[before]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                                      "key": "page[after]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n",
+                                      "key": "page[size]",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "31a27ce9-aa97-48b4-b1f0-da79471dd858",
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns an array of custom object records that meet the search criteria\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a `sort` parameter, only the first 10,000 records are returned. With a `sort` parameter, all records are returned.\n#### Allowed For\n* Agents"
+                              },
+                              "response": [
+                                {
+                                  "id": "9c166a3c-4bc2-4077-8365-482907b68a88",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/search?query=<string>&sort=<string>&page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "records",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: : Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n",
+                                          "key": "query",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes the sort will be descending. Defaults to sorting by relevance.\n",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                                          "key": "page[before]",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                                          "key": "page[after]",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n",
+                                          "key": "page[size]",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"count\": \"<integer>\",\n  \"custom_object_records\": [\n    {\n      \"value\": \"reference #/components/schemas/CustomObjectRecord not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/CustomObjectRecord not found in the OpenAPI spec\"\n    }\n  ],\n  \"links\": {\n    \"prev\": \"<string>\",\n    \"next\": \"<string>\"\n  },\n  \"meta\": {\n    \"has_more\": \"<boolean>\",\n    \"after_cursor\": \"<string>\",\n    \"before_cursor\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:19.000Z",
+                                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                                  "uid": "35240-9c166a3c-4bc2-4077-8365-482907b68a88"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:19.000Z",
+                              "updatedAt": "2026-06-05T15:23:19.000Z",
+                              "uid": "35240-248a506a-e522-43bf-a3ec-0bf101936f67"
+                            },
+                            {
+                              "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search",
+                              "id": "abba4a1e-adad-4234-92db-5f0f98031f7b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"reference #/components/schemas/CustomObjectRecordsFilteredSearchRequestBasic not found in the OpenAPI spec\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/search?query=<string>&sort=<string>&page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "records",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n",
+                                      "key": "query",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes the sort will be descending. Defaults to sorting by relevance.\n",
+                                      "key": "sort",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                                      "key": "page[before]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                                      "key": "page[after]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n",
+                                      "key": "page[size]",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "17644463-2534-4734-958f-a7979d829c9f",
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns an array of custom object records that meet the search and filter criteria.\n\nFilters can contain either an individual [comparison object](#comparison-object) or an array of [comparison objects](#comparison-object) within logical namespaces.\n\nA filter is a JSON object that has the following properties:\n\n| Name      | Type   | Required | Description\n| --------- | ------ | -------- | -----------\n| ATTRIBUTE | object | no       | A [comparison object](#comparison-object) specifying an attribute value condition to be met for records to match.<br/><br/>Examples are marked below.\n| $and      | array  | no       | Array of conjunctive filter objects (logical AND)\n| $or       | array  | no       | Array of conjunctive filter objects (logical OR)\n\n##### Examples\n\n\n```js\n{\n  \"filter\": {\n    \"custom_object_fields.field_key\": { \"$eq\": \"value\" } // ATTRIBUTE\n  }\n}\n```\n\n```js\n// $or\n{\n  \"filter\": {\n    \"$or\": [\n      { \"custom_object_fields.field_key\": { \"$eq\": \"value\" } }, // ATTRIBUTE\n      { \"external_id\": { \"$eq\": \"Record123\" } } // ATTRIBUTE\n    ]\n  }\n}\n```\n\n#### Comparison Object\n\nA comparison object defines a condition a record must meet to be considered a match. The condition is based on an attribute value or object type.\n\nA comparison object is a JSON object that has the following properties:\n\n| Name      | Type          | Required | Description\n| --------- | ------------- | -------- | -----------\n| FIELD_KEY | string        | yes      | When filtering on a custom field, they must be namedspaced with `custom_object_fields.`. ex. `custom_object_fields.field_key`<br/><br/>When filtering on a standard field, no namespace is required. The following fields are considered standard: `created_at`, `updated_at`, `created_by_user`, `updated_by_user`, `name`, `external_id`\n| OPERATOR  | string        | yes      | [Supported operators](/documentation/custom-data/v2/searching-custom-object-records/) vary by the value's data type\n| VALUE     | string, array | yes      | The value you're filtering for\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a `sort` parameter, only the first 10,000 records are returned. With a `sort` parameter, all records are returned.\n\n#### Allowed For\n\n* Agents\n* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)"
+                              },
+                              "response": [
+                                {
+                                  "id": "15c27e7e-b682-4b39-810d-53d031fb18e3",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"value\": \"reference #/components/schemas/CustomObjectRecordsFilteredSearchRequestBasic not found in the OpenAPI spec\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/search?query=<string>&sort=<string>&page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "records",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n",
+                                          "key": "query",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes the sort will be descending. Defaults to sorting by relevance.\n",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                                          "key": "page[before]",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                                          "key": "page[after]",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n",
+                                          "key": "page[size]",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"count\": \"<integer>\",\n  \"custom_object_records\": [\n    {\n      \"value\": \"reference #/components/schemas/CustomObjectRecord not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/CustomObjectRecord not found in the OpenAPI spec\"\n    }\n  ],\n  \"links\": {\n    \"prev\": \"<string>\",\n    \"next\": \"<string>\"\n  },\n  \"meta\": {\n    \"has_more\": \"<boolean>\",\n    \"after_cursor\": \"<string>\",\n    \"before_cursor\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:19.000Z",
+                                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                                  "uid": "35240-15c27e7e-b682-4b39-810d-53d031fb18e3"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:19.000Z",
+                              "updatedAt": "2026-06-05T15:23:19.000Z",
+                              "uid": "35240-abba4a1e-adad-4234-92db-5f0f98031f7b"
+                            }
+                          ],
+                          "id": "8d09ea8e-79f1-4c10-b2f6-b50436b74925",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-8d09ea8e-79f1-4c10-b2f6-b50436b74925"
+                        }
+                      ],
+                      "id": "5d56519c-230f-4c7b-8bdc-2aa6554f4e86",
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-5d56519c-230f-4c7b-8bdc-2aa6554f4e86"
+                    },
+                    {
+                      "name": "triggers",
+                      "item": [
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search",
+                              "id": "a4286917-54f3-4fc2-9ee0-24deb4979660",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/search",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    "search"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "1be97a87-d5ef-4e66-b970-22506bc7fafe",
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a list of object triggers that meet your filter or search criteria.\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Filter\n\nUse the `filter` query parameter to filter an object trigger search by one or more attributes. For example, the following `filter` argument filters object triggers by the `title` attribute:\n\n```json\n{\n  \"json\": {\n    \"title\": \"test\"\n  }\n}\n```\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "93c50d15-a52f-41fe-9fe9-cd7020b16d0a",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:19.000Z",
+                                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                                  "uid": "35240-93c50d15-a52f-41fe-9fe9-cd7020b16d0a"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:19.000Z",
+                              "updatedAt": "2026-06-05T15:23:19.000Z",
+                              "uid": "35240-a4286917-54f3-4fc2-9ee0-24deb4979660"
+                            }
+                          ],
+                          "id": "9ec6fc85-f38b-4ec4-882c-78262216ee45",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-9ec6fc85-f38b-4ec4-882c-78262216ee45"
+                        }
+                      ],
+                      "id": "47e77459-0452-47a2-ab22-e3d5d6a4930d",
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-47e77459-0452-47a2-ab22-e3d5d6a4930d"
+                    }
+                  ],
+                  "id": "b3088be1-6c7c-4c05-9f73-c87f349a7b23",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-b3088be1-6c7c-4c05-9f73-c87f349a7b23"
+                }
+              ],
+              "id": "3eec37c3-621b-4c00-8cd0-53b57a6d10f4",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-3eec37c3-621b-4c00-8cd0-53b57a6d10f4"
+            },
+            {
+              "name": "macros",
+              "item": [
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Macros Search",
+                      "id": "f62a25cd-4d47-40d9-9e6a-aadca7c036ea",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "search"
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "e9ddbf1a-8dc4-495a-ac4a-dbaa862e22d2",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macros\": [\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-e9ddbf1a-8dc4-495a-ac4a-dbaa862e22d2"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-f62a25cd-4d47-40d9-9e6a-aadca7c036ea"
+                    }
+                  ],
+                  "id": "5254e305-f05e-43dc-b5a7-73bd8fe43103",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-5254e305-f05e-43dc-b5a7-73bd8fe43103"
+                }
+              ],
+              "id": "6a15806b-4508-4a32-bf95-51dfbd7603f3",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-6a15806b-4508-4a32-bf95-51dfbd7603f3"
+            },
+            {
+              "name": "organizations",
+              "item": [
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Organizations Search",
+                      "id": "4c0056b9-56bc-4887-a2e0-42f1f5d53dc2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "search"
+                          ]
+                        },
+                        "description": "Returns an array of organizations matching the criteria. You may search by an organization's `external_id` or `name`, but not both:\n\n#### Searching by `external_id`\n\nIf you set the `external_id` value of an organization to associate it to an external record, you can use it to search for the organization.\n\nFor an organization to be returned, its `external_id` must exactly match the value provided (case insensitive).\n\n#### Searching by `name`\n\nFor an organization to be returned, its `name` must exactly match the value provided (case insensitive).\n\n#### Allowed For:\n\n* Admins\n* Agents assigned to a custom role with permissions to add or modify organizations (Enterprise only)\n\nSee [Creating custom agent roles](https://support.zendesk.com/hc/en-us/articles/203662026#topic_cxn_hig_bd) in the Support Help Center.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0a079d6b-ff41-4ff3-840c-30fa079d94b0",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"organizations\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-0a079d6b-ff41-4ff3-840c-30fa079d94b0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-4c0056b9-56bc-4887-a2e0-42f1f5d53dc2"
+                    }
+                  ],
+                  "id": "7841e521-be5c-4cb3-8f7f-ac69f56f04c8",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-7841e521-be5c-4cb3-8f7f-ac69f56f04c8"
+                }
+              ],
+              "id": "46268f38-7ef6-4328-83c3-f7f40b3899a6",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-46268f38-7ef6-4328-83c3-f7f40b3899a6"
+            },
+            {
+              "name": "requests",
+              "item": [
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Requests Search",
+                      "id": "ffc11f38-8ff2-4455-b2f5-b178a401d980",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/requests/search?query=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "requests",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "The syntax and matching logic for the string is detailed in the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226). See also [Query basics](/api-reference/ticketing/ticket-management/search/#query-basics) in the Tickets API doc.",
+                              "key": "query",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Examples:\n\n* `GET /api/v2/requests/search.json?query=printer`\n* `GET /api/v2/requests/search.json?query=printer&organization_id=1`\n* `GET /api/v2/requests/search.json?query=printer&cc_id=true`\n* `GET /api/v2/requests/search.json?query=printer&status=hold,open`\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Results limit\n\nThe Search Requests endpoint returns up to 1,000 results per query, with a maximum of 100 results per page. See [Pagination](/api-reference/ticketing/introduction/#pagination). If you request a page past the limit (`page=11` at 100 results per page), a 422 Insufficient Resource Error is returned.\n\n#### Allowed For\n\n* End Users\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3543e6ad-cc54-489f-9c3a-3d3786e5ec11",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/requests/search?query=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "requests",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The syntax and matching logic for the string is detailed in the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226). See also [Query basics](/api-reference/ticketing/ticket-management/search/#query-basics) in the Tickets API doc.",
+                                  "key": "query",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"requests\": [\n    {\n      \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-3543e6ad-cc54-489f-9c3a-3d3786e5ec11"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-ffc11f38-8ff2-4455-b2f5-b178a401d980"
+                    }
+                  ],
+                  "id": "58f32227-1604-41ca-8ccd-5fd44c66cdce",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-58f32227-1604-41ca-8ccd-5fd44c66cdce"
+                }
+              ],
+              "id": "06ef9747-b29b-4e57-91c7-12fbffd62302",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-06ef9747-b29b-4e57-91c7-12fbffd62302"
+            },
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "count",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Search Count",
+                      "id": "fcb358f0-13eb-4fc0-ba56-099c60cfd9e0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/search/count?query=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "search",
+                            "count"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The search query",
+                              "key": "query",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Returns the number of items matching the query rather than the items. The search string works the same as a regular search.\n\n#### Allowed For\n\n- Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "fd68b747-4c11-46d9-b10f-555b2a084589",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/search/count?query=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "search",
+                                "count"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The search query",
+                                  "key": "query",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\"\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-fd68b747-4c11-46d9-b10f-555b2a084589"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-fcb358f0-13eb-4fc0-ba56-099c60cfd9e0"
+                    }
+                  ],
+                  "id": "0e6d10a9-1a11-4ecc-98e6-10342075195e",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-0e6d10a9-1a11-4ecc-98e6-10342075195e"
+                },
+                {
+                  "name": "export",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Search Export",
+                      "id": "50f72a49-08db-49be-8498-efc1957966dd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/search/export?query=<string>&page[size]=<integer>&filter[type]=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "search",
+                            "export"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The search query. See [Query basics](#query-basics) above. For details on the query syntax, see the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226)",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The number of results shown in a page.",
+                              "key": "page[size]",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The object type returned by the export query. Can be `ticket`, `organization`, `user`, or `group`.",
+                              "key": "filter[type]",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Exports a set of results. See [Query syntax](#query-syntax) for the syntax of the `query` parameter.\n\nUse this endpoint for search queries that will return more than 1000 results. The result set is ordered only by the `created_at` attribute.\n\nThe search only returns results of a single object type. The following object types are supported: ticket, organization, user, or group.\n\nYou must specify the type in the `filter[type]` parameter. Searches with type in the query string will result in an error.\n\n#### Allowed For\n\n- Agents\n\n#### Pagination\n\n- Cursor pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 1000 records per page. The number of results shown in a page is determined by the `page[size]` parameter.\n\n**Note**: You may experience a speed reduction or a timeout if you request 1000 results per page and you have many archived tickets in the results. Try reducing the number of results per page. We recommend 100 results per page.\n\nThe cursor specified by the `after_cursor` property in a response expires after one hour.\n\nFor more information on cursor-based pagination, see the following articles:\n\n- [Comparing cursor pagination and offset pagination](/documentation/developer-tools/pagination/comparing-cursor-pagination-and-offset-pagination)\n- [Paginating through lists using cursor pagination](/documentation/developer-tools/pagination/paginating-through-lists-using-cursor-pagination)\n\n#### Limits\n\nThis API endpoint is rate-limited to 100 requests per minute per account. The limit also counts towards the global API rate limit.\n\n#### Response Format\n\n| Name                  | Type                 | Comment\n| --------------------- | ---------------------| --------------------\n| links[next]           | string               | URL to the next page of results\n| meta[has_more]        | string               | Boolean indicating if there are more results\n| meta[after_cursor]    | string               | Cursor object returned from the Search Service\n| results               | array                | May consist of tickets, users, groups, or organizations, as specified by the `filter_type` parameter\n\nThe response is similar to the response of `GET /api/v2/search.json?`, with a few changes:\n\n* `links` - Has the following nested properties: `prev` and `next`. These replace the `next_page` and `prev_page` links. The `prev` property is always null because backward pagination is not supported. The `next` property may include an auto-generated link to the next page of results.\n* `meta` - Has the following nested properties: `has_more` and `after_cursor`. The `has_more` property indicates whether the next page has more results. The `after_cursor` property is the cursor used to paginate to the next page. It expires after one hour.\n\nThere's no `count` property.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "ec9b5ad4-16ad-40f1-9633-f3980ac2c934",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/search/export?query=<string>&page[size]=<integer>&filter[type]=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "search",
+                                "export"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The search query. See [Query basics](#query-basics) above. For details on the query syntax, see the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226)",
+                                  "key": "query",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The number of results shown in a page.",
+                                  "key": "page[size]",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The object type returned by the export query. Can be `ticket`, `organization`, `user`, or `group`.",
+                                  "key": "filter[type]",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"facets\": \"<string>\",\n  \"links\": {\n    \"next\": \"<string>\",\n    \"prev\": \"<string>\"\n  },\n  \"meta\": {\n    \"after_cursor\": \"<string>\",\n    \"before_cursor\": \"<string>\",\n    \"has_more\": \"<boolean>\"\n  },\n  \"results\": [\n    {\n      \"value\": \"reference #/components/schemas/SearchResultObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SearchResultObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-ec9b5ad4-16ad-40f1-9633-f3980ac2c934"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-50f72a49-08db-49be-8498-efc1957966dd"
+                    }
+                  ],
+                  "id": "888acbe1-f69d-429e-bb47-d0abcdf5363f",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-888acbe1-f69d-429e-bb47-d0abcdf5363f"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Search",
+                  "id": "2d50dd3e-0105-4d74-a128-f171cdec9341",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/search?query=<string>&sort_by=<string>&sort_order=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The search query. See [Query basics](#query-basics) above. For details on the query syntax, see the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226)",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One of `updated_at`, `created_at`, `priority`, `status`, or `ticket_type`. Defaults to sorting by relevance",
+                          "key": "sort_by",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One of `asc` or `desc`.  Defaults to `desc`",
+                          "key": "sort_order",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Returns the search results. See [Query basics](#query-basics) for the syntax of the `query` parameter.\n\nUse the ampersand character (&) to append the `sort_by` or `sort_order` parameters to the URL.\n\nFor examples, see [Searching with Zendesk API](/documentation/ticketing/using-the-zendesk-api/searching-with-the-zendesk-api).\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Offset pagination only\n\nOffset pagination may result in duplicate results when paging. You can also use the\n[Export Search Results](/api-reference/ticketing/ticket-management/search/#export-search-results) endpoint, which\nuses cursor-based pagination and doesn't return duplicate results. See\n[Using cursor pagination](/api-reference/introduction/pagination/#using-cursor-pagination) for more information.\n\n\n#### Errors JSON Format\n\nErrors are represented as JSON objects which have the following keys:\n\n| Name                  | Type                 | Comment\n| --------------------- | ---------------------| --------------------\n| error                 | string               | The type of error. Examples: \"unavailable\", \"invalid\"\n| description           | string               |\n\n##### Example Error\n```js\n{\n  \"error\": \"unavailable\",\n  \"description\": \"Sorry, we could not complete your search query. Please try again in a moment.\"\n}\n```\n"
+                  },
+                  "response": [
+                    {
+                      "id": "c43b6769-b8ff-43e9-8207-e3044b936f9b",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/search?query=<string>&sort_by=<string>&sort_order=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The search query. See [Query basics](#query-basics) above. For details on the query syntax, see the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226)",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "One of `updated_at`, `created_at`, `priority`, `status`, or `ticket_type`. Defaults to sorting by relevance",
+                              "key": "sort_by",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "One of `asc` or `desc`.  Defaults to `desc`",
+                              "key": "sort_order",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"facets\": \"<string>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"results\": [\n    {\n      \"value\": \"reference #/components/schemas/SearchResultObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SearchResultObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-c43b6769-b8ff-43e9-8207-e3044b936f9b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-2d50dd3e-0105-4d74-a128-f171cdec9341"
+                }
+              ],
+              "id": "6f72a953-da9a-4a05-bb28-7d9d7780139b",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-6f72a953-da9a-4a05-bb28-7d9d7780139b"
+            },
+            {
+              "name": "triggers",
+              "item": [
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Triggers Search",
+                      "id": "d8aa5cbe-8c6e-44e2-900a-6221de76e6b0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            "search"
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each ticket trigger, if present\n| permissions      | The permissions for each ticket trigger\n| usage_1h         | The number of times each ticket trigger has been used in the past hour\n| usage_24h        | The number of times each ticket trigger has been used in the past day\n| usage_7d         | The number of times each ticket trigger has been used in the past week\n| usage_30d        | The number of times each ticket trigger has been used in the past thirty days\n\n#### Filter\n\nUse the `filter` query parameter to filter a ticket trigger search by one or more attributes. For example, the following `filter` argument filters ticket triggers by the `description` attribute:\n\n```json\n{\n  \"json\": {\n    \"description\": \"Close a ticket\"\n  }\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0c175fca-dbf4-4ff5-8e6d-c370a4abcd94",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-0c175fca-dbf4-4ff5-8e6d-c370a4abcd94"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-d8aa5cbe-8c6e-44e2-900a-6221de76e6b0"
+                    }
+                  ],
+                  "id": "144fd5b0-a61d-4de8-b4e6-ba79f4542343",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-144fd5b0-a61d-4de8-b4e6-ba79f4542343"
+                }
+              ],
+              "id": "b3daa8f3-18f8-4674-9f65-216ced3bcdc7",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-b3daa8f3-18f8-4674-9f65-216ced3bcdc7"
+            },
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Users Search",
+                      "id": "1f8584a5-5ba7-4f11-9f6a-492ded907f53",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/users/search?query=<string>&external_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "users",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "The `query` parameter supports the Zendesk search syntax for more advanced\nuser searches. It can specify a partial or full value of any\nuser property, including name, email address, notes, or phone. Example:\n`query=\"jdoe\"`.\nSee the [Search API](/api-reference/ticketing/ticket-management/search/).\n",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The `external_id` parameter does not support the search syntax. It only accepts ids.\n",
+                              "key": "external_id",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Returns an array of users who meet the search criteria.\n\nReturns up to 100 records per page to a maximum of 10,000 records per query. See [Using offset pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "4285435e-a2fd-4345-8970-c9888765fb97",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/users/search?query=<string>&external_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "users",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The `query` parameter supports the Zendesk search syntax for more advanced\nuser searches. It can specify a partial or full value of any\nuser property, including name, email address, notes, or phone. Example:\n`query=\"jdoe\"`.\nSee the [Search API](/api-reference/ticketing/ticket-management/search/).\n",
+                                  "key": "query",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The `external_id` parameter does not support the search syntax. It only accepts ids.\n",
+                                  "key": "external_id",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"users\": [\n    {\n      \"value\": \"reference #/components/schemas/UserObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/UserObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-4285435e-a2fd-4345-8970-c9888765fb97"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-1f8584a5-5ba7-4f11-9f6a-492ded907f53"
+                    }
+                  ],
+                  "id": "7cb1e15b-6357-4933-afb6-1eaa4eb14d19",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-7cb1e15b-6357-4933-afb6-1eaa4eb14d19"
+                }
+              ],
+              "id": "b96e3e02-7136-446a-aa26-6b8a06e41cbf",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-b96e3e02-7136-446a-aa26-6b8a06e41cbf"
+            },
+            {
+              "name": "views",
+              "item": [
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Views Search",
+                      "id": "2f2e7c47-3c39-4f2a-b355-d4716217436d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/search?query=<string>&access=<string>&active=<boolean>&group_id=<integer>&sort_by=<string>&sort_order=<string>&include=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Query string used to find all views with matching title",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter views by access. May be \"personal\", \"shared\", or \"account\"",
+                              "key": "access",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by active views if true or inactive views if false",
+                              "key": "active",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filter views by group",
+                              "key": "group_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Possible values are \"alphabetical\", \"created_at\", \"updated_at\", and \"position\". If unspecified, the views are sorted by relevance",
+                              "key": "sort_by",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                              "key": "sort_order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A sideload to include in the response. See [Sideloads](#sideloads-3)",
+                              "key": "include",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The permissions for each view\n"
+                      },
+                      "response": [
+                        {
+                          "id": "07305b3e-c900-4883-b63d-699cb3b20891",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/search?query=<string>&access=<string>&active=<boolean>&group_id=<integer>&sort_by=<string>&sort_order=<string>&include=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Query string used to find all views with matching title",
+                                  "key": "query",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter views by access. May be \"personal\", \"shared\", or \"account\"",
+                                  "key": "access",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by active views if true or inactive views if false",
+                                  "key": "active",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filter views by group",
+                                  "key": "group_id",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Possible values are \"alphabetical\", \"created_at\", \"updated_at\", and \"position\". If unspecified, the views are sorted by relevance",
+                                  "key": "sort_by",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                                  "key": "sort_order",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A sideload to include in the response. See [Sideloads](#sideloads-3)",
+                                  "key": "include",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"views\": [\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:19.000Z",
+                          "updatedAt": "2026-06-05T15:23:19.000Z",
+                          "uid": "35240-07305b3e-c900-4883-b63d-699cb3b20891"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:19.000Z",
+                      "updatedAt": "2026-06-05T15:23:19.000Z",
+                      "uid": "35240-2f2e7c47-3c39-4f2a-b355-d4716217436d"
+                    }
+                  ],
+                  "id": "f40bb45f-e62a-4d61-84e3-662bcfab2295",
+                  "createdAt": "2026-06-05T15:23:19.000Z",
+                  "updatedAt": "2026-06-05T15:23:19.000Z",
+                  "uid": "35240-f40bb45f-e62a-4d61-84e3-662bcfab2295"
+                }
+              ],
+              "id": "a6ea26d8-d8c2-48b0-9df2-1e1c5c2cf3bc",
+              "createdAt": "2026-06-05T15:23:19.000Z",
+              "updatedAt": "2026-06-05T15:23:19.000Z",
+              "uid": "35240-a6ea26d8-d8c2-48b0-9df2-1e1c5c2cf3bc"
+            }
+          ],
+          "id": "3d9229aa-b4aa-4d4a-988c-e18fdef9d140",
+          "createdAt": "2026-06-05T15:23:19.000Z",
+          "updatedAt": "2026-06-05T15:23:19.000Z",
+          "uid": "35240-3d9229aa-b4aa-4d4a-988c-e18fdef9d140"
+        }
+      ],
+      "id": "308f2bc3-6d28-44d5-9a99-2c590b1c54e2",
+      "createdAt": "2026-06-05T15:23:19.000Z",
+      "updatedAt": "2026-06-05T15:23:19.000Z",
+      "uid": "35240-308f2bc3-6d28-44d5-9a99-2c590b1c54e2"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

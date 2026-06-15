@@ -1,0 +1,215 @@
+{
+  "info": {
+    "_postman_id": "6102d96f-49e4-49bc-846d-f9aee06d65ab",
+    "name": "Zendesk Accounts",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:45.000Z",
+    "updatedAt": "2026-06-05T15:21:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6102d96f-49e4-49bc-846d-f9aee06d65ab"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "accounts",
+              "item": [
+                {
+                  "name": "available",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Accounts Available",
+                      "id": "750c00e8-8bab-42a4-9116-a8d2b6213be2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/accounts/available?subdomain=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "accounts",
+                            "available"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Specify the name of the subdomain you want to verify. The name can't contain underscores, hyphens, or spaces.\n",
+                              "key": "subdomain",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Zendesk Support credentials are not required to access this endpoint. You can use any Zendesk Support subdomain.\n\nReturns \"true\" if the subdomain is available.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0d7a8b8a-42cc-470a-8b8c-633fce997a33",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/accounts/available?subdomain=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "accounts",
+                                "available"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Specify the name of the subdomain you want to verify. The name can't contain underscores, hyphens, or spaces.\n",
+                                  "key": "subdomain",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:21:45.000Z",
+                          "updatedAt": "2026-06-05T15:21:45.000Z",
+                          "uid": "35240-0d7a8b8a-42cc-470a-8b8c-633fce997a33"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-750c00e8-8bab-42a4-9116-a8d2b6213be2"
+                    }
+                  ],
+                  "id": "7638b7c7-8937-4d85-a40e-e57ca55a99af",
+                  "createdAt": "2026-06-05T15:21:45.000Z",
+                  "updatedAt": "2026-06-05T15:21:45.000Z",
+                  "uid": "35240-7638b7c7-8937-4d85-a40e-e57ca55a99af"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Accounts",
+                  "id": "15844070-912d-401b-9759-df9341a6111e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "accounts"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "d31ebea4-4f75-4e9d-a596-34c556fa755c",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "accounts"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/TrialAccountResponse not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-d31ebea4-4f75-4e9d-a596-34c556fa755c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:45.000Z",
+                  "updatedAt": "2026-06-05T15:21:45.000Z",
+                  "uid": "35240-15844070-912d-401b-9759-df9341a6111e"
+                }
+              ],
+              "id": "9f263483-cfe3-4326-af26-565fbfdf9495",
+              "createdAt": "2026-06-05T15:21:45.000Z",
+              "updatedAt": "2026-06-05T15:21:45.000Z",
+              "uid": "35240-9f263483-cfe3-4326-af26-565fbfdf9495"
+            }
+          ],
+          "id": "31c05027-e316-42bb-a8db-9bb4d18bb7f1",
+          "createdAt": "2026-06-05T15:21:45.000Z",
+          "updatedAt": "2026-06-05T15:21:45.000Z",
+          "uid": "35240-31c05027-e316-42bb-a8db-9bb4d18bb7f1"
+        }
+      ],
+      "id": "f6b2548d-a44a-4039-80bc-5519c661fbe8",
+      "createdAt": "2026-06-05T15:21:45.000Z",
+      "updatedAt": "2026-06-05T15:21:45.000Z",
+      "uid": "35240-f6b2548d-a44a-4039-80bc-5519c661fbe8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

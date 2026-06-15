@@ -1,0 +1,776 @@
+{
+  "info": {
+    "_postman_id": "74864871-4122-456c-8e30-9fa3868c902f",
+    "name": "Zendesk Automations",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:23.000Z",
+    "updatedAt": "2026-06-05T15:22:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74864871-4122-456c-8e30-9fa3868c902f"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "automations",
+              "item": [
+                {
+                  "name": "{automation_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Automations Automation_id",
+                      "id": "874fcce2-c133-46a9-a0b0-2e21d103220f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations/:automation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations",
+                            ":automation_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "15664ab4-ee0f-4bb0-9339-31ef11a41a6c",
+                              "key": "automation_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "746a75b4-5c8a-4839-9c81-86eebe6c9d98",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/automations/:automation_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "automations",
+                                ":automation_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "automation_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"automation\": {\n    \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:23.000Z",
+                          "updatedAt": "2026-06-05T15:22:23.000Z",
+                          "uid": "35240-746a75b4-5c8a-4839-9c81-86eebe6c9d98"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-874fcce2-c133-46a9-a0b0-2e21d103220f"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Automations Automation_id",
+                      "id": "077461c4-407b-43c8-acb5-8686e98c654f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations/:automation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations",
+                            ":automation_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1299fe64-7afd-48da-8b57-affb625c10de",
+                              "key": "automation_id"
+                            }
+                          ]
+                        },
+                        "description": "Updates an automation.\n\nUpdated automations must be unique and have at least one condition that is true only once or an action that nullifies at least one of the conditions. Active automations can have overlapping conditions but can't be identical.\n\nThe request must include the following conditions in the `all` array:\n- At least one time-based condition\n- At least one condition that checks one of the following fields: 'status', 'type', 'group_id', 'assignee_id', or 'requester_id'\n\n**Note**: Updating a condition or action updates both the `conditions` and `actions` arrays, clearing all existing values of both arrays. Include all your conditions and actions when updating any condition or action.\n**Note**: You might be restricted from updating some default automations.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "103fa577-b0bc-4acc-ad58-8fb2a298caba",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/automations/:automation_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "automations",
+                                ":automation_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "automation_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"automation\": {\n    \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:23.000Z",
+                          "updatedAt": "2026-06-05T15:22:23.000Z",
+                          "uid": "35240-103fa577-b0bc-4acc-ad58-8fb2a298caba"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-077461c4-407b-43c8-acb5-8686e98c654f"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Automations Automation_id",
+                      "id": "8450249d-7489-4c07-8a06-597f1068342c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations/:automation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations",
+                            ":automation_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e279dd84-ab0f-462f-985c-c004779fa481",
+                              "key": "automation_id"
+                            }
+                          ]
+                        },
+                        "description": "**Note**: You might be restricted from deleting some default automations.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c57e987a-118b-4717-a68a-f0d083d18215",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/automations/:automation_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "automations",
+                                ":automation_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "automation_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:22:23.000Z",
+                          "updatedAt": "2026-06-05T15:22:23.000Z",
+                          "uid": "35240-c57e987a-118b-4717-a68a-f0d083d18215"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-8450249d-7489-4c07-8a06-597f1068342c"
+                    }
+                  ],
+                  "id": "00efd2c8-b1e7-46c2-b935-dc5c1f4970be",
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-00efd2c8-b1e7-46c2-b935-dc5c1f4970be"
+                },
+                {
+                  "name": "active",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Automations Active",
+                      "id": "6b388b74-6d2a-4d5e-8540-ac5d8c40dccc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations/active",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations",
+                            "active"
+                          ]
+                        },
+                        "description": "Lists all active automations.\n\n#### Allowed For\n\n* Agents\n\n#### Available Parameters\n\nYou can pass in any combination of the following optional filters:\n\n| Name       | Type   | Comment\n| ---------- | ------ | -------\n| sort_by    | string | Possible values are \"alphabetical\", \"created_at\", \"updated_at\", \"usage_1h\", \"usage_24h\", or \"usage_7d\". Defaults to \"position\"\n| sort_order | string | One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each automation, if present\n| permissions      | The permissions for each automation\n| usage_1h         | The number of times each automation has been used in the past hour\n| usage_24h        | The number of times each automation has been used in the past day\n| usage_7d         | The number of times each automation has been used in the past week\n| usage_30d        | The number of times each automation has been used in the past thirty days\n"
+                      },
+                      "response": [
+                        {
+                          "id": "f647ca7b-d8f3-4579-8902-1582c8d356a3",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/automations/active",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "automations",
+                                "active"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"automations\": [\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:22:23.000Z",
+                          "updatedAt": "2026-06-05T15:22:23.000Z",
+                          "uid": "35240-f647ca7b-d8f3-4579-8902-1582c8d356a3"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-6b388b74-6d2a-4d5e-8540-ac5d8c40dccc"
+                    }
+                  ],
+                  "id": "c747e189-3837-4fdb-b6e2-9a0d343dc3d8",
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-c747e189-3837-4fdb-b6e2-9a0d343dc3d8"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Automations Destroy_many",
+                      "id": "22c5e6cd-3430-408c-9e1f-654762f4224f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations/destroy_many?ids=<integer>&ids=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations",
+                            "destroy_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "The IDs of the automations to delete",
+                              "key": "ids",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The IDs of the automations to delete",
+                              "key": "ids",
+                              "value": "<integer>"
+                            }
+                          ]
+                        },
+                        "description": "Deletes the automations corresponding to the provided comma-separated list of IDs.\n\n**Note**: You might be restricted from deleting some default automations. If included in a bulk deletion, the unrestricted automations will be deleted.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe DELETE request takes one parameter, an `ids` object that lists the automations to delete.\n\n| Name | Description\n| ---- | -----------\n| ids  | The IDs of the automations to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "ac68cdc2-4b59-42ad-a920-c553e775cb35",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/automations/destroy_many?ids=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "automations",
+                                "destroy_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The IDs of the automations to delete",
+                                  "key": "ids",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:22:23.000Z",
+                          "updatedAt": "2026-06-05T15:22:23.000Z",
+                          "uid": "35240-ac68cdc2-4b59-42ad-a920-c553e775cb35"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-22c5e6cd-3430-408c-9e1f-654762f4224f"
+                    }
+                  ],
+                  "id": "e9049d48-6583-43aa-84dd-dd3a23f46531",
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-e9049d48-6583-43aa-84dd-dd3a23f46531"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Automations Search",
+                      "id": "a192da05-030e-4129-b56d-d0e5255aa3dc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations",
+                            "search"
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each automation, if present\n| permissions      | The permissions for each automation\n| usage_1h         | The number of times each automation has been used in the past hour\n| usage_24h        | The number of times each automation has been used in the past day\n| usage_7d         | The number of times each automation has been used in the past week\n| usage_30d        | The number of times each automation has been used in the past thirty days\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b8bb504b-1799-41b7-bbe5-96f8dd4a677b",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/automations/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "automations",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"automations\": [\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:22:23.000Z",
+                          "updatedAt": "2026-06-05T15:22:23.000Z",
+                          "uid": "35240-b8bb504b-1799-41b7-bbe5-96f8dd4a677b"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-a192da05-030e-4129-b56d-d0e5255aa3dc"
+                    }
+                  ],
+                  "id": "6029d05a-4c5f-4aee-b7d6-d55041595058",
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-6029d05a-4c5f-4aee-b7d6-d55041595058"
+                },
+                {
+                  "name": "update_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Automations Update_many",
+                      "id": "dd3d5731-1578-47be-8ec9-98e9173e53c0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations/update_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations",
+                            "update_many"
+                          ]
+                        },
+                        "description": "**Note**: You might be restricted from updating some default automations. If included in a bulk update, the unrestricted automations will be updated.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe PUT request expects an `automations` object that lists the automations to update.\n\nEach automation may have the following properties:\n\n| Name     | Mandatory | Description\n| -------- | --------- | -----------\n| id       | yes       | The ID of the automation to update\n| position | no        | The new position of the automation\n| active   | no        | The active status of the automation (true or false)\n\n#### Example Request\n\n```js\n{\n  \"automations\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"position\": 5},\n    {\"id\": 27, \"position\": 9},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "025340fe-2ad4-46ad-ad56-cf11f583c51b",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/automations/update_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "automations",
+                                "update_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"automations\": [\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:22:23.000Z",
+                          "updatedAt": "2026-06-05T15:22:23.000Z",
+                          "uid": "35240-025340fe-2ad4-46ad-ad56-cf11f583c51b"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-dd3d5731-1578-47be-8ec9-98e9173e53c0"
+                    }
+                  ],
+                  "id": "1afa3a96-63eb-4d98-8cb1-61cfc4bf9ec3",
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-1afa3a96-63eb-4d98-8cb1-61cfc4bf9ec3"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Automations",
+                  "id": "5d5aa9bc-5a0e-4e9d-a38c-13a415688a5d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/automations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "automations"
+                      ]
+                    },
+                    "description": "Lists all automations for the current account.\n\n#### Allowed For\n\n* Agents\n\n#### Available Parameters\n\nYou can pass in any combination of the following optional filters:\n\n| Name       | Type    | Comment\n| ---------- | ------- | -------\n| active     | boolean | Only active automations if true, inactive automations if false\n| sort_by    | string  | Possible values are \"alphabetical\", \"created_at\", \"updated_at\", \"usage_1h\", \"usage_24h\", or \"usage_7d\". Defaults to \"position\"\n| sort_order | string  | One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others\n\n#### Sideloads\n\nThe following sideloads are supported. The usage sideloads are only supported on the Support Professional or Suite Growth plan or above.\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each automation, if present\n| permissions      | The permissions for each automation\n| usage_1h         | The number of times each automation has been used in the past hour\n| usage_24h        | The number of times each automation has been used in the past day\n| usage_7d         | The number of times each automation has been used in the past week\n| usage_30d        | The number of times each automation has been used in the past thirty days\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "ee996861-81d8-4eaa-b2c6-a84f774cfe2c",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"automations\": [\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-ee996861-81d8-4eaa-b2c6-a84f774cfe2c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-5d5aa9bc-5a0e-4e9d-a38c-13a415688a5d"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Automations",
+                  "id": "75502946-d2bc-4eb3-85a8-9a602b42f6dc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/automations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "automations"
+                      ]
+                    },
+                    "description": "Creates an automation.\n\nNew automations must be unique and have at least one condition that is true only once or an action that nullifies at least one of the conditions. Active automations can have overlapping conditions but can't be identical.\n\nThe request must include the following conditions in the `all` array:\n\n- At least one time-based condition\n- At least one condition that checks one of the following fields: `status`, `type`, `group_id`, `assignee_id`, or `requester_id`.\n\n#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "918b8aa1-be0a-4b72-8543-dee647f32e75",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/automations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "automations"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"automation\": {\n    \"value\": \"reference #/components/schemas/AutomationObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-918b8aa1-be0a-4b72-8543-dee647f32e75"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-75502946-d2bc-4eb3-85a8-9a602b42f6dc"
+                }
+              ],
+              "id": "a66a8476-883f-4570-8ab4-81e5b2237ed7",
+              "createdAt": "2026-06-05T15:22:23.000Z",
+              "updatedAt": "2026-06-05T15:22:23.000Z",
+              "uid": "35240-a66a8476-883f-4570-8ab4-81e5b2237ed7"
+            }
+          ],
+          "id": "db865924-b4f1-4146-9f05-0205adc40d58",
+          "createdAt": "2026-06-05T15:22:23.000Z",
+          "updatedAt": "2026-06-05T15:22:23.000Z",
+          "uid": "35240-db865924-b4f1-4146-9f05-0205adc40d58"
+        }
+      ],
+      "id": "54765830-671a-4dc6-a8e6-2cdb7a633688",
+      "createdAt": "2026-06-05T15:22:23.000Z",
+      "updatedAt": "2026-06-05T15:22:23.000Z",
+      "uid": "35240-54765830-671a-4dc6-a8e6-2cdb7a633688"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

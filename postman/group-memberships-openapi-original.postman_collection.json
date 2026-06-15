@@ -1,0 +1,761 @@
+{
+  "info": {
+    "_postman_id": "421efa46-1ef9-4635-8459-5d715a477716",
+    "name": "Zendesk Group Memberships",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:46.000Z",
+    "updatedAt": "2026-06-05T15:22:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-421efa46-1ef9-4635-8459-5d715a477716"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "group_memberships",
+              "item": [
+                {
+                  "name": "{group_membership_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Group_memberships Group_membership_id",
+                      "id": "aaaecee7-5131-4de6-8333-b8e63d823194",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_memberships/:group_membership_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_memberships",
+                            ":group_membership_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8fff8304-1a82-4d74-a628-1c911394ab11",
+                              "key": "group_membership_id"
+                            }
+                          ]
+                        },
+                        "description": "The 'id' is the group membership id, not a group id.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0abbb0e1-2628-4e0a-b579-642deb3411ac",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_memberships/:group_membership_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_memberships",
+                                ":group_membership_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_membership_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"group_membership\": {\n    \"value\": \"reference #/components/schemas/GroupMembershipObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:47.000Z",
+                          "updatedAt": "2026-06-05T15:22:47.000Z",
+                          "uid": "35240-0abbb0e1-2628-4e0a-b579-642deb3411ac"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:47.000Z",
+                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                      "uid": "35240-aaaecee7-5131-4de6-8333-b8e63d823194"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Group_memberships Group_membership_id",
+                      "id": "262b0157-4dbc-4727-bcc0-5908e94622d0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_memberships/:group_membership_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_memberships",
+                            ":group_membership_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3c01b895-7d9d-4220-b236-3fe0b8762a6e",
+                              "key": "group_membership_id"
+                            }
+                          ]
+                        },
+                        "description": "Immediately removes a user from a group and schedules a job to unassign all working tickets that are assigned to the given user and group combination.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)\n"
+                      },
+                      "response": [
+                        {
+                          "id": "8e87a791-5fc9-4f5f-a4b7-44e5b6af1891",
+                          "name": "No content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_memberships/:group_membership_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_memberships",
+                                ":group_membership_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_membership_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:22:47.000Z",
+                          "updatedAt": "2026-06-05T15:22:47.000Z",
+                          "uid": "35240-8e87a791-5fc9-4f5f-a4b7-44e5b6af1891"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:47.000Z",
+                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                      "uid": "35240-262b0157-4dbc-4727-bcc0-5908e94622d0"
+                    }
+                  ],
+                  "id": "ff6ae5d8-d92d-4090-8d34-d7e971a556c2",
+                  "createdAt": "2026-06-05T15:22:47.000Z",
+                  "updatedAt": "2026-06-05T15:22:47.000Z",
+                  "uid": "35240-ff6ae5d8-d92d-4090-8d34-d7e971a556c2"
+                },
+                {
+                  "name": "assignable",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Group_memberships Assignable",
+                      "id": "77d21f69-c684-497a-abb1-cb19ea0d304e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_memberships/assignable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_memberships",
+                            "assignable"
+                          ]
+                        },
+                        "description": "Returns a maximum of 100 group memberships per page.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For:\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "746d5594-5933-4151-a466-207100704e0d",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_memberships/assignable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_memberships",
+                                "assignable"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"group_memberships\": [\n    {\n      \"value\": \"reference #/components/schemas/GroupMembershipObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/GroupMembershipObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:47.000Z",
+                          "updatedAt": "2026-06-05T15:22:47.000Z",
+                          "uid": "35240-746d5594-5933-4151-a466-207100704e0d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:47.000Z",
+                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                      "uid": "35240-77d21f69-c684-497a-abb1-cb19ea0d304e"
+                    }
+                  ],
+                  "id": "c3990149-80c4-4280-b5dc-b59357a639eb",
+                  "createdAt": "2026-06-05T15:22:47.000Z",
+                  "updatedAt": "2026-06-05T15:22:47.000Z",
+                  "uid": "35240-c3990149-80c4-4280-b5dc-b59357a639eb"
+                },
+                {
+                  "name": "create_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Group_memberships Create_many",
+                      "id": "6ddf4705-26c8-4d74-872b-bf30ff2c3e11",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_memberships/create_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_memberships",
+                            "create_many"
+                          ]
+                        },
+                        "description": "Assigns up to 100 agents to given groups.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "8fa44776-e3ad-426a-b183-b8267092df44",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_memberships/create_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_memberships",
+                                "create_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:47.000Z",
+                          "updatedAt": "2026-06-05T15:22:47.000Z",
+                          "uid": "35240-8fa44776-e3ad-426a-b183-b8267092df44"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:47.000Z",
+                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                      "uid": "35240-6ddf4705-26c8-4d74-872b-bf30ff2c3e11"
+                    }
+                  ],
+                  "id": "5e865637-dc1a-4a88-b834-82f96780383b",
+                  "createdAt": "2026-06-05T15:22:47.000Z",
+                  "updatedAt": "2026-06-05T15:22:47.000Z",
+                  "uid": "35240-5e865637-dc1a-4a88-b834-82f96780383b"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Group_memberships Destroy_many",
+                      "id": "39f686b8-08d2-47ca-a906-1826eca977f0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_memberships/destroy_many?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_memberships",
+                            "destroy_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "Id of the group memberships to delete. Comma separated",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Immediately removes users from groups and schedules a job to unassign all working tickets that are assigned to the given user and group combinations.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)\n"
+                      },
+                      "response": [
+                        {
+                          "id": "ff710687-1a75-4ef5-8171-73a378d27b0a",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/group_memberships/destroy_many?ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "group_memberships",
+                                "destroy_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Id of the group memberships to delete. Comma separated",
+                                  "key": "ids",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:47.000Z",
+                          "updatedAt": "2026-06-05T15:22:47.000Z",
+                          "uid": "35240-ff710687-1a75-4ef5-8171-73a378d27b0a"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:47.000Z",
+                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                      "uid": "35240-39f686b8-08d2-47ca-a906-1826eca977f0"
+                    }
+                  ],
+                  "id": "921517f6-303d-4974-bebc-6ecab15ab569",
+                  "createdAt": "2026-06-05T15:22:47.000Z",
+                  "updatedAt": "2026-06-05T15:22:47.000Z",
+                  "uid": "35240-921517f6-303d-4974-bebc-6ecab15ab569"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Group_memberships",
+                  "id": "8e2b5e1d-ea4d-4852-875a-74be339a5e21",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/group_memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "group_memberships"
+                      ]
+                    },
+                    "description": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For:\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "ebd096a2-0e2b-498b-8e14-e8f8f0d24088",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_memberships",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_memberships"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"group_memberships\": [\n    {\n      \"value\": \"reference #/components/schemas/GroupMembershipObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/GroupMembershipObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:47.000Z",
+                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                      "uid": "35240-ebd096a2-0e2b-498b-8e14-e8f8f0d24088"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:47.000Z",
+                  "updatedAt": "2026-06-05T15:22:47.000Z",
+                  "uid": "35240-8e2b5e1d-ea4d-4852-875a-74be339a5e21"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Group_memberships",
+                  "id": "40a03313-3740-4231-930f-b6f71dbad727",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/group_memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "group_memberships"
+                      ]
+                    },
+                    "description": "Assigns an agent to a given group.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)\n"
+                  },
+                  "response": [
+                    {
+                      "id": "442f04f5-db10-48ab-939d-c9f0258316f6",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group_memberships",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group_memberships"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"group_membership\": {\n    \"value\": \"reference #/components/schemas/GroupMembershipObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:47.000Z",
+                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                      "uid": "35240-442f04f5-db10-48ab-939d-c9f0258316f6"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:47.000Z",
+                  "updatedAt": "2026-06-05T15:22:47.000Z",
+                  "uid": "35240-40a03313-3740-4231-930f-b6f71dbad727"
+                }
+              ],
+              "id": "756da584-0f36-46b3-8e2d-45366ae14441",
+              "createdAt": "2026-06-05T15:22:47.000Z",
+              "updatedAt": "2026-06-05T15:22:47.000Z",
+              "uid": "35240-756da584-0f36-46b3-8e2d-45366ae14441"
+            },
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{user_id}",
+                  "item": [
+                    {
+                      "name": "group_memberships",
+                      "item": [
+                        {
+                          "name": "{group_membership_id}",
+                          "item": [
+                            {
+                              "name": "make_default",
+                              "item": [
+                                {
+                                  "name": "Zendesk Put  Api V2 Users User_id Group_memberships Group_membership_id Make_default",
+                                  "id": "0855519e-4646-41d4-8d5b-22831299dd03",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/users/:user_id/group_memberships/:group_membership_id/make_default",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "users",
+                                        ":user_id",
+                                        "group_memberships",
+                                        ":group_membership_id",
+                                        "make_default"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "f0b7c250-bc4c-4b8b-9010-a1f6e06dd8de",
+                                          "key": "user_id"
+                                        },
+                                        {
+                                          "id": "fcad9173-1d39-4c91-9776-d8ca4a52852a",
+                                          "key": "group_membership_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "#### Allowed For:\n\n* Agents\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "b7a18a60-b19b-405a-85e8-3d07df558307",
+                                      "name": "Success response",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/users/:user_id/group_memberships/:group_membership_id/make_default",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "users",
+                                            ":user_id",
+                                            "group_memberships",
+                                            ":group_membership_id",
+                                            "make_default"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "user_id"
+                                            },
+                                            {
+                                              "key": "group_membership_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"group_memberships\": [\n    {\n      \"value\": \"reference #/components/schemas/GroupMembershipObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/GroupMembershipObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-06-05T15:22:47.000Z",
+                                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                                      "uid": "35240-b7a18a60-b19b-405a-85e8-3d07df558307"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:22:47.000Z",
+                                  "updatedAt": "2026-06-05T15:22:47.000Z",
+                                  "uid": "35240-0855519e-4646-41d4-8d5b-22831299dd03"
+                                }
+                              ],
+                              "id": "4531d2b1-39f3-4329-a5c2-25a861fb04aa",
+                              "createdAt": "2026-06-05T15:22:47.000Z",
+                              "updatedAt": "2026-06-05T15:22:47.000Z",
+                              "uid": "35240-4531d2b1-39f3-4329-a5c2-25a861fb04aa"
+                            }
+                          ],
+                          "id": "9f44df17-12ca-4cf8-9bc7-771afb1f0d64",
+                          "createdAt": "2026-06-05T15:22:47.000Z",
+                          "updatedAt": "2026-06-05T15:22:47.000Z",
+                          "uid": "35240-9f44df17-12ca-4cf8-9bc7-771afb1f0d64"
+                        }
+                      ],
+                      "id": "a5c45f2e-6279-4a29-83d1-62e8a42a5ea6",
+                      "createdAt": "2026-06-05T15:22:47.000Z",
+                      "updatedAt": "2026-06-05T15:22:47.000Z",
+                      "uid": "35240-a5c45f2e-6279-4a29-83d1-62e8a42a5ea6"
+                    }
+                  ],
+                  "id": "d6b74bf6-a2b4-42ce-b7fb-0e4c6b51bdfe",
+                  "createdAt": "2026-06-05T15:22:47.000Z",
+                  "updatedAt": "2026-06-05T15:22:47.000Z",
+                  "uid": "35240-d6b74bf6-a2b4-42ce-b7fb-0e4c6b51bdfe"
+                }
+              ],
+              "id": "9b3f693a-1c8f-40c0-8e4d-fbcab6a1cfc4",
+              "createdAt": "2026-06-05T15:22:47.000Z",
+              "updatedAt": "2026-06-05T15:22:47.000Z",
+              "uid": "35240-9b3f693a-1c8f-40c0-8e4d-fbcab6a1cfc4"
+            }
+          ],
+          "id": "6f9d3d7c-6e2b-491c-8dfa-1768e349d055",
+          "createdAt": "2026-06-05T15:22:47.000Z",
+          "updatedAt": "2026-06-05T15:22:47.000Z",
+          "uid": "35240-6f9d3d7c-6e2b-491c-8dfa-1768e349d055"
+        }
+      ],
+      "id": "4dca1404-7335-4290-a4a3-ed28b18ea9a9",
+      "createdAt": "2026-06-05T15:22:47.000Z",
+      "updatedAt": "2026-06-05T15:22:47.000Z",
+      "uid": "35240-4dca1404-7335-4290-a4a3-ed28b18ea9a9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

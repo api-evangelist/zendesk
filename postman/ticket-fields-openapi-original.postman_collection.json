@@ -1,0 +1,1045 @@
+{
+  "info": {
+    "_postman_id": "4b4fbf17-bc2f-4e14-b1bf-b5e2f6a8de16",
+    "name": "Zendesk Ticket Fields",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:36.000Z",
+    "updatedAt": "2026-06-05T15:23:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4b4fbf17-bc2f-4e14-b1bf-b5e2f6a8de16"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "ticket_fields",
+              "item": [
+                {
+                  "name": "{ticket_field_id}",
+                  "item": [
+                    {
+                      "name": "options",
+                      "item": [
+                        {
+                          "name": "{ticket_field_option_id}",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Ticket_fields Ticket_field_id Options Ticket_field_option_id",
+                              "id": "93f96804-3963-4332-8f19-2521ba525956",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options/:ticket_field_option_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "ticket_fields",
+                                    ":ticket_field_id",
+                                    "options",
+                                    ":ticket_field_option_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "1d875e77-d683-4f1d-950a-6ac1cdad908e",
+                                      "key": "ticket_field_id"
+                                    },
+                                    {
+                                      "id": "93b4b923-821a-4393-bfb0-bb89f189c914",
+                                      "key": "ticket_field_option_id"
+                                    }
+                                  ]
+                                },
+                                "description": "#### Allowed for\n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "e8ac27e2-b7fd-4007-a985-392ebf772073",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options/:ticket_field_option_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "ticket_fields",
+                                        ":ticket_field_id",
+                                        "options",
+                                        ":ticket_field_option_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "ticket_field_id"
+                                        },
+                                        {
+                                          "key": "ticket_field_option_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"custom_field_option\": {\n    \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:37.000Z",
+                                  "updatedAt": "2026-06-05T15:23:37.000Z",
+                                  "uid": "35240-e8ac27e2-b7fd-4007-a985-392ebf772073"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:37.000Z",
+                              "updatedAt": "2026-06-05T15:23:37.000Z",
+                              "uid": "35240-93f96804-3963-4332-8f19-2521ba525956"
+                            },
+                            {
+                              "name": "Zendesk Delete  Api V2 Ticket_fields Ticket_field_id Options Ticket_field_option_id",
+                              "id": "a5f37707-bc7b-49f5-88e5-cdbc9bc1a511",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options/:ticket_field_option_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "ticket_fields",
+                                    ":ticket_field_id",
+                                    "options",
+                                    ":ticket_field_option_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "73cd8889-bfa7-4927-a0b8-0bcc72adef91",
+                                      "key": "ticket_field_id"
+                                    },
+                                    {
+                                      "id": "abe191d9-f2ff-4625-8144-3108cf3f5094",
+                                      "key": "ticket_field_option_id"
+                                    }
+                                  ]
+                                },
+                                "description": "#### Allowed for\n* Admins\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "e531d63c-bf9d-41f5-9cd3-8c0dc5f562be",
+                                  "name": "No Content response",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options/:ticket_field_option_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "ticket_fields",
+                                        ":ticket_field_id",
+                                        "options",
+                                        ":ticket_field_option_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "ticket_field_id"
+                                        },
+                                        {
+                                          "key": "ticket_field_option_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:23:37.000Z",
+                                  "updatedAt": "2026-06-05T15:23:37.000Z",
+                                  "uid": "35240-e531d63c-bf9d-41f5-9cd3-8c0dc5f562be"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:37.000Z",
+                              "updatedAt": "2026-06-05T15:23:37.000Z",
+                              "uid": "35240-a5f37707-bc7b-49f5-88e5-cdbc9bc1a511"
+                            }
+                          ],
+                          "id": "748f13f5-bb9f-48cd-900c-1a0a55196bee",
+                          "createdAt": "2026-06-05T15:23:37.000Z",
+                          "updatedAt": "2026-06-05T15:23:37.000Z",
+                          "uid": "35240-748f13f5-bb9f-48cd-900c-1a0a55196bee"
+                        },
+                        {
+                          "name": "Zendesk Get  Api V2 Ticket_fields Ticket_field_id Options",
+                          "id": "98d10c66-bdc4-47b8-b1da-fdb035523d00",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_fields",
+                                ":ticket_field_id",
+                                "options"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3076d2c6-19d7-4354-aecb-7de4406cee29",
+                                  "key": "ticket_field_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of custom ticket field options for the given drop-down ticket field.\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "7219282f-cff7-4b53-b579-28279814bcef",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "ticket_fields",
+                                    ":ticket_field_id",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "ticket_field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"custom_field_options\": [\n    {\n      \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:23:37.000Z",
+                              "updatedAt": "2026-06-05T15:23:37.000Z",
+                              "uid": "35240-7219282f-cff7-4b53-b579-28279814bcef"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:37.000Z",
+                          "updatedAt": "2026-06-05T15:23:37.000Z",
+                          "uid": "35240-98d10c66-bdc4-47b8-b1da-fdb035523d00"
+                        },
+                        {
+                          "name": "Zendesk Post  Api V2 Ticket_fields Ticket_field_id Options",
+                          "id": "80cfdf7c-a01e-4156-9c0c-f447215b3950",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_fields",
+                                ":ticket_field_id",
+                                "options"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "dd9e8519-e4d2-43fa-b5d3-d5a982b36ff8",
+                                  "key": "ticket_field_id"
+                                }
+                              ]
+                            },
+                            "description": "Creates or updates an option for the given drop-down ticket field.\n\nTo update an option, include the id of the option in the `custom_field_option` object. Example:\n\n`{\"custom_field_option\": {\"id\": 10002, \"name\": \"Pineapples\", ... }`\n\nIf an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.\n\n#### Response\n\nReturns one of the following status codes:\n\n- 200 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options.json` if the ticket field option already exists in the database\n- 201 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options.json` if the ticket field option is new\n\n#### Allowed For\n\n* Admins\n\n#### Rate Limit\nYou can make 100 requests every 1 minute using this endpoint.\nThe rate limiting mechanism behaves as described in\n[Monitoring your request activity](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity) in the API introduction.\n\n#### Field Option Limits\n\n* 2000 options per ticket field\n"
+                          },
+                          "response": [
+                            {
+                              "id": "73b24a22-3810-44ca-8b11-c4e871b7e82f",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "ticket_fields",
+                                    ":ticket_field_id",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "ticket_field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"custom_field_option\": {\n    \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:37.000Z",
+                              "updatedAt": "2026-06-05T15:23:37.000Z",
+                              "uid": "35240-73b24a22-3810-44ca-8b11-c4e871b7e82f"
+                            },
+                            {
+                              "id": "33bd5e79-a3b6-42c8-b513-68793581db60",
+                              "name": "Created response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "ticket_fields",
+                                    ":ticket_field_id",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "ticket_field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"custom_field_option\": {\n    \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:37.000Z",
+                              "updatedAt": "2026-06-05T15:23:37.000Z",
+                              "uid": "35240-33bd5e79-a3b6-42c8-b513-68793581db60"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:37.000Z",
+                          "updatedAt": "2026-06-05T15:23:37.000Z",
+                          "uid": "35240-80cfdf7c-a01e-4156-9c0c-f447215b3950"
+                        }
+                      ],
+                      "id": "93d4d5c0-1432-4ce7-bb3d-775f6e0b9a81",
+                      "createdAt": "2026-06-05T15:23:37.000Z",
+                      "updatedAt": "2026-06-05T15:23:37.000Z",
+                      "uid": "35240-93d4d5c0-1432-4ce7-bb3d-775f6e0b9a81"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Ticket_fields Ticket_field_id",
+                      "id": "3a5627bb-5029-4ef4-929b-14d153f2d8a7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_fields",
+                            ":ticket_field_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3648309b-28d9-44ea-9782-d5a88b16758c",
+                              "key": "ticket_field_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed for\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| users            | The user or users that created the ticket field\n"
+                      },
+                      "response": [
+                        {
+                          "id": "8dd43351-ff05-4aff-bf70-e1121e5d3644",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_fields",
+                                ":ticket_field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticket_field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"ticket_field\": {\n    \"value\": \"reference #/components/schemas/TicketFieldObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:37.000Z",
+                          "updatedAt": "2026-06-05T15:23:37.000Z",
+                          "uid": "35240-8dd43351-ff05-4aff-bf70-e1121e5d3644"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:37.000Z",
+                      "updatedAt": "2026-06-05T15:23:37.000Z",
+                      "uid": "35240-3a5627bb-5029-4ef4-929b-14d153f2d8a7"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Ticket_fields Ticket_field_id",
+                      "id": "b20331cd-c2fb-4061-9af3-bdfe0b9ecc5a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_fields",
+                            ":ticket_field_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "52c3c1a0-24a2-40b6-b57d-7064a15f1017",
+                              "key": "ticket_field_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Updating drop-down field options\n\nYou can also use the update endpoint to add, update, or remove options in a drop-down custom field. Updating field options for multi-select fields works exactly the same as drop-down field options.\n\n**Important**: Unless you want to remove some options, you must specify all existing options in any update request. Omitting an option removes it from the drop-down field, which removes its values from any tickets or macros.\n\nUse the `custom_field_options` attribute to update the options. The attribute consists of an array of option objects, with each object consisting of a `name` and `value` property. The properties correspond to the \"Title\" and \"Tag\" text boxes in the admin interface. Example request body:\n\n```json\n{\"ticket_field\": {\n    \"custom_field_options\": [\n      {\"name\": \"Apple Pie\", \"value\": \"apple\"},\n      {\"name\": \"Pecan Pie\", \"value\": \"pecan\"}\n    ]\n  }\n}\n```\n\n#### Example Request\n\n```bash\ncurl https://{subdomain}.zendesk.com/api/v2/ticket_fields/{id}.json \\\n  -d '{\"ticket_field\": {\"custom_field_options\": [{\"name\": \"Apple Pie\", \"value\": \"apple\"}, {\"name\": \"Pecan Pie\", \"value\": \"pecan\"}]}}' \\\n  -H \"Content-Type: application/json\" -X PUT \\\n  -v -u {email_address}/token:{api_token}\n```\n\n#### Example Response\n\n```http\nStatus: 200 OK\n\n{\n  \"ticket_field\": {\n    \"id\":21938362,\n    \"type\":\"tagger\",\n    \"title\":\"Pies\",\n    ...\n    \"custom_field_options\": [\n      {\n        \"id\":21029772,\n        \"name\":\"Apple Pie\",\n        \"raw_name\":\"Apple Pie\",\n        \"value\":\"apple\",\n        \"default\":false\n      },\n      ...\n    ]\n  }\n}\n```\n\n#### Allowed for\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3d7c88ef-2b29-43c9-9adb-3ba48277526f",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_fields",
+                                ":ticket_field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticket_field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"ticket_field\": {\n    \"value\": \"reference #/components/schemas/TicketFieldObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:37.000Z",
+                          "updatedAt": "2026-06-05T15:23:37.000Z",
+                          "uid": "35240-3d7c88ef-2b29-43c9-9adb-3ba48277526f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:37.000Z",
+                      "updatedAt": "2026-06-05T15:23:37.000Z",
+                      "uid": "35240-b20331cd-c2fb-4061-9af3-bdfe0b9ecc5a"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Ticket_fields Ticket_field_id",
+                      "id": "61623900-ec55-4752-ba8f-58499227d218",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_fields",
+                            ":ticket_field_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9be29bec-cba8-426a-b56c-3a275c477549",
+                              "key": "ticket_field_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed for\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "fa2ea0ed-c577-4d58-9957-e7dab0f42e32",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_fields",
+                                ":ticket_field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticket_field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:37.000Z",
+                          "updatedAt": "2026-06-05T15:23:37.000Z",
+                          "uid": "35240-fa2ea0ed-c577-4d58-9957-e7dab0f42e32"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:37.000Z",
+                      "updatedAt": "2026-06-05T15:23:37.000Z",
+                      "uid": "35240-61623900-ec55-4752-ba8f-58499227d218"
+                    }
+                  ],
+                  "id": "8ef6d767-0932-4b7d-9526-7d23abbaea73",
+                  "createdAt": "2026-06-05T15:23:37.000Z",
+                  "updatedAt": "2026-06-05T15:23:37.000Z",
+                  "uid": "35240-8ef6d767-0932-4b7d-9526-7d23abbaea73"
+                },
+                {
+                  "name": "count",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Ticket_fields Count",
+                      "id": "7362648a-e049-40ef-95fa-c178eb3b6c5e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_fields/count",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_fields",
+                            "count"
+                          ]
+                        },
+                        "description": "Returns an approximate count of system and custom ticket fields in the account. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.\n\n#### Allowed For\n* Agents"
+                      },
+                      "response": [
+                        {
+                          "id": "852fe509-1deb-4278-a584-af6a6b40d82d",
+                          "name": "Count of ticket fields",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_fields/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_fields",
+                                "count"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": {\n    \"refreshed_at\": \"<dateTime>\",\n    \"value\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:37.000Z",
+                          "updatedAt": "2026-06-05T15:23:37.000Z",
+                          "uid": "35240-852fe509-1deb-4278-a584-af6a6b40d82d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:37.000Z",
+                      "updatedAt": "2026-06-05T15:23:37.000Z",
+                      "uid": "35240-7362648a-e049-40ef-95fa-c178eb3b6c5e"
+                    }
+                  ],
+                  "id": "32f7d437-d999-460e-802e-0225f7cd704c",
+                  "createdAt": "2026-06-05T15:23:37.000Z",
+                  "updatedAt": "2026-06-05T15:23:37.000Z",
+                  "uid": "35240-32f7d437-d999-460e-802e-0225f7cd704c"
+                },
+                {
+                  "name": "reorder",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Ticket_fields Reorder",
+                      "id": "9ec5627c-a700-4c8b-9324-c8a0f46b18b8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_fields/reorder",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_fields",
+                            "reorder"
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Admins\n\n#### Request Parameters\n\nYou can pass in the following parameter in the payload:\n\n| Name                | Type   | Comment\n| ------------------- | ------ | --------\n| ticket_field_ids    | array  | An array of ticket field ids. Example: \"[2, 23, 46, 50]\". Not all ticket_field_ids are necessary in the payload; only those provided will be assigned to the first positions. Missing IDs will be assigned incremental positions automatically.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "20972d64-6d05-42a6-9c61-a5d113880ced",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_fields/reorder",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_fields",
+                                "reorder"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-06-05T15:23:37.000Z",
+                          "updatedAt": "2026-06-05T15:23:37.000Z",
+                          "uid": "35240-20972d64-6d05-42a6-9c61-a5d113880ced"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:37.000Z",
+                      "updatedAt": "2026-06-05T15:23:37.000Z",
+                      "uid": "35240-9ec5627c-a700-4c8b-9324-c8a0f46b18b8"
+                    }
+                  ],
+                  "id": "b92ff222-3c5f-41cd-a58d-e88a0c96bd9a",
+                  "createdAt": "2026-06-05T15:23:37.000Z",
+                  "updatedAt": "2026-06-05T15:23:37.000Z",
+                  "uid": "35240-b92ff222-3c5f-41cd-a58d-e88a0c96bd9a"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Ticket_fields",
+                  "id": "dcd36d47-1820-4c61-aff5-403202ae0d61",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/ticket_fields?locale=<string>&creator=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "ticket_fields"
+                      ],
+                      "query": [
+                        {
+                          "description": "Forces the `title_in_portal` property to return a dynamic content variant for the specified locale.\n Only accepts [active locale ids](/api-reference/ticketing/account-configuration/locales/#list-locales).\nExample: `locale=\"de\"`.\n",
+                          "key": "locale",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Displays the `creator_user_id` and `creator_app_name` properties. If the ticket field is created\n by an app, `creator_app_name` is the name of the app and `creator_user_id` is `-1`. If the ticket field\n is not created by an app, `creator_app_name` is null\n",
+                          "key": "creator",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of all system and custom ticket fields in your account.\n\nFor end users, only the ticket fields with visible_in_portal set to true are returned.\n\nCursor pagination returns a maximum of 100 records per page and fields are returned in the order specified by their id.\n\nIf the results are not paginated, every field is returned in the response and fields are returned in the order specified by the position.\n\nYou can adjust the position of ticket fields by:\n\n- Using the [Update Ticket Field](/api-reference/ticketing/tickets/ticket_fields/#update-ticket-field) endpoint\n- Using the [Reorder Ticket Fields](/api-reference/ticketing/tickets/ticket_fields/#reorder-ticket-fields) endpoint\n- Ticket Fields page in the Admin Center (**Admin Center** > **Manage** > **Ticket** > **Fields** > **Actions** > **Edit order**)\n\nThese adjustments determine the order in which fields are displayed in various locations. For accounts without access to multiple ticket forms, the order will also be used to display field values within tickets. However, for accounts with access to multiple ticket forms, the field order on the ticket page is defined within each form.\n\nConsider caching this resource to use with the [Tickets](/api-reference/ticketing/tickets/tickets/#json-format) API.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- No pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| users            | The user or users that created the ticket field\n\n#### Allowed For\n\n* Anyone\n"
+                  },
+                  "response": [
+                    {
+                      "id": "38182a4a-7a1d-4606-8072-1da8a93a72fd",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_fields?locale=<string>&creator=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_fields"
+                          ],
+                          "query": [
+                            {
+                              "description": "Forces the `title_in_portal` property to return a dynamic content variant for the specified locale.\n Only accepts [active locale ids](/api-reference/ticketing/account-configuration/locales/#list-locales).\nExample: `locale=\"de\"`.\n",
+                              "key": "locale",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Displays the `creator_user_id` and `creator_app_name` properties. If the ticket field is created\n by an app, `creator_app_name` is the name of the app and `creator_user_id` is `-1`. If the ticket field\n is not created by an app, `creator_app_name` is null\n",
+                              "key": "creator",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ticket_fields\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketFieldObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketFieldObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:37.000Z",
+                      "updatedAt": "2026-06-05T15:23:37.000Z",
+                      "uid": "35240-38182a4a-7a1d-4606-8072-1da8a93a72fd"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:37.000Z",
+                  "updatedAt": "2026-06-05T15:23:37.000Z",
+                  "uid": "35240-dcd36d47-1820-4c61-aff5-403202ae0d61"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Ticket_fields",
+                  "id": "6725d9ad-3f30-420c-aee9-15b3ecd1b42c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/ticket_fields",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "ticket_fields"
+                      ]
+                    },
+                    "description": "Creates any of the following custom field types:\n\n| Custom field type | Description                                                                                                                                                     |\n|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| text              | Default custom field type when `type` is not specified                                                                                                          |\n| textarea          | For multi-line text                                                                                                                                             |\n| checkbox          | To capture a boolean value. Allowed values are true or false. Optionally, you can specify a tag to be added to the ticket when the value is true.               |\n| date              | Example: 2021-04-16                                                                                                                                             |\n| integer           | String composed of numbers. May contain an optional decimal point                                                                                               |\n| decimal           | For numbers containing decimals                                                                                                                                 |\n| regexp            | Matches the Regex pattern found in the custom field settings                                                                                                    |\n| partialcreditcard | A credit card number. Only the last 4 digits are retained                                                                                                       |\n| multiselect       | Enables users to choose multiple options from a dropdown menu. It contains one or more tag values belonging to the field's options.                             |\n| tagger            | Single-select dropdown menu. It contains one or more tag values belonging to the field's options. Example: ( {\"id\": 21938362, \"value\": [\"hd_3000\", \"hd_5555\"]}) |\n| lookup            | A field to create a relationship (see [lookup relationships](/api-reference/ticketing/lookup_relationships/lookup_relationships/)) to another object such as a user, ticket, or organization |\n\n**Note**: Tags can't be re-used across custom ticket fields. For example, if you configure a tag for a checkbox field, you can't use that tag value for a dropdown (tagger) field option. The use of tags isn't validated and can prevent editing in the future.\n\nSee [About custom field types](https://support.zendesk.com/hc/en-us/articles/203661866) in the Zendesk Help Center.\n\n#### Allowed For\n\n* Admins\n\n#### Field limits\n\nWe recommend the following best practices for ticket fields limits. Creating more than these amounts can affect performance.\n\n* 400 ticket fields per account if your account doesn't have ticket forms\n* 400 ticket fields per ticket form if your account has ticket forms\n"
+                  },
+                  "response": [
+                    {
+                      "id": "0ccb6ca3-2984-4e08-9a09-b95137cc12c5",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_fields"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ticket_field\": {\n    \"value\": \"reference #/components/schemas/TicketFieldObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:37.000Z",
+                      "updatedAt": "2026-06-05T15:23:37.000Z",
+                      "uid": "35240-0ccb6ca3-2984-4e08-9a09-b95137cc12c5"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:37.000Z",
+                  "updatedAt": "2026-06-05T15:23:37.000Z",
+                  "uid": "35240-6725d9ad-3f30-420c-aee9-15b3ecd1b42c"
+                }
+              ],
+              "id": "fad8d02e-4c37-46aa-ad44-8380415609d7",
+              "createdAt": "2026-06-05T15:23:37.000Z",
+              "updatedAt": "2026-06-05T15:23:37.000Z",
+              "uid": "35240-fad8d02e-4c37-46aa-ad44-8380415609d7"
+            }
+          ],
+          "id": "04c936a9-d788-4d2a-99b3-a522df7627d5",
+          "createdAt": "2026-06-05T15:23:37.000Z",
+          "updatedAt": "2026-06-05T15:23:37.000Z",
+          "uid": "35240-04c936a9-d788-4d2a-99b3-a522df7627d5"
+        }
+      ],
+      "id": "7be15641-d750-41b4-9c3d-9c72ef6256c6",
+      "createdAt": "2026-06-05T15:23:37.000Z",
+      "updatedAt": "2026-06-05T15:23:37.000Z",
+      "uid": "35240-7be15641-d750-41b4-9c3d-9c72ef6256c6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

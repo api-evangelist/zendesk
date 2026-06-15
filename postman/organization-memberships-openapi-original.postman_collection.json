@@ -1,0 +1,683 @@
+{
+  "info": {
+    "_postman_id": "e2204b30-462e-4c1f-9cec-5481af259619",
+    "name": "Zendesk Organization Memberships",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:00.000Z",
+    "updatedAt": "2026-06-05T15:23:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e2204b30-462e-4c1f-9cec-5481af259619"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "organization_memberships",
+              "item": [
+                {
+                  "name": "{organization_membership_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Organization_memberships Organization_membership_id",
+                      "id": "020a4578-238d-46ec-8fa6-7aee392fb264",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_memberships/:organization_membership_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_memberships",
+                            ":organization_membership_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8332a5a4-0fcf-42d5-89a5-94be352d790e",
+                              "key": "organization_membership_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed for\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "e5d11f2c-d6b5-47fe-847a-9126fb1fdff5",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organization_memberships/:organization_membership_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organization_memberships",
+                                ":organization_membership_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_membership_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"organization_membership\": {\n    \"value\": \"reference #/components/schemas/OrganizationMembershipObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:00.000Z",
+                          "updatedAt": "2026-06-05T15:23:00.000Z",
+                          "uid": "35240-e5d11f2c-d6b5-47fe-847a-9126fb1fdff5"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:00.000Z",
+                      "updatedAt": "2026-06-05T15:23:00.000Z",
+                      "uid": "35240-020a4578-238d-46ec-8fa6-7aee392fb264"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Organization_memberships Organization_membership_id",
+                      "id": "b105dae4-6e9c-4f06-a051-5cf1f6e1d348",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_memberships/:organization_membership_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_memberships",
+                            ":organization_membership_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f1a61601-f79b-4fcb-a85b-8d4be82f8000",
+                              "key": "organization_membership_id"
+                            }
+                          ]
+                        },
+                        "description": "Immediately removes a user from an organization and schedules a job to unassign all working tickets currently assigned to the user and organization combination. The `organization_id` of the unassigned tickets is set to null.\n\n#### Allowed for\n\n* Admins\n* Agents when deleting an organization membership for an end user\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3314d689-a211-43c8-a91a-4c9472ce4019",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organization_memberships/:organization_membership_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organization_memberships",
+                                ":organization_membership_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_membership_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:00.000Z",
+                          "updatedAt": "2026-06-05T15:23:00.000Z",
+                          "uid": "35240-3314d689-a211-43c8-a91a-4c9472ce4019"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:00.000Z",
+                      "updatedAt": "2026-06-05T15:23:00.000Z",
+                      "uid": "35240-b105dae4-6e9c-4f06-a051-5cf1f6e1d348"
+                    }
+                  ],
+                  "id": "8e34d3e9-53be-4826-8ca6-cc0a426284e1",
+                  "createdAt": "2026-06-05T15:23:00.000Z",
+                  "updatedAt": "2026-06-05T15:23:00.000Z",
+                  "uid": "35240-8e34d3e9-53be-4826-8ca6-cc0a426284e1"
+                },
+                {
+                  "name": "create_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Organization_memberships Create_many",
+                      "id": "7f4352db-2894-496f-8ddd-6492d163c9af",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_memberships/create_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_memberships",
+                            "create_many"
+                          ]
+                        },
+                        "description": "Accepts an array of up to 100 organization membership objects.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n* Admins\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "6b2cfa2b-77ea-432b-82d0-f6495b9556b6",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organization_memberships/create_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organization_memberships",
+                                "create_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:00.000Z",
+                          "updatedAt": "2026-06-05T15:23:00.000Z",
+                          "uid": "35240-6b2cfa2b-77ea-432b-82d0-f6495b9556b6"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:00.000Z",
+                      "updatedAt": "2026-06-05T15:23:00.000Z",
+                      "uid": "35240-7f4352db-2894-496f-8ddd-6492d163c9af"
+                    }
+                  ],
+                  "id": "4a23a43d-0fa5-4a5a-a6cf-80539efd0f01",
+                  "createdAt": "2026-06-05T15:23:00.000Z",
+                  "updatedAt": "2026-06-05T15:23:00.000Z",
+                  "uid": "35240-4a23a43d-0fa5-4a5a-a6cf-80539efd0f01"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Organization_memberships Destroy_many",
+                      "id": "faf08e38-e93d-4025-9e02-718ff9a4bce3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_memberships/destroy_many?ids=<integer>&ids=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_memberships",
+                            "destroy_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "The IDs of the organization memberships to delete",
+                              "key": "ids",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The IDs of the organization memberships to delete",
+                              "key": "ids",
+                              "value": "<integer>"
+                            }
+                          ]
+                        },
+                        "description": "Immediately removes a user from an organization and schedules a job to unassign all working tickets currently assigned to the user and organization combination. The `organization_id` of the unassigned tickets is set to null.\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "7ca673cf-b2fb-43e0-8245-a9d3ee03cf11",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organization_memberships/destroy_many?ids=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organization_memberships",
+                                "destroy_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The IDs of the organization memberships to delete",
+                                  "key": "ids",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:00.000Z",
+                          "updatedAt": "2026-06-05T15:23:00.000Z",
+                          "uid": "35240-7ca673cf-b2fb-43e0-8245-a9d3ee03cf11"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:00.000Z",
+                      "updatedAt": "2026-06-05T15:23:00.000Z",
+                      "uid": "35240-faf08e38-e93d-4025-9e02-718ff9a4bce3"
+                    }
+                  ],
+                  "id": "060c0b89-0b79-4736-bb99-2e3d7becf84f",
+                  "createdAt": "2026-06-05T15:23:00.000Z",
+                  "updatedAt": "2026-06-05T15:23:00.000Z",
+                  "uid": "35240-060c0b89-0b79-4736-bb99-2e3d7becf84f"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Organization_memberships",
+                  "id": "840784df-efec-48fb-ba22-9bc86038f321",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/organization_memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "organization_memberships"
+                      ]
+                    },
+                    "description": "Returns a list of organization memberships for the account, user or organization in question.\n\n**Note**: When returning organization memberships for a user, organization memberships are sorted with the default organization first, and then by organization name.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n- Agents\n- End users\n"
+                  },
+                  "response": [
+                    {
+                      "id": "3ee96728-bf60-44ad-bab9-6fdf5271a150",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_memberships",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_memberships"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"organization_memberships\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationMembershipObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationMembershipObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:00.000Z",
+                      "updatedAt": "2026-06-05T15:23:00.000Z",
+                      "uid": "35240-3ee96728-bf60-44ad-bab9-6fdf5271a150"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:00.000Z",
+                  "updatedAt": "2026-06-05T15:23:00.000Z",
+                  "uid": "35240-840784df-efec-48fb-ba22-9bc86038f321"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Organization_memberships",
+                  "id": "b45f2f25-7b68-402e-aa81-bcec11c1d858",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/organization_memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "organization_memberships"
+                      ]
+                    },
+                    "description": "Assigns a user to a given organization. Returns an error with status 422 if the user is already assigned to the organization.\n\n#### Allowed For\n\n* Admins\n* Agents when creating a new organization membership for an end user\n"
+                  },
+                  "response": [
+                    {
+                      "id": "ff17da7c-8ed8-4fc3-b6a6-fc7b888c533c",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_memberships",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_memberships"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"organization_membership\": {\n    \"value\": \"reference #/components/schemas/OrganizationMembershipObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:00.000Z",
+                      "updatedAt": "2026-06-05T15:23:00.000Z",
+                      "uid": "35240-ff17da7c-8ed8-4fc3-b6a6-fc7b888c533c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:00.000Z",
+                  "updatedAt": "2026-06-05T15:23:00.000Z",
+                  "uid": "35240-b45f2f25-7b68-402e-aa81-bcec11c1d858"
+                }
+              ],
+              "id": "a6b9af77-66b6-4c23-80bc-0023ee89fe0a",
+              "createdAt": "2026-06-05T15:23:00.000Z",
+              "updatedAt": "2026-06-05T15:23:00.000Z",
+              "uid": "35240-a6b9af77-66b6-4c23-80bc-0023ee89fe0a"
+            },
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{user_id}",
+                  "item": [
+                    {
+                      "name": "organization_memberships",
+                      "item": [
+                        {
+                          "name": "{organization_membership_id}",
+                          "item": [
+                            {
+                              "name": "make_default",
+                              "item": [
+                                {
+                                  "name": "Zendesk Put  Api V2 Users User_id Organization_memberships Organization_membership_id Make_default",
+                                  "id": "e1324457-ad59-41ae-b84e-08da417264f4",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/users/:user_id/organization_memberships/:organization_membership_id/make_default",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "users",
+                                        ":user_id",
+                                        "organization_memberships",
+                                        ":organization_membership_id",
+                                        "make_default"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "48b3b621-052e-4ace-b4ca-cea7e5c58e9f",
+                                          "key": "user_id"
+                                        },
+                                        {
+                                          "id": "136b9d19-64c7-4668-b9a2-aa49e3eb47a9",
+                                          "key": "organization_membership_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Sets the default organization membership of a given user.\n\n#### Allowed for\n\n* Admins\n* Agents when setting the default organization membership for an end user\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "a20ba1ee-645a-4b83-9ca0-692e75319203",
+                                      "name": "Success response",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/users/:user_id/organization_memberships/:organization_membership_id/make_default",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "users",
+                                            ":user_id",
+                                            "organization_memberships",
+                                            ":organization_membership_id",
+                                            "make_default"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "user_id"
+                                            },
+                                            {
+                                              "key": "organization_membership_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"organization_memberships\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationMembershipObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationMembershipObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-06-05T15:23:00.000Z",
+                                      "updatedAt": "2026-06-05T15:23:00.000Z",
+                                      "uid": "35240-a20ba1ee-645a-4b83-9ca0-692e75319203"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:23:00.000Z",
+                                  "updatedAt": "2026-06-05T15:23:00.000Z",
+                                  "uid": "35240-e1324457-ad59-41ae-b84e-08da417264f4"
+                                }
+                              ],
+                              "id": "35b30f44-c476-4ef4-b76b-3fe16f7f400a",
+                              "createdAt": "2026-06-05T15:23:00.000Z",
+                              "updatedAt": "2026-06-05T15:23:00.000Z",
+                              "uid": "35240-35b30f44-c476-4ef4-b76b-3fe16f7f400a"
+                            }
+                          ],
+                          "id": "58dbd97d-6e07-4489-ac6e-6eb815fabb93",
+                          "createdAt": "2026-06-05T15:23:00.000Z",
+                          "updatedAt": "2026-06-05T15:23:00.000Z",
+                          "uid": "35240-58dbd97d-6e07-4489-ac6e-6eb815fabb93"
+                        }
+                      ],
+                      "id": "0b6ac644-f391-4618-8f0e-a794aef38157",
+                      "createdAt": "2026-06-05T15:23:00.000Z",
+                      "updatedAt": "2026-06-05T15:23:00.000Z",
+                      "uid": "35240-0b6ac644-f391-4618-8f0e-a794aef38157"
+                    }
+                  ],
+                  "id": "a9fb48cf-a6bd-42e6-87d7-56cc61cc9e67",
+                  "createdAt": "2026-06-05T15:23:00.000Z",
+                  "updatedAt": "2026-06-05T15:23:00.000Z",
+                  "uid": "35240-a9fb48cf-a6bd-42e6-87d7-56cc61cc9e67"
+                }
+              ],
+              "id": "a6e653dd-277b-49da-a6bc-c1bb2157473f",
+              "createdAt": "2026-06-05T15:23:00.000Z",
+              "updatedAt": "2026-06-05T15:23:00.000Z",
+              "uid": "35240-a6e653dd-277b-49da-a6bc-c1bb2157473f"
+            }
+          ],
+          "id": "c988f3d4-44d2-490c-a3ed-3e351338579c",
+          "createdAt": "2026-06-05T15:23:00.000Z",
+          "updatedAt": "2026-06-05T15:23:00.000Z",
+          "uid": "35240-c988f3d4-44d2-490c-a3ed-3e351338579c"
+        }
+      ],
+      "id": "7a83d8d7-f513-4db0-b896-7084deeb12b6",
+      "createdAt": "2026-06-05T15:23:00.000Z",
+      "updatedAt": "2026-06-05T15:23:00.000Z",
+      "uid": "35240-7a83d8d7-f513-4db0-b896-7084deeb12b6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

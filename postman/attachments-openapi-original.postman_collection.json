@@ -1,0 +1,898 @@
+{
+  "info": {
+    "_postman_id": "a2eed899-280e-42f6-81b5-c18edcbbd811",
+    "name": "Zendesk Attachments",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:49.000Z",
+    "updatedAt": "2026-06-05T15:21:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a2eed899-280e-42f6-81b5-c18edcbbd811"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "attachments",
+              "item": [
+                {
+                  "name": "{attachment_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Attachments Attachment_id",
+                      "id": "282113c4-7765-4036-8d96-c92e589f6866",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/attachments/:attachment_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "attachments",
+                            ":attachment_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0ea69e94-5316-44dd-aa17-15ce0a58e6c2",
+                              "key": "attachment_id"
+                            }
+                          ]
+                        },
+                        "description": "Shows attachment details. You can get the value of the `attachment_id` parameter by listing the ticket's comments.\nSee [List Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments). Each comment\nin the list has an `attachments` list that specifies an `id` for each attachment.\n\n\n #### Allowed for\n\n * Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "7d9726b6-4290-4ae8-b323-3a8a2c37a1d3",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/attachments/:attachment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "attachments",
+                                ":attachment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "attachment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"attachment\": {\n    \"value\": \"reference #/components/schemas/AttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:50.000Z",
+                          "updatedAt": "2026-06-05T15:21:50.000Z",
+                          "uid": "35240-7d9726b6-4290-4ae8-b323-3a8a2c37a1d3"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:50.000Z",
+                      "updatedAt": "2026-06-05T15:21:50.000Z",
+                      "uid": "35240-282113c4-7765-4036-8d96-c92e589f6866"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Attachments Attachment_id",
+                      "id": "d98a6b1a-7ada-43a2-92e5-47125ad3e01b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/AttachmentUpdateRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/attachments/:attachment_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "attachments",
+                            ":attachment_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c5a1a7e9-c4f0-4dc9-85cd-b11c894958f6",
+                              "key": "attachment_id"
+                            }
+                          ]
+                        },
+                        "description": "Toggles enabling or restricting agent access to attachments with detected malware.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "63ef33a2-c4d6-4123-bc63-4c7ef6901aa9",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/AttachmentUpdateRequest not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/attachments/:attachment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "attachments",
+                                ":attachment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "attachment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"attachment\": {\n    \"value\": \"reference #/components/schemas/AttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:50.000Z",
+                          "updatedAt": "2026-06-05T15:21:50.000Z",
+                          "uid": "35240-63ef33a2-c4d6-4123-bc63-4c7ef6901aa9"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:50.000Z",
+                      "updatedAt": "2026-06-05T15:21:50.000Z",
+                      "uid": "35240-d98a6b1a-7ada-43a2-92e5-47125ad3e01b"
+                    }
+                  ],
+                  "id": "3fde1163-9d30-4481-9057-64fbdc84d103",
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-3fde1163-9d30-4481-9057-64fbdc84d103"
+                }
+              ],
+              "id": "31a27e29-07bf-4142-a0e1-f947bedb0255",
+              "createdAt": "2026-06-05T15:21:49.000Z",
+              "updatedAt": "2026-06-05T15:21:49.000Z",
+              "uid": "35240-31a27e29-07bf-4142-a0e1-f947bedb0255"
+            },
+            {
+              "name": "macros",
+              "item": [
+                {
+                  "name": "{macro_id}",
+                  "item": [
+                    {
+                      "name": "attachments",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Macros Macro_id Attachments",
+                          "id": "83d51ea3-e1a7-45ae-b0a3-3bcc1d8357f7",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/:macro_id/attachments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                ":macro_id",
+                                "attachments"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "387efde9-a608-4b74-94b5-ad24b0854a42",
+                                  "key": "macro_id"
+                                }
+                              ]
+                            },
+                            "description": "Lists the attachments associated with a macro.\n\n#### Allowed For\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "4170ab03-9b0a-459b-9a3d-69bd3b6c419f",
+                              "name": "Success Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/macros/:macro_id/attachments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "macros",
+                                    ":macro_id",
+                                    "attachments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "macro_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"macro_attachments\": [\n    {\n      \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:21:50.000Z",
+                              "updatedAt": "2026-06-05T15:21:50.000Z",
+                              "uid": "35240-4170ab03-9b0a-459b-9a3d-69bd3b6c419f"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:50.000Z",
+                          "updatedAt": "2026-06-05T15:21:50.000Z",
+                          "uid": "35240-83d51ea3-e1a7-45ae-b0a3-3bcc1d8357f7"
+                        },
+                        {
+                          "name": "Zendesk Post  Api V2 Macros Macro_id Attachments",
+                          "id": "a5df105a-f92d-42b9-b9b2-c96c4c90ce28",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/:macro_id/attachments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                ":macro_id",
+                                "attachments"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a735fde4-9fc6-487f-807c-c583ef2eecb7",
+                                  "key": "macro_id"
+                                }
+                              ]
+                            },
+                            "description": "Allows an attachment to be uploaded and associated with a macro at the same time.\n\n**Note:** A macro can be associated with up to five attachments.\n\n#### Allowed For\n\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "e7c88e8c-59be-4a82-b5f2-76219788974e",
+                              "name": "Success Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/macros/:macro_id/attachments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "macros",
+                                    ":macro_id",
+                                    "attachments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "macro_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"macro_attachment\": {\n    \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:21:50.000Z",
+                              "updatedAt": "2026-06-05T15:21:50.000Z",
+                              "uid": "35240-e7c88e8c-59be-4a82-b5f2-76219788974e"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:50.000Z",
+                          "updatedAt": "2026-06-05T15:21:50.000Z",
+                          "uid": "35240-a5df105a-f92d-42b9-b9b2-c96c4c90ce28"
+                        }
+                      ],
+                      "id": "8a0d881c-fedf-409e-9cad-d44838afef08",
+                      "createdAt": "2026-06-05T15:21:49.000Z",
+                      "updatedAt": "2026-06-05T15:21:49.000Z",
+                      "uid": "35240-8a0d881c-fedf-409e-9cad-d44838afef08"
+                    }
+                  ],
+                  "id": "217944ac-ccd1-4b45-881d-a5a8d892cf26",
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-217944ac-ccd1-4b45-881d-a5a8d892cf26"
+                },
+                {
+                  "name": "attachments",
+                  "item": [
+                    {
+                      "name": "{attachment_id}",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Macros Attachments Attachment_id",
+                          "id": "eadca8a6-6779-4805-a116-a6a35c85efb3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/attachments/:attachment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "attachments",
+                                ":attachment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d8b6ec1c-2056-40b2-a8b6-521ecee937bd",
+                                  "key": "attachment_id"
+                                }
+                              ]
+                            },
+                            "description": "Shows the properties of the specified macro attachment.\n\n#### Allowed For\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "5069f67f-31c0-4346-a16d-63e011bd1c32",
+                              "name": "Success Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/macros/attachments/:attachment_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "macros",
+                                    "attachments",
+                                    ":attachment_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "attachment_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"macro_attachment\": {\n    \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:21:50.000Z",
+                              "updatedAt": "2026-06-05T15:21:50.000Z",
+                              "uid": "35240-5069f67f-31c0-4346-a16d-63e011bd1c32"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:50.000Z",
+                          "updatedAt": "2026-06-05T15:21:50.000Z",
+                          "uid": "35240-eadca8a6-6779-4805-a116-a6a35c85efb3"
+                        }
+                      ],
+                      "id": "4dfedc1e-05b2-41c6-be7f-de62172e59e8",
+                      "createdAt": "2026-06-05T15:21:49.000Z",
+                      "updatedAt": "2026-06-05T15:21:49.000Z",
+                      "uid": "35240-4dfedc1e-05b2-41c6-be7f-de62172e59e8"
+                    },
+                    {
+                      "name": "Zendesk Post  Api V2 Macros Attachments",
+                      "id": "4cfc4842-e5ee-414f-9ca6-dde07aef92ea",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/attachments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "attachments"
+                          ]
+                        },
+                        "description": "Allows an attachment to be uploaded that can be associated with a macro at a later time.\n\n**Note:** To ensure an uploaded attachment is not lost, associate it with a macro as soon as possible. From time to time, old attachments that are not not associated with any macro are purged.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "9c0585c2-0de4-4fd8-a37f-531e6da7e211",
+                          "name": "Created Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/attachments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "attachments"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macro_attachment\": {\n    \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:50.000Z",
+                          "updatedAt": "2026-06-05T15:21:50.000Z",
+                          "uid": "35240-9c0585c2-0de4-4fd8-a37f-531e6da7e211"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:50.000Z",
+                      "updatedAt": "2026-06-05T15:21:50.000Z",
+                      "uid": "35240-4cfc4842-e5ee-414f-9ca6-dde07aef92ea"
+                    }
+                  ],
+                  "id": "5884f3bc-6099-4fd1-b58a-2c1dce6d77e4",
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-5884f3bc-6099-4fd1-b58a-2c1dce6d77e4"
+                }
+              ],
+              "id": "09329b95-a81d-43cb-ab70-bad23a18186d",
+              "createdAt": "2026-06-05T15:21:49.000Z",
+              "updatedAt": "2026-06-05T15:21:49.000Z",
+              "uid": "35240-09329b95-a81d-43cb-ab70-bad23a18186d"
+            },
+            {
+              "name": "suspended_tickets",
+              "item": [
+                {
+                  "name": "attachments",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Suspended_tickets Attachments",
+                      "id": "043b5696-7f10-4b2d-a81a-9b7643051b44",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/suspended_tickets/attachments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "suspended_tickets",
+                            "attachments"
+                          ]
+                        },
+                        "description": "Makes copies of any attachments on a suspended ticket and returns them as [attachment tokens](/api-reference/ticketing/tickets/ticket-attachments/). If the  ticket is manually recovered, you can include the attachment tokens on the new ticket.\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Enterprise plans\n* Unrestricted agents on all other plans\n"
+                      },
+                      "response": [
+                        {
+                          "id": "2221b5cb-6e0f-491a-92b1-52ed3f7f172f",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/suspended_tickets/attachments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "suspended_tickets",
+                                "attachments"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"upload\": {\n    \"attachments\": [\n      {\n        \"value\": \"reference #/components/schemas/AttachmentObject not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/components/schemas/AttachmentObject not found in the OpenAPI spec\"\n      }\n    ],\n    \"token\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:50.000Z",
+                          "updatedAt": "2026-06-05T15:21:50.000Z",
+                          "uid": "35240-2221b5cb-6e0f-491a-92b1-52ed3f7f172f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:50.000Z",
+                      "updatedAt": "2026-06-05T15:21:50.000Z",
+                      "uid": "35240-043b5696-7f10-4b2d-a81a-9b7643051b44"
+                    }
+                  ],
+                  "id": "d78eb44c-4175-451f-b706-a319251efc52",
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-d78eb44c-4175-451f-b706-a319251efc52"
+                }
+              ],
+              "id": "bb92336b-d867-40b7-b3c4-a3a49ff03e72",
+              "createdAt": "2026-06-05T15:21:49.000Z",
+              "updatedAt": "2026-06-05T15:21:49.000Z",
+              "uid": "35240-bb92336b-d867-40b7-b3c4-a3a49ff03e72"
+            },
+            {
+              "name": "tickets",
+              "item": [
+                {
+                  "name": "{ticket_id}",
+                  "item": [
+                    {
+                      "name": "comments",
+                      "item": [
+                        {
+                          "name": "{comment_id}",
+                          "item": [
+                            {
+                              "name": "attachments",
+                              "item": [
+                                {
+                                  "name": "{attachment_id}",
+                                  "item": [
+                                    {
+                                      "name": "redact",
+                                      "item": [
+                                        {
+                                          "name": "Zendesk Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments Attachment_id Redact",
+                                          "id": "79a0a63f-0721-4e41-b1a7-b8093cf73bef",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "PUT",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/v2/tickets/:ticket_id/comments/:comment_id/attachments/:attachment_id/redact",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "v2",
+                                                "tickets",
+                                                ":ticket_id",
+                                                "comments",
+                                                ":comment_id",
+                                                "attachments",
+                                                ":attachment_id",
+                                                "redact"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "9b0941c0-02f3-4d97-9971-3f5ed5d9e976",
+                                                  "key": "ticket_id"
+                                                },
+                                                {
+                                                  "id": "c5da924a-9df7-40d7-a540-b383eabc3691",
+                                                  "key": "comment_id"
+                                                },
+                                                {
+                                                  "id": "12cccb73-0f77-4db3-b7c8-71198bc3a70c",
+                                                  "key": "attachment_id"
+                                                }
+                                              ]
+                                            },
+                                            "description": "Redaction allows you to permanently remove attachments from an existing comment on a ticket. Once removed from a comment, the attachment is replaced with an empty \"redacted.txt\" file.\n\nThe redaction is permanent. It is not possible to undo redaction or see what was removed. Once a ticket is closed, redacting its attachments is no longer possible.\n\nAlso, if you want to redact an inline attachment, you can use the `include_inline_images` parameter in the [List Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments) operation to obtain the inline attachment ID, and use it in the request URL.\n\n#### Allowed For\n\n* Admins\n* Agents when [deleting tickets is enabled for agents on professional accounts](https://support.zendesk.com/hc/en-us/articles/360002128107)\n* Agents assigned to a custom role with permissions to redact ticket content (Enterprise only)\n"
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "2a99177d-8c40-4eb2-a795-f0d7d032917c",
+                                              "name": "OK response",
+                                              "originalRequest": {
+                                                "method": "PUT",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/api/v2/tickets/:ticket_id/comments/:comment_id/attachments/:attachment_id/redact",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "api",
+                                                    "v2",
+                                                    "tickets",
+                                                    ":ticket_id",
+                                                    "comments",
+                                                    ":comment_id",
+                                                    "attachments",
+                                                    ":attachment_id",
+                                                    "redact"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "ticket_id"
+                                                    },
+                                                    {
+                                                      "key": "comment_id"
+                                                    },
+                                                    {
+                                                      "key": "attachment_id"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"attachment\": {\n    \"value\": \"reference #/components/schemas/AttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                                              "createdAt": "2026-06-05T15:21:50.000Z",
+                                              "updatedAt": "2026-06-05T15:21:50.000Z",
+                                              "uid": "35240-2a99177d-8c40-4eb2-a795-f0d7d032917c"
+                                            }
+                                          ],
+                                          "createdAt": "2026-06-05T15:21:50.000Z",
+                                          "updatedAt": "2026-06-05T15:21:50.000Z",
+                                          "uid": "35240-79a0a63f-0721-4e41-b1a7-b8093cf73bef"
+                                        }
+                                      ],
+                                      "id": "a921ae5b-e8a6-4953-b4ef-df549a10963e",
+                                      "createdAt": "2026-06-05T15:21:49.000Z",
+                                      "updatedAt": "2026-06-05T15:21:49.000Z",
+                                      "uid": "35240-a921ae5b-e8a6-4953-b4ef-df549a10963e"
+                                    }
+                                  ],
+                                  "id": "370975a5-a750-4b5a-b4fe-50aa8e45415e",
+                                  "createdAt": "2026-06-05T15:21:49.000Z",
+                                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                                  "uid": "35240-370975a5-a750-4b5a-b4fe-50aa8e45415e"
+                                }
+                              ],
+                              "id": "b0fa846c-777f-4037-8b05-abe68d61a459",
+                              "createdAt": "2026-06-05T15:21:49.000Z",
+                              "updatedAt": "2026-06-05T15:21:49.000Z",
+                              "uid": "35240-b0fa846c-777f-4037-8b05-abe68d61a459"
+                            }
+                          ],
+                          "id": "53245bc2-79b1-4068-a5d4-5040a81ca24c",
+                          "createdAt": "2026-06-05T15:21:49.000Z",
+                          "updatedAt": "2026-06-05T15:21:49.000Z",
+                          "uid": "35240-53245bc2-79b1-4068-a5d4-5040a81ca24c"
+                        }
+                      ],
+                      "id": "a25bf891-ca01-4e1c-af36-faa52831e155",
+                      "createdAt": "2026-06-05T15:21:49.000Z",
+                      "updatedAt": "2026-06-05T15:21:49.000Z",
+                      "uid": "35240-a25bf891-ca01-4e1c-af36-faa52831e155"
+                    }
+                  ],
+                  "id": "37944b9d-42c5-4a1f-8135-669050820448",
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-37944b9d-42c5-4a1f-8135-669050820448"
+                }
+              ],
+              "id": "bc4b1f95-77a2-41c5-9e8a-15090fe28934",
+              "createdAt": "2026-06-05T15:21:49.000Z",
+              "updatedAt": "2026-06-05T15:21:49.000Z",
+              "uid": "35240-bc4b1f95-77a2-41c5-9e8a-15090fe28934"
+            }
+          ],
+          "id": "a6b7b0a7-e9b3-41ba-b6c7-4a1379ace920",
+          "createdAt": "2026-06-05T15:21:49.000Z",
+          "updatedAt": "2026-06-05T15:21:49.000Z",
+          "uid": "35240-a6b7b0a7-e9b3-41ba-b6c7-4a1379ace920"
+        }
+      ],
+      "id": "d4296661-c188-4d9e-91cd-595aa225ec5d",
+      "createdAt": "2026-06-05T15:21:49.000Z",
+      "updatedAt": "2026-06-05T15:21:49.000Z",
+      "uid": "35240-d4296661-c188-4d9e-91cd-595aa225ec5d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

@@ -1,0 +1,1969 @@
+{
+  "info": {
+    "_postman_id": "d2bb298d-075c-4d97-9a3d-7b7cbc2f8409",
+    "name": "Zendesk Organizations",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:04.000Z",
+    "updatedAt": "2026-06-05T15:23:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d2bb298d-075c-4d97-9a3d-7b7cbc2f8409"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "incremental",
+              "item": [
+                {
+                  "name": "organizations",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Incremental Organizations",
+                      "id": "4f0c966b-f975-4af0-8a8c-8e25d65a91c0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/incremental/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "incremental",
+                            "organizations"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Organizations sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n"
+                      },
+                      "response": [
+                        {
+                          "id": "f9df2702-cb14-48e3-b497-c60b27b43aae",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "organizations"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"end_of_stream\": \"<boolean>\",\n  \"end_time\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"organizations\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-f9df2702-cb14-48e3-b497-c60b27b43aae"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-4f0c966b-f975-4af0-8a8c-8e25d65a91c0"
+                    }
+                  ],
+                  "id": "e16abf55-3c7d-4030-8907-6ba2494b9f42",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-e16abf55-3c7d-4030-8907-6ba2494b9f42"
+                }
+              ],
+              "id": "67012934-afab-4907-9bae-59ed52d6cf78",
+              "createdAt": "2026-06-05T15:23:05.000Z",
+              "updatedAt": "2026-06-05T15:23:05.000Z",
+              "uid": "35240-67012934-afab-4907-9bae-59ed52d6cf78"
+            },
+            {
+              "name": "organizations",
+              "item": [
+                {
+                  "name": "{organization_id}",
+                  "item": [
+                    {
+                      "name": "merge",
+                      "item": [
+                        {
+                          "name": "Zendesk Post  Api V2 Organizations Organization_id Merge",
+                          "id": "3d37bdce-e009-490d-a0eb-5c63c684ddcf",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/OrganizationMergeRequest not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/:organization_id/merge",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                ":organization_id",
+                                "merge"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1dc775ed-c3d7-4eeb-ad6c-89a17c5eb60e",
+                                  "key": "organization_id"
+                                }
+                              ]
+                            },
+                            "description": "Merges two organizations by moving all users, tickets, and domain names from the organization specified by `{organization_id}` to the organization specified by `winner_id`. After the merge:\n\n- The \"losing\" organization will be deleted.\n- Other organization fields and their values will not be carried over to the \"winning\" organization.\n- The merge operation creates an `Organization Merge` record which contains a status indicating the progress of the merge.\n\n**Note**: This operation is irreversible.\n\n#### Merge Statuses\n\n| Status | Description |\n|--------|-------------|\n| new | A job has been queued to merge the two organizations. |\n| in progress | The job to merge the two organizations has started. |\n| error | An error occurred during the merge job. The merge can be retried by repeating the API call. | \n| complete | The merge has been completed successfully. |\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "2d1d395a-d6b7-459a-9fb8-3ff436e7a6fe",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"reference #/components/schemas/OrganizationMergeRequest not found in the OpenAPI spec\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/organizations/:organization_id/merge",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "organizations",
+                                    ":organization_id",
+                                    "merge"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"organization_merge\": {\n    \"id\": \"<string>\",\n    \"url\": \"<string>\",\n    \"loser_id\": \"<integer>\",\n    \"winner_id\": \"<integer>\",\n    \"status\": \"new\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:05.000Z",
+                              "updatedAt": "2026-06-05T15:23:05.000Z",
+                              "uid": "35240-2d1d395a-d6b7-459a-9fb8-3ff436e7a6fe"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-3d37bdce-e009-490d-a0eb-5c63c684ddcf"
+                        }
+                      ],
+                      "id": "d6bcc542-d287-4bf7-a057-b88f6457fecf",
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-d6bcc542-d287-4bf7-a057-b88f6457fecf"
+                    },
+                    {
+                      "name": "merges",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Organizations Organization_id Merges",
+                          "id": "97224b75-efdc-4351-bc66-3c4080fb6a85",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/:organization_id/merges",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                ":organization_id",
+                                "merges"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "01e9360a-c0fe-43e3-b6d0-45edf9cbda99",
+                                  "key": "organization_id"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves a list of all organization merge operations associated with a given organization. This endpoint allows you to track the history of merge actions for an organization, including ongoing and completed merges.\n\nEach entry in the list contains details such as the ID of the merge, the winning and losing organization IDs, the current status of the merge, and a URL to access the `Organization Merge` record.\n\n#### Pagination\n\n- Cursor pagination is used for this endpoint.\n- A maximum of 100 records can be returned per page.\n\nSee [Pagination](/api-reference/introduction/pagination/) for more details.\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "97e1a2f8-905f-4543-93f8-f62ae646b6af",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/organizations/:organization_id/merges",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "organizations",
+                                    ":organization_id",
+                                    "merges"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"organization_merges\": [\n    {\n      \"id\": \"<string>\",\n      \"loser_id\": \"<integer>\",\n      \"status\": \"in_progress\",\n      \"url\": \"<string>\",\n      \"winner_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"loser_id\": \"<integer>\",\n      \"status\": \"error\",\n      \"url\": \"<string>\",\n      \"winner_id\": \"<integer>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:23:05.000Z",
+                              "updatedAt": "2026-06-05T15:23:05.000Z",
+                              "uid": "35240-97e1a2f8-905f-4543-93f8-f62ae646b6af"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-97224b75-efdc-4351-bc66-3c4080fb6a85"
+                        }
+                      ],
+                      "id": "59c83fe3-568f-477d-b1c4-6ecf267be5b7",
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-59c83fe3-568f-477d-b1c4-6ecf267be5b7"
+                    },
+                    {
+                      "name": "related",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Organizations Organization_id Related",
+                          "id": "78e83a63-5943-4a7d-ae1d-979a055eb2de",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/:organization_id/related",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                ":organization_id",
+                                "related"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "82e56f04-ce6a-4946-81c7-52df7c77a750",
+                                  "key": "organization_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "dd521124-380c-48ec-ae80-567c74869300",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/organizations/:organization_id/related",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "organizations",
+                                    ":organization_id",
+                                    "related"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"organization_related\": {\n    \"value\": \"reference #/components/schemas/OrganizationMetadataObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:05.000Z",
+                              "updatedAt": "2026-06-05T15:23:05.000Z",
+                              "uid": "35240-dd521124-380c-48ec-ae80-567c74869300"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-78e83a63-5943-4a7d-ae1d-979a055eb2de"
+                        }
+                      ],
+                      "id": "c6a3a062-c9a4-47f0-beb8-db9931aa8b37",
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-c6a3a062-c9a4-47f0-beb8-db9931aa8b37"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Organizations Organization_id",
+                      "id": "29f052e3-0d02-420d-af16-2b2fffe7cbc0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/:organization_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            ":organization_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a36c2f93-d4d0-48ee-a548-c7366642ba6f",
+                              "key": "organization_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "005536c2-f893-4576-89da-5c657fdfae50",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"organization\": {\n    \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-005536c2-f893-4576-89da-5c657fdfae50"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-29f052e3-0d02-420d-af16-2b2fffe7cbc0"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Organizations Organization_id",
+                      "id": "916e2e7b-ce25-47b1-87de-d85a741ce44c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/:organization_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            ":organization_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4f6a44d6-7dc6-4472-84ad-f4cb0de887ab",
+                              "key": "organization_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n* Agents\n\nAgents with no permissions restrictions can only update \"notes\" on organizations.\n\n**Note:** Updating an organization's `domain_names` property overwrites all existing `domain_names` values. To prevent this, submit a complete list of `domain_names` for the organization in your request.\n\n#### Example Request\n\n```js\n{\n  \"organization\": {\n    \"notes\": \"Something interesting\"\n  }\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c7f64865-9be3-452f-82d8-906e29bd5b77",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"organization\": {\n    \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-c7f64865-9be3-452f-82d8-906e29bd5b77"
+                        },
+                        {
+                          "id": "7befccf9-29d7-4ee1-a7ec-c9099e108a25",
+                          "name": "Too Many Requests",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-7befccf9-29d7-4ee1-a7ec-c9099e108a25"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-916e2e7b-ce25-47b1-87de-d85a741ce44c"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Organizations Organization_id",
+                      "id": "5802debb-ab8b-4ae6-8b79-f62428bf4082",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/:organization_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            ":organization_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "11838419-067e-408c-9cf9-3badb64f2377",
+                              "key": "organization_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage organizations (Enterprise only)\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b6a2fc84-0882-40d3-8b13-bcc7cdfadbd6",
+                          "name": "No Content Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-b6a2fc84-0882-40d3-8b13-bcc7cdfadbd6"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-5802debb-ab8b-4ae6-8b79-f62428bf4082"
+                    }
+                  ],
+                  "id": "6d1169bc-f4c9-4d50-9d0c-1c2c0c0543c7",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-6d1169bc-f4c9-4d50-9d0c-1c2c0c0543c7"
+                },
+                {
+                  "name": "autocomplete",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Organizations Autocomplete",
+                      "id": "9fdcbf23-13c3-425b-8f57-0a780dd451d7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/autocomplete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "autocomplete"
+                          ]
+                        },
+                        "description": "Returns an array of organizations whose name starts with the\nvalue specified in the `name` parameter.\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b38fbaf1-2732-491b-8787-f2f7b089e8a4",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/autocomplete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "autocomplete"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"organizations\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-b38fbaf1-2732-491b-8787-f2f7b089e8a4"
+                        },
+                        {
+                          "id": "11eed83f-d89b-4e1b-8907-7df1a4feeaaf",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/autocomplete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "autocomplete"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-11eed83f-d89b-4e1b-8907-7df1a4feeaaf"
+                        },
+                        {
+                          "id": "59a3b4c6-571f-4e5c-9807-556dddad22f6",
+                          "name": "Too Many Requests",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/autocomplete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "autocomplete"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-59a3b4c6-571f-4e5c-9807-556dddad22f6"
+                        },
+                        {
+                          "id": "afe8f91d-daba-48f3-981e-eec66071c8d8",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/autocomplete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "autocomplete"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-afe8f91d-daba-48f3-981e-eec66071c8d8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-9fdcbf23-13c3-425b-8f57-0a780dd451d7"
+                    }
+                  ],
+                  "id": "7548a1ed-24c2-4e47-bcb3-0463906bb3b6",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-7548a1ed-24c2-4e47-bcb3-0463906bb3b6"
+                },
+                {
+                  "name": "count",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Organizations Count",
+                      "id": "8d4c2a6b-2d6e-4e6c-a1f1-0a88b26ecdf7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/count",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "count"
+                          ]
+                        },
+                        "description": "Returns an approximate count of organizations. If the count exceeds\n100,000, it is updated every 24 hours.\n\nThe `refreshed_at` property of the `count` object is a timestamp that indicates\nwhen the count was last updated.\n\nWhen the count exceeds 100,000, the `refreshed_at` property may\noccasionally be null. This indicates that the count is being\nupdated in the background and the `value` property of the `count` object is limited to\n100,000 until the update is complete.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "83f038e6-12cb-46c1-af41-eb6abaa835b3",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "count"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": {\n    \"value\": \"reference #/components/schemas/CountOrganizationObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-83f038e6-12cb-46c1-af41-eb6abaa835b3"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-8d4c2a6b-2d6e-4e6c-a1f1-0a88b26ecdf7"
+                    }
+                  ],
+                  "id": "bc00345b-11a7-45b7-911a-fa8d9c842322",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-bc00345b-11a7-45b7-911a-fa8d9c842322"
+                },
+                {
+                  "name": "create_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Organizations Create_many",
+                      "id": "e70f370f-b323-4fe3-ae57-cb9441cc4bd8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/create_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "create_many"
+                          ]
+                        },
+                        "description": "Accepts an array of up to 100 organization objects.\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n\n* Agents, with restrictions applying on certain actions\n"
+                      },
+                      "response": [
+                        {
+                          "id": "8eeb3e02-706d-45a4-98b4-0f9987ddb1c0",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/create_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "create_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-8eeb3e02-706d-45a4-98b4-0f9987ddb1c0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-e70f370f-b323-4fe3-ae57-cb9441cc4bd8"
+                    }
+                  ],
+                  "id": "7935e363-e4e5-45fe-809e-cf76803d69ae",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-7935e363-e4e5-45fe-809e-cf76803d69ae"
+                },
+                {
+                  "name": "create_or_update",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Organizations Create_or_update",
+                      "id": "442bfdeb-df41-48a1-bb86-ff69925fc51a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/create_or_update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "create_or_update"
+                          ]
+                        },
+                        "description": "Creates an organization if it doesn't already exist, or updates\nan existing organization. Using this method means one less call\nto check if an organization exists before creating it. You need\nto specify the id or external id when updating\nan organization to avoid a duplicate error response. Name is\nnot available as a matching criteria.\n\n#### Allowed For\n\n* Agents, with restrictions on certain actions\n"
+                      },
+                      "response": [
+                        {
+                          "id": "39bd06a5-4e09-41d5-a4a3-757e9a078d7b",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/create_or_update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "create_or_update"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"organization\": {\n    \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-39bd06a5-4e09-41d5-a4a3-757e9a078d7b"
+                        },
+                        {
+                          "id": "29bfef8e-2bef-4135-b65f-c8e55efb5b27",
+                          "name": "Created response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/create_or_update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "create_or_update"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"organization\": {\n    \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-29bfef8e-2bef-4135-b65f-c8e55efb5b27"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-442bfdeb-df41-48a1-bb86-ff69925fc51a"
+                    }
+                  ],
+                  "id": "61d1ff9e-595f-4116-b93b-ae06dfbd92b6",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-61d1ff9e-595f-4116-b93b-ae06dfbd92b6"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Organizations Destroy_many",
+                      "id": "51b0075d-98a8-4859-9e42-ae1cbd803819",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/destroy_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "destroy_many"
+                          ]
+                        },
+                        "description": "Accepts a comma-separated list of up to 100 organization ids or external ids.\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage organizations (Enterprise only)\n"
+                      },
+                      "response": [
+                        {
+                          "id": "ddd7c991-aced-495b-b01c-1a5cd6caf453",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/destroy_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "destroy_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-ddd7c991-aced-495b-b01c-1a5cd6caf453"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-51b0075d-98a8-4859-9e42-ae1cbd803819"
+                    }
+                  ],
+                  "id": "472981dc-3c81-49f9-90cf-20be588551e4",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-472981dc-3c81-49f9-90cf-20be588551e4"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Organizations Search",
+                      "id": "975e3441-edee-4cfd-88eb-75f8f575c36c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "search"
+                          ]
+                        },
+                        "description": "Returns an array of organizations matching the criteria. You may search by an organization's `external_id` or `name`, but not both:\n\n#### Searching by `external_id`\n\nIf you set the `external_id` value of an organization to associate it to an external record, you can use it to search for the organization.\n\nFor an organization to be returned, its `external_id` must exactly match the value provided (case insensitive).\n\n#### Searching by `name`\n\nFor an organization to be returned, its `name` must exactly match the value provided (case insensitive).\n\n#### Allowed For:\n\n* Admins\n* Agents assigned to a custom role with permissions to add or modify organizations (Enterprise only)\n\nSee [Creating custom agent roles](https://support.zendesk.com/hc/en-us/articles/203662026#topic_cxn_hig_bd) in the Support Help Center.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "eb91382e-2bbb-40b9-bbc7-65e4162cec7f",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"organizations\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-eb91382e-2bbb-40b9-bbc7-65e4162cec7f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-975e3441-edee-4cfd-88eb-75f8f575c36c"
+                    }
+                  ],
+                  "id": "bc80bf8e-4b82-4cd8-86a9-db6445704a8d",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-bc80bf8e-4b82-4cd8-86a9-db6445704a8d"
+                },
+                {
+                  "name": "show_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Organizations Show_many",
+                      "id": "813d43a2-de05-4921-b103-4643bab5dadf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/show_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "show_many"
+                          ]
+                        },
+                        "description": "Accepts a comma-separated list of up to 100 organization ids or external ids.\n\n#### Allowed For\n\n* Admins\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "bdaaa7d7-93d8-4319-8481-0977a7c8e868",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/show_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "show_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"organizations\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-bdaaa7d7-93d8-4319-8481-0977a7c8e868"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-813d43a2-de05-4921-b103-4643bab5dadf"
+                    }
+                  ],
+                  "id": "4afc5535-77ba-4522-b540-7cdc4825ddab",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-4afc5535-77ba-4522-b540-7cdc4825ddab"
+                },
+                {
+                  "name": "update_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Organizations Update_many",
+                      "id": "b3d0e01d-3e74-4c22-93da-f23154304e7a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations/update_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations",
+                            "update_many"
+                          ]
+                        },
+                        "description": "Bulk or batch updates up to 100 organizations.\n\n#### Bulk update\n\nTo make the same change to multiple organizations, use the following endpoint and data format:\n\n`https://{subdomain}.zendesk.com/api/v2/organizations/update_many.json?ids=1,2,3`\n\n```js\n{\n  \"organization\": {\n    \"notes\": \"Priority\"\n  }\n}\n```\n\n#### Batch update\n\nTo make different changes to multiple organizations, use the following endpoint and data format:\n\n`https://{subdomain}.zendesk.com/api/v2/organizations/update_many.json`\n\n```js\n{\n  \"organizations\": [\n    { \"id\": 1, \"notes\": \"Priority\" },\n    { \"id\": 2, \"notes\": \"Normal\" }\n  ]\n}\n```\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n\n* Admins\n* Agents\n\nAgents with no permissions restrictions can only update \"notes\" on organizations.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "2665c54c-c072-4f2d-b65b-c549e77af6fd",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organizations/update_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organizations",
+                                "update_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-2665c54c-c072-4f2d-b65b-c549e77af6fd"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-b3d0e01d-3e74-4c22-93da-f23154304e7a"
+                    }
+                  ],
+                  "id": "886cc334-8c40-4eef-8235-dccbb3b49970",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-886cc334-8c40-4eef-8235-dccbb3b49970"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Organizations",
+                  "id": "a7b3ced1-bcd8-4621-bf45-55dbacc3073a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/organizations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "organizations"
+                      ]
+                    },
+                    "description": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents, with certain restrictions\n\nIf the agent has a custom agent role that restricts their access to only users in their own organization, a 403 Forbidden error is returned. See [Creating custom agent roles](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents#topic_cxn_hig_bd) in Zendesk help.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "682cf356-a5d5-422f-8be0-243b262ea32e",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"organizations\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"previous_page\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-682cf356-a5d5-422f-8be0-243b262ea32e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-a7b3ced1-bcd8-4621-bf45-55dbacc3073a"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Organizations",
+                  "id": "67a0dce1-7d41-4cff-bb74-3a49fb6787a5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference #/components/schemas/CreateOrganizationRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/organizations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "organizations"
+                      ]
+                    },
+                    "description": "You must provide a unique `name` for each organization. Normally\nthe system doesn't allow records to be created with identical names.\nHowever, a race condition can occur if you make two or more identical\nPOSTs very close to each other, causing the records to have identical\norganization names.\n\n**Note**: Leading and trailing whitespace in `name` is automatically trimmed before validation. This means that names differing only by whitespace are treated as duplicates. For example, \"API Company\" and \"API Company \" are considered the same name.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage organizations (Enterprise only)\n"
+                  },
+                  "response": [
+                    {
+                      "id": "de2954ac-7959-4120-b0b7-e306b41e5d23",
+                      "name": "Created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/CreateOrganizationRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"organization\": {\n    \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-de2954ac-7959-4120-b0b7-e306b41e5d23"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-67a0dce1-7d41-4cff-bb74-3a49fb6787a5"
+                }
+              ],
+              "id": "faa21deb-2f6b-4bb5-907f-5cbb19c69da2",
+              "createdAt": "2026-06-05T15:23:05.000Z",
+              "updatedAt": "2026-06-05T15:23:05.000Z",
+              "uid": "35240-faa21deb-2f6b-4bb5-907f-5cbb19c69da2"
+            },
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{user_id}",
+                  "item": [
+                    {
+                      "name": "organizations",
+                      "item": [
+                        {
+                          "name": "{organization_id}",
+                          "item": [
+                            {
+                              "name": "make_default",
+                              "item": [
+                                {
+                                  "name": "Zendesk Put  Api V2 Users User_id Organizations Organization_id Make_default",
+                                  "id": "3e4a1bd1-b0c5-4cfb-949e-f492e8638ec7",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/users/:user_id/organizations/:organization_id/make_default",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "users",
+                                        ":user_id",
+                                        "organizations",
+                                        ":organization_id",
+                                        "make_default"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "f3747a8a-8610-4dae-bab4-37f07e795d54",
+                                          "key": "user_id"
+                                        },
+                                        {
+                                          "id": "d3447e78-0f7b-4276-a8ef-03f409ea8f0e",
+                                          "key": "organization_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Sets the default organization membership of a given user.\n\n#### Allowed For\n\n* Agents\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "4e5a8ecb-81c0-45f8-912d-f044e23cd1e1",
+                                      "name": "Success response",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/users/:user_id/organizations/:organization_id/make_default",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "users",
+                                            ":user_id",
+                                            "organizations",
+                                            ":organization_id",
+                                            "make_default"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "user_id"
+                                            },
+                                            {
+                                              "key": "organization_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"organization_membership\": {\n    \"value\": \"reference #/components/schemas/OrganizationMembershipObject not found in the OpenAPI spec\"\n  }\n}",
+                                      "createdAt": "2026-06-05T15:23:05.000Z",
+                                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                                      "uid": "35240-4e5a8ecb-81c0-45f8-912d-f044e23cd1e1"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:23:05.000Z",
+                                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                                  "uid": "35240-3e4a1bd1-b0c5-4cfb-949e-f492e8638ec7"
+                                }
+                              ],
+                              "id": "8026d15b-ed34-493d-9ba2-0bfefc0329bf",
+                              "createdAt": "2026-06-05T15:23:05.000Z",
+                              "updatedAt": "2026-06-05T15:23:05.000Z",
+                              "uid": "35240-8026d15b-ed34-493d-9ba2-0bfefc0329bf"
+                            },
+                            {
+                              "name": "Zendesk Delete  Api V2 Users User_id Organizations Organization_id",
+                              "id": "8b16a7c2-46bc-40b4-a811-44c48b2d8ca2",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/users/:user_id/organizations/:organization_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "users",
+                                    ":user_id",
+                                    "organizations",
+                                    ":organization_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "85c69ace-8e7b-4cf5-84eb-2a32f315b07a",
+                                      "key": "user_id"
+                                    },
+                                    {
+                                      "id": "ae74ae32-7640-4fae-a342-caf11408f9ce",
+                                      "key": "organization_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Immediately removes a user from an organization and schedules a job to unassign all working tickets currently assigned to the user and organization combination. The `organization_id` of the unassigned tickets is set to null.\n\n#### Allowed For\n\n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "a61338df-08ef-43ad-98b1-6a8a4f661df0",
+                                  "name": "No Content response",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/users/:user_id/organizations/:organization_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "users",
+                                        ":user_id",
+                                        "organizations",
+                                        ":organization_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "user_id"
+                                        },
+                                        {
+                                          "key": "organization_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:23:05.000Z",
+                                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                                  "uid": "35240-a61338df-08ef-43ad-98b1-6a8a4f661df0"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:05.000Z",
+                              "updatedAt": "2026-06-05T15:23:05.000Z",
+                              "uid": "35240-8b16a7c2-46bc-40b4-a811-44c48b2d8ca2"
+                            }
+                          ],
+                          "id": "583d016f-16bc-4abd-8c0e-6c2182ca0fe7",
+                          "createdAt": "2026-06-05T15:23:05.000Z",
+                          "updatedAt": "2026-06-05T15:23:05.000Z",
+                          "uid": "35240-583d016f-16bc-4abd-8c0e-6c2182ca0fe7"
+                        }
+                      ],
+                      "id": "3f97e39f-c9e0-4afa-9e66-a5889ba6caf7",
+                      "createdAt": "2026-06-05T15:23:05.000Z",
+                      "updatedAt": "2026-06-05T15:23:05.000Z",
+                      "uid": "35240-3f97e39f-c9e0-4afa-9e66-a5889ba6caf7"
+                    }
+                  ],
+                  "id": "88746063-59b5-403f-9a76-088dadebfd02",
+                  "createdAt": "2026-06-05T15:23:05.000Z",
+                  "updatedAt": "2026-06-05T15:23:05.000Z",
+                  "uid": "35240-88746063-59b5-403f-9a76-088dadebfd02"
+                }
+              ],
+              "id": "4a5f08b5-90e8-4107-b1c3-0da567b82d40",
+              "createdAt": "2026-06-05T15:23:05.000Z",
+              "updatedAt": "2026-06-05T15:23:05.000Z",
+              "uid": "35240-4a5f08b5-90e8-4107-b1c3-0da567b82d40"
+            }
+          ],
+          "id": "3e91f80f-6d98-4fbc-8c03-7d2bcb435ed1",
+          "createdAt": "2026-06-05T15:23:05.000Z",
+          "updatedAt": "2026-06-05T15:23:05.000Z",
+          "uid": "35240-3e91f80f-6d98-4fbc-8c03-7d2bcb435ed1"
+        }
+      ],
+      "id": "06b6d717-af38-4799-9a97-fd7c509e3018",
+      "createdAt": "2026-06-05T15:23:05.000Z",
+      "updatedAt": "2026-06-05T15:23:05.000Z",
+      "uid": "35240-06b6d717-af38-4799-9a97-fd7c509e3018"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

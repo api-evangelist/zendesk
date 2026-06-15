@@ -1,0 +1,440 @@
+{
+  "info": {
+    "_postman_id": "fbaaf850-ba5f-4b69-b397-99dca26c00e3",
+    "name": "Zendesk Targets",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:32.000Z",
+    "updatedAt": "2026-06-05T15:23:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fbaaf850-ba5f-4b69-b397-99dca26c00e3"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "targets",
+              "item": [
+                {
+                  "name": "{target_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Targets Target_id",
+                      "id": "c4151903-83a3-4ecd-af3c-bf8087cfe7da",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/targets/:target_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "targets",
+                            ":target_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "95c5a2d3-7a10-4324-9e7f-47d40c522cdd",
+                              "key": "target_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0d8b0eff-ecef-4b02-91ad-7086c80a5a78",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/targets/:target_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "targets",
+                                ":target_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "target_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"target\": {\n    \"value\": \"reference #/components/schemas/TargetObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:33.000Z",
+                          "updatedAt": "2026-06-05T15:23:33.000Z",
+                          "uid": "35240-0d8b0eff-ecef-4b02-91ad-7086c80a5a78"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:33.000Z",
+                      "updatedAt": "2026-06-05T15:23:33.000Z",
+                      "uid": "35240-c4151903-83a3-4ecd-af3c-bf8087cfe7da"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Targets Target_id",
+                      "id": "2a2b029f-d2e9-48af-9ed1-f0a4573b16ab",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/targets/:target_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "targets",
+                            ":target_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d6d5d904-4621-4033-93bc-8731f0cf23c9",
+                              "key": "target_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "1322c705-e1c8-407d-9491-95bb4ae04132",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/targets/:target_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "targets",
+                                ":target_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "target_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"target\": {\n    \"value\": \"reference #/components/schemas/TargetObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:33.000Z",
+                          "updatedAt": "2026-06-05T15:23:33.000Z",
+                          "uid": "35240-1322c705-e1c8-407d-9491-95bb4ae04132"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:33.000Z",
+                      "updatedAt": "2026-06-05T15:23:33.000Z",
+                      "uid": "35240-2a2b029f-d2e9-48af-9ed1-f0a4573b16ab"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Targets Target_id",
+                      "id": "5f2602c2-fe8f-4cae-a5bd-2c108f1ef97f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/targets/:target_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "targets",
+                            ":target_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "15544777-49ff-483d-8ad0-7d777c77d714",
+                              "key": "target_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "6ecc4530-ceb0-4bfc-80aa-4af41e4dd329",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/targets/:target_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "targets",
+                                ":target_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "target_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:33.000Z",
+                          "updatedAt": "2026-06-05T15:23:33.000Z",
+                          "uid": "35240-6ecc4530-ceb0-4bfc-80aa-4af41e4dd329"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:33.000Z",
+                      "updatedAt": "2026-06-05T15:23:33.000Z",
+                      "uid": "35240-5f2602c2-fe8f-4cae-a5bd-2c108f1ef97f"
+                    }
+                  ],
+                  "id": "d37cd3c5-ac20-44fa-ad02-b0b3a10649cf",
+                  "createdAt": "2026-06-05T15:23:33.000Z",
+                  "updatedAt": "2026-06-05T15:23:33.000Z",
+                  "uid": "35240-d37cd3c5-ac20-44fa-ad02-b0b3a10649cf"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Targets",
+                  "id": "64ccb959-7f5b-4094-9ea4-fccc6a61fff7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/targets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "targets"
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "2805a54b-3eb8-42a4-9e3f-7b95c4ebaa5c",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/targets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "targets"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"targets\": [\n    {\n      \"value\": \"reference #/components/schemas/TargetObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TargetObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:33.000Z",
+                      "updatedAt": "2026-06-05T15:23:33.000Z",
+                      "uid": "35240-2805a54b-3eb8-42a4-9e3f-7b95c4ebaa5c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:33.000Z",
+                  "updatedAt": "2026-06-05T15:23:33.000Z",
+                  "uid": "35240-64ccb959-7f5b-4094-9ea4-fccc6a61fff7"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Targets",
+                  "id": "a819538b-0bb1-4de9-b2f4-128dac2c32c5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/targets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "targets"
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "40294188-6e45-4b48-9202-4fd77e8a232e",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/targets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "targets"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"target\": {\n    \"value\": \"reference #/components/schemas/TargetObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:33.000Z",
+                      "updatedAt": "2026-06-05T15:23:33.000Z",
+                      "uid": "35240-40294188-6e45-4b48-9202-4fd77e8a232e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:33.000Z",
+                  "updatedAt": "2026-06-05T15:23:33.000Z",
+                  "uid": "35240-a819538b-0bb1-4de9-b2f4-128dac2c32c5"
+                }
+              ],
+              "id": "5b0b7999-44b6-4b2e-a084-18e1fd9631f0",
+              "createdAt": "2026-06-05T15:23:33.000Z",
+              "updatedAt": "2026-06-05T15:23:33.000Z",
+              "uid": "35240-5b0b7999-44b6-4b2e-a084-18e1fd9631f0"
+            }
+          ],
+          "id": "cc0134ab-c030-4b7a-ac16-b168abfed24f",
+          "createdAt": "2026-06-05T15:23:33.000Z",
+          "updatedAt": "2026-06-05T15:23:33.000Z",
+          "uid": "35240-cc0134ab-c030-4b7a-ac16-b168abfed24f"
+        }
+      ],
+      "id": "65629dbe-b0fb-4587-bfe3-62aba90348a8",
+      "createdAt": "2026-06-05T15:23:33.000Z",
+      "updatedAt": "2026-06-05T15:23:33.000Z",
+      "uid": "35240-65629dbe-b0fb-4587-bfe3-62aba90348a8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

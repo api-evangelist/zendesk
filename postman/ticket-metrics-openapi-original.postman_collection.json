@@ -1,0 +1,215 @@
+{
+  "info": {
+    "_postman_id": "3c5f34b8-2d90-49d1-b0fd-0d146efd1a06",
+    "name": "Zendesk Ticket Metrics",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:44.000Z",
+    "updatedAt": "2026-06-05T15:23:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3c5f34b8-2d90-49d1-b0fd-0d146efd1a06"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "ticket_metrics",
+              "item": [
+                {
+                  "name": "{ticket_metric_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Ticket_metrics Ticket_metric_id",
+                      "id": "a1097f13-fbe3-411a-8033-57587414babd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_metrics/:ticket_metric_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_metrics",
+                            ":ticket_metric_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bc7a2d50-86bb-4948-9d9a-a43decde3555",
+                              "key": "ticket_metric_id",
+                              "value": "<string>",
+                              "description": "(Required) The id of the ticket metric to retrieve"
+                            }
+                          ]
+                        },
+                        "description": "Returns a specific metric, or the metrics of a specific ticket.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "cee61013-7071-43cc-a28d-b433eb61f9a6",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_metrics/:ticket_metric_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_metrics",
+                                ":ticket_metric_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticket_metric_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"ticket_metric\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketMetricObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketMetricObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:44.000Z",
+                          "updatedAt": "2026-06-05T15:23:44.000Z",
+                          "uid": "35240-cee61013-7071-43cc-a28d-b433eb61f9a6"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:44.000Z",
+                      "updatedAt": "2026-06-05T15:23:44.000Z",
+                      "uid": "35240-a1097f13-fbe3-411a-8033-57587414babd"
+                    }
+                  ],
+                  "id": "ac392a96-786a-4113-bdf5-c31f4b29975e",
+                  "createdAt": "2026-06-05T15:23:44.000Z",
+                  "updatedAt": "2026-06-05T15:23:44.000Z",
+                  "uid": "35240-ac392a96-786a-4113-bdf5-c31f4b29975e"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Ticket_metrics",
+                  "id": "783a7fcf-7752-4d7c-8833-dc87730aefe9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/ticket_metrics",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "ticket_metrics"
+                      ]
+                    },
+                    "description": "Returns a list of tickets with their metrics.\n\nTickets are ordered chronologically by created date, from newest to oldest.\nThe last ticket listed may not be the absolute oldest ticket in your account\ndue to ticket archiving.\n\nArchived tickets are not included in the response. See\n[About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756) in\nZendesk help.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n\n#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "230b000a-036a-459c-a92f-f648d982f90c",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_metrics"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ticket_metrics\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketMetricObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketMetricObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:44.000Z",
+                      "updatedAt": "2026-06-05T15:23:44.000Z",
+                      "uid": "35240-230b000a-036a-459c-a92f-f648d982f90c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:44.000Z",
+                  "updatedAt": "2026-06-05T15:23:44.000Z",
+                  "uid": "35240-783a7fcf-7752-4d7c-8833-dc87730aefe9"
+                }
+              ],
+              "id": "4af88669-290a-4c73-a454-8bbfbec14fae",
+              "createdAt": "2026-06-05T15:23:44.000Z",
+              "updatedAt": "2026-06-05T15:23:44.000Z",
+              "uid": "35240-4af88669-290a-4c73-a454-8bbfbec14fae"
+            }
+          ],
+          "id": "b644a93c-2fd7-4830-adf7-100fba313f27",
+          "createdAt": "2026-06-05T15:23:44.000Z",
+          "updatedAt": "2026-06-05T15:23:44.000Z",
+          "uid": "35240-b644a93c-2fd7-4830-adf7-100fba313f27"
+        }
+      ],
+      "id": "d27ac829-d8c5-4b64-9545-9bc40806c4f1",
+      "createdAt": "2026-06-05T15:23:44.000Z",
+      "updatedAt": "2026-06-05T15:23:44.000Z",
+      "uid": "35240-d27ac829-d8c5-4b64-9545-9bc40806c4f1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

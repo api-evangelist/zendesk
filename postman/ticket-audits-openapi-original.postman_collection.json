@@ -1,0 +1,153 @@
+{
+  "info": {
+    "_postman_id": "d648634f-d331-4195-ad4d-043661791d0f",
+    "name": "Zendesk Ticket Audits",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:34.000Z",
+    "updatedAt": "2026-06-05T15:23:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d648634f-d331-4195-ad4d-043661791d0f"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "ticket_audits",
+              "item": [
+                {
+                  "name": "Zendesk Get  Api V2 Ticket_audits",
+                  "id": "0b7eb366-e996-45b7-bf88-203ed9229fe4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/ticket_audits?page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "ticket_audits"
+                      ],
+                      "query": [
+                        {
+                          "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                          "key": "page[before]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                          "key": "page[after]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies how many records to be returned in the response. You can specify up to 100 records per page.",
+                          "key": "page[size]",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "description": "Returns ticket audits. Archived tickets are not included in the response. Use the [List Audits for a Ticket](#list-audits-for-a-ticket) endpoint to\nretrieve audit records for an archived ticket. To learn more about archived tickets, see [About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756).\n\nThis endpoint should not be used for capturing change data. When continually chasing the tail of a cursor, some records will be skipped. For this use case, use the [Incremental Ticket Event Export API](/api-reference/ticketing/ticket-management/incremental_exports/#incremental-ticket-event-export).\n\n#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "bf3d6996-9c1d-40a9-9f45-4d13f00ec8a6",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_audits?page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_audits"
+                          ],
+                          "query": [
+                            {
+                              "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                              "key": "page[before]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n",
+                              "key": "page[after]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies how many records to be returned in the response. You can specify up to 100 records per page.",
+                              "key": "page[size]",
+                              "value": "<integer>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"after_cursor\": \"<string>\",\n  \"after_url\": \"<string>\",\n  \"audits\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketAuditObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketAuditObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"before_cursor\": \"<string>\",\n  \"before_url\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:23:35.000Z",
+                      "updatedAt": "2026-06-05T15:23:35.000Z",
+                      "uid": "35240-bf3d6996-9c1d-40a9-9f45-4d13f00ec8a6"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:35.000Z",
+                  "updatedAt": "2026-06-05T15:23:35.000Z",
+                  "uid": "35240-0b7eb366-e996-45b7-bf88-203ed9229fe4"
+                }
+              ],
+              "id": "4ebb4add-f08f-4634-9197-5d02bad30a9c",
+              "createdAt": "2026-06-05T15:23:35.000Z",
+              "updatedAt": "2026-06-05T15:23:35.000Z",
+              "uid": "35240-4ebb4add-f08f-4634-9197-5d02bad30a9c"
+            }
+          ],
+          "id": "d150cb8c-dd12-4522-8867-7dfb23bb2839",
+          "createdAt": "2026-06-05T15:23:35.000Z",
+          "updatedAt": "2026-06-05T15:23:35.000Z",
+          "uid": "35240-d150cb8c-dd12-4522-8867-7dfb23bb2839"
+        }
+      ],
+      "id": "03d96a7c-dcc3-4cf1-b773-306efc320dd4",
+      "createdAt": "2026-06-05T15:23:35.000Z",
+      "updatedAt": "2026-06-05T15:23:35.000Z",
+      "uid": "35240-03d96a7c-dcc3-4cf1-b773-306efc320dd4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

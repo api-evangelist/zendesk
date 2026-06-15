@@ -1,0 +1,440 @@
+{
+  "info": {
+    "_postman_id": "0f646876-795d-4452-a397-1c4d51f32a83",
+    "name": "Zendesk Sharing Agreements",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:21.000Z",
+    "updatedAt": "2026-06-05T15:23:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0f646876-795d-4452-a397-1c4d51f32a83"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "sharing_agreements",
+              "item": [
+                {
+                  "name": "{sharing_agreement_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Sharing_agreements Sharing_agreement_id",
+                      "id": "474156be-cf32-407f-bb5e-5189baef4528",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "sharing_agreements",
+                            ":sharing_agreement_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "76bfe85b-4c5a-4712-a7c9-9fcabc97da72",
+                              "key": "sharing_agreement_id"
+                            }
+                          ]
+                        },
+                        "description": "Returns a sharing agreement for your account.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "1e65e684-1a63-41f1-aafc-ddfbf69e4fc0",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "sharing_agreements",
+                                ":sharing_agreement_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sharing_agreement_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"sharing_agreement\": {\n    \"value\": \"reference #/components/schemas/SharingAgreementObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:22.000Z",
+                          "updatedAt": "2026-06-05T15:23:22.000Z",
+                          "uid": "35240-1e65e684-1a63-41f1-aafc-ddfbf69e4fc0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:21.000Z",
+                      "updatedAt": "2026-06-05T15:23:21.000Z",
+                      "uid": "35240-474156be-cf32-407f-bb5e-5189baef4528"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Sharing_agreements Sharing_agreement_id",
+                      "id": "4535aada-15c1-4e09-8790-303c0a51033d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "sharing_agreements",
+                            ":sharing_agreement_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "15882273-af1b-4d2c-9585-ef313bbae847",
+                              "key": "sharing_agreement_id"
+                            }
+                          ]
+                        },
+                        "description": "Returns an updated sharing agreement. Only `status` is allowed to be updated.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b14dbf3e-826a-4b4f-92c9-d2f614d35efa",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "sharing_agreements",
+                                ":sharing_agreement_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sharing_agreement_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"sharing_agreement\": {\n    \"value\": \"reference #/components/schemas/SharingAgreementObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:22.000Z",
+                          "updatedAt": "2026-06-05T15:23:22.000Z",
+                          "uid": "35240-b14dbf3e-826a-4b4f-92c9-d2f614d35efa"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:21.000Z",
+                      "updatedAt": "2026-06-05T15:23:21.000Z",
+                      "uid": "35240-4535aada-15c1-4e09-8790-303c0a51033d"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Sharing_agreements Sharing_agreement_id",
+                      "id": "9c865beb-8a7f-4e37-acf1-a287c0927546",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "sharing_agreements",
+                            ":sharing_agreement_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f3284718-051c-4d7a-85c1-e749e7772ec7",
+                              "key": "sharing_agreement_id"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a sharing agreement.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "67b34556-dab2-48ce-821b-aae6e9eba992",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "sharing_agreements",
+                                ":sharing_agreement_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sharing_agreement_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:22.000Z",
+                          "updatedAt": "2026-06-05T15:23:22.000Z",
+                          "uid": "35240-67b34556-dab2-48ce-821b-aae6e9eba992"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:21.000Z",
+                      "updatedAt": "2026-06-05T15:23:21.000Z",
+                      "uid": "35240-9c865beb-8a7f-4e37-acf1-a287c0927546"
+                    }
+                  ],
+                  "id": "1e291c43-991a-4879-9098-ecfd17e85110",
+                  "createdAt": "2026-06-05T15:23:21.000Z",
+                  "updatedAt": "2026-06-05T15:23:21.000Z",
+                  "uid": "35240-1e291c43-991a-4879-9098-ecfd17e85110"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Sharing_agreements",
+                  "id": "459518fd-3f0e-41ac-83c1-f0223bfb9314",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/sharing_agreements",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "sharing_agreements"
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "aabeeaff-ec7b-4eca-9836-10e1ffc74d37",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/sharing_agreements",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "sharing_agreements"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sharing_agreements\": [\n    {\n      \"value\": \"reference #/components/schemas/SharingAgreementObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SharingAgreementObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:22.000Z",
+                      "updatedAt": "2026-06-05T15:23:22.000Z",
+                      "uid": "35240-aabeeaff-ec7b-4eca-9836-10e1ffc74d37"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:21.000Z",
+                  "updatedAt": "2026-06-05T15:23:21.000Z",
+                  "uid": "35240-459518fd-3f0e-41ac-83c1-f0223bfb9314"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Sharing_agreements",
+                  "id": "14192ef8-2fc0-4d29-9289-2047fb0f8e1d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/sharing_agreements",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "sharing_agreements"
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "89fa747c-c8fa-4e79-9786-c9cbfab85a9a",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/sharing_agreements",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "sharing_agreements"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sharing_agreement\": {\n    \"value\": \"reference #/components/schemas/SharingAgreementObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:22.000Z",
+                      "updatedAt": "2026-06-05T15:23:22.000Z",
+                      "uid": "35240-89fa747c-c8fa-4e79-9786-c9cbfab85a9a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:21.000Z",
+                  "updatedAt": "2026-06-05T15:23:21.000Z",
+                  "uid": "35240-14192ef8-2fc0-4d29-9289-2047fb0f8e1d"
+                }
+              ],
+              "id": "5e8dc387-c48d-4831-a4bf-0cd1d8fc1476",
+              "createdAt": "2026-06-05T15:23:21.000Z",
+              "updatedAt": "2026-06-05T15:23:21.000Z",
+              "uid": "35240-5e8dc387-c48d-4831-a4bf-0cd1d8fc1476"
+            }
+          ],
+          "id": "e2dd4e5d-1c1d-4939-a47e-00055549ec38",
+          "createdAt": "2026-06-05T15:23:21.000Z",
+          "updatedAt": "2026-06-05T15:23:21.000Z",
+          "uid": "35240-e2dd4e5d-1c1d-4939-a47e-00055549ec38"
+        }
+      ],
+      "id": "d21b8fd7-3dee-4caf-ae4c-44cc23b2d5ae",
+      "createdAt": "2026-06-05T15:23:21.000Z",
+      "updatedAt": "2026-06-05T15:23:21.000Z",
+      "uid": "35240-d21b8fd7-3dee-4caf-ae4c-44cc23b2d5ae"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

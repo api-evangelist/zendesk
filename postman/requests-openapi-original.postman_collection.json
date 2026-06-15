@@ -1,0 +1,716 @@
+{
+  "info": {
+    "_postman_id": "93465460-2b5b-4b72-856b-9707066618b2",
+    "name": "Zendesk Requests",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:13.000Z",
+    "updatedAt": "2026-06-05T15:23:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-93465460-2b5b-4b72-856b-9707066618b2"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "requests",
+              "item": [
+                {
+                  "name": "{request_id}",
+                  "item": [
+                    {
+                      "name": "comments",
+                      "item": [
+                        {
+                          "name": "{ticket_comment_id}",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Requests Request_id Comments Ticket_comment_id",
+                              "id": "ead97d72-c1ff-41c3-bc73-f5b54f8eea38",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/requests/:request_id/comments/:ticket_comment_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "requests",
+                                    ":request_id",
+                                    "comments",
+                                    ":ticket_comment_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4b410e0f-e7dc-4de5-9fab-9363b6c0ff34",
+                                      "key": "request_id"
+                                    },
+                                    {
+                                      "id": "6d38881e-6106-4cb0-8567-b03e8cb452f3",
+                                      "key": "ticket_comment_id"
+                                    }
+                                  ]
+                                },
+                                "description": "#### Allowed For\n\n* End Users\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "e73d3af7-8057-489f-8528-3deafe9c7a92",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/requests/:request_id/comments/:ticket_comment_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "requests",
+                                        ":request_id",
+                                        "comments",
+                                        ":ticket_comment_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "request_id"
+                                        },
+                                        {
+                                          "key": "ticket_comment_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"comment\": {\n    \"value\": \"reference #/components/schemas/TicketCommentObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:13.000Z",
+                                  "updatedAt": "2026-06-05T15:23:13.000Z",
+                                  "uid": "35240-e73d3af7-8057-489f-8528-3deafe9c7a92"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:13.000Z",
+                              "updatedAt": "2026-06-05T15:23:13.000Z",
+                              "uid": "35240-ead97d72-c1ff-41c3-bc73-f5b54f8eea38"
+                            }
+                          ],
+                          "id": "d9e44c3d-bf99-4dcb-882a-501d73ad86b2",
+                          "createdAt": "2026-06-05T15:23:13.000Z",
+                          "updatedAt": "2026-06-05T15:23:13.000Z",
+                          "uid": "35240-d9e44c3d-bf99-4dcb-882a-501d73ad86b2"
+                        },
+                        {
+                          "name": "Zendesk Get  Api V2 Requests Request_id Comments",
+                          "id": "30aa18db-5ff4-4365-bc02-49ec07dd12fc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/requests/:request_id/comments?since=<string>&role=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "requests",
+                                ":request_id",
+                                "comments"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters the comments from the given datetime",
+                                  "key": "since",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One of \"agent\", \"end_user\". If not specified it does not filter",
+                                  "key": "role",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "16f38f37-9ee7-48ff-9685-c1d467f56722",
+                                  "key": "request_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Sorting\n\nBy default, comments are sorted by creation date in ascending order.\n\nWhen using cursor pagination, use the following parameter to change the sort order:\n\n| Name   | Type   | Required | Comments\n| ------ | ------ | -------- | --------\n| `sort` | string | no       | Possible values are \"created_at\" (ascending order) or \"-created_at\" (descending order)\n\nWhen using offset pagination, use the following parameters to change the sort order:\n\n| Name         | Type   | Required | Comments\n| ------------ | ------ | -------- | --------\n| `sort_by`    | string | no       | One of `created_at`, `updated_at`\n| `sort_order` | string | no       | One of `asc`, `desc`\n\n#### Allowed For\n\n* End Users\n"
+                          },
+                          "response": [
+                            {
+                              "id": "c47f040b-52a0-41f9-b370-d93749041b89",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/requests/:request_id/comments?since=<string>&role=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "requests",
+                                    ":request_id",
+                                    "comments"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filters the comments from the given datetime",
+                                      "key": "since",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "One of \"agent\", \"end_user\". If not specified it does not filter",
+                                      "key": "role",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "request_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"comments\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketCommentObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketCommentObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:23:13.000Z",
+                              "updatedAt": "2026-06-05T15:23:13.000Z",
+                              "uid": "35240-c47f040b-52a0-41f9-b370-d93749041b89"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:13.000Z",
+                          "updatedAt": "2026-06-05T15:23:13.000Z",
+                          "uid": "35240-30aa18db-5ff4-4365-bc02-49ec07dd12fc"
+                        }
+                      ],
+                      "id": "993af625-5131-49f4-8ab7-8ec9b90f25f6",
+                      "createdAt": "2026-06-05T15:23:13.000Z",
+                      "updatedAt": "2026-06-05T15:23:13.000Z",
+                      "uid": "35240-993af625-5131-49f4-8ab7-8ec9b90f25f6"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Requests Request_id",
+                      "id": "4be66b9c-b062-4644-89ac-31f5adc69cef",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/requests/:request_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "requests",
+                            ":request_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b9b36e89-f5aa-46dd-be2a-2e0f1770da5c",
+                              "key": "request_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| users            | The email ccs for a request by side-loading users\n\n#### Allowed For\n\n* End Users\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c319b07f-9f6a-4126-b1ca-8b612467c5a6",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/requests/:request_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "requests",
+                                ":request_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "request_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"request\": {\n    \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:13.000Z",
+                          "updatedAt": "2026-06-05T15:23:13.000Z",
+                          "uid": "35240-c319b07f-9f6a-4126-b1ca-8b612467c5a6"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:13.000Z",
+                      "updatedAt": "2026-06-05T15:23:13.000Z",
+                      "uid": "35240-4be66b9c-b062-4644-89ac-31f5adc69cef"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Requests Request_id",
+                      "id": "769280d6-0676-4ec7-b952-ef51533c3ef0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/requests/:request_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "requests",
+                            ":request_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "65447fd8-e0c9-4a1f-9318-ed2e7c1ea8c5",
+                              "key": "request_id"
+                            }
+                          ]
+                        },
+                        "description": "Updates a request with a comment or collaborators (cc's). The end user who created the request can also use it to mark the request as solved. The endpoint can't be used to update other request attributes.\n\n#### Writable properties\nThis endpoint can only update the following properties in the request.\n\n| Name                     | Type    | Required | Description                                          |\n| ------------------------ | ------- | -------- | ---------------------------------------------------- |\n| comment                  | object  | no       | Adds a comment to the request. See [Request comments](#request-comments) |\n| solved                   | boolean | no       | Marks the request as solved. Example: `{\"request\": {\"solved\": \"true\"}}`. End users can mark requests as solved only if the request's `can_be_solved_by_me` property is true. The property is true only when the ticket is assigned to an agent and the ticket type is not a problem but a question, task, or incident |\n| additional_collaborators | array   | no       | Adds collaborators to the request. An email notification is sent to them when the ticket is updated. See [Adding collaborators](/documentation/ticketing/managing-tickets/creating-and-managing-requests#adding-collaborators) |\n\n#### Allowed For\n\n* End users\n"
+                      },
+                      "response": [
+                        {
+                          "id": "17e14c9d-8e52-430c-9529-a2cf29b1ffd1",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/requests/:request_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "requests",
+                                ":request_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "request_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"request\": {\n    \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:13.000Z",
+                          "updatedAt": "2026-06-05T15:23:13.000Z",
+                          "uid": "35240-17e14c9d-8e52-430c-9529-a2cf29b1ffd1"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:13.000Z",
+                      "updatedAt": "2026-06-05T15:23:13.000Z",
+                      "uid": "35240-769280d6-0676-4ec7-b952-ef51533c3ef0"
+                    }
+                  ],
+                  "id": "b35d054a-da8c-4616-b459-b6e7ec04ec69",
+                  "createdAt": "2026-06-05T15:23:13.000Z",
+                  "updatedAt": "2026-06-05T15:23:13.000Z",
+                  "uid": "35240-b35d054a-da8c-4616-b459-b6e7ec04ec69"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Requests Search",
+                      "id": "c4695634-c6d8-4e72-a709-67e5d380bef8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/requests/search?query=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "requests",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "The syntax and matching logic for the string is detailed in the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226). See also [Query basics](/api-reference/ticketing/ticket-management/search/#query-basics) in the Tickets API doc.",
+                              "key": "query",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Examples:\n\n* `GET /api/v2/requests/search.json?query=printer`\n* `GET /api/v2/requests/search.json?query=printer&organization_id=1`\n* `GET /api/v2/requests/search.json?query=printer&cc_id=true`\n* `GET /api/v2/requests/search.json?query=printer&status=hold,open`\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Results limit\n\nThe Search Requests endpoint returns up to 1,000 results per query, with a maximum of 100 results per page. See [Pagination](/api-reference/ticketing/introduction/#pagination). If you request a page past the limit (`page=11` at 100 results per page), a 422 Insufficient Resource Error is returned.\n\n#### Allowed For\n\n* End Users\n"
+                      },
+                      "response": [
+                        {
+                          "id": "1abadc29-02a1-441f-9490-3fe37bdf1b56",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/requests/search?query=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "requests",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The syntax and matching logic for the string is detailed in the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226). See also [Query basics](/api-reference/ticketing/ticket-management/search/#query-basics) in the Tickets API doc.",
+                                  "key": "query",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"requests\": [\n    {\n      \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:13.000Z",
+                          "updatedAt": "2026-06-05T15:23:13.000Z",
+                          "uid": "35240-1abadc29-02a1-441f-9490-3fe37bdf1b56"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:13.000Z",
+                      "updatedAt": "2026-06-05T15:23:13.000Z",
+                      "uid": "35240-c4695634-c6d8-4e72-a709-67e5d380bef8"
+                    }
+                  ],
+                  "id": "93092943-4e43-442b-a0d3-3a81f95eedc4",
+                  "createdAt": "2026-06-05T15:23:13.000Z",
+                  "updatedAt": "2026-06-05T15:23:13.000Z",
+                  "uid": "35240-93092943-4e43-442b-a0d3-3a81f95eedc4"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Requests",
+                  "id": "e804ba76-490c-4f13-aafa-c3aec1ca42ef",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/requests?sort_by=<string>&sort_order=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "requests"
+                      ],
+                      "query": [
+                        {
+                          "description": "Possible values are \"updated_at\", \"created_at\"",
+                          "key": "sort_by",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One of \"asc\", \"desc\". Defaults to \"asc\"",
+                          "key": "sort_order",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "#### Allowed for\n\n* End Users\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+                  },
+                  "response": [
+                    {
+                      "id": "f42b8605-79cf-4644-a246-d05b9f64f7b9",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/requests?sort_by=<string>&sort_order=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "requests"
+                          ],
+                          "query": [
+                            {
+                              "description": "Possible values are \"updated_at\", \"created_at\"",
+                              "key": "sort_by",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "One of \"asc\", \"desc\". Defaults to \"asc\"",
+                              "key": "sort_order",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"requests\": [\n    {\n      \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:13.000Z",
+                      "updatedAt": "2026-06-05T15:23:13.000Z",
+                      "uid": "35240-f42b8605-79cf-4644-a246-d05b9f64f7b9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:13.000Z",
+                  "updatedAt": "2026-06-05T15:23:13.000Z",
+                  "uid": "35240-e804ba76-490c-4f13-aafa-c3aec1ca42ef"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Requests",
+                  "id": "9c703c33-44a4-46a6-9936-3af9928a1b31",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/requests",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "requests"
+                      ]
+                    },
+                    "description": "Accepts a `request` object that sets one or more properties.\n\n#### Allowed for\n\n* End users\n* Anonymous users (rate limit of 5 requests per hour for [trial accounts](/documentation/developer-tools/getting-started/getting-a-trial-or-sponsored-account-for-development/))\n\n#### Additional properties\n\nIn addition to the writable request properties in the [JSON Format table](#json-format) above, you can set the following properties when creating a request.\n\n| Name                | Type   | Mandatory | Comment\n| ----------------    | -------| --------- | -------\n| comment             | object | yes       | Describes the problem, incident, question, or task. See [Request comments](#request-comments)\n| collaborators       | array  | no        | Adds collaborators (cc's) to the request. An email notification is sent to them when the ticket is created. See [Setting collaborators](/documentation/ticketing/managing-tickets/creating-and-managing-requests#setting-collaborators)\n| requester           | object | yes*      | \\*Required for anonymous requests. Specifies the requester of the anonymous request. See [Creating anonymous requests](/documentation/ticketing/managing-tickets/creating-and-managing-requests#creating-anonymous-requests)\n\n#### Creating follow-up requests\n\nOnce a ticket is closed (as distinct from solved), it can't be reopened. However, you can create a new request that references the closed ticket. To create the follow-up request, include a `via_followup_source_id` property in the `request` object that specifies the closed ticket. The parameter only works with closed tickets. It has no effect with other tickets.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "890e1d37-f2b2-44c4-8e21-05e86c6fb851",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/requests",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "requests"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"request\": {\n    \"value\": \"reference #/components/schemas/RequestObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:13.000Z",
+                      "updatedAt": "2026-06-05T15:23:13.000Z",
+                      "uid": "35240-890e1d37-f2b2-44c4-8e21-05e86c6fb851"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:13.000Z",
+                  "updatedAt": "2026-06-05T15:23:13.000Z",
+                  "uid": "35240-9c703c33-44a4-46a6-9936-3af9928a1b31"
+                }
+              ],
+              "id": "ae6c6807-ef1e-455e-916e-379f62b539e0",
+              "createdAt": "2026-06-05T15:23:13.000Z",
+              "updatedAt": "2026-06-05T15:23:13.000Z",
+              "uid": "35240-ae6c6807-ef1e-455e-916e-379f62b539e0"
+            }
+          ],
+          "id": "1ee117e7-8c80-459c-8a21-8db5863082c0",
+          "createdAt": "2026-06-05T15:23:13.000Z",
+          "updatedAt": "2026-06-05T15:23:13.000Z",
+          "uid": "35240-1ee117e7-8c80-459c-8a21-8db5863082c0"
+        }
+      ],
+      "id": "6cca54df-e5b3-4d17-bcd5-30fd38fdac64",
+      "createdAt": "2026-06-05T15:23:13.000Z",
+      "updatedAt": "2026-06-05T15:23:13.000Z",
+      "uid": "35240-6cca54df-e5b3-4d17-bcd5-30fd38fdac64"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

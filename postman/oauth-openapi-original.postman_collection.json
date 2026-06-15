@@ -1,0 +1,1234 @@
+{
+  "info": {
+    "_postman_id": "35cb1c03-2a40-413a-b292-d1b6aeb54379",
+    "name": "Zendesk Oauth",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:55.000Z",
+    "updatedAt": "2026-06-05T15:22:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-35cb1c03-2a40-413a-b292-d1b6aeb54379"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "oauth",
+              "item": [
+                {
+                  "name": "clients",
+                  "item": [
+                    {
+                      "name": "{oauth_client_id}",
+                      "item": [
+                        {
+                          "name": "generate_secret",
+                          "item": [
+                            {
+                              "name": "Zendesk Put  Api V2 Oauth Clients Oauth_client_id Generate_secret",
+                              "id": "5bb10cd4-118e-407d-a773-03649c8af07a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/oauth/clients/:oauth_client_id/generate_secret",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "oauth",
+                                    "clients",
+                                    ":oauth_client_id",
+                                    "generate_secret"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f783347f-62d7-4ca1-908a-bddc4cad581b",
+                                      "key": "oauth_client_id"
+                                    }
+                                  ]
+                                },
+                                "description": "#### Allowed for\n * Admins\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "b4807075-91cd-44aa-b1d2-52e1bfb3765d",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/oauth/clients/:oauth_client_id/generate_secret",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "oauth",
+                                        "clients",
+                                        ":oauth_client_id",
+                                        "generate_secret"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "oauth_client_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"client\": {\n    \"value\": \"reference #/components/schemas/OAuthClientObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:22:55.000Z",
+                                  "updatedAt": "2026-06-05T15:22:55.000Z",
+                                  "uid": "35240-b4807075-91cd-44aa-b1d2-52e1bfb3765d"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:22:55.000Z",
+                              "updatedAt": "2026-06-05T15:22:55.000Z",
+                              "uid": "35240-5bb10cd4-118e-407d-a773-03649c8af07a"
+                            }
+                          ],
+                          "id": "577a4911-2f72-4ad6-9a46-3ec229f52abd",
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-577a4911-2f72-4ad6-9a46-3ec229f52abd"
+                        },
+                        {
+                          "name": "Zendesk Get  Api V2 Oauth Clients Oauth_client_id",
+                          "id": "9f9cea76-c597-435d-a8fe-261e5836fed1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/clients/:oauth_client_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "clients",
+                                ":oauth_client_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "faa788f6-9351-4692-8a9d-4e33734c6002",
+                                  "key": "oauth_client_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed for\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "e9e2508e-2625-424a-ac73-1d975ff5f348",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/oauth/clients/:oauth_client_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "oauth",
+                                    "clients",
+                                    ":oauth_client_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "oauth_client_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"client\": {\n    \"value\": \"reference #/components/schemas/OAuthClientObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:55.000Z",
+                              "updatedAt": "2026-06-05T15:22:55.000Z",
+                              "uid": "35240-e9e2508e-2625-424a-ac73-1d975ff5f348"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-9f9cea76-c597-435d-a8fe-261e5836fed1"
+                        },
+                        {
+                          "name": "Zendesk Put  Api V2 Oauth Clients Oauth_client_id",
+                          "id": "ebbf50b4-800c-4d67-a9a8-13692b249e5c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/clients/:oauth_client_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "clients",
+                                ":oauth_client_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "199b31e0-93ea-49df-b87f-8afc6c6e624f",
+                                  "key": "oauth_client_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed for\n * Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "c36ae6e3-12c4-4d22-ac2b-0a944b73fcad",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/oauth/clients/:oauth_client_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "oauth",
+                                    "clients",
+                                    ":oauth_client_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "oauth_client_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"client\": {\n    \"value\": \"reference #/components/schemas/OAuthClientObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:55.000Z",
+                              "updatedAt": "2026-06-05T15:22:55.000Z",
+                              "uid": "35240-c36ae6e3-12c4-4d22-ac2b-0a944b73fcad"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-ebbf50b4-800c-4d67-a9a8-13692b249e5c"
+                        },
+                        {
+                          "name": "Zendesk Delete  Api V2 Oauth Clients Oauth_client_id",
+                          "id": "755ff083-e568-42ae-a115-a638cbe8179d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/clients/:oauth_client_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "clients",
+                                ":oauth_client_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d768dfd3-3e4c-47cb-8d55-db4d92c554c3",
+                                  "key": "oauth_client_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed for\n * Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "54d3370d-7be9-41ad-8593-2812dabc17aa",
+                              "name": "No content response",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/oauth/clients/:oauth_client_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "oauth",
+                                    "clients",
+                                    ":oauth_client_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "oauth_client_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:22:55.000Z",
+                              "updatedAt": "2026-06-05T15:22:55.000Z",
+                              "uid": "35240-54d3370d-7be9-41ad-8593-2812dabc17aa"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-755ff083-e568-42ae-a115-a638cbe8179d"
+                        }
+                      ],
+                      "id": "d805e4bd-a89c-41cd-bb9d-c45914d18469",
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-d805e4bd-a89c-41cd-bb9d-c45914d18469"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Oauth Clients",
+                      "id": "da9a2ebc-1c66-4feb-8fbd-9c761c8182f1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/oauth/clients",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "oauth",
+                            "clients"
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "d11b3e9c-e6e6-4fb6-a62c-31510cde4cd7",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/clients",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "clients"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"clients\": [\n    {\n      \"value\": \"reference #/components/schemas/OAuthClientObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OAuthClientObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-d11b3e9c-e6e6-4fb6-a62c-31510cde4cd7"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-da9a2ebc-1c66-4feb-8fbd-9c761c8182f1"
+                    },
+                    {
+                      "name": "Zendesk Post  Api V2 Oauth Clients",
+                      "id": "599544f3-71a3-4515-949d-1f2083022859",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/oauth/clients",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "oauth",
+                            "clients"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "cd25a9f0-49a1-4fdd-bac0-a2e6b3371af0",
+                          "name": "Created response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/clients",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "clients"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"client\": {\n    \"value\": \"reference #/components/schemas/OAuthClientObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-cd25a9f0-49a1-4fdd-bac0-a2e6b3371af0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-599544f3-71a3-4515-949d-1f2083022859"
+                    }
+                  ],
+                  "id": "47778d26-9995-4a13-8622-4e8f46c7f5ab",
+                  "createdAt": "2026-06-05T15:22:55.000Z",
+                  "updatedAt": "2026-06-05T15:22:55.000Z",
+                  "uid": "35240-47778d26-9995-4a13-8622-4e8f46c7f5ab"
+                },
+                {
+                  "name": "global_clients",
+                  "item": [
+                    {
+                      "name": "{global_client_id}",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Oauth Global_clients Global_client_id",
+                          "id": "b4a8d1f6-aa8e-4e0b-bad5-fcc3b809dbac",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/global_clients/:global_client_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "global_clients",
+                                ":global_client_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0565812a-6363-4e73-82b0-0be8ba32006d",
+                                  "key": "global_client_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns the global OAuth client associated with the ID sent on the request.\n\n#### Allowed for\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "68c34bdf-d198-433e-b0c7-e098495c8db0",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/oauth/global_clients/:global_client_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "oauth",
+                                    "global_clients",
+                                    ":global_client_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "global_client_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"global_client\": {\n    \"value\": \"reference #/components/schemas/GlobalClientObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:55.000Z",
+                              "updatedAt": "2026-06-05T15:22:55.000Z",
+                              "uid": "35240-68c34bdf-d198-433e-b0c7-e098495c8db0"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-b4a8d1f6-aa8e-4e0b-bad5-fcc3b809dbac"
+                        }
+                      ],
+                      "id": "2659923c-7d4e-461f-9c45-2a5b5b8750e8",
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-2659923c-7d4e-461f-9c45-2a5b5b8750e8"
+                    },
+                    {
+                      "name": "token_summary",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Oauth Global_clients Token_summary",
+                          "id": "b33af3d9-4914-42e8-bce1-18d89f4d2c2a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/global_clients/token_summary",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "global_clients",
+                                "token_summary"
+                              ]
+                            },
+                            "description": "Returns information about tokens for the global clients that your account has authorized.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "bb0d4483-5dbb-453a-b72d-f46d892fa418",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/oauth/global_clients/token_summary",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "oauth",
+                                    "global_clients",
+                                    "token_summary"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"global_clients\": [\n    {\n      \"value\": \"reference #/components/schemas/GlobalClientTokenSummaryObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/GlobalClientTokenSummaryObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:22:55.000Z",
+                              "updatedAt": "2026-06-05T15:22:55.000Z",
+                              "uid": "35240-bb0d4483-5dbb-453a-b72d-f46d892fa418"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-b33af3d9-4914-42e8-bce1-18d89f4d2c2a"
+                        }
+                      ],
+                      "id": "242f817c-e67f-40d0-83f1-d572b7819a1b",
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-242f817c-e67f-40d0-83f1-d572b7819a1b"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Oauth Global_clients",
+                      "id": "afb01788-217e-4a2b-9753-51d15aba876f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/oauth/global_clients",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "oauth",
+                            "global_clients"
+                          ]
+                        },
+                        "description": "Returns all the global OAuth clients that users on your account have authorized.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "bf766bfd-ba7c-4b5e-89da-159a9a2fcfaa",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/global_clients",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "global_clients"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"global_clients\": [\n    {\n      \"value\": \"reference #/components/schemas/GlobalClientObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/GlobalClientObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-bf766bfd-ba7c-4b5e-89da-159a9a2fcfaa"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-afb01788-217e-4a2b-9753-51d15aba876f"
+                    }
+                  ],
+                  "id": "a8bd1924-7b9b-4415-a3d1-7df4c581b9d3",
+                  "createdAt": "2026-06-05T15:22:55.000Z",
+                  "updatedAt": "2026-06-05T15:22:55.000Z",
+                  "uid": "35240-a8bd1924-7b9b-4415-a3d1-7df4c581b9d3"
+                },
+                {
+                  "name": "tokens",
+                  "item": [
+                    {
+                      "name": "{oauth_token_id}",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Oauth Tokens Oauth_token_id",
+                          "id": "59ed4433-15a0-4a8d-918c-e653138ea2f3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/tokens/:oauth_token_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "tokens",
+                                ":oauth_token_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "49b8acae-9501-4b9a-8b54-ea79135f1af8",
+                                  "key": "oauth_token_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns the properties of the specified token. For security reasons, only the first 10 characters of the access token are included.\n\nIn the first endpoint, `id` is a token id, not the full token.\n\nIn the second endpoint, include an `Authorization: Bearer` header with the full token to get its associated properties. Example:\n\n```sh\ncurl https://{subdomain}.zendesk.com/api/v2/oauth/tokens/current.json \\\n  -H 'Authorization: Bearer ${authToken}' \\\n  -v -u {email_address}/token:{api_token}\n```\n\n#### Allowed for\n\n* Admins, Agents, End Users\n"
+                          },
+                          "response": [
+                            {
+                              "id": "55d50552-d9ea-4190-bc03-c6c6b11feb1d",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/oauth/tokens/:oauth_token_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "oauth",
+                                    "tokens",
+                                    ":oauth_token_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "oauth_token_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"token\": {\n    \"value\": \"reference #/components/schemas/OauthTokenObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:55.000Z",
+                              "updatedAt": "2026-06-05T15:22:55.000Z",
+                              "uid": "35240-55d50552-d9ea-4190-bc03-c6c6b11feb1d"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-59ed4433-15a0-4a8d-918c-e653138ea2f3"
+                        },
+                        {
+                          "name": "Zendesk Delete  Api V2 Oauth Tokens Oauth_token_id",
+                          "id": "e5103a3d-db49-4a8c-b278-1f827c52aa86",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/tokens/:oauth_token_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "tokens",
+                                ":oauth_token_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "de2750f0-a1f3-4ca3-89dd-60e38d8bf7ff",
+                                  "key": "oauth_token_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed for\n * Admins, Agents, End Users\n"
+                          },
+                          "response": [
+                            {
+                              "id": "54bc124c-1514-4cd5-aaf0-63bf52f58e14",
+                              "name": "No content response",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/oauth/tokens/:oauth_token_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "oauth",
+                                    "tokens",
+                                    ":oauth_token_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "oauth_token_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:22:55.000Z",
+                              "updatedAt": "2026-06-05T15:22:55.000Z",
+                              "uid": "35240-54bc124c-1514-4cd5-aaf0-63bf52f58e14"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-e5103a3d-db49-4a8c-b278-1f827c52aa86"
+                        }
+                      ],
+                      "id": "e40f35e1-50a1-4659-bdd2-bff4389be688",
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-e40f35e1-50a1-4659-bdd2-bff4389be688"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Oauth Tokens",
+                      "id": "ca025e18-7544-4d2f-bd99-8d368e4a3f48",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/oauth/tokens",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "oauth",
+                            "tokens"
+                          ]
+                        },
+                        "description": "Returns the properties of the tokens for the current user. Admins can view OAuth token properties for all users using the [all](/api-reference/ticketing/oauth/oauth_tokens/#parameters) parameter. The [client_id](/api-reference/ticketing/oauth/oauth_tokens/#parameters) parameter can be included to filter that list by a global or local OAuth client ID. For security reasons, only the first 10 characters of each access token are included.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b9114faa-f791-48f5-8299-b33a28023adf",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"tokens\": [\n    {\n      \"value\": \"reference #/components/schemas/OauthTokenObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OauthTokenObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-b9114faa-f791-48f5-8299-b33a28023adf"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-ca025e18-7544-4d2f-bd99-8d368e4a3f48"
+                    },
+                    {
+                      "name": "Zendesk Post  Api V2 Oauth Tokens",
+                      "id": "9b5f2c01-e93b-4e56-8016-e9397e09b698",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/oauth/tokens",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "oauth",
+                            "tokens"
+                          ]
+                        },
+                        "description": "Returns an OAuth access token with a specified [scope](#scopes).\n\nRefresh tokens aren't used. An access token doesn't expire but it can be [revoked](#revoke-token).\n\nFor a tutorial, see [Creating and using OAuth tokens with the API](/documentation/ticketing/working-with-oauth/creating-and-using-oauth-tokens-with-the-api/).\n\n**Note**: For OAuth authorization code, use the [Create Token for Grant Type](/api-reference/ticketing/oauth/grant_type_tokens/#create-token-for-grant-type) endpoint.\nThe two APIs don't share the same path, JSON format, or request parameters. However, both APIs return access tokens that can be used to [authenticate API requests](/api-reference/ticketing/introduction/#oauth-access-token).\n\n#### Allowed For\n\n* Admins\n\n#### Request parameters\n\nThe POST request takes a \"token\" object that contains an OAuth client's resource id and scopes.\n\n| Name      | Type    | Description\n| --------- | ------- | --------------------------------------------------\n| client_id | integer | The resource `id` of an [OAuth client](/api-reference/ticketing/oauth/oauth_clients/#json-format) (not the client's unique identifier). For the ids, see [List Clients](/api-reference/ticketing/oauth/oauth_clients/#list-clients)\n| scopes    | array   | Valid scopes for the token. See [Scopes](#scopes) below\n\n#### Scopes\n\nThe **scopes** parameter defines whether requests authenticated with the token can\npost, put, and delete data, or only get data.\n\n**Note**: Don't confuse the **scopes** parameter (plural) with the **scope** parameter (singular)\nfor [grant-type tokens](/api-reference/ticketing/oauth/grant_type_tokens/).\n\nThe **scopes** parameter is an array of strings, each specifying a resource name and\nan access setting. Access is either \"read\" or \"write\". If you don't specify a resource,\naccess to all resources is assumed. If you don't specify the access, read and write\naccess are assumed.\n\nThe syntax is as follows:\n\n`\"scopes\": [resource:scope, ...]`\n\nwhere `resource` is optional.\n\n**Examples**\n\n`\"scopes\": [\"read\"]`\n\n`\"scopes\": [\"tickets:read\"]`\n\nTo give read and write access to a resource, specify both scopes:\n\n`\"scopes\": [\"users:read\", \"users:write\"]`\n\nTo give write access only to one resource and read access to everything\nelse:\n\n`\"scopes\": [\"organizations:write\", \"read\"]`\n\n**Note**: The endpoint returns an access token even if you specify an\ninvalid scope. Any request you make with the token will return\na \"Forbidden\" error.\n\n**Available scopes**\n\n* `read` - gives access to GET endpoints. Includes\npermission to sideload related resources\n* `write` - gives access to POST, PUT, and DELETE endpoints\n* `impersonate` - allows Zendesk Support admins to make requests on behalf of\nend users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/)\n\n**Resources that can be scoped**\n\n* tickets\n* users\n* auditlogs (read only)\n* organizations\n* hc\n* apps\n* triggers\n* automations\n* targets\n* webhooks\n* macros\n* requests\n* satisfaction_ratings\n* dynamic_content\n* any_channel (write only)\n* web_widget (write only)\n"
+                      },
+                      "response": [
+                        {
+                          "id": "269ebd86-45bc-42aa-8e84-55bd98e5e4c7",
+                          "name": "Created response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/oauth/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "oauth",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"token\": {\n    \"value\": \"reference #/components/schemas/OauthTokenObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:55.000Z",
+                          "updatedAt": "2026-06-05T15:22:55.000Z",
+                          "uid": "35240-269ebd86-45bc-42aa-8e84-55bd98e5e4c7"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:55.000Z",
+                      "updatedAt": "2026-06-05T15:22:55.000Z",
+                      "uid": "35240-9b5f2c01-e93b-4e56-8016-e9397e09b698"
+                    }
+                  ],
+                  "id": "a3f51792-0dbe-47f6-8354-16f277e1e83a",
+                  "createdAt": "2026-06-05T15:22:55.000Z",
+                  "updatedAt": "2026-06-05T15:22:55.000Z",
+                  "uid": "35240-a3f51792-0dbe-47f6-8354-16f277e1e83a"
+                }
+              ],
+              "id": "7ecd3aec-7757-428b-9bf1-b19d255323d2",
+              "createdAt": "2026-06-05T15:22:55.000Z",
+              "updatedAt": "2026-06-05T15:22:55.000Z",
+              "uid": "35240-7ecd3aec-7757-428b-9bf1-b19d255323d2"
+            }
+          ],
+          "id": "780b0300-8f64-46c2-b5fc-e296d929b188",
+          "createdAt": "2026-06-05T15:22:55.000Z",
+          "updatedAt": "2026-06-05T15:22:55.000Z",
+          "uid": "35240-780b0300-8f64-46c2-b5fc-e296d929b188"
+        }
+      ],
+      "id": "bc78b367-b3c8-4465-bc7a-d8a42bb9c95c",
+      "createdAt": "2026-06-05T15:22:55.000Z",
+      "updatedAt": "2026-06-05T15:22:55.000Z",
+      "uid": "35240-bc78b367-b3c8-4465-bc7a-d8a42bb9c95c"
+    },
+    {
+      "name": "oauth",
+      "item": [
+        {
+          "name": "tokens",
+          "item": [
+            {
+              "name": "Zendesk Post  Oauth Tokens",
+              "id": "b62f20d6-abb8-4b85-bf92-ba75c9202f33",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/oauth/tokens",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth",
+                    "tokens"
+                  ]
+                },
+                "description": "Returns an OAuth access token in exchange for an [authorization code](https://support.zendesk.com/hc/en-us/articles/203663836#topic_pvr_ncl_1l) valid for 120 seconds.\n\nUsing a Zendesk username and password to gain an OAuth access token (password grant type flow) has been deprecated and is highly discouraged.\n\nAn access token can be revoked. Use the [OAuth Tokens API](/api-reference/ticketing/oauth/oauth_tokens) to list, show, or revoke tokens.\n\n#### Request parameters\n\nThe POST request takes the following parameters, which must be formatted as JSON:\n\n| Name          | Description\n| ------------- | --------------------------------------------------\n| grant_type    | \"authorization_code\", \"refresh_token\", or \"client_credentials\"\n| code          | Authorization grant flow only. The authorization code you received from Zendesk after the user granted access. See [Handle the user's authorization decision](https://support.zendesk.com/hc/en-us/articles/203663836#topic_tfc_cdl_1l) in Help Center\n| client_id     | The **Unique Identifier** specified in an OAuth client in the Support admin interface (**Apps and integrations** > **APIs** > **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/203663836#topic_s21_lfs_qk)\n| client_secret | The **Secret** specified in an OAuth client in the Support admin interface (**Apps and integrations** > **APIs** > **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/203663836#topic_s21_lfs_qk)\n| redirect_uri  | Authorization grant flow only. The redirect URL you specified when you sent the user to the Zendesk authorization page. For ID purposes only. See [Send the user to the Zendesk authorization page](https://support.zendesk.com/hc/en-us/articles/203663836#topic_qk3_d3s_qk)\n| scope         | Valid scope for this token. A string of space-separated values. See [Scope](#scope) below\n| expires_in    | Number of seconds the access token is valid. Must be more than 300 seconds (5 minutes) and less than 172,800 seconds (2 days), or less than `refresh_token_expires_in`, whichever is the smallest. Defaults to null\n| refresh_token_expires_in | Number of seconds the refresh token is valid. Must be more than 604,800 seconds (7 days) or `expires_in` (if given), and less than 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)\n| refresh_token | The refresh token\n\n**Example Node.js authorization code grant flow**\n\n```javascript\nconst tokenResponse = await axios.post(\n  `https://${ZENDESK_SUBDOMAIN}.zendesk.com/oauth/tokens`,\n  {\n    grant_type: \"authorization_code\",\n    code: req.query.code,\n    client_id: ZENDESK_CLIENT_ID,\n    redirect_uri: REDIRECT_URI_PKCE,\n    scope: \"read write\",\n    code_verifier: CODE_VERIFIER,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \"Content-Type\": \"application/json\" } }\n);\n```\n\n**Example Node.js refresh token grant flow**\n\n```javascript\nconst tokenResponse = await axios.post(\n  `https://${ZENDESK_SUBDOMAIN}.zendesk.com/oauth/tokens`,\n  {\n    grant_type: \"refresh_token\",\n    refresh_token: refresh_token,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scopes: \"tickets:write\",\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \"Content-Type\": \"application/json\" } }\n);\n```\n\n#### Scope\n\nYou must specify a scope to control the app's access to Zendesk resources. The \"read\" scope gives access to GET endpoints. It includes permission to sideload related resources. The \"write\" scope gives access to POST, PUT, and DELETE endpoints for creating, updating, and deleting resources.\n\n**Note**: Don't confuse the **scope** parameter (singular) with the **scopes** parameter (plural) for non-grant-type tokens described in [OAuth Tokens](/api-reference/ticketing/oauth/oauth_tokens).\n\nThe \"impersonate\" scope allows a Zendesk admin to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/).\n\nFor example, the following parameter gives read access to all resources:\n\n`\"scope\": \"read\"`\n\nThe following parameter gives read and write access to all resources:\n\n`\"scope\": \"read write\"`\n\nYou can fine-tune the scope of the following resources:\n\n- [tickets](/api-reference/ticketing/tickets/tickets/)\n- [users](/api-reference/ticketing/users/users/)\n- [audit logs (read only)](/api-reference/ticketing/account-configuration/audit_logs/)\n- [organizations](/api-reference/ticketing/organizations/organizations/)\n- [help center resources](/api-reference/help_center/help-center-api/introduction/)\n- [apps](/api-reference/apps/introduction/)\n- [triggers](/api-reference/ticketing/business-rules/triggers/)\n- [automations](/api-reference/ticketing/business-rules/automations/)\n- [targets](/api-reference/ticketing/targets/targets/)\n- [webhooks](/api-reference/webhooks/introduction/)\n\nThe syntax is as follows:\n\n`\"scope\": \"resource:scope\"`\n\nFor example, the following parameter restricts the scope to only reading tickets:\n\n`\"scope\": \"tickets:read\"`\n\nTo give read and write access to a resource, specify both scopes:\n\n`\"scope\": \"users:read users:write\"`\n\nTo give write access only to one resource, such as organizations, and read access to everything else:\n\n`\"scope\": \"organizations:write read\"`\n\n**Note**: The endpoint returns an access token even if you specify an invalid scope such as `\"scope\": [\"read\", \"write\"]` (no parentheses). Any request you make with the token will return a \"Forbidden\" error.\n\n#### Tokens for Implicit Grant Type\n\nThe implicit grant flow has been deprecated. It's considered insecure and its use is highly discouraged.\n"
+              },
+              "response": [
+                {
+                  "id": "2997a5a6-60db-4c20-ba53-bf583c09fa92",
+                  "name": "Created response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/tokens",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "tokens"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": \"reference #/components/schemas/OAuthTokenForGrantTypesObject not found in the OpenAPI spec\"\n}",
+                  "createdAt": "2026-06-05T15:22:55.000Z",
+                  "updatedAt": "2026-06-05T15:22:55.000Z",
+                  "uid": "35240-2997a5a6-60db-4c20-ba53-bf583c09fa92"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:55.000Z",
+              "updatedAt": "2026-06-05T15:22:55.000Z",
+              "uid": "35240-b62f20d6-abb8-4b85-bf92-ba75c9202f33"
+            }
+          ],
+          "id": "7a4cca55-1187-42e8-9ff1-f2fcdc9afe11",
+          "createdAt": "2026-06-05T15:22:55.000Z",
+          "updatedAt": "2026-06-05T15:22:55.000Z",
+          "uid": "35240-7a4cca55-1187-42e8-9ff1-f2fcdc9afe11"
+        }
+      ],
+      "id": "7a999586-1616-40d3-a9bd-ee3c65710a25",
+      "createdAt": "2026-06-05T15:22:55.000Z",
+      "updatedAt": "2026-06-05T15:22:55.000Z",
+      "uid": "35240-7a999586-1616-40d3-a9bd-ee3c65710a25"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

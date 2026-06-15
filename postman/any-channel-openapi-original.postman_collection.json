@@ -1,0 +1,307 @@
+{
+  "info": {
+    "_postman_id": "314e869e-a28f-4523-b0a7-9ac6150e079b",
+    "name": "Zendesk Any Channel",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:47.000Z",
+    "updatedAt": "2026-06-05T15:21:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-314e869e-a28f-4523-b0a7-9ac6150e079b"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "any_channel",
+              "item": [
+                {
+                  "name": "channelback",
+                  "item": [
+                    {
+                      "name": "report_error",
+                      "item": [
+                        {
+                          "name": "Zendesk Post  Api V2 Any_channel Channelback Report_error",
+                          "id": "099b36d2-d29c-41fe-8b23-0cf9b7b33e34",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/any_channel/channelback/report_error",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "any_channel",
+                                "channelback",
+                                "report_error"
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n* Admins\n\n#### Request parameters\n\nThe POST request takes a JSON object parameter which contains information about the\nproblematic [channelback](/documentation/channel_framework/understanding-the-channel-framework/channelback/).\n\n| Name               | Type      | Required  | Comments\n| ------------------ | ----------| --------- | -------------------\n| instance_push_id   | string    | yes       | The ID of the account to which data will be pushed.  This was passed to the integration service when the administrator set up the account\n| external_id        | string    | yes       | Unique identifier of the external resource from the original channelback (string)\n| description        | string    | no        | A human readable description of the error\n| request_id         | string    | no        | A unique identifier for the request\n\n\n#### Response format\n\nThe response does not include a response body\n"
+                          },
+                          "response": [
+                            {
+                              "id": "9f75a733-3e0f-4ade-96b8-c3a4cfc4ee70",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/any_channel/channelback/report_error",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "any_channel",
+                                    "channelback",
+                                    "report_error"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-06-05T15:21:47.000Z",
+                              "updatedAt": "2026-06-05T15:21:47.000Z",
+                              "uid": "35240-9f75a733-3e0f-4ade-96b8-c3a4cfc4ee70"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:21:47.000Z",
+                          "updatedAt": "2026-06-05T15:21:47.000Z",
+                          "uid": "35240-099b36d2-d29c-41fe-8b23-0cf9b7b33e34"
+                        }
+                      ],
+                      "id": "5e764cf1-916d-4a9c-b255-e7dc6af74cda",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-5e764cf1-916d-4a9c-b255-e7dc6af74cda"
+                    }
+                  ],
+                  "id": "706952a7-ba5a-4d22-ad71-1f770946e0f0",
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-706952a7-ba5a-4d22-ad71-1f770946e0f0"
+                },
+                {
+                  "name": "push",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Any_channel Push",
+                      "id": "14aba056-10b6-4927-9b7b-2d6589604d6b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/any_channel/push",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "any_channel",
+                            "push"
+                          ]
+                        },
+                        "description": "Pushes Channel framework content to Zendesk.\n\n#### Allowed For\n\n* Admins\n\n#### Request parameters\n\nThe POST request takes a JSON object parameter which contains data about all\nthe resources that the client is pushing.\n\n| Name               | Type      | Required  | Comments\n| ------------------ | ----------| --------- | -------------------\n| instance_push_id   | string    | yes       | The account ID where data will be pushed. This was passed to the integration service when the administrator set up the account\n| request_id         | string    | no        | A unique identifier for the push request\n| external_resources | array     | yes       | The [resources](#external_resource-object) to push\n\n#### external_resource object\n\n| Name               | Type                               | Max length | Mandatory | Comments\n|------------------- | ---------------------------------- |------------| --------- | ----------\n| external_id        | string                             | 255        | yes       | Unique identifier of the external resource. Must be ASCII characters\n| internal_note      | boolean                            |            | no        | If true creates a new internal note comment\n| message            | string                             | 65535      | yes       | Text to be converted to a ticket or comment\n| html_message       | string                             | 65535      | no        | HTML version of message\n| parent_id          | string                             | 511        | no        | Unique identifier of the external resource for which this is a response. Used to choose the correct thread. Responses may include `parent_id` or `thread_id`, but not both. See [Conversation threads](/documentation/channel_framework/understanding-the-channel-framework/pull_endpoint/#conversation-threads)\n| thread_id          | string                             | 255        | no        | Arbitrary identifier of the thread to which this item should belong. Responses may include `parent_id` or `thread_id`, but not both. See [Conversation threads](/documentation/channel_framework/understanding-the-channel-framework/pull_endpoint/#conversation-threads)\n| created_at         | string                             |            | yes       | When the resource was created in the origin system, as an ISO 8601 extended format date-time. Example: '2015-09-08T22:48:09Z'\n| author             | object                             |            | yes       | See [author object](#author-object) below\n| display_info       | array                              |            | no        | Array of integration-specific data used by apps to modify the agent UI. See [display_info object](#display_info-object) below\n| allow_channelback  | boolean                            |            | no        | If false, prevents the agent from making additional comments on the message in the Zendesk interface\n| fields             | array                              |            | no        | Array of ticket fields to set in Zendesk and their values. See [fields array](#fields-array)\n| file_urls          | array                              | 10         | no        | Array of files to be imported into Zendesk. See [file urls](/documentation/channel_framework/understanding-the-channel-framework/pull_endpoint/#file-urls) in the Channel framework docs\n\n#### author object\n\n| Name        | Type   | Max chars | Mandatory | Comments\n|------------ | ------ |---------- |---------- |-----------\n| external_id | string | 255       | yes       | Unique identifier of the user in the origin service\n| name        | string | 255       | no        | If not supplied, defaults to external id\n| image_url   | string | 255       | no        | URL to an image for the user\n| locale      | String | 255       | no        | The user's locale. Must be one of the supported [locales](/api-reference/ticketing/account-configuration/locales/#list-available-public-locales) in Zendesk\n| fields      | array  |           | no        | Array of items containing user field identifier ('id') and value of field ('value'.)  For system fields ('notes' or 'details'), the identifier is the English name. For custom fields, the identifier may be the ID or the name\n\n#### display_info object\n\n| Name | Type   | Max chars | Mandatory | Comments\n|----- | ------ |---------- |---------- |-----------\n| type | string | 255       | yes       | Globally unique type identifier defined by the integration origin service. Examples: a GUID or URI\n| data | string | 65535     | yes       | JSON data containing display hints\n\n#### fields array\n\nThe `fields` array lists ticket fields to set in Zendesk and their values. Each item consists of a field identifier (`id`) and a value (`value`) for the field. For Zendesk system fields such as `subject`, the identifier is the English name. For custom fields, the identifier may be a field ID or a name. See [Ticket Fields](/api-reference/ticketing/tickets/ticket_fields/).\n\nThe `fields` array can only set ticket values on ticket creation, not on ticket updates.\n\n#### Response format\n\nThe response is a JSON object containing a single key:\n\n| Name      | Type     | Comments\n| --------- | -------- | -------------------\n| results   | array    | An array of [result objects](#result-object)\n\nThe `results` array contains an entry for each item in the incoming `external_resources` array, in the\nsame order.  For example, if you call `push` with 3 external resources, a successful response will include\n`results` with three entries, corresponding to your 3 resources.\n\n#### result object\n\n| Name                 | Type                           | Comments\n| -------------------- | ------------------------------ | -------------------\n| external_resource_id | string                         | The external ID of the resource, as passed in\n| status               | object                         | The status of the import for the indicated resource. See [status object](#status-object)\n\n#### status object\n\n| Name        | Type   | Comments\n| ----------- | ------ | -------------------\n| code        | string | A code indicating the status of the import of the resource, as described in [status codes](#status-codes)\n| description | string | In the case of an exception, a description of the exception. Otherwise, not present.\n\n#### status codes\n\n| Key                                       | Description\n| ----------------------------------------- | ----------------\n| success                                   | The external resource was successfully converted to a ticket or comment\n| already_imported                          | Reimport of the external resource was skipped due to a pre-existing ticket or comment for the resource\n| could_not_locate_parent_external_resource | The parent resource, as identified by parent_id in the [request](#request-parameters), could not be found. The unrecognized parent ID is returned in the description of the [status](#status-object)\n| processing_error                          | An internal exception occurred while processing the resource. See `description` in the [status object](#status-object)\n| halted                                    | This resource was not processed because processing of previous resources failed\n"
+                      },
+                      "response": [
+                        {
+                          "id": "a3f8b486-4903-4bbf-b9fa-75b93182b6eb",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/any_channel/push",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "any_channel",
+                                "push"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"results\": [\n    {\n      \"value\": \"reference #/components/schemas/ChannelFrameworkResultObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ChannelFrameworkResultObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:21:47.000Z",
+                          "updatedAt": "2026-06-05T15:21:47.000Z",
+                          "uid": "35240-a3f8b486-4903-4bbf-b9fa-75b93182b6eb"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-14aba056-10b6-4927-9b7b-2d6589604d6b"
+                    }
+                  ],
+                  "id": "f074bd0b-a8aa-4367-aea9-aa6ac79d1c34",
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-f074bd0b-a8aa-4367-aea9-aa6ac79d1c34"
+                },
+                {
+                  "name": "validate_token",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Any_channel Validate_token",
+                      "id": "cafacbb3-4551-4910-9fb8-b85605c6f6ca",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/any_channel/validate_token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "any_channel",
+                            "validate_token"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n\n#### Request parameters\n\nThe POST request takes a JSON object parameter which contains the token to be validated.\n\n| Name               | Type      | Required  | Comments\n| ------------------ | ----------| --------- | -------------------\n| instance_push_id   | string    | yes       | The ID of the account to which data will be pushed. This was passed to the integration service when the administrator set up the account\n| request_id         | string    | no        | A unique identifier for the push request\n\n#### Response format\n\nThe response body is empty.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "96f4f60a-4c2e-4b5b-99f2-686700002208",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/any_channel/validate_token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "any_channel",
+                                "validate_token"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-06-05T15:21:47.000Z",
+                          "updatedAt": "2026-06-05T15:21:47.000Z",
+                          "uid": "35240-96f4f60a-4c2e-4b5b-99f2-686700002208"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-cafacbb3-4551-4910-9fb8-b85605c6f6ca"
+                    }
+                  ],
+                  "id": "e2c80880-a3e8-4b82-b9a8-903ccf2165ea",
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-e2c80880-a3e8-4b82-b9a8-903ccf2165ea"
+                }
+              ],
+              "id": "1324310b-a741-4682-8c34-5b17a3ddd214",
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-1324310b-a741-4682-8c34-5b17a3ddd214"
+            }
+          ],
+          "id": "60ab7bc5-1d37-4869-8e7b-f9946ea974b7",
+          "createdAt": "2026-06-05T15:21:47.000Z",
+          "updatedAt": "2026-06-05T15:21:47.000Z",
+          "uid": "35240-60ab7bc5-1d37-4869-8e7b-f9946ea974b7"
+        }
+      ],
+      "id": "2f10a68c-b5b6-410b-8872-0a733056f0fd",
+      "createdAt": "2026-06-05T15:21:47.000Z",
+      "updatedAt": "2026-06-05T15:21:47.000Z",
+      "uid": "35240-2f10a68c-b5b6-410b-8872-0a733056f0fd"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

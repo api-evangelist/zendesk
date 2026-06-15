@@ -1,0 +1,2173 @@
+{
+  "info": {
+    "_postman_id": "0d2a0625-36d2-4057-b21b-bac179825441",
+    "name": "Zendesk Routing",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:15.000Z",
+    "updatedAt": "2026-06-05T15:23:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0d2a0625-36d2-4057-b21b-bac179825441"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "incremental",
+              "item": [
+                {
+                  "name": "routing",
+                  "item": [
+                    {
+                      "name": "attribute_values",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Routing Attribute_values",
+                          "id": "8fd781b6-a831-4951-a0a6-d84aad3a9d54",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/routing/attribute_values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "routing",
+                                "attribute_values"
+                              ]
+                            },
+                            "description": "Returns a stream of changes that occurred on routing attribute values.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "66316166-0cc3-494e-9ed6-996daf17e914",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/routing/attribute_values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    "routing",
+                                    "attribute_values"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"attributes\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"instance_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-66316166-0cc3-494e-9ed6-996daf17e914"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-8fd781b6-a831-4951-a0a6-d84aad3a9d54"
+                        }
+                      ],
+                      "id": "5820acff-2ce2-43f8-9ada-38c80302a0c3",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-5820acff-2ce2-43f8-9ada-38c80302a0c3"
+                    },
+                    {
+                      "name": "attributes",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Routing Attributes",
+                          "id": "7694864a-be65-4404-b615-2e850d02f229",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/routing/attributes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "routing",
+                                "attributes"
+                              ]
+                            },
+                            "description": "Returns a stream of changes that occurred on routing attributes.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "cd7acabd-3392-40f9-b5a1-e0117bad846a",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/routing/attributes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    "routing",
+                                    "attributes"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"attributes\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"instance_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-cd7acabd-3392-40f9-b5a1-e0117bad846a"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-7694864a-be65-4404-b615-2e850d02f229"
+                        }
+                      ],
+                      "id": "607cc1a4-f1b8-46b3-b221-8581dca03608",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-607cc1a4-f1b8-46b3-b221-8581dca03608"
+                    },
+                    {
+                      "name": "instance_values",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Routing Instance_values",
+                          "id": "9425da17-3a30-4b8d-91b9-ece56115383e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/routing/instance_values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "routing",
+                                "instance_values"
+                              ]
+                            },
+                            "description": "Returns a stream of changes that occurred on routing instance values. Changes are grouped by `attribute_value_id`,\nwith associate type events listed alongside unassociate type events based on the unassociate event\u2019s timestamp.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "03774967-4985-4b5b-847e-26dbf95725b1",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/routing/instance_values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    "routing",
+                                    "instance_values"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"attributes\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"instance_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-03774967-4985-4b5b-847e-26dbf95725b1"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-9425da17-3a30-4b8d-91b9-ece56115383e"
+                        }
+                      ],
+                      "id": "f1c3cc4a-4048-409d-9f6b-8ceca566e9d8",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-f1c3cc4a-4048-409d-9f6b-8ceca566e9d8"
+                    }
+                  ],
+                  "id": "e3f89bf8-5f8e-474a-8dee-10c38126975f",
+                  "createdAt": "2026-06-05T15:23:15.000Z",
+                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                  "uid": "35240-e3f89bf8-5f8e-474a-8dee-10c38126975f"
+                }
+              ],
+              "id": "7b368a92-40c1-41b7-8b55-7999c33e4a83",
+              "createdAt": "2026-06-05T15:23:15.000Z",
+              "updatedAt": "2026-06-05T15:23:15.000Z",
+              "uid": "35240-7b368a92-40c1-41b7-8b55-7999c33e4a83"
+            },
+            {
+              "name": "routing",
+              "item": [
+                {
+                  "name": "agents",
+                  "item": [
+                    {
+                      "name": "{user_id}",
+                      "item": [
+                        {
+                          "name": "instance_values",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Routing Agents User_id Instance_values",
+                              "id": "e082a145-d873-48fc-a9c7-1dc99ea4c206",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/agents/:user_id/instance_values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "agents",
+                                    ":user_id",
+                                    "instance_values"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "adb5c73b-a818-4575-bc77-942e8f6e87a7",
+                                      "key": "user_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns an attribute value.\n\n#### Allowed For\n\n* Agents and admins\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "b8258e9e-2332-4b53-81ae-b1ceafc3c650",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/agents/:user_id/instance_values",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "agents",
+                                        ":user_id",
+                                        "instance_values"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "user_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-b8258e9e-2332-4b53-81ae-b1ceafc3c650"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-e082a145-d873-48fc-a9c7-1dc99ea4c206"
+                            },
+                            {
+                              "name": "Zendesk Post  Api V2 Routing Agents User_id Instance_values",
+                              "id": "a66a348a-5730-4678-82a4-b8c683a97baa",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/agents/:user_id/instance_values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "agents",
+                                    ":user_id",
+                                    "instance_values"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "5d83a3b8-9bb5-4166-b7c0-e2e59cf80659",
+                                      "key": "user_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.\n\n#### Allowed For\n\n* Admins\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "33683ac2-9fa2-4f31-a0e9-c24a0359cbcb",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/agents/:user_id/instance_values",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "agents",
+                                        ":user_id",
+                                        "instance_values"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "user_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-33683ac2-9fa2-4f31-a0e9-c24a0359cbcb"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-a66a348a-5730-4678-82a4-b8c683a97baa"
+                            }
+                          ],
+                          "id": "168703bb-ef0c-45e4-89a6-3feff1d85a10",
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-168703bb-ef0c-45e4-89a6-3feff1d85a10"
+                        }
+                      ],
+                      "id": "617869fa-8c9d-4786-9a22-3934d9e4d90a",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-617869fa-8c9d-4786-9a22-3934d9e4d90a"
+                    },
+                    {
+                      "name": "instance_values",
+                      "item": [
+                        {
+                          "name": "job",
+                          "item": [
+                            {
+                              "name": "Zendesk Post  Api V2 Routing Agents Instance_values Job",
+                              "id": "1a78217b-ebcf-4583-9acc-311870de88bb",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"reference #/components/schemas/BulkSkillBasedRoutingAttributeValuesRequest not found in the OpenAPI spec\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/agents/instance_values/job",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "agents",
+                                    "instance_values",
+                                    "job"
+                                  ]
+                                },
+                                "description": "Adds, replaces or removes multiple attributes for up to 100 agents.\n\n#### Allowed For\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882-Creating-custom-roles-and-assigning-agents)\n\n#### Available Parameters\n\nThe request takes a data object with the following properties:\n| Name       | Type   | Required | Description                                                                                       |\n| ---------- | ------ | -------- | ------------------------------------------------------------------------------------------------- |\n| action     | string | true     | The action to perform on the attribute values. One of the following: \"upsert\", \"update\", \"delete\" |\n| attributes | object | true     | The attribute values to update. See [Attribute Values](#attribute-values)                         |\n| items      | array  | true     | The list of agent ids                                                                             |\n\nAction can be one of the following:\n  * upsert: Adds new attribute values to the agents\n  * update: Replaces all the current attribute values of the agents with the new values\n  * delete: Removes specified attribute values from the agents\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion.\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "a96cf365-a7d4-430e-80c0-1f1533da3155",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"value\": \"reference #/components/schemas/BulkSkillBasedRoutingAttributeValuesRequest not found in the OpenAPI spec\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/agents/instance_values/job",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "agents",
+                                        "instance_values",
+                                        "job"
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-a96cf365-a7d4-430e-80c0-1f1533da3155"
+                                },
+                                {
+                                  "id": "d38385e9-4d49-4511-95f7-82b8ba297b38",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"value\": \"reference #/components/schemas/BulkSkillBasedRoutingAttributeValuesRequest not found in the OpenAPI spec\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/agents/instance_values/job",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "agents",
+                                        "instance_values",
+                                        "job"
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValuesError not found in the OpenAPI spec\"\n}",
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-d38385e9-4d49-4511-95f7-82b8ba297b38"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-1a78217b-ebcf-4583-9acc-311870de88bb"
+                            }
+                          ],
+                          "id": "2359e768-7f5d-411b-af03-17bd797ca6c0",
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-2359e768-7f5d-411b-af03-17bd797ca6c0"
+                        },
+                        {
+                          "name": "Zendesk Get  Api V2 Routing Agents Instance_values",
+                          "id": "b746f658-cd71-440f-8f75-62d3dec8f086",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/routing/agents/instance_values?filter[agent_ids]=<string>&page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "routing",
+                                "agents",
+                                "instance_values"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) A comma-separated list of agent ids",
+                                  "key": "filter[agent_ids]",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request.\n",
+                                  "key": "page[before]",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request.\n",
+                                  "key": "page[after]",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The number of items to return per page",
+                                  "key": "page[size]",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            },
+                            "description": "Accepts a comma-separated list of up to 100 agent ids and returns attribute values for each agent in the list.\n\n#### Allowed For\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882-Creating-custom-roles-and-assigning-agents)\n\n#### Pagination\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\nNote: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                          },
+                          "response": [
+                            {
+                              "id": "c3076644-fce3-488a-aaa7-d2a5249e51f3",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/agents/instance_values?filter[agent_ids]=<string>&page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "agents",
+                                    "instance_values"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) A comma-separated list of agent ids",
+                                      "key": "filter[agent_ids]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request.\n",
+                                      "key": "page[before]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request.\n",
+                                      "key": "page[after]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The number of items to return per page",
+                                      "key": "page[size]",
+                                      "value": "<integer>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"instance_values\": [\n    {\n      \"value\": \"reference #/components/schemas/ManySkillBasedRoutingAttributeValues not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ManySkillBasedRoutingAttributeValues not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-c3076644-fce3-488a-aaa7-d2a5249e51f3"
+                            },
+                            {
+                              "id": "4e13a5c0-2e08-4083-ad84-50995a488441",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/agents/instance_values?filter[agent_ids]=<string>&page[before]=<string>&page[after]=<string>&page[size]=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "agents",
+                                    "instance_values"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) A comma-separated list of agent ids",
+                                      "key": "filter[agent_ids]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request.\n",
+                                      "key": "page[before]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request.\n",
+                                      "key": "page[after]",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The number of items to return per page",
+                                      "key": "page[size]",
+                                      "value": "<integer>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValuesError not found in the OpenAPI spec\"\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-4e13a5c0-2e08-4083-ad84-50995a488441"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-b746f658-cd71-440f-8f75-62d3dec8f086"
+                        }
+                      ],
+                      "id": "b8d36c86-89cb-473c-9111-9f1a5ed4cd69",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-b8d36c86-89cb-473c-9111-9f1a5ed4cd69"
+                    }
+                  ],
+                  "id": "a97a65df-a116-4de4-8faa-c7347d296d10",
+                  "createdAt": "2026-06-05T15:23:15.000Z",
+                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                  "uid": "35240-a97a65df-a116-4de4-8faa-c7347d296d10"
+                },
+                {
+                  "name": "attributes",
+                  "item": [
+                    {
+                      "name": "{attribute_id}",
+                      "item": [
+                        {
+                          "name": "values",
+                          "item": [
+                            {
+                              "name": "{attribute_value_id}",
+                              "item": [
+                                {
+                                  "name": "Zendesk Get  Api V2 Routing Attributes Attribute_id Values Attribute_value_id",
+                                  "id": "6ff5092c-e87f-4cac-aa03-f69a56311196",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "attributes",
+                                        ":attribute_id",
+                                        "values",
+                                        ":attribute_value_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "d854b910-5574-46e7-a754-7cb812964281",
+                                          "key": "attribute_id"
+                                        },
+                                        {
+                                          "id": "49cd4e14-3a49-419a-942e-09590d18efac",
+                                          "key": "attribute_value_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns an attribute value.\n\n#### Allowed For\n\n* Agents\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "6eec2a83-2a86-4335-bf37-dda1ebafd470",
+                                      "name": "Success response",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "routing",
+                                            "attributes",
+                                            ":attribute_id",
+                                            "values",
+                                            ":attribute_value_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "attribute_id"
+                                            },
+                                            {
+                                              "key": "attribute_value_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"attribute_value\": {\n    \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n  }\n}",
+                                      "createdAt": "2026-06-05T15:23:15.000Z",
+                                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                                      "uid": "35240-6eec2a83-2a86-4335-bf37-dda1ebafd470"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-6ff5092c-e87f-4cac-aa03-f69a56311196"
+                                },
+                                {
+                                  "name": "Zendesk Patch  Api V2 Routing Attributes Attribute_id Values Attribute_value_id",
+                                  "id": "a8bbfe4a-3b05-4b9a-ac60-2ddb8fdb3264",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "attributes",
+                                        ":attribute_id",
+                                        "values",
+                                        ":attribute_value_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "d30c1dd8-437e-4cab-b654-9423c06a80bf",
+                                          "key": "attribute_id"
+                                        },
+                                        {
+                                          "id": "0a9195ef-dd60-4d8a-8584-c667ad14dfa5",
+                                          "key": "attribute_value_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.\n\n#### Allowed For\n\n* Admins\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "2b344c25-6b92-4023-bbdf-87c25945b780",
+                                      "name": "Success response",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "routing",
+                                            "attributes",
+                                            ":attribute_id",
+                                            "values",
+                                            ":attribute_value_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "attribute_id"
+                                            },
+                                            {
+                                              "key": "attribute_value_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"attribute_value\": {\n    \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n  }\n}",
+                                      "createdAt": "2026-06-05T15:23:15.000Z",
+                                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                                      "uid": "35240-2b344c25-6b92-4023-bbdf-87c25945b780"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-a8bbfe4a-3b05-4b9a-ac60-2ddb8fdb3264"
+                                },
+                                {
+                                  "name": "Zendesk Delete  Api V2 Routing Attributes Attribute_id Values Attribute_value_id",
+                                  "id": "a1f0391e-314e-43a9-b3d9-2f38b3e18892",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "attributes",
+                                        ":attribute_id",
+                                        "values",
+                                        ":attribute_value_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "56eb842e-8de9-44f1-bd07-a7568ffaf55a",
+                                          "key": "attribute_id"
+                                        },
+                                        {
+                                          "id": "c07b4c72-0305-4664-87ee-2c21396a2bc6",
+                                          "key": "attribute_value_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Deletes an attribute value.\n\n#### Allowed For\n\n* Agents\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "c5f497bb-b1aa-485c-9180-2612bfd08c31",
+                                      "name": "No Content response",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "routing",
+                                            "attributes",
+                                            ":attribute_id",
+                                            "values",
+                                            ":attribute_value_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "attribute_id"
+                                            },
+                                            {
+                                              "key": "attribute_value_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "No Content",
+                                      "code": 204,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-06-05T15:23:15.000Z",
+                                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                                      "uid": "35240-c5f497bb-b1aa-485c-9180-2612bfd08c31"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-a1f0391e-314e-43a9-b3d9-2f38b3e18892"
+                                }
+                              ],
+                              "id": "ac4d0125-e776-4b80-8c74-683b4cb16063",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-ac4d0125-e776-4b80-8c74-683b4cb16063"
+                            },
+                            {
+                              "name": "Zendesk Get  Api V2 Routing Attributes Attribute_id Values",
+                              "id": "d6346740-846d-4383-b322-c541734d5297",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "attributes",
+                                    ":attribute_id",
+                                    "values"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4db1a11a-b10c-499e-889d-4581e78e2c54",
+                                      "key": "attribute_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a list of attribute values for a provided attribute.\n\n#### Allowed For\n\n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "88e3daeb-6f16-4276-8b14-d03a73e7d5ba",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "attributes",
+                                        ":attribute_id",
+                                        "values"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "attribute_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-88e3daeb-6f16-4276-8b14-d03a73e7d5ba"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-d6346740-846d-4383-b322-c541734d5297"
+                            },
+                            {
+                              "name": "Zendesk Post  Api V2 Routing Attributes Attribute_id Values",
+                              "id": "0dc25fa8-3a1c-45fc-922f-c0817cc5de8b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "attributes",
+                                    ":attribute_id",
+                                    "values"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "106c9f20-d65d-48bc-91d2-55d2fe4d60a4",
+                                      "key": "attribute_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Creates an attribute value.\n\n#### Allowed For\n\n* Admins\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "54a86e0c-976a-4f2e-9aeb-572887c7ec47",
+                                  "name": "Created response",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "attributes",
+                                        ":attribute_id",
+                                        "values"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "attribute_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Created",
+                                  "code": 201,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"attribute_value\": {\n    \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-54a86e0c-976a-4f2e-9aeb-572887c7ec47"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-0dc25fa8-3a1c-45fc-922f-c0817cc5de8b"
+                            }
+                          ],
+                          "id": "e2255362-0416-4a84-86df-2d78e932eaab",
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-e2255362-0416-4a84-86df-2d78e932eaab"
+                        },
+                        {
+                          "name": "Zendesk Get  Api V2 Routing Attributes Attribute_id",
+                          "id": "a9b351dd-886a-4ac9-9ef5-927e722f86bd",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "routing",
+                                "attributes",
+                                ":attribute_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8fc46bc1-5f88-44a3-a929-a343d13dee7b",
+                                  "key": "attribute_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns an attribute.\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "7970f007-c4b7-44b3-9656-8e5e4916a25f",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "attributes",
+                                    ":attribute_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "attribute_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attribute\": {\n    \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-7970f007-c4b7-44b3-9656-8e5e4916a25f"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-a9b351dd-886a-4ac9-9ef5-927e722f86bd"
+                        },
+                        {
+                          "name": "Zendesk Put  Api V2 Routing Attributes Attribute_id",
+                          "id": "3c72b0b3-3939-49ea-bda9-3607c4f435e3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "routing",
+                                "attributes",
+                                ":attribute_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ace4819f-fb1b-4fae-8243-236c138ab1e8",
+                                  "key": "attribute_id"
+                                }
+                              ]
+                            },
+                            "description": "Updates an attribute.\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "62f78ff2-89dd-4368-9821-de842e27d351",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "attributes",
+                                    ":attribute_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "attribute_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attribute\": {\n    \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-62f78ff2-89dd-4368-9821-de842e27d351"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-3c72b0b3-3939-49ea-bda9-3607c4f435e3"
+                        },
+                        {
+                          "name": "Zendesk Delete  Api V2 Routing Attributes Attribute_id",
+                          "id": "541a0023-c096-4192-97d1-d79305498182",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "routing",
+                                "attributes",
+                                ":attribute_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1b33b0ea-24ab-4930-a2c9-7bd538ed45d3",
+                                  "key": "attribute_id"
+                                }
+                              ]
+                            },
+                            "description": "Deletes an attribute.\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "56858ca9-13ca-45b3-b093-b92731547d62",
+                              "name": "No Content response",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "attributes",
+                                    ":attribute_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "attribute_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-56858ca9-13ca-45b3-b093-b92731547d62"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-541a0023-c096-4192-97d1-d79305498182"
+                        }
+                      ],
+                      "id": "f94b23d3-2258-4688-b526-fb4553dc6143",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-f94b23d3-2258-4688-b526-fb4553dc6143"
+                    },
+                    {
+                      "name": "definitions",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Routing Attributes Definitions",
+                          "id": "76c9804d-21eb-47ac-a357-9d1f42e34073",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/routing/attributes/definitions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "routing",
+                                "attributes",
+                                "definitions"
+                              ]
+                            },
+                            "description": "Returns the condition definitions that can be configured to apply attributes to a ticket.\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "719a50e5-b8bf-42e3-813b-73cb1b0bd1e4",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/attributes/definitions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "attributes",
+                                    "definitions"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"definitions\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"conditions_all\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"subject\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"title\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            }\n          }\n        }\n      },\n      \"conditions_any\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"subject\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"title\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-719a50e5-b8bf-42e3-813b-73cb1b0bd1e4"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-76c9804d-21eb-47ac-a357-9d1f42e34073"
+                        }
+                      ],
+                      "id": "686f562e-0099-4a14-9041-6b8bbc917056",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-686f562e-0099-4a14-9041-6b8bbc917056"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Routing Attributes",
+                      "id": "e6bc27ea-5ef0-456a-9f1e-1f1fdf11c88d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/routing/attributes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "routing",
+                            "attributes"
+                          ]
+                        },
+                        "description": "Returns a list of attributes for the account.\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| attribute_values | The attribute values available on the account\n\n#### Allowed For\n\n* Agents and admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "8c61b1f7-a659-4947-82bb-aaf13b665db8",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/routing/attributes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "routing",
+                                "attributes"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"attributes\": [\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-8c61b1f7-a659-4947-82bb-aaf13b665db8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-e6bc27ea-5ef0-456a-9f1e-1f1fdf11c88d"
+                    },
+                    {
+                      "name": "Zendesk Post  Api V2 Routing Attributes",
+                      "id": "db17f9a0-6e14-4804-ae77-eea36297b31f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/routing/attributes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "routing",
+                            "attributes"
+                          ]
+                        },
+                        "description": "Creates an attribute.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "823f01d1-b473-4fbf-8d73-dc1e020f12fc",
+                          "name": "Created response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/routing/attributes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "routing",
+                                "attributes"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"attribute\": {\n    \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-823f01d1-b473-4fbf-8d73-dc1e020f12fc"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-db17f9a0-6e14-4804-ae77-eea36297b31f"
+                    }
+                  ],
+                  "id": "7d85e49f-d75f-4775-abc6-3cc56ec96fd1",
+                  "createdAt": "2026-06-05T15:23:15.000Z",
+                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                  "uid": "35240-7d85e49f-d75f-4775-abc6-3cc56ec96fd1"
+                },
+                {
+                  "name": "requirements",
+                  "item": [
+                    {
+                      "name": "fulfilled",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Routing Requirements Fulfilled",
+                          "id": "eeac33b7-ae90-47eb-812b-9797c7283e6c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/routing/requirements/fulfilled?ticket_ids=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "routing",
+                                "requirements",
+                                "fulfilled"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The IDs of the relevant tickets to check for matching attributes",
+                                  "key": "ticket_ids",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of ticket ids that contain attributes matching the current user's attributes. Accepts a `ticket_ids` parameter for relevant tickets to check for matching attributes.\n\n#### Allowed For\n\n* Agents and admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "36c8eca7-0762-47e9-9a25-1e0afc7dfc89",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/requirements/fulfilled?ticket_ids=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "requirements",
+                                    "fulfilled"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The IDs of the relevant tickets to check for matching attributes",
+                                      "key": "ticket_ids",
+                                      "value": "<integer>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"fulfilled_ticket_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-36c8eca7-0762-47e9-9a25-1e0afc7dfc89"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-eeac33b7-ae90-47eb-812b-9797c7283e6c"
+                        }
+                      ],
+                      "id": "55dd5f1e-5533-43ab-ab95-876cc5ef3234",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-55dd5f1e-5533-43ab-ab95-876cc5ef3234"
+                    }
+                  ],
+                  "id": "7fb94a05-1a2a-4d6d-b956-62556e797774",
+                  "createdAt": "2026-06-05T15:23:15.000Z",
+                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                  "uid": "35240-7fb94a05-1a2a-4d6d-b956-62556e797774"
+                },
+                {
+                  "name": "tickets",
+                  "item": [
+                    {
+                      "name": "{ticket_id}",
+                      "item": [
+                        {
+                          "name": "instance_values",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Routing Tickets Ticket_id Instance_values",
+                              "id": "11897af0-0885-4837-83a0-598c21538c3a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/tickets/:ticket_id/instance_values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "tickets",
+                                    ":ticket_id",
+                                    "instance_values"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "c9e61c4d-b793-4c48-aa9f-7a9cdbb07415",
+                                      "key": "ticket_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a list of attributes values for the ticket.\n\n#### Allowed For\n\n* Agents and admins\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "0e7b0fe7-f0f8-4405-9ee3-ed12a565620f",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/tickets/:ticket_id/instance_values",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "tickets",
+                                        ":ticket_id",
+                                        "instance_values"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "ticket_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-0e7b0fe7-f0f8-4405-9ee3-ed12a565620f"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-11897af0-0885-4837-83a0-598c21538c3a"
+                            },
+                            {
+                              "name": "Zendesk Post  Api V2 Routing Tickets Ticket_id Instance_values",
+                              "id": "4fb22e60-4d57-42ca-8984-14a1a1fc8681",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/routing/tickets/:ticket_id/instance_values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "routing",
+                                    "tickets",
+                                    ":ticket_id",
+                                    "instance_values"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "a39c51fc-f5af-44c9-93d4-f2cacd688c9c",
+                                      "key": "ticket_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.\n\nInvalid or deleted attributes are ignored.\n\n#### Allowed For\n\n* Admins\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "5c6b4b9a-54bf-4dd8-a62e-d5d9315380cb",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/routing/tickets/:ticket_id/instance_values",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "routing",
+                                        "tickets",
+                                        ":ticket_id",
+                                        "instance_values"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "ticket_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SkillBasedRoutingAttributeValueObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:15.000Z",
+                                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                                  "uid": "35240-5c6b4b9a-54bf-4dd8-a62e-d5d9315380cb"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:15.000Z",
+                              "updatedAt": "2026-06-05T15:23:15.000Z",
+                              "uid": "35240-4fb22e60-4d57-42ca-8984-14a1a1fc8681"
+                            }
+                          ],
+                          "id": "f9f37897-30c1-424d-b791-a36221aacd6d",
+                          "createdAt": "2026-06-05T15:23:15.000Z",
+                          "updatedAt": "2026-06-05T15:23:15.000Z",
+                          "uid": "35240-f9f37897-30c1-424d-b791-a36221aacd6d"
+                        }
+                      ],
+                      "id": "63a48d3a-6769-432b-a8db-b487c60a18ea",
+                      "createdAt": "2026-06-05T15:23:15.000Z",
+                      "updatedAt": "2026-06-05T15:23:15.000Z",
+                      "uid": "35240-63a48d3a-6769-432b-a8db-b487c60a18ea"
+                    }
+                  ],
+                  "id": "5bc3f7c7-286a-43ee-95c2-48633c3d8551",
+                  "createdAt": "2026-06-05T15:23:15.000Z",
+                  "updatedAt": "2026-06-05T15:23:15.000Z",
+                  "uid": "35240-5bc3f7c7-286a-43ee-95c2-48633c3d8551"
+                }
+              ],
+              "id": "998ddfe6-26e8-4422-8978-1468f4edc097",
+              "createdAt": "2026-06-05T15:23:15.000Z",
+              "updatedAt": "2026-06-05T15:23:15.000Z",
+              "uid": "35240-998ddfe6-26e8-4422-8978-1468f4edc097"
+            }
+          ],
+          "id": "8d1ed94e-08f9-446d-b044-8aeb59b76a7f",
+          "createdAt": "2026-06-05T15:23:15.000Z",
+          "updatedAt": "2026-06-05T15:23:15.000Z",
+          "uid": "35240-8d1ed94e-08f9-446d-b044-8aeb59b76a7f"
+        }
+      ],
+      "id": "99eab117-904d-4658-8095-6b743decce8a",
+      "createdAt": "2026-06-05T15:23:15.000Z",
+      "updatedAt": "2026-06-05T15:23:15.000Z",
+      "uid": "35240-99eab117-904d-4658-8095-6b743decce8a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

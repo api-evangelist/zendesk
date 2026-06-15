@@ -1,0 +1,141 @@
+{
+  "info": {
+    "_postman_id": "e62e8416-00e6-490b-baef-8d7d5fcf608c",
+    "name": "Zendesk Organization Merges",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:01.000Z",
+    "updatedAt": "2026-06-05T15:23:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e62e8416-00e6-490b-baef-8d7d5fcf608c"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "organization_merges",
+              "item": [
+                {
+                  "name": "{organization_merge_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Organization_merges Organization_merge_id",
+                      "id": "51f29f84-494c-4a1b-83a9-51911d119d60",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_merges/:organization_merge_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_merges",
+                            ":organization_merge_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1207366d-61a4-44b6-9052-7f1ae8947750",
+                              "key": "organization_merge_id"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the details of a specific organization merge operation. This endpoint is useful for obtaining the status and outcome of a merge that was previously initiated. It provides information such as the winning and losing organization IDs, the status of the merge, and the associated URLs.\n\nThis endpoint can be used to determine if a merge is still in progress, has completed successfully, or has encountered an error.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "cc550ad3-e95d-4c31-a27a-1cf7f7f2343c",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organization_merges/:organization_merge_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organization_merges",
+                                ":organization_merge_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_merge_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"organization_merge\": {\n    \"id\": \"<string>\",\n    \"url\": \"<string>\",\n    \"loser_id\": \"<integer>\",\n    \"winner_id\": \"<integer>\",\n    \"status\": \"in_progress\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:01.000Z",
+                          "updatedAt": "2026-06-05T15:23:01.000Z",
+                          "uid": "35240-cc550ad3-e95d-4c31-a27a-1cf7f7f2343c"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:01.000Z",
+                      "updatedAt": "2026-06-05T15:23:01.000Z",
+                      "uid": "35240-51f29f84-494c-4a1b-83a9-51911d119d60"
+                    }
+                  ],
+                  "id": "97a25693-4ef7-4c1f-a431-34224eb0aaa7",
+                  "createdAt": "2026-06-05T15:23:01.000Z",
+                  "updatedAt": "2026-06-05T15:23:01.000Z",
+                  "uid": "35240-97a25693-4ef7-4c1f-a431-34224eb0aaa7"
+                }
+              ],
+              "id": "e00c6abd-da33-4c86-9a80-d7659c34c334",
+              "createdAt": "2026-06-05T15:23:01.000Z",
+              "updatedAt": "2026-06-05T15:23:01.000Z",
+              "uid": "35240-e00c6abd-da33-4c86-9a80-d7659c34c334"
+            }
+          ],
+          "id": "a388db23-efdd-4d72-9b6a-80efc2654a56",
+          "createdAt": "2026-06-05T15:23:01.000Z",
+          "updatedAt": "2026-06-05T15:23:01.000Z",
+          "uid": "35240-a388db23-efdd-4d72-9b6a-80efc2654a56"
+        }
+      ],
+      "id": "af5488cc-d346-409c-af72-a944d5e9e19a",
+      "createdAt": "2026-06-05T15:23:01.000Z",
+      "updatedAt": "2026-06-05T15:23:01.000Z",
+      "uid": "35240-af5488cc-d346-409c-af72-a944d5e9e19a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

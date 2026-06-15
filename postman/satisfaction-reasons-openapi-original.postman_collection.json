@@ -1,0 +1,215 @@
+{
+  "info": {
+    "_postman_id": "8f8e5eb4-f662-4220-bf40-9a9754b98b4f",
+    "name": "Zendesk Satisfaction Reasons",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:17.000Z",
+    "updatedAt": "2026-06-05T15:23:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8f8e5eb4-f662-4220-bf40-9a9754b98b4f"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "satisfaction_reasons",
+              "item": [
+                {
+                  "name": "{satisfaction_reason_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Satisfaction_reasons Satisfaction_reason_id",
+                      "id": "fa552153-3eb2-4a98-a42a-05582fa712e5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/satisfaction_reasons/:satisfaction_reason_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "satisfaction_reasons",
+                            ":satisfaction_reason_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b0d236eb-cda6-49df-9f79-977e4d52f463",
+                              "key": "satisfaction_reason_id",
+                              "value": "<integer>",
+                              "description": "(Required) The id of the satisfaction rating reason"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "73c3d170-1878-4f7d-a1e0-6fa4bd17f521",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/satisfaction_reasons/:satisfaction_reason_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "satisfaction_reasons",
+                                ":satisfaction_reason_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "satisfaction_reason_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"reason\": [\n    {\n      \"value\": \"reference #/components/schemas/SatisfactionReasonObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SatisfactionReasonObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:17.000Z",
+                          "updatedAt": "2026-06-05T15:23:17.000Z",
+                          "uid": "35240-73c3d170-1878-4f7d-a1e0-6fa4bd17f521"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:17.000Z",
+                      "updatedAt": "2026-06-05T15:23:17.000Z",
+                      "uid": "35240-fa552153-3eb2-4a98-a42a-05582fa712e5"
+                    }
+                  ],
+                  "id": "e0464a9a-e1b6-448d-b087-9dd7c93b466d",
+                  "createdAt": "2026-06-05T15:23:17.000Z",
+                  "updatedAt": "2026-06-05T15:23:17.000Z",
+                  "uid": "35240-e0464a9a-e1b6-448d-b087-9dd7c93b466d"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Satisfaction_reasons",
+                  "id": "457fde52-9204-49ee-861c-7c081633f2d7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/satisfaction_reasons",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "satisfaction_reasons"
+                      ]
+                    },
+                    "description": "List all reasons for an account\n\n#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "ff4281d0-8978-4bf5-ae47-ee77db6330b9",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/satisfaction_reasons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "satisfaction_reasons"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"reasons\": [\n    {\n      \"value\": \"reference #/components/schemas/SatisfactionReasonObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SatisfactionReasonObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:17.000Z",
+                      "updatedAt": "2026-06-05T15:23:17.000Z",
+                      "uid": "35240-ff4281d0-8978-4bf5-ae47-ee77db6330b9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:17.000Z",
+                  "updatedAt": "2026-06-05T15:23:17.000Z",
+                  "uid": "35240-457fde52-9204-49ee-861c-7c081633f2d7"
+                }
+              ],
+              "id": "ca5c0dfe-2784-425a-a409-8a3add1fd189",
+              "createdAt": "2026-06-05T15:23:17.000Z",
+              "updatedAt": "2026-06-05T15:23:17.000Z",
+              "uid": "35240-ca5c0dfe-2784-425a-a409-8a3add1fd189"
+            }
+          ],
+          "id": "9fb349b2-f492-443b-bba9-097421e150dd",
+          "createdAt": "2026-06-05T15:23:17.000Z",
+          "updatedAt": "2026-06-05T15:23:17.000Z",
+          "uid": "35240-9fb349b2-f492-443b-bba9-097421e150dd"
+        }
+      ],
+      "id": "c1611355-245a-404d-97e0-53bb85a410ab",
+      "createdAt": "2026-06-05T15:23:17.000Z",
+      "updatedAt": "2026-06-05T15:23:17.000Z",
+      "uid": "35240-c1611355-245a-404d-97e0-53bb85a410ab"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

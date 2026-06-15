@@ -1,0 +1,1217 @@
+{
+  "info": {
+    "_postman_id": "034b43df-d7c5-4eb0-975e-15b8d986f174",
+    "name": "Zendesk Trigger Categories",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:50.000Z",
+    "updatedAt": "2026-06-05T15:23:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-034b43df-d7c5-4eb0-975e-15b8d986f174"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "trigger_categories",
+              "item": [
+                {
+                  "name": "{trigger_category_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Trigger_categories Trigger_category_id",
+                      "id": "31cfb0a2-6d13-4125-85d3-c4f98535c297",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories",
+                            ":trigger_category_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fa1191e8-fe2e-4c36-a36f-946334d0595e",
+                              "key": "trigger_category_id",
+                              "value": "<string>",
+                              "description": "(Required) The id of the ticket trigger category to retrieve"
+                            }
+                          ]
+                        },
+                        "description": "Returns the ticket trigger category with the specified ID."
+                      },
+                      "response": [
+                        {
+                          "id": "507ea2af-17ff-4271-8add-5b0c52f3844f",
+                          "name": "The requested ticket trigger category",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                ":trigger_category_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategory not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-507ea2af-17ff-4271-8add-5b0c52f3844f"
+                        },
+                        {
+                          "id": "39628ff6-3a40-4f91-9c1d-81c5261825f6",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                ":trigger_category_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-39628ff6-3a40-4f91-9c1d-81c5261825f6"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-31cfb0a2-6d13-4125-85d3-c4f98535c297"
+                    },
+                    {
+                      "name": "Zendesk Patch  Api V2 Trigger_categories Trigger_category_id",
+                      "id": "48ce37cd-43a5-464d-b520-df4a766dda4e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories",
+                            ":trigger_category_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a2f01e0f-a3db-4d8a-becf-599fd5932f7c",
+                              "key": "trigger_category_id",
+                              "value": "<string>",
+                              "description": "(Required) The id of the ticket trigger category to update"
+                            }
+                          ]
+                        },
+                        "description": "Updates the ticket trigger category with the specified ID."
+                      },
+                      "response": [
+                        {
+                          "id": "a3883cab-74eb-4029-a0be-f1066691e056",
+                          "name": "The updated trigger category",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                ":trigger_category_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategory not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-a3883cab-74eb-4029-a0be-f1066691e056"
+                        },
+                        {
+                          "id": "fa9903bb-a929-4a2d-bd33-871aaf36b3e0",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                ":trigger_category_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-fa9903bb-a929-4a2d-bd33-871aaf36b3e0"
+                        },
+                        {
+                          "id": "2ba64f27-6e1c-4037-ba37-4d1c47cac035",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                ":trigger_category_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-2ba64f27-6e1c-4037-ba37-4d1c47cac035"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-48ce37cd-43a5-464d-b520-df4a766dda4e"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Trigger_categories Trigger_category_id",
+                      "id": "09c238ae-30db-4da3-a569-b967e462c25f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories",
+                            ":trigger_category_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6886e116-1d62-4dd6-a8b7-9720555e106f",
+                              "key": "trigger_category_id",
+                              "value": "<string>",
+                              "description": "(Required) The id of the ticket trigger category to delete"
+                            }
+                          ]
+                        },
+                        "description": "Deletes the ticket trigger category with the specified ID."
+                      },
+                      "response": [
+                        {
+                          "id": "fe9c5b48-d031-4c93-be4c-81e44ec19112",
+                          "name": "No content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                ":trigger_category_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-fe9c5b48-d031-4c93-be4c-81e44ec19112"
+                        },
+                        {
+                          "id": "a396ef7f-b253-4cab-9b0b-8bb1a03456c0",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                ":trigger_category_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-a396ef7f-b253-4cab-9b0b-8bb1a03456c0"
+                        },
+                        {
+                          "id": "c1a529c1-3cab-474a-bea2-5db941da42a5",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                ":trigger_category_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-c1a529c1-3cab-474a-bea2-5db941da42a5"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-09c238ae-30db-4da3-a569-b967e462c25f"
+                    }
+                  ],
+                  "id": "819c500b-2321-40f4-9501-97eeba8bb715",
+                  "createdAt": "2026-06-05T15:23:50.000Z",
+                  "updatedAt": "2026-06-05T15:23:50.000Z",
+                  "uid": "35240-819c500b-2321-40f4-9501-97eeba8bb715"
+                },
+                {
+                  "name": "jobs",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Trigger_categories Jobs",
+                      "id": "f370f1d4-278a-4bd4-a40d-d8763d3467be",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/BatchJobRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories/jobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories",
+                            "jobs"
+                          ]
+                        },
+                        "description": "Creates a job that performs a batch operation for the given ticket trigger categories."
+                      },
+                      "response": [
+                        {
+                          "id": "6dbf4314-b6ff-43d3-a3a6-660d7371ef3c",
+                          "name": "The response to the batch job",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/BatchJobRequest not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/jobs",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                "jobs"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"value\": \"reference #/components/schemas/BatchErrorItem not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/BatchErrorItem not found in the OpenAPI spec\"\n    }\n  ],\n  \"results\": {\n    \"trigger_categories\": [\n      {\n        \"value\": \"reference #/components/schemas/TriggerCategory not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/components/schemas/TriggerCategory not found in the OpenAPI spec\"\n      }\n    ],\n    \"triggers\": [\n      {\n        \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n      }\n    ]\n  },\n  \"status\": \"failed\"\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-6dbf4314-b6ff-43d3-a3a6-660d7371ef3c"
+                        },
+                        {
+                          "id": "746807f7-c879-41d3-9171-384eb6000807",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/BatchJobRequest not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/trigger_categories/jobs",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "trigger_categories",
+                                "jobs"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"value\": \"reference #/components/schemas/BatchErrorItem not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/BatchErrorItem not found in the OpenAPI spec\"\n    }\n  ],\n  \"results\": {\n    \"trigger_categories\": [\n      {\n        \"value\": \"reference #/components/schemas/TriggerCategory not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/components/schemas/TriggerCategory not found in the OpenAPI spec\"\n      }\n    ],\n    \"triggers\": [\n      {\n        \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n      }\n    ]\n  },\n  \"status\": \"failed\"\n}",
+                          "createdAt": "2026-06-05T15:23:50.000Z",
+                          "updatedAt": "2026-06-05T15:23:50.000Z",
+                          "uid": "35240-746807f7-c879-41d3-9171-384eb6000807"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-f370f1d4-278a-4bd4-a40d-d8763d3467be"
+                    }
+                  ],
+                  "id": "86d60df6-f64e-4e4b-a2a3-4e90c32b4ff7",
+                  "createdAt": "2026-06-05T15:23:50.000Z",
+                  "updatedAt": "2026-06-05T15:23:50.000Z",
+                  "uid": "35240-86d60df6-f64e-4e4b-a2a3-4e90c32b4ff7"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Trigger_categories",
+                  "id": "11646959-2fc8-423f-bbbe-7b67e05f9c35",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/trigger_categories?page[after]=<string>&page[before]=<string>&page[size]=<integer>&sort=-created_at&include=rule_counts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "trigger_categories"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination parameters",
+                          "key": "page[after]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Pagination parameters",
+                          "key": "page[before]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Pagination parameters",
+                          "key": "page[size]",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Sort parameters",
+                          "key": "sort",
+                          "value": "-created_at"
+                        },
+                        {
+                          "description": "Allowed sideloads",
+                          "key": "include",
+                          "value": "rule_counts"
+                        }
+                      ]
+                    },
+                    "description": "Returns all the ticket trigger categories in the account.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+                  },
+                  "response": [
+                    {
+                      "id": "238690b0-c7ec-4974-9a8d-2e98eaffb6e3",
+                      "name": "A paged array of ticket trigger categories",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories?page[after]=<string>&page[before]=<string>&page[size]=<integer>&sort=-created_at&include=rule_counts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[after]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[before]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[size]",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort parameters",
+                              "key": "sort",
+                              "value": "-created_at"
+                            },
+                            {
+                              "description": "Allowed sideloads",
+                              "key": "include",
+                              "value": "rule_counts"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/TriggerCategoriesResponse not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-238690b0-c7ec-4974-9a8d-2e98eaffb6e3"
+                    },
+                    {
+                      "id": "ed693d0e-91c9-4591-b3cd-50efef212f64",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories?page[after]=<string>&page[before]=<string>&page[size]=<integer>&sort=-created_at&include=rule_counts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[after]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[before]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[size]",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort parameters",
+                              "key": "sort",
+                              "value": "-created_at"
+                            },
+                            {
+                              "description": "Allowed sideloads",
+                              "key": "include",
+                              "value": "rule_counts"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-ed693d0e-91c9-4591-b3cd-50efef212f64"
+                    },
+                    {
+                      "id": "3b628a9e-ef16-46a0-a50d-bee633200070",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories?page[after]=<string>&page[before]=<string>&page[size]=<integer>&sort=-created_at&include=rule_counts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[after]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[before]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Pagination parameters",
+                              "key": "page[size]",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort parameters",
+                              "key": "sort",
+                              "value": "-created_at"
+                            },
+                            {
+                              "description": "Allowed sideloads",
+                              "key": "include",
+                              "value": "rule_counts"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-3b628a9e-ef16-46a0-a50d-bee633200070"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:50.000Z",
+                  "updatedAt": "2026-06-05T15:23:50.000Z",
+                  "uid": "35240-11646959-2fc8-423f-bbbe-7b67e05f9c35"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Trigger_categories",
+                  "id": "c5d20b58-8e50-49f0-9e92-e50893582e96",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/trigger_categories",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "trigger_categories"
+                      ]
+                    },
+                    "description": "Creates a ticket trigger category."
+                  },
+                  "response": [
+                    {
+                      "id": "fb533c68-2da6-40ee-95e3-25ebbb1b7a41",
+                      "name": "The created ticket trigger category",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategory not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-fb533c68-2da6-40ee-95e3-25ebbb1b7a41"
+                    },
+                    {
+                      "id": "2d98da02-1e9c-45cb-a4fc-e43fa7024278",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-2d98da02-1e9c-45cb-a4fc-e43fa7024278"
+                    },
+                    {
+                      "id": "6a120997-4b19-4b6f-b308-977669eb9eca",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/trigger_categories",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "trigger_categories"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/Errors not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:23:50.000Z",
+                      "updatedAt": "2026-06-05T15:23:50.000Z",
+                      "uid": "35240-6a120997-4b19-4b6f-b308-977669eb9eca"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:50.000Z",
+                  "updatedAt": "2026-06-05T15:23:50.000Z",
+                  "uid": "35240-c5d20b58-8e50-49f0-9e92-e50893582e96"
+                }
+              ],
+              "id": "ed5aa05a-0120-4375-907f-e8fd1c9abb7d",
+              "createdAt": "2026-06-05T15:23:50.000Z",
+              "updatedAt": "2026-06-05T15:23:50.000Z",
+              "uid": "35240-ed5aa05a-0120-4375-907f-e8fd1c9abb7d"
+            }
+          ],
+          "id": "56393621-345d-4514-95a4-25672a9bd3df",
+          "createdAt": "2026-06-05T15:23:50.000Z",
+          "updatedAt": "2026-06-05T15:23:50.000Z",
+          "uid": "35240-56393621-345d-4514-95a4-25672a9bd3df"
+        }
+      ],
+      "id": "e3af1d94-bf3d-4f50-b95c-f219259c1a30",
+      "createdAt": "2026-06-05T15:23:50.000Z",
+      "updatedAt": "2026-06-05T15:23:50.000Z",
+      "uid": "35240-e3af1d94-bf3d-4f50-b95c-f219259c1a30"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

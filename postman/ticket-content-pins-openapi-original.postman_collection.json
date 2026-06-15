@@ -1,0 +1,533 @@
+{
+  "info": {
+    "_postman_id": "17530003-bd5b-4497-9946-d5d23e106069",
+    "name": "Zendesk Ticket Content Pins",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:35.000Z",
+    "updatedAt": "2026-06-05T15:23:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-17530003-bd5b-4497-9946-d5d23e106069"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "ticket_content_pins",
+              "item": [
+                {
+                  "name": "{content_pin_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Ticket_content_pins Content_pin_id",
+                      "id": "9ef2879d-8722-47d2-83a7-473bc652f53a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_content_pins/:content_pin_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_content_pins",
+                            ":content_pin_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "047a1b8d-842d-4328-ab00-29afec21ca6a",
+                              "key": "content_pin_id",
+                              "value": "<string>",
+                              "description": "(Required) The id of the content pin to delete"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a specific content pin from a ticket.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "7a6d913b-ee4e-46dd-9568-4a87f625d836",
+                          "name": "Content pin deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_content_pins/:content_pin_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_content_pins",
+                                ":content_pin_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "content_pin_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"account_id\": \"<string>\",\n  \"content_id\": \"<string>\",\n  \"content_type\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"ticket_id\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:23:36.000Z",
+                          "updatedAt": "2026-06-05T15:23:36.000Z",
+                          "uid": "35240-7a6d913b-ee4e-46dd-9568-4a87f625d836"
+                        },
+                        {
+                          "id": "8c8e4903-da84-4d23-a965-9c58db1d52d0",
+                          "name": "Content pin not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/ticket_content_pins/:content_pin_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "ticket_content_pins",
+                                ":content_pin_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "content_pin_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"description\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:23:36.000Z",
+                          "updatedAt": "2026-06-05T15:23:36.000Z",
+                          "uid": "35240-8c8e4903-da84-4d23-a965-9c58db1d52d0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:36.000Z",
+                      "updatedAt": "2026-06-05T15:23:36.000Z",
+                      "uid": "35240-9ef2879d-8722-47d2-83a7-473bc652f53a"
+                    }
+                  ],
+                  "id": "90528cab-b633-4b7a-a48b-9733a4c2f154",
+                  "createdAt": "2026-06-05T15:23:36.000Z",
+                  "updatedAt": "2026-06-05T15:23:36.000Z",
+                  "uid": "35240-90528cab-b633-4b7a-a48b-9733a4c2f154"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Ticket_content_pins",
+                  "id": "4f925926-d408-4c94-a4cc-b56dd668dda3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/ticket_content_pins?ticket_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "ticket_content_pins"
+                      ],
+                      "query": [
+                        {
+                          "description": "The id of the ticket for which to list content pins",
+                          "key": "ticket_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Lists the content pins for a specific ticket. Content pins are used to pin related content such as articles to a ticket for quick access. This endpoint returns the content pins associated with the specified ticket id.\n\n#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "10ed3148-af02-49bd-99fc-32bdce706804",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_content_pins?ticket_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_content_pins"
+                          ],
+                          "query": [
+                            {
+                              "description": "The id of the ticket for which to list content pins",
+                              "key": "ticket_id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"ticket_content_pins\": [\n    {\n      \"account_id\": \"<string>\",\n      \"content_id\": \"<string>\",\n      \"content_type\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"ticket_id\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"account_id\": \"<string>\",\n      \"content_id\": \"<string>\",\n      \"content_type\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"ticket_id\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:36.000Z",
+                      "updatedAt": "2026-06-05T15:23:36.000Z",
+                      "uid": "35240-10ed3148-af02-49bd-99fc-32bdce706804"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:36.000Z",
+                  "updatedAt": "2026-06-05T15:23:36.000Z",
+                  "uid": "35240-4f925926-d408-4c94-a4cc-b56dd668dda3"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Ticket_content_pins",
+                  "id": "36b59eb7-2661-43a7-a9fd-ce9fe0e6a5bf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ticket_content_pin\": {\n    \"ticket_id\": \"<string>\",\n    \"content_id\": \"<string>\",\n    \"content_type\": \"<string>\",\n    \"locale\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/ticket_content_pins",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "ticket_content_pins"
+                      ]
+                    },
+                    "description": "Creates a new content pin for a specific ticket. Content pins allow you to link to articles, community posts, or external content for easy reference.\n\n#### Allowed For\n\n* Admins\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "36d4243a-f8da-4d07-a4ee-48bf8e454adf",
+                      "name": "Content pin created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ticket_content_pin\": {\n    \"ticket_id\": \"<string>\",\n    \"content_id\": \"<string>\",\n    \"content_type\": \"<string>\",\n    \"locale\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_content_pins",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_content_pins"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"account_id\": \"<string>\",\n  \"content_id\": \"<string>\",\n  \"content_type\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"ticket_id\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:23:36.000Z",
+                      "updatedAt": "2026-06-05T15:23:36.000Z",
+                      "uid": "35240-36d4243a-f8da-4d07-a4ee-48bf8e454adf"
+                    },
+                    {
+                      "id": "d17d7684-6b00-424c-9703-d2290910b5fe",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ticket_content_pin\": {\n    \"ticket_id\": \"<string>\",\n    \"content_id\": \"<string>\",\n    \"content_type\": \"<string>\",\n    \"locale\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_content_pins",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_content_pins"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"message\": \"<string>\",\n    \"title\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:36.000Z",
+                      "updatedAt": "2026-06-05T15:23:36.000Z",
+                      "uid": "35240-d17d7684-6b00-424c-9703-d2290910b5fe"
+                    },
+                    {
+                      "id": "175797ed-aff9-4e00-b7be-106528194e0f",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ticket_content_pin\": {\n    \"ticket_id\": \"<string>\",\n    \"content_id\": \"<string>\",\n    \"content_type\": \"<string>\",\n    \"locale\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_content_pins",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_content_pins"
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"description\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:23:36.000Z",
+                      "updatedAt": "2026-06-05T15:23:36.000Z",
+                      "uid": "35240-175797ed-aff9-4e00-b7be-106528194e0f"
+                    },
+                    {
+                      "id": "4a069d51-d1bc-42c6-a80f-fe48668181f9",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ticket_content_pin\": {\n    \"ticket_id\": \"<string>\",\n    \"content_id\": \"<string>\",\n    \"content_type\": \"<string>\",\n    \"locale\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/ticket_content_pins",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "ticket_content_pins"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"description\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:23:36.000Z",
+                      "updatedAt": "2026-06-05T15:23:36.000Z",
+                      "uid": "35240-4a069d51-d1bc-42c6-a80f-fe48668181f9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:36.000Z",
+                  "updatedAt": "2026-06-05T15:23:36.000Z",
+                  "uid": "35240-36b59eb7-2661-43a7-a9fd-ce9fe0e6a5bf"
+                }
+              ],
+              "id": "855fc819-a15b-40f2-8734-61d59ca236bf",
+              "createdAt": "2026-06-05T15:23:36.000Z",
+              "updatedAt": "2026-06-05T15:23:36.000Z",
+              "uid": "35240-855fc819-a15b-40f2-8734-61d59ca236bf"
+            }
+          ],
+          "id": "86346dc1-049e-4f1f-8706-9e6e2587feb1",
+          "createdAt": "2026-06-05T15:23:36.000Z",
+          "updatedAt": "2026-06-05T15:23:36.000Z",
+          "uid": "35240-86346dc1-049e-4f1f-8706-9e6e2587feb1"
+        }
+      ],
+      "id": "c2676916-4470-4206-a5d0-2e1e1c091afb",
+      "createdAt": "2026-06-05T15:23:36.000Z",
+      "updatedAt": "2026-06-05T15:23:36.000Z",
+      "uid": "35240-c2676916-4470-4206-a5d0-2e1e1c091afb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

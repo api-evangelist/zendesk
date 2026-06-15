@@ -1,0 +1,1923 @@
+{
+  "info": {
+    "_postman_id": "eff2f946-1a9f-4271-8327-23eb869b13d6",
+    "name": "Zendesk Views",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:56.000Z",
+    "updatedAt": "2026-06-05T15:23:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eff2f946-1a9f-4271-8327-23eb869b13d6"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "views",
+              "item": [
+                {
+                  "name": "{view_id}",
+                  "item": [
+                    {
+                      "name": "count",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Views View_id Count",
+                          "id": "b6ce9b1b-7883-4fe8-987a-a6fc7c9444ac",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/:view_id/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                ":view_id",
+                                "count"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5b40ae5f-88f6-40a6-8e6d-f83b97a69766",
+                                  "key": "view_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns the ticket count for a single view.\n\nThis endpoint is rate limited to 5 requests per minute, per view, per agent.\n\n#### View Counts\n\nThe view count endpoints, Count Tickets in View (this endpoint) and [Count Tickets in Views](#count-tickets-in-views), let you estimate how many tickets remain in a view without having to retrieve the entire view. They're designed to help estimate view size. From a business perspective, accuracy becomes less relevant as view size increases.\n\nTo ensure quality of service, these counts are cached more heavily as the number of tickets in a view grows. For a view with thousands of tickets, you can expect the count to be cached for 60-90 minutes. As a result, the count may not reflect the actual number of tickets in your view.\n\nView counts are represented as JSON objects with the following attributes:\n\n| Name            | Type        | Comment\n| --------------- | ------------| -------\n| view_id         | integer     | The id of the view\n| url             | string      | The API url of the count\n| value           | integer     | The cached number of tickets in the view. Can also be null if the system is loading and caching new data. Not to be confused with 0 tickets\n| pretty          | string      | A pretty-printed text approximation of the view count\n| fresh           | boolean     | false if the cached data is stale and the system is still loading and caching new data\n| active          | boolean     | Only active views if true, inactive views if false, all views if null.\n\n#### Example\n```js\n{\n  \"view_count\": {\n    \"view_id\": 25,\n    \"url\":     \"https://company.zendesk.com/api/v2/views/25/count.json\",\n    \"value\":   719,\n    \"pretty\":  \"~700\",\n    \"fresh\":   true\n  }\n}\n```\n"
+                          },
+                          "response": [
+                            {
+                              "id": "1146b4e5-4828-45cc-b9c8-8275e147cdfb",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/views/:view_id/count",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "views",
+                                    ":view_id",
+                                    "count"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "view_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"view_count\": {\n    \"value\": \"reference #/components/schemas/ViewCountObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:57.000Z",
+                              "updatedAt": "2026-06-05T15:23:57.000Z",
+                              "uid": "35240-1146b4e5-4828-45cc-b9c8-8275e147cdfb"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-b6ce9b1b-7883-4fe8-987a-a6fc7c9444ac"
+                        }
+                      ],
+                      "id": "ddc3acf0-4e49-4d05-9a75-758a2520a3a8",
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-ddc3acf0-4e49-4d05-9a75-758a2520a3a8"
+                    },
+                    {
+                      "name": "execute",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Views View_id Execute",
+                          "id": "8cb66250-3fbb-49a6-a4e7-da44a714a3af",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/:view_id/execute?sort_by=<string>&sort_order=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                ":view_id",
+                                "execute"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The ticket field used for sorting. This will either be a title or a custom field id.",
+                                  "key": "sort_by",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The direction the tickets are sorted. May be one of 'asc' or 'desc'",
+                                  "key": "sort_order",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b0e254fd-1ade-495e-8acf-c9ec906cfcb2",
+                                  "key": "view_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns the column titles and the rows of the specified view.\n\nThe `columns` array lists the view's column titles and includes only views parameters.\n\nThe `rows` array lists the values of each column for each ticket and includes parameters from both views and tickets. Though not displayed in the view, a partial ticket object is included with each row object.\n\n**Note**: To get the full ticket objects for a specified view, use [List Tickets from a View](#list-tickets-from-a-view).\n\nThis endpoint is rate limited to 5 requests per minute, per view, per agent. This rate limit includes activity in Zendesk Support. An API script is more likely to encounter rate limit errors if the authenticating agent or admin is concurrently active in Zendesk Support.\n\nThe view execution system is designed for periodic rather than high-frequency API usage. In particular, views called very frequently may be cached by Zendesk. This means that the API client will still receive a result, but that result may have been computed at any time within the last 10 minutes.\n\nZendesk recommends using the Incremental Ticket Export endpoint to get the latest changes. You can call it more often, and it returns all the tickets that changed since the last poll. For details and rate limits, see [Incremental Exports](/api-reference/ticketing/ticket-management/incremental_exports/).\n\nView output sorting can be controlled by passing the `sort_by` and `sort_order` parameters in the format described in the table in [Preview Views](#preview-views).\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "6c15a102-26ae-472d-8749-cfd8ee044436",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/views/:view_id/execute?sort_by=<string>&sort_order=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "views",
+                                    ":view_id",
+                                    "execute"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The ticket field used for sorting. This will either be a title or a custom field id.",
+                                      "key": "sort_by",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The direction the tickets are sorted. May be one of 'asc' or 'desc'",
+                                      "key": "sort_order",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "view_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"columns\": [\n    {\n      \"nonb9\": \"veniam voluptate\",\n      \"reprehenderit_3c\": -35569478.86127899,\n      \"reprehenderit_ee4\": true\n    },\n    {\n      \"dolor89_\": \"amet cillum labore magna\",\n      \"ut_ef\": false\n    }\n  ],\n  \"groups\": [\n    {\n      \"commodo__\": -37846180.668936394\n    },\n    {\n      \"esse0b\": -40762914\n    }\n  ],\n  \"rows\": [\n    {\n      \"ut_e7\": 29682025,\n      \"ea_0ea\": 43635969\n    },\n    {\n      \"in_a\": -96856765.5363044,\n      \"utd\": true\n    }\n  ],\n  \"view\": {\n    \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:57.000Z",
+                              "updatedAt": "2026-06-05T15:23:57.000Z",
+                              "uid": "35240-6c15a102-26ae-472d-8749-cfd8ee044436"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-8cb66250-3fbb-49a6-a4e7-da44a714a3af"
+                        }
+                      ],
+                      "id": "e20c47b3-8680-442e-9854-7fa8ee44c378",
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-e20c47b3-8680-442e-9854-7fa8ee44c378"
+                    },
+                    {
+                      "name": "export",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Views View_id Export",
+                          "id": "fa26c161-4369-490f-a8e5-619f34e69ec8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/:view_id/export",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                ":view_id",
+                                "export"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3587b6d9-cf93-4772-b635-36eca248dcf8",
+                                  "key": "view_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns the csv attachment of the specified view if possible. Enqueues a job to produce the csv if necessary.\n\n#### Allowed For\n\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "cb589bec-a549-4258-9197-bebee194fe0f",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/views/:view_id/export",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "views",
+                                    ":view_id",
+                                    "export"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "view_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"export\": {\n    \"status\": \"<string>\",\n    \"view_id\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:57.000Z",
+                              "updatedAt": "2026-06-05T15:23:57.000Z",
+                              "uid": "35240-cb589bec-a549-4258-9197-bebee194fe0f"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-fa26c161-4369-490f-a8e5-619f34e69ec8"
+                        }
+                      ],
+                      "id": "f893ea72-2386-4b2c-875f-70882c25cfaa",
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-f893ea72-2386-4b2c-875f-70882c25cfaa"
+                    },
+                    {
+                      "name": "tickets",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Views View_id Tickets",
+                          "id": "7eec7a27-0ef8-4468-bfb4-e0551bfb6195",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/:view_id/tickets?sort_by=<string>&sort_order=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                ":view_id",
+                                "tickets"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Sort or group the tickets by a column in the [View columns](#view-columns) table. The `subject` and `submitter` columns are not supported",
+                                  "key": "sort_by",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                                  "key": "sort_order",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e0ea31d1-cfc1-4efd-b67f-b65a6c15b42e",
+                                  "key": "view_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n* Agents\n\n#### Pagination\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "d9011c90-4e3d-4736-bbce-a80cc958db76",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/views/:view_id/tickets?sort_by=<string>&sort_order=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "views",
+                                    ":view_id",
+                                    "tickets"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Sort or group the tickets by a column in the [View columns](#view-columns) table. The `subject` and `submitter` columns are not supported",
+                                      "key": "sort_by",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                                      "key": "sort_order",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "view_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"tickets\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:23:57.000Z",
+                              "updatedAt": "2026-06-05T15:23:57.000Z",
+                              "uid": "35240-d9011c90-4e3d-4736-bbce-a80cc958db76"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-7eec7a27-0ef8-4468-bfb4-e0551bfb6195"
+                        }
+                      ],
+                      "id": "357bfbcb-53a4-4a27-9b1d-48f1572e46c6",
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-357bfbcb-53a4-4a27-9b1d-48f1572e46c6"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Views View_id",
+                      "id": "89de8dcb-96f8-40d4-ad5e-a50c31988248",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/:view_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            ":view_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7dad20b0-c56e-45da-bec5-467fa0d388a3",
+                              "key": "view_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "6b964208-0ed7-4da5-924b-79cb6ed73d97",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/:view_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                ":view_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "view_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"columns\": [\n    {\n      \"nonb9\": \"veniam voluptate\",\n      \"reprehenderit_3c\": -35569478.86127899,\n      \"reprehenderit_ee4\": true\n    },\n    {\n      \"dolor89_\": \"amet cillum labore magna\",\n      \"ut_ef\": false\n    }\n  ],\n  \"groups\": [\n    {\n      \"commodo__\": -37846180.668936394\n    },\n    {\n      \"esse0b\": -40762914\n    }\n  ],\n  \"rows\": [\n    {\n      \"ut_e7\": 29682025,\n      \"ea_0ea\": 43635969\n    },\n    {\n      \"in_a\": -96856765.5363044,\n      \"utd\": true\n    }\n  ],\n  \"view\": {\n    \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-6b964208-0ed7-4da5-924b-79cb6ed73d97"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-89de8dcb-96f8-40d4-ad5e-a50c31988248"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Views View_id",
+                      "id": "2dc0826c-554f-4dbf-89eb-8cb927f01657",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/:view_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            ":view_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e9b13306-a8d1-45e2-8248-c69a273ee91f",
+                              "key": "view_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n\n#### JSON Format\n\n The PUT request takes one property, a `view` object that lists the values to update. All properties are optional.\n\n**Note**: Updating a condition updates the containing array, clearing the other conditions. Include all your conditions when updating any condition.\n\n| Name        | Description\n| ----------- | -----------\n| title       | The title of the view\n| all         | An array of one or more conditions. A ticket must meet all the conditions to be included in the view. The PUT request replaces all existing conditions. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)\n| any         | An array of one or more conditions. A ticket must meet any of them to be included in the view. At least one `all` condition must be defined with the `any` conditions. The PUT request replaces all existing `any` conditions. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)\n| active      | Allowed values are true or false. Determines if the view is displayed or not\n| output      | An object that specifies the columns to display. Example: `\"output\": {\"columns\": [\"status\", \"description,\" \"priority\"]}`. See [View columns](#view-columns)\n| restriction | An object that describes who can access the view. To give all agents access to the view, omit this property\n\nThe `restriction` object has the following properties.\n\n| Name | Comment\n| ---- | -------\n| type | Allowed values are \"Group\" or \"User\"\n| id   | The numeric ID of a single group or user\n| ids  | The numeric IDs of a single or more groups. Recommended for \"Group\" `type`\n\nIf `type` is \"Group\", the `ids` property is the preferred method of specifying the group id or ids.\n\nYou can also update how items are sorted and grouped. See [View sorting](#view-sorting) in Create View.\n\n#### Example Request Body\n\n```js\n{\n  \"view\": {\n    \"title\": \"Code red tickets\",\n    \"restriction\": {\n      \"type\": \"Group\",\n      \"ids\": [10052, 10057, 10062, 10002]\n    },\n    \"all\": [\n      {\n        \"field\": \"priority\",\n        \"operator\": \"is\",\n        \"value\": \"urgent\"\n      }\n    ],\n    \"output\": {\n      \"columns\": [\"status\", \"requester\", \"assignee\", \"updated\"]\n    }\n  }\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "aae72869-a4db-447d-9a5c-25a9223a257a",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/:view_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                ":view_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "view_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"columns\": [\n    {\n      \"nonb9\": \"veniam voluptate\",\n      \"reprehenderit_3c\": -35569478.86127899,\n      \"reprehenderit_ee4\": true\n    },\n    {\n      \"dolor89_\": \"amet cillum labore magna\",\n      \"ut_ef\": false\n    }\n  ],\n  \"groups\": [\n    {\n      \"commodo__\": -37846180.668936394\n    },\n    {\n      \"esse0b\": -40762914\n    }\n  ],\n  \"rows\": [\n    {\n      \"ut_e7\": 29682025,\n      \"ea_0ea\": 43635969\n    },\n    {\n      \"in_a\": -96856765.5363044,\n      \"utd\": true\n    }\n  ],\n  \"view\": {\n    \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-aae72869-a4db-447d-9a5c-25a9223a257a"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-2dc0826c-554f-4dbf-89eb-8cb927f01657"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Views View_id",
+                      "id": "5f7f64f4-8811-46e5-81cf-7be71570017f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/:view_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            ":view_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e1988185-5dfb-484d-8dcd-0e2e6675d858",
+                              "key": "view_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "6270b018-044d-4cea-af05-a54baff80ec5",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/:view_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                ":view_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "view_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-6270b018-044d-4cea-af05-a54baff80ec5"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-5f7f64f4-8811-46e5-81cf-7be71570017f"
+                    }
+                  ],
+                  "id": "3823e1ad-9f41-49a8-897c-fd6a91c4cea3",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-3823e1ad-9f41-49a8-897c-fd6a91c4cea3"
+                },
+                {
+                  "name": "active",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Views Active",
+                      "id": "76f7e58a-2ccc-4251-b252-25986bf0a56b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/active?access=<string>&group_id=<integer>&sort_by=<string>&sort_order=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "active"
+                          ],
+                          "query": [
+                            {
+                              "description": "Only views with given access. May be \"personal\", \"shared\", or \"account\"",
+                              "key": "access",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Only views belonging to given group",
+                              "key": "group_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Possible values are \"alphabetical\", \"created_at\", or \"updated_at\". Defaults to \"position\"",
+                              "key": "sort_by",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                              "key": "sort_order",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Lists active shared and personal views available to the current user.\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The permissions for each view\n\n#### Pagination\n\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "9c522cc8-c14d-45d5-983b-027e18a2f76f",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/active?access=<string>&group_id=<integer>&sort_by=<string>&sort_order=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "active"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only views with given access. May be \"personal\", \"shared\", or \"account\"",
+                                  "key": "access",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only views belonging to given group",
+                                  "key": "group_id",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Possible values are \"alphabetical\", \"created_at\", or \"updated_at\". Defaults to \"position\"",
+                                  "key": "sort_by",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                                  "key": "sort_order",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"views\": [\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-9c522cc8-c14d-45d5-983b-027e18a2f76f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-76f7e58a-2ccc-4251-b252-25986bf0a56b"
+                    }
+                  ],
+                  "id": "a58896c3-1825-4c21-ab65-b0d9b9ec4481",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-a58896c3-1825-4c21-ab65-b0d9b9ec4481"
+                },
+                {
+                  "name": "compact",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Views Compact",
+                      "id": "58978814-d33f-4bad-bc67-70dc5402829f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/compact",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "compact"
+                          ]
+                        },
+                        "description": "A compacted list of shared and personal views available to the current user. This endpoint never returns more than 32 records and does not respect the \"per_page\" option.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "7de47fb3-b234-405a-9368-cfece456eead",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/compact",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "compact"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"views\": [\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-7de47fb3-b234-405a-9368-cfece456eead"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-58978814-d33f-4bad-bc67-70dc5402829f"
+                    }
+                  ],
+                  "id": "6bd9fabf-450f-4190-a3d7-d48561568e20",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-6bd9fabf-450f-4190-a3d7-d48561568e20"
+                },
+                {
+                  "name": "count",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Views Count",
+                      "id": "54b4b0fd-e620-4c35-85cb-fca7f6c18548",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/count",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "count"
+                          ]
+                        },
+                        "description": "Returns an approximate count of shared and personal views available to the current user. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.\n\n#### Allowed For\n* Agents"
+                      },
+                      "response": [
+                        {
+                          "id": "741dfc61-f573-444e-b025-cdbdc6011527",
+                          "name": "Count of views",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "count"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": {\n    \"refreshed_at\": \"<dateTime>\",\n    \"value\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-741dfc61-f573-444e-b025-cdbdc6011527"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-54b4b0fd-e620-4c35-85cb-fca7f6c18548"
+                    }
+                  ],
+                  "id": "3d3d2ac9-d3cf-403f-a1bb-f5c38ac39052",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-3d3d2ac9-d3cf-403f-a1bb-f5c38ac39052"
+                },
+                {
+                  "name": "count_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Views Count_many",
+                      "id": "6f567811-192f-491b-a923-05195ebd32ea",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/count_many?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "count_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) List of view's ids separated by commas.",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Returns the ticket count of each view in a list of views. Accepts up to 20 view ids per request. For the ticket count of a single view, see [Count Tickets in View](#count-tickets-in-view).\n\nOnly returns values for personal and shared views accessible to the user performing the request.\n\nThis endpoint is rate limited to 6 requests every 5 minutes.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "37a378eb-687a-4505-b208-904dd175f8ee",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/count_many?ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "count_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) List of view's ids separated by commas.",
+                                  "key": "ids",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"view_counts\": [\n    {\n      \"value\": \"reference #/components/schemas/ViewCountObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ViewCountObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-37a378eb-687a-4505-b208-904dd175f8ee"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-6f567811-192f-491b-a923-05195ebd32ea"
+                    }
+                  ],
+                  "id": "6f1cf58b-84bd-4a91-83b9-e1c6ff993f1c",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-6f1cf58b-84bd-4a91-83b9-e1c6ff993f1c"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Views Destroy_many",
+                      "id": "f17fdccd-d14b-432f-87ab-888c1fb18f8e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/destroy_many?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "destroy_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The IDs of the views to delete",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Deletes the views corresponding to the provided list of IDs.\n\n#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c14c1354-627e-49ca-845c-1b52f73316e4",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/destroy_many?ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "destroy_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The IDs of the views to delete",
+                                  "key": "ids",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-c14c1354-627e-49ca-845c-1b52f73316e4"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-f17fdccd-d14b-432f-87ab-888c1fb18f8e"
+                    }
+                  ],
+                  "id": "f2da1824-5af5-4543-84d7-4f98739009dc",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-f2da1824-5af5-4543-84d7-4f98739009dc"
+                },
+                {
+                  "name": "preview",
+                  "item": [
+                    {
+                      "name": "count",
+                      "item": [
+                        {
+                          "name": "Zendesk Post  Api V2 Views Preview Count",
+                          "id": "9a8107da-5540-4274-995d-addbe1e0a8aa",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/preview/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "preview",
+                                "count"
+                              ]
+                            },
+                            "description": "Returns the ticket count for a single preview.\n\n#### Allowed For\n\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "560fa045-90fd-419a-b9dd-a8be4d541789",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/views/preview/count",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "views",
+                                    "preview",
+                                    "count"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"view_count\": {\n    \"value\": \"reference #/components/schemas/ViewCountObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:57.000Z",
+                              "updatedAt": "2026-06-05T15:23:57.000Z",
+                              "uid": "35240-560fa045-90fd-419a-b9dd-a8be4d541789"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-9a8107da-5540-4274-995d-addbe1e0a8aa"
+                        }
+                      ],
+                      "id": "d6ebeb4d-9b86-45a5-a19d-56b27bee46f9",
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-d6ebeb4d-9b86-45a5-a19d-56b27bee46f9"
+                    },
+                    {
+                      "name": "Zendesk Post  Api V2 Views Preview",
+                      "id": "f47e73c8-4d67-4ce6-b4ef-e4ad710caaa9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/preview",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "preview"
+                          ]
+                        },
+                        "description": "You can preview views by constructing the conditions in the proper format and nesting them under the `view` property. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/). The output can also be controlled by passing in any of the following parameters and nesting them under the `output` property.\n\n| Name            | Type    | Comment\n| --------------- | ------- | -------\n| columns         | Array   | The ticket fields to display. System fields are looked up by name, custom fields by title or id. See the [View columns](#view-columns) table\n| group_by        | String  | When present, the field by which the tickets are grouped\n| group_order     | String  | The direction the tickets are grouped. May be one of \"asc\" or \"desc\"\n| sort_order      | String  | The direction the tickets are sorted. May be one of \"asc\" or \"desc\"\n| sort_by         | String  | The ticket field used for sorting. This will either be a title or a custom field id.\n\nThis endpoint is rate limited to 5 requests per minute, per view, per agent.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3bdd7d28-080a-4997-b375-c1e7daec805e",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/preview",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "preview"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"columns\": [\n    {\n      \"nonb9\": \"veniam voluptate\",\n      \"reprehenderit_3c\": -35569478.86127899,\n      \"reprehenderit_ee4\": true\n    },\n    {\n      \"dolor89_\": \"amet cillum labore magna\",\n      \"ut_ef\": false\n    }\n  ],\n  \"groups\": [\n    {\n      \"commodo__\": -37846180.668936394\n    },\n    {\n      \"esse0b\": -40762914\n    }\n  ],\n  \"rows\": [\n    {\n      \"ut_e7\": 29682025,\n      \"ea_0ea\": 43635969\n    },\n    {\n      \"in_a\": -96856765.5363044,\n      \"utd\": true\n    }\n  ],\n  \"view\": {\n    \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-3bdd7d28-080a-4997-b375-c1e7daec805e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-f47e73c8-4d67-4ce6-b4ef-e4ad710caaa9"
+                    }
+                  ],
+                  "id": "2c55f7dd-06bb-489f-bfae-448b72f076d6",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-2c55f7dd-06bb-489f-bfae-448b72f076d6"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Views Search",
+                      "id": "306f4691-482b-431c-a7c4-51f8c13d9095",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/search?query=<string>&access=<string>&active=<boolean>&group_id=<integer>&sort_by=<string>&sort_order=<string>&include=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Query string used to find all views with matching title",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter views by access. May be \"personal\", \"shared\", or \"account\"",
+                              "key": "access",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by active views if true or inactive views if false",
+                              "key": "active",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filter views by group",
+                              "key": "group_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Possible values are \"alphabetical\", \"created_at\", \"updated_at\", and \"position\". If unspecified, the views are sorted by relevance",
+                              "key": "sort_by",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                              "key": "sort_order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A sideload to include in the response. See [Sideloads](#sideloads-3)",
+                              "key": "include",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The permissions for each view\n"
+                      },
+                      "response": [
+                        {
+                          "id": "5f87e360-652a-4888-91fe-0f5e57dd4347",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/search?query=<string>&access=<string>&active=<boolean>&group_id=<integer>&sort_by=<string>&sort_order=<string>&include=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Query string used to find all views with matching title",
+                                  "key": "query",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter views by access. May be \"personal\", \"shared\", or \"account\"",
+                                  "key": "access",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by active views if true or inactive views if false",
+                                  "key": "active",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filter views by group",
+                                  "key": "group_id",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Possible values are \"alphabetical\", \"created_at\", \"updated_at\", and \"position\". If unspecified, the views are sorted by relevance",
+                                  "key": "sort_by",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                                  "key": "sort_order",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A sideload to include in the response. See [Sideloads](#sideloads-3)",
+                                  "key": "include",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"views\": [\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-5f87e360-652a-4888-91fe-0f5e57dd4347"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-306f4691-482b-431c-a7c4-51f8c13d9095"
+                    }
+                  ],
+                  "id": "79121433-fb95-4894-9776-ef14d3451899",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-79121433-fb95-4894-9776-ef14d3451899"
+                },
+                {
+                  "name": "show_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Views Show_many",
+                      "id": "921d724d-0e73-4881-b77b-054c7af9313d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/show_many?ids=<string>&active=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "show_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) List of view's ids separated by commas.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Only active views if true, inactive views if false",
+                              "key": "active",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The permissions for each view\n"
+                      },
+                      "response": [
+                        {
+                          "id": "115f824b-daed-4f06-8606-1248f92e5cab",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/show_many?ids=<string>&active=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "show_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) List of view's ids separated by commas.",
+                                  "key": "ids",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only active views if true, inactive views if false",
+                                  "key": "active",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"views\": [\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-115f824b-daed-4f06-8606-1248f92e5cab"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-921d724d-0e73-4881-b77b-054c7af9313d"
+                    }
+                  ],
+                  "id": "7eeacf39-48c9-45f6-912c-7eda0cdc70af",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-7eeacf39-48c9-45f6-912c-7eda0cdc70af"
+                },
+                {
+                  "name": "update_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Views Update_many",
+                      "id": "c24a9fa6-0ec5-4faf-b9d0-d32ed338d0c1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views/update_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views",
+                            "update_many"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe PUT request expects a `views` object that lists the views to update.\n\nEach view may have the following properties:\n\n| Name     | Mandatory | Description\n| -------- | --------- | -----------\n| id       | yes       | The ID of the view to update\n| position | no        | The new position of the view\n| active   | no        | The active status of the view (true or false)\n\n#### Example Request Body\n\n```js\n{\n  \"views\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"position\": 5},\n    {\"id\": 27, \"position\": 9},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "302aa534-e4d3-4ec6-8fc5-b35af9fd3164",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/views/update_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "views",
+                                "update_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"views\": [\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:57.000Z",
+                          "updatedAt": "2026-06-05T15:23:57.000Z",
+                          "uid": "35240-302aa534-e4d3-4ec6-8fc5-b35af9fd3164"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-c24a9fa6-0ec5-4faf-b9d0-d32ed338d0c1"
+                    }
+                  ],
+                  "id": "cc01f181-8635-47a1-9208-2a464af7db48",
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-cc01f181-8635-47a1-9208-2a464af7db48"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Views",
+                  "id": "1ffee65f-5d20-4c73-ae8e-ca53407a7767",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/views?access=<string>&active=<boolean>&group_id=<integer>&sort=<string>&sort_by=<string>&sort_order=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "views"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only views with given access. May be \"personal\", \"shared\", or \"account\"",
+                          "key": "access",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only active views if true, inactive views if false",
+                          "key": "active",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Only views belonging to given group",
+                          "key": "group_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The sort parameter used with cursor pagination. Defaults to \"created_at\". Prefix with '-' for descending order",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The sort_by parameter used with offset pagination. Possible values are \"alphabetical\", \"created_at\", or \"updated_at\". Defaults to \"position\"",
+                          "key": "sort_by",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The sort_order parameter used with offset pagination. One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                          "key": "sort_order",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Lists shared and personal views available to the current user.\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The permissions for each view\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "8a93286d-15e1-465d-a674-aa3884370b93",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views?access=<string>&active=<boolean>&group_id=<integer>&sort=<string>&sort_by=<string>&sort_order=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views"
+                          ],
+                          "query": [
+                            {
+                              "description": "Only views with given access. May be \"personal\", \"shared\", or \"account\"",
+                              "key": "access",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Only active views if true, inactive views if false",
+                              "key": "active",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Only views belonging to given group",
+                              "key": "group_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The sort parameter used with cursor pagination. Defaults to \"created_at\". Prefix with '-' for descending order",
+                              "key": "sort",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The sort_by parameter used with offset pagination. Possible values are \"alphabetical\", \"created_at\", or \"updated_at\". Defaults to \"position\"",
+                              "key": "sort_by",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The sort_order parameter used with offset pagination. One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others",
+                              "key": "sort_order",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"views\": [\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-8a93286d-15e1-465d-a674-aa3884370b93"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-1ffee65f-5d20-4c73-ae8e-ca53407a7767"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Views",
+                  "id": "d6385e14-ba4a-4af6-a69d-102957157964",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/views",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "views"
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Agents\n\n#### JSON Format\n\nThe JSON format consists of one property, a `view` object that lists the values to set when the view is created.\n\n**Note**: The request must include at least one condition in the `all` array that checks one of the following fields: `status`, `type`, `group_id`, `assignee_id`, or `requester_id`.\n\n| Name        | Description\n| ----------- | -----------\n| title       | Required. The title of the view\n| all         | Required. An array of one or more conditions. A ticket must meet all of them to be included in the view. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)\n| any         | An array of one or more conditions. A ticket must meet any of them to be included in the view. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)\n| description | The description of the view\n| active      | Allowed values are true or false. Determines if the view is displayed or not\n| output      | An object that specifies the columns to display. Example: `\"output\": {\"columns\": [\"status\", \"description\", \"priority\"]}`. See [View columns](#view-columns)\n| restriction | An object that describes who can access the view. To give all agents access to the view, omit this property\n\nThe `restriction` object has the following properties.\n\n| Name | Comment\n| ---- | -------\n| type | Allowed values are \"Group\" or \"User\"\n| id   | The numeric ID of a single group or user\n| ids  | The numeric IDs of a single or more groups. Recommended for \"Group\" `type`\n\nIf `type` is \"Group\", the `ids` property is the preferred method of specifying the group id or ids.\n\n#### Example Request Body\n\n```js\n{\n  \"view\": {\n    \"title\": \"Kelly's tickets\",\n    \"raw_title\": \"{{dc.tickets_assigned_to_kelly}}\",\n    \"description\": \"Tickets that are assigned to Kelly\",\n    \"active\": true,\n    \"position\": 3,\n    \"restriction\": {\n      \"type\": \"User\",\n      \"id\": \"213977756\"\n    },\n    \"all\": [\n      {\n        \"field\": \"status\",\n        \"operator\": \"less_than\",\n        \"value\": \"solved\"\n      },\n      {\n        \"field\": \"group_id\",\n        \"operator\": \"is\",\n        \"value\": \"24000932\"\n      },\n      {\n        \"field\": \"custom_fields_360011872073\",\n        \"operator\": \"is\",\n        \"value\": \"Canada\"\n      },\n      ...\n    ],\n    \"output\": {\n      \"columns\": [\"status\", \"requester\", \"assignee\"],\n      \"group_by\": \"assignee\",\n      \"group_order\": \"desc\",\n      \"sort_by\": \"status\",\n      \"sort_order\": \"desc\"\n    }\n  }\n}\n```\n\n#### View columns\n\nThe `output` request parameter lets you specify what columns to include in the view in the agent interface. Example: `\"output\": {\"columns\": [\"status\", \"description\", \"priority\"]}`. The following table lists possible columns for views in the agent UI and the corresponding values in the `columns` array.\n\nFor custom fields, specify the id of the custom field in the `columns` array.\n\nYou can specify a total of 10 columns to a view.\n\n| View column title in UI     | Value                |\n|---------------------------- | -------------------- |\n| Assigned                    | `assigned`           |\n| Assignee                    | `assignee`           |\n| Due Date                    | `due_date`           |\n| Group                       | `group`              |\n| ID                          | `nice_id`            |\n| Updated                     | `updated`            |\n| Assignee updated            | `updated_assignee`   |\n| Requester updated           | `updated_requester`  |\n| Updater                     | `updated_by_type`    |\n| Organization                | `organization`       |\n| Priority                    | `priority`           |\n| Requested                   | `created`            |\n| Requester                   | `requester`          |\n| Requester language          | `locale_id`          |\n| Satisfaction                | `satisfaction_score` |\n| Solved                      | `solved`             |\n| Status category             | `status`             |\n| Subject                     | `description`        |\n| Submitter                   | `submitter`          |\n| Ticket form                 | `ticket_form`        |\n| Type                        | `type`               |\n| Brand                       | `brand`              |\n| Ticket status               | `custom_status_id`   |\n\n#### View sorting\n\nYou can group and sort items in the view by adding items to the `output` parameter:\n\n| Attribute                   | Description\n|-----------------------------| -----------\n| `group_by`, `sort_by`       | Sort or group the tickets by a column in the [View columns](#view-columns) table. The `description`, `submitter` and `custom_status_id` columns are not supported\n| `group_order`, `sort_order` | Either \"asc\" or \"desc\"\n"
+                  },
+                  "response": [
+                    {
+                      "id": "6779d4af-fc4b-4476-8f8b-1eb57a0326c3",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/views",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "views"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"columns\": [\n    {\n      \"nonb9\": \"veniam voluptate\",\n      \"reprehenderit_3c\": -35569478.86127899,\n      \"reprehenderit_ee4\": true\n    },\n    {\n      \"dolor89_\": \"amet cillum labore magna\",\n      \"ut_ef\": false\n    }\n  ],\n  \"groups\": [\n    {\n      \"commodo__\": -37846180.668936394\n    },\n    {\n      \"esse0b\": -40762914\n    }\n  ],\n  \"rows\": [\n    {\n      \"ut_e7\": 29682025,\n      \"ea_0ea\": 43635969\n    },\n    {\n      \"in_a\": -96856765.5363044,\n      \"utd\": true\n    }\n  ],\n  \"view\": {\n    \"value\": \"reference #/components/schemas/ViewObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:57.000Z",
+                      "updatedAt": "2026-06-05T15:23:57.000Z",
+                      "uid": "35240-6779d4af-fc4b-4476-8f8b-1eb57a0326c3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:57.000Z",
+                  "updatedAt": "2026-06-05T15:23:57.000Z",
+                  "uid": "35240-d6385e14-ba4a-4af6-a69d-102957157964"
+                }
+              ],
+              "id": "21aff2f3-74d9-43ec-adfe-82051cdb3d7a",
+              "createdAt": "2026-06-05T15:23:57.000Z",
+              "updatedAt": "2026-06-05T15:23:57.000Z",
+              "uid": "35240-21aff2f3-74d9-43ec-adfe-82051cdb3d7a"
+            }
+          ],
+          "id": "3dbabce7-8a4b-400f-a351-2f8d39850085",
+          "createdAt": "2026-06-05T15:23:57.000Z",
+          "updatedAt": "2026-06-05T15:23:57.000Z",
+          "uid": "35240-3dbabce7-8a4b-400f-a351-2f8d39850085"
+        }
+      ],
+      "id": "173e0775-b1ad-441c-a044-070e3640bb47",
+      "createdAt": "2026-06-05T15:23:57.000Z",
+      "updatedAt": "2026-06-05T15:23:57.000Z",
+      "uid": "35240-173e0775-b1ad-441c-a044-070e3640bb47"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

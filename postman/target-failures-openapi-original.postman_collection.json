@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "642b0f95-c68b-47b0-82b0-2c1fdbf229d7",
+    "name": "Zendesk Target Failures",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:29.000Z",
+    "updatedAt": "2026-06-05T15:23:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-642b0f95-c68b-47b0-82b0-2c1fdbf229d7"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "target_failures",
+              "item": [
+                {
+                  "name": "{target_failure_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Target_failures Target_failure_id",
+                      "id": "c737c47d-ca0a-4aad-a263-038a84346ae4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/target_failures/:target_failure_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "target_failures",
+                            ":target_failure_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5cdb9f66-4f4b-4b44-b1ea-9d52f333e8bf",
+                              "key": "target_failure_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Stability\n\n* Development\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "e8549986-dd93-4024-921e-1b8315d65cd8",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/target_failures/:target_failure_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "target_failures",
+                                ":target_failure_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "target_failure_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"target_failure\": {\n    \"value\": \"reference #/components/schemas/TargetFailureObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:30.000Z",
+                          "updatedAt": "2026-06-05T15:23:30.000Z",
+                          "uid": "35240-e8549986-dd93-4024-921e-1b8315d65cd8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:30.000Z",
+                      "updatedAt": "2026-06-05T15:23:30.000Z",
+                      "uid": "35240-c737c47d-ca0a-4aad-a263-038a84346ae4"
+                    }
+                  ],
+                  "id": "dd359fa5-6683-4c78-bc1a-f26abbae7e33",
+                  "createdAt": "2026-06-05T15:23:30.000Z",
+                  "updatedAt": "2026-06-05T15:23:30.000Z",
+                  "uid": "35240-dd359fa5-6683-4c78-bc1a-f26abbae7e33"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Target_failures",
+                  "id": "4bb443f3-12b9-4eaa-9751-fd67c86c7655",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/target_failures",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "target_failures"
+                      ]
+                    },
+                    "description": "Returns the 25 most recent target failures, per target.\n\n#### Stability\n\n* Development\n\n#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "f0c171d2-1467-44e5-96a0-263d658f95ba",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/target_failures",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "target_failures"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"target_failures\": [\n    {\n      \"value\": \"reference #/components/schemas/TargetFailureObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TargetFailureObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:30.000Z",
+                      "updatedAt": "2026-06-05T15:23:30.000Z",
+                      "uid": "35240-f0c171d2-1467-44e5-96a0-263d658f95ba"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:30.000Z",
+                  "updatedAt": "2026-06-05T15:23:30.000Z",
+                  "uid": "35240-4bb443f3-12b9-4eaa-9751-fd67c86c7655"
+                }
+              ],
+              "id": "7547842b-0440-4d72-a98f-5a584659aee6",
+              "createdAt": "2026-06-05T15:23:30.000Z",
+              "updatedAt": "2026-06-05T15:23:30.000Z",
+              "uid": "35240-7547842b-0440-4d72-a98f-5a584659aee6"
+            }
+          ],
+          "id": "3d2bce6a-6621-4f82-ba3f-ac10df3fc694",
+          "createdAt": "2026-06-05T15:23:30.000Z",
+          "updatedAt": "2026-06-05T15:23:30.000Z",
+          "uid": "35240-3d2bce6a-6621-4f82-ba3f-ac10df3fc694"
+        }
+      ],
+      "id": "c8464894-b9f8-4245-aadf-2bb3c72963fc",
+      "createdAt": "2026-06-05T15:23:30.000Z",
+      "updatedAt": "2026-06-05T15:23:30.000Z",
+      "uid": "35240-c8464894-b9f8-4245-aadf-2bb3c72963fc"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

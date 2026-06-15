@@ -1,0 +1,168 @@
+{
+  "info": {
+    "_postman_id": "4cf679f9-49d9-4cdf-aaab-801c35744417",
+    "name": "Zendesk Relationships",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:11.000Z",
+    "updatedAt": "2026-06-05T15:23:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4cf679f9-49d9-4cdf-aaab-801c35744417"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "relationships",
+              "item": [
+                {
+                  "name": "definitions",
+                  "item": [
+                    {
+                      "name": "{target_type}",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Relationships Definitions Target_type",
+                          "id": "99ed461f-fdf4-4728-8c11-1f7de9e8b15f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/relationships/definitions/:target_type?source_type=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "relationships",
+                                "definitions",
+                                ":target_type"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The source type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", and \"zen:organization\"\n",
+                                  "key": "source_type",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "cd817567-2f78-4cd3-a0f5-910be53d132e",
+                                  "key": "target_type",
+                                  "value": "<string>",
+                                  "description": "(Required) The target type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                                }
+                              ]
+                            },
+                            "description": "Returns filter definitions based on the given target type.  Target types\ninclude users (zen:user), tickets (zen:ticket), organizations (zen:organization), or custom objects (zen:custom_object:CUSTOM_OBJECT_KEY).\nThe returned filter definitions are the options that you can use to build a custom field or ticket field's\n`relationship_filter`.\n"
+                          },
+                          "response": [
+                            {
+                              "id": "b80e5779-f1bd-4a99-a543-84e79db53aef",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/relationships/definitions/:target_type?source_type=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "relationships",
+                                    "definitions",
+                                    ":target_type"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The source type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", and \"zen:organization\"\n",
+                                      "key": "source_type",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "target_type"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"definitions\": {\n    \"value\": \"reference #/components/schemas/RelationshipFilterDefinition not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:12.000Z",
+                              "updatedAt": "2026-06-05T15:23:12.000Z",
+                              "uid": "35240-b80e5779-f1bd-4a99-a543-84e79db53aef"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:12.000Z",
+                          "updatedAt": "2026-06-05T15:23:12.000Z",
+                          "uid": "35240-99ed461f-fdf4-4728-8c11-1f7de9e8b15f"
+                        }
+                      ],
+                      "id": "eeb9690a-2805-4515-8078-f817c9addf0f",
+                      "createdAt": "2026-06-05T15:23:12.000Z",
+                      "updatedAt": "2026-06-05T15:23:12.000Z",
+                      "uid": "35240-eeb9690a-2805-4515-8078-f817c9addf0f"
+                    }
+                  ],
+                  "id": "2a3729e8-0d0b-46c5-9080-86a917bb0c4b",
+                  "createdAt": "2026-06-05T15:23:12.000Z",
+                  "updatedAt": "2026-06-05T15:23:12.000Z",
+                  "uid": "35240-2a3729e8-0d0b-46c5-9080-86a917bb0c4b"
+                }
+              ],
+              "id": "afaa012a-5d74-4fa1-ac57-d6ab96744f3d",
+              "createdAt": "2026-06-05T15:23:12.000Z",
+              "updatedAt": "2026-06-05T15:23:12.000Z",
+              "uid": "35240-afaa012a-5d74-4fa1-ac57-d6ab96744f3d"
+            }
+          ],
+          "id": "99eebe76-aa1d-47ff-8f34-cd6d9f0af3f1",
+          "createdAt": "2026-06-05T15:23:12.000Z",
+          "updatedAt": "2026-06-05T15:23:12.000Z",
+          "uid": "35240-99eebe76-aa1d-47ff-8f34-cd6d9f0af3f1"
+        }
+      ],
+      "id": "35bb5041-0608-4ea7-ba53-f47221db2f33",
+      "createdAt": "2026-06-05T15:23:12.000Z",
+      "updatedAt": "2026-06-05T15:23:12.000Z",
+      "uid": "35240-35bb5041-0608-4ea7-ba53-f47221db2f33"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

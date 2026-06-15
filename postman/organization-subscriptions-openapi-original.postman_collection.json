@@ -1,0 +1,383 @@
+{
+  "info": {
+    "_postman_id": "3805f104-25ac-461c-9555-d216ec531c11",
+    "name": "Zendesk Organization Subscriptions",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:03.000Z",
+    "updatedAt": "2026-06-05T15:23:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3805f104-25ac-461c-9555-d216ec531c11"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "organization_subscriptions",
+              "item": [
+                {
+                  "name": "{organization_subscription_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Organization_subscriptions Organization_subscription_id",
+                      "id": "b2530bec-ad28-47f6-bae5-dafc321df3d6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_subscriptions/:organization_subscription_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_subscriptions",
+                            ":organization_subscription_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "267c8db4-aafa-4b5b-8a8f-8fa897645827",
+                              "key": "organization_subscription_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For:\n\n* Agents\n* End users\n\nFor end users, the response will only list the subscriptions created by the requesting end user."
+                      },
+                      "response": [
+                        {
+                          "id": "1533ea25-c06a-4dc4-bf04-228586a25617",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organization_subscriptions/:organization_subscription_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organization_subscriptions",
+                                ":organization_subscription_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_subscription_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"organization_subscription\": {\n    \"value\": \"reference #/components/schemas/OrganizationSubscriptionObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:03.000Z",
+                          "updatedAt": "2026-06-05T15:23:03.000Z",
+                          "uid": "35240-1533ea25-c06a-4dc4-bf04-228586a25617"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:03.000Z",
+                      "updatedAt": "2026-06-05T15:23:03.000Z",
+                      "uid": "35240-b2530bec-ad28-47f6-bae5-dafc321df3d6"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Organization_subscriptions Organization_subscription_id",
+                      "id": "699c76c9-0276-42e9-bc65-89026e066925",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_subscriptions/:organization_subscription_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_subscriptions",
+                            ":organization_subscription_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "35617383-56fe-4acd-a213-58b76c2ac6d1",
+                              "key": "organization_subscription_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For:\n\n* Agents\n* End users"
+                      },
+                      "response": [
+                        {
+                          "id": "33ab2df5-7cfc-457d-919a-c1cd55d45410",
+                          "name": "No content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/organization_subscriptions/:organization_subscription_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "organization_subscriptions",
+                                ":organization_subscription_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_subscription_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:03.000Z",
+                          "updatedAt": "2026-06-05T15:23:03.000Z",
+                          "uid": "35240-33ab2df5-7cfc-457d-919a-c1cd55d45410"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:03.000Z",
+                      "updatedAt": "2026-06-05T15:23:03.000Z",
+                      "uid": "35240-699c76c9-0276-42e9-bc65-89026e066925"
+                    }
+                  ],
+                  "id": "5279b41f-c420-47f5-b7e0-6678a34a0de0",
+                  "createdAt": "2026-06-05T15:23:03.000Z",
+                  "updatedAt": "2026-06-05T15:23:03.000Z",
+                  "uid": "35240-5279b41f-c420-47f5-b7e0-6678a34a0de0"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Organization_subscriptions",
+                  "id": "600ef485-d232-47d3-9469-1898676ed302",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/organization_subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "organization_subscriptions"
+                      ]
+                    },
+                    "description": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For:\n\n* Agents\n* End users\n\nFor end users, the response will only list the subscriptions created by the requesting end user."
+                  },
+                  "response": [
+                    {
+                      "id": "c624b45a-7878-4256-bd3d-75251be60bab",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"organization_subscriptions\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationSubscriptionObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationSubscriptionObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:03.000Z",
+                      "updatedAt": "2026-06-05T15:23:03.000Z",
+                      "uid": "35240-c624b45a-7878-4256-bd3d-75251be60bab"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:03.000Z",
+                  "updatedAt": "2026-06-05T15:23:03.000Z",
+                  "uid": "35240-600ef485-d232-47d3-9469-1898676ed302"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Organization_subscriptions",
+                  "id": "eccee818-5d34-4134-9fa8-63cae7366527",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference #/components/schemas/OrganizationSubscriptionCreateRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/organization_subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "organization_subscriptions"
+                      ]
+                    },
+                    "description": "#### Allowed For:\n\n* Agents\n* End users\n\nEnd users can only subscribe to shared organizations in which they're members."
+                  },
+                  "response": [
+                    {
+                      "id": "5cf98bab-e0b9-4b1b-958e-9a670759b725",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/OrganizationSubscriptionCreateRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/organization_subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "organization_subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"organization_subscription\": {\n    \"value\": \"reference #/components/schemas/OrganizationSubscriptionObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:03.000Z",
+                      "updatedAt": "2026-06-05T15:23:03.000Z",
+                      "uid": "35240-5cf98bab-e0b9-4b1b-958e-9a670759b725"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:03.000Z",
+                  "updatedAt": "2026-06-05T15:23:03.000Z",
+                  "uid": "35240-eccee818-5d34-4134-9fa8-63cae7366527"
+                }
+              ],
+              "id": "11227312-4ef6-4088-a141-b6f3a92a4a22",
+              "createdAt": "2026-06-05T15:23:03.000Z",
+              "updatedAt": "2026-06-05T15:23:03.000Z",
+              "uid": "35240-11227312-4ef6-4088-a141-b6f3a92a4a22"
+            }
+          ],
+          "id": "b905ee0f-3e11-4ae6-891f-573ecdf136c6",
+          "createdAt": "2026-06-05T15:23:03.000Z",
+          "updatedAt": "2026-06-05T15:23:03.000Z",
+          "uid": "35240-b905ee0f-3e11-4ae6-891f-573ecdf136c6"
+        }
+      ],
+      "id": "22a30fdf-f6af-4523-9775-fbf09779eb55",
+      "createdAt": "2026-06-05T15:23:03.000Z",
+      "updatedAt": "2026-06-05T15:23:03.000Z",
+      "uid": "35240-22a30fdf-f6af-4523-9775-fbf09779eb55"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

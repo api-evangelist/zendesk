@@ -1,0 +1,545 @@
+{
+  "info": {
+    "_postman_id": "97840dfc-2e6f-49f2-8d7d-0a10cb64e499",
+    "name": "Zendesk Locales",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:53.000Z",
+    "updatedAt": "2026-06-05T15:22:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-97840dfc-2e6f-49f2-8d7d-0a10cb64e499"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "locales",
+              "item": [
+                {
+                  "name": "{locale_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Locales Locale_id",
+                      "id": "4c748618-400b-4879-9e77-fde84338d5f2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/locales/:locale_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "locales",
+                            ":locale_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5ab5ac63-afd0-43e6-aa86-6668390fa471",
+                              "key": "locale_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Anyone\n"
+                      },
+                      "response": [
+                        {
+                          "id": "8c6a33ee-5aee-43ef-97ff-90b051ace552",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/locales/:locale_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "locales",
+                                ":locale_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "locale_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"locale\": {\n    \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:53.000Z",
+                          "updatedAt": "2026-06-05T15:22:53.000Z",
+                          "uid": "35240-8c6a33ee-5aee-43ef-97ff-90b051ace552"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:53.000Z",
+                      "updatedAt": "2026-06-05T15:22:53.000Z",
+                      "uid": "35240-4c748618-400b-4879-9e77-fde84338d5f2"
+                    }
+                  ],
+                  "id": "b6bbd71e-e7e7-4f48-9263-f96b8a6d9f96",
+                  "createdAt": "2026-06-05T15:22:53.000Z",
+                  "updatedAt": "2026-06-05T15:22:53.000Z",
+                  "uid": "35240-b6bbd71e-e7e7-4f48-9263-f96b8a6d9f96"
+                },
+                {
+                  "name": "agent",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Locales Agent",
+                      "id": "1e284b36-8fa4-4648-8116-3aa0cec3a917",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/locales/agent",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "locales",
+                            "agent"
+                          ]
+                        },
+                        "description": "Lists the translation locales that have been localized for agents on a specific account.\n\n#### Allowed For\n\n* Anyone\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0125cd76-4251-4cfb-9edc-f00d34817e5b",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/locales/agent",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "locales",
+                                "agent"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"locales\": [\n    {\n      \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:53.000Z",
+                          "updatedAt": "2026-06-05T15:22:53.000Z",
+                          "uid": "35240-0125cd76-4251-4cfb-9edc-f00d34817e5b"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:53.000Z",
+                      "updatedAt": "2026-06-05T15:22:53.000Z",
+                      "uid": "35240-1e284b36-8fa4-4648-8116-3aa0cec3a917"
+                    }
+                  ],
+                  "id": "b51d3574-1488-43a0-9956-1bce57e4a9ab",
+                  "createdAt": "2026-06-05T15:22:53.000Z",
+                  "updatedAt": "2026-06-05T15:22:53.000Z",
+                  "uid": "35240-b51d3574-1488-43a0-9956-1bce57e4a9ab"
+                },
+                {
+                  "name": "current",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Locales Current",
+                      "id": "df91af62-ec80-418d-bf85-53f8069f7409",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/locales/current",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "locales",
+                            "current"
+                          ]
+                        },
+                        "description": "This works like [Show Locale](#show-locale), but instead of taking a locale id as an argument, it renders the locale of the user performing the request.\n\n#### Allowed For\n\n* Anyone\n"
+                      },
+                      "response": [
+                        {
+                          "id": "11a70903-1a61-4caf-adac-ba70bde3e9cb",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/locales/current",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "locales",
+                                "current"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"locale\": {\n    \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:53.000Z",
+                          "updatedAt": "2026-06-05T15:22:53.000Z",
+                          "uid": "35240-11a70903-1a61-4caf-adac-ba70bde3e9cb"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:53.000Z",
+                      "updatedAt": "2026-06-05T15:22:53.000Z",
+                      "uid": "35240-df91af62-ec80-418d-bf85-53f8069f7409"
+                    }
+                  ],
+                  "id": "a979058d-1343-4e76-ab4c-6e340fbc6d63",
+                  "createdAt": "2026-06-05T15:22:53.000Z",
+                  "updatedAt": "2026-06-05T15:22:53.000Z",
+                  "uid": "35240-a979058d-1343-4e76-ab4c-6e340fbc6d63"
+                },
+                {
+                  "name": "detect_best_locale",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Locales Detect_best_locale",
+                      "id": "05722a3c-bf3e-463c-958f-6daa0c90e936",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/locales/detect_best_locale",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "locales",
+                            "detect_best_locale"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Anyone\n"
+                      },
+                      "response": [
+                        {
+                          "id": "f5a34080-23c5-4976-a425-caec77c95bd1",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/locales/detect_best_locale",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "locales",
+                                "detect_best_locale"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"locale\": {\n    \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:53.000Z",
+                          "updatedAt": "2026-06-05T15:22:53.000Z",
+                          "uid": "35240-f5a34080-23c5-4976-a425-caec77c95bd1"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:53.000Z",
+                      "updatedAt": "2026-06-05T15:22:53.000Z",
+                      "uid": "35240-05722a3c-bf3e-463c-958f-6daa0c90e936"
+                    }
+                  ],
+                  "id": "1ad159b4-e485-4c63-9893-ca7fa17603fa",
+                  "createdAt": "2026-06-05T15:22:53.000Z",
+                  "updatedAt": "2026-06-05T15:22:53.000Z",
+                  "uid": "35240-1ad159b4-e485-4c63-9893-ca7fa17603fa"
+                },
+                {
+                  "name": "public",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Locales Public",
+                      "id": "abc244b9-c8e9-4ad2-9d20-1e107b6e566b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/locales/public",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "locales",
+                            "public"
+                          ]
+                        },
+                        "description": "Lists the translation locales that are available to all accounts.\n\n#### Allowed For\n\n* Anyone\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b24d5c76-4845-4c06-b9e1-632b139ed31d",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/locales/public",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "locales",
+                                "public"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"locales\": [\n    {\n      \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:53.000Z",
+                          "updatedAt": "2026-06-05T15:22:53.000Z",
+                          "uid": "35240-b24d5c76-4845-4c06-b9e1-632b139ed31d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:53.000Z",
+                      "updatedAt": "2026-06-05T15:22:53.000Z",
+                      "uid": "35240-abc244b9-c8e9-4ad2-9d20-1e107b6e566b"
+                    }
+                  ],
+                  "id": "17586246-5bfa-4273-837f-446c4c591aee",
+                  "createdAt": "2026-06-05T15:22:53.000Z",
+                  "updatedAt": "2026-06-05T15:22:53.000Z",
+                  "uid": "35240-17586246-5bfa-4273-837f-446c4c591aee"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Locales",
+                  "id": "02c3ea50-27ff-4415-a3e8-2955e3b86476",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/locales",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "locales"
+                      ]
+                    },
+                    "description": "Lists the translation locales available for the account.\n\n**Note**: You can alter the list by passing an updated `locale_ids` array to the [Update Account Settings](/api-reference/ticketing/account-configuration/account_settings/#update-account-settings) endpoint.\n\n#### Allowed For\n\n* Anyone\n"
+                  },
+                  "response": [
+                    {
+                      "id": "c2ad8e2d-6d97-46ca-adad-ce0e9c9e38f6",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/locales",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "locales"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"locales\": [\n    {\n      \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/LocaleObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:53.000Z",
+                      "updatedAt": "2026-06-05T15:22:53.000Z",
+                      "uid": "35240-c2ad8e2d-6d97-46ca-adad-ce0e9c9e38f6"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:53.000Z",
+                  "updatedAt": "2026-06-05T15:22:53.000Z",
+                  "uid": "35240-02c3ea50-27ff-4415-a3e8-2955e3b86476"
+                }
+              ],
+              "id": "2652ba46-9fcc-410c-b1a1-20fe90137562",
+              "createdAt": "2026-06-05T15:22:53.000Z",
+              "updatedAt": "2026-06-05T15:22:53.000Z",
+              "uid": "35240-2652ba46-9fcc-410c-b1a1-20fe90137562"
+            }
+          ],
+          "id": "ce4da319-7266-4205-8504-2cd678f3356a",
+          "createdAt": "2026-06-05T15:22:53.000Z",
+          "updatedAt": "2026-06-05T15:22:53.000Z",
+          "uid": "35240-ce4da319-7266-4205-8504-2cd678f3356a"
+        }
+      ],
+      "id": "acde953a-3636-4c72-afed-15fd38b31736",
+      "createdAt": "2026-06-05T15:22:53.000Z",
+      "updatedAt": "2026-06-05T15:22:53.000Z",
+      "uid": "35240-acde953a-3636-4c72-afed-15fd38b31736"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

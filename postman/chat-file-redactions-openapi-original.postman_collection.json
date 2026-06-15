@@ -1,0 +1,141 @@
+{
+  "info": {
+    "_postman_id": "22b9bed5-b238-4ef9-af71-6d3a747e01e3",
+    "name": "Zendesk Chat File Redactions",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:31.000Z",
+    "updatedAt": "2026-06-05T15:22:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-22b9bed5-b238-4ef9-af71-6d3a747e01e3"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "chat_file_redactions",
+              "item": [
+                {
+                  "name": "{ticket_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Chat_file_redactions Ticket_id",
+                      "id": "0689a8ab-3bb4-4394-bfbf-539bc129c455",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/chat_file_redactions/:ticket_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "chat_file_redactions",
+                            ":ticket_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "29c397b3-5a7f-4b34-94c4-59ca31d6934d",
+                              "key": "ticket_id"
+                            }
+                          ]
+                        },
+                        "description": "Permanently removes one or more chat attachments from a chat ticket.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name         | Type    | Required | Description                                                                                                                                                                                                                                            |\n| ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| chat_id      | string  | true     | The `chat_id` in the `ChatStartedEvent` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                                 |\n| chat_indexes | array   | false    | The array of `chat_index` in the `ChatFileAttachment` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if `message_ids` is not used                                                           |\n| message_ids  | array   | false    | The array of `message_id` in the `ChatFileAttachment` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatFileAttachment that is part of a conversation history. Mandatory if `chat_indexes` is not used |\n\nTo get the required body properties, make a request to the [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n```http\nStatus 200 OK\n{\n  \"audits\": [\n    \"events\": [\n      {\n        \"id\": 1932802680168,\n        \"type\": \"ChatStartedEvent\",\n        \"value\": {\n          \"visitor_id\": \"10502823-16EkM3T6VNq7KMd\",\n          \"chat_id\": \"2109.10502823.Sjuj2YrBpXwei\",\n          \"history\": [\n            {\n              \"chat_index\": 0,\n              \"type\": \"ChatFileAttachment\",\n              \"filename\": \"image1.jpg\"\n            },\n            {\n              \"chat_index\": 1,\n              \"type\": \"ChatFileAttachment\",\n              \"filename\": \"image2.jpg\"\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "39a14524-dfac-47fc-bf36-81639e13419f",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/chat_file_redactions/:ticket_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "chat_file_redactions",
+                                ":ticket_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticket_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"chat_event\": {\n    \"id\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"value\": {\n      \"chat_id\": \"<string>\",\n      \"history\": [\n        {\n          \"ea8f\": -44316433.06164394,\n          \"proident0d0\": -5363740.29113844\n        },\n        {\n          \"sit_302\": \"qui aliquip reprehenderit\"\n        }\n      ],\n      \"visitor_id\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:31.000Z",
+                          "updatedAt": "2026-06-05T15:22:31.000Z",
+                          "uid": "35240-39a14524-dfac-47fc-bf36-81639e13419f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:31.000Z",
+                      "updatedAt": "2026-06-05T15:22:31.000Z",
+                      "uid": "35240-0689a8ab-3bb4-4394-bfbf-539bc129c455"
+                    }
+                  ],
+                  "id": "7e84a9a6-db96-438c-818e-74a39882a319",
+                  "createdAt": "2026-06-05T15:22:31.000Z",
+                  "updatedAt": "2026-06-05T15:22:31.000Z",
+                  "uid": "35240-7e84a9a6-db96-438c-818e-74a39882a319"
+                }
+              ],
+              "id": "9e5c8e27-496a-4a71-b3f6-49bf3da6ba3d",
+              "createdAt": "2026-06-05T15:22:31.000Z",
+              "updatedAt": "2026-06-05T15:22:31.000Z",
+              "uid": "35240-9e5c8e27-496a-4a71-b3f6-49bf3da6ba3d"
+            }
+          ],
+          "id": "1d391748-0bb7-48d9-9b27-7de5ce3c24e4",
+          "createdAt": "2026-06-05T15:22:31.000Z",
+          "updatedAt": "2026-06-05T15:22:31.000Z",
+          "uid": "35240-1d391748-0bb7-48d9-9b27-7de5ce3c24e4"
+        }
+      ],
+      "id": "d667fe86-8d23-4793-9afb-0c81235d2466",
+      "createdAt": "2026-06-05T15:22:31.000Z",
+      "updatedAt": "2026-06-05T15:22:31.000Z",
+      "uid": "35240-d667fe86-8d23-4793-9afb-0c81235d2466"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

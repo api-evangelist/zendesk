@@ -1,0 +1,381 @@
+{
+  "info": {
+    "_postman_id": "11b3dc32-411c-4976-9ad0-a0831802b928",
+    "name": "Zendesk Account",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:44.000Z",
+    "updatedAt": "2026-06-05T15:21:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-11b3dc32-411c-4976-9ad0-a0831802b928"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "account",
+              "item": [
+                {
+                  "name": "settings",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Account Settings",
+                      "id": "9b6a0e46-a64e-4e36-95df-7a0067056690",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/account/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "account",
+                            "settings"
+                          ]
+                        },
+                        "description": "Shows the settings that are available for the account.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "e1a66d4a-bca7-4257-97dd-94aa40ae5e0e",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/account/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "account",
+                                "settings"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"settings\": {\n    \"value\": \"reference #/components/schemas/AccountSettingsObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:44.000Z",
+                          "updatedAt": "2026-06-05T15:21:44.000Z",
+                          "uid": "35240-e1a66d4a-bca7-4257-97dd-94aa40ae5e0e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:44.000Z",
+                      "updatedAt": "2026-06-05T15:21:44.000Z",
+                      "uid": "35240-9b6a0e46-a64e-4e36-95df-7a0067056690"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Account Settings",
+                      "id": "0aa69d90-8645-4387-b0cc-e6530ad2ad5b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/account/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "account",
+                            "settings"
+                          ]
+                        },
+                        "description": "Updates settings for the account. See [JSON Format](#json-format) above for the settings you can update.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0eb50afa-9e7e-4d92-9687-7be8773f1f1f",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/account/settings",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "account",
+                                "settings"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"settings\": {\n    \"value\": \"reference #/components/schemas/AccountSettingsObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:44.000Z",
+                          "updatedAt": "2026-06-05T15:21:44.000Z",
+                          "uid": "35240-0eb50afa-9e7e-4d92-9687-7be8773f1f1f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:44.000Z",
+                      "updatedAt": "2026-06-05T15:21:44.000Z",
+                      "uid": "35240-0aa69d90-8645-4387-b0cc-e6530ad2ad5b"
+                    }
+                  ],
+                  "id": "caedf61f-269b-4b48-a4fb-99995ce01552",
+                  "createdAt": "2026-06-05T15:21:44.000Z",
+                  "updatedAt": "2026-06-05T15:21:44.000Z",
+                  "uid": "35240-caedf61f-269b-4b48-a4fb-99995ce01552"
+                }
+              ],
+              "id": "b5e341b1-ff23-4a89-8e43-9c08d6637a78",
+              "createdAt": "2026-06-05T15:21:44.000Z",
+              "updatedAt": "2026-06-05T15:21:44.000Z",
+              "uid": "35240-b5e341b1-ff23-4a89-8e43-9c08d6637a78"
+            },
+            {
+              "name": "accounts",
+              "item": [
+                {
+                  "name": "available",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Accounts Available",
+                      "id": "d195774b-faf3-46f8-8b95-a23f390b5651",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/accounts/available?subdomain=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "accounts",
+                            "available"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Specify the name of the subdomain you want to verify. The name can't contain underscores, hyphens, or spaces.\n",
+                              "key": "subdomain",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Zendesk Support credentials are not required to access this endpoint. You can use any Zendesk Support subdomain.\n\nReturns \"true\" if the subdomain is available.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "d7cb5573-b12c-44ab-b5fc-a2cfa227a6f1",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/accounts/available?subdomain=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "accounts",
+                                "available"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Specify the name of the subdomain you want to verify. The name can't contain underscores, hyphens, or spaces.\n",
+                                  "key": "subdomain",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:21:44.000Z",
+                          "updatedAt": "2026-06-05T15:21:44.000Z",
+                          "uid": "35240-d7cb5573-b12c-44ab-b5fc-a2cfa227a6f1"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:44.000Z",
+                      "updatedAt": "2026-06-05T15:21:44.000Z",
+                      "uid": "35240-d195774b-faf3-46f8-8b95-a23f390b5651"
+                    }
+                  ],
+                  "id": "bbccb008-2a5c-4d75-95c0-7e5b87cb9ce9",
+                  "createdAt": "2026-06-05T15:21:44.000Z",
+                  "updatedAt": "2026-06-05T15:21:44.000Z",
+                  "uid": "35240-bbccb008-2a5c-4d75-95c0-7e5b87cb9ce9"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Accounts",
+                  "id": "2f345268-8e91-4f6a-ba55-c7657277fea9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "accounts"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "566e86cd-8783-4fba-b786-529aff5de491",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "accounts"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/TrialAccountResponse not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:21:44.000Z",
+                      "updatedAt": "2026-06-05T15:21:44.000Z",
+                      "uid": "35240-566e86cd-8783-4fba-b786-529aff5de491"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:44.000Z",
+                  "updatedAt": "2026-06-05T15:21:44.000Z",
+                  "uid": "35240-2f345268-8e91-4f6a-ba55-c7657277fea9"
+                }
+              ],
+              "id": "3ac7ce59-36f3-4b7e-b521-be4dfcbf1368",
+              "createdAt": "2026-06-05T15:21:44.000Z",
+              "updatedAt": "2026-06-05T15:21:44.000Z",
+              "uid": "35240-3ac7ce59-36f3-4b7e-b521-be4dfcbf1368"
+            }
+          ],
+          "id": "b5207835-9c38-4493-9c08-01f1aabe7576",
+          "createdAt": "2026-06-05T15:21:44.000Z",
+          "updatedAt": "2026-06-05T15:21:44.000Z",
+          "uid": "35240-b5207835-9c38-4493-9c08-01f1aabe7576"
+        }
+      ],
+      "id": "709896b6-657e-49ca-a759-499a3c04334f",
+      "createdAt": "2026-06-05T15:21:44.000Z",
+      "updatedAt": "2026-06-05T15:21:44.000Z",
+      "uid": "35240-709896b6-657e-49ca-a759-499a3c04334f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

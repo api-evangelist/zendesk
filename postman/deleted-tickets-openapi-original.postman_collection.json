@@ -1,0 +1,475 @@
+{
+  "info": {
+    "_postman_id": "893adf89-086c-4018-a363-ecd2ea36a1f4",
+    "name": "Zendesk Deleted Tickets",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:41.000Z",
+    "updatedAt": "2026-06-05T15:22:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-893adf89-086c-4018-a363-ecd2ea36a1f4"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "deleted_tickets",
+              "item": [
+                {
+                  "name": "{ticket_id}",
+                  "item": [
+                    {
+                      "name": "restore",
+                      "item": [
+                        {
+                          "name": "Zendesk Put  Api V2 Deleted_tickets Ticket_id Restore",
+                          "id": "19d01dd7-b1ad-4498-a3f2-4fbfe62029a9",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/deleted_tickets/:ticket_id/restore",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "deleted_tickets",
+                                ":ticket_id",
+                                "restore"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c9520e3e-d9f8-437f-8bf1-0b0ccee85223",
+                                  "key": "ticket_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n* Agents"
+                          },
+                          "response": [
+                            {
+                              "id": "e6d87db1-5eed-4767-a361-ae3f1128c65a",
+                              "name": "Empty response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/deleted_tickets/:ticket_id/restore",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "deleted_tickets",
+                                    ":ticket_id",
+                                    "restore"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "ticket_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-06-05T15:22:41.000Z",
+                              "updatedAt": "2026-06-05T15:22:41.000Z",
+                              "uid": "35240-e6d87db1-5eed-4767-a361-ae3f1128c65a"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:41.000Z",
+                          "updatedAt": "2026-06-05T15:22:41.000Z",
+                          "uid": "35240-19d01dd7-b1ad-4498-a3f2-4fbfe62029a9"
+                        }
+                      ],
+                      "id": "cc5088e1-6926-4f06-bfa3-1dfdf3003cb0",
+                      "createdAt": "2026-06-05T15:22:41.000Z",
+                      "updatedAt": "2026-06-05T15:22:41.000Z",
+                      "uid": "35240-cc5088e1-6926-4f06-bfa3-1dfdf3003cb0"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Deleted_tickets Ticket_id",
+                      "id": "ff40f62d-b998-46a2-a964-b7a4396ccbd5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/deleted_tickets/:ticket_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "deleted_tickets",
+                            ":ticket_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3b768e1b-a7ef-4085-b4ee-c692b7f910b2",
+                              "key": "ticket_id"
+                            }
+                          ]
+                        },
+                        "description": "Permanently deletes a soft-deleted ticket. See [Soft delete](https://support.zendesk.com/hc/en-us/articles/4408834005530#topic_zrm_wbj_1db)\nin the Zendesk GDPR docs. To soft delete a ticket, use the [Delete Ticket](#delete-ticket) endpoint.\n\nThis endpoint enqueues a ticket deletion job and returns a payload with the jobs status.\n\nIf the job succeeds, the ticket is permanently deleted. This operation can't be undone.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work.\nUse the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion.\n\n#### Allowed For\n\n* Agents"
+                      },
+                      "response": [
+                        {
+                          "id": "10718fc6-0dc6-4dcb-8ecf-a791ce6814eb",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/deleted_tickets/:ticket_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "deleted_tickets",
+                                ":ticket_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticket_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:41.000Z",
+                          "updatedAt": "2026-06-05T15:22:41.000Z",
+                          "uid": "35240-10718fc6-0dc6-4dcb-8ecf-a791ce6814eb"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:41.000Z",
+                      "updatedAt": "2026-06-05T15:22:41.000Z",
+                      "uid": "35240-ff40f62d-b998-46a2-a964-b7a4396ccbd5"
+                    }
+                  ],
+                  "id": "44948a28-5d5f-444d-949e-3c4ed024ea14",
+                  "createdAt": "2026-06-05T15:22:41.000Z",
+                  "updatedAt": "2026-06-05T15:22:41.000Z",
+                  "uid": "35240-44948a28-5d5f-444d-949e-3c4ed024ea14"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Deleted_tickets Destroy_many",
+                      "id": "7d614254-17c4-4011-ad83-83981b5f52f9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/deleted_tickets/destroy_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "deleted_tickets",
+                            "destroy_many"
+                          ]
+                        },
+                        "description": "Permanently deletes up to 100 soft-deleted tickets. See [Soft delete](https://support.zendesk.com/hc/en-us/articles/4408834005530#topic_zrm_wbj_1db)\nin the Zendesk GDPR docs. To soft delete tickets, use the [Bulk Delete Tickets](#bulk-delete-tickets) endpoint.\n\nThis endpoint accepts a comma-separated list of up to 100 ticket ids. It enqueues\na ticket deletion job and returns a payload with the jobs status.\n\nIf one ticket fails to be deleted, the endpoint still attempts to delete the others. If the job succeeds,\nthe tickets that were successfully deleted are permanently deleted. This operation can't be undone.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n\n* Agents"
+                      },
+                      "response": [
+                        {
+                          "id": "d5172091-0686-4f86-8a1e-cc1bf1c568ab",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/deleted_tickets/destroy_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "deleted_tickets",
+                                "destroy_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"job_status\": {\n    \"value\": \"reference #/components/schemas/JobStatusObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:41.000Z",
+                          "updatedAt": "2026-06-05T15:22:41.000Z",
+                          "uid": "35240-d5172091-0686-4f86-8a1e-cc1bf1c568ab"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:41.000Z",
+                      "updatedAt": "2026-06-05T15:22:41.000Z",
+                      "uid": "35240-7d614254-17c4-4011-ad83-83981b5f52f9"
+                    }
+                  ],
+                  "id": "0472e94b-6e8b-416a-9050-55e8b9a101fb",
+                  "createdAt": "2026-06-05T15:22:41.000Z",
+                  "updatedAt": "2026-06-05T15:22:41.000Z",
+                  "uid": "35240-0472e94b-6e8b-416a-9050-55e8b9a101fb"
+                },
+                {
+                  "name": "restore_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Deleted_tickets Restore_many",
+                      "id": "1483abda-6fc3-4525-8343-0bdc0bdfd2ff",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/deleted_tickets/restore_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "deleted_tickets",
+                            "restore_many"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents"
+                      },
+                      "response": [
+                        {
+                          "id": "75e813ef-16e0-4ef6-975c-38fb8e1a0121",
+                          "name": "Empty response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/deleted_tickets/restore_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "deleted_tickets",
+                                "restore_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-06-05T15:22:41.000Z",
+                          "updatedAt": "2026-06-05T15:22:41.000Z",
+                          "uid": "35240-75e813ef-16e0-4ef6-975c-38fb8e1a0121"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:41.000Z",
+                      "updatedAt": "2026-06-05T15:22:41.000Z",
+                      "uid": "35240-1483abda-6fc3-4525-8343-0bdc0bdfd2ff"
+                    }
+                  ],
+                  "id": "581b42e2-d768-46f3-83e9-88c27bd5130a",
+                  "createdAt": "2026-06-05T15:22:41.000Z",
+                  "updatedAt": "2026-06-05T15:22:41.000Z",
+                  "uid": "35240-581b42e2-d768-46f3-83e9-88c27bd5130a"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Deleted_tickets",
+                  "id": "026b2c97-6b1a-4b41-b5f0-f4eb632bc79c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/deleted_tickets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "deleted_tickets"
+                      ]
+                    },
+                    "description": "Returns a maximum of 100 deleted tickets per page. See [Pagination](/api-reference/introduction/pagination/).\n\nThe results includes all deleted (and not yet archived) tickets that\nhave not yet been [scrubbed](https://support.zendesk.com/hc/en-us/articles/4408845703194#topic_fv5_w51_sdb) in the past 30 days. Archived tickets are\nnot included in the results. See [About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756)\nin the Support Help Center.\n\nThe tickets are ordered chronologically by created date, from oldest to newest.\nThe first ticket listed may not be the oldest ticket in your\naccount due to [ticket archiving](https://support.zendesk.com/hc/en-us/articles/203657756).\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n\n#### Rate Limit\n\nYou can make 10 requests every 1 minute using this endpoint.\nWhen making requests beyond page 100, you can make 5 requests every 1 minute.\nThe rate limiting mechanism behaves as described in\n[Monitoring your request activity](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity) in the API introduction."
+                  },
+                  "response": [
+                    {
+                      "id": "ee763b46-8011-4616-bbc8-778981588d00",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/deleted_tickets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "deleted_tickets"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"deleted_tickets\": [\n    {\n      \"actor\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      },\n      \"deleted_at\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"previous_state\": \"<string>\",\n      \"subject\": \"<string>\"\n    },\n    {\n      \"actor\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      },\n      \"deleted_at\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"previous_state\": \"<string>\",\n      \"subject\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:41.000Z",
+                      "updatedAt": "2026-06-05T15:22:41.000Z",
+                      "uid": "35240-ee763b46-8011-4616-bbc8-778981588d00"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:41.000Z",
+                  "updatedAt": "2026-06-05T15:22:41.000Z",
+                  "uid": "35240-026b2c97-6b1a-4b41-b5f0-f4eb632bc79c"
+                }
+              ],
+              "id": "2afc4817-3a41-43ef-b87d-0c833f9691d7",
+              "createdAt": "2026-06-05T15:22:41.000Z",
+              "updatedAt": "2026-06-05T15:22:41.000Z",
+              "uid": "35240-2afc4817-3a41-43ef-b87d-0c833f9691d7"
+            }
+          ],
+          "id": "09770dfb-87b9-4d0b-a611-9245d51473c1",
+          "createdAt": "2026-06-05T15:22:41.000Z",
+          "updatedAt": "2026-06-05T15:22:41.000Z",
+          "uid": "35240-09770dfb-87b9-4d0b-a611-9245d51473c1"
+        }
+      ],
+      "id": "5ac6f644-dd98-42f0-b8ff-9195d4be46a4",
+      "createdAt": "2026-06-05T15:22:41.000Z",
+      "updatedAt": "2026-06-05T15:22:41.000Z",
+      "uid": "35240-5ac6f644-dd98-42f0-b8ff-9195d4be46a4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

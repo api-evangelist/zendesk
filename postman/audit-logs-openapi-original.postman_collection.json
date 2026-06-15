@@ -1,0 +1,454 @@
+{
+  "info": {
+    "_postman_id": "ea706bcf-52ed-4144-a57b-9937e4a59c97",
+    "name": "Zendesk Audit Logs",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:50.000Z",
+    "updatedAt": "2026-06-05T15:21:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ea706bcf-52ed-4144-a57b-9937e4a59c97"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "audit_logs",
+              "item": [
+                {
+                  "name": "{audit_log_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Audit_logs Audit_log_id",
+                      "id": "2c365940-dde8-4219-a68e-138f0c1a2f6a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/audit_logs/:audit_log_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "audit_logs",
+                            ":audit_log_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b68166d6-9e7e-4862-be6d-491924059fe6",
+                              "key": "audit_log_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins on accounts that have audit-log access\n"
+                      },
+                      "response": [
+                        {
+                          "id": "892595d9-511b-4ab8-bc4d-994c7f1b1a69",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/audit_logs/:audit_log_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "audit_logs",
+                                ":audit_log_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "audit_log_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"audit_log\": {\n    \"value\": \"reference #/components/schemas/AuditLogObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:51.000Z",
+                          "updatedAt": "2026-06-05T15:21:51.000Z",
+                          "uid": "35240-892595d9-511b-4ab8-bc4d-994c7f1b1a69"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:51.000Z",
+                      "updatedAt": "2026-06-05T15:21:51.000Z",
+                      "uid": "35240-2c365940-dde8-4219-a68e-138f0c1a2f6a"
+                    }
+                  ],
+                  "id": "4bd56265-46ec-44be-b7ba-065e81059e0c",
+                  "createdAt": "2026-06-05T15:21:51.000Z",
+                  "updatedAt": "2026-06-05T15:21:51.000Z",
+                  "uid": "35240-4bd56265-46ec-44be-b7ba-065e81059e0c"
+                },
+                {
+                  "name": "export",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Audit_logs Export",
+                      "id": "56c5978c-e55c-49c7-b831-1460a2d95d93",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/audit_logs/export?filter[source_type]=<string>&filter[source_id]=<integer>&filter[actor_id]=<integer>&filter[ip_address]=<string>&filter[created_at]=<string>&filter[action]=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "audit_logs",
+                            "export"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter audit logs by the source type. For example, user or rule",
+                              "key": "filter[source_type]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter audit logs by the source id. Requires `filter[source_type]` to also be set.",
+                              "key": "filter[source_id]",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter audit logs by the actor id",
+                              "key": "filter[actor_id]",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter audit logs by the ip address",
+                              "key": "filter[ip_address]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter audit logs by the time of creation. When used, you must specify `filter[created_at]` twice in your request, first with the start time and again with an end time",
+                              "key": "filter[created_at]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter audit logs by the action",
+                              "key": "filter[action]",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins on accounts that have audit log access\n"
+                      },
+                      "response": [
+                        {
+                          "id": "83d5bb21-7678-4927-9d28-8d9027feda66",
+                          "name": "Accepted description",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/audit_logs/export?filter[source_type]=<string>&filter[source_id]=<integer>&filter[actor_id]=<integer>&filter[ip_address]=<string>&filter[created_at]=<string>&filter[action]=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "audit_logs",
+                                "export"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter audit logs by the source type. For example, user or rule",
+                                  "key": "filter[source_type]",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter audit logs by the source id. Requires `filter[source_type]` to also be set.",
+                                  "key": "filter[source_id]",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Filter audit logs by the actor id",
+                                  "key": "filter[actor_id]",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Filter audit logs by the ip address",
+                                  "key": "filter[ip_address]",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter audit logs by the time of creation. When used, you must specify `filter[created_at]` twice in your request, first with the start time and again with an end time",
+                                  "key": "filter[created_at]",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter audit logs by the action",
+                                  "key": "filter[action]",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Accepted",
+                          "code": 202,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-06-05T15:21:51.000Z",
+                          "updatedAt": "2026-06-05T15:21:51.000Z",
+                          "uid": "35240-83d5bb21-7678-4927-9d28-8d9027feda66"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:51.000Z",
+                      "updatedAt": "2026-06-05T15:21:51.000Z",
+                      "uid": "35240-56c5978c-e55c-49c7-b831-1460a2d95d93"
+                    }
+                  ],
+                  "id": "1b4fbc82-97bf-40a9-b78a-572d862410d9",
+                  "createdAt": "2026-06-05T15:21:51.000Z",
+                  "updatedAt": "2026-06-05T15:21:51.000Z",
+                  "uid": "35240-1b4fbc82-97bf-40a9-b78a-572d862410d9"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Audit_logs",
+                  "id": "06fdac75-0333-432f-b226-0f3ebc7c54ab",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/audit_logs?filter[source_type]=<string>&filter[source_id]=<integer>&filter[actor_id]=<integer>&filter[ip_address]=<string>&filter[created_at]=<string>&filter[action]=<string>&sort_by=<string>&sort_order=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "audit_logs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter audit logs by the source type. For example, user or rule",
+                          "key": "filter[source_type]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter audit logs by the source id. Requires `filter[source_type]` to also be set",
+                          "key": "filter[source_id]",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter audit logs by the actor id",
+                          "key": "filter[actor_id]",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter audit logs by the ip address",
+                          "key": "filter[ip_address]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter audit logs by the time of creation. When used, you must specify `filter[created_at]` twice in your request, first with the start time and again with an end time",
+                          "key": "filter[created_at]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter audit logs by the action",
+                          "key": "filter[action]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Offset pagination only. Sort audit logs. Default is `sort_by=created_at`",
+                          "key": "sort_by",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Offset pagination only. Sort audit logs. Default is `sort_order=desc`",
+                          "key": "sort_order",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Cursor pagination only. Sort audit logs. Default is `sort=-created_at`",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Admins on accounts that have audit log access\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "c088e6f1-ce5f-46e1-bd00-9c039e224362",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/audit_logs?filter[source_type]=<string>&filter[source_id]=<integer>&filter[actor_id]=<integer>&filter[ip_address]=<string>&filter[created_at]=<string>&filter[action]=<string>&sort_by=<string>&sort_order=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "audit_logs"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter audit logs by the source type. For example, user or rule",
+                              "key": "filter[source_type]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter audit logs by the source id. Requires `filter[source_type]` to also be set",
+                              "key": "filter[source_id]",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter audit logs by the actor id",
+                              "key": "filter[actor_id]",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter audit logs by the ip address",
+                              "key": "filter[ip_address]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter audit logs by the time of creation. When used, you must specify `filter[created_at]` twice in your request, first with the start time and again with an end time",
+                              "key": "filter[created_at]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter audit logs by the action",
+                              "key": "filter[action]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset pagination only. Sort audit logs. Default is `sort_by=created_at`",
+                              "key": "sort_by",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Offset pagination only. Sort audit logs. Default is `sort_order=desc`",
+                              "key": "sort_order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Cursor pagination only. Sort audit logs. Default is `sort=-created_at`",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"audit_logs\": [\n    {\n      \"value\": \"reference #/components/schemas/AuditLogObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/AuditLogObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:51.000Z",
+                      "updatedAt": "2026-06-05T15:21:51.000Z",
+                      "uid": "35240-c088e6f1-ce5f-46e1-bd00-9c039e224362"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:51.000Z",
+                  "updatedAt": "2026-06-05T15:21:51.000Z",
+                  "uid": "35240-06fdac75-0333-432f-b226-0f3ebc7c54ab"
+                }
+              ],
+              "id": "184da97e-3903-47cd-9059-0f9c1f188276",
+              "createdAt": "2026-06-05T15:21:51.000Z",
+              "updatedAt": "2026-06-05T15:21:51.000Z",
+              "uid": "35240-184da97e-3903-47cd-9059-0f9c1f188276"
+            }
+          ],
+          "id": "ee3e9706-7976-4fff-83ff-36e26546649d",
+          "createdAt": "2026-06-05T15:21:51.000Z",
+          "updatedAt": "2026-06-05T15:21:51.000Z",
+          "uid": "35240-ee3e9706-7976-4fff-83ff-36e26546649d"
+        }
+      ],
+      "id": "cfdc79a2-a306-4f77-ade7-13c72cdac0c8",
+      "createdAt": "2026-06-05T15:21:51.000Z",
+      "updatedAt": "2026-06-05T15:21:51.000Z",
+      "uid": "35240-cfdc79a2-a306-4f77-ade7-13c72cdac0c8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "a591d4fd-8a5d-4574-b3b2-ca5edcfb9497",
+    "name": "Zendesk Brand Agents",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:28.000Z",
+    "updatedAt": "2026-06-05T15:22:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a591d4fd-8a5d-4574-b3b2-ca5edcfb9497"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "brand_agents",
+              "item": [
+                {
+                  "name": "{brand_agent_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Brand_agents Brand_agent_id",
+                      "id": "86bf18dc-2a33-40dc-ab1c-8f71c6cdbf74",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/brand_agents/:brand_agent_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "brand_agents",
+                            ":brand_agent_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a5c3f6f2-7196-44f0-b7d4-cfe3eaaa9380",
+                              "key": "brand_agent_id"
+                            }
+                          ]
+                        },
+                        "description": "Returns a brand agent membership for your account.\n\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "aef32925-01cb-4889-a0fa-8a924d6b23c8",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/brand_agents/:brand_agent_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "brand_agents",
+                                ":brand_agent_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "brand_agent_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"brand_agent\": {\n    \"value\": \"reference #/components/schemas/BrandAgentObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:28.000Z",
+                          "updatedAt": "2026-06-05T15:22:28.000Z",
+                          "uid": "35240-aef32925-01cb-4889-a0fa-8a924d6b23c8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:28.000Z",
+                      "updatedAt": "2026-06-05T15:22:28.000Z",
+                      "uid": "35240-86bf18dc-2a33-40dc-ab1c-8f71c6cdbf74"
+                    }
+                  ],
+                  "id": "e0d37948-af93-42c9-9476-84809b221007",
+                  "createdAt": "2026-06-05T15:22:28.000Z",
+                  "updatedAt": "2026-06-05T15:22:28.000Z",
+                  "uid": "35240-e0d37948-af93-42c9-9476-84809b221007"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Brand_agents",
+                  "id": "f00280eb-0b2a-4083-87cf-4f06a9c2c23f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/brand_agents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "brand_agents"
+                      ]
+                    },
+                    "description": "Returns a list of all brand agent memberships for your account.\n\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For:\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "b36cf571-4937-4869-b7c0-05e116eda3cc",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/brand_agents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "brand_agents"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"brand_agents\": [\n    {\n      \"value\": \"reference #/components/schemas/BrandAgentObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/BrandAgentObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:28.000Z",
+                      "updatedAt": "2026-06-05T15:22:28.000Z",
+                      "uid": "35240-b36cf571-4937-4869-b7c0-05e116eda3cc"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:28.000Z",
+                  "updatedAt": "2026-06-05T15:22:28.000Z",
+                  "uid": "35240-f00280eb-0b2a-4083-87cf-4f06a9c2c23f"
+                }
+              ],
+              "id": "19b13d82-bd54-45f5-8ffd-dfdb7cc2ac6e",
+              "createdAt": "2026-06-05T15:22:28.000Z",
+              "updatedAt": "2026-06-05T15:22:28.000Z",
+              "uid": "35240-19b13d82-bd54-45f5-8ffd-dfdb7cc2ac6e"
+            }
+          ],
+          "id": "b34d37b2-f29b-40fa-b48d-c3adae105a0c",
+          "createdAt": "2026-06-05T15:22:28.000Z",
+          "updatedAt": "2026-06-05T15:22:28.000Z",
+          "uid": "35240-b34d37b2-f29b-40fa-b48d-c3adae105a0c"
+        }
+      ],
+      "id": "9faba05f-fce9-4a73-8fd3-ea1a8d162efb",
+      "createdAt": "2026-06-05T15:22:28.000Z",
+      "updatedAt": "2026-06-05T15:22:28.000Z",
+      "uid": "35240-9faba05f-fce9-4a73-8fd3-ea1a8d162efb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

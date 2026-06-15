@@ -1,0 +1,233 @@
+{
+  "info": {
+    "_postman_id": "9e3221e4-e01e-4527-9067-419cb0e65b08",
+    "name": "Zendesk Skips",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:25.000Z",
+    "updatedAt": "2026-06-05T15:23:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9e3221e4-e01e-4527-9067-419cb0e65b08"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "skips",
+              "item": [
+                {
+                  "name": "Zendesk Post  Api V2 Skips",
+                  "id": "506b5f17-821a-442d-ad58-99558f4d7642",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/skips",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "skips"
+                      ]
+                    },
+                    "description": "Record a new ticket skip for the current user.\n\n#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "cd74d0fe-812f-460c-b72e-ed847a91f2f1",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/skips",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "skips"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/TicketSkipCreation not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-06-05T15:23:26.000Z",
+                      "updatedAt": "2026-06-05T15:23:26.000Z",
+                      "uid": "35240-cd74d0fe-812f-460c-b72e-ed847a91f2f1"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:26.000Z",
+                  "updatedAt": "2026-06-05T15:23:26.000Z",
+                  "uid": "35240-506b5f17-821a-442d-ad58-99558f4d7642"
+                }
+              ],
+              "id": "ab41bc8a-cdbf-4f96-862a-3d14bb9f08ca",
+              "createdAt": "2026-06-05T15:23:25.000Z",
+              "updatedAt": "2026-06-05T15:23:25.000Z",
+              "uid": "35240-ab41bc8a-cdbf-4f96-862a-3d14bb9f08ca"
+            },
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{user_id}",
+                  "item": [
+                    {
+                      "name": "skips",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Users User_id Skips",
+                          "id": "484a4046-dbff-4e45-9cb2-133fa13f0c81",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/users/:user_id/skips",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "users",
+                                ":user_id",
+                                "skips"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e92bc495-67fc-4f62-a5f6-b14a50273650",
+                                  "key": "user_id"
+                                }
+                              ]
+                            },
+                            "description": "Archived tickets are not included in the response. See\n[About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756) in\nthe Support Help Center.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n* Agents with \"View only\" or higher reports permissions in Support.\n  These permissions are distinct from Explore permissions.\n* Agents retrieving their own skips\n"
+                          },
+                          "response": [
+                            {
+                              "id": "d4fe3545-ae79-42a4-9e3b-b83be7393b1f",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/users/:user_id/skips",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "users",
+                                    ":user_id",
+                                    "skips"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"skips\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketSkipObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketSkipObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:23:26.000Z",
+                              "updatedAt": "2026-06-05T15:23:26.000Z",
+                              "uid": "35240-d4fe3545-ae79-42a4-9e3b-b83be7393b1f"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:26.000Z",
+                          "updatedAt": "2026-06-05T15:23:26.000Z",
+                          "uid": "35240-484a4046-dbff-4e45-9cb2-133fa13f0c81"
+                        }
+                      ],
+                      "id": "5839e85d-46aa-495b-89a5-895dad183921",
+                      "createdAt": "2026-06-05T15:23:25.000Z",
+                      "updatedAt": "2026-06-05T15:23:25.000Z",
+                      "uid": "35240-5839e85d-46aa-495b-89a5-895dad183921"
+                    }
+                  ],
+                  "id": "002d7644-1b3c-4a0b-892d-e1ce859064a4",
+                  "createdAt": "2026-06-05T15:23:25.000Z",
+                  "updatedAt": "2026-06-05T15:23:25.000Z",
+                  "uid": "35240-002d7644-1b3c-4a0b-892d-e1ce859064a4"
+                }
+              ],
+              "id": "d8692e02-02d6-4c82-9415-9e75f777dbc9",
+              "createdAt": "2026-06-05T15:23:25.000Z",
+              "updatedAt": "2026-06-05T15:23:25.000Z",
+              "uid": "35240-d8692e02-02d6-4c82-9415-9e75f777dbc9"
+            }
+          ],
+          "id": "755693c2-1a1d-488b-850c-ab583afa7e9c",
+          "createdAt": "2026-06-05T15:23:25.000Z",
+          "updatedAt": "2026-06-05T15:23:25.000Z",
+          "uid": "35240-755693c2-1a1d-488b-850c-ab583afa7e9c"
+        }
+      ],
+      "id": "d9fb5038-0ee7-4ec0-a409-b115660bd9cb",
+      "createdAt": "2026-06-05T15:23:25.000Z",
+      "updatedAt": "2026-06-05T15:23:25.000Z",
+      "uid": "35240-d9fb5038-0ee7-4ec0-a409-b115660bd9cb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

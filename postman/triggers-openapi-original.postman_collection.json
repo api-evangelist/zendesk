@@ -1,0 +1,2250 @@
+{
+  "info": {
+    "_postman_id": "5513b12c-eef0-43e8-9b81-1eed40f0c8d9",
+    "name": "Zendesk Triggers",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:51.000Z",
+    "updatedAt": "2026-06-05T15:23:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5513b12c-eef0-43e8-9b81-1eed40f0c8d9"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "custom_objects",
+              "item": [
+                {
+                  "name": "{custom_object_key}",
+                  "item": [
+                    {
+                      "name": "triggers",
+                      "item": [
+                        {
+                          "name": "{trigger_id}",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+                              "id": "fc944d8a-b9c8-4ef4-99cd-6bdee400483a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    ":trigger_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4e2a8423-59f2-497d-ba33-1c22c6776670",
+                                      "key": "custom_object_key"
+                                    },
+                                    {
+                                      "id": "62c71d7d-d4d6-4456-9fd7-456191c9c742",
+                                      "key": "trigger_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns details of a specific object trigger.\n#### Allowed For\n\n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "e4545ac3-f7e3-4075-b3e7-20c27d2f58d7",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        ":trigger_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        },
+                                        {
+                                          "key": "trigger_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"trigger\": {\n    \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-e4545ac3-f7e3-4075-b3e7-20c27d2f58d7"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-fc944d8a-b9c8-4ef4-99cd-6bdee400483a"
+                            },
+                            {
+                              "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+                              "id": "f3b98f7d-5561-458c-ab81-571c5ca177a9",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"reference #/components/schemas/ObjectTriggerRequest not found in the OpenAPI spec\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    ":trigger_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "60f1fd8c-52fc-4423-b073-e1bd8025d1ab",
+                                      "key": "custom_object_key"
+                                    },
+                                    {
+                                      "id": "dedd56cb-0417-41b4-9ba9-a25b63cce7af",
+                                      "key": "trigger_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Updates a specified object trigger.\n\n**Note**: Updating a condition or action updates both the conditions and actions arrays,\nclearing all existing values of both arrays. Include all your conditions\nand actions when updating any condition or action.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "b9f1e8de-59ed-4a68-b44e-49767703514c",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"value\": \"reference #/components/schemas/ObjectTriggerRequest not found in the OpenAPI spec\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        ":trigger_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        },
+                                        {
+                                          "key": "trigger_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"trigger\": {\n    \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-b9f1e8de-59ed-4a68-b44e-49767703514c"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-f3b98f7d-5561-458c-ab81-571c5ca177a9"
+                            },
+                            {
+                              "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+                              "id": "0f104375-e1f6-4154-9e17-05567e1b79bc",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    ":trigger_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "2bcc87c2-da5a-4ffe-85ce-545dc5793b7c",
+                                      "key": "custom_object_key"
+                                    },
+                                    {
+                                      "id": "b2d6eb14-284f-4983-84b7-610b2dcfd077",
+                                      "key": "trigger_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Deletes a specified object trigger.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "0885bf58-0557-4f36-ba39-7ac12868665f",
+                                  "name": "No Content response",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        ":trigger_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        },
+                                        {
+                                          "key": "trigger_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-0885bf58-0557-4f36-ba39-7ac12868665f"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-0f104375-e1f6-4154-9e17-05567e1b79bc"
+                            }
+                          ],
+                          "id": "decadd9e-b56d-4871-891c-e6f4ae30deed",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-decadd9e-b56d-4871-891c-e6f4ae30deed"
+                        },
+                        {
+                          "name": "active",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active",
+                              "id": "3ac5ed61-c8e6-45bc-aa91-b5358f1ec8e0",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/active",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    "active"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "9cef15cd-9ea7-4358-ba77-37ddd6741261",
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                },
+                                "description": "Lists all active object triggers.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "178152c3-0722-4473-9fd5-05e647931ddc",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/active",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        "active"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-178152c3-0722-4473-9fd5-05e647931ddc"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-3ac5ed61-c8e6-45bc-aa91-b5358f1ec8e0"
+                            }
+                          ],
+                          "id": "a12fe0be-1c00-4766-8dfd-ae2290633a0d",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-a12fe0be-1c00-4766-8dfd-ae2290633a0d"
+                        },
+                        {
+                          "name": "definitions",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions",
+                              "id": "caff76fa-9635-4a03-8eca-fb83edd2377b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/definitions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    "definitions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f8163882-1e32-4ee0-89f0-8541ea3689aa",
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                },
+                                "description": "Lists the conditions and actions of all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "96f6ee9f-5bb9-4b00-831b-af37ec2a229a",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/definitions",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        "definitions"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"definitions\": {\n    \"value\": \"reference #/components/schemas/ObjectTriggerDefinitionObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-96f6ee9f-5bb9-4b00-831b-af37ec2a229a"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-caff76fa-9635-4a03-8eca-fb83edd2377b"
+                            }
+                          ],
+                          "id": "510d931b-9dd2-4578-9eb7-c307c5dd2f76",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-510d931b-9dd2-4578-9eb7-c307c5dd2f76"
+                        },
+                        {
+                          "name": "destroy_many",
+                          "item": [
+                            {
+                              "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many",
+                              "id": "505e4a38-782a-4e96-86a2-9f50225e395c",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/destroy_many",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    "destroy_many"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b2e9f25d-7742-4de7-8758-d8d1d2e889ae",
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                },
+                                "description": "Deletes the object triggers corresponding to the provided comma-separated list of ids. \n\n**Note**: You can only bulk-delete triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe DELETE request takes an `ids` object that lists the\nobject triggers to delete. All of the specified object trigger `ids` must be associated with a single object.\n\n| Name | Description\n| ---- | -----------\n| ids  | The ids of the triggers to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "24e13c78-b32d-43f9-a6b9-73c0da1aebd3",
+                                  "name": "No content response",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/destroy_many",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        "destroy_many"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-24e13c78-b32d-43f9-a6b9-73c0da1aebd3"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-505e4a38-782a-4e96-86a2-9f50225e395c"
+                            }
+                          ],
+                          "id": "625d8f45-b753-4a08-9b38-7e8b3a931b51",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-625d8f45-b753-4a08-9b38-7e8b3a931b51"
+                        },
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search",
+                              "id": "9f0458af-efa9-4ba2-8498-f53bac72ea3a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/search",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    "search"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "be7bcbce-79f1-4d7f-be66-7b6a22b9cff2",
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a list of object triggers that meet your filter or search criteria.\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Filter\n\nUse the `filter` query parameter to filter an object trigger search by one or more attributes. For example, the following `filter` argument filters object triggers by the `title` attribute:\n\n```json\n{\n  \"json\": {\n    \"title\": \"test\"\n  }\n}\n```\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "70e0f22b-b9ef-4547-9415-7928c5e5d298",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-70e0f22b-b9ef-4547-9415-7928c5e5d298"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-9f0458af-efa9-4ba2-8498-f53bac72ea3a"
+                            }
+                          ],
+                          "id": "888acf28-b361-4ce8-a9bd-cd28a94476e7",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-888acf28-b361-4ce8-a9bd-cd28a94476e7"
+                        },
+                        {
+                          "name": "update_many",
+                          "item": [
+                            {
+                              "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many",
+                              "id": "9f543ce3-180f-4e65-80e2-4812839efacb",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"reference #/components/schemas/ObjectTriggerBulkUpdateRequest not found in the OpenAPI spec\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/update_many",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers",
+                                    "update_many"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "8c839052-01e1-486c-9d21-882460a26500",
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                },
+                                "description": "Updates the position or the active status of multiple object triggers. Any additional properties are ignored.\n\n**Note**: You can only bulk-update triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe PUT request expects a `triggers` object that lists the object triggers to update. All of the specified object trigger `ids` must be associated with a single object.\n\nYou can specify the following properties for each object trigger you're updating:\n\n| Name        | Mandatory | Description\n| --------    | --------- | -----------\n| id          | yes       | The ID of the object trigger to update\n| position    | no        | The new position of the object trigger\n| active      | no        | The active status of the object trigger (true or false)\n\n#### Example Request\n\n```js\n{\n  \"triggers\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"active\": true},\n    {\"id\": 27, \"position\": 9, \"active\": false},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "765673c8-3da7-4634-a1c2-3e78b4249f19",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"value\": \"reference #/components/schemas/ObjectTriggerBulkUpdateRequest not found in the OpenAPI spec\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/update_many",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "custom_objects",
+                                        ":custom_object_key",
+                                        "triggers",
+                                        "update_many"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "custom_object_key"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-765673c8-3da7-4634-a1c2-3e78b4249f19"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-9f543ce3-180f-4e65-80e2-4812839efacb"
+                            }
+                          ],
+                          "id": "4b12bf6f-a12e-43a0-bd09-2d231ecb21e5",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-4b12bf6f-a12e-43a0-bd09-2d231ecb21e5"
+                        },
+                        {
+                          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers",
+                          "id": "ca1ba65d-0394-45ff-9b5b-0e8436725080",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "custom_objects",
+                                ":custom_object_key",
+                                "triggers"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c001c353-7168-4381-988b-c86182f84b7b",
+                                  "key": "custom_object_key"
+                                }
+                              ]
+                            },
+                            "description": "Lists all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "6f9bd028-fa65-4a1c-a0ea-6049832903ec",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-6f9bd028-fa65-4a1c-a0ea-6049832903ec"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-ca1ba65d-0394-45ff-9b5b-0e8436725080"
+                        },
+                        {
+                          "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers",
+                          "id": "6aec9fc1-f794-411c-bc7d-9715ad86a6a0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/ObjectTriggerRequest not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "custom_objects",
+                                ":custom_object_key",
+                                "triggers"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "4aeffa1c-0673-4718-805b-b2ca83bea460",
+                                  "key": "custom_object_key"
+                                }
+                              ]
+                            },
+                            "description": "Creates a new object trigger for a specified object.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n"
+                          },
+                          "response": [
+                            {
+                              "id": "5b90304c-0215-4d68-8f49-8490db18cb85",
+                              "name": "Created response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"reference #/components/schemas/ObjectTriggerRequest not found in the OpenAPI spec\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "custom_objects",
+                                    ":custom_object_key",
+                                    "triggers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "custom_object_key"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"trigger\": {\n    \"value\": \"reference #/components/schemas/ObjectTriggerObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-5b90304c-0215-4d68-8f49-8490db18cb85"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-6aec9fc1-f794-411c-bc7d-9715ad86a6a0"
+                        }
+                      ],
+                      "id": "422a3a7a-3470-4a27-b991-e0592aa4ed2d",
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-422a3a7a-3470-4a27-b991-e0592aa4ed2d"
+                    }
+                  ],
+                  "id": "01abf25a-de75-4c57-9812-6c7409410873",
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-01abf25a-de75-4c57-9812-6c7409410873"
+                }
+              ],
+              "id": "7399b00b-35be-43f1-a4c7-385b2bc3a625",
+              "createdAt": "2026-06-05T15:23:51.000Z",
+              "updatedAt": "2026-06-05T15:23:51.000Z",
+              "uid": "35240-7399b00b-35be-43f1-a4c7-385b2bc3a625"
+            },
+            {
+              "name": "triggers",
+              "item": [
+                {
+                  "name": "{trigger_id}",
+                  "item": [
+                    {
+                      "name": "revisions",
+                      "item": [
+                        {
+                          "name": "{trigger_revision_id}",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 Triggers Trigger_id Revisions Trigger_revision_id",
+                              "id": "2bca27a6-021e-46d9-ba5c-cc9e9e1e67db",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id/revisions/:trigger_revision_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "triggers",
+                                    ":trigger_id",
+                                    "revisions",
+                                    ":trigger_revision_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "7e923c15-d2dd-4500-848a-c4198c0e0605",
+                                      "key": "trigger_id"
+                                    },
+                                    {
+                                      "id": "1412d93f-9f18-4ad5-aa0b-5c92306f63f1",
+                                      "key": "trigger_revision_id"
+                                    }
+                                  ]
+                                },
+                                "description": "Fetches a revision associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.\n\n#### Allowed For\n\n * Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name  | Will sideload\n| ----- | -------------\n| users | The user that authored each revision\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "becdba06-9ef0-479a-bf04-a74e5abf79f1",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id/revisions/:trigger_revision_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "triggers",
+                                        ":trigger_id",
+                                        "revisions",
+                                        ":trigger_revision_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "trigger_id"
+                                        },
+                                        {
+                                          "key": "trigger_revision_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"trigger_revision\": {\n    \"author_id\": \"<integer>\",\n    \"created_at\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"snapshot\": {\n      \"actions\": [\n        {\n          \"value\": \"reference #/components/schemas/TriggerActionObject not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/components/schemas/TriggerActionObject not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": \"<boolean>\",\n      \"conditions\": {\n        \"value\": \"reference #/components/schemas/TriggerConditionsObject not found in the OpenAPI spec\"\n      },\n      \"description\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    \"url\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:51.000Z",
+                                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                                  "uid": "35240-becdba06-9ef0-479a-bf04-a74e5abf79f1"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-2bca27a6-021e-46d9-ba5c-cc9e9e1e67db"
+                            }
+                          ],
+                          "id": "f52307c2-7b55-4819-8fe6-8d52cff37f52",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-f52307c2-7b55-4819-8fe6-8d52cff37f52"
+                        },
+                        {
+                          "name": "Zendesk Get  Api V2 Triggers Trigger_id Revisions",
+                          "id": "83dd7f0c-3df3-4bdc-b2e1-1eaef3be28e2",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id/revisions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                ":trigger_id",
+                                "revisions"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c04bff34-9f81-4485-bd0a-6864216153b0",
+                                  "key": "trigger_id"
+                                }
+                              ]
+                            },
+                            "description": "List the revisions associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.\n\n#### Allowed For\n\n * Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name  | Will sideload\n| ----- | -------------\n| users | The user that authored each revision\n\n#### Pagination\n\nThis endpoint uses cursor-based pagination. The records are ordered in\ndescending order by the `created_at` timestamp, then by `id` on duplicate\n`created_at` values.\n\nThe `cursor` parameter is a non-human-readable argument you can use to move\nforward or backward in time.\n\nEach JSON response will contain the following attributes to help you get\nmore results:\n\n- `after_url` requests more recent results\n- `before_url` requests older results\n- `after_cursor` is the cursor to build the request yourself\n- `before_cursor` is the cursor to build the request yourself\n\nThe properties are null if no more records are available.\n\nYou can request a maximum of 1000 records using the `limit` parameter. If\nno `limit` parameter is supplied, it will default to 1,000.\n"
+                          },
+                          "response": [
+                            {
+                              "id": "72a5b8ca-c2ef-4666-b456-96f622026383",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id/revisions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "triggers",
+                                    ":trigger_id",
+                                    "revisions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "trigger_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"after_cursor\": \"<string>\",\n  \"after_url\": \"<string>\",\n  \"before_cursor\": \"<string>\",\n  \"before_url\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"trigger_revisions\": [\n    {\n      \"author_id\": \"<integer>\",\n      \"created_at\": \"<string>\",\n      \"diff\": {\n        \"actions\": [\n          {\n            \"value\": \"reference #/components/schemas/TriggerActionDiffObject not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/components/schemas/TriggerActionDiffObject not found in the OpenAPI spec\"\n          }\n        ],\n        \"active\": [\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          }\n        ],\n        \"conditions\": {\n          \"value\": \"reference #/components/schemas/TriggerConditionDiffObject not found in the OpenAPI spec\"\n        },\n        \"description\": [\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          }\n        ],\n        \"source_id\": \"<integer>\",\n        \"target_id\": \"<integer>\",\n        \"title\": [\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          }\n        ]\n      },\n      \"id\": \"<integer>\",\n      \"snapshot\": {\n        \"value\": \"reference #/components/schemas/TriggerSnapshotObject not found in the OpenAPI spec\"\n      },\n      \"url\": \"<string>\"\n    },\n    {\n      \"author_id\": \"<integer>\",\n      \"created_at\": \"<string>\",\n      \"diff\": {\n        \"actions\": [\n          {\n            \"value\": \"reference #/components/schemas/TriggerActionDiffObject not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/components/schemas/TriggerActionDiffObject not found in the OpenAPI spec\"\n          }\n        ],\n        \"active\": [\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          }\n        ],\n        \"conditions\": {\n          \"value\": \"reference #/components/schemas/TriggerConditionDiffObject not found in the OpenAPI spec\"\n        },\n        \"description\": [\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          }\n        ],\n        \"source_id\": \"<integer>\",\n        \"target_id\": \"<integer>\",\n        \"title\": [\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/components/schemas/TriggerChangeObject not found in the OpenAPI spec\"\n          }\n        ]\n      },\n      \"id\": \"<integer>\",\n      \"snapshot\": {\n        \"value\": \"reference #/components/schemas/TriggerSnapshotObject not found in the OpenAPI spec\"\n      },\n      \"url\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:23:51.000Z",
+                              "updatedAt": "2026-06-05T15:23:51.000Z",
+                              "uid": "35240-72a5b8ca-c2ef-4666-b456-96f622026383"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-83dd7f0c-3df3-4bdc-b2e1-1eaef3be28e2"
+                        }
+                      ],
+                      "id": "bf689a03-53e4-4d57-8ef5-face86e5b36f",
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-bf689a03-53e4-4d57-8ef5-face86e5b36f"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Triggers Trigger_id",
+                      "id": "74c0bfc7-b837-4b98-bb4c-3188c79be8df",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            ":trigger_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7ceaddc2-eb72-4655-8b34-f4f637a0de55",
+                              "key": "trigger_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n\nThe Via Type value is a number instead of a text string. See [Via types reference](/documentation/ticketing/reference-guides/via-types/) for the keys.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c1deeae5-5b23-43d3-a18f-33b77ceecebd",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                ":trigger_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"trigger\": {\n    \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-c1deeae5-5b23-43d3-a18f-33b77ceecebd"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-74c0bfc7-b837-4b98-bb4c-3188c79be8df"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Triggers Trigger_id",
+                      "id": "55410677-b710-4b6b-a9de-d53611746d5a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/TriggerWithCategoryRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            ":trigger_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f27365ab-ba9f-41bc-bce2-cc286936e6e0",
+                              "key": "trigger_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n\n#### Note\n\nUpdating a condition or action updates both the conditions and actions arrays,\nclearing all existing values of both arrays. Include all your conditions\nand actions when updating any condition or action.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "086219ea-5e4d-4d6c-9505-6ec42f6582f2",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/TriggerWithCategoryRequest not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                ":trigger_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"trigger\": {\n    \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-086219ea-5e4d-4d6c-9505-6ec42f6582f2"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-55410677-b710-4b6b-a9de-d53611746d5a"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Triggers Trigger_id",
+                      "id": "822c1bdc-f488-423c-a4fc-d5fdb02e551a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            ":trigger_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fa945592-9e75-48c9-9fd1-634378fe6e54",
+                              "key": "trigger_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "5ed78c45-c85d-47a3-8db3-99e5b41cdc69",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/:trigger_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                ":trigger_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "trigger_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-5ed78c45-c85d-47a3-8db3-99e5b41cdc69"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-822c1bdc-f488-423c-a4fc-d5fdb02e551a"
+                    }
+                  ],
+                  "id": "c0b13d1b-5e7a-4cd2-ae87-11b88d9092ca",
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-c0b13d1b-5e7a-4cd2-ae87-11b88d9092ca"
+                },
+                {
+                  "name": "active",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Triggers Active",
+                      "id": "977082c0-1261-4e34-8bc3-f1141e4a8e4d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/active",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            "active"
+                          ]
+                        },
+                        "description": "Lists all active ticket triggers.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each ticket trigger, if present\n| permissions      | The permissions for each trigger\n| usage_1h         | The number of times each ticket trigger has been used in the past hour\n| usage_24h        | The number of times each ticket trigger has been used in the past day\n| usage_7d         | The number of times each ticket trigger has been used in the past week\n| usage_30d        | The number of times each ticket trigger has been used in the past thirty days\n"
+                      },
+                      "response": [
+                        {
+                          "id": "a71ee9f6-7fa5-4786-942a-99541e3c06ca",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/active",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                "active"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-a71ee9f6-7fa5-4786-942a-99541e3c06ca"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-977082c0-1261-4e34-8bc3-f1141e4a8e4d"
+                    }
+                  ],
+                  "id": "1ea8db30-7d8a-47d3-b462-e48cbe754fd9",
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-1ea8db30-7d8a-47d3-b462-e48cbe754fd9"
+                },
+                {
+                  "name": "definitions",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Triggers Definitions",
+                      "id": "a3f0ce30-2615-4f6b-92d0-680eb557affc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/definitions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            "definitions"
+                          ]
+                        },
+                        "description": "Returns the definitions of the actions a ticket trigger can perform and the\ndefinitions of the conditions under which a ticket trigger can execute. The\ndefinition of the action includes a title (\"Status\"), a type (\"list\"), and\npossible values. The definition of the condition includes the same fields\nas well as the possible operators.\n\nFor a list of supported actions, see the [Actions reference](/documentation/ticketing/reference-guides/actions-reference)\nFor a list of supported conditions, see the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "4c2e2915-78d5-4a7b-ac29-9e3b8d7d6633",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/definitions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                "definitions"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"definitions\": {\n    \"value\": \"reference #/components/schemas/TriggerDefinitionObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-4c2e2915-78d5-4a7b-ac29-9e3b8d7d6633"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-a3f0ce30-2615-4f6b-92d0-680eb557affc"
+                    }
+                  ],
+                  "id": "350f9eb5-52b3-4276-9a0b-e114ac687170",
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-350f9eb5-52b3-4276-9a0b-e114ac687170"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Triggers Destroy_many",
+                      "id": "1d5978d9-fbda-48b8-b0c6-1608bbd592f9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/destroy_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            "destroy_many"
+                          ]
+                        },
+                        "description": "Deletes the ticket triggers corresponding to the provided comma-separated list of IDs.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe DELETE request takes one parameter, an `ids` object that lists the\nticket triggers to delete.\n\n| Name | Description\n| ---- | -----------\n| ids  | The IDs of the triggers to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "ad9b9f4c-9c51-4617-8914-776ef6dcf5a7",
+                          "name": "No content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/destroy_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                "destroy_many"
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-ad9b9f4c-9c51-4617-8914-776ef6dcf5a7"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-1d5978d9-fbda-48b8-b0c6-1608bbd592f9"
+                    }
+                  ],
+                  "id": "bdb9de83-5a17-49bd-ae12-e9dbde5dbcda",
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-bdb9de83-5a17-49bd-ae12-e9dbde5dbcda"
+                },
+                {
+                  "name": "reorder",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Triggers Reorder",
+                      "id": "b2876f88-f808-44be-98e0-6860acd592c3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/reorder",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            "reorder"
+                          ]
+                        },
+                        "description": "Alters the firing order of ticket triggers in the account. See\n[Reordering and sorting triggers](https://support.zendesk.com/hc/en-us/articles/115015696088)\nin the Zendesk Help Center. The firing order is set in a `trigger_ids` array in the request body.\n\nYou must include every ticket trigger id in your account to reorder the ticket triggers. If not, the endpoint will return 404 Forbidden.\n\nReordering ticket triggers via the API is not permitted if you have more than one ticket trigger category. If there is more than one\nticket trigger category, the endpoint will return a `LimitOneCategory` error.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "8c2b6729-edcf-4539-b981-fc7df9a30ae6",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/reorder",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                "reorder"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"trigger\": {\n    \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-8c2b6729-edcf-4539-b981-fc7df9a30ae6"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-b2876f88-f808-44be-98e0-6860acd592c3"
+                    }
+                  ],
+                  "id": "b813c812-c79c-480a-9fe9-40cf94c71297",
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-b813c812-c79c-480a-9fe9-40cf94c71297"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Triggers Search",
+                      "id": "620f82b3-1cf4-47b5-a412-8a8b18acf5c1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            "search"
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each ticket trigger, if present\n| permissions      | The permissions for each ticket trigger\n| usage_1h         | The number of times each ticket trigger has been used in the past hour\n| usage_24h        | The number of times each ticket trigger has been used in the past day\n| usage_7d         | The number of times each ticket trigger has been used in the past week\n| usage_30d        | The number of times each ticket trigger has been used in the past thirty days\n\n#### Filter\n\nUse the `filter` query parameter to filter a ticket trigger search by one or more attributes. For example, the following `filter` argument filters ticket triggers by the `description` attribute:\n\n```json\n{\n  \"json\": {\n    \"description\": \"Close a ticket\"\n  }\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "39332f47-9ab5-496d-9a14-f04cb453c36a",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-39332f47-9ab5-496d-9a14-f04cb453c36a"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-620f82b3-1cf4-47b5-a412-8a8b18acf5c1"
+                    }
+                  ],
+                  "id": "5a0a924d-5b7b-4b25-94d3-4beb726aac41",
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-5a0a924d-5b7b-4b25-94d3-4beb726aac41"
+                },
+                {
+                  "name": "update_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Triggers Update_many",
+                      "id": "a955ac0d-362c-490f-aeb5-04ca211a760e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/TriggerBulkUpdateRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers/update_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers",
+                            "update_many"
+                          ]
+                        },
+                        "description": "Updates the position or the active status of multiple ticket triggers. Any additional properties are ignored.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe PUT request expects a `triggers` object that lists the ticket triggers to update.\n\nEach ticket trigger may have the following properties:\n\n| Name        | Mandatory | Description\n| --------    | --------- | -----------\n| id          | yes       | The ID of the ticket trigger to update\n| position    | no        | The new position of the ticket trigger\n| active      | no        | The active status of the ticket trigger (true or false)\n| category_id | no        | The ID of the new category the ticket trigger is to be moved to\n\n#### Example Request\n\n```js\n{\n  \"triggers\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"position\": 5},\n    {\"id\": 27, \"position\": 9},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "4b42dba6-1973-4fc8-9e0f-af5cad1e926e",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/TriggerBulkUpdateRequest not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/triggers/update_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "triggers",
+                                "update_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:51.000Z",
+                          "updatedAt": "2026-06-05T15:23:51.000Z",
+                          "uid": "35240-4b42dba6-1973-4fc8-9e0f-af5cad1e926e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-a955ac0d-362c-490f-aeb5-04ca211a760e"
+                    }
+                  ],
+                  "id": "6cb96e19-27b0-4e9c-a105-ee5e01080ea6",
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-6cb96e19-27b0-4e9c-a105-ee5e01080ea6"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Triggers",
+                  "id": "f9b12169-2a2c-4c76-a86b-8e1db80592c1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/triggers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "triggers"
+                      ]
+                    },
+                    "description": "Lists all ticket triggers for the current account.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. The usage sideloads are only supported on the Support Professional or Suite Growth plan or above.\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each trigger, if present\n| permissions      | The permissions for each trigger\n| usage_1h         | The number of times each trigger has been used in the past hour\n| usage_24h        | The number of times each trigger has been used in the past day\n| usage_7d         | The number of times each trigger has been used in the past week\n| usage_30d        | The number of times each trigger has been used in the past thirty days\n"
+                  },
+                  "response": [
+                    {
+                      "id": "62e83d0e-8a76-4918-a747-a8d3e9b1da5a",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"triggers\": [\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-62e83d0e-8a76-4918-a747-a8d3e9b1da5a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-f9b12169-2a2c-4c76-a86b-8e1db80592c1"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Triggers",
+                  "id": "b6f5a37e-7d23-4418-9d29-9f6746ee10a3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference #/components/schemas/TriggerWithCategoryRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/triggers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "triggers"
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "71b73e04-df1f-4e45-85fc-164265eade66",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/TriggerWithCategoryRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/triggers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "triggers"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"trigger\": {\n    \"value\": \"reference #/components/schemas/TriggerObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:51.000Z",
+                      "updatedAt": "2026-06-05T15:23:51.000Z",
+                      "uid": "35240-71b73e04-df1f-4e45-85fc-164265eade66"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:51.000Z",
+                  "updatedAt": "2026-06-05T15:23:51.000Z",
+                  "uid": "35240-b6f5a37e-7d23-4418-9d29-9f6746ee10a3"
+                }
+              ],
+              "id": "067c0056-aa71-4e43-9be0-29b33f478717",
+              "createdAt": "2026-06-05T15:23:51.000Z",
+              "updatedAt": "2026-06-05T15:23:51.000Z",
+              "uid": "35240-067c0056-aa71-4e43-9be0-29b33f478717"
+            }
+          ],
+          "id": "18b6c483-75eb-4a75-a923-3d331eb16154",
+          "createdAt": "2026-06-05T15:23:51.000Z",
+          "updatedAt": "2026-06-05T15:23:51.000Z",
+          "uid": "35240-18b6c483-75eb-4a75-a923-3d331eb16154"
+        }
+      ],
+      "id": "7b7e526f-8160-4494-ab78-c52746492803",
+      "createdAt": "2026-06-05T15:23:51.000Z",
+      "updatedAt": "2026-06-05T15:23:51.000Z",
+      "uid": "35240-7b7e526f-8160-4494-ab78-c52746492803"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "info": {
+    "_postman_id": "28450e0e-b821-4bd5-9621-a9e15ee90188",
+    "name": "Zendesk Problems",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:07.000Z",
+    "updatedAt": "2026-06-05T15:23:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-28450e0e-b821-4bd5-9621-a9e15ee90188"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "problems",
+              "item": [
+                {
+                  "name": "autocomplete",
+                  "item": [
+                    {
+                      "name": "Zendesk Post  Api V2 Problems Autocomplete",
+                      "id": "3447d513-b144-42d2-9c98-fc233c43ff2c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"text\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/problems/autocomplete?text=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "problems",
+                            "autocomplete"
+                          ],
+                          "query": [
+                            {
+                              "description": "The text to search for",
+                              "key": "text",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Returns tickets whose type is \"problem\" and whose subject contains the string specified in the `text` parameter.\n\nYou can specify the `text` parameter in the request body rather than the query string. Example:\n\n`{\"text\": \"fire\"}`\n\n#### Allowed For\n\n* Agents"
+                      },
+                      "response": [
+                        {
+                          "id": "051b2c32-d9c2-4b75-bcc1-f347b344c83b",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"text\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/problems/autocomplete?text=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "problems",
+                                "autocomplete"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The text to search for",
+                                  "key": "text",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"velitebd\": 20244207.435057864,\n  \"Utfda\": -11350597,\n  \"qui_f52\": 52730014\n}",
+                          "createdAt": "2026-06-05T15:23:08.000Z",
+                          "updatedAt": "2026-06-05T15:23:08.000Z",
+                          "uid": "35240-051b2c32-d9c2-4b75-bcc1-f347b344c83b"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:08.000Z",
+                      "updatedAt": "2026-06-05T15:23:08.000Z",
+                      "uid": "35240-3447d513-b144-42d2-9c98-fc233c43ff2c"
+                    }
+                  ],
+                  "id": "03cf4cf0-2e93-4995-84e2-77d6c575d820",
+                  "createdAt": "2026-06-05T15:23:08.000Z",
+                  "updatedAt": "2026-06-05T15:23:08.000Z",
+                  "uid": "35240-03cf4cf0-2e93-4995-84e2-77d6c575d820"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Problems",
+                  "id": "1c11c520-00ea-4326-88ea-2d650abd8163",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/problems",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "problems"
+                      ]
+                    },
+                    "description": "The response is always ordered by `updated_at` in descending order\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/)."
+                  },
+                  "response": [
+                    {
+                      "id": "c403b2d0-ccba-4f6e-acdd-d2e401d9708d",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/problems",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "problems"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"velitebd\": 20244207.435057864,\n  \"Utfda\": -11350597,\n  \"qui_f52\": 52730014\n}",
+                      "createdAt": "2026-06-05T15:23:08.000Z",
+                      "updatedAt": "2026-06-05T15:23:08.000Z",
+                      "uid": "35240-c403b2d0-ccba-4f6e-acdd-d2e401d9708d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:08.000Z",
+                  "updatedAt": "2026-06-05T15:23:08.000Z",
+                  "uid": "35240-1c11c520-00ea-4326-88ea-2d650abd8163"
+                }
+              ],
+              "id": "26d8d663-597b-43c2-bbf8-bd7e531d117a",
+              "createdAt": "2026-06-05T15:23:08.000Z",
+              "updatedAt": "2026-06-05T15:23:08.000Z",
+              "uid": "35240-26d8d663-597b-43c2-bbf8-bd7e531d117a"
+            }
+          ],
+          "id": "f9fe6649-0835-470a-a4c8-bd150b42e161",
+          "createdAt": "2026-06-05T15:23:08.000Z",
+          "updatedAt": "2026-06-05T15:23:08.000Z",
+          "uid": "35240-f9fe6649-0835-470a-a4c8-bd150b42e161"
+        }
+      ],
+      "id": "25906f16-ce74-40a1-8511-0e20124af3c2",
+      "createdAt": "2026-06-05T15:23:08.000Z",
+      "updatedAt": "2026-06-05T15:23:08.000Z",
+      "uid": "35240-25906f16-ce74-40a1-8511-0e20124af3c2"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

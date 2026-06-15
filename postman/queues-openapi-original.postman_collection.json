@@ -1,0 +1,591 @@
+{
+  "info": {
+    "_postman_id": "231ddbc8-5cb6-46b0-af6b-4f91dde8401c",
+    "name": "Zendesk Queues",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:10.000Z",
+    "updatedAt": "2026-06-05T15:23:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-231ddbc8-5cb6-46b0-af6b-4f91dde8401c"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "queues",
+              "item": [
+                {
+                  "name": "{queue_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Queues Queue_id",
+                      "id": "d70fcb11-b406-4427-9a87-faa558326d31",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/queues/:queue_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "queues",
+                            ":queue_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bcbc97e0-89d6-4c9b-b25d-a903c5a6d3da",
+                              "key": "queue_id"
+                            }
+                          ]
+                        },
+                        "description": "Returns a queue for the given queue id.\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "87c7e7d8-03be-4ddf-8652-2932b0c0cf2d",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/queues/:queue_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "queues",
+                                ":queue_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "queue_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"queue\": {\n    \"value\": \"reference #/components/schemas/QueueObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:10.000Z",
+                          "updatedAt": "2026-06-05T15:23:10.000Z",
+                          "uid": "35240-87c7e7d8-03be-4ddf-8652-2932b0c0cf2d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:10.000Z",
+                      "updatedAt": "2026-06-05T15:23:10.000Z",
+                      "uid": "35240-d70fcb11-b406-4427-9a87-faa558326d31"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Queues Queue_id",
+                      "id": "b6e0e1e6-552f-443d-8b7e-a5dc005acb60",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/queues/:queue_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "queues",
+                            ":queue_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0ce12843-87fc-4aba-878b-804fa2473c77",
+                              "key": "queue_id"
+                            }
+                          ]
+                        },
+                        "description": "Updates the queue definition for a given queue id.\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c987be36-d262-4b55-b9f2-0eefe431d66e",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/queues/:queue_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "queues",
+                                ":queue_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "queue_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"queue\": {\n    \"value\": \"reference #/components/schemas/QueueObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:10.000Z",
+                          "updatedAt": "2026-06-05T15:23:10.000Z",
+                          "uid": "35240-c987be36-d262-4b55-b9f2-0eefe431d66e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:10.000Z",
+                      "updatedAt": "2026-06-05T15:23:10.000Z",
+                      "uid": "35240-b6e0e1e6-552f-443d-8b7e-a5dc005acb60"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Queues Queue_id",
+                      "id": "e5e79113-e0ec-456a-8e4e-1550172386c5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/queues/:queue_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "queues",
+                            ":queue_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b620cd02-006a-41ee-aeab-645c4fc98ab1",
+                              "key": "queue_id"
+                            }
+                          ]
+                        },
+                        "description": "Deletes the queue and related records.\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "81a1a6c9-ccca-42db-99f4-6d5273769ca3",
+                          "name": "No content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/queues/:queue_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "queues",
+                                ":queue_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "queue_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:10.000Z",
+                          "updatedAt": "2026-06-05T15:23:10.000Z",
+                          "uid": "35240-81a1a6c9-ccca-42db-99f4-6d5273769ca3"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:10.000Z",
+                      "updatedAt": "2026-06-05T15:23:10.000Z",
+                      "uid": "35240-e5e79113-e0ec-456a-8e4e-1550172386c5"
+                    }
+                  ],
+                  "id": "f02d3b9f-2f39-4edc-9d53-bbcf733f2789",
+                  "createdAt": "2026-06-05T15:23:10.000Z",
+                  "updatedAt": "2026-06-05T15:23:10.000Z",
+                  "uid": "35240-f02d3b9f-2f39-4edc-9d53-bbcf733f2789"
+                },
+                {
+                  "name": "definitions",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Queues Definitions",
+                      "id": "ebdc2765-bafb-4569-a2b8-60bf7a385222",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/queues/definitions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "queues",
+                            "definitions"
+                          ]
+                        },
+                        "description": "Returns the definitions of the queues and the\ndefinitions of the conditions under which a queue can execute. The\ndefinition of the action includes a title (\"Status\"), a type (\"list\"), and\npossible values. The definition of the condition includes the same fields\nas well as the possible operators.\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "70a3707d-93f4-49a8-856a-a314b55a5122",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/queues/definitions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "queues",
+                                "definitions"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"definitions\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"conditions_all\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"group\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"nullable\": {\n              \"type\": \"boolean\",\n              \"default\": \"<boolean>\"\n            },\n            \"operators\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"terminal\": {\n                    \"type\": \"boolean\",\n                    \"default\": \"<boolean>\"\n                  },\n                  \"title\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  },\n                  \"value\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  }\n                }\n              }\n            },\n            \"repeatable\": {\n              \"type\": \"boolean\",\n              \"default\": \"<boolean>\"\n            },\n            \"subject\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"title\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"type\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"values\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"enabled\": {\n                    \"type\": \"boolean\",\n                    \"default\": \"<boolean>\"\n                  },\n                  \"title\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  },\n                  \"value\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  }\n                }\n              }\n            }\n          }\n        }\n      },\n      \"conditions_any\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"group\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"nullable\": {\n              \"type\": \"boolean\",\n              \"default\": \"<boolean>\"\n            },\n            \"operators\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"terminal\": {\n                    \"type\": \"boolean\",\n                    \"default\": \"<boolean>\"\n                  },\n                  \"title\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  },\n                  \"value\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  }\n                }\n              }\n            },\n            \"repeatable\": {\n              \"type\": \"boolean\",\n              \"default\": \"<boolean>\"\n            },\n            \"subject\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"title\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"type\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"values\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"enabled\": {\n                    \"type\": \"boolean\",\n                    \"default\": \"<boolean>\"\n                  },\n                  \"title\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  },\n                  \"value\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:10.000Z",
+                          "updatedAt": "2026-06-05T15:23:10.000Z",
+                          "uid": "35240-70a3707d-93f4-49a8-856a-a314b55a5122"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:10.000Z",
+                      "updatedAt": "2026-06-05T15:23:10.000Z",
+                      "uid": "35240-ebdc2765-bafb-4569-a2b8-60bf7a385222"
+                    }
+                  ],
+                  "id": "0400865d-6dc4-4f26-8a14-950b341e1df1",
+                  "createdAt": "2026-06-05T15:23:10.000Z",
+                  "updatedAt": "2026-06-05T15:23:10.000Z",
+                  "uid": "35240-0400865d-6dc4-4f26-8a14-950b341e1df1"
+                },
+                {
+                  "name": "order",
+                  "item": [
+                    {
+                      "name": "Zendesk Patch  Api V2 Queues Order",
+                      "id": "e656dd01-1115-45b0-a12e-01f30c37068f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/queues/order",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "queues",
+                            "order"
+                          ]
+                        },
+                        "description": "Alters the evaluation order of OCR queues in the account.\nThe evaluation order is set in a `queue_ids` array in the request body.\n\nYou must include every queue id in your account to reorder the OCR queues. If not, the endpoint will return 400 Bad Request.\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "1079c63c-a506-4e39-bae5-03076d634b2c",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/queues/order",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "queues",
+                                "order"
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:10.000Z",
+                          "updatedAt": "2026-06-05T15:23:10.000Z",
+                          "uid": "35240-1079c63c-a506-4e39-bae5-03076d634b2c"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:10.000Z",
+                      "updatedAt": "2026-06-05T15:23:10.000Z",
+                      "uid": "35240-e656dd01-1115-45b0-a12e-01f30c37068f"
+                    }
+                  ],
+                  "id": "d6114c36-3372-436c-aa0e-36a564906b59",
+                  "createdAt": "2026-06-05T15:23:10.000Z",
+                  "updatedAt": "2026-06-05T15:23:10.000Z",
+                  "uid": "35240-d6114c36-3372-436c-aa0e-36a564906b59"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Queues",
+                  "id": "2f7c9424-9bc7-4ba8-8205-53b54c531e23",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/queues",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "queues"
+                      ]
+                    },
+                    "description": "Returns all active queues for an account.\n\n#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "672f4ff1-0ce3-4c4e-9e5b-fcafd4fa95a5",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/queues",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "queues"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"queues\": [\n    {\n      \"value\": \"reference #/components/schemas/QueueObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/QueueObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:10.000Z",
+                      "updatedAt": "2026-06-05T15:23:10.000Z",
+                      "uid": "35240-672f4ff1-0ce3-4c4e-9e5b-fcafd4fa95a5"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:10.000Z",
+                  "updatedAt": "2026-06-05T15:23:10.000Z",
+                  "uid": "35240-2f7c9424-9bc7-4ba8-8205-53b54c531e23"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Queues",
+                  "id": "14cfece0-595b-4a83-93fd-6cce5fc2792d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/queues",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "queues"
+                      ]
+                    },
+                    "description": "Creates a queue. Accepts a JSON queue definition as the request body.\n\n#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "f3ef781f-f052-40e3-978a-48c42802a369",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/queues",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "queues"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"queue\": {\n    \"value\": \"reference #/components/schemas/QueueObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:10.000Z",
+                      "updatedAt": "2026-06-05T15:23:10.000Z",
+                      "uid": "35240-f3ef781f-f052-40e3-978a-48c42802a369"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:10.000Z",
+                  "updatedAt": "2026-06-05T15:23:10.000Z",
+                  "uid": "35240-14cfece0-595b-4a83-93fd-6cce5fc2792d"
+                }
+              ],
+              "id": "9486d1fa-7db1-44b1-885b-524a55d65953",
+              "createdAt": "2026-06-05T15:23:10.000Z",
+              "updatedAt": "2026-06-05T15:23:10.000Z",
+              "uid": "35240-9486d1fa-7db1-44b1-885b-524a55d65953"
+            }
+          ],
+          "id": "6951c1cc-38d2-43d9-9727-5852e785bab1",
+          "createdAt": "2026-06-05T15:23:10.000Z",
+          "updatedAt": "2026-06-05T15:23:10.000Z",
+          "uid": "35240-6951c1cc-38d2-43d9-9727-5852e785bab1"
+        }
+      ],
+      "id": "058c86bb-01b9-48c2-8753-017a0aa8ec9c",
+      "createdAt": "2026-06-05T15:23:10.000Z",
+      "updatedAt": "2026-06-05T15:23:10.000Z",
+      "uid": "35240-058c86bb-01b9-48c2-8753-017a0aa8ec9c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

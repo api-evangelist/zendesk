@@ -1,0 +1,1025 @@
+{
+  "info": {
+    "_postman_id": "52855921-88af-4386-8c5f-f5358155fb56",
+    "name": "Zendesk Incremental",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:51.000Z",
+    "updatedAt": "2026-06-05T15:22:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-52855921-88af-4386-8c5f-f5358155fb56"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "incremental",
+              "item": [
+                {
+                  "name": "{incremental_resource}",
+                  "item": [
+                    {
+                      "name": "sample",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Incremental_resource Sample",
+                          "id": "e9a73a96-acb7-4d33-ba8e-39530891972e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/:incremental_resource/sample",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                ":incremental_resource",
+                                "sample"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b606b955-a033-48a9-81af-6708e852129d",
+                                  "key": "incremental_resource"
+                                }
+                              ]
+                            },
+                            "description": "Use this endpoint to test the incremental export format. It's more strict in terms of rate limiting,\nat 10 requests per 20 minutes instead of 10 requests per minute. It also returns only up to 50\nresults per request. Otherwise, it's identical to the above APIs.\n\nUse the `incremental_resource` parameter to specify the resource. Possible values are \"tickets\", \"ticket_events\", \"users\", or \"organizations\".\n"
+                          },
+                          "response": [
+                            {
+                              "id": "0034eef4-7b3c-4141-bfd5-754bb22d9b00",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/:incremental_resource/sample",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    ":incremental_resource",
+                                    "sample"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "incremental_resource"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"end_of_stream\": \"<boolean>\",\n  \"end_time\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"tickets\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:22:51.000Z",
+                              "updatedAt": "2026-06-05T15:22:51.000Z",
+                              "uid": "35240-0034eef4-7b3c-4141-bfd5-754bb22d9b00"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-e9a73a96-acb7-4d33-ba8e-39530891972e"
+                        }
+                      ],
+                      "id": "c85e5037-5fec-4348-9f3a-54901fcbacb2",
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-c85e5037-5fec-4348-9f3a-54901fcbacb2"
+                    }
+                  ],
+                  "id": "4538939a-cf19-490c-ae0f-1591baeb6bfe",
+                  "createdAt": "2026-06-05T15:22:51.000Z",
+                  "updatedAt": "2026-06-05T15:22:51.000Z",
+                  "uid": "35240-4538939a-cf19-490c-ae0f-1591baeb6bfe"
+                },
+                {
+                  "name": "organizations",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Incremental Organizations",
+                      "id": "23e88855-9a81-4158-9669-2c0b627aa978",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/incremental/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "incremental",
+                            "organizations"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Organizations sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n"
+                      },
+                      "response": [
+                        {
+                          "id": "96e643a6-6fab-46be-a748-e68b79670f78",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "organizations"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"end_of_stream\": \"<boolean>\",\n  \"end_time\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"organizations\": [\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/OrganizationObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-96e643a6-6fab-46be-a748-e68b79670f78"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-23e88855-9a81-4158-9669-2c0b627aa978"
+                    }
+                  ],
+                  "id": "a0d50751-a8b3-47a2-bc88-458180c04bd2",
+                  "createdAt": "2026-06-05T15:22:51.000Z",
+                  "updatedAt": "2026-06-05T15:22:51.000Z",
+                  "uid": "35240-a0d50751-a8b3-47a2-bc88-458180c04bd2"
+                },
+                {
+                  "name": "routing",
+                  "item": [
+                    {
+                      "name": "attribute_values",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Routing Attribute_values",
+                          "id": "5a1bd85c-3304-449e-8887-0e5f4894cfc8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/routing/attribute_values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "routing",
+                                "attribute_values"
+                              ]
+                            },
+                            "description": "Returns a stream of changes that occurred on routing attribute values.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "74133969-6da4-439e-873b-6928e8f9164e",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/routing/attribute_values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    "routing",
+                                    "attribute_values"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"attributes\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"instance_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:22:51.000Z",
+                              "updatedAt": "2026-06-05T15:22:51.000Z",
+                              "uid": "35240-74133969-6da4-439e-873b-6928e8f9164e"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-5a1bd85c-3304-449e-8887-0e5f4894cfc8"
+                        }
+                      ],
+                      "id": "3d83bfaa-6d57-4836-990b-ba4b60094013",
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-3d83bfaa-6d57-4836-990b-ba4b60094013"
+                    },
+                    {
+                      "name": "attributes",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Routing Attributes",
+                          "id": "8ae0cf50-0dc2-4e1c-9b24-33b9309ac690",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/routing/attributes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "routing",
+                                "attributes"
+                              ]
+                            },
+                            "description": "Returns a stream of changes that occurred on routing attributes.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "d1df48ef-3a14-4dc2-b60a-ba50c716c077",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/routing/attributes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    "routing",
+                                    "attributes"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"attributes\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"instance_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:22:51.000Z",
+                              "updatedAt": "2026-06-05T15:22:51.000Z",
+                              "uid": "35240-d1df48ef-3a14-4dc2-b60a-ba50c716c077"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-8ae0cf50-0dc2-4e1c-9b24-33b9309ac690"
+                        }
+                      ],
+                      "id": "23456858-4c1e-486b-9392-d7d2a33a3ce1",
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-23456858-4c1e-486b-9392-d7d2a33a3ce1"
+                    },
+                    {
+                      "name": "instance_values",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Routing Instance_values",
+                          "id": "5decefb8-9636-4f24-b974-33ef7fd1dd0d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/routing/instance_values",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "routing",
+                                "instance_values"
+                              ]
+                            },
+                            "description": "Returns a stream of changes that occurred on routing instance values. Changes are grouped by `attribute_value_id`,\nwith associate type events listed alongside unassociate type events based on the unassociate event\u2019s timestamp.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "b59fc9db-65c3-44fb-9622-e1e6336803c8",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/routing/instance_values",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    "routing",
+                                    "instance_values"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attribute_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttributeValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"attributes\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingAttribute not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"instance_values\": [\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/IncrementalSkillBasedRoutingInstanceValue not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:22:51.000Z",
+                              "updatedAt": "2026-06-05T15:22:51.000Z",
+                              "uid": "35240-b59fc9db-65c3-44fb-9622-e1e6336803c8"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-5decefb8-9636-4f24-b974-33ef7fd1dd0d"
+                        }
+                      ],
+                      "id": "07086ad9-e775-4921-9222-d6583be10333",
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-07086ad9-e775-4921-9222-d6583be10333"
+                    }
+                  ],
+                  "id": "2f60f275-be36-4ce6-a199-d7725a81596f",
+                  "createdAt": "2026-06-05T15:22:51.000Z",
+                  "updatedAt": "2026-06-05T15:22:51.000Z",
+                  "uid": "35240-2f60f275-be36-4ce6-a199-d7725a81596f"
+                },
+                {
+                  "name": "ticket_events",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Incremental Ticket_events",
+                      "id": "1d500dc0-2606-447f-8bc9-7b73b5c41eb6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/incremental/ticket_events",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "incremental",
+                            "ticket_events"
+                          ]
+                        },
+                        "description": "Returns a stream of changes that occurred on tickets, excluding events occuring within one minute of the request. Each event is tied\nto an update on a ticket and contains all the fields that were updated in that\nchange. For more information, see:\n\n- [Exporting ticket events](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-ticket-events) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api)\n- [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api)\n\nYou can include comments in the event stream by using the `comment_events`\nsideload. See Sideloading below. If you don't specify the sideload, any comment\npresent in the ticket update is described only by Boolean `comment_present`\nand `comment_public` object properties in the event's `child_events` array.\nThe comment itself is not included.\n\n#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nThe endpoint supports the `comment_events` sideload. Any comment present in the ticket\nupdate is listed as an object in the event's `child_events` array. Example:\n\n```js\n\"child_events\": [\n  {\n    \"id\": 91048994488,\n    \"via\": {\n      \"channel\": \"api\",\n      \"source\": {\"from\":{},\"to\":{},\"rel\":null}},\n    \"via_reference_id\":null,\n    \"type\": \"Comment\",\n    \"author_id\": 5031726587,\n    \"body\": \"This is a comment\",\n    \"html_body\": \"&lt;div class=\"zd-comment\"&gt;&lt;p dir=\"auto\"&gt;This is a comment&lt;/p&gt;\",\n    \"public\": true,\n    \"attachments\": [],\n    \"audit_id\": 91048994468,\n    \"created_at\": \"2009-06-25T10:15:18Z\",\n    \"event_type\": \"Comment\"\n  },\n  ...\n],\n...\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "58e5e1a0-8496-4117-8ae7-f49da0010ab7",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/ticket_events",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "ticket_events"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"end_of_stream\": \"<boolean>\",\n  \"end_time\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"ticket_events\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketMetricEventBaseObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketMetricEventBaseObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-58e5e1a0-8496-4117-8ae7-f49da0010ab7"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-1d500dc0-2606-447f-8bc9-7b73b5c41eb6"
+                    }
+                  ],
+                  "id": "0e188efa-56c3-4158-acd7-3e46ce9161b0",
+                  "createdAt": "2026-06-05T15:22:51.000Z",
+                  "updatedAt": "2026-06-05T15:22:51.000Z",
+                  "uid": "35240-0e188efa-56c3-4158-acd7-3e46ce9161b0"
+                },
+                {
+                  "name": "ticket_metric_events",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Incremental Ticket_metric_events",
+                      "id": "d408feae-4b78-428b-a4a1-30ea2461d3f2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/incremental/ticket_metric_events?start_time=<integer>&include_changes=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "incremental",
+                            "ticket_metric_events"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The Unix UTC epoch time of the oldest event you're interested in. Example: 1332034771.",
+                              "key": "start_time",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "This optional parameter enhances incremental data retrieval, delivering a consistent and accurate representation of data changes.",
+                              "key": "include_changes",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        },
+                        "description": "Returns ticket metric events that occurred on or after the start time.\n\nCursor pagination returns a maximum of 100 records per page. Events are listed in chronological order.\n\nIf the results are not paginated, events will be returned as a time-based incremental export.\n\nSee [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports).\n\n#### Pagination\n* Cursor pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Allowed For\n\n* Admins"
+                      },
+                      "response": [
+                        {
+                          "id": "d7fcad4b-4ebe-4910-b931-7d56ec3c7a4d",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/ticket_metric_events?start_time=<integer>&include_changes=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "ticket_metric_events"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The Unix UTC epoch time of the oldest event you're interested in. Example: 1332034771.",
+                                  "key": "start_time",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "This optional parameter enhances incremental data retrieval, delivering a consistent and accurate representation of data changes.",
+                                  "key": "include_changes",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"ticket_metric_events\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketMetricEventBaseObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketMetricEventBaseObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"count\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"next_page\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-d7fcad4b-4ebe-4910-b931-7d56ec3c7a4d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-d408feae-4b78-428b-a4a1-30ea2461d3f2"
+                    }
+                  ],
+                  "id": "74b7b14f-311e-4ad2-891e-44fa7b186deb",
+                  "createdAt": "2026-06-05T15:22:51.000Z",
+                  "updatedAt": "2026-06-05T15:22:51.000Z",
+                  "uid": "35240-74b7b14f-311e-4ad2-891e-44fa7b186deb"
+                },
+                {
+                  "name": "tickets",
+                  "item": [
+                    {
+                      "name": "cursor",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Tickets Cursor",
+                          "id": "2a5ff2b7-f9d8-4db7-aea2-b08eb2947089",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/tickets/cursor",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "tickets",
+                                "cursor"
+                              ]
+                            },
+                            "description": "Returns the tickets that changed since the start time. For more information,\nsee [Exporting tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-tickets) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\nThis endpoint supports cursor-based incremental exports.\nCursor-based exports are highly encouraged because they provide more consistent performance and\nresponse body sizes. For more information, see [Cursor-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#cursor-based-incremental-exports) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\n\n\n#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Tickets sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints). For performance reasons,\n`last_audits` sideloads aren't supported.\n"
+                          },
+                          "response": [
+                            {
+                              "id": "43c1aea1-6eac-40bf-878d-498f15911a6f",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/tickets/cursor",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    "tickets",
+                                    "cursor"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"after_cursor\": \"<string>\",\n  \"after_url\": \"<string>\",\n  \"before_cursor\": \"<string>\",\n  \"before_url\": \"<string>\",\n  \"end_of_stream\": \"<boolean>\",\n  \"tickets\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:22:51.000Z",
+                              "updatedAt": "2026-06-05T15:22:51.000Z",
+                              "uid": "35240-43c1aea1-6eac-40bf-878d-498f15911a6f"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-2a5ff2b7-f9d8-4db7-aea2-b08eb2947089"
+                        }
+                      ],
+                      "id": "77e700a1-cf51-40d2-9cf6-2a60407b8d36",
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-77e700a1-cf51-40d2-9cf6-2a60407b8d36"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Incremental Tickets",
+                      "id": "401ae9e2-08ff-446c-ba9a-880ec47f44df",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/incremental/tickets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "incremental",
+                            "tickets"
+                          ]
+                        },
+                        "description": "Returns the tickets that changed since the start time. For more information,\nsee [Exporting tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-tickets) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\nThis endpoint supports time-based incremental exports.\nFor more information, see [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api). You can also return tickets using cursor-based pagination. See [Incremental Ticket Export, Cursor Based](#incremental-ticket-export-cursor-based).\n\nThe results include tickets that were updated by the system. See\n[Excluding system-updated tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#excluding-system-updated-tickets-time-based-exports) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\nThe endpoint can return tickets with an `updated_at` time that's earlier than the\n`start_time` time. The reason is that the API compares the `start_time` with the ticket's\n`generated_timestamp` value, not its `updated_at` value. The `updated_at` value is\nupdated only if the update generates a [ticket event](#incremental-ticket-event-export).\nThe `generated_timestamp` value is updated for all ticket updates, including system\nupdates. If a system update occurs after a ticket event, the unchanged\n`updated_at` time will become earlier relative to the updated `generated_timestamp`\ntime.\n\n#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Tickets sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints). For performance reasons,\n`last_audits` sideloads aren't supported.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "d92fb81d-d836-4bb2-881f-6504fe9f9e5a",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/tickets",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "tickets"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"end_of_stream\": \"<boolean>\",\n  \"end_time\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"tickets\": [\n    {\n      \"value\": \"reference #/components/schemas/TicketObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/TicketObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-d92fb81d-d836-4bb2-881f-6504fe9f9e5a"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-401ae9e2-08ff-446c-ba9a-880ec47f44df"
+                    }
+                  ],
+                  "id": "ed9a4d0b-11fd-4f38-960f-fb2caf40fb48",
+                  "createdAt": "2026-06-05T15:22:51.000Z",
+                  "updatedAt": "2026-06-05T15:22:51.000Z",
+                  "uid": "35240-ed9a4d0b-11fd-4f38-960f-fb2caf40fb48"
+                },
+                {
+                  "name": "users",
+                  "item": [
+                    {
+                      "name": "cursor",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Incremental Users Cursor",
+                          "id": "bf20b726-0f3c-42db-9234-abb15b68025f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/users/cursor",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "users",
+                                "cursor"
+                              ]
+                            },
+                            "description": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Users sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "60fc0104-160a-426e-9b57-f7881ccbeb67",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/incremental/users/cursor",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "incremental",
+                                    "users",
+                                    "cursor"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"after_cursor\": \"<string>\",\n  \"after_url\": \"<string>\",\n  \"before_cursor\": \"<string>\",\n  \"before_url\": \"<string>\",\n  \"end_of_stream\": \"<boolean>\",\n  \"users\": [\n    {\n      \"value\": \"reference #/components/schemas/UserObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/UserObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:22:51.000Z",
+                              "updatedAt": "2026-06-05T15:22:51.000Z",
+                              "uid": "35240-60fc0104-160a-426e-9b57-f7881ccbeb67"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-bf20b726-0f3c-42db-9234-abb15b68025f"
+                        }
+                      ],
+                      "id": "e1633f83-6653-4331-a984-3d5bf34fd572",
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-e1633f83-6653-4331-a984-3d5bf34fd572"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Incremental Users",
+                      "id": "f4bc9598-e238-4cdd-b27b-f42c6be163c2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/incremental/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "incremental",
+                            "users"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Users sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n"
+                      },
+                      "response": [
+                        {
+                          "id": "087f4dc0-29e9-4afa-a2b4-ab1b4a8fbfbd",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/incremental/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "incremental",
+                                "users"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"end_of_stream\": \"<boolean>\",\n  \"end_time\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"users\": [\n    {\n      \"value\": \"reference #/components/schemas/UserObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/UserObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:51.000Z",
+                          "updatedAt": "2026-06-05T15:22:51.000Z",
+                          "uid": "35240-087f4dc0-29e9-4afa-a2b4-ab1b4a8fbfbd"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:51.000Z",
+                      "updatedAt": "2026-06-05T15:22:51.000Z",
+                      "uid": "35240-f4bc9598-e238-4cdd-b27b-f42c6be163c2"
+                    }
+                  ],
+                  "id": "b09ac870-7020-469d-8239-9a6f13c96fd0",
+                  "createdAt": "2026-06-05T15:22:51.000Z",
+                  "updatedAt": "2026-06-05T15:22:51.000Z",
+                  "uid": "35240-b09ac870-7020-469d-8239-9a6f13c96fd0"
+                }
+              ],
+              "id": "3fe43b3f-1503-4a2d-afeb-02c7a6551207",
+              "createdAt": "2026-06-05T15:22:51.000Z",
+              "updatedAt": "2026-06-05T15:22:51.000Z",
+              "uid": "35240-3fe43b3f-1503-4a2d-afeb-02c7a6551207"
+            }
+          ],
+          "id": "afc7369c-dfad-4e0a-a0c1-57daef99f0b8",
+          "createdAt": "2026-06-05T15:22:51.000Z",
+          "updatedAt": "2026-06-05T15:22:51.000Z",
+          "uid": "35240-afc7369c-dfad-4e0a-a0c1-57daef99f0b8"
+        }
+      ],
+      "id": "bb1aa042-e29c-4c4a-8de3-d2d41b7ae2a4",
+      "createdAt": "2026-06-05T15:22:51.000Z",
+      "updatedAt": "2026-06-05T15:22:51.000Z",
+      "uid": "35240-bb1aa042-e29c-4c4a-8de3-d2d41b7ae2a4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

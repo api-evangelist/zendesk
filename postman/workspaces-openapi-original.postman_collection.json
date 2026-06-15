@@ -1,0 +1,709 @@
+{
+  "info": {
+    "_postman_id": "7942f500-2e71-4702-8ac8-a1b55843440c",
+    "name": "Zendesk Workspaces",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:58.000Z",
+    "updatedAt": "2026-06-05T15:23:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7942f500-2e71-4702-8ac8-a1b55843440c"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "workspaces",
+              "item": [
+                {
+                  "name": "{workspace_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Workspaces Workspace_id",
+                      "id": "f6b3f31d-694e-4fce-8033-4797f9cd1918",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/workspaces/:workspace_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "workspaces",
+                            ":workspace_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9ed9480a-c2e2-4f48-8bc5-240305f8fde0",
+                              "key": "workspace_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c9095aaf-c575-464c-9ba9-647eb6be3ba5",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/workspaces/:workspace_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "workspaces",
+                                ":workspace_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspace_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:58.000Z",
+                          "updatedAt": "2026-06-05T15:23:58.000Z",
+                          "uid": "35240-c9095aaf-c575-464c-9ba9-647eb6be3ba5"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:58.000Z",
+                      "updatedAt": "2026-06-05T15:23:58.000Z",
+                      "uid": "35240-f6b3f31d-694e-4fce-8033-4797f9cd1918"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Workspaces Workspace_id",
+                      "id": "e5741050-4773-4ff1-9a7a-6fac6b1301df",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceInput not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/workspaces/:workspace_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "workspaces",
+                            ":workspace_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "faa93d43-3874-4af3-9cdb-41986f1254aa",
+                              "key": "workspace_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Admins"
+                      },
+                      "response": [
+                        {
+                          "id": "9c5fea7d-b4c3-4d08-8568-3b4df0bad752",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceInput not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/workspaces/:workspace_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "workspaces",
+                                ":workspace_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspace_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:58.000Z",
+                          "updatedAt": "2026-06-05T15:23:58.000Z",
+                          "uid": "35240-9c5fea7d-b4c3-4d08-8568-3b4df0bad752"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:58.000Z",
+                      "updatedAt": "2026-06-05T15:23:58.000Z",
+                      "uid": "35240-e5741050-4773-4ff1-9a7a-6fac6b1301df"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Workspaces Workspace_id",
+                      "id": "5ea6a0ac-1445-476d-b6ae-4212737ee3ce",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/workspaces/:workspace_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "workspaces",
+                            ":workspace_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cf0a7104-feb8-4ca4-8273-c8239827158c",
+                              "key": "workspace_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "9e415040-c618-462a-98dd-aacaa7828b24",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/workspaces/:workspace_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "workspaces",
+                                ":workspace_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspace_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:58.000Z",
+                          "updatedAt": "2026-06-05T15:23:58.000Z",
+                          "uid": "35240-9e415040-c618-462a-98dd-aacaa7828b24"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:58.000Z",
+                      "updatedAt": "2026-06-05T15:23:58.000Z",
+                      "uid": "35240-5ea6a0ac-1445-476d-b6ae-4212737ee3ce"
+                    }
+                  ],
+                  "id": "2c5d19d8-6edd-42c8-8421-889202cb56a7",
+                  "createdAt": "2026-06-05T15:23:58.000Z",
+                  "updatedAt": "2026-06-05T15:23:58.000Z",
+                  "uid": "35240-2c5d19d8-6edd-42c8-8421-889202cb56a7"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Workspaces Destroy_many",
+                      "id": "e970c004-a4fa-413c-9dd0-783a25680ad1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/workspaces/destroy_many?ids=<integer>&ids=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "workspaces",
+                            "destroy_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The ids of the workspaces to delete",
+                              "key": "ids",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) The ids of the workspaces to delete",
+                              "key": "ids",
+                              "value": "<integer>"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "52a15478-8490-4201-ad55-cfe94068c983",
+                          "name": "Succesful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/workspaces/destroy_many?ids=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "workspaces",
+                                "destroy_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The ids of the workspaces to delete",
+                                  "key": "ids",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-06-05T15:23:58.000Z",
+                          "updatedAt": "2026-06-05T15:23:58.000Z",
+                          "uid": "35240-52a15478-8490-4201-ad55-cfe94068c983"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:58.000Z",
+                      "updatedAt": "2026-06-05T15:23:58.000Z",
+                      "uid": "35240-e970c004-a4fa-413c-9dd0-783a25680ad1"
+                    }
+                  ],
+                  "id": "5e40fdfb-08e2-4723-ba46-8113f5676666",
+                  "createdAt": "2026-06-05T15:23:58.000Z",
+                  "updatedAt": "2026-06-05T15:23:58.000Z",
+                  "uid": "35240-5e40fdfb-08e2-4723-ba46-8113f5676666"
+                },
+                {
+                  "name": "reorder",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Workspaces Reorder",
+                      "id": "a8307ee6-2669-4a9e-b85e-7e06693d1b78",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/workspaces/reorder",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "workspaces",
+                            "reorder"
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0ae8d150-e66e-474f-b9d4-35ffe1815c3f",
+                          "name": "Succesful response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/workspaces/reorder",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "workspaces",
+                                "reorder"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-06-05T15:23:58.000Z",
+                          "updatedAt": "2026-06-05T15:23:58.000Z",
+                          "uid": "35240-0ae8d150-e66e-474f-b9d4-35ffe1815c3f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:58.000Z",
+                      "updatedAt": "2026-06-05T15:23:58.000Z",
+                      "uid": "35240-a8307ee6-2669-4a9e-b85e-7e06693d1b78"
+                    }
+                  ],
+                  "id": "0ff21369-e45f-469e-b651-dd3c65b190bf",
+                  "createdAt": "2026-06-05T15:23:58.000Z",
+                  "updatedAt": "2026-06-05T15:23:58.000Z",
+                  "uid": "35240-0ff21369-e45f-469e-b651-dd3c65b190bf"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Workspaces",
+                  "id": "45475acc-a1d1-4ae9-8691-bffb3206d90c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "workspaces"
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Admins, Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "3b85c404-e34d-46a0-a9f6-a87201ebeac3",
+                      "name": "Success Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "workspaces"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"workspaces\": [\n    {\n      \"value\": \"reference #/components/schemas/WorkspaceObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/WorkspaceObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:58.000Z",
+                      "updatedAt": "2026-06-05T15:23:58.000Z",
+                      "uid": "35240-3b85c404-e34d-46a0-a9f6-a87201ebeac3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:58.000Z",
+                  "updatedAt": "2026-06-05T15:23:58.000Z",
+                  "uid": "35240-45475acc-a1d1-4ae9-8691-bffb3206d90c"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Workspaces",
+                  "id": "523e40ca-8b38-421b-8b29-97d87d765f48",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceInput not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "workspaces"
+                      ]
+                    },
+                    "description": "#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "7033c78c-deb0-4a4c-93b3-b401ff7c35f0",
+                      "name": "Created workspace",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceInput not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "workspaces"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:58.000Z",
+                      "updatedAt": "2026-06-05T15:23:58.000Z",
+                      "uid": "35240-7033c78c-deb0-4a4c-93b3-b401ff7c35f0"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:58.000Z",
+                  "updatedAt": "2026-06-05T15:23:58.000Z",
+                  "uid": "35240-523e40ca-8b38-421b-8b29-97d87d765f48"
+                }
+              ],
+              "id": "1350865b-45d3-4536-b5fe-b677ed7ef565",
+              "createdAt": "2026-06-05T15:23:58.000Z",
+              "updatedAt": "2026-06-05T15:23:58.000Z",
+              "uid": "35240-1350865b-45d3-4536-b5fe-b677ed7ef565"
+            }
+          ],
+          "id": "26a7abd8-826d-4f4d-b2cb-6f83d884128e",
+          "createdAt": "2026-06-05T15:23:58.000Z",
+          "updatedAt": "2026-06-05T15:23:58.000Z",
+          "uid": "35240-26a7abd8-826d-4f4d-b2cb-6f83d884128e"
+        }
+      ],
+      "id": "542c495d-ad4f-4f9b-887c-8624d7a8b036",
+      "createdAt": "2026-06-05T15:23:58.000Z",
+      "updatedAt": "2026-06-05T15:23:58.000Z",
+      "uid": "35240-542c495d-ad4f-4f9b-887c-8624d7a8b036"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

@@ -1,0 +1,648 @@
+{
+  "info": {
+    "_postman_id": "990e0279-aab0-4bd3-8230-9e23f8f091a0",
+    "name": "Zendesk Slas",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:26.000Z",
+    "updatedAt": "2026-06-05T15:23:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-990e0279-aab0-4bd3-8230-9e23f8f091a0"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "slas",
+              "item": [
+                {
+                  "name": "policies",
+                  "item": [
+                    {
+                      "name": "{sla_policy_id}",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Slas Policies Sla_policy_id",
+                          "id": "604c009c-9a94-4520-98e6-9e974c4bd5cf",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/slas/policies/:sla_policy_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "slas",
+                                "policies",
+                                ":sla_policy_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d89a149b-bd7b-4ada-bf57-a9cb93cde8f1",
+                                  "key": "sla_policy_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Availability\n\n* Accounts on the Support Professional or Suite Growth plan or above\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "c7c76ba8-720c-4ddc-ad74-ac1df3810dda",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/slas/policies/:sla_policy_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "slas",
+                                    "policies",
+                                    ":sla_policy_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "sla_policy_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"sla_policy\": {\n    \"value\": \"reference #/components/schemas/SLAPolicyObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:27.000Z",
+                              "updatedAt": "2026-06-05T15:23:27.000Z",
+                              "uid": "35240-c7c76ba8-720c-4ddc-ad74-ac1df3810dda"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:27.000Z",
+                          "updatedAt": "2026-06-05T15:23:27.000Z",
+                          "uid": "35240-604c009c-9a94-4520-98e6-9e974c4bd5cf"
+                        },
+                        {
+                          "name": "Zendesk Put  Api V2 Slas Policies Sla_policy_id",
+                          "id": "c6989dbe-70c5-4860-8db8-44f7bfb36ff0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/slas/policies/:sla_policy_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "slas",
+                                "policies",
+                                ":sla_policy_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c613a7bd-564c-4b6e-bc1f-535e3dae8ff6",
+                                  "key": "sla_policy_id"
+                                }
+                              ]
+                            },
+                            "description": "Updates the specified policy.\n\n#### Availability\n\n* Accounts on the Support Professional or Suite Growth plan or above\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "b98ad037-a27f-4f93-8e29-075a493d0574",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/slas/policies/:sla_policy_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "slas",
+                                    "policies",
+                                    ":sla_policy_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "sla_policy_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"sla_policy\": {\n    \"value\": \"reference #/components/schemas/SLAPolicyObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:27.000Z",
+                              "updatedAt": "2026-06-05T15:23:27.000Z",
+                              "uid": "35240-b98ad037-a27f-4f93-8e29-075a493d0574"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:27.000Z",
+                          "updatedAt": "2026-06-05T15:23:27.000Z",
+                          "uid": "35240-c6989dbe-70c5-4860-8db8-44f7bfb36ff0"
+                        },
+                        {
+                          "name": "Zendesk Delete  Api V2 Slas Policies Sla_policy_id",
+                          "id": "fc7b2e56-5be2-4623-b1ad-363de848d91b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/slas/policies/:sla_policy_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "slas",
+                                "policies",
+                                ":sla_policy_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f77630dd-9381-4c61-999e-5fbf80a47e08",
+                                  "key": "sla_policy_id"
+                                }
+                              ]
+                            },
+                            "description": "#### Availability\n\n* Accounts on the Support Professional or Suite Growth plan or above\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "9c0fba5f-84b8-4d67-8e5a-e080fd93e5fa",
+                              "name": "No Content response",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/slas/policies/:sla_policy_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "slas",
+                                    "policies",
+                                    ":sla_policy_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "sla_policy_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:23:27.000Z",
+                              "updatedAt": "2026-06-05T15:23:27.000Z",
+                              "uid": "35240-9c0fba5f-84b8-4d67-8e5a-e080fd93e5fa"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:27.000Z",
+                          "updatedAt": "2026-06-05T15:23:27.000Z",
+                          "uid": "35240-fc7b2e56-5be2-4623-b1ad-363de848d91b"
+                        }
+                      ],
+                      "id": "7a39806a-f96e-4659-88f8-6521b4c5ec16",
+                      "createdAt": "2026-06-05T15:23:27.000Z",
+                      "updatedAt": "2026-06-05T15:23:27.000Z",
+                      "uid": "35240-7a39806a-f96e-4659-88f8-6521b4c5ec16"
+                    },
+                    {
+                      "name": "definitions",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Slas Policies Definitions",
+                          "id": "0e28a154-6ae7-4e8d-b854-f612b748480b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/slas/policies/definitions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "slas",
+                                "policies",
+                                "definitions"
+                              ]
+                            },
+                            "description": "#### Availability\n\n* Accounts on the Support Professional or Suite Growth plan or above\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "653cee8b-d70e-4533-a678-1ec90abedcda",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/slas/policies/definitions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "slas",
+                                    "policies",
+                                    "definitions"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"definitions\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"all\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"group\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"operators\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"title\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  },\n                  \"value\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  }\n                }\n              }\n            },\n            \"target\": {\n              \"type\": \"string\",\n              \"nullable\": true,\n              \"default\": \"<string>\"\n            },\n            \"title\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"value\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"values\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"list\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                      \"title\": {\n                        \"type\": \"string\",\n                        \"default\": \"<string>\"\n                      },\n                      \"value\": {\n                        \"type\": \"string\",\n                        \"nullable\": true,\n                        \"default\": \"<string>\"\n                      }\n                    }\n                  }\n                },\n                \"type\": {\n                  \"type\": \"string\",\n                  \"default\": \"<string>\"\n                }\n              }\n            }\n          }\n        }\n      },\n      \"any\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"group\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"operators\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"title\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  },\n                  \"value\": {\n                    \"type\": \"string\",\n                    \"default\": \"<string>\"\n                  }\n                }\n              }\n            },\n            \"target\": {\n              \"type\": \"string\",\n              \"nullable\": true,\n              \"default\": \"<string>\"\n            },\n            \"title\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"value\": {\n              \"type\": \"string\",\n              \"default\": \"<string>\"\n            },\n            \"values\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"list\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                      \"title\": {\n                        \"type\": \"string\",\n                        \"default\": \"<string>\"\n                      },\n                      \"value\": {\n                        \"type\": \"string\",\n                        \"nullable\": true,\n                        \"default\": \"<string>\"\n                      }\n                    }\n                  }\n                },\n                \"type\": {\n                  \"type\": \"string\",\n                  \"default\": \"<string>\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:27.000Z",
+                              "updatedAt": "2026-06-05T15:23:27.000Z",
+                              "uid": "35240-653cee8b-d70e-4533-a678-1ec90abedcda"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:27.000Z",
+                          "updatedAt": "2026-06-05T15:23:27.000Z",
+                          "uid": "35240-0e28a154-6ae7-4e8d-b854-f612b748480b"
+                        }
+                      ],
+                      "id": "66e59248-5f48-46b1-8d41-bb8c757e79d5",
+                      "createdAt": "2026-06-05T15:23:27.000Z",
+                      "updatedAt": "2026-06-05T15:23:27.000Z",
+                      "uid": "35240-66e59248-5f48-46b1-8d41-bb8c757e79d5"
+                    },
+                    {
+                      "name": "reorder",
+                      "item": [
+                        {
+                          "name": "Zendesk Put  Api V2 Slas Policies Reorder",
+                          "id": "8126f052-aac9-4167-abb5-412c0f458343",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/slas/policies/reorder?sla_policy_ids=<integer>&sla_policy_ids=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "slas",
+                                "policies",
+                                "reorder"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The IDs of the SLA Policies to reorder",
+                                  "key": "sla_policy_ids",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The IDs of the SLA Policies to reorder",
+                                  "key": "sla_policy_ids",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            },
+                            "description": "#### Availability\n\n* Accounts on the Support Professional or Suite Growth plan or above\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "1d2c98c7-a502-4b94-bfa7-cd504931fdb9",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/slas/policies/reorder?sla_policy_ids=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "slas",
+                                    "policies",
+                                    "reorder"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The IDs of the SLA Policies to reorder",
+                                      "key": "sla_policy_ids",
+                                      "value": "<integer>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-06-05T15:23:27.000Z",
+                              "updatedAt": "2026-06-05T15:23:27.000Z",
+                              "uid": "35240-1d2c98c7-a502-4b94-bfa7-cd504931fdb9"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:27.000Z",
+                          "updatedAt": "2026-06-05T15:23:27.000Z",
+                          "uid": "35240-8126f052-aac9-4167-abb5-412c0f458343"
+                        }
+                      ],
+                      "id": "13dc602a-3d24-4555-90b4-6f96ebb679b5",
+                      "createdAt": "2026-06-05T15:23:27.000Z",
+                      "updatedAt": "2026-06-05T15:23:27.000Z",
+                      "uid": "35240-13dc602a-3d24-4555-90b4-6f96ebb679b5"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Slas Policies",
+                      "id": "0003fe5e-a3fc-4581-a224-3992335984de",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/slas/policies",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "slas",
+                            "policies"
+                          ]
+                        },
+                        "description": "#### Availability\n\n* Accounts on the Support Professional or Suite Growth plan or above\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b509ffdb-df4d-4dff-a516-55c79f94c197",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/slas/policies",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "slas",
+                                "policies"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"sla_policies\": [\n    {\n      \"value\": \"reference #/components/schemas/SLAPolicyObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/SLAPolicyObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:23:27.000Z",
+                          "updatedAt": "2026-06-05T15:23:27.000Z",
+                          "uid": "35240-b509ffdb-df4d-4dff-a516-55c79f94c197"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:27.000Z",
+                      "updatedAt": "2026-06-05T15:23:27.000Z",
+                      "uid": "35240-0003fe5e-a3fc-4581-a224-3992335984de"
+                    },
+                    {
+                      "name": "Zendesk Post  Api V2 Slas Policies",
+                      "id": "e195f987-58b5-43fe-9a7a-ac006e8aa146",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/slas/policies",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "slas",
+                            "policies"
+                          ]
+                        },
+                        "description": "#### Availability\n\n* Accounts on the Support Professional or Suite Growth plan or above\n\n#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "24a8ccc3-f5a7-493a-8847-59ab37378fae",
+                          "name": "Created response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/slas/policies",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "slas",
+                                "policies"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"sla_policy\": {\n    \"value\": \"reference #/components/schemas/SLAPolicyObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:27.000Z",
+                          "updatedAt": "2026-06-05T15:23:27.000Z",
+                          "uid": "35240-24a8ccc3-f5a7-493a-8847-59ab37378fae"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:27.000Z",
+                      "updatedAt": "2026-06-05T15:23:27.000Z",
+                      "uid": "35240-e195f987-58b5-43fe-9a7a-ac006e8aa146"
+                    }
+                  ],
+                  "id": "e0ec35aa-93c9-4918-a086-418d86d87418",
+                  "createdAt": "2026-06-05T15:23:27.000Z",
+                  "updatedAt": "2026-06-05T15:23:27.000Z",
+                  "uid": "35240-e0ec35aa-93c9-4918-a086-418d86d87418"
+                }
+              ],
+              "id": "4e0d36b9-fdf3-406e-a7ba-5eb71e002ad1",
+              "createdAt": "2026-06-05T15:23:27.000Z",
+              "updatedAt": "2026-06-05T15:23:27.000Z",
+              "uid": "35240-4e0d36b9-fdf3-406e-a7ba-5eb71e002ad1"
+            }
+          ],
+          "id": "f95e27a4-d043-4ecd-b92f-8b053db16977",
+          "createdAt": "2026-06-05T15:23:27.000Z",
+          "updatedAt": "2026-06-05T15:23:27.000Z",
+          "uid": "35240-f95e27a4-d043-4ecd-b92f-8b053db16977"
+        }
+      ],
+      "id": "e3fa8dcc-6033-45b3-b9d5-a48e6ec152bb",
+      "createdAt": "2026-06-05T15:23:27.000Z",
+      "updatedAt": "2026-06-05T15:23:27.000Z",
+      "uid": "35240-e3fa8dcc-6033-45b3-b9d5-a48e6ec152bb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

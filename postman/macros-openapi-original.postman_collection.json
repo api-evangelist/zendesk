@@ -1,0 +1,1809 @@
+{
+  "info": {
+    "_postman_id": "01957a70-010c-4a88-9038-79b26c77b31b",
+    "name": "Zendesk Macros",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:54.000Z",
+    "updatedAt": "2026-06-05T15:22:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-01957a70-010c-4a88-9038-79b26c77b31b"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "macros",
+              "item": [
+                {
+                  "name": "{macro_id}",
+                  "item": [
+                    {
+                      "name": "apply",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Macros Macro_id Apply",
+                          "id": "4c825853-4b40-49b6-bd7f-68167ac1e5d4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/:macro_id/apply",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                ":macro_id",
+                                "apply"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2c7e04ad-4b17-45d7-ada6-c04fd4b2df38",
+                                  "key": "macro_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns the changes the macro would make to a ticket. It doesn't actually\nchange a ticket. You can use the response data in a subsequent API call\nto the [Tickets](/api-reference/ticketing/tickets/tickets/) endpoint to update the ticket.\n\nThe response includes only the ticket fields that would be changed by the\nmacro. To get the full ticket object after the macro is applied,\nsee [Show Ticket After Changes](#show-ticket-after-changes).\n\n#### Allowed For\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "e667568d-83f7-42ec-8c5d-fc4ae0647fb6",
+                              "name": "Success Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/macros/:macro_id/apply",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "macros",
+                                    ":macro_id",
+                                    "apply"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "macro_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"result\": {\n    \"ticket\": {\n      \"assignee_id\": \"<integer>\",\n      \"comment\": {\n        \"body\": \"<string>\",\n        \"public\": \"<boolean>\",\n        \"scoped_body\": [\n          [\n            \"<string>\",\n            \"<string>\"\n          ],\n          [\n            \"<string>\",\n            \"<string>\"\n          ]\n        ]\n      },\n      \"fields\": {\n        \"id\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      \"group_id\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"url\": \"<string>\"\n    }\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:54.000Z",
+                              "updatedAt": "2026-06-05T15:22:54.000Z",
+                              "uid": "35240-e667568d-83f7-42ec-8c5d-fc4ae0647fb6"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-4c825853-4b40-49b6-bd7f-68167ac1e5d4"
+                        }
+                      ],
+                      "id": "5dcf250c-450a-4eaf-b60e-467f942234ee",
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-5dcf250c-450a-4eaf-b60e-467f942234ee"
+                    },
+                    {
+                      "name": "attachments",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Macros Macro_id Attachments",
+                          "id": "fecb6a91-d32a-48d1-b58d-f7e17aa86ffe",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/:macro_id/attachments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                ":macro_id",
+                                "attachments"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f32d42bd-a2d0-4ab8-911c-bf8763263cff",
+                                  "key": "macro_id"
+                                }
+                              ]
+                            },
+                            "description": "Lists the attachments associated with a macro.\n\n#### Allowed For\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "8ff47786-faf1-48b5-9fbd-106d0e1480e8",
+                              "name": "Success Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/macros/:macro_id/attachments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "macros",
+                                    ":macro_id",
+                                    "attachments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "macro_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"macro_attachments\": [\n    {\n      \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:22:54.000Z",
+                              "updatedAt": "2026-06-05T15:22:54.000Z",
+                              "uid": "35240-8ff47786-faf1-48b5-9fbd-106d0e1480e8"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-fecb6a91-d32a-48d1-b58d-f7e17aa86ffe"
+                        },
+                        {
+                          "name": "Zendesk Post  Api V2 Macros Macro_id Attachments",
+                          "id": "5255cd93-fb44-43e4-87ab-a44ed561d836",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/:macro_id/attachments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                ":macro_id",
+                                "attachments"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "50705125-a835-4ba3-9788-5d8129472a4b",
+                                  "key": "macro_id"
+                                }
+                              ]
+                            },
+                            "description": "Allows an attachment to be uploaded and associated with a macro at the same time.\n\n**Note:** A macro can be associated with up to five attachments.\n\n#### Allowed For\n\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "31db03aa-e5b2-419d-ae15-ddd219d5b9ae",
+                              "name": "Success Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/macros/:macro_id/attachments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "macros",
+                                    ":macro_id",
+                                    "attachments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "macro_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"macro_attachment\": {\n    \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:54.000Z",
+                              "updatedAt": "2026-06-05T15:22:54.000Z",
+                              "uid": "35240-31db03aa-e5b2-419d-ae15-ddd219d5b9ae"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-5255cd93-fb44-43e4-87ab-a44ed561d836"
+                        }
+                      ],
+                      "id": "3bcf628d-1b99-4a26-abb9-53d8ffb891e8",
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-3bcf628d-1b99-4a26-abb9-53d8ffb891e8"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Macros Macro_id",
+                      "id": "85494a61-a78f-45aa-8d71-2ce5766eefce",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/:macro_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            ":macro_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "05341cdd-770e-4a5f-a6a1-136a8c3e9ff4",
+                              "key": "macro_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b54d05dd-a197-4c6b-ba2b-e91319333f9a",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/:macro_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                ":macro_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "macro_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macro\": {\n    \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-b54d05dd-a197-4c6b-ba2b-e91319333f9a"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-85494a61-a78f-45aa-8d71-2ce5766eefce"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Macros Macro_id",
+                      "id": "94e58c56-2afe-48d7-b693-6644467356de",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"macro\": {\n    \"value\": \"reference #/components/schemas/MacroInput not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/:macro_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            ":macro_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "17a59cfd-c848-404a-b99e-1dbc8507d903",
+                              "key": "macro_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "2d4a47fd-d6da-4014-9a8c-e024899eddc1",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"macro\": {\n    \"value\": \"reference #/components/schemas/MacroInput not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/:macro_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                ":macro_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "macro_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macro\": {\n    \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-2d4a47fd-d6da-4014-9a8c-e024899eddc1"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-94e58c56-2afe-48d7-b693-6644467356de"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Macros Macro_id",
+                      "id": "5b24a59d-af1b-400a-a013-f5a7183a7b92",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/:macro_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            ":macro_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "39e6321d-9d75-4c17-aeb8-653e61d87605",
+                              "key": "macro_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Agents, with restrictions applying on certain actions\n"
+                      },
+                      "response": [
+                        {
+                          "id": "cf9d1bd9-66a8-46c5-b1c6-2967caacd016",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/:macro_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                ":macro_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "macro_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-cf9d1bd9-66a8-46c5-b1c6-2967caacd016"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-5b24a59d-af1b-400a-a013-f5a7183a7b92"
+                    }
+                  ],
+                  "id": "e0b90b66-27c1-43e3-b830-690f046a0cbb",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-e0b90b66-27c1-43e3-b830-690f046a0cbb"
+                },
+                {
+                  "name": "actions",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Macros Actions",
+                      "id": "6e9f4dfc-79f1-4c92-8b8b-984f114501ba",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/actions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "actions"
+                          ]
+                        },
+                        "description": "#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c9f55236-6d09-4fbe-bdef-a0adf6325b74",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/actions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "actions"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"actions\": [\n    {\n      \"quisf\": -52949231,\n      \"sint_b\": 6286851\n    },\n    {\n      \"sintf\": \"ut\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-c9f55236-6d09-4fbe-bdef-a0adf6325b74"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-6e9f4dfc-79f1-4c92-8b8b-984f114501ba"
+                    }
+                  ],
+                  "id": "b1def9db-2dfa-4200-bf89-9f363aea1c00",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-b1def9db-2dfa-4200-bf89-9f363aea1c00"
+                },
+                {
+                  "name": "active",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Macros Active",
+                      "id": "b5be7c6d-55e0-43dc-8f0d-f3309ed27c8d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/active",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "active"
+                          ]
+                        },
+                        "description": "Lists all active shared and personal macros available to the current user.\n\n#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "954aea52-0fb5-4ad4-8f9e-841f13c7e462",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/active",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "active"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macros\": [\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-954aea52-0fb5-4ad4-8f9e-841f13c7e462"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-b5be7c6d-55e0-43dc-8f0d-f3309ed27c8d"
+                    }
+                  ],
+                  "id": "1f82c471-cf92-4fdb-9a29-78cd555d3602",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-1f82c471-cf92-4fdb-9a29-78cd555d3602"
+                },
+                {
+                  "name": "attachments",
+                  "item": [
+                    {
+                      "name": "{attachment_id}",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Macros Attachments Attachment_id",
+                          "id": "973af3b9-a871-4f28-ae90-0e103ab33aea",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/attachments/:attachment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "attachments",
+                                ":attachment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "56c86d8d-0119-4293-b27a-86b22df9b1bb",
+                                  "key": "attachment_id"
+                                }
+                              ]
+                            },
+                            "description": "Shows the properties of the specified macro attachment.\n\n#### Allowed For\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "526958d5-0a6a-4c87-857a-64233c91391b",
+                              "name": "Success Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/macros/attachments/:attachment_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "macros",
+                                    "attachments",
+                                    ":attachment_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "attachment_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"macro_attachment\": {\n    \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:22:54.000Z",
+                              "updatedAt": "2026-06-05T15:22:54.000Z",
+                              "uid": "35240-526958d5-0a6a-4c87-857a-64233c91391b"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-973af3b9-a871-4f28-ae90-0e103ab33aea"
+                        }
+                      ],
+                      "id": "c367a744-b0eb-46a7-992a-97a950112b30",
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-c367a744-b0eb-46a7-992a-97a950112b30"
+                    },
+                    {
+                      "name": "Zendesk Post  Api V2 Macros Attachments",
+                      "id": "15b8f805-c97f-46a6-acf4-01314a2f9d04",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/attachments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "attachments"
+                          ]
+                        },
+                        "description": "Allows an attachment to be uploaded that can be associated with a macro at a later time.\n\n**Note:** To ensure an uploaded attachment is not lost, associate it with a macro as soon as possible. From time to time, old attachments that are not not associated with any macro are purged.\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "679bb672-40ca-4974-ab09-281c13ea59e5",
+                          "name": "Created Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/attachments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "attachments"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macro_attachment\": {\n    \"value\": \"reference #/components/schemas/MacroAttachmentObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-679bb672-40ca-4974-ab09-281c13ea59e5"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-15b8f805-c97f-46a6-acf4-01314a2f9d04"
+                    }
+                  ],
+                  "id": "3b600bf2-f61f-4d30-a5ec-71adbb59eb34",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-3b600bf2-f61f-4d30-a5ec-71adbb59eb34"
+                },
+                {
+                  "name": "categories",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Macros Categories",
+                      "id": "5a0333e0-8a2e-4d00-8211-3d2da7d52d1d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/categories",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "categories"
+                          ]
+                        },
+                        "description": "Lists all macro categories available to the current user.\n\n#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3888617a-7544-4ee5-8045-38189c99bf35",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/categories",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "categories"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-3888617a-7544-4ee5-8045-38189c99bf35"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-5a0333e0-8a2e-4d00-8211-3d2da7d52d1d"
+                    }
+                  ],
+                  "id": "a21a2491-a0be-4542-96ed-8d0766ae5593",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-a21a2491-a0be-4542-96ed-8d0766ae5593"
+                },
+                {
+                  "name": "definitions",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Macros Definitions",
+                      "id": "2cede9fe-9177-49e8-a100-ad1c8d047868",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/definitions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "definitions"
+                          ]
+                        },
+                        "description": "Returns the definitions of the actions a macro can perform. For example,\none action can set the status of a ticket. The definition of the action\nincludes a title (\"Status\"), a type (\"list\"), and possible values. For a\nlist of support actions, see [Actions reference](/documentation/ticketing/reference-guides/actions-reference).\n\n#### Allowed For\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c7421c08-5e09-4fa7-96b1-3be8d1e7d8f7",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/definitions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "definitions"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"definitions\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"actions\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"additionalProperties\": true,\n          \"properties\": {}\n        }\n      }\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-c7421c08-5e09-4fa7-96b1-3be8d1e7d8f7"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-2cede9fe-9177-49e8-a100-ad1c8d047868"
+                    }
+                  ],
+                  "id": "ef4e6643-b12e-4806-9c98-5773ad42ec72",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-ef4e6643-b12e-4806-9c98-5773ad42ec72"
+                },
+                {
+                  "name": "destroy_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Delete  Api V2 Macros Destroy_many",
+                      "id": "cc9b22de-eecc-48cd-8064-6f4a8b1080bd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/destroy_many?ids=<integer>&ids=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "destroy_many"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The IDs of the macros to delete",
+                              "key": "ids",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) The IDs of the macros to delete",
+                              "key": "ids",
+                              "value": "<integer>"
+                            }
+                          ]
+                        },
+                        "description": "Deletes the macros corresponding to the provided comma-separated list of IDs.\n\n#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "5e2cee48-5e76-4fc1-b2e3-693b70898dcc",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/destroy_many?ids=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "destroy_many"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The IDs of the macros to delete",
+                                  "key": "ids",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-5e2cee48-5e76-4fc1-b2e3-693b70898dcc"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-cc9b22de-eecc-48cd-8064-6f4a8b1080bd"
+                    }
+                  ],
+                  "id": "03b93ab0-e6f0-4639-bbf1-f24d147d8b83",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-03b93ab0-e6f0-4639-bbf1-f24d147d8b83"
+                },
+                {
+                  "name": "new",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Macros New",
+                      "id": "290163c0-0cd6-44be-902f-1a6d10bb485c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/new?ticket_id=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "new"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The ID of the ticket from which to build a macro replica",
+                              "key": "ticket_id",
+                              "value": "<integer>"
+                            }
+                          ]
+                        },
+                        "description": "Returns an unpersisted macro representation derived from a ticket or macro.\n\nThe endpoint takes one of the following query parameters: `macro_id` or `ticket_id`. If you include both, `macro_id` is used.\n\n#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "e436af6c-b26e-41c3-9868-8dbc777674c1",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/new?ticket_id=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "new"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The ID of the ticket from which to build a macro replica",
+                                  "key": "ticket_id",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macro\": {\n    \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-e436af6c-b26e-41c3-9868-8dbc777674c1"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-290163c0-0cd6-44be-902f-1a6d10bb485c"
+                    }
+                  ],
+                  "id": "bd6a8d7f-f051-4697-9c6d-516e70de18b1",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-bd6a8d7f-f051-4697-9c6d-516e70de18b1"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Macros Search",
+                      "id": "0755ad92-3ea5-4144-8f09-4c4a9f72580f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "search"
+                          ]
+                        },
+                        "description": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "d57d2d36-a7e6-4084-b79a-bee64539f900",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/search",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "search"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macros\": [\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-d57d2d36-a7e6-4084-b79a-bee64539f900"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-0755ad92-3ea5-4144-8f09-4c4a9f72580f"
+                    }
+                  ],
+                  "id": "f8904fe1-fb1f-4907-ae1f-399999fdd3cf",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-f8904fe1-fb1f-4907-ae1f-399999fdd3cf"
+                },
+                {
+                  "name": "update_many",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Macros Update_many",
+                      "id": "61e20aba-d830-4961-97d6-bcfc134e5500",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/MacroUpdateManyInput not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros/update_many",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros",
+                            "update_many"
+                          ]
+                        },
+                        "description": "Updates the provided macros with the specified changes.\n\n#### Allowed For\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "1ea40938-26cd-42ca-b218-d2905a727c6a",
+                          "name": "Success Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/MacroUpdateManyInput not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/macros/update_many",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "macros",
+                                "update_many"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"macros\": [\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-1ea40938-26cd-42ca-b218-d2905a727c6a"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-61e20aba-d830-4961-97d6-bcfc134e5500"
+                    }
+                  ],
+                  "id": "e8b144ef-2638-444c-9757-93f5348ae72c",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-e8b144ef-2638-444c-9757-93f5348ae72c"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Macros",
+                  "id": "d65f6fd4-a85b-44a4-9e16-f7c41994ab58",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/macros",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "macros"
+                      ]
+                    },
+                    "description": "Lists all shared and personal macros available to the current user. For admins, the API returns all macros for the account, including the personal macros of agents and other admins.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "730e9f96-d658-4514-98b3-64116c74f74f",
+                      "name": "Success Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"macros\": [\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-730e9f96-d658-4514-98b3-64116c74f74f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-d65f6fd4-a85b-44a4-9e16-f7c41994ab58"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Macros",
+                  "id": "acf66bb8-f822-443c-9acf-c07ce1ad8803",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"macro\": {\n    \"value\": \"reference #/components/schemas/MacroInput not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/macros",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "macros"
+                      ]
+                    },
+                    "description": "#### Allowed For\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "a2d7ad0a-00d7-430a-b65b-a2f5497ea568",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"macro\": {\n    \"value\": \"reference #/components/schemas/MacroInput not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/macros",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "macros"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"macro\": {\n    \"value\": \"reference #/components/schemas/MacroObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-a2d7ad0a-00d7-430a-b65b-a2f5497ea568"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-acf66bb8-f822-443c-9acf-c07ce1ad8803"
+                }
+              ],
+              "id": "c60ab558-2877-40e1-997f-ae255c0e0b3d",
+              "createdAt": "2026-06-05T15:22:54.000Z",
+              "updatedAt": "2026-06-05T15:22:54.000Z",
+              "uid": "35240-c60ab558-2877-40e1-997f-ae255c0e0b3d"
+            },
+            {
+              "name": "tickets",
+              "item": [
+                {
+                  "name": "{ticket_id}",
+                  "item": [
+                    {
+                      "name": "macros",
+                      "item": [
+                        {
+                          "name": "{macro_id}",
+                          "item": [
+                            {
+                              "name": "apply",
+                              "item": [
+                                {
+                                  "name": "Zendesk Get  Api V2 Tickets Ticket_id Macros Macro_id Apply",
+                                  "id": "d0f2ae81-f433-4afd-b1a7-8495dcdeb0f7",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/tickets/:ticket_id/macros/:macro_id/apply",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "tickets",
+                                        ":ticket_id",
+                                        "macros",
+                                        ":macro_id",
+                                        "apply"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "f50392fc-feff-424d-acf9-5ce79be23861",
+                                          "key": "ticket_id",
+                                          "value": "<integer>",
+                                          "description": "(Required) The ID of the ticket"
+                                        },
+                                        {
+                                          "id": "be564bf9-86e0-472a-8ba2-cb8b1d162abb",
+                                          "key": "macro_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns the full ticket object as it would be after applying the macro to the ticket.\nIt doesn't actually change the ticket.\n\nTo get only the ticket fields that would be changed by the macro,\nsee [Show Changes to Ticket](#show-changes-to-ticket).\n\n#### Allowed For\n\n* Agents\n"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "189ea2b3-0220-4a85-9fef-933198bc410a",
+                                      "name": "Success Response",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/tickets/:ticket_id/macros/:macro_id/apply",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "tickets",
+                                            ":ticket_id",
+                                            "macros",
+                                            ":macro_id",
+                                            "apply"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "ticket_id"
+                                            },
+                                            {
+                                              "key": "macro_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"result\": {\n    \"ticket\": {\n      \"assignee_id\": \"<integer>\",\n      \"comment\": {\n        \"body\": \"<string>\",\n        \"public\": \"<boolean>\",\n        \"scoped_body\": [\n          [\n            \"<string>\",\n            \"<string>\"\n          ],\n          [\n            \"<string>\",\n            \"<string>\"\n          ]\n        ]\n      },\n      \"fields\": {\n        \"id\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      \"group_id\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"url\": \"<string>\"\n    }\n  }\n}",
+                                      "createdAt": "2026-06-05T15:22:54.000Z",
+                                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                                      "uid": "35240-189ea2b3-0220-4a85-9fef-933198bc410a"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:22:54.000Z",
+                                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                                  "uid": "35240-d0f2ae81-f433-4afd-b1a7-8495dcdeb0f7"
+                                }
+                              ],
+                              "id": "94bb2cb3-0f3c-484f-8ef7-02288205db7e",
+                              "createdAt": "2026-06-05T15:22:54.000Z",
+                              "updatedAt": "2026-06-05T15:22:54.000Z",
+                              "uid": "35240-94bb2cb3-0f3c-484f-8ef7-02288205db7e"
+                            }
+                          ],
+                          "id": "3368c51a-a00f-4934-a70b-9f44332c8504",
+                          "createdAt": "2026-06-05T15:22:54.000Z",
+                          "updatedAt": "2026-06-05T15:22:54.000Z",
+                          "uid": "35240-3368c51a-a00f-4934-a70b-9f44332c8504"
+                        }
+                      ],
+                      "id": "72c941f9-8c88-410a-8a64-9820378b2f61",
+                      "createdAt": "2026-06-05T15:22:54.000Z",
+                      "updatedAt": "2026-06-05T15:22:54.000Z",
+                      "uid": "35240-72c941f9-8c88-410a-8a64-9820378b2f61"
+                    }
+                  ],
+                  "id": "a32364ee-e735-4601-9558-c4f13e73e75f",
+                  "createdAt": "2026-06-05T15:22:54.000Z",
+                  "updatedAt": "2026-06-05T15:22:54.000Z",
+                  "uid": "35240-a32364ee-e735-4601-9558-c4f13e73e75f"
+                }
+              ],
+              "id": "12ee8074-0aa0-473f-9a4e-8f4a56ebaf37",
+              "createdAt": "2026-06-05T15:22:54.000Z",
+              "updatedAt": "2026-06-05T15:22:54.000Z",
+              "uid": "35240-12ee8074-0aa0-473f-9a4e-8f4a56ebaf37"
+            }
+          ],
+          "id": "ffbf8150-4962-47ee-b3e2-804b04dcb22c",
+          "createdAt": "2026-06-05T15:22:54.000Z",
+          "updatedAt": "2026-06-05T15:22:54.000Z",
+          "uid": "35240-ffbf8150-4962-47ee-b3e2-804b04dcb22c"
+        }
+      ],
+      "id": "026719f3-06fe-4e13-a4d1-c101d7f33a76",
+      "createdAt": "2026-06-05T15:22:54.000Z",
+      "updatedAt": "2026-06-05T15:22:54.000Z",
+      "uid": "35240-026719f3-06fe-4e13-a4d1-c101d7f33a76"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

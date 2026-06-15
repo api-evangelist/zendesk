@@ -1,0 +1,938 @@
+{
+  "info": {
+    "_postman_id": "9bed5646-ee3f-40fa-94fd-077288049edc",
+    "name": "Zendesk User Fields",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:23:53.000Z",
+    "updatedAt": "2026-06-05T15:23:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9bed5646-ee3f-40fa-94fd-077288049edc"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "user_fields",
+              "item": [
+                {
+                  "name": "{user_field_id}",
+                  "item": [
+                    {
+                      "name": "options",
+                      "item": [
+                        {
+                          "name": "{user_field_option_id}",
+                          "item": [
+                            {
+                              "name": "Zendesk Get  Api V2 User_fields User_field_id Options User_field_option_id",
+                              "id": "2dce1ff4-c80a-4d36-b66b-6f997180d468",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options/:user_field_option_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "user_fields",
+                                    ":user_field_id",
+                                    "options",
+                                    ":user_field_option_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "43de2de9-f571-49b7-8a79-2150960b296e",
+                                      "key": "user_field_id"
+                                    },
+                                    {
+                                      "id": "ae648a34-78da-488c-8c46-ecd9e4449492",
+                                      "key": "user_field_option_id"
+                                    }
+                                  ]
+                                },
+                                "description": "#### Allowed for\n* Agents\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "04c23ff1-ba0a-4f7a-9bee-8e6d1176e8f8",
+                                  "name": "Success response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options/:user_field_option_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "user_fields",
+                                        ":user_field_id",
+                                        "options",
+                                        ":user_field_option_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "user_field_id"
+                                        },
+                                        {
+                                          "key": "user_field_option_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"custom_field_option\": {\n    \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n  }\n}",
+                                  "createdAt": "2026-06-05T15:23:54.000Z",
+                                  "updatedAt": "2026-06-05T15:23:54.000Z",
+                                  "uid": "35240-04c23ff1-ba0a-4f7a-9bee-8e6d1176e8f8"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:54.000Z",
+                              "updatedAt": "2026-06-05T15:23:54.000Z",
+                              "uid": "35240-2dce1ff4-c80a-4d36-b66b-6f997180d468"
+                            },
+                            {
+                              "name": "Zendesk Delete  Api V2 User_fields User_field_id Options User_field_option_id",
+                              "id": "d813d74c-238d-4f1c-95a8-729932f2ad86",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options/:user_field_option_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "user_fields",
+                                    ":user_field_id",
+                                    "options",
+                                    ":user_field_option_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f6cff2aa-c2ce-4170-b66e-3dcf360830b2",
+                                      "key": "user_field_id"
+                                    },
+                                    {
+                                      "id": "d46d4471-70c9-47b4-a48e-e8ef6aa900bb",
+                                      "key": "user_field_option_id"
+                                    }
+                                  ]
+                                },
+                                "description": "#### Allowed for\n* Admins\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "4aef555c-589d-47b1-9039-26d80bd322fc",
+                                  "name": "No Content response",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options/:user_field_option_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "user_fields",
+                                        ":user_field_id",
+                                        "options",
+                                        ":user_field_option_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "user_field_id"
+                                        },
+                                        {
+                                          "key": "user_field_option_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:23:54.000Z",
+                                  "updatedAt": "2026-06-05T15:23:54.000Z",
+                                  "uid": "35240-4aef555c-589d-47b1-9039-26d80bd322fc"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:23:54.000Z",
+                              "updatedAt": "2026-06-05T15:23:54.000Z",
+                              "uid": "35240-d813d74c-238d-4f1c-95a8-729932f2ad86"
+                            }
+                          ],
+                          "id": "adcad59d-5bb7-4db6-a332-1c472ca7f7e1",
+                          "createdAt": "2026-06-05T15:23:54.000Z",
+                          "updatedAt": "2026-06-05T15:23:54.000Z",
+                          "uid": "35240-adcad59d-5bb7-4db6-a332-1c472ca7f7e1"
+                        },
+                        {
+                          "name": "Zendesk Get  Api V2 User_fields User_field_id Options",
+                          "id": "e6ab2a06-902d-4191-8194-6e51779602d4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "user_fields",
+                                ":user_field_id",
+                                "options"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "fe2f93e6-11a2-4832-a913-aeec3f7929eb",
+                                  "key": "user_field_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of custom user field options for the given dropdown user field.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+                          },
+                          "response": [
+                            {
+                              "id": "ab082f3c-0efd-4ec0-a7d9-79b55e65b735",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "user_fields",
+                                    ":user_field_id",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user_field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"custom_field_options\": [\n    {\n      \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n    }\n  ],\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:23:54.000Z",
+                              "updatedAt": "2026-06-05T15:23:54.000Z",
+                              "uid": "35240-ab082f3c-0efd-4ec0-a7d9-79b55e65b735"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:54.000Z",
+                          "updatedAt": "2026-06-05T15:23:54.000Z",
+                          "uid": "35240-e6ab2a06-902d-4191-8194-6e51779602d4"
+                        },
+                        {
+                          "name": "Zendesk Post  Api V2 User_fields User_field_id Options",
+                          "id": "74b2a731-a634-4e65-a246-1f3eb94dc5d0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "user_fields",
+                                ":user_field_id",
+                                "options"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "00d3bd8c-5e1d-43f6-835d-2896a0109049",
+                                  "key": "user_field_id"
+                                }
+                              ]
+                            },
+                            "description": "Creates a new option or updates an existing option for the given drop-down user field.\n\nTo update an option, include the id of the option in the `custom_field_option` object. Example: `{\"custom_field_option\": {\"id\": 10002, \"name\": \"Pineapples\", ... }`. If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.\n\n#### Response\n\nReturns one of the following status codes:\n\n- 200 with `Location: /api/v2/user_fields/{user_field_id}/options.json` if the user field option already exists in the database\n- 201 with `Location: /api/v2/user_fields/{user_field_id}/options.json` if the user field option is new\n\n#### Allowed For\n\n* Admins\n"
+                          },
+                          "response": [
+                            {
+                              "id": "40758819-7831-4efb-af97-40818d9c460e",
+                              "name": "Success response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "user_fields",
+                                    ":user_field_id",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user_field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"custom_field_option\": {\n    \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:54.000Z",
+                              "updatedAt": "2026-06-05T15:23:54.000Z",
+                              "uid": "35240-40758819-7831-4efb-af97-40818d9c460e"
+                            },
+                            {
+                              "id": "6678622d-0bb6-4794-a1cd-57ef53f5561e",
+                              "name": "Created response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "user_fields",
+                                    ":user_field_id",
+                                    "options"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user_field_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"custom_field_option\": {\n    \"value\": \"reference #/components/schemas/CustomFieldOptionObject not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:23:54.000Z",
+                              "updatedAt": "2026-06-05T15:23:54.000Z",
+                              "uid": "35240-6678622d-0bb6-4794-a1cd-57ef53f5561e"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:23:54.000Z",
+                          "updatedAt": "2026-06-05T15:23:54.000Z",
+                          "uid": "35240-74b2a731-a634-4e65-a246-1f3eb94dc5d0"
+                        }
+                      ],
+                      "id": "25530b58-20cf-4c5c-9c6d-fdda93e403af",
+                      "createdAt": "2026-06-05T15:23:54.000Z",
+                      "updatedAt": "2026-06-05T15:23:54.000Z",
+                      "uid": "35240-25530b58-20cf-4c5c-9c6d-fdda93e403af"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 User_fields User_field_id",
+                      "id": "8d1dd431-e640-4ff7-9ae9-b578457089a0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user_fields",
+                            ":user_field_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1887666f-91ad-442d-8796-f09fac467693",
+                              "key": "user_field_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed for\n\n* Agents\n"
+                      },
+                      "response": [
+                        {
+                          "id": "60682e50-1fde-4efc-a45d-bdd6b16acc40",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "user_fields",
+                                ":user_field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "user_field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"user_field\": {\n    \"value\": \"reference #/components/schemas/UserFieldObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:54.000Z",
+                          "updatedAt": "2026-06-05T15:23:54.000Z",
+                          "uid": "35240-60682e50-1fde-4efc-a45d-bdd6b16acc40"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:54.000Z",
+                      "updatedAt": "2026-06-05T15:23:54.000Z",
+                      "uid": "35240-8d1dd431-e640-4ff7-9ae9-b578457089a0"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 User_fields User_field_id",
+                      "id": "66547472-aa42-483c-8bb5-d2077ae1e429",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user_fields",
+                            ":user_field_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "09f09125-bfac-4600-bde5-68518527c9a6",
+                              "key": "user_field_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Updating a Dropdown (Tagger) or Multiselect Field\n\nDropdown and multiselect fields return an array of `custom_field_options` which specify the name, value, and order of the list of dropdown or multiselect options.\nUnderstand the following behavior when updating a dropdown or multiselect field:\n\n- All options must be passed on update. Options that are not passed will be removed. As a result, these values will be removed from any organizations.\n- To create a new option, pass a null `id` along with `name` and `value`.\n- To update an existing option, pass its `id` along with `name` and `value`.\n- To re-order an option, reposition it in the `custom_field_options` array relative to the other options.\n- To remove an option, omit it from the list of options upon update.\n\n#### Example Request\n\n```bash\ncurl https://{subdomain}.zendesk.com/api/v2/user_fields/{user_field_id}.json \\\n  -H \"Content-Type: application/json\" -X PUT \\\n  -d '{\"user_field\": {\"custom_field_options\": [{\"id\": 124, \"name\": \"Option 2\", \"value\": \"option_2\"}, {\"id\": 123, \"name\": \"Option 1\", \"value\": \"option_1\"}, {\"id\": 125, \"name\": \"Option 2\", \"value\": \"option_3\"}]}}' \\\n  -v -u {email_address}/token:{api_token}\n```\n#### Allowed for\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "87cb2574-0cd2-4f97-af4b-b624455a1440",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "user_fields",
+                                ":user_field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "user_field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"user_field\": {\n    \"value\": \"reference #/components/schemas/UserFieldObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:23:54.000Z",
+                          "updatedAt": "2026-06-05T15:23:54.000Z",
+                          "uid": "35240-87cb2574-0cd2-4f97-af4b-b624455a1440"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:54.000Z",
+                      "updatedAt": "2026-06-05T15:23:54.000Z",
+                      "uid": "35240-66547472-aa42-483c-8bb5-d2077ae1e429"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 User_fields User_field_id",
+                      "id": "45bce2c0-3230-4ffa-8a26-0b642b2b358e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user_fields",
+                            ":user_field_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8552d157-b8cd-4ba6-9791-d38490bc275b",
+                              "key": "user_field_id"
+                            }
+                          ]
+                        },
+                        "description": "#### Allowed for\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "74c07a4c-95fd-4606-9d5c-5f95b218c7bf",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/user_fields/:user_field_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "user_fields",
+                                ":user_field_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "user_field_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:23:54.000Z",
+                          "updatedAt": "2026-06-05T15:23:54.000Z",
+                          "uid": "35240-74c07a4c-95fd-4606-9d5c-5f95b218c7bf"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:54.000Z",
+                      "updatedAt": "2026-06-05T15:23:54.000Z",
+                      "uid": "35240-45bce2c0-3230-4ffa-8a26-0b642b2b358e"
+                    }
+                  ],
+                  "id": "b4ec9915-869d-4b52-93d9-1f7c2782731a",
+                  "createdAt": "2026-06-05T15:23:54.000Z",
+                  "updatedAt": "2026-06-05T15:23:54.000Z",
+                  "uid": "35240-b4ec9915-869d-4b52-93d9-1f7c2782731a"
+                },
+                {
+                  "name": "reorder",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 User_fields Reorder",
+                      "id": "dc918314-be15-4f33-8bbd-5b8c0226244d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user_fields/reorder",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user_fields",
+                            "reorder"
+                          ]
+                        },
+                        "description": "#### Allowed For\n\n* Admins\n"
+                      },
+                      "response": [
+                        {
+                          "id": "5ff191b1-404e-4d7f-a2ca-ce50b51afa1d",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/user_fields/reorder",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "user_fields",
+                                "reorder"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-06-05T15:23:54.000Z",
+                          "updatedAt": "2026-06-05T15:23:54.000Z",
+                          "uid": "35240-5ff191b1-404e-4d7f-a2ca-ce50b51afa1d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:23:54.000Z",
+                      "updatedAt": "2026-06-05T15:23:54.000Z",
+                      "uid": "35240-dc918314-be15-4f33-8bbd-5b8c0226244d"
+                    }
+                  ],
+                  "id": "ad6203cb-3627-4561-8adb-16816451f06c",
+                  "createdAt": "2026-06-05T15:23:54.000Z",
+                  "updatedAt": "2026-06-05T15:23:54.000Z",
+                  "uid": "35240-ad6203cb-3627-4561-8adb-16816451f06c"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 User_fields",
+                  "id": "80461f6d-9e9f-4f2b-8f43-33787d06cfaf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/user_fields",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "user_fields"
+                      ]
+                    },
+                    "description": "Returns a list of custom user fields in your account. Fields are returned in the order that you specify in your user fields configuration in Zendesk Support. Clients should cache this resource for the duration of their API usage and map the key for each User Field to the values returned under the `user_fields` attribute on the [User](/api-reference/ticketing/users/users/) resource.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+                  },
+                  "response": [
+                    {
+                      "id": "1447c71b-04b5-498c-9397-bf8d1a2e1cc4",
+                      "name": "Success response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user_fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user_fields"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"next_page\": \"<string>\",\n  \"previous_page\": \"<string>\",\n  \"user_fields\": [\n    {\n      \"value\": \"reference #/components/schemas/UserFieldObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/UserFieldObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:23:54.000Z",
+                      "updatedAt": "2026-06-05T15:23:54.000Z",
+                      "uid": "35240-1447c71b-04b5-498c-9397-bf8d1a2e1cc4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:54.000Z",
+                  "updatedAt": "2026-06-05T15:23:54.000Z",
+                  "uid": "35240-80461f6d-9e9f-4f2b-8f43-33787d06cfaf"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 User_fields",
+                  "id": "28e4a49e-cc4c-4acf-ad46-72446c478828",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/user_fields",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "user_fields"
+                      ]
+                    },
+                    "description": "Creates any of the following custom field types:\n\n* text (default when no \"type\" is specified)\n* textarea\n* checkbox\n* date\n* integer\n* decimal\n* regexp\n* dropdown\n* lookup\n* multiselect\n\nSee [About custom field types](https://support.zendesk.com/hc/en-us/articles/203661866) in Zendesk help.\n\n#### Allowed For\n\n* Admins\n"
+                  },
+                  "response": [
+                    {
+                      "id": "a2f9f04a-8e79-4923-b494-24140276eb45",
+                      "name": "Created response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user_fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user_fields"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"user_field\": {\n    \"value\": \"reference #/components/schemas/UserFieldObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:23:54.000Z",
+                      "updatedAt": "2026-06-05T15:23:54.000Z",
+                      "uid": "35240-a2f9f04a-8e79-4923-b494-24140276eb45"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:23:54.000Z",
+                  "updatedAt": "2026-06-05T15:23:54.000Z",
+                  "uid": "35240-28e4a49e-cc4c-4acf-ad46-72446c478828"
+                }
+              ],
+              "id": "049b3e7c-72d6-4c20-abea-a440175445c7",
+              "createdAt": "2026-06-05T15:23:54.000Z",
+              "updatedAt": "2026-06-05T15:23:54.000Z",
+              "uid": "35240-049b3e7c-72d6-4c20-abea-a440175445c7"
+            }
+          ],
+          "id": "f8e7db3d-246f-463f-8fa1-0a3514354989",
+          "createdAt": "2026-06-05T15:23:54.000Z",
+          "updatedAt": "2026-06-05T15:23:54.000Z",
+          "uid": "35240-f8e7db3d-246f-463f-8fa1-0a3514354989"
+        }
+      ],
+      "id": "acc40d5f-358d-410f-8e05-1fce1ab4f30b",
+      "createdAt": "2026-06-05T15:23:54.000Z",
+      "updatedAt": "2026-06-05T15:23:54.000Z",
+      "uid": "35240-acc40d5f-358d-410f-8e05-1fce1ab4f30b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

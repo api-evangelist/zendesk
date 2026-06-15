@@ -1,0 +1,675 @@
+{
+  "info": {
+    "_postman_id": "861c1c84-47e0-4144-b308-3a886b228365",
+    "name": "Zendesk Brands",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:29.000Z",
+    "updatedAt": "2026-06-05T15:22:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-861c1c84-47e0-4144-b308-3a886b228365"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "brands",
+              "item": [
+                {
+                  "name": "{brand_id}",
+                  "item": [
+                    {
+                      "name": "check_host_mapping",
+                      "item": [
+                        {
+                          "name": "Zendesk Get  Api V2 Brands Brand_id Check_host_mapping",
+                          "id": "c3c405ad-e1e8-4c8c-8b36-a5b6ab43a5f7",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/brands/:brand_id/check_host_mapping",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "brands",
+                                ":brand_id",
+                                "check_host_mapping"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "99f3721f-3a62-49cc-bed4-c168a40fdc8c",
+                                  "key": "brand_id"
+                                }
+                              ]
+                            },
+                            "description": "Returns a JSON object determining whether a host mapping is valid for the given brand.\n\n#### Allowed for\n- Admins"
+                          },
+                          "response": [
+                            {
+                              "id": "44f77b91-6ea0-45a5-aebf-b7df119dcfba",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/brands/:brand_id/check_host_mapping",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "brands",
+                                    ":brand_id",
+                                    "check_host_mapping"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "brand_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"cname\": \"<string>\",\n  \"expected_cnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"is_valid\": \"<boolean>\",\n  \"reason\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:22:29.000Z",
+                              "updatedAt": "2026-06-05T15:22:29.000Z",
+                              "uid": "35240-44f77b91-6ea0-45a5-aebf-b7df119dcfba"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:22:29.000Z",
+                          "updatedAt": "2026-06-05T15:22:29.000Z",
+                          "uid": "35240-c3c405ad-e1e8-4c8c-8b36-a5b6ab43a5f7"
+                        }
+                      ],
+                      "id": "16b0c4de-e959-46e1-9f2a-3a57011dd144",
+                      "createdAt": "2026-06-05T15:22:29.000Z",
+                      "updatedAt": "2026-06-05T15:22:29.000Z",
+                      "uid": "35240-16b0c4de-e959-46e1-9f2a-3a57011dd144"
+                    },
+                    {
+                      "name": "Zendesk Get  Api V2 Brands Brand_id",
+                      "id": "772f9845-4f55-41eb-9788-6e669dcbd7fa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/brands/:brand_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "brands",
+                            ":brand_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "213e30d7-dee8-420c-9571-7e3e869c9d1a",
+                              "key": "brand_id"
+                            }
+                          ]
+                        },
+                        "description": "Returns a brand for your account.\n\n#### Allowed for\n\n* Admins, Agents"
+                      },
+                      "response": [
+                        {
+                          "id": "4d749abd-f45b-4b2b-b311-11f68a71aafe",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/brands/:brand_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "brands",
+                                ":brand_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "brand_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"brand\": {\n    \"value\": \"reference #/components/schemas/BrandObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:29.000Z",
+                          "updatedAt": "2026-06-05T15:22:29.000Z",
+                          "uid": "35240-4d749abd-f45b-4b2b-b311-11f68a71aafe"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:29.000Z",
+                      "updatedAt": "2026-06-05T15:22:29.000Z",
+                      "uid": "35240-772f9845-4f55-41eb-9788-6e669dcbd7fa"
+                    },
+                    {
+                      "name": "Zendesk Put  Api V2 Brands Brand_id",
+                      "id": "d9f7b404-96a2-42b3-9b32-441a9ff8db64",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/BrandUpdateRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/brands/:brand_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "brands",
+                            ":brand_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "dee0718d-682b-481e-8266-4926a6e6ed55",
+                              "key": "brand_id"
+                            }
+                          ]
+                        },
+                        "description": "Returns an updated brand.\n\n#### Allowed for\n* Admins\n\n#### Updating a Brand's Image\nA brand image can be updated by uploading a local file using the update brand endpoint. See the **Using curl** sections below for more information."
+                      },
+                      "response": [
+                        {
+                          "id": "c12ea298-1539-4d5c-a853-b16727087b52",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/components/schemas/BrandUpdateRequest not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/brands/:brand_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "brands",
+                                ":brand_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "brand_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"brand\": {\n    \"value\": \"reference #/components/schemas/BrandObject not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:29.000Z",
+                          "updatedAt": "2026-06-05T15:22:29.000Z",
+                          "uid": "35240-c12ea298-1539-4d5c-a853-b16727087b52"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:29.000Z",
+                      "updatedAt": "2026-06-05T15:22:29.000Z",
+                      "uid": "35240-d9f7b404-96a2-42b3-9b32-441a9ff8db64"
+                    },
+                    {
+                      "name": "Zendesk Delete  Api V2 Brands Brand_id",
+                      "id": "9ec0a28e-abd1-4b0f-a691-5a27cbd4d837",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/brands/:brand_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "brands",
+                            ":brand_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3e88267b-36ef-42da-8924-84afed412b6f",
+                              "key": "brand_id"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a brand.\n\n#### Allowed for\n- Admins"
+                      },
+                      "response": [
+                        {
+                          "id": "ecffc74f-a66a-425f-b3a0-7b5a48492240",
+                          "name": "No Content response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/brands/:brand_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "brands",
+                                ":brand_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "brand_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:22:29.000Z",
+                          "updatedAt": "2026-06-05T15:22:29.000Z",
+                          "uid": "35240-ecffc74f-a66a-425f-b3a0-7b5a48492240"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:29.000Z",
+                      "updatedAt": "2026-06-05T15:22:29.000Z",
+                      "uid": "35240-9ec0a28e-abd1-4b0f-a691-5a27cbd4d837"
+                    }
+                  ],
+                  "id": "579e0673-aad1-4c78-9746-7f757895cdd9",
+                  "createdAt": "2026-06-05T15:22:29.000Z",
+                  "updatedAt": "2026-06-05T15:22:29.000Z",
+                  "uid": "35240-579e0673-aad1-4c78-9746-7f757895cdd9"
+                },
+                {
+                  "name": "check_host_mapping",
+                  "item": [
+                    {
+                      "name": "Zendesk Get  Api V2 Brands Check_host_mapping",
+                      "id": "1c19bb74-828f-4e75-a502-71c60e4f6286",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/brands/check_host_mapping",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "brands",
+                            "check_host_mapping"
+                          ]
+                        },
+                        "description": "Returns a JSON object determining whether a host mapping is valid for a given subdomain.\n\n#### Allowed for\n\n* Admins"
+                      },
+                      "response": [
+                        {
+                          "id": "09eb0106-64a5-425e-9ca3-0d43a72eeace",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/brands/check_host_mapping",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "brands",
+                                "check_host_mapping"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"cname\": \"<string>\",\n  \"expected_cnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"is_valid\": \"<boolean>\",\n  \"reason\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:22:29.000Z",
+                          "updatedAt": "2026-06-05T15:22:29.000Z",
+                          "uid": "35240-09eb0106-64a5-425e-9ca3-0d43a72eeace"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:29.000Z",
+                      "updatedAt": "2026-06-05T15:22:29.000Z",
+                      "uid": "35240-1c19bb74-828f-4e75-a502-71c60e4f6286"
+                    }
+                  ],
+                  "id": "deb04eab-24b5-471a-ac92-5eb318578cdf",
+                  "createdAt": "2026-06-05T15:22:29.000Z",
+                  "updatedAt": "2026-06-05T15:22:29.000Z",
+                  "uid": "35240-deb04eab-24b5-471a-ac92-5eb318578cdf"
+                },
+                {
+                  "name": "Zendesk Get  Api V2 Brands",
+                  "id": "fdff98af-940c-4be7-9c8a-9884c669cad9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/brands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "brands"
+                      ]
+                    },
+                    "description": "Returns a list of all brands for your account sorted by name.\n\n#### Allowed for\n\n* Admins\n* Agents with the `assign_tickets_to_any_brand` permission can list all brands for the account\n* Agents without the `assign_tickets_to_any_brand` permission can only list brands they are members of\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/)."
+                  },
+                  "response": [
+                    {
+                      "id": "2bf2f215-8446-4d27-8e49-e5d0f6447b8f",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/brands",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "brands"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"brands\": [\n    {\n      \"value\": \"reference #/components/schemas/BrandObject not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/components/schemas/BrandObject not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:29.000Z",
+                      "updatedAt": "2026-06-05T15:22:29.000Z",
+                      "uid": "35240-2bf2f215-8446-4d27-8e49-e5d0f6447b8f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:29.000Z",
+                  "updatedAt": "2026-06-05T15:22:29.000Z",
+                  "uid": "35240-fdff98af-940c-4be7-9c8a-9884c669cad9"
+                },
+                {
+                  "name": "Zendesk Post  Api V2 Brands",
+                  "id": "1e04dfe7-df56-4d68-b3f8-8630b82ff229",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference #/components/schemas/BrandCreateRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/brands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "brands"
+                      ]
+                    },
+                    "description": "#### Allowed for\n- Admins"
+                  },
+                  "response": [
+                    {
+                      "id": "a1a25a46-4109-4c00-86f2-41806a94e3d0",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/components/schemas/BrandCreateRequest not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/brands",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "brands"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"brand\": {\n    \"value\": \"reference #/components/schemas/BrandObject not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:29.000Z",
+                      "updatedAt": "2026-06-05T15:22:29.000Z",
+                      "uid": "35240-a1a25a46-4109-4c00-86f2-41806a94e3d0"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:29.000Z",
+                  "updatedAt": "2026-06-05T15:22:29.000Z",
+                  "uid": "35240-1e04dfe7-df56-4d68-b3f8-8630b82ff229"
+                }
+              ],
+              "id": "27d4c518-d9c1-40e4-90e7-8f450f11de48",
+              "createdAt": "2026-06-05T15:22:29.000Z",
+              "updatedAt": "2026-06-05T15:22:29.000Z",
+              "uid": "35240-27d4c518-d9c1-40e4-90e7-8f450f11de48"
+            }
+          ],
+          "id": "5ab7fd2c-3255-42d2-8cdf-a8c5f611063e",
+          "createdAt": "2026-06-05T15:22:29.000Z",
+          "updatedAt": "2026-06-05T15:22:29.000Z",
+          "uid": "35240-5ab7fd2c-3255-42d2-8cdf-a8c5f611063e"
+        }
+      ],
+      "id": "4601bcfc-21f8-4406-8969-b2d131f0e146",
+      "createdAt": "2026-06-05T15:22:29.000Z",
+      "updatedAt": "2026-06-05T15:22:29.000Z",
+      "uid": "35240-4601bcfc-21f8-4406-8969-b2d131f0e146"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

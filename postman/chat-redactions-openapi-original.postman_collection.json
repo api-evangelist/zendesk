@@ -1,0 +1,141 @@
+{
+  "info": {
+    "_postman_id": "bd8ee07b-b23f-4f5f-9eaf-9a67be8afcf4",
+    "name": "Zendesk Chat Redactions",
+    "description": "Needs a description.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:32.000Z",
+    "updatedAt": "2026-06-05T15:22:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bd8ee07b-b23f-4f5f-9eaf-9a67be8afcf4"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "chat_redactions",
+              "item": [
+                {
+                  "name": "{ticket_id}",
+                  "item": [
+                    {
+                      "name": "Zendesk Put  Api V2 Chat_redactions Ticket_id",
+                      "id": "1561f1e8-a612-46c8-8018-921276d34915",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/chat_redactions/:ticket_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "chat_redactions",
+                            ":ticket_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cf267169-9af5-488b-9a10-68a4d70a646f",
+                              "key": "ticket_id"
+                            }
+                          ]
+                        },
+                        "description": "Permanently removes words or strings from a chat ticket's comment. \n\nWrap `<redact>` tags around the content in the chat comment you want redacted. Example: \n\n```json\n{\n  \"text\": \"My ID number is <redact>847564</redact>!\"\n}\n```\n\nThe characters contained in the tag will be replaced by the \u2587 symbol.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                                                                                                                       |\n| ------------------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| chat_id                  | string  | true     | The `chat_id` in the `ChatStartedEvent` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                            |\n| chat_index               | integer | false    | The `chat_index` in the `ChatMessage` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if `message_id` is not used                                                                       |\n| message_id               | string  | false    | The `message_id` of the `ChatMessage` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatMessage that is part of a conversation history. Mandatory if `chat_index` is not used                     |\n| text                     | string  | true     | The `message` in the `ChatMessage` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits).  Wrap `message` with `<redact>` tags                                                                           |\n\nTo get the required body properties, make a request to the [Ticket Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n```http\nStatus 200 OK\n{\n  \"audits\": [\n    \"events\": [\n      {\n        \"id\": 1932802680168,\n        \"type\": \"ChatStartedEvent\",\n        \"value\": {\n          \"visitor_id\": \"10502823-16EkM3T6VNq7KMd\",\n          \"chat_id\": \"2109.10502823.Sjuj2YrBpXwei\",\n          \"history\": [\n            {\n              \"chat_index\": 0,\n              \"type\": \"ChatMessage\",\n              \"message\": \"My ID number is 847564!\"\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n```\n"
+                      },
+                      "response": [
+                        {
+                          "id": "2db733fb-b775-444b-8a61-c4cf09931b31",
+                          "name": "Success response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/chat_redactions/:ticket_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "chat_redactions",
+                                ":ticket_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ticket_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"chat_event\": {\n    \"id\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"value\": {\n      \"chat_id\": \"<string>\",\n      \"history\": [\n        {\n          \"temporc35\": -18727939\n        },\n        {\n          \"in8\": 59611752,\n          \"exercitation_7eb\": 56258407,\n          \"proident_6_\": \"nisi quis in\"\n        }\n      ],\n      \"visitor_id\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:22:33.000Z",
+                          "updatedAt": "2026-06-05T15:22:33.000Z",
+                          "uid": "35240-2db733fb-b775-444b-8a61-c4cf09931b31"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:22:33.000Z",
+                      "updatedAt": "2026-06-05T15:22:33.000Z",
+                      "uid": "35240-1561f1e8-a612-46c8-8018-921276d34915"
+                    }
+                  ],
+                  "id": "74328649-ba76-4740-a11e-cac5f3066260",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-74328649-ba76-4740-a11e-cac5f3066260"
+                }
+              ],
+              "id": "94554ea6-bddb-4796-b288-d58ede6ad75f",
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-94554ea6-bddb-4796-b288-d58ede6ad75f"
+            }
+          ],
+          "id": "08026b28-836b-4e05-87ec-8b66a6f3d4e6",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-08026b28-836b-4e05-87ec-8b66a6f3d4e6"
+        }
+      ],
+      "id": "9569a2db-3ce6-4551-b7fe-1f343ec7fee9",
+      "createdAt": "2026-06-05T15:22:33.000Z",
+      "updatedAt": "2026-06-05T15:22:33.000Z",
+      "uid": "35240-9569a2db-3ce6-4551-b7fe-1f343ec7fee9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}
