@@ -1,0 +1,60 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.zendesk.com/api-reference/introduction/pagination/
+notes: >-
+  Cross-cutting request/response semantics for the Zendesk REST APIs, captured
+  from the developer docs and derived from the curated OpenAPI. Cross-links:
+  errors/zendesk-error-codes.yml, lifecycle/zendesk-lifecycle.yml,
+  authentication/zendesk-authentication.yml, scopes/zendesk-scopes.yml,
+  rate-limits/zendesk-rate-limits.yml.
+base_url: https://{subdomain}.zendesk.com/api/v2
+media_type: application/json
+authentication:
+  styles:
+    - 'api_token: Basic auth as {email}/token with the API token as the password.'
+    - 'oauth2: Bearer access token; scopes read, write, impersonate, and resource-qualified.'
+  see: authentication/zendesk-authentication.yml
+pagination:
+  default: offset
+  recommended: cursor
+  cursor:
+    params: ['page[size]', 'page[after]', 'page[before]']
+    response_fields: [links.next, links.last, links.prev, meta.has_more]
+    max_page_size: 100
+  offset:
+    params: [per_page, page, sort_order]
+    response_fields: [next_page, previous_page, count]
+    max_page_size: 100
+    limits: First 100 pages / 10,000 resources; exceeding returns HTTP 400.
+sideloading:
+  description: >-
+    Related records can be embedded in a response via the include query
+    parameter (e.g. ?include=users,groups,organizations), reducing round-trips.
+  param: include
+sorting:
+  params: [sort_by, sort_order]
+metadata:
+  external_id: Most core objects carry a client-supplied external_id for idempotent upserts / cross-system keys.
+  custom_fields: Tickets, users, and organizations support custom_fields and tags.
+async_jobs:
+  description: >-
+    Bulk create/update operations return a Job Status you poll (queued /
+    working / completed) rather than blocking.
+  resource: job_statuses
+  see: openapi/job-statuses-openapi-original.yml
+incremental_export:
+  description: Cursor/time-based incremental exports (start_time / cursor) for syncing changed records.
+  see: openapi/incremental-openapi-original.yml
+rate_limiting:
+  headers: [X-Rate-Limit, Retry-After]
+  throttled_status: 429
+  see: rate-limits/zendesk-rate-limits.yml
+error_envelope:
+  format: zendesk
+  shape: "{ error, description, details }"
+  problem_json: false
+  see: errors/zendesk-error-codes.yml
+versioning:
+  scheme: uri-path
+  current: v2
+  see: lifecycle/zendesk-lifecycle.yml

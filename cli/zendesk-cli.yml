@@ -1,0 +1,49 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.zendesk.com/documentation/apps/getting-started/using-zcli/
+notes: >-
+  ZCLI is Zendesk's first-party command-line tool, published as @zendesk/zcli on
+  npm and maintained at github.com/zendesk/zcli. It is primarily an app
+  development and administration tool (scaffold, validate, package, install, and
+  update Zendesk Apps), and also exposes profile/login management. It supersedes
+  the older ZAT (Zendesk App Tools) Ruby gem. The binary is catalogued in
+  packages/zendesk-packages.yml; this file captures its command surface.
+name: zcli
+repo: https://github.com/zendesk/zcli
+package:
+  registry: npm
+  name: "@zendesk/zcli"
+  url: https://www.npmjs.com/package/@zendesk/zcli
+requirements:
+  node: ">=20.17.0"
+install:
+  - npm install @zendesk/zcli -g
+command_groups:
+  - group: login / profiles
+    description: Authenticate ZCLI against a Zendesk account and manage subdomain profiles.
+    commands:
+      - zcli login
+      - zcli logout
+      - zcli profiles
+  - group: apps
+    description: Scaffold, run, validate, package, install, and update Zendesk Apps.
+    commands:
+      - zcli apps:new
+      - zcli apps:create
+      - zcli apps:server
+      - zcli apps:validate
+      - zcli apps:package
+      - zcli apps:update
+      - zcli apps:bump
+      - zcli apps:clean
+key_flows:
+  - name: Create a new app locally
+    steps:
+      - zcli apps:new --scaffold
+      - zcli apps:server
+  - name: Package and install a private app
+    steps:
+      - zcli apps:validate
+      - zcli apps:create
+  - name: Local development preview
+    note: Run "zcli apps:server" then append ?zcli_apps=true to your Zendesk URL to load local apps.

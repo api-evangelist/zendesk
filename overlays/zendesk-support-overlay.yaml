@@ -1,0 +1,32 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Zendesk Support API
+  version: 1.0.0
+extends: openapi/zendesk-support-openapi.yml
+x-provenance:
+  generated: '2026-06-20'
+  method: generated
+  source: apis.yml + repo artifacts
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-slug: zendesk
+      x-apievangelist-provider: Zendesk
+      x-apievangelist-artifacts:
+        authentication: authentication/zendesk-authentication.yml
+        scopes: scopes/zendesk-scopes.yml
+        conventions: conventions/zendesk-conventions.yml
+        errors: errors/zendesk-error-codes.yml
+        lifecycle: lifecycle/zendesk-lifecycle.yml
+        changelog: changelog/zendesk-changelog.yml
+        rate_limits: rate-limits/zendesk-rate-limits.yml
+        data_model: data-model/zendesk-data-model.yml
+  - target: $.info
+    update:
+      x-apievangelist-pagination:
+        default: offset
+        recommended: cursor
+      x-apievangelist-error-envelope: "{ error, description, details }"
+  - target: $.paths.*.*
+    update:
+      x-apievangelist-rate-limited: true

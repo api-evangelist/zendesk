@@ -1,0 +1,32 @@
+generated: '2026-06-20'
+method: searched
+source: live probes of the developer.zendesk.com and api.getbase.com hosts
+host: https://developer.zendesk.com
+notes: >-
+  No /.well-known/ discovery documents are published on the Zendesk developer
+  host or the Sell (getbase) API host. All probed paths return 404 (the
+  developer portal is a single-page app that serves an HTML shell for unknown
+  paths). Per-account OAuth/OIDC discovery on {subdomain}.zendesk.com requires
+  authentication (403 for anonymous requests) and is tenant-scoped rather than a
+  provider-level well-known surface. Absence recorded as valid data.
+documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+other_hosts:
+  - host: https://api.getbase.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://{subdomain}.zendesk.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 403
+        note: tenant-scoped, requires authentication

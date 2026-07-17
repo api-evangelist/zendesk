@@ -1,0 +1,43 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/zendesk-support-openapi.yml + Zendesk developer docs
+notes: >-
+  Which cross-cutting / industry standards the Zendesk REST API conforms to,
+  derived from the curated OpenAPI security schemes and conventions and enriched
+  from the docs. Zendesk uses its own JSON error envelope (not RFC 9457) and its
+  own resource envelopes (not JSON:API).
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      OAuth 2.0 authorization-code flow with read/write/impersonate and
+      resource-qualified scopes (see scopes/zendesk-scopes.yml).
+  - id: oidc
+    conforms: false
+    evidence: No OpenID Connect discovery / id_token surface documented.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a Zendesk { error, description, details } envelope, not application/problem+json.
+  - id: jsonapi
+    conforms: false
+    evidence: Uses Zendesk resource envelopes and sideloading, not the JSON:API spec.
+  - id: cursor-pagination
+    conforms: true
+    evidence: page[size]/page[after] cursor pagination with links.next + meta.has_more.
+  - id: rfc6750-bearer-token
+    conforms: true
+    evidence: OAuth access tokens presented as HTTP bearer credentials.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: Deprecations announced via changelog/developer updates; Sunset header not documented.
+  - id: idempotency-key
+    conforms: false
+    evidence: >-
+      No Idempotency-Key header; idempotent upserts modeled via client-supplied
+      external_id instead.
+  - id: scim2
+    conforms: false
+    evidence: No SCIM 2.0 user-provisioning endpoints in the harvested specs.
+  - id: webhooks
+    conforms: true
+    evidence: Event-driven webhooks / Channel Framework (see asyncapi/zendesk-webhooks-asyncapi.yml).

@@ -1,0 +1,39 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.zendesk.com/api-reference/introduction/api_changes/
+notes: >-
+  Zendesk versions its REST APIs in the URI path (current major version v2, e.g.
+  /api/v2). Its Messaging/Conversations platform APIs are strictly versioned
+  with major (v2) and occasional minor (v1.1) numbers, where a minor bump
+  signals a breaking payload/behavior change without a fundamental redesign and
+  a major bump signals removals or significant behavior changes. A published
+  change policy classifies changes and commits to commercially reasonable
+  advance notice via developer-site posts and the changelog (with at least two
+  weeks notice for urgent security/performance changes). Breaking changes and
+  deprecations are announced on the developer Changelog and via Developer
+  updates.
+versioning:
+  scheme: uri-path
+  current: v2
+  base_path: /api/v2
+  messaging_platform:
+    scheme: header-and-path
+    current: v2
+    minor_supported: true
+  docs: https://developer.zendesk.com/documentation/conversations/references/api-versioning/
+deprecation:
+  policy_url: https://developer.zendesk.com/api-reference/introduction/api_changes/
+  advance_notice: true
+  urgent_change_notice: "2 weeks"
+  announcement_channels:
+    - https://developer.zendesk.com/api-reference/changelog/changelog/
+    - https://support.zendesk.com/hc/en-us/sections/4405298889242-Developer-updates
+  sunset_header: unknown
+changelog:
+  url: https://developer.zendesk.com/api-reference/changelog/changelog/
+  artifact: changelog/zendesk-changelog.yml
+status_page: https://status.zendesk.com/
+support:
+  contact: https://developer.zendesk.com
+  terms: https://www.zendesk.com/company/agreements-and-terms/
+deprecated_operations: []

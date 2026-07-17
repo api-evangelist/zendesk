@@ -1,0 +1,114 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/zendesk-support-openapi.yml
+notes: >-
+  Entity-relationship graph derived from the curated Zendesk Support OpenAPI
+  schema id-reference fields (requester_id, assignee_id, organization_id,
+  group_id, custom_role_id, ...). Cardinality inferred from field
+  naming (_id => has_one/belongs_to, _ids => has_many). A rendered map exists at
+  subway/zendesk-subway-map.svg.
+render: subway/zendesk-subway-map.svg
+entities:
+  - name: Ticket
+    id_field: id
+    relationships:
+      - kind: belongs_to
+        target: User
+        via: requester_id
+        role: requester
+      - kind: belongs_to
+        target: User
+        via: submitter_id
+        role: submitter
+      - kind: belongs_to
+        target: User
+        via: assignee_id
+        role: assignee
+      - kind: belongs_to
+        target: Organization
+        via: organization_id
+      - kind: belongs_to
+        target: Group
+        via: group_id
+      - kind: belongs_to
+        target: Brand
+        via: brand_id
+      - kind: belongs_to
+        target: TicketForm
+        via: ticket_form_id
+      - kind: belongs_to
+        target: CustomStatus
+        via: custom_status_id
+      - kind: belongs_to
+        target: Ticket
+        via: problem_id
+        role: problem
+      - kind: has_many
+        target: User
+        via: collaborator_ids
+        role: collaborators
+      - kind: has_many
+        target: User
+        via: follower_ids
+        role: followers
+      - kind: has_many
+        target: User
+        via: email_cc_ids
+        role: email_cc
+      - kind: has_many
+        target: Comment
+        via: comments
+      - kind: has_many
+        target: SharingAgreement
+        via: sharing_agreement_ids
+  - name: User
+    id_field: id
+    relationships:
+      - kind: belongs_to
+        target: Organization
+        via: organization_id
+        role: default_organization
+      - kind: belongs_to
+        target: CustomRole
+        via: custom_role_id
+      - kind: belongs_to
+        target: Group
+        via: default_group_id
+      - kind: belongs_to
+        target: Locale
+        via: locale_id
+  - name: Organization
+    id_field: id
+    relationships:
+      - kind: has_many
+        target: User
+        via: organization_memberships
+      - kind: has_many
+        target: Ticket
+        via: organization_id
+  - name: Comment
+    id_field: id
+    relationships:
+      - kind: belongs_to
+        target: User
+        via: author_id
+      - kind: has_many
+        target: Attachment
+        via: attachments
+      - kind: belongs_to
+        target: Ticket
+        via: ticket_id
+  - name: Attachment
+    id_field: id
+    relationships:
+      - kind: belongs_to
+        target: Comment
+        via: comment
+  - name: Group
+    id_field: id
+    relationships:
+      - kind: has_many
+        target: User
+        via: group_memberships
+  - name: CustomField
+    id_field: id

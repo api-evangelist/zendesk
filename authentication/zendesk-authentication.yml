@@ -1,9 +1,25 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/zendesk-support-openapi.yml
+docs: https://developer.zendesk.com/documentation/api-basics/authentication/
+notes: >-
+  Zendesk supports three request-authentication styles: (1) Basic auth with an
+  API token, sent as "{email_address}/token" with the API token as the password;
+  (2) Basic auth with an agent password (discouraged, being phased out); and
+  (3) OAuth 2.0 access tokens presented as an HTTP bearer credential. OAuth uses
+  the authorization-code flow with read / write / impersonate and
+  resource-qualified scopes (see scopes/zendesk-scopes.yml). As of 2026-01-16
+  Zendesk enforces default token TTL and requires the refresh-token flow for
+  global OAuth clients.
 summary:
   types:
   - http
+  - oauth2
+  http_schemes:
+  - basic
+  - bearer
+  oauth2_flows:
+  - authorizationCode
 schemes:
 - name: basicAuth
   type: http
@@ -15,6 +31,14 @@ schemes:
 - name: bearerAuth
   type: http
   scheme: bearer
-  description: OAuth 2.0 access token
+  description: OAuth 2.0 access token presented as a bearer credential.
   sources:
   - openapi/zendesk-support-openapi.yml
+- name: OAuth2
+  type: oauth2
+  flow: authorizationCode
+  authorizationUrl: https://{subdomain}.zendesk.com/oauth/authorizations/new
+  tokenUrl: https://{subdomain}.zendesk.com/oauth/tokens
+  scopes: scopes/zendesk-scopes.yml
+  sources:
+  - docs

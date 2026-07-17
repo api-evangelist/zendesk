@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.zendesk.com/documentation/ticketing/api-clients/introduction/
+notes: >-
+  Zendesk maintains a small set of first-party client libraries. The PHP client
+  carries the "Official Zendesk API v2 client library" designation; the Ruby
+  client and the ZCLI command-line tool are published under the zendesk GitHub
+  org and the @zendesk npm scope. Popular libraries for Node.js (node-zendesk)
+  and Python (Zenpy) are community-maintained and are recorded here as
+  official:false for completeness.
+packages:
+  - language: php
+    registry: packagist
+    name: zendesk/zendesk_api_client_php
+    url: https://github.com/zendesk/zendesk_api_client_php
+    install: composer require zendesk/zendesk_api_client_php
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: zendesk_api
+    url: https://github.com/zendesk/zendesk_api_client_rb
+    install: gem install zendesk_api
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@zendesk/zcli"
+    url: https://www.npmjs.com/package/@zendesk/zcli
+    install: npm install @zendesk/zcli -g
+    official: true
+    kind: cli
+    notes: First-party Zendesk command-line interface (see cli/zendesk-cli.yml).
+  - language: javascript
+    registry: npm
+    name: node-zendesk
+    url: https://github.com/blakmatrix/node-zendesk
+    install: npm install node-zendesk
+    official: false
+    notes: Long-lived, widely used community Node.js client.
+  - language: python
+    registry: pypi
+    name: zenpy
+    url: https://pypi.org/project/zenpy/
+    install: pip install zenpy
+    official: false
+    notes: Most popular community Python wrapper for the Zendesk API.

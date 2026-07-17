@@ -1,0 +1,37 @@
+generated: '2026-06-20'
+method: searched
+source: https://garden.zendesk.com/
+notes: >-
+  Zendesk publishes client-side / embeddable UI surfaces in two families: (1)
+  Garden, its open-source React design system (60+ accessible, themeable
+  components under the @zendeskgarden npm scope) used to build Zendesk apps and
+  product experiences; and (2) the Web Widget / messaging embeddables that drop
+  Zendesk help, chat, and messaging into a website via a loader snippet. These
+  are distinct from the server-side SDKs in packages/.
+families:
+  - name: Zendesk Garden
+    kind: design-system
+    description: >-
+      Open-source React component library and design foundations (color,
+      typography, spacing, accessibility) for building Zendesk apps and UIs.
+      60+ production-ready, WCAG-compliant, fully typed, themeable components.
+    docs: https://garden.zendesk.com/
+    repo: https://github.com/zendeskgarden/react-components
+    npm_scope: "@zendeskgarden"
+    loaders:
+      - "@zendeskgarden/react-theming"
+      - "@zendeskgarden/react-buttons"
+      - "@zendeskgarden/react-forms"
+      - "@zendeskgarden/react-modals"
+      - "@zendeskgarden/react-tables"
+  - name: Web Widget (Classic) and messaging
+    kind: embeddable
+    description: >-
+      Embeddable widget that adds Zendesk help center search, contact forms,
+      live chat, and messaging to a website via a JavaScript snippet, with a
+      client-side JS API (zE) to configure, show/hide, and pass through
+      identity/context.
+    docs: https://developer.zendesk.com/api-reference/widget/introduction/
+    loader: >-
+      <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=YOUR_KEY"></script>
+    api: window.zE(...)

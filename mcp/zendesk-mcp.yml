@@ -1,0 +1,75 @@
+generated: '2026-06-20'
+method: searched
+status: candidate
+source: https://www.zendesk.com/blog/zendesk-insights/innovation/zendesk-ai-mcp-client/
+notes: >-
+  Zendesk has adopted the Model Context Protocol as part of its AI strategy,
+  announced at the Relate conference. Two capabilities: (1) an MCP *Client* that
+  lets admins connect Zendesk to external MCP servers and use their tools as
+  steps in action flows — in Early Access Program now; and (2) an MCP *Server*
+  that exposes Zendesk itself to external agents — Early Access scheduled for
+  summer 2026. As of this writing Zendesk does not publish a stable, generally
+  available hosted MCP endpoint URL, so this is recorded as a candidate. The
+  tools[] below are DERIVED from the curated Zendesk Support OpenAPI operations
+  as a representative agent surface, not an official Zendesk tool manifest.
+references:
+  - title: Zendesk AI MCP client (blog)
+    url: https://www.zendesk.com/blog/zendesk-insights/innovation/zendesk-ai-mcp-client/
+  - title: Connecting to MCP servers and using MCP tools in action flows (EAP)
+    url: https://support.zendesk.com/hc/en-us/articles/10497779528730
+server:
+  name: zendesk
+  transport: http
+  status: early-access
+  eap:
+    client: available
+    server: summer-2026
+tools:
+  - name: list_tickets
+    description: List tickets in the account
+    source_operation: openapi/zendesk-support-openapi.yml#listTickets
+  - name: create_ticket
+    description: Create a support ticket
+    source_operation: openapi/zendesk-support-openapi.yml#createTicket
+  - name: get_ticket
+    description: Retrieve a ticket by id
+    source_operation: openapi/zendesk-support-openapi.yml#getTicket
+  - name: update_ticket
+    description: Update a ticket
+    source_operation: openapi/zendesk-support-openapi.yml#updateTicket
+  - name: delete_ticket
+    description: Delete a ticket
+    source_operation: openapi/zendesk-support-openapi.yml#deleteTicket
+  - name: list_ticket_comments
+    description: List comments on a ticket
+    source_operation: openapi/zendesk-support-openapi.yml#listTicketComments
+  - name: list_users
+    description: List users
+    source_operation: openapi/zendesk-support-openapi.yml#listUsers
+  - name: create_user
+    description: Create a user
+    source_operation: openapi/zendesk-support-openapi.yml#createUser
+  - name: get_user
+    description: Retrieve a user by id
+    source_operation: openapi/zendesk-support-openapi.yml#getUser
+  - name: update_user
+    description: Update a user
+    source_operation: openapi/zendesk-support-openapi.yml#updateUser
+  - name: search_users
+    description: Search for users
+    source_operation: openapi/zendesk-support-openapi.yml#searchUsers
+  - name: list_organizations
+    description: List organizations
+    source_operation: openapi/zendesk-support-openapi.yml#listOrganizations
+  - name: create_organization
+    description: Create an organization
+    source_operation: openapi/zendesk-support-openapi.yml#createOrganization
+  - name: get_organization
+    description: Retrieve an organization by id
+    source_operation: openapi/zendesk-support-openapi.yml#getOrganization
+  - name: update_organization
+    description: Update an organization
+    source_operation: openapi/zendesk-support-openapi.yml#updateOrganization
+  - name: search_organizations
+    description: Search for organizations
+    source_operation: openapi/zendesk-support-openapi.yml#searchOrganizations

@@ -1,0 +1,57 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.zendesk.com/api-reference/ticketing/oauth/oauth_tokens/
+docs: https://developer.zendesk.com/documentation/api-basics/authentication/creating-and-using-oauth-tokens-with-the-api/
+notes: >-
+  The curated Zendesk Support OpenAPI declares HTTP basic + bearer security
+  schemes rather than an inline oauth2 flow object, so the automated
+  derive-oauth-scopes pass found no scopes. Zendesk does document a full OAuth
+  2.0 scope model, captured here from the docs. Scopes come in two shapes: broad
+  access scopes (read, write, impersonate) and resource-qualified scopes
+  (<resource>[:read|:write]). If no resource is specified, all resources are
+  assumed; if no access level is specified, both read and write are assumed. The
+  OAuth Tokens API takes scopes as a JSON array (["read","write"]); the
+  grant-type token endpoint takes a space-separated string ("read write").
+schemes:
+  - name: OAuth2
+    type: oauth2
+    flow: authorizationCode
+    authorizationUrl: https://{subdomain}.zendesk.com/oauth/authorizations/new
+    tokenUrl: https://{subdomain}.zendesk.com/oauth/tokens
+    source: docs
+access_scopes:
+  - scope: read
+    description: Access to GET endpoints, including permission to sideload related resources.
+  - scope: write
+    description: Access to POST, PUT, and DELETE endpoints.
+  - scope: impersonate
+    description: >-
+      Lets Zendesk Support admins make API requests on behalf of end users
+      (impersonation), useful for customer-facing apps that create tickets or
+      read request history without exposing admin credentials.
+resource_scopes:
+  format: "<resource>[:read|:write]"
+  example: tickets:read
+  resources:
+    - name: tickets
+      access: [read, write]
+    - name: users
+      access: [read, write]
+    - name: organizations
+      access: [read, write]
+    - name: auditlogs
+      access: [read]
+      note: read only
+    - name: hc
+      access: [read, write]
+      note: Help Center
+    - name: apps
+      access: [read, write]
+    - name: triggers
+      access: [read, write]
+    - name: automations
+      access: [read, write]
+    - name: targets
+      access: [read, write]
+    - name: webhooks
+      access: [read, write]

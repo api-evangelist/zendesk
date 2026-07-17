@@ -1,0 +1,52 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml (4xx/5xx responses) + https://developer.zendesk.com/api-reference/introduction/requests/
+format: zendesk
+notes: >-
+  Zendesk returns errors as an HTTP status plus a JSON envelope, not RFC 9457
+  problem+json. The envelope varies slightly by product but generally carries a
+  top-level "error" (short code/label), a human-readable "description", and, for
+  validation failures, a "details" object mapping field names to arrays of
+  { description, error } records. The status distribution below is derived from
+  the response codes declared across the harvested OpenAPI files; titles and
+  remediation are enriched from the docs.
+envelope:
+  fields:
+    error: Short machine label or category (e.g. "RecordNotFound", "RecordInvalid").
+    description: Human-readable explanation.
+    details: Field-keyed map of validation errors (present on 422).
+  problem_json: false
+problems:
+  - status: 400
+    title: Bad request
+    meaning: Malformed request, unsupported parameter, or offset-pagination limit exceeded.
+    remediation: Check query/body syntax; switch to cursor pagination beyond 10,000 records.
+  - status: 401
+    title: Unauthorized / Couldn't authenticate you
+    meaning: Missing or invalid credentials (API token, OAuth bearer, or basic auth).
+    remediation: Verify the {email}/token basic auth pair or the OAuth access token and scopes.
+  - status: 403
+    title: Forbidden
+    meaning: Authenticated but not permitted (role, plan, or scope restriction).
+    remediation: Confirm the agent role/custom role and OAuth scope grants the operation.
+  - status: 404
+    title: Not found (RecordNotFound)
+    meaning: The referenced record does not exist or is not visible to the caller.
+    remediation: Verify the resource id and account subdomain.
+  - status: 409
+    title: Conflict
+    meaning: The request conflicts with the current state (e.g. concurrent update, duplicate).
+    remediation: Re-fetch current state and retry; respect external_id uniqueness.
+  - status: 422
+    title: Unprocessable entity (RecordInvalid)
+    meaning: Validation failed; the details object lists offending fields.
+    remediation: Inspect details[field] entries and correct the payload.
+  - status: 429
+    title: Too many requests
+    meaning: Rate limit / spike protection exceeded.
+    remediation: Honor the Retry-After header and back off; consider the High Volume API add-on.
+    see: rate-limits/zendesk-rate-limits.yml
+  - status: 500
+    title: Internal server error
+    meaning: Unexpected server-side failure.
+    remediation: Retry with backoff; if persistent, check status.zendesk.com and contact support.
