@@ -1,0 +1,1374 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Organizations API
+  description: Needs a description.
+tags:
+- name: Organizations
+paths:
+  /api/v2/organizations/autocomplete:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationQueryFragment'
+    - $ref: '#/components/parameters/LookupRelationshipAutocompleteFieldIdFragment'
+    - $ref: '#/components/parameters/LookupRelationshipAutocompleteSourceFragment'
+    get:
+      operationId: AutocompleteOrganizations
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organizations Autocomplete
+      description: 'Returns an array of organizations whose name starts with the
+
+        value specified in the `name` parameter.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AutocompleteOrganizationsResponseExample'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                    - code: QueryError
+                      title: Invalid type:sample_type
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                    - code: TooManyRequests
+                      title: Too many requests to autocomplete
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                    - code: Unavailable
+                      title: Internal Server Error
+  /api/v2/organization_merges/{organization_merge_id}:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationMergeId'
+    get:
+      operationId: ShowOrganizationMerge
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organization_merges Organization_merge_id
+      description: 'Retrieves the details of a specific organization merge operation. This endpoint is useful for obtaining the status and outcome of a merge that was previously initiated. It provides information such as the winning and losing organization IDs, the status of the merge, and the associated URLs.
+
+
+        This endpoint can be used to determine if a merge is still in progress, has completed successfully, or has encountered an error.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeResponseExample'
+  /api/v2/organizations:
+    get:
+      operationId: ListOrganizations
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organizations
+      description: '#### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents, with certain restrictions
+
+
+        If the agent has a custom agent role that restricts their access to only users in their own organization, a 403 Forbidden error is returned. See [Creating custom agent roles](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents#topic_cxn_hig_bd) in Zendesk help.
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationsResponseExample'
+    post:
+      operationId: CreateOrganization
+      tags:
+      - Organizations
+      summary: Zendesk Post  Api V2 Organizations
+      description: 'You must provide a unique `name` for each organization. Normally
+
+        the system doesn''t allow records to be created with identical names.
+
+        However, a race condition can occur if you make two or more identical
+
+        POSTs very close to each other, causing the records to have identical
+
+        organization names.
+
+
+        **Note**: Leading and trailing whitespace in `name` is automatically trimmed before validation. This means that names differing only by whitespace are treated as duplicates. For example, "API Company" and "API Company " are considered the same name.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage organizations (Enterprise only)
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrganizationRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CreateOrganizationRequestExample'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CreatedOrganizationResponseExample'
+  /api/v2/organizations/{organization_id}:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationId'
+    get:
+      operationId: ShowOrganization
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organizations Organization_id
+      description: '#### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationResponseExample'
+    put:
+      operationId: UpdateOrganization
+      tags:
+      - Organizations
+      summary: Zendesk Put  Api V2 Organizations Organization_id
+      description: "#### Allowed For\n\n* Admins\n* Agents\n\nAgents with no permissions restrictions can only update \"notes\" on organizations.\n\n**Note:** Updating an organization's `domain_names` property overwrites all existing `domain_names` values. To prevent this, submit a complete list of `domain_names` for the organization in your request.\n\n#### Example Request\n\n```js\n{\n  \"organization\": {\n    \"notes\": \"Something interesting\"\n  }\n}\n```\n"
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UpdateOrganizationResponseExample'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              examples:
+                default:
+                  value:
+                    errors:
+                    - code: TooManyRequests
+                      title: Too many requests to update
+    delete:
+      operationId: DeleteOrganization
+      tags:
+      - Organizations
+      summary: Zendesk Delete  Api V2 Organizations Organization_id
+      description: '#### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage organizations (Enterprise only)
+
+        '
+      responses:
+        '204':
+          description: No Content Response
+  /api/v2/organizations/{organization_id}/merge:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationId'
+    post:
+      operationId: CreateOrganizationMerge
+      tags:
+      - Organizations
+      summary: Zendesk Post  Api V2 Organizations Organization_id Merge
+      description: "Merges two organizations by moving all users, tickets, and domain names from the organization specified by `{organization_id}` to the organization specified by `winner_id`. After the merge:\n\n- The \"losing\" organization will be deleted.\n- Other organization fields and their values will not be carried over to the \"winning\" organization.\n- The merge operation creates an `Organization Merge` record which contains a status indicating the progress of the merge.\n\n**Note**: This operation is irreversible.\n\n#### Merge Statuses\n\n| Status | Description |\n|--------|-------------|\n| new | A job has been queued to merge the two organizations. |\n| in progress | The job to merge the two organizations has started. |\n| error | An error occurred during the merge job. The merge can be retried by repeating the API call. | \n| complete | The merge has been completed successfully. |\n\n#### Allowed For\n\n* Admins\n"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationMergeRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/OrganizationMergeRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeResponseExample'
+  /api/v2/organizations/{organization_id}/merges:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationId'
+    get:
+      operationId: ListOrganizationMerges
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organizations Organization_id Merges
+      description: 'Retrieves a list of all organization merge operations associated with a given organization. This endpoint allows you to track the history of merge actions for an organization, including ongoing and completed merges.
+
+
+        Each entry in the list contains details such as the ID of the merge, the winning and losing organization IDs, the current status of the merge, and a URL to access the `Organization Merge` record.
+
+
+        #### Pagination
+
+
+        - Cursor pagination is used for this endpoint.
+
+        - A maximum of 100 records can be returned per page.
+
+
+        See [Pagination](/api-reference/introduction/pagination/) for more details.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMergeListResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationMergeListResponseExample'
+  /api/v2/organizations/{organization_id}/related:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationId'
+    get:
+      operationId: OrganizationRelated
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organizations Organization_id Related
+      description: '#### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsRelatedResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationsRelatedResponse'
+  /api/v2/organizations/count:
+    get:
+      operationId: CountOrganizations
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organizations Count
+      description: 'Returns an approximate count of organizations. If the count exceeds
+
+        100,000, it is updated every 24 hours.
+
+
+        The `refreshed_at` property of the `count` object is a timestamp that indicates
+
+        when the count was last updated.
+
+
+        When the count exceeds 100,000, the `refreshed_at` property may
+
+        occasionally be null. This indicates that the count is being
+
+        updated in the background and the `value` property of the `count` object is limited to
+
+        100,000 until the update is complete.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountOrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CountOrganizationsResponseExample'
+  /api/v2/organizations/create_many:
+    post:
+      operationId: CreateManyOrganizations
+      tags:
+      - Organizations
+      summary: Zendesk Post  Api V2 Organizations Create_many
+      description: 'Accepts an array of up to 100 organization objects.
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job''s completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.
+
+
+        #### Allowed For
+
+
+        * Agents, with restrictions applying on certain actions
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ShowJobStatusResponseExample'
+  /api/v2/organizations/create_or_update:
+    post:
+      operationId: CreateOrUpdateOrganization
+      tags:
+      - Organizations
+      summary: Zendesk Post  Api V2 Organizations Create_or_update
+      description: 'Creates an organization if it doesn''t already exist, or updates
+
+        an existing organization. Using this method means one less call
+
+        to check if an organization exists before creating it. You need
+
+        to specify the id or external id when updating
+
+        an organization to avoid a duplicate error response. Name is
+
+        not available as a matching criteria.
+
+
+        #### Allowed For
+
+
+        * Agents, with restrictions on certain actions
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CreatedOrganizationResponseExample'
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CreatedOrganizationResponseExample'
+  /api/v2/organizations/destroy_many:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationIds'
+    - $ref: '#/components/parameters/OrganizationExternalIds'
+    delete:
+      operationId: DeleteManyOrganizations
+      tags:
+      - Organizations
+      summary: Zendesk Delete  Api V2 Organizations Destroy_many
+      description: 'Accepts a comma-separated list of up to 100 organization ids or external ids.
+
+
+        #### Response
+
+
+        This endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job''s completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage organizations (Enterprise only)
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusBulkDeleteResponseExample'
+  /api/v2/organizations/search:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationExternalId'
+    - $ref: '#/components/parameters/OrganizationName'
+    get:
+      operationId: SearchOrganizations
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organizations Search
+      description: 'Returns an array of organizations matching the criteria. You may search by an organization''s `external_id` or `name`, but not both:
+
+
+        #### Searching by `external_id`
+
+
+        If you set the `external_id` value of an organization to associate it to an external record, you can use it to search for the organization.
+
+
+        For an organization to be returned, its `external_id` must exactly match the value provided (case insensitive).
+
+
+        #### Searching by `name`
+
+
+        For an organization to be returned, its `name` must exactly match the value provided (case insensitive).
+
+
+        #### Allowed For:
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to add or modify organizations (Enterprise only)
+
+
+        See [Creating custom agent roles](https://support.zendesk.com/hc/en-us/articles/203662026#topic_cxn_hig_bd) in the Support Help Center.
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OrganizationsResponseExample'
+  /api/v2/organizations/show_many:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationIds'
+    - $ref: '#/components/parameters/OrganizationExternalIds'
+    get:
+      operationId: ShowManyOrganizations
+      tags:
+      - Organizations
+      summary: Zendesk Get  Api V2 Organizations Show_many
+      description: 'Accepts a comma-separated list of up to 100 organization ids or external ids.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AutocompleteOrganizationsResponseExample'
+  /api/v2/organizations/update_many:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationIds'
+    - $ref: '#/components/parameters/OrganizationExternalIds'
+    put:
+      operationId: UpdateManyOrganizations
+      tags:
+      - Organizations
+      summary: Zendesk Put  Api V2 Organizations Update_many
+      description: "Bulk or batch updates up to 100 organizations.\n\n#### Bulk update\n\nTo make the same change to multiple organizations, use the following endpoint and data format:\n\n`https://{subdomain}.zendesk.com/api/v2/organizations/update_many.json?ids=1,2,3`\n\n```js\n{\n  \"organization\": {\n    \"notes\": \"Priority\"\n  }\n}\n```\n\n#### Batch update\n\nTo make different changes to multiple organizations, use the following endpoint and data format:\n\n`https://{subdomain}.zendesk.com/api/v2/organizations/update_many.json`\n\n```js\n{\n  \"organizations\": [\n    { \"id\": 1, \"notes\": \"Priority\" },\n    { \"id\": 2, \"notes\": \"Normal\" }\n  ]\n}\n```\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n\n* Admins\n* Agents\n\nAgents with no permissions restrictions can only update \"notes\" on organizations.\n"
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ShowJobStatusResponseExample'
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: Zendesk List Organizations
+      description: Returns a paginated list of all organizations in the account.
+      tags:
+      - Organizations
+      parameters:
+      - $ref: '#/components/parameters/PageParam'
+      - $ref: '#/components/parameters/PerPageParam'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+              examples:
+                Listorganizations200Example:
+                  summary: Default listOrganizations 200 response
+                  x-microcks-default: true
+                  value:
+                    organizations:
+                    - id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - {}
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - {}
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createOrganization
+      summary: Zendesk Create Organization
+      description: Creates a new organization. You must provide a name. You can optionally set domains, tags, notes, and custom fields.
+      tags:
+      - Organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - organization
+              properties:
+                organization:
+                  $ref: '#/components/schemas/OrganizationCreate'
+            examples:
+              CreateorganizationRequestExample:
+                summary: Default createOrganization request
+                x-microcks-default: true
+                value:
+                  organization:
+                    name: Example Title
+                    details: example_value
+                    notes: example_value
+                    domain_names:
+                    - example_value
+                    group_id: '500123'
+                    shared_tickets: true
+                    shared_comments: true
+                    external_id: '500123'
+                    tags:
+                    - example_value
+                    organization_fields: example_value
+      responses:
+        '201':
+          description: Organization created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+              examples:
+                Createorganization201Example:
+                  summary: Default createOrganization 201 response
+                  x-microcks-default: true
+                  value:
+                    organization:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - example_value
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /organizations/{organization_id}:
+    parameters:
+    - $ref: '#/components/parameters/OrganizationId'
+    get:
+      operationId: getOrganization
+      summary: Zendesk Show Organization
+      description: Returns the details of a specific organization.
+      tags:
+      - Organizations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+              examples:
+                Getorganization200Example:
+                  summary: Default getOrganization 200 response
+                  x-microcks-default: true
+                  value:
+                    organization:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - example_value
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateOrganization
+      summary: Zendesk Update Organization
+      description: Updates an organization. You can update the name, domains, notes, tags, details, and custom fields.
+      tags:
+      - Organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - organization
+              properties:
+                organization:
+                  $ref: '#/components/schemas/OrganizationUpdate'
+            examples:
+              UpdateorganizationRequestExample:
+                summary: Default updateOrganization request
+                x-microcks-default: true
+                value:
+                  organization:
+                    name: Example Title
+                    details: example_value
+                    notes: example_value
+                    domain_names:
+                    - example_value
+                    group_id: '500123'
+                    shared_tickets: true
+                    shared_comments: true
+                    external_id: '500123'
+                    tags:
+                    - example_value
+                    organization_fields: example_value
+      responses:
+        '200':
+          description: Organization updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+              examples:
+                Updateorganization200Example:
+                  summary: Default updateOrganization 200 response
+                  x-microcks-default: true
+                  value:
+                    organization:
+                      id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - example_value
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - example_value
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteOrganization
+      summary: Zendesk Delete Organization
+      description: Permanently deletes an organization. Users associated with the organization are not deleted, but their organization membership is removed.
+      tags:
+      - Organizations
+      responses:
+        '204':
+          description: Organization deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /organizations/search:
+    get:
+      operationId: searchOrganizations
+      summary: Zendesk Search Organizations
+      description: Searches for organizations by name or external ID.
+      tags:
+      - Organizations
+      parameters:
+      - name: external_id
+        in: query
+        description: Search by external ID.
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+              examples:
+                Searchorganizations200Example:
+                  summary: Default searchOrganizations 200 response
+                  x-microcks-default: true
+                  value:
+                    organizations:
+                    - id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - {}
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - {}
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /organizations/autocomplete:
+    get:
+      operationId: autocompleteOrganizations
+      summary: Zendesk Autocomplete Organizations
+      description: Returns organizations whose names start with the given string. Useful for building type-ahead search interfaces.
+      tags:
+      - Organizations
+      parameters:
+      - name: name
+        in: query
+        required: true
+        description: The prefix to match against organization names.
+        schema:
+          type: string
+        example: Example Title
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+              examples:
+                Autocompleteorganizations200Example:
+                  summary: Default autocompleteOrganizations 200 response
+                  x-microcks-default: true
+                  value:
+                    organizations:
+                    - id: abc123
+                      url: https://www.example.com
+                      name: Example Title
+                      details: example_value
+                      notes: example_value
+                      domain_names:
+                      - {}
+                      group_id: '500123'
+                      shared_tickets: true
+                      shared_comments: true
+                      external_id: '500123'
+                      tags:
+                      - {}
+                      organization_fields: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    OrganizationId:
+      name: organization_id
+      in: path
+      required: true
+      description: The ID of the organization.
+      schema:
+        type: integer
+        format: int64
+    PerPageParam:
+      name: per_page
+      in: query
+      description: The number of results per page (max 100).
+      schema:
+        type: integer
+        default: 100
+        maximum: 100
+    PageParam:
+      name: page
+      in: query
+      description: The page number.
+      schema:
+        type: integer
+        default: 1
+  schemas:
+    OrganizationResponse:
+      type: object
+      properties:
+        organization:
+          $ref: '#/components/schemas/OrganizationObject'
+    OrganizationsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationObject'
+        previous_page:
+          type: string
+          nullable: true
+    OrganizationMergeResponse:
+      type: object
+      properties:
+        organization_merge:
+          type: object
+          properties:
+            id:
+              type: string
+              format: string
+            loser_id:
+              type: integer
+            status:
+              type: string
+              enum:
+              - new
+              - in_progress
+              - error
+              - complete
+            url:
+              type: string
+              format: string
+            winner_id:
+              type: integer
+          required:
+          - id
+          - url
+          - loser_id
+          - winner_id
+          - status
+    OrganizationMergeListResponse:
+      type: object
+      properties:
+        organization_merges:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: string
+              loser_id:
+                type: integer
+              status:
+                type: string
+                enum:
+                - new
+                - in_progress
+                - error
+                - complete
+              url:
+                type: string
+                format: string
+              winner_id:
+                type: integer
+          required:
+          - id
+          - url
+          - loser_id
+          - winner_id
+          - status
+    OrganizationCreate:
+      type: object
+      description: Payload for creating a new organization.
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the organization.
+          example: Example Title
+        details:
+          type: string
+          nullable: true
+          example: example_value
+        notes:
+          type: string
+          nullable: true
+          example: example_value
+        domain_names:
+          type: array
+          items:
+            type: string
+          example: []
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        shared_tickets:
+          type: boolean
+          default: false
+          example: true
+        shared_comments:
+          type: boolean
+          default: false
+          example: true
+        external_id:
+          type: string
+          nullable: true
+          example: '500123'
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        organization_fields:
+          type: object
+          additionalProperties: true
+          example: example_value
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    Organization:
+      type: object
+      description: A Zendesk organization representing a company or group of users.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned organization ID.
+          readOnly: true
+          example: abc123
+        url:
+          type: string
+          format: uri
+          description: The API URL of the organization.
+          readOnly: true
+          example: https://www.example.com
+        name:
+          type: string
+          description: The name of the organization.
+          example: Example Title
+        details:
+          type: string
+          nullable: true
+          description: Details about the organization.
+          example: example_value
+        notes:
+          type: string
+          nullable: true
+          description: Notes about the organization visible only to agents.
+          example: example_value
+        domain_names:
+          type: array
+          items:
+            type: string
+          description: Domain names associated with the organization. Users with matching email domains can be auto-assigned.
+          example: []
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The default group assigned to tickets from this organization.
+          example: '500123'
+        shared_tickets:
+          type: boolean
+          description: Whether end users in the organization can see each other's tickets.
+          example: true
+        shared_comments:
+          type: boolean
+          description: Whether end users in the organization can see each other's comments on tickets.
+          example: true
+        external_id:
+          type: string
+          nullable: true
+          description: An external ID from an integrated system.
+          example: '500123'
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags applied to the organization.
+          example: []
+        organization_fields:
+          type: object
+          additionalProperties: true
+          description: Custom organization field values (key-value pairs).
+          example: example_value
+        created_at:
+          type: string
+          format: date-time
+          description: When the organization was created (ISO 8601).
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          description: When the organization was last updated (ISO 8601).
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+    CountOrganizationResponse:
+      type: object
+      properties:
+        count:
+          $ref: '#/components/schemas/CountOrganizationObject'
+    Error:
+      type: object
+      description: An error response from the Zendesk API.
+      properties:
+        error:
+          type: string
+          description: The error type identifier.
+          example: example_value
+        description:
+          type: string
+          description: A human-readable description of the error.
+          example: A sample description.
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional details about the error.
+          example: example_value
+    OrganizationUpdate:
+      type: object
+      description: Payload for updating an existing organization.
+      properties:
+        name:
+          type: string
+          example: Example Title
+        details:
+          type: string
+          nullable: true
+          example: example_value
+        notes:
+          type: string
+          nullable: true
+          example: example_value
+        domain_names:
+          type: array
+          items:
+            type: string
+          example: []
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        shared_tickets:
+          type: boolean
+          example: true
+        shared_comments:
+          type: boolean
+          example: true
+        external_id:
+          type: string
+          nullable: true
+          example: '500123'
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        organization_fields:
+          type: object
+          additionalProperties: true
+          example: example_value
+    OrganizationsRelatedResponse:
+      type: object
+      properties:
+        organization_related:
+          $ref: '#/components/schemas/OrganizationMetadataObject'
+  responses:
+    UnprocessableEntity:
+      description: The request was well-formed but could not be processed due to validation errors.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit exceeded. Check the Retry-After header.
+      headers:
+        Retry-After:
+          description: Number of seconds to wait before making another request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

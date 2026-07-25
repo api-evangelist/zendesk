@@ -1,0 +1,136 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Global Clients API
+  description: Needs a description.
+tags:
+- name: Global Clients
+paths:
+  /api/v2/oauth/global_clients:
+    get:
+      operationId: ListGlobalOAuthClients
+      tags:
+      - Global Clients
+      summary: Zendesk Get  Api V2 Oauth Global_clients
+      description: 'Returns all the global OAuth clients that users on your account have authorized.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalClientsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GlobalClientsResponseExample'
+  /api/v2/oauth/global_clients/{global_client_id}:
+    parameters:
+    - $ref: '#/components/parameters/GlobalClientId'
+    get:
+      operationId: ShowGlobalClient
+      tags:
+      - Global Clients
+      summary: Zendesk Get  Api V2 Oauth Global_clients Global_client_id
+      description: 'Returns the global OAuth client associated with the ID sent on the request.
+
+
+        #### Allowed for
+
+        * Admins
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalClientResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GlobalClientResponseExample'
+  /api/v2/oauth/global_clients/token_summary:
+    parameters:
+    - $ref: '#/components/parameters/OAuthGlobalClientIdQuery'
+    - $ref: '#/components/parameters/GlobalClientTokenSummaryIncludeExpiredTokensQuery'
+    get:
+      operationId: GlobalOAuthClientsTokenSummary
+      tags:
+      - Global Clients
+      summary: Zendesk Get  Api V2 Oauth Global_clients Token_summary
+      description: 'Returns information about tokens for the global clients that your account has authorized.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalClientsTokenSummaryResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GlobalClientsTokenSummaryResponseExample'
+components:
+  schemas:
+    GlobalClientsResponse:
+      type: object
+      properties:
+        global_clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalClientObject'
+    GlobalClientsTokenSummaryResponse:
+      type: object
+      properties:
+        global_clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalClientTokenSummaryObject'
+    GlobalClientResponse:
+      type: object
+      properties:
+        global_client:
+          $ref: '#/components/schemas/GlobalClientObject'

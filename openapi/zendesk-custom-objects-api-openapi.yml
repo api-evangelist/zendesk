@@ -1,0 +1,171 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Custom Objects API
+  description: Needs a description.
+tags:
+- name: Custom Objects
+paths:
+  /api/v2/custom_objects:
+    get:
+      operationId: ListCustomObjects
+      tags:
+      - Custom Objects
+      summary: Zendesk Get  Api V2 Custom_objects
+      description: 'Lists all undeleted custom objects for the account
+
+        #### Allowed For
+
+        * Agents'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsResponseExample'
+    post:
+      operationId: CreateCustomObject
+      tags:
+      - Custom Objects
+      summary: Zendesk Post  Api V2 Custom_objects
+      description: 'Creates an object describing all the properties required to create a custom object record
+
+        #### Allowed For
+
+        * Admins
+
+        '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectsCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectsCreateRequestExample'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsCreateResponseExample'
+  /api/v2/custom_objects/{custom_object_key}:
+    get:
+      operationId: ShowCustomObject
+      tags:
+      - Custom Objects
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key
+      description: 'Returns an object with the specified key
+
+        #### Allowed For
+
+        * Agents
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '200':
+          description: Custom Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsCreateResponseExample'
+    patch:
+      operationId: UpdateCustomObject
+      tags:
+      - Custom Objects
+      summary: Zendesk Patch  Api V2 Custom_objects Custom_object_key
+      description: 'Updates an individual custom object. The updating rules are as follows:
+
+        * Takes a `custom_object` object that specifies the properties to update
+
+        * The `key` property cannot be updated
+
+        #### Allowed For
+
+        * Admins'
+      parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsCreateResponseExample'
+    delete:
+      operationId: DeleteCustomObject
+      tags:
+      - Custom Objects
+      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key
+      description: 'Permanently deletes the custom object with the specified key
+
+        #### Allowed For
+
+        * Admins'
+      parameters:
+      - $ref: '#/components/parameters/CustomObjectKey'
+      responses:
+        '204':
+          description: No content response
+  /api/v2/custom_objects/limits/object_limit:
+    get:
+      operationId: CustomObjectsLimit
+      tags:
+      - Custom Objects
+      summary: Zendesk Get  Api V2 Custom_objects Limits Object_limit
+      description: 'List the current count and the limit for custom objects
+
+        #### Allowed For
+
+        * Admins'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomObjectLimitsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/CustomObjectsLimitResponseExample'
+components:
+  schemas:
+    CustomObjectResponse:
+      type: object
+      properties:
+        custom_object:
+          $ref: '#/components/schemas/CustomObject'
+    CustomObjectLimitsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The current numnber of the requested resource
+          readOnly: true
+        limit:
+          type: integer
+          description: The maximum allowed number for the requested resource
+          readOnly: true
+    CustomObjectsResponse:
+      type: object
+      properties:
+        custom_objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomObject'

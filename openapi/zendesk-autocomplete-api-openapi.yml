@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Autocomplete API
+  description: Needs a description.
+tags:
+- name: Autocomplete
+paths:
+  /api/v2/autocomplete/tags:
+    parameters:
+    - $ref: '#/components/parameters/TagNameFragment'
+    get:
+      operationId: AutocompleteTags
+      tags:
+      - Autocomplete
+      summary: Zendesk Get  Api V2 Autocomplete Tags
+      description: 'Returns an array of registered and recent tag names that start with the characters specified in the `name` query parameter. You must specify at least 2 characters.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).
+
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsAutocompleteResponseExample'
+components:
+  schemas:
+    TagsByObjectIdResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          description: An array of strings
+          items:
+            type: string
+      required:
+      - tags

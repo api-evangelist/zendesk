@@ -1,0 +1,240 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Ticket Audits API
+  description: Needs a description.
+tags:
+- name: Ticket Audits
+paths:
+  /api/v2/ticket_audits:
+    get:
+      operationId: ListTicketAudits
+      tags:
+      - Ticket Audits
+      summary: Zendesk Get  Api V2 Ticket_audits
+      description: 'Returns ticket audits. Archived tickets are not included in the response. Use the [List Audits for a Ticket](#list-audits-for-a-ticket) endpoint to
+
+        retrieve audit records for an archived ticket. To learn more about archived tickets, see [About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756).
+
+
+        This endpoint should not be used for capturing change data. When continually chasing the tail of a cursor, some records will be skipped. For this use case, use the [Incremental Ticket Event Export API](/api-reference/ticketing/ticket-management/incremental_exports/#incremental-ticket-event-export).
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        '
+      parameters:
+      - name: page[before]
+        in: query
+        description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can''t be used together in the same request.
+
+          '
+        schema:
+          type: string
+      - name: page[after]
+        in: query
+        description: 'A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can''t be used together in the same request.
+
+          '
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        description: Specifies how many records to be returned in the response. You can specify up to 100 records per page.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketAuditsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketAuditsResponseExample'
+  /api/v2/tickets/{ticket_id}/audits:
+    parameters:
+    - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListAuditsForTicket
+      tags:
+      - Ticket Audits
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits
+      description: 'Lists the audits for a specified ticket.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        **Note**: Audits for [Archived Tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) do not support pagination for this endpoint.
+
+
+        #### Allowed for
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketAuditsResponseNoneCursor'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketAuditsForTicketResponseExample'
+  /api/v2/tickets/{ticket_id}/audits/{ticket_audit_id}:
+    parameters:
+    - $ref: '#/components/parameters/TicketId'
+    - $ref: '#/components/parameters/TicketAuditId'
+    get:
+      operationId: ShowTicketAudit
+      tags:
+      - Ticket Audits
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits Ticket_audit_id
+      description: '#### Allowed for
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketAuditResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketAuditResponseExample'
+  /api/v2/tickets/{ticket_id}/audits/{ticket_audit_id}/make_private:
+    parameters:
+    - $ref: '#/components/parameters/TicketId'
+    - $ref: '#/components/parameters/TicketAuditId'
+    put:
+      operationId: MakeTicketCommentPrivateFromAudits
+      tags:
+      - Ticket Audits
+      summary: Zendesk Put  Api V2 Tickets Ticket_id Audits Ticket_audit_id Make_private
+      description: '#### Allowed for
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/tickets/{ticket_id}/audits/count:
+    parameters:
+    - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: CountAuditsForTicket
+      tags:
+      - Ticket Audits
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits Count
+      description: 'Returns an approximate count of audits for a specified ticket. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.
+
+
+        The `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.
+
+
+        **Note**: If the total number of audits for a ticket exceeds 100,000, this endpoint returns a count of 100,000 with a `count[refreshed_at]` value of null. This value is cached for 24 hours, during which any requests returns the same count and timestamp. After 24 hours, the endpoint temporarily shows the same count again before providing an updated total.
+
+
+        #### Allowed for
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Count of audits on a ticket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketAuditsCountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketAuditsCountResponseExample'
+components:
+  schemas:
+    TicketAuditsResponse:
+      type: object
+      properties:
+        after_cursor:
+          type: string
+          readOnly: true
+        after_url:
+          type: string
+          readOnly: true
+        audits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketAuditObject'
+        before_cursor:
+          type: string
+          readOnly: true
+        before_url:
+          type: string
+          readOnly: true
+    TicketAuditsResponseNoneCursor:
+      type: object
+      properties:
+        audits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketAuditObject'
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+    TicketAuditsCountResponse:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: date-time
+            value:
+              type: integer
+    TicketAuditResponse:
+      type: object
+      properties:
+        audit:
+          $ref: '#/components/schemas/TicketAuditObject'

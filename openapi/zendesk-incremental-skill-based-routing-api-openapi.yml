@@ -1,0 +1,158 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Incremental Skill Based Routing API
+  description: Needs a description.
+tags:
+- name: Incremental Skill Based Routing
+paths:
+  /api/v2/incremental/routing/attribute_values:
+    get:
+      operationId: IncrementalSkilBasedRoutingAttributeValuesExport
+      tags:
+      - Incremental Skill Based Routing
+      summary: Zendesk Get  Api V2 Incremental Routing Attribute_values
+      description: 'Returns a stream of changes that occurred on routing attribute values.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+
+        #### Parameters
+
+
+        Optional
+
+
+        | Name   | Type   | Comment
+
+        | ------ | ------ | -------
+
+        | cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that''s only available in API responses. See [Pagination](#pagination).
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncrementalSkillBasedRouting'
+              examples:
+                default:
+                  $ref: '#/components/examples/IncrementalSkillBasedRoutingAttributeValuesExample'
+  /api/v2/incremental/routing/attributes:
+    get:
+      operationId: IncrementalSkilBasedRoutingAttributesExport
+      tags:
+      - Incremental Skill Based Routing
+      summary: Zendesk Get  Api V2 Incremental Routing Attributes
+      description: 'Returns a stream of changes that occurred on routing attributes.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+
+        #### Parameters
+
+
+        Optional
+
+
+
+        | Name   | Type   | Comment
+
+        | ------ | ------ | -------
+
+        | cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that''s only available in API responses. See [Pagination](#pagination).
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncrementalSkillBasedRouting'
+              examples:
+                default:
+                  $ref: '#/components/examples/IncrementalSkillBasedRoutingAttributesExample'
+  /api/v2/incremental/routing/instance_values:
+    get:
+      operationId: IncrementalSkilBasedRoutingInstanceValuesExport
+      tags:
+      - Incremental Skill Based Routing
+      summary: Zendesk Get  Api V2 Incremental Routing Instance_values
+      description: 'Returns a stream of changes that occurred on routing instance values. Changes are grouped by `attribute_value_id`,
+
+        with associate type events listed alongside unassociate type events based on the unassociate event’s timestamp.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+
+        #### Parameters
+
+
+        Optional
+
+
+        | Name   | Type   | Comment
+
+        | ------ | ------ | -------
+
+        | cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that''s only available in API responses. See [Pagination](#pagination).
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncrementalSkillBasedRouting'
+              examples:
+                default:
+                  $ref: '#/components/examples/IncrementalSkillBasedRoutingInstanceValuesExample'
+components:
+  schemas:
+    IncrementalSkillBasedRouting:
+      title: Incremental Skill-based Routing
+      type: object
+      properties:
+        attribute_values:
+          type: array
+          description: Routing attribute values
+          items:
+            $ref: '#/components/schemas/IncrementalSkillBasedRoutingAttributeValue'
+        attributes:
+          type: array
+          description: Routing attributes
+          items:
+            $ref: '#/components/schemas/IncrementalSkillBasedRoutingAttribute'
+        count:
+          type: integer
+          description: The number of results returned for the current request
+          readOnly: true
+        end_time:
+          type: integer
+          description: The most recent resource creation time present in this result set in Unix epoch time
+          readOnly: true
+        instance_values:
+          type: array
+          description: Routing instance values
+          items:
+            $ref: '#/components/schemas/IncrementalSkillBasedRoutingInstanceValue'
+        next_page:
+          type: string
+          description: The URL that should be called to get the next set of results
+          readOnly: true

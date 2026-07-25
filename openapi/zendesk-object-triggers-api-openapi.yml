@@ -1,0 +1,312 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Object Triggers API
+  description: Needs a description.
+tags:
+- name: Object Triggers
+paths:
+  /api/v2/custom_objects/{custom_object_key}/triggers:
+    parameters:
+    - $ref: '#/components/parameters/CustomObjectKey'
+    get:
+      operationId: ListObjectTriggers
+      tags:
+      - Object Triggers
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers
+      description: "Lists all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n"
+      parameters:
+      - $ref: '#/components/parameters/TriggerActive'
+      - $ref: '#/components/parameters/TriggerSortBy'
+      - $ref: '#/components/parameters/TriggerSortOrder'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersResponseExample'
+    post:
+      operationId: CreateObjectTrigger
+      tags:
+      - Object Triggers
+      summary: Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers
+      description: 'Creates a new object trigger for a specified object.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerRequestExample'
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/{trigger_id}:
+    parameters:
+    - $ref: '#/components/parameters/CustomObjectKey'
+    - $ref: '#/components/parameters/TriggerId'
+    get:
+      operationId: GetObjectTrigger
+      tags:
+      - Object Triggers
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: 'Returns details of a specific object trigger.
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+    put:
+      operationId: UpdateObjectTrigger
+      tags:
+      - Object Triggers
+      summary: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: 'Updates a specified object trigger.
+
+
+        **Note**: Updating a condition or action updates both the conditions and actions arrays,
+
+        clearing all existing values of both arrays. Include all your conditions
+
+        and actions when updating any condition or action.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerResponseExample'
+    delete:
+      operationId: DeleteObjectTrigger
+      tags:
+      - Object Triggers
+      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      description: 'Deletes a specified object trigger.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
+
+        '
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/custom_objects/{custom_object_key}/triggers/active:
+    parameters:
+    - $ref: '#/components/parameters/CustomObjectKey'
+    - $ref: '#/components/parameters/TriggerSortBy'
+    - $ref: '#/components/parameters/TriggerSortOrder'
+    get:
+      operationId: ListActiveObjectTriggers
+      tags:
+      - Object Triggers
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active
+      description: 'Lists all active object triggers.
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersActiveResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/definitions:
+    parameters:
+    - $ref: '#/components/parameters/CustomObjectKey'
+    get:
+      operationId: ListObjectTriggersDefinitions
+      tags:
+      - Object Triggers
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
+      description: "Lists the conditions and actions of all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n"
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggerDefinitionResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggerDefinitionResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/destroy_many:
+    parameters:
+    - $ref: '#/components/parameters/CustomObjectKey'
+    - $ref: '#/components/parameters/TriggerIds'
+    delete:
+      operationId: DeleteManyObjectTriggers
+      tags:
+      - Object Triggers
+      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
+      description: "Deletes the object triggers corresponding to the provided comma-separated list of ids. \n\n**Note**: You can only bulk-delete triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe DELETE request takes an `ids` object that lists the\nobject triggers to delete. All of the specified object trigger `ids` must be associated with a single object.\n\n| Name | Description\n| ---- | -----------\n| ids  | The ids of the triggers to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n"
+      responses:
+        '204':
+          description: No content response
+  /api/v2/custom_objects/{custom_object_key}/triggers/search:
+    parameters:
+    - $ref: '#/components/parameters/CustomObjectKey'
+    - $ref: '#/components/parameters/TriggerSearchQuery'
+    - $ref: '#/components/parameters/TriggerSearchFilter'
+    - $ref: '#/components/parameters/TriggerActive'
+    - $ref: '#/components/parameters/TriggerSort'
+    - $ref: '#/components/parameters/TriggerSortBy'
+    - $ref: '#/components/parameters/TriggerSortOrder'
+    - $ref: '#/components/parameters/TriggerInclude'
+    get:
+      operationId: SearchObjectTriggers
+      tags:
+      - Object Triggers
+      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
+      description: "Returns a list of object triggers that meet your filter or search criteria.\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Filter\n\nUse the `filter` query parameter to filter an object trigger search by one or more attributes. For example, the following `filter` argument filters object triggers by the `title` attribute:\n\n```json\n{\n  \"json\": {\n    \"title\": \"test\"\n  }\n}\n```\n"
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersSearchResponseExample'
+  /api/v2/custom_objects/{custom_object_key}/triggers/update_many:
+    parameters:
+    - $ref: '#/components/parameters/CustomObjectKey'
+    put:
+      operationId: UpdateManyObjectTriggers
+      tags:
+      - Object Triggers
+      summary: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
+      description: "Updates the position or the active status of multiple object triggers. Any additional properties are ignored.\n\n**Note**: You can only bulk-update triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe PUT request expects a `triggers` object that lists the object triggers to update. All of the specified object trigger `ids` must be associated with a single object.\n\nYou can specify the following properties for each object trigger you're updating:\n\n| Name        | Mandatory | Description\n| --------    | --------- | -----------\n| id          | yes       | The ID of the object trigger to update\n| position    | no        | The new position of the object trigger\n| active      | no        | The active status of the object trigger (true or false)\n\n#### Example Request\n\n```js\n{\n  \"triggers\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"active\": true},\n    {\"id\": 27, \"position\": 9, \"active\": false},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectTriggerBulkUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ObjectTriggerBulkUpdateRequestExample'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectTriggersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ObjectTriggersResponseExample'
+components:
+  schemas:
+    ObjectTriggerDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          $ref: '#/components/schemas/ObjectTriggerDefinitionObject'
+    ObjectTriggerResponse:
+      type: object
+      properties:
+        trigger:
+          $ref: '#/components/schemas/ObjectTriggerObject'
+    ObjectTriggersResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectTriggerObject'

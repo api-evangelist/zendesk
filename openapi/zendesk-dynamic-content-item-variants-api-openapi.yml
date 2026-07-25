@@ -1,0 +1,204 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Dynamic Content Item Variants API
+  description: Needs a description.
+tags:
+- name: Dynamic Content Item Variants
+paths:
+  /api/v2/dynamic_content/items/{dynamic_content_item_id}/variants:
+    parameters:
+    - $ref: '#/components/parameters/DynamicContentItemId'
+    get:
+      operationId: DynamicContentListVariants
+      tags:
+      - Dynamic Content Item Variants
+      summary: Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
+      description: 'Returns all the variants of the specified dynamic content item.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents who have permission to manage dynamic content
+
+
+        #### Pagination
+
+
+        * Cursor pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentVariantsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentVariantsResponseExample'
+    post:
+      operationId: CreateDynamicContentVariant
+      tags:
+      - Dynamic Content Item Variants
+      summary: Zendesk Post  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
+      description: 'You can only create one variant for each locale id. If a locale variant already exists, the request is rejected.
+
+
+        #### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentVariantResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentVariantResponseExample'
+  /api/v2/dynamic_content/items/{dynamic_content_item_id}/variants/{dynamic_content_variant_id}:
+    parameters:
+    - $ref: '#/components/parameters/DynamicContentItemId'
+    - $ref: '#/components/parameters/DynamicContentVariantId'
+    get:
+      operationId: ShowDynamicContentVariant
+      tags:
+      - Dynamic Content Item Variants
+      summary: Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
+      description: '#### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentVariantResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentVariantResponseExample'
+    put:
+      operationId: UpdateDynamicContentVariant
+      tags:
+      - Dynamic Content Item Variants
+      summary: Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
+      description: 'Updates the specified variant. You don''t need to include all the properties. If you just want to update content, for example, then include just that.
+
+
+        You can''t switch the active state of the default variant of an item. Similarly, you can''t switch the default to false if the variant is the default. You must make another variant default instead.
+
+
+        #### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentVariantResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentVariantUpdateResponseExample'
+    delete:
+      operationId: DeleteDynamicContentVariant
+      tags:
+      - Dynamic Content Item Variants
+      summary: Zendesk Delete  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
+      description: '#### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/dynamic_content/items/{dynamic_content_item_id}/variants/create_many:
+    parameters:
+    - $ref: '#/components/parameters/DynamicContentItemId'
+    post:
+      operationId: CreateManyDynamicContentVariants
+      tags:
+      - Dynamic Content Item Variants
+      summary: Zendesk Post  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Create_many
+      description: '#### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentVariantsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentVariantsCreateManyResponseExample'
+  /api/v2/dynamic_content/items/{dynamic_content_item_id}/variants/update_many:
+    parameters:
+    - $ref: '#/components/parameters/DynamicContentItemId'
+    put:
+      operationId: UpdateManyDynamicContentVariants
+      tags:
+      - Dynamic Content Item Variants
+      summary: Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Update_many
+      description: 'Updates one or more variants. See [Update Variant](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/#update-variant).
+
+
+        You must specify the variants by id in the body. To get the variant ids, see [List Variants](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/#list-variants).
+
+
+        #### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentVariantsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentVariantsUpdateManyResponseExample'
+components:
+  schemas:
+    DynamicContentVariantsResponse:
+      type: object
+      properties:
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicContentVariantObject'
+    DynamicContentVariantResponse:
+      type: object
+      properties:
+        variant:
+          $ref: '#/components/schemas/DynamicContentVariantObject'

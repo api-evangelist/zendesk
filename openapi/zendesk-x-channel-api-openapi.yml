@@ -1,0 +1,147 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings X Channel API
+  description: Needs a description.
+tags:
+- name: X Channel
+paths:
+  /api/v2/channels/twitter/monitored_twitter_handles:
+    get:
+      operationId: ListMonitoredTwitterHandles
+      tags:
+      - X Channel
+      summary: Zendesk Get  Api V2 Channels Twitter Monitored_twitter_handles
+      description: '#### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwitterChannelsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TwitterChannelsResponseExample'
+  /api/v2/channels/twitter/monitored_twitter_handles/{monitored_twitter_handle_id}:
+    parameters:
+    - $ref: '#/components/parameters/MonitoredTwitterHandleId'
+    get:
+      operationId: ShowMonitoredTwitterHandle
+      tags:
+      - X Channel
+      summary: Zendesk Get  Api V2 Channels Twitter Monitored_twitter_handles Monitored_twitter_handle_id
+      description: '#### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwitterChannelResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TwitterChannelResponseExample'
+  /api/v2/channels/twitter/tickets:
+    post:
+      operationId: CreateTicketFromTweet
+      tags:
+      - X Channel
+      summary: Zendesk Post  Api V2 Channels Twitter Tickets
+      description: 'Turns a tweet into a ticket. You must provide the tweet id as well as the id of a monitored X (formerly Twitter) handle configured for your account.
+
+
+        The submitter of the ticket is set to be the user submitting the API request.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '201':
+          description: description
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/channels/twitter/tickets/{comment_id}/statuses:
+    parameters:
+    - $ref: '#/components/parameters/CommentId'
+    get:
+      operationId: GettingTwicketStatus
+      tags:
+      - X Channel
+      summary: Zendesk Get  Api V2 Channels Twitter Tickets Comment_id Statuses
+      description: '#### Allowed For
+
+
+        * Agents
+
+        '
+      parameters:
+      - name: ids
+        in: query
+        description: Optional comment ids to retrieve tweet information for only particular comments
+        schema:
+          type: string
+        example: 1,3,5
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwitterChannelTwicketStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TwitterChannelTwicketStatusResponseExample'
+components:
+  schemas:
+    TwitterChannelTwicketStatusResponse:
+      type: object
+      properties:
+        statuses:
+          type: array
+          items:
+            type: object
+            properties:
+              favorited:
+                type: boolean
+              id:
+                type: integer
+              retweeted:
+                type: boolean
+              user_followed:
+                type: boolean
+    TwitterChannelsResponse:
+      type: object
+      properties:
+        monitored_twitter_handles:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwitterChannelObject'
+    TwitterChannelResponse:
+      type: object
+      properties:
+        monitored_twitter_handle:
+          $ref: '#/components/schemas/TwitterChannelObject'

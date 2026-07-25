@@ -1,0 +1,237 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Groups API
+  description: Needs a description.
+tags:
+- name: Groups
+paths:
+  /api/v2/groups:
+    get:
+      operationId: ListGroups
+      tags:
+      - Groups
+      summary: Zendesk Get  Api V2 Groups
+      description: '#### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/ExcludeDeleted'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupsResponseExample'
+    post:
+      operationId: CreateGroup
+      tags:
+      - Groups
+      summary: Zendesk Post  Api V2 Groups
+      description: '#### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage groups (Enterprise only)
+
+        '
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupCreateResponseExample'
+  /api/v2/groups/{group_id}:
+    parameters:
+    - $ref: '#/components/parameters/GroupId'
+    get:
+      operationId: ShowGroupById
+      tags:
+      - Groups
+      summary: Zendesk Get  Api V2 Groups Group_id
+      description: '#### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupResponseExample'
+    put:
+      operationId: UpdateGroup
+      tags:
+      - Groups
+      summary: Zendesk Put  Api V2 Groups Group_id
+      description: '#### Allowed For
+
+
+        * Admins
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupUpdateResponseExample'
+    delete:
+      operationId: DeleteGroup
+      tags:
+      - Groups
+      summary: Zendesk Delete  Api V2 Groups Group_id
+      description: '#### Allowed For
+
+
+        * Admins
+
+        * Agents assigned to a custom role with permissions to manage groups (Enterprise only)
+
+        '
+      responses:
+        '204':
+          description: No content response
+  /api/v2/groups/assignable:
+    get:
+      operationId: ListAssignableGroups
+      tags:
+      - Groups
+      summary: Zendesk Get  Api V2 Groups Assignable
+      description: '#### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupsResponseExample'
+  /api/v2/groups/count:
+    parameters:
+    - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: CountGroups
+      tags:
+      - Groups
+      summary: Zendesk Get  Api V2 Groups Count
+      description: 'Returns an approximate count of groups. If the count exceeds 100,000, it is updated every 24 hours.
+
+
+        The `refreshed_at` property of the `count` object is a timestamp that indicates when the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, `refreshed_at` may occasionally be null. This indicates that the count is being updated in the background, and the `value` property of the `count` object is limited to 100,000 until the update is complete.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupsCountObject'
+              examples:
+                default:
+                  $ref: '#/components/examples/GroupsCountResponseExample'
+components:
+  schemas:
+    GroupResponse:
+      type: object
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupObject'
+    GroupsCountObject:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: date-time
+              description: Timestamp that indicates when the count was last updated
+              readOnly: true
+            value:
+              type: integer
+              description: Approximate count of groups
+              readOnly: true
+    GroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupObject'

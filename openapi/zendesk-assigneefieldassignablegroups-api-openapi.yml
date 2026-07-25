@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings AssigneeFieldAssignableGroups API
+  description: Needs a description.
+tags:
+- name: AssigneeFieldAssignableGroups
+paths:
+  /api/lotus/assignables/autocomplete.json:
+    get:
+      operationId: ListAssigneeFieldAssignableGroupsAndAgentsSearch
+      tags:
+      - AssigneeFieldAssignableGroups
+      summary: Zendesk Get  Api Lotus Assignables Autocomplete.json
+      description: 'List assignable groups and agents based on query matched against name
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/AssigneeFieldSearchValue'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssigneeFieldAssignableGroupsAndAgentsSearchResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/AssigneeFieldAssignableGroupsAndAgentsSearchResponseExample'
+components:
+  schemas:
+    AssigneeFieldAssignableGroupsAndAgentsSearchResponse:
+      type: object
+      properties:
+        agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssigneeFieldAssignableSearchAgentObject'
+        count:
+          type: integer
+          description: Number of agents + groups listed from search result.
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssigneeFieldAssignableSearchGroupObject'
+      example:
+        agents:
+        - group: Tech
+          group_id: 6574839201
+          id: 8392017465
+          name: Sam Technologist
+          photo_url: https://z3n-example.zendesk.com/system/photos/410305192023/my_profile.png
+        count: 2
+        groups:
+        - id: 6574839201
+          name: Tech

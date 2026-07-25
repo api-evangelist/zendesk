@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Ticket Metric Events API
+  description: Needs a description.
+tags:
+- name: Ticket Metric Events
+paths:
+  /api/v2/incremental/ticket_metric_events:
+    get:
+      operationId: ListTicketMetricEvents
+      tags:
+      - Ticket Metric Events
+      summary: Zendesk Get  Api V2 Incremental Ticket_metric_events
+      description: 'Returns ticket metric events that occurred on or after the start time.
+
+
+        Cursor pagination returns a maximum of 100 records per page. Events are listed in chronological order.
+
+
+        If the results are not paginated, events will be returned as a time-based incremental export.
+
+
+        See [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports).
+
+
+        #### Pagination
+
+        * Cursor pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        #### Allowed For
+
+
+        * Admins'
+      parameters:
+      - name: start_time
+        in: query
+        description: 'The Unix UTC epoch time of the oldest event you''re interested in. Example: 1332034771.'
+        required: true
+        schema:
+          type: integer
+        example: 1332034771
+      - name: include_changes
+        in: query
+        description: This optional parameter enhances incremental data retrieval, delivering a consistent and accurate representation of data changes.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketMetricEventsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketMetricEventsResponseExample'
+components:
+  schemas:
+    TicketMetricEventsResponse:
+      type: object
+      allOf:
+      - type: object
+        properties:
+          ticket_metric_events:
+            type: array
+            items:
+              $ref: '#/components/schemas/TicketMetricEventBaseObject'
+      - type: object
+        properties:
+          count:
+            type: integer
+          end_time:
+            type: integer
+          next_page:
+            type: string

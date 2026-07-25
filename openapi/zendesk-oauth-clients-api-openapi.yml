@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings OAuth Clients API
+  description: Needs a description.
+tags:
+- name: OAuth Clients
+paths:
+  /api/v2/oauth/clients:
+    get:
+      operationId: ListOAuthClients
+      tags:
+      - OAuth Clients
+      summary: Zendesk Get  Api V2 Oauth Clients
+      description: '#### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthClientsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OAuthClientsResponseExample'
+    post:
+      operationId: CreateOAuthClient
+      tags:
+      - OAuth Clients
+      summary: Zendesk Post  Api V2 Oauth Clients
+      description: '#### Allowed For
+
+
+        * Admins
+
+        '
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OauthClientResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OAuthClientResponseExample'
+  /api/v2/oauth/clients/{oauth_client_id}:
+    parameters:
+    - $ref: '#/components/parameters/OAuthClientId'
+    get:
+      operationId: ShowClient
+      tags:
+      - OAuth Clients
+      summary: Zendesk Get  Api V2 Oauth Clients Oauth_client_id
+      description: '#### Allowed for
+
+        * Admins
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OauthClientResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OAuthClientResponseExample'
+    put:
+      operationId: UpdateClient
+      tags:
+      - OAuth Clients
+      summary: Zendesk Put  Api V2 Oauth Clients Oauth_client_id
+      description: "#### Allowed for\n * Admins\n"
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OauthClientResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OAuthClientUpdateResponseExample'
+    delete:
+      operationId: DeleteClient
+      tags:
+      - OAuth Clients
+      summary: Zendesk Delete  Api V2 Oauth Clients Oauth_client_id
+      description: "#### Allowed for\n * Admins\n"
+      responses:
+        '204':
+          description: No content response
+  /api/v2/oauth/clients/{oauth_client_id}/generate_secret:
+    parameters:
+    - $ref: '#/components/parameters/OAuthClientId'
+    put:
+      operationId: ClientGenerateSecret
+      tags:
+      - OAuth Clients
+      summary: Zendesk Put  Api V2 Oauth Clients Oauth_client_id Generate_secret
+      description: "#### Allowed for\n * Admins\n"
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OauthClientResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/OAuthClientResponseExample'
+components:
+  schemas:
+    OauthClientResponse:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/OAuthClientObject'
+    OAuthClientsResponse:
+      type: object
+      properties:
+        clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/OAuthClientObject'

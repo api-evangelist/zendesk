@@ -1,0 +1,185 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Dynamic Content API
+  description: Needs a description.
+tags:
+- name: Dynamic Content
+paths:
+  /api/v2/dynamic_content/items:
+    get:
+      operationId: ListDynamicContents
+      tags:
+      - Dynamic Content
+      summary: Zendesk Get  Api V2 Dynamic_content Items
+      description: 'Returns a list of all dynamic content items for your account if accessed as an admin or agents who have permission to manage dynamic content.
+
+
+        #### Allowed For
+
+
+        * Admins, Agents
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentsResponseExample'
+    post:
+      operationId: CreateDynamicContent
+      tags:
+      - Dynamic Content
+      summary: Zendesk Post  Api V2 Dynamic_content Items
+      description: 'Create a new content item, with one or more variants in the item''s `variants` array. See [Specifying item variants](#specifying-item-variants).
+
+
+        The `default_locale_id` and variant `locale_id` values must be one of the locales the account has active. You can get the list with the [List Locales](/api-reference/ticketing/account-configuration/locales/#list-locales) endpoint.
+
+
+        #### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentResponseExample'
+  /api/v2/dynamic_content/items/{dynamic_content_item_id}:
+    parameters:
+    - $ref: '#/components/parameters/DynamicContentItemId'
+    get:
+      operationId: ShowDynamicContentItem
+      tags:
+      - Dynamic Content
+      summary: Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id
+      description: '#### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentResponseExample'
+    put:
+      operationId: UpdateDynamicContentItem
+      tags:
+      - Dynamic Content
+      summary: Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id
+      description: 'The only attribute you can change is the name.
+
+
+        To add a variant to the item, or to update or delete the variants of the item, use the [Item Variants API](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/#update-many-variants).
+
+
+        #### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentUpdateResponseExample'
+    delete:
+      operationId: DeleteDynamicContentItem
+      tags:
+      - Dynamic Content
+      summary: Zendesk Delete  Api V2 Dynamic_content Items Dynamic_content_item_id
+      description: '#### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      responses:
+        '204':
+          description: No Content response
+  /api/v2/dynamic_content/items/show_many:
+    get:
+      operationId: ShowManyDynamicContents
+      tags:
+      - Dynamic Content
+      summary: Zendesk Get  Api V2 Dynamic_content Items Show_many
+      description: '#### Stability
+
+
+        * Development
+
+
+        #### Allowed For
+
+
+        * Admins, Agents
+
+        '
+      parameters:
+      - name: identifiers
+        in: query
+        description: Identifiers for the dynamic contents
+        schema:
+          type: string
+        example: item1,item2
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicContentsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/DynamicContentsResponseExample'
+components:
+  schemas:
+    DynamicContentResponse:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/DynamicContentObject'
+    DynamicContentsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicContentObject'

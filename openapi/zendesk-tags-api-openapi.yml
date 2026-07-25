@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Tags API
+  description: Needs a description.
+tags:
+- name: Tags
+paths:
+  /api/v2/tags:
+    get:
+      operationId: ListTags
+      tags:
+      - Tags
+      summary: Zendesk Get  Api V2 Tags
+      description: 'Lists up to the 20,000 most popular tags in the last 60 days, in decreasing popularity.
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsResponseExample'
+  /api/v2/tags/count:
+    get:
+      operationId: CountTags
+      tags:
+      - Tags
+      summary: Zendesk Get  Api V2 Tags Count
+      description: 'Returns an approximate count of tags. If the count exceeds 100,000, it
+
+        is updated every 24 hours.
+
+
+        The `refreshed_at` property of the `count` object is a timestamp that indicates when
+
+        the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, the `refreshed_at` property in the `count` object may
+
+        occasionally be null. This indicates that the count is being
+
+        updated in the background and the `value` property in the `count` object is limited to
+
+        100,000 until the update is complete.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagCountResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagCountResponseExample'
+components:
+  schemas:
+    TagCountResponse:
+      type: object
+      properties:
+        count:
+          $ref: '#/components/schemas/TagCountObject'
+    TagsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The number of pages
+          readOnly: true
+        next_page:
+          type: string
+          description: The url of the previous page
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: The url of the next page
+          nullable: true
+          readOnly: true
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagListTagObject'

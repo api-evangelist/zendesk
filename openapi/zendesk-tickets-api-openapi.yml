@@ -1,0 +1,2266 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: Zendesk Account Account Settings Tickets API
+  description: Needs a description.
+tags:
+- name: Tickets
+paths:
+  /api/v2/problems/autocomplete:
+    post:
+      operationId: AutocompleteProblems
+      tags:
+      - Tickets
+      summary: Zendesk Post  Api V2 Problems Autocomplete
+      description: 'Returns tickets whose type is "problem" and whose subject contains the string specified in the `text` parameter.
+
+
+        You can specify the `text` parameter in the request body rather than the query string. Example:
+
+
+        `{"text": "fire"}`
+
+
+        #### Allowed For
+
+
+        * Agents'
+      parameters:
+      - name: text
+        in: query
+        description: The text to search for
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The text to search for
+            example:
+              text: fire
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketProblemsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketProblemsResponseExample'
+  /api/v2/deleted_tickets:
+    get:
+      operationId: ListDeletedTickets
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Deleted_tickets
+      description: 'Returns a maximum of 100 deleted tickets per page. See [Pagination](/api-reference/introduction/pagination/).
+
+
+        The results includes all deleted (and not yet archived) tickets that
+
+        have not yet been [scrubbed](https://support.zendesk.com/hc/en-us/articles/4408845703194#topic_fv5_w51_sdb) in the past 30 days. Archived tickets are
+
+        not included in the results. See [About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756)
+
+        in the Support Help Center.
+
+
+        The tickets are ordered chronologically by created date, from oldest to newest.
+
+        The first ticket listed may not be the oldest ticket in your
+
+        account due to [ticket archiving](https://support.zendesk.com/hc/en-us/articles/203657756).
+
+
+        #### Pagination
+
+
+        - Cursor pagination (recommended)
+
+        - Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).
+
+
+        Returns a maximum of 100 records per page.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Rate Limit
+
+
+        You can make 10 requests every 1 minute using this endpoint.
+
+        When making requests beyond page 100, you can make 5 requests every 1 minute.
+
+        The rate limiting mechanism behaves as described in
+
+        [Monitoring your request activity](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity) in the API introduction.'
+      parameters:
+      - $ref: '#/components/parameters/TicketSortBy'
+      - $ref: '#/components/parameters/TicketSortOrder'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDeletedTicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListDeletedTicketsResponseExample'
+  /api/v2/deleted_tickets/{ticket_id}:
+    delete:
+      operationId: DeleteTicketPermanently
+      tags:
+      - Tickets
+      summary: Zendesk Delete  Api V2 Deleted_tickets Ticket_id
+      description: 'Permanently deletes a soft-deleted ticket. See [Soft delete](https://support.zendesk.com/hc/en-us/articles/4408834005530#topic_zrm_wbj_1db)
+
+        in the Zendesk GDPR docs. To soft delete a ticket, use the [Delete Ticket](#delete-ticket) endpoint.
+
+
+        This endpoint enqueues a ticket deletion job and returns a payload with the jobs status.
+
+
+        If the job succeeds, the ticket is permanently deleted. This operation can''t be undone.
+
+
+        This endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work.
+
+        Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job''s completion.
+
+
+        #### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/PermanentlyDeleteTicketJobStatusResponseExample'
+  /api/v2/deleted_tickets/{ticket_id}/restore:
+    put:
+      operationId: RestoreDeletedTicket
+      tags:
+      - Tickets
+      summary: Zendesk Put  Api V2 Deleted_tickets Ticket_id Restore
+      description: '#### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Empty response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/deleted_tickets/destroy_many:
+    delete:
+      operationId: BulkPermanentlyDeleteTickets
+      tags:
+      - Tickets
+      summary: Zendesk Delete  Api V2 Deleted_tickets Destroy_many
+      description: 'Permanently deletes up to 100 soft-deleted tickets. See [Soft delete](https://support.zendesk.com/hc/en-us/articles/4408834005530#topic_zrm_wbj_1db)
+
+        in the Zendesk GDPR docs. To soft delete tickets, use the [Bulk Delete Tickets](#bulk-delete-tickets) endpoint.
+
+
+        This endpoint accepts a comma-separated list of up to 100 ticket ids. It enqueues
+
+        a ticket deletion job and returns a payload with the jobs status.
+
+
+        If one ticket fails to be deleted, the endpoint still attempts to delete the others. If the job succeeds,
+
+        the tickets that were successfully deleted are permanently deleted. This operation can''t be undone.
+
+
+        This endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job''s completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.
+
+
+        #### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/PermanentlyDeleteTicketJobStatusResponseExample'
+  /api/v2/deleted_tickets/restore_many:
+    put:
+      operationId: BulkRestoreDeletedTickets
+      tags:
+      - Tickets
+      summary: Zendesk Put  Api V2 Deleted_tickets Restore_many
+      description: '#### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: Empty response
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Empty response
+                example: ''
+              example: ''
+  /api/v2/problems:
+    get:
+      operationId: ListTicketProblems
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Problems
+      description: 'The response is always ordered by `updated_at` in descending order
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Pagination
+
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketProblemsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketProblemsResponseExample'
+  /api/v2/tickets/{ticket_id}/tags:
+    parameters:
+    - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListResourceTags
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Tags
+      description: '#### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    post:
+      operationId: SetTagsTicket
+      tags:
+      - Tickets
+      summary: Zendesk Post  Api V2 Tickets Ticket_id Tags
+      description: '#### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '201':
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    put:
+      operationId: PutTagsTicket
+      tags:
+      - Tickets
+      summary: Zendesk Put  Api V2 Tickets Ticket_id Tags
+      description: "You can also add tags to multiple tickets with the [Update Many\nTickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets) endpoint.\n\n#### Safe Update\n\nIf the same ticket is updated by multiple API requests at\nthe same time, some tags could be lost because of ticket\nupdate collisions. Include `updated_stamp` and `safe_update`\nproperties in the request body to make a safe update.\n\nFor `updated_stamp`, retrieve and specify the ticket's\nlatest `updated_at` timestamp. The tag update only occurs\nif the `updated_stamp` timestamp matches the ticket's\nactual `updated_at` timestamp at the time of the request.\nIf the timestamps don't match (in other words, if the\nticket was updated since you retrieved the ticket's\nlast `updated_at` timestamp), the request returns a\n409 Conflict error.\n\n#### Example\n\n```js\n{\n  \"tags\": [\"customer\"],\n  \"updated_stamp\":\"2019-09-12T21:45:16Z\",\n  \"safe_update\":\"true\"\n}\n```\n\nFor details, see [Protecting against ticket update collisions](/api-reference/ticketing/tickets/tickets/#protecting-against-ticket-update-collisions).\n\n#### Allowed For\n\n* Agents\n"
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsByObjectIdResponse'
+    delete:
+      operationId: DeleteTagsTicket
+      tags:
+      - Tickets
+      summary: Zendesk Delete  Api V2 Tickets Ticket_id Tags
+      description: 'You can also delete tags from multiple tickets with the
+
+        [Update Many Tickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets) endpoint.
+
+
+        This endpoint supports safe updates. See [Safe Update](/api-reference/ticketing/ticket-management/tags/#safe-update).
+
+
+        #### Allowed For
+
+
+        * Agents
+
+        '
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsByObjectIdResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TagsRemoveResponseExample'
+  /api/v2/tickets:
+    get:
+      operationId: ListTickets
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets
+      parameters:
+      - name: external_id
+        in: query
+        description: Lists tickets by external id. External ids don't have to be unique for each ticket. As a result, the request may return multiple tickets with the same external id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketsResponseExample'
+    post:
+      operationId: CreateTicket
+      tags:
+      - Tickets
+      summary: Zendesk Post  Api V2 Tickets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketCreateRequestExample'
+      responses:
+        '201':
+          description: Create ticket
+          headers:
+            Location:
+              description: The URL of the created ticket
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketResponseExample'
+  /api/v2/tickets/{ticket_id}:
+    get:
+      operationId: ShowTicket
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Ticket_id
+      description: 'Returns a number of ticket properties though not the ticket comments. To get the comments, use [List Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments)
+
+
+        #### Allowed For
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Ticket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketResponseExample'
+    put:
+      operationId: UpdateTicket
+      tags:
+      - Tickets
+      summary: Zendesk Put  Api V2 Tickets Ticket_id
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketUpdateRequestExample'
+      responses:
+        '200':
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketUpdateResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketUpdateResponseExample'
+    delete:
+      operationId: DeleteTicket
+      tags:
+      - Tickets
+      summary: Zendesk Delete  Api V2 Tickets Ticket_id
+      description: '#### Allowed For
+
+
+        * Admins
+
+        * Agents with permission to delete tickets
+
+
+        Agent delete permissions are set in Support. See
+
+        [Deleting tickets](https://support.zendesk.com/hc/en-us/articles/203690936)
+
+        in the Support Help Center.
+
+
+        #### Ticket deletion rate limit
+
+
+        You can delete 400 tickets every 1 minute using this endpoint.
+
+        The rate limiting mechanism behaves as described in
+
+        [Rate limits](/api-reference/introduction/rate-limits/) in the API introduction.
+
+        Zendesk recommends that you obey the Retry-After header values.
+
+        To delete many tickets, you may use [Bulk Delete Tickets](/api-reference/ticketing/tickets/tickets/#bulk-delete-tickets).'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '204':
+          description: No content
+  /api/v2/tickets/{ticket_id}/collaborators:
+    get:
+      operationId: ListTicketCollaborators
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Collaborators
+      description: '#### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketCollaboratorsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketCollaboratorsResponseExample'
+  /api/v2/tickets/{ticket_id}/email_ccs:
+    get:
+      operationId: ListTicketEmailCCs
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Email_ccs
+      description: 'Returns any users cc''d on the ticket.
+
+
+        #### Availability
+
+
+        The [CCs and Followers](https://support.zendesk.com/hc/en-us/articles/203690846) feature must be enabled in Zendesk Support.
+
+
+        If the feature is not enabled, the default CC functionality is used. In that case, use [List Collaborators](/api-reference/ticketing/tickets/tickets/#list-collaborators-for-a-ticket) to list the users cc''ed on the ticket.
+
+
+        #### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketEmailCCsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketEmailCCsResponseExample'
+  /api/v2/tickets/{ticket_id}/followers:
+    get:
+      operationId: ListTicketFollowers
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Followers
+      description: 'Returns any users who follow the ticket.
+
+
+        #### Availability
+
+
+        The [CCs and Followers](https://support.zendesk.com/hc/en-us/articles/203690846) feature must be enabled in Zendesk Support.
+
+
+        #### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketFollowersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketFollowersResponseExample'
+  /api/v2/tickets/{ticket_id}/incidents:
+    get:
+      operationId: ListTicketIncidents
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Incidents
+      description: '#### Allowed For
+
+
+        * Agents
+
+
+        #### Pagination
+
+        * Cursor pagination (recommended)
+
+        * Offset pagination
+
+
+        See [Pagination](/api-reference/introduction/pagination/).'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTicketIncidentsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ListTicketIncidentsResponseExample'
+  /api/v2/tickets/{ticket_id}/mark_as_spam:
+    put:
+      operationId: MarkTicketAsSpamAndSuspendRequester
+      tags:
+      - Tickets
+      summary: Zendesk Put  Api V2 Tickets Ticket_id Mark_as_spam
+      description: '#### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: ''
+              example: ''
+  /api/v2/tickets/{ticket_id}/merge:
+    post:
+      operationId: MergeTicketsIntoTargetTicket
+      tags:
+      - Tickets
+      summary: Zendesk Post  Api V2 Tickets Ticket_id Merge
+      description: "Merges one or more tickets into the ticket with the specified id.\n\nSee [Merging tickets](https://support.zendesk.com/hc/en-us/articles/203690916)\nin the Support Help Center for ticket merging rules.\n\nAny attachment to the source ticket is copied to the target ticket.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n\n* Agents\n\nAgents in the Enterprise account must have merge permissions.\nSee [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026)\nin the Support Help Center.\n\n#### Available parameters\n\nThe request takes a data object with the following properties:\n\n| Name                     | Type    | Required | Comments                                                |\n| ------------------------ | ------- | -------- | ------------------------------------------------------- |\n| ids                      | array   | yes      | Ids of tickets to merge into the target ticket          |\n| target_comment           | string  | no       | Private comment to add to the target ticket. This comment is optional but strongly recommended |\n| source_comment           | string  | no       | Private comment to add to the source ticket. This comment is optional but strongly recommended |\n| target_comment_is_public | boolean | no       | Whether comments in the target ticket are public or private   |\n| source_comment_is_public | boolean | no       | Whether comments in the source tickets are public or private |\n\n`target_comment` and `source_comment` can be used to provide a reason for the merge for recordkeeping purposes. If the source ticket has attachments, they are included in `target_comment`.\n\nComments are private and can't be modified in the following cases:\n\n  * Any of the sources or target tickets are private\n  * Any of the sources or target tickets were created through X (formerly Twitter), Facebook or the Channel framework\n\nIn any other case, comments default to private but can be modified with the comment privacy parameters."
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketMergeInput'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketMergeInputExample'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/{ticket_id}/related:
+    get:
+      operationId: TicketRelatedInformation
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Ticket_id Related
+      description: 'The request returns a data object with the following properties:
+
+
+        | Name                | Type    | Comment
+
+        | ------------------- | ------- | -------
+
+        | topic_id            | string  | Related topic in the Web portal (deprecated feature)
+
+        | jira_issue_ids      | array   | Array of associated jira issues
+
+        | followup_source_ids | array   | Sources to follow up
+
+        | from_archive        | boolean | Is true if the current ticket is archived
+
+        | incidents           | integer | A count of related incident occurrences
+
+
+        #### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketRelatedInformation'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketRelatedInformationExample'
+  /api/v2/tickets/count:
+    get:
+      operationId: CountTickets
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Count
+      description: 'Returns an approximate count of tickets in the account. If the count exceeds 100,000, it is updated every 24 hours.
+
+
+        `ccd` lists tickets that the specified user is cc''d on.
+
+
+        The `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.
+
+
+        **Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.
+
+        This indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.
+
+
+        #### Allowed For
+
+        * Agents'
+      responses:
+        '200':
+          description: Count of tickets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: object
+                    properties:
+                      refreshed_at:
+                        type: string
+                        format: date-time
+                      value:
+                        type: integer
+              examples:
+                default:
+                  value:
+                    count:
+                      refreshed_at: '2020-04-06T02:18:17Z'
+                      value: 102
+  /api/v2/tickets/create_many:
+    post:
+      operationId: TicketsCreateMany
+      tags:
+      - Tickets
+      summary: Zendesk Post  Api V2 Tickets Create_many
+      description: 'Accepts an array of up to 100 ticket objects. **Note**: Every ticket created with this endpoint may be affected by your business rules, which can include sending email notifications to your end users. If you are importing historical tickets or creating more than 1000 tickets, consider using the [Ticket Bulk Import](/api-reference/ticketing/tickets/ticket_import/#ticket-bulk-import) endpoint.
+
+
+        This endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job''s completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.
+
+
+        #### Allowed For
+
+        * Agents'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketsCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketsCreateRequestExample'
+      responses:
+        '200':
+          description: Create many tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/destroy_many:
+    delete:
+      operationId: BulkDeleteTickets
+      tags:
+      - Tickets
+      summary: Zendesk Delete  Api V2 Tickets Destroy_many
+      description: 'Accepts a comma-separated list of up to 100 ticket ids.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents with permission to delete tickets
+
+
+        Agent delete permissions are set in Support. See
+
+        [Deleting tickets](https://support.zendesk.com/hc/en-us/articles/203690936)
+
+        in the Support Help Center.
+
+
+        This endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job''s completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.'
+      parameters:
+      - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/mark_many_as_spam:
+    put:
+      operationId: MarkManyTicketsAsSpam
+      tags:
+      - Tickets
+      summary: Zendesk Put  Api V2 Tickets Mark_many_as_spam
+      description: 'Accepts a comma-separated list of up to 100 ticket ids.
+
+
+        This endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job''s completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.
+
+
+        #### Allowed For
+
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/show_many:
+    get:
+      operationId: TicketsShowMany
+      tags:
+      - Tickets
+      summary: Zendesk Get  Api V2 Tickets Show_many
+      description: 'Accepts a comma-separated list of ticket ids to return.
+
+
+        This endpoint will return up to 100 tickets records.
+
+
+        #### Allowed For
+
+        * Agents'
+      parameters:
+      - $ref: '#/components/parameters/TicketIds'
+      responses:
+        '200':
+          description: List tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketsResponseExample'
+  /api/v2/tickets/update_many:
+    put:
+      operationId: TicketsUpdateMany
+      tags:
+      - Tickets
+      summary: Zendesk Put  Api V2 Tickets Update_many
+      description: Accepts an array of up to 100 ticket objects, or a comma-separated list of up to 100 ticket ids.
+      parameters:
+      - name: ids
+        in: query
+        description: Comma-separated list of ticket ids
+        schema:
+          type: string
+        example: 35436,35437
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/JobStatusResponseExample'
+  /tickets:
+    get:
+      operationId: listTickets
+      summary: Zendesk List Tickets
+      description: Returns a paginated list of tickets in the account. Tickets are sorted by created date in ascending order by default. Supports sideloading of related users, groups, and organizations.
+      tags:
+      - Tickets
+      parameters:
+      - $ref: '#/components/parameters/PageParam'
+      - $ref: '#/components/parameters/PerPageParam'
+      - name: sort_by
+        in: query
+        description: The field to sort tickets by.
+        schema:
+          type: string
+          enum:
+          - created_at
+          - updated_at
+          - priority
+          - status
+          - ticket_type
+          default: created_at
+        example: created_at
+      - name: sort_order
+        in: query
+        description: The sort order.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+        example: asc
+      - name: external_id
+        in: query
+        description: Filter tickets by external ID.
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tickets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Ticket'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+              examples:
+                Listtickets200Example:
+                  summary: Default listTickets 200 response
+                  x-microcks-default: true
+                  value:
+                    tickets:
+                    - id: abc123
+                      url: https://www.example.com
+                      external_id: '500123'
+                      type: problem
+                      subject: example_value
+                      raw_subject: example_value
+                      description: A sample description.
+                      priority: urgent
+                      status: new
+                      recipient: example_value
+                      requester_id: '500123'
+                      submitter_id: '500123'
+                      assignee_id: '500123'
+                      organization_id: '500123'
+                      group_id: '500123'
+                      collaborator_ids:
+                      - {}
+                      follower_ids:
+                      - {}
+                      email_cc_ids:
+                      - {}
+                      forum_topic_id: '500123'
+                      problem_id: '500123'
+                      has_incidents: true
+                      is_public: true
+                      due_at: '2026-01-15T10:30:00Z'
+                      tags:
+                      - {}
+                      custom_fields:
+                      - {}
+                      satisfaction_rating:
+                        score: offered
+                        comment: example_value
+                      sharing_agreement_ids:
+                      - {}
+                      custom_status_id: '500123'
+                      fields:
+                      - {}
+                      followup_ids:
+                      - {}
+                      ticket_form_id: '500123'
+                      brand_id: '500123'
+                      allow_channelback: true
+                      allow_attachments: true
+                      from_messaging_channel: true
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createTicket
+      summary: Zendesk Create Ticket
+      description: Creates a new ticket. You can set the requester, subject, description, priority, type, status, tags, custom fields, and other properties. Comments can be added during creation.
+      tags:
+      - Tickets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ticket
+              properties:
+                ticket:
+                  $ref: '#/components/schemas/TicketCreate'
+            examples:
+              CreateticketRequestExample:
+                summary: Default createTicket request
+                x-microcks-default: true
+                value:
+                  ticket:
+                    subject: example_value
+                    comment:
+                      body: example_value
+                      html_body: example_value
+                      public: true
+                      uploads:
+                      - {}
+                    requester_id: '500123'
+                    requester:
+                      name: Example Title
+                      email: user@example.com
+                      locale_id: '500123'
+                    submitter_id: '500123'
+                    assignee_id: '500123'
+                    group_id: '500123'
+                    organization_id: '500123'
+                    type: problem
+                    priority: urgent
+                    status: new
+                    tags:
+                    - example_value
+                    external_id: '500123'
+                    custom_fields:
+                    - {}
+                    due_at: '2026-01-15T10:30:00Z'
+                    ticket_form_id: '500123'
+                    brand_id: '500123'
+                    collaborator_ids:
+                    - 10
+                    email_cc_ids:
+                    - 10
+                    problem_id: '500123'
+      responses:
+        '201':
+          description: Ticket created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket:
+                    $ref: '#/components/schemas/Ticket'
+              examples:
+                Createticket201Example:
+                  summary: Default createTicket 201 response
+                  x-microcks-default: true
+                  value:
+                    ticket:
+                      id: abc123
+                      url: https://www.example.com
+                      external_id: '500123'
+                      type: problem
+                      subject: example_value
+                      raw_subject: example_value
+                      description: A sample description.
+                      priority: urgent
+                      status: new
+                      recipient: example_value
+                      requester_id: '500123'
+                      submitter_id: '500123'
+                      assignee_id: '500123'
+                      organization_id: '500123'
+                      group_id: '500123'
+                      collaborator_ids:
+                      - 10
+                      follower_ids:
+                      - 10
+                      email_cc_ids:
+                      - 10
+                      forum_topic_id: '500123'
+                      problem_id: '500123'
+                      has_incidents: true
+                      is_public: true
+                      due_at: '2026-01-15T10:30:00Z'
+                      tags:
+                      - example_value
+                      custom_fields:
+                      - {}
+                      satisfaction_rating:
+                        score: offered
+                        comment: example_value
+                      sharing_agreement_ids:
+                      - 10
+                      custom_status_id: '500123'
+                      fields:
+                      - {}
+                      followup_ids:
+                      - 10
+                      ticket_form_id: '500123'
+                      brand_id: '500123'
+                      allow_channelback: true
+                      allow_attachments: true
+                      from_messaging_channel: true
+                      via:
+                        channel: example_value
+                        source: {}
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tickets/{ticket_id}:
+    parameters:
+    - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: getTicket
+      summary: Zendesk Show Ticket
+      description: Returns the details of a specific ticket.
+      tags:
+      - Tickets
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket:
+                    $ref: '#/components/schemas/Ticket'
+              examples:
+                Getticket200Example:
+                  summary: Default getTicket 200 response
+                  x-microcks-default: true
+                  value:
+                    ticket:
+                      id: abc123
+                      url: https://www.example.com
+                      external_id: '500123'
+                      type: problem
+                      subject: example_value
+                      raw_subject: example_value
+                      description: A sample description.
+                      priority: urgent
+                      status: new
+                      recipient: example_value
+                      requester_id: '500123'
+                      submitter_id: '500123'
+                      assignee_id: '500123'
+                      organization_id: '500123'
+                      group_id: '500123'
+                      collaborator_ids:
+                      - 10
+                      follower_ids:
+                      - 10
+                      email_cc_ids:
+                      - 10
+                      forum_topic_id: '500123'
+                      problem_id: '500123'
+                      has_incidents: true
+                      is_public: true
+                      due_at: '2026-01-15T10:30:00Z'
+                      tags:
+                      - example_value
+                      custom_fields:
+                      - {}
+                      satisfaction_rating:
+                        score: offered
+                        comment: example_value
+                      sharing_agreement_ids:
+                      - 10
+                      custom_status_id: '500123'
+                      fields:
+                      - {}
+                      followup_ids:
+                      - 10
+                      ticket_form_id: '500123'
+                      brand_id: '500123'
+                      allow_channelback: true
+                      allow_attachments: true
+                      from_messaging_channel: true
+                      via:
+                        channel: example_value
+                        source: {}
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateTicket
+      summary: Zendesk Update Ticket
+      description: Updates a ticket. You can update the status, priority, assignee, tags, custom fields, and add comments. Setting the status to "solved" or "closed" resolves or closes the ticket.
+      tags:
+      - Tickets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ticket
+              properties:
+                ticket:
+                  $ref: '#/components/schemas/TicketUpdate'
+            examples:
+              UpdateticketRequestExample:
+                summary: Default updateTicket request
+                x-microcks-default: true
+                value:
+                  ticket:
+                    subject: example_value
+                    comment:
+                      body: example_value
+                      html_body: example_value
+                      public: true
+                      author_id: '500123'
+                      uploads:
+                      - {}
+                    assignee_id: '500123'
+                    group_id: '500123'
+                    organization_id: '500123'
+                    type: problem
+                    priority: urgent
+                    status: new
+                    tags:
+                    - example_value
+                    custom_fields:
+                    - {}
+                    due_at: '2026-01-15T10:30:00Z'
+                    problem_id: '500123'
+                    collaborator_ids:
+                    - 10
+                    email_cc_ids:
+                    - 10
+                    external_id: '500123'
+      responses:
+        '200':
+          description: Ticket updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket:
+                    $ref: '#/components/schemas/Ticket'
+              examples:
+                Updateticket200Example:
+                  summary: Default updateTicket 200 response
+                  x-microcks-default: true
+                  value:
+                    ticket:
+                      id: abc123
+                      url: https://www.example.com
+                      external_id: '500123'
+                      type: problem
+                      subject: example_value
+                      raw_subject: example_value
+                      description: A sample description.
+                      priority: urgent
+                      status: new
+                      recipient: example_value
+                      requester_id: '500123'
+                      submitter_id: '500123'
+                      assignee_id: '500123'
+                      organization_id: '500123'
+                      group_id: '500123'
+                      collaborator_ids:
+                      - 10
+                      follower_ids:
+                      - 10
+                      email_cc_ids:
+                      - 10
+                      forum_topic_id: '500123'
+                      problem_id: '500123'
+                      has_incidents: true
+                      is_public: true
+                      due_at: '2026-01-15T10:30:00Z'
+                      tags:
+                      - example_value
+                      custom_fields:
+                      - {}
+                      satisfaction_rating:
+                        score: offered
+                        comment: example_value
+                      sharing_agreement_ids:
+                      - 10
+                      custom_status_id: '500123'
+                      fields:
+                      - {}
+                      followup_ids:
+                      - 10
+                      ticket_form_id: '500123'
+                      brand_id: '500123'
+                      allow_channelback: true
+                      allow_attachments: true
+                      from_messaging_channel: true
+                      via:
+                        channel: example_value
+                        source: {}
+                      created_at: '2026-01-15T10:30:00Z'
+                      updated_at: '2026-01-15T10:30:00Z'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteTicket
+      summary: Zendesk Delete Ticket
+      description: Permanently deletes a ticket. This operation cannot be undone. Deleted tickets are not recoverable.
+      tags:
+      - Tickets
+      responses:
+        '204':
+          description: Ticket deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tickets/{ticket_id}/comments:
+    parameters:
+    - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: listTicketComments
+      summary: Zendesk List Ticket Comments
+      description: Returns the comments on a specific ticket.
+      tags:
+      - Tickets
+      parameters:
+      - $ref: '#/components/parameters/PageParam'
+      - $ref: '#/components/parameters/PerPageParam'
+      - name: sort_order
+        in: query
+        description: Sort order for comments.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+        example: asc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Comment'
+                  next_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous_page:
+                    type: string
+                    format: uri
+                    nullable: true
+                  count:
+                    type: integer
+              examples:
+                Listticketcomments200Example:
+                  summary: Default listTicketComments 200 response
+                  x-microcks-default: true
+                  value:
+                    comments:
+                    - id: abc123
+                      type: Comment
+                      body: example_value
+                      html_body: example_value
+                      plain_body: example_value
+                      public: true
+                      author_id: '500123'
+                      attachments:
+                      - {}
+                      created_at: '2026-01-15T10:30:00Z'
+                    next_page: https://www.example.com
+                    previous_page: https://www.example.com
+                    count: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit exceeded. Check the Retry-After header.
+      headers:
+        Retry-After:
+          description: Number of seconds to wait before making another request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: The request was well-formed but could not be processed due to validation errors.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      description: The page number.
+      schema:
+        type: integer
+        default: 1
+    TicketId:
+      name: ticket_id
+      in: path
+      required: true
+      description: The ID of the ticket.
+      schema:
+        type: integer
+        format: int64
+    PerPageParam:
+      name: per_page
+      in: query
+      description: The number of results per page (max 100).
+      schema:
+        type: integer
+        default: 100
+        maximum: 100
+  schemas:
+    TicketRelatedInformation:
+      type: object
+      properties:
+        followup_source_ids:
+          type: array
+          items:
+            type: string
+            description: Sources to follow up
+        from_archive:
+          type: boolean
+          description: Is true if the current ticket is archived
+        incidents:
+          type: integer
+          description: A count of related incident occurrences
+        jira_issue_ids:
+          type: array
+          items:
+            type: string
+            description: Associated jira issues
+        topic_id:
+          type: string
+          description: Related topic in the Web portal (deprecated feature)
+          nullable: true
+    ListDeletedTicketsResponse:
+      type: object
+      allOf:
+      - type: object
+        properties:
+          deleted_tickets:
+            type: array
+            items:
+              type: object
+              properties:
+                actor:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                deleted_at:
+                  type: string
+                id:
+                  type: integer
+                previous_state:
+                  type: string
+                subject:
+                  type: string
+      - $ref: '#/components/schemas/OffsetPaginationObject'
+    ListTicketCollaboratorsResponse:
+      type: object
+      additionalProperties: true
+    CustomField:
+      type: object
+      description: A custom field key-value pair.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the custom field.
+          example: abc123
+        value:
+          description: The value of the custom field.
+          oneOf:
+          - type: string
+          - type: number
+          - type: boolean
+          - type: array
+            items:
+              type: string
+          nullable: true
+          example: example_value
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    ListTicketEmailCCsResponse:
+      type: object
+      additionalProperties: true
+    TicketResponse:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/TicketObject'
+    ListTicketProblemsResponse:
+      type: object
+      additionalProperties: true
+    Attachment:
+      type: object
+      description: A file attachment.
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+          example: abc123
+        file_name:
+          type: string
+          example: example_value
+        content_url:
+          type: string
+          format: uri
+          example: https://www.example.com
+        content_type:
+          type: string
+          example: example_value
+        size:
+          type: integer
+          description: The size of the file in bytes.
+          example: 10
+        thumbnails:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                format: int64
+              file_name:
+                type: string
+              content_url:
+                type: string
+                format: uri
+              content_type:
+                type: string
+              size:
+                type: integer
+          example: []
+    Via:
+      type: object
+      description: How the ticket or comment was created.
+      properties:
+        channel:
+          type: string
+          description: The channel the ticket or comment came through (e.g., web, email, api, chat, voice).
+          example: example_value
+        source:
+          type: object
+          properties:
+            from:
+              type: object
+              additionalProperties: true
+            to:
+              type: object
+              additionalProperties: true
+            rel:
+              type: string
+              nullable: true
+          example: example_value
+    TicketCreate:
+      type: object
+      description: Payload for creating a new ticket.
+      properties:
+        subject:
+          type: string
+          description: The subject of the ticket.
+          example: example_value
+        comment:
+          type: object
+          required:
+          - body
+          description: The initial comment (description) of the ticket.
+          properties:
+            body:
+              type: string
+              description: The body of the comment.
+            html_body:
+              type: string
+              description: The HTML body of the comment.
+            public:
+              type: boolean
+              default: true
+              description: Whether the comment is public.
+            uploads:
+              type: array
+              items:
+                type: string
+              description: Upload tokens for attachments.
+          example: example_value
+        requester_id:
+          type: integer
+          format: int64
+          description: The ID of the requester.
+          example: '500123'
+        requester:
+          type: object
+          description: Requester details for creating a new user inline. Use either requester_id or requester, not both.
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+              format: email
+            locale_id:
+              type: integer
+          example: example_value
+        submitter_id:
+          type: integer
+          format: int64
+          description: The ID of the submitter.
+          example: '500123'
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the assigned agent.
+          example: '500123'
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the assigned group.
+          example: '500123'
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        type:
+          type: string
+          enum:
+          - problem
+          - incident
+          - question
+          - task
+          nullable: true
+          example: problem
+        priority:
+          type: string
+          enum:
+          - urgent
+          - high
+          - normal
+          - low
+          nullable: true
+          example: urgent
+        status:
+          type: string
+          enum:
+          - new
+          - open
+          - pending
+          - hold
+          - solved
+          default: new
+          example: new
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        external_id:
+          type: string
+          nullable: true
+          example: '500123'
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+          example: []
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          example: '2026-01-15T10:30:00Z'
+        ticket_form_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        brand_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        collaborator_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: []
+        email_cc_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: user@example.com
+        problem_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+    Comment:
+      type: object
+      description: A comment on a ticket.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the comment.
+          readOnly: true
+          example: abc123
+        type:
+          type: string
+          enum:
+          - Comment
+          - VoiceComment
+          description: The type of the comment.
+          readOnly: true
+          example: Comment
+        body:
+          type: string
+          description: The plain text body of the comment.
+          example: example_value
+        html_body:
+          type: string
+          description: The HTML body of the comment.
+          example: example_value
+        plain_body:
+          type: string
+          description: The plain text body with formatting stripped.
+          readOnly: true
+          example: example_value
+        public:
+          type: boolean
+          description: Whether the comment is public (visible to the requester).
+          example: true
+        author_id:
+          type: integer
+          format: int64
+          description: The ID of the comment author.
+          example: '500123'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+          description: Attachments on the comment.
+          readOnly: true
+          example: []
+        via:
+          $ref: '#/components/schemas/Via'
+        created_at:
+          type: string
+          format: date-time
+          description: When the comment was created (ISO 8601).
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+    TicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketObject'
+    TicketUpdateResponse:
+      type: object
+      properties:
+        audit:
+          $ref: '#/components/schemas/AuditObject'
+        ticket:
+          $ref: '#/components/schemas/TicketObject'
+    ListTicketIncidentsResponse:
+      type: object
+      additionalProperties: true
+    ListTicketFollowersResponse:
+      type: object
+      additionalProperties: true
+    TagsByObjectIdResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          description: An array of strings
+          items:
+            type: string
+      required:
+      - tags
+    Error:
+      type: object
+      description: An error response from the Zendesk API.
+      properties:
+        error:
+          type: string
+          description: The error type identifier.
+          example: example_value
+        description:
+          type: string
+          description: A human-readable description of the error.
+          example: A sample description.
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional details about the error.
+          example: example_value
+    TicketUpdate:
+      type: object
+      description: Payload for updating an existing ticket.
+      properties:
+        subject:
+          type: string
+          example: example_value
+        comment:
+          type: object
+          description: A new comment to add to the ticket.
+          properties:
+            body:
+              type: string
+            html_body:
+              type: string
+            public:
+              type: boolean
+              default: true
+            author_id:
+              type: integer
+              format: int64
+            uploads:
+              type: array
+              items:
+                type: string
+          example: example_value
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        type:
+          type: string
+          enum:
+          - problem
+          - incident
+          - question
+          - task
+          nullable: true
+          example: problem
+        priority:
+          type: string
+          enum:
+          - urgent
+          - high
+          - normal
+          - low
+          nullable: true
+          example: urgent
+        status:
+          type: string
+          enum:
+          - new
+          - open
+          - pending
+          - hold
+          - solved
+          - closed
+          example: new
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+          example: []
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          example: '2026-01-15T10:30:00Z'
+        problem_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        collaborator_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: []
+        email_cc_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: user@example.com
+        external_id:
+          type: string
+          nullable: true
+          example: '500123'
+    Ticket:
+      type: object
+      description: A Zendesk Support ticket representing a customer service request.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned ticket ID.
+          readOnly: true
+          example: abc123
+        url:
+          type: string
+          format: uri
+          description: The API URL of the ticket.
+          readOnly: true
+          example: https://www.example.com
+        external_id:
+          type: string
+          nullable: true
+          description: An ID from an external system.
+          example: '500123'
+        type:
+          type: string
+          enum:
+          - problem
+          - incident
+          - question
+          - task
+          nullable: true
+          description: The type of the ticket.
+          example: problem
+        subject:
+          type: string
+          description: The subject of the ticket.
+          example: example_value
+        raw_subject:
+          type: string
+          description: The original subject of the ticket as entered by the requester.
+          readOnly: true
+          example: example_value
+        description:
+          type: string
+          description: The first comment on the ticket (read-only after creation).
+          readOnly: true
+          example: A sample description.
+        priority:
+          type: string
+          enum:
+          - urgent
+          - high
+          - normal
+          - low
+          nullable: true
+          description: The urgency of the ticket.
+          example: urgent
+        status:
+          type: string
+          enum:
+          - new
+          - open
+          - pending
+          - hold
+          - solved
+          - closed
+          description: The current status of the ticket.
+          example: new
+        recipient:
+          type: string
+          format: email
+          nullable: true
+          description: The original recipient email address of the ticket.
+          readOnly: true
+          example: example_value
+        requester_id:
+          type: integer
+          format: int64
+          description: The ID of the user who requested the ticket.
+          example: '500123'
+        submitter_id:
+          type: integer
+          format: int64
+          description: The ID of the user who submitted the ticket.
+          readOnly: true
+          example: '500123'
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the agent assigned to the ticket.
+          example: '500123'
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the organization associated with the ticket.
+          example: '500123'
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the group assigned to the ticket.
+          example: '500123'
+        collaborator_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of users currently CC'd on the ticket.
+          example: []
+        follower_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of agents currently following the ticket.
+          readOnly: true
+          example: []
+        email_cc_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of agents or end users currently CC'd on the ticket.
+          example: user@example.com
+        forum_topic_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the topic in the community forum, if applicable.
+          readOnly: true
+          example: '500123'
+        problem_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: For incident tickets, the ID of the associated problem ticket.
+          example: '500123'
+        has_incidents:
+          type: boolean
+          description: Whether the ticket has been marked as a problem with incidents.
+          readOnly: true
+          example: true
+        is_public:
+          type: boolean
+          description: Whether the ticket has a public comment.
+          readOnly: true
+          example: true
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: The due date for task tickets (ISO 8601).
+          example: '2026-01-15T10:30:00Z'
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags applied to the ticket.
+          example: []
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+          description: Custom field key-value pairs.
+          example: []
+        satisfaction_rating:
+          type: object
+          nullable: true
+          description: The satisfaction rating of the ticket, if rated.
+          readOnly: true
+          properties:
+            score:
+              type: string
+              enum:
+              - offered
+              - unoffered
+              - good
+              - bad
+            comment:
+              type: string
+          example: example_value
+        sharing_agreement_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of sharing agreements used for the ticket.
+          readOnly: true
+          example: []
+        custom_status_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of a custom ticket status.
+          example: '500123'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+          description: Custom field values (alias for custom_fields).
+          readOnly: true
+          example: []
+        followup_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: IDs of follow-up tickets created from this ticket.
+          readOnly: true
+          example: []
+        ticket_form_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the ticket form used for this ticket.
+          example: '500123'
+        brand_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the brand this ticket is associated with.
+          example: '500123'
+        allow_channelback:
+          type: boolean
+          description: Whether channelback is enabled.
+          readOnly: true
+          example: true
+        allow_attachments:
+          type: boolean
+          description: Whether the ticket allows attachments.
+          readOnly: true
+          example: true
+        from_messaging_channel:
+          type: boolean
+          description: Whether the ticket originated from a messaging channel.
+          readOnly: true
+          example: true
+        via:
+          $ref: '#/components/schemas/Via'
+        created_at:
+          type: string
+          format: date-time
+          description: When the ticket was created (ISO 8601).
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          description: When the ticket was last updated (ISO 8601).
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
