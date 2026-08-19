@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Automations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Automations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Automations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/automations"
+          },
+          "docs": "Lists all automations for the current account.\n\n#### Allowed For\n\n* Agents\n\n#### Available Parameters\n\nYou can pass in any combination of the following optional filters:\n\n| Name       | Type    | Comment\n| ---------- | ------- | -------\n| active     | boolean | Only active automations if true, inactive automations if false\n| sort_by    | string  | Possible values are \"alphabetical\", \"created_at\", \"updated_at\", \"usage_1h\", \"usage_24h\", or \"usage_7d\". Defaults to \"position\"\n| sort_order | string  "
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Automations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/automations"
+          },
+          "docs": "Creates an automation.\n\nNew automations must be unique and have at least one condition that is true only once or an action that nullifies at least one of the conditions. Active automations can have overlapping conditions but can't be identical.\n\nThe request must include the following conditions in the `all` array:\n\n- At least one time-based condition\n- At least one condition that checks one of the following fields: `status`, `type`, `group_id`, `assignee_id`, or `requester_id`.\n\n#### Allowed For"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Automations Automation_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/automations/:automation_id"
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Automations Automation_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/automations/:automation_id"
+          },
+          "docs": "Updates an automation.\n\nUpdated automations must be unique and have at least one condition that is true only once or an action that nullifies at least one of the conditions. Active automations can have overlapping conditions but can't be identical.\n\nThe request must include the following conditions in the `all` array:\n- At least one time-based condition\n- At least one condition that checks one of the following fields: 'status', 'type', 'group_id', 'assignee_id', or 'requester_id'\n\n**Note**: Upda"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Automations Automation_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/automations/:automation_id"
+          },
+          "docs": "**Note**: You might be restricted from deleting some default automations.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Automations Active",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/automations/active"
+          },
+          "docs": "Lists all active automations.\n\n#### Allowed For\n\n* Agents\n\n#### Available Parameters\n\nYou can pass in any combination of the following optional filters:\n\n| Name       | Type   | Comment\n| ---------- | ------ | -------\n| sort_by    | string | Possible values are \"alphabetical\", \"created_at\", \"updated_at\", \"usage_1h\", \"usage_24h\", or \"usage_7d\". Defaults to \"position\"\n| sort_order | string | One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others\n\n#### S"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Automations Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/automations/destroy_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The IDs of the automations to delete"
+              }
+            ]
+          },
+          "docs": "Deletes the automations corresponding to the provided comma-separated list of IDs.\n\n**Note**: You might be restricted from deleting some default automations. If included in a bulk deletion, the unrestricted automations will be deleted.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe DELETE request takes one parameter, an `ids` object that lists the automations to delete.\n\n| Name | Description\n| ---- | -----------\n| ids  | The IDs of the automations to delete\n\n#### Example request\n\n```j"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Automations Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/automations/search"
+          },
+          "docs": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each automation, if present\n| permissions     "
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Automations Update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/automations/update_many"
+          },
+          "docs": "**Note**: You might be restricted from updating some default automations. If included in a bulk update, the unrestricted automations will be updated.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe PUT request expects an `automations` object that lists the automations to update.\n\nEach automation may have the following properties:\n\n| Name     | Mandatory | Description\n| -------- | --------- | -----------\n| id       | yes       | The ID of the automation to update\n| position | no        "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

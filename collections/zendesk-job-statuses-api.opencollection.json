@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Job Statuses API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job Statuses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Job_statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/job_statuses"
+          },
+          "docs": "Shows the statuses for background jobs. Statuses are sorted first by completion date and then by creation date in descending order.\n\n#### Allowed For:\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Job_statuses Job_status_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/job_statuses/:job_status_id"
+          },
+          "docs": "Shows the status of a background job.\n\n#### Allowed For:\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Job_statuses Show_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/job_statuses/show_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "8b726e606741012ffc2d782bcb7848fe,e7665094164c498781ebe4c8db6d2af5",
+                "type": "query",
+                "description": "Comma-separated list of job status ids."
+              }
+            ]
+          },
+          "docs": "Accepts a comma-separated list of job status ids.\n\n#### Allowed For:\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Routing Agents Instance_values Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/routing/agents/instance_values/job",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds, replaces or removes multiple attributes for up to 100 agents.\n\n#### Allowed For\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882-Creating-custom-roles-and-assigning-agents)\n\n#### Available Parameters\n\nThe request takes a data object with the following properties:\n| Name       | Type   | Required | Description                                                                                       |\n| ---------- | -"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

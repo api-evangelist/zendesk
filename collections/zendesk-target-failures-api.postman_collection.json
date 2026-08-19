@@ -1,0 +1,182 @@
+{
+  "item": [
+    {
+      "id": "fcd04497-0678-47d8-804f-b94a7ffe0ae1",
+      "name": "Target Failures",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d60c4ca0-6654-4b83-a832-87a3350ded44",
+          "name": "Zendesk Get  Api V2 Target_failures",
+          "request": {
+            "name": "Zendesk Get  Api V2 Target_failures",
+            "description": {
+              "content": "Returns the 25 most recent target failures, per target.\n\n#### Stability\n\n* Development\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "target_failures"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a15941ed-c75c-45b8-bea8-251e1ab45d24",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "target_failures"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TargetFailuresResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0643d415-c274-43c9-8712-d436fb5a5bad",
+          "name": "Zendesk Get  Api V2 Target_failures Target_failure_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Target_failures Target_failure_id",
+            "description": {
+              "content": "#### Stability\n\n* Development\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "target_failures",
+                ":target_failure_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52410bf5-39fb-462f-92da-e168c9afccc1",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "target_failures",
+                    ":target_failure_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TargetFailureResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c5e0c070-3e5c-455b-924e-2a01cc44f42e",
+    "name": "Zendesk Account Account Settings Target Failures API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "item": [
+    {
+      "id": "aacba6fd-7247-4e8d-97b5-c59c53ea778c",
+      "name": "Approval Requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21459720-7bd6-4d41-a8b7-c04ba18af52f",
+          "name": "Zendesk Get  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id",
+            "description": {
+              "content": "Shows an approval request.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "approval_workflow_instances",
+                ":approval_workflow_instance_id",
+                "approval_requests",
+                ":approval_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a19be45-ef43-48a1-8a44-dbba48f0d32f",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "approval_workflow_instances",
+                    ":approval_workflow_instance_id",
+                    "approval_requests",
+                    ":approval_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ApprovalRequestResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39da63e5-285a-42e0-914e-20f809299315",
+          "name": "Zendesk Patch  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id Decision",
+          "request": {
+            "name": "Zendesk Patch  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id Decision",
+            "description": {
+              "content": "Updates the  approver's decision about an approval request.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "approval_workflow_instances",
+                ":approval_workflow_instance_id",
+                "approval_requests",
+                ":approval_request_id",
+                "decision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a3f03ff-ffd7-400e-ac2a-b36b487e50e2",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "approval_workflow_instances",
+                    ":approval_workflow_instance_id",
+                    "approval_requests",
+                    ":approval_request_id",
+                    "decision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": \"Approved by manager\",\n  \"status\": \"approved\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ApprovalRequestResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6750a143-b679-44af-924f-2e9b6dff26fe",
+          "name": "Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search",
+          "request": {
+            "name": "Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search",
+            "description": {
+              "content": "Returns a list of approvals associated with a specific workflow instance. Results can be filtered by approval request status.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "approval_workflow_instances",
+                ":approval_workflow_instance_id",
+                "approval_requests",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4ccd1b9-b039-429d-9ad5-6d6ba34b994f",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "approval_workflow_instances",
+                    ":approval_workflow_instance_id",
+                    "approval_requests",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ApprovalRequestsSearchResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0bb87728-f6db-4385-9e36-381536149837",
+    "name": "Zendesk Account Account Settings Approval Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

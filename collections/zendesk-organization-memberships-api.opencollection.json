@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Organization Memberships API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization Memberships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organization_memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organization_memberships"
+          },
+          "docs": "Returns a list of organization memberships for the account, user or organization in question.\n\n**Note**: When returning organization memberships for a user, organization memberships are sorted with the default organization first, and then by organization name.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n- Agents\n- End users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Organization_memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/organization_memberships"
+          },
+          "docs": "Assigns a user to a given organization. Returns an error with status 422 if the user is already assigned to the organization.\n\n#### Allowed For\n\n* Admins\n* Agents when creating a new organization membership for an end user\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organization_memberships Organization_membership_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organization_memberships/:organization_membership_id"
+          },
+          "docs": "#### Allowed for\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Organization_memberships Organization_membership_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/organization_memberships/:organization_membership_id"
+          },
+          "docs": "Immediately removes a user from an organization and schedules a job to unassign all working tickets currently assigned to the user and organization combination. The `organization_id` of the unassigned tickets is set to null.\n\n#### Allowed for\n\n* Admins\n* Agents when deleting an organization membership for an end user\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Organization_memberships Create_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/organization_memberships/create_many"
+          },
+          "docs": "Accepts an array of up to 100 organization membership objects.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limit"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Organization_memberships Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/organization_memberships/destroy_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The IDs of the organization memberships to delete"
+              }
+            ]
+          },
+          "docs": "Immediately removes a user from an organization and schedules a job to unassign all working tickets currently assigned to the user and organization combination. The `organization_id` of the unassigned tickets is set to null.\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-st"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Users User_id Organization_memberships Organization_membership_id Make_default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/organization_memberships/:organization_membership_id/make_default"
+          },
+          "docs": "Sets the default organization membership of a given user.\n\n#### Allowed for\n\n* Admins\n* Agents when setting the default organization membership for an end user\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Users User_id Organizations Organization_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/organizations/:organization_id"
+          },
+          "docs": "Immediately removes a user from an organization and schedules a job to unassign all working tickets currently assigned to the user and organization combination. The `organization_id` of the unassigned tickets is set to null.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Users User_id Organizations Organization_id Make_default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/organizations/:organization_id/make_default"
+          },
+          "docs": "Sets the default organization membership of a given user.\n\n#### Allowed For\n\n* Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

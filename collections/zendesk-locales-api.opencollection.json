@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Locales API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Locales",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/locales"
+          },
+          "docs": "Lists the translation locales available for the account.\n\n**Note**: You can alter the list by passing an updated `locale_ids` array to the [Update Account Settings](/api-reference/ticketing/account-configuration/account_settings/#update-account-settings) endpoint.\n\n#### Allowed For\n\n* Anyone\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Locales Locale_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/locales/:locale_id"
+          },
+          "docs": "#### Allowed For\n\n* Anyone\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Locales Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/locales/agent"
+          },
+          "docs": "Lists the translation locales that have been localized for agents on a specific account.\n\n#### Allowed For\n\n* Anyone\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Locales Current",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/locales/current"
+          },
+          "docs": "This works like [Show Locale](#show-locale), but instead of taking a locale id as an argument, it renders the locale of the user performing the request.\n\n#### Allowed For\n\n* Anyone\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Locales Detect_best_locale",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/locales/detect_best_locale"
+          },
+          "docs": "#### Allowed For\n\n* Anyone\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Locales Public",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/locales/public"
+          },
+          "docs": "Lists the translation locales that are available to all accounts.\n\n#### Allowed For\n\n* Anyone\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

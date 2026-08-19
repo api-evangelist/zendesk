@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Requests API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/requests",
+            "params": [
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Possible values are \"updated_at\", \"created_at\""
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "One of \"asc\", \"desc\". Defaults to \"asc\""
+              }
+            ]
+          },
+          "docs": "#### Allowed for\n\n* End Users\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/requests"
+          },
+          "docs": "Accepts a `request` object that sets one or more properties.\n\n#### Allowed for\n\n* End users\n* Anonymous users (rate limit of 5 requests per hour for [trial accounts](/documentation/developer-tools/getting-started/getting-a-trial-or-sponsored-account-for-development/))\n\n#### Additional properties\n\nIn addition to the writable request properties in the [JSON Format table](#json-format) above, you can set the following properties when creating a request.\n\n| Name                | Type   | Mandatory |"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Requests Request_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/requests/:request_id"
+          },
+          "docs": "#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| users            | The email ccs for a request by side-loading users\n\n#### Allowed For\n\n* End Users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Requests Request_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/requests/:request_id"
+          },
+          "docs": "Updates a request with a comment or collaborators (cc's). The end user who created the request can also use it to mark the request as solved. The endpoint can't be used to update other request attributes.\n\n#### Writable properties\nThis endpoint can only update the following properties in the request.\n\n| Name                     | Type    | Required | Description                                          |\n| ------------------------ | ------- | -------- | ------------------------------------------"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Requests Request_id Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/requests/:request_id/comments",
+            "params": [
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Filters the comments from the given datetime"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "One of \"agent\", \"end_user\". If not specified it does not filter"
+              }
+            ]
+          },
+          "docs": "#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Sorting\n\nBy default, comments are sorted by creation date in ascending order.\n\nWhen using cursor pagination, use the following parameter to change the sort order:\n\n| Name   | Type   | Required | Comments\n| ------ | ------ | -------- | --------\n| `sort` | string | no       | Possible values are \"created_at\" (ascending order) or \"-created_at\" (descending order)\n\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Requests Request_id Comments Ticket_comment_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/requests/:request_id/comments/:ticket_comment_id"
+          },
+          "docs": "#### Allowed For\n\n* End Users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Requests Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/requests/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The syntax and matching logic for the string is detailed in the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226). See also [Query basics](/api-reference/ticketing/ticket-management/search/#query-basics) in the Tickets API doc."
+              }
+            ]
+          },
+          "docs": "Examples:\n\n* `GET /api/v2/requests/search.json?query=printer`\n* `GET /api/v2/requests/search.json?query=printer&organization_id=1`\n* `GET /api/v2/requests/search.json?query=printer&cc_id=true`\n* `GET /api/v2/requests/search.json?query=printer&status=hold,open`\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Results limit\n\nThe Search Requests endpoint returns up to 1,000 results per query, with a max"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

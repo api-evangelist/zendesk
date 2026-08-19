@@ -1,0 +1,266 @@
+{
+  "item": [
+    {
+      "id": "712bdc92-8ea0-4452-8ae8-064f57368383",
+      "name": "Incremental Skill Based Routing",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e9f1c054-15d8-407e-96d4-06bc49eb7b3b",
+          "name": "Zendesk Get  Api V2 Incremental Routing Attribute_values",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Routing Attribute_values",
+            "description": {
+              "content": "Returns a stream of changes that occurred on routing attribute values.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "routing",
+                "attribute_values"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7a2fe2d-48dd-497f-987a-34e2c3391615",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "routing",
+                    "attribute_values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/IncrementalSkillBasedRoutingAttributeValuesExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fece899-dbd5-4bf5-81a4-a85cb0e8e994",
+          "name": "Zendesk Get  Api V2 Incremental Routing Attributes",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Routing Attributes",
+            "description": {
+              "content": "Returns a stream of changes that occurred on routing attributes.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "routing",
+                "attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05c9ae94-427a-4f42-b42f-fec228a49fb6",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "routing",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/IncrementalSkillBasedRoutingAttributesExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e8a83a3-600e-4bc2-b0a9-986fe9ab6705",
+          "name": "Zendesk Get  Api V2 Incremental Routing Instance_values",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Routing Instance_values",
+            "description": {
+              "content": "Returns a stream of changes that occurred on routing instance values. Changes are grouped by `attribute_value_id`,\nwith associate type events listed alongside unassociate type events based on the unassociate event’s timestamp.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "routing",
+                "instance_values"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41a0730f-8ed5-4fb7-81bc-bc57aec73508",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "routing",
+                    "instance_values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/IncrementalSkillBasedRoutingInstanceValuesExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bd73dc37-94c9-4538-80e7-a3cd5cc1c2be",
+    "name": "Zendesk Account Account Settings Incremental Skill Based Routing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

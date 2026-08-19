@@ -1,0 +1,400 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Organizations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organizations Autocomplete",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organizations/autocomplete"
+          },
+          "docs": "Returns an array of organizations whose name starts with the\nvalue specified in the `name` parameter.\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organization_merges Organization_merge_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organization_merges/:organization_merge_id"
+          },
+          "docs": "Retrieves the details of a specific organization merge operation. This endpoint is useful for obtaining the status and outcome of a merge that was previously initiated. It provides information such as the winning and losing organization IDs, the status of the merge, and the associated URLs.\n\nThis endpoint can be used to determine if a merge is still in progress, has completed successfully, or has encountered an error.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organizations"
+          },
+          "docs": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents, with certain restrictions\n\nIf the agent has a custom agent role that restricts their access to only users in their own organization, a 403 Forbidden error is returned. See [Creating custom agent roles](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-ag"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You must provide a unique `name` for each organization. Normally\nthe system doesn't allow records to be created with identical names.\nHowever, a race condition can occur if you make two or more identical\nPOSTs very close to each other, causing the records to have identical\norganization names.\n\n**Note**: Leading and trailing whitespace in `name` is automatically trimmed before validation. This means that names differing only by whitespace are treated as duplicates. For example, \"API Company\" and "
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organizations Organization_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Admins\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Organizations Organization_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Admins\n* Agents\n\nAgents with no permissions restrictions can only update \"notes\" on organizations.\n\n**Note:** Updating an organization's `domain_names` property overwrites all existing `domain_names` values. To prevent this, submit a complete list of `domain_names` for the organization in your request.\n\n#### Example Request\n\n```js\n{\n  \"organization\": {\n    \"notes\": \"Something interesting\"\n  }\n}\n```\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Organizations Organization_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage organizations (Enterprise only)\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Organizations Organization_id Merge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/organizations/:organization_id/merge",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merges two organizations by moving all users, tickets, and domain names from the organization specified by `{organization_id}` to the organization specified by `winner_id`. After the merge:\n\n- The \"losing\" organization will be deleted.\n- Other organization fields and their values will not be carried over to the \"winning\" organization.\n- The merge operation creates an `Organization Merge` record which contains a status indicating the progress of the merge.\n\n**Note**: This operation is irreversibl"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organizations Organization_id Merges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organizations/:organization_id/merges",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of all organization merge operations associated with a given organization. This endpoint allows you to track the history of merge actions for an organization, including ongoing and completed merges.\n\nEach entry in the list contains details such as the ID of the merge, the winning and losing organization IDs, the current status of the merge, and a URL to access the `Organization Merge` record.\n\n#### Pagination\n\n- Cursor pagination is used for this endpoint.\n- A maximum of 100 rec"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organizations Organization_id Related",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organizations/:organization_id/related",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organizations Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organizations/count"
+          },
+          "docs": "Returns an approximate count of organizations. If the count exceeds\n100,000, it is updated every 24 hours.\n\nThe `refreshed_at` property of the `count` object is a timestamp that indicates\nwhen the count was last updated.\n\nWhen the count exceeds 100,000, the `refreshed_at` property may\noccasionally be null. This indicates that the count is being\nupdated in the background and the `value` property of the `count` object is limited to\n100,000 until the update is complete.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Organizations Create_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/organizations/create_many"
+          },
+          "docs": "Accepts an array of up to 100 organization objects.\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-l"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Organizations Create_or_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/organizations/create_or_update"
+          },
+          "docs": "Creates an organization if it doesn't already exist, or updates\nan existing organization. Using this method means one less call\nto check if an organization exists before creating it. You need\nto specify the id or external id when updating\nan organization to avoid a duplicate error response. Name is\nnot available as a matching criteria.\n\n#### Allowed For\n\n* Agents, with restrictions on certain actions\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Organizations Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/organizations/destroy_many"
+          },
+          "docs": "Accepts a comma-separated list of up to 100 organization ids or external ids.\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-ref"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organizations Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organizations/search"
+          },
+          "docs": "Returns an array of organizations matching the criteria. You may search by an organization's `external_id` or `name`, but not both:\n\n#### Searching by `external_id`\n\nIf you set the `external_id` value of an organization to associate it to an external record, you can use it to search for the organization.\n\nFor an organization to be returned, its `external_id` must exactly match the value provided (case insensitive).\n\n#### Searching by `name`\n\nFor an organization to be returned, its `name` must ex"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organizations Show_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organizations/show_many"
+          },
+          "docs": "Accepts a comma-separated list of up to 100 organization ids or external ids.\n\n#### Allowed For\n\n* Admins\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Organizations Update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/organizations/update_many"
+          },
+          "docs": "Bulk or batch updates up to 100 organizations.\n\n#### Bulk update\n\nTo make the same change to multiple organizations, use the following endpoint and data format:\n\n`https://{subdomain}.zendesk.com/api/v2/organizations/update_many.json?ids=1,2,3`\n\n```js\n{\n  \"organization\": {\n    \"notes\": \"Priority\"\n  }\n}\n```\n\n#### Batch update\n\nTo make different changes to multiple organizations, use the following endpoint and data format:\n\n`https://{subdomain}.zendesk.com/api/v2/organizations/update_many.json`\n\n``"
+        },
+        {
+          "info": {
+            "name": "Zendesk List Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/organizations",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all organizations in the account."
+        },
+        {
+          "info": {
+            "name": "Zendesk Create Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new organization. You must provide a name. You can optionally set domains, tags, notes, and custom fields."
+        },
+        {
+          "info": {
+            "name": "Zendesk Show Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific organization."
+        },
+        {
+          "info": {
+            "name": "Zendesk Update Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an organization. You can update the name, domains, notes, tags, details, and custom fields."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/organizations/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the organization."
+              }
+            ]
+          },
+          "docs": "Permanently deletes an organization. Users associated with the organization are not deleted, but their organization membership is removed."
+        },
+        {
+          "info": {
+            "name": "Zendesk Search Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/organizations/search",
+            "params": [
+              {
+                "name": "external_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Search by external ID."
+              }
+            ]
+          },
+          "docs": "Searches for organizations by name or external ID."
+        },
+        {
+          "info": {
+            "name": "Zendesk Autocomplete Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/organizations/autocomplete",
+            "params": [
+              {
+                "name": "name",
+                "value": "Example Title",
+                "type": "query",
+                "description": "The prefix to match against organization names."
+              }
+            ]
+          },
+          "docs": "Returns organizations whose names start with the given string. Useful for building type-ahead search interfaces."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

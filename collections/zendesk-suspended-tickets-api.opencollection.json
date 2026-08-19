@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Suspended Tickets API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suspended Tickets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Suspended_tickets Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/suspended_tickets/attachments"
+          },
+          "docs": "Makes copies of any attachments on a suspended ticket and returns them as [attachment tokens](/api-reference/ticketing/tickets/ticket-attachments/). If the  ticket is manually recovered, you can include the attachment tokens on the new ticket.\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Enterprise plans\n* Unrestricted agents on all other plans\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Suspended_tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/suspended_tickets"
+          },
+          "docs": "#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Enterprise plans\n* Unrestricted agents on all other plans\n\n#### Sorting\n\nYou can sort the tickets with the `sort_by` and `sort_order` query string parameters.\n\n#### Pagination\n\n* Cursor pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Suspended_tickets Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/suspended_tickets/:id"
+          },
+          "docs": "#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Enterprise plans\n* Unrestricted agents on all other plans\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Suspended_tickets Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/suspended_tickets/:id"
+          },
+          "docs": "#### Allowed For\n\n* Unrestricted agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Suspended_tickets Id Recover",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/suspended_tickets/:id/recover"
+          },
+          "docs": "**Note**: During recovery, the API sets the requester to the authenticated agent who called the API, not the original requester. This prevents the ticket from being re-suspended after recovery. To preserve the original requester, use the [Recover Multiple Suspended Tickets](#recover-multiple-suspended-tickets) endpoint with the single ticket.\n\nThis endpoint does not queue an asynchronous job that can be tracked from [Job Statuses](/api-reference/ticketing/ticket-management/job_statuses/). Instea"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Suspended_tickets Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/suspended_tickets/destroy_many"
+          },
+          "docs": "Accepts up to 100 ids (the auto-generated id, not the ticket id.)\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Enterprise plans\n* Unrestricted agents on all other plans\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Suspended_tickets Export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/suspended_tickets/export"
+          },
+          "docs": "Exports a list of suspended tickets for the Zendesk Support instance. To export the list, the endpoint enqueues a job to create a CSV file with the data. When done, Zendesk sends the requester an email containing a link to the CSV file. In the CSV, tickets are sorted by the update timestamp in ascending order.\n\n #### Allowed For\n\n * Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Ente"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Suspended_tickets Recover_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/suspended_tickets/recover_many"
+          },
+          "docs": "Accepts up to 100 ids (the auto-generated id, not the ticket id.) Note that suspended tickets that fail to be recovered are still included in the response.\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Enterprise plans\n* Unrestricted agents on all other plans\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

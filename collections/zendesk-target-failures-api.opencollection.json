@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Target Failures API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Target Failures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Target_failures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/target_failures"
+          },
+          "docs": "Returns the 25 most recent target failures, per target.\n\n#### Stability\n\n* Development\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Target_failures Target_failure_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/target_failures/:target_failure_id"
+          },
+          "docs": "#### Stability\n\n* Development\n\n#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

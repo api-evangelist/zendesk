@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Group SLA Policies API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Group SLA Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Group_slas Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/group_slas/policies"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Group_slas Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/group_slas/policies"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Group_slas Policies Group_sla_policy_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Group_slas Policies Group_sla_policy_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id"
+          },
+          "docs": "Updates the specified policy.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Group_slas Policies Group_sla_policy_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/group_slas/policies/:group_sla_policy_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Group_slas Policies Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/group_slas/policies/definitions"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Group_slas Policies Reorder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/group_slas/policies/reorder",
+            "params": [
+              {
+                "name": "group_sla_policy_ids",
+                "value": "",
+                "type": "query",
+                "description": "The ids of the Group SLA policies to reorder"
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

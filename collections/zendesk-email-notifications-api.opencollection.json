@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Email Notifications API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Email_notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/email_notifications",
+            "params": [
+              {
+                "name": "filter[notification_id]",
+                "value": "7824075373693",
+                "type": "query",
+                "description": "Filter the email notifications by notification."
+              },
+              {
+                "name": "filter[comment_id]",
+                "value": "782407",
+                "type": "query",
+                "description": "Filter the email notifications by comment."
+              },
+              {
+                "name": "filter[ticket_id]",
+                "value": "623",
+                "type": "query",
+                "description": "Filter the email notifications by ticket."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\n#### Request parameters\n\n**Important**: You must specify a `filter` query parameter to narrow the scope of the search for this endpoint.\n\n##### Pagination\n\nBy default, a maximum of 100 email notifications are included per page. Use cursor-based pagination parameters (`page[after]` and `page[before]`) to navigate the records (can't be used together in the same request). See [Pagination](/api-reference/introduction/pagination/) for more details.\n\n##### Sorting\n\nBy defau"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Email_notifications Notification_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/email_notifications/:notification_id"
+          },
+          "docs": "Shows details on an email notification. You can get the value of the `notification_id` parameter by listing the ticket's outbound emails.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Email_notifications Show_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/email_notifications/show_many"
+          },
+          "docs": "Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.\n\n#### Allowed For\n\n* Agents\n\n#### Filters\n\n* By notification: `?ids=8433702508541,8433348111869`\n* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`\n* By ticket: `?ticket_ids=730,723`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

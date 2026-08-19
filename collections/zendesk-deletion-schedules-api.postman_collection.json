@@ -1,0 +1,438 @@
+{
+  "item": [
+    {
+      "id": "c03886f1-ffc7-4f35-9e5b-f23613f2f827",
+      "name": "Deletion Schedules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd4cb2a1-8a97-485e-8c12-5d7360316dd0",
+          "name": "Zendesk Get  Api V2 Deletion_schedules",
+          "request": {
+            "name": "Zendesk Get  Api V2 Deletion_schedules",
+            "description": {
+              "content": "Lists all deletion schedules for the account. Deletion schedules are used to automatically delete data from the account after a certain period of time.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deletion_schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "71c5fb18-f3d1-4757-810e-acadd56c559a",
+              "name": "Success Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deletion_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/GetDeletionSchedulesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20843fb0-250b-47c1-9c91-6fe0df548440",
+          "name": "Zendesk Post  Api V2 Deletion_schedules",
+          "request": {
+            "name": "Zendesk Post  Api V2 Deletion_schedules",
+            "description": {
+              "content": "Creates a new deletion schedule.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deletion_schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deletion_schedule\": {\n    \"value\": \"reference #/components/schemas/DeletionSchedule not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09678c1f-902a-4a81-9f95-59ff297e82b6",
+              "name": "Success Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deletion_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/CreateDeletionScheduleRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CreateDeletionScheduleResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dffc412b-fb75-4622-b542-f1f27b6927b8",
+          "name": "Zendesk Get  Api V2 Deletion_schedules Deletion_schedule_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Deletion_schedules Deletion_schedule_id",
+            "description": {
+              "content": "Gets a deletion schedule by its id.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deletion_schedules",
+                ":deletion_schedule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40d6ed0e-c1fd-4ee3-bb5b-364d1ec27021",
+              "name": "Success Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deletion_schedules",
+                    ":deletion_schedule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/GetDeletionScheduleResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb34553e-6b12-4a86-adaf-767d868a3a7a",
+          "name": "Zendesk Put  Api V2 Deletion_schedules Deletion_schedule_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Deletion_schedules Deletion_schedule_id",
+            "description": {
+              "content": "Updates a deletion schedule by its id.\n\n**Note**: Updating a condition updates the conditions array, clearing all existing values of the array. Include all your conditions when updating any condition.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deletion_schedules",
+                ":deletion_schedule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deletion_schedule\": {\n    \"value\": \"reference #/components/schemas/DeletionSchedule not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "973f17a6-dab2-40ae-b952-4523e5b2c46f",
+              "name": "Success Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deletion_schedules",
+                    ":deletion_schedule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/UpdateDeletionScheduleRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UpdateDeletionScheduleResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06c6191c-dd97-48ad-8cda-072454c0f16a",
+          "name": "Zendesk Delete  Api V2 Deletion_schedules Deletion_schedule_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Deletion_schedules Deletion_schedule_id",
+            "description": {
+              "content": "Deletes a deletion schedule by its id.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deletion_schedules",
+                ":deletion_schedule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "faa96b33-af95-4749-8e2b-004de1afd1ec",
+              "name": "Success Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deletion_schedules",
+                    ":deletion_schedule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "52a7c678-b6d3-4cf0-b52e-4d963a8b042c",
+    "name": "Zendesk Account Account Settings Deletion Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

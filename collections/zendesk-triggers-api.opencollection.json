@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Triggers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Triggers Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/triggers/search"
+          },
+          "docs": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each ticket trigger, if present\n| permissions "
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/triggers"
+          },
+          "docs": "Lists all ticket triggers for the current account.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. The usage sideloads are only supported on the Support Professional or Suite Growth plan or above.\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation |"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/triggers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Triggers Trigger_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/triggers/:trigger_id"
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\nThe Via Type value is a number instead of a text string. See [Via types reference](/documentation/ticketing/reference-guides/via-types/) for the keys.\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Triggers Trigger_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/triggers/:trigger_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\n#### Note\n\nUpdating a condition or action updates both the conditions and actions arrays,\nclearing all existing values of both arrays. Include all your conditions\nand actions when updating any condition or action.\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Triggers Trigger_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/triggers/:trigger_id"
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Triggers Trigger_id Revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/triggers/:trigger_id/revisions"
+          },
+          "docs": "List the revisions associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.\n\n#### Allowed For\n\n * Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name  | Will sideload\n| ----- | -------------\n| users | The user that authored each revision\n\n#### Pagination\n\nThis endpoint uses cursor-based pagination. The records are ordered in\ndescending order by the `created_at` timestamp, then by `id` on duplicate\n`created_at` values.\n\nThe `curso"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Triggers Trigger_id Revisions Trigger_revision_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/triggers/:trigger_id/revisions/:trigger_revision_id"
+          },
+          "docs": "Fetches a revision associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.\n\n#### Allowed For\n\n * Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name  | Will sideload\n| ----- | -------------\n| users | The user that authored each revision\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Triggers Active",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/triggers/active"
+          },
+          "docs": "Lists all active ticket triggers.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each ticket trigger, if present\n| permissions      | The permissions for each tr"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Triggers Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/triggers/definitions"
+          },
+          "docs": "Returns the definitions of the actions a ticket trigger can perform and the\ndefinitions of the conditions under which a ticket trigger can execute. The\ndefinition of the action includes a title (\"Status\"), a type (\"list\"), and\npossible values. The definition of the condition includes the same fields\nas well as the possible operators.\n\nFor a list of supported actions, see the [Actions reference](/documentation/ticketing/reference-guides/actions-reference)\nFor a list of supported conditions, see t"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Triggers Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/triggers/destroy_many"
+          },
+          "docs": "Deletes the ticket triggers corresponding to the provided comma-separated list of IDs.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe DELETE request takes one parameter, an `ids` object that lists the\nticket triggers to delete.\n\n| Name | Description\n| ---- | -----------\n| ids  | The IDs of the triggers to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Triggers Reorder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/triggers/reorder"
+          },
+          "docs": "Alters the firing order of ticket triggers in the account. See\n[Reordering and sorting triggers](https://support.zendesk.com/hc/en-us/articles/115015696088)\nin the Zendesk Help Center. The firing order is set in a `trigger_ids` array in the request body.\n\nYou must include every ticket trigger id in your account to reorder the ticket triggers. If not, the endpoint will return 404 Forbidden.\n\nReordering ticket triggers via the API is not permitted if you have more than one ticket trigger category."
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Triggers Update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/triggers/update_many",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the position or the active status of multiple ticket triggers. Any additional properties are ignored.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe PUT request expects a `triggers` object that lists the ticket triggers to update.\n\nEach ticket trigger may have the following properties:\n\n| Name        | Mandatory | Description\n| --------    | --------- | -----------\n| id          | yes       | The ID of the ticket trigger to update\n| position    | no        | The new position o"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

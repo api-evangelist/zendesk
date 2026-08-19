@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Satisfaction Ratings API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Satisfaction Ratings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Satisfaction_ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/satisfaction_ratings"
+          },
+          "docs": "#### Allowed For\n* Admins\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Filters\n\n| Parameter  | Value\n| ---------- | -----\n| score      | offered, unoffered, received, received\\_with\\_comment, received\\_without\\_comment,<br/>good, good\\_with\\_comment, good\\_without\\_comment,<br/>bad, bad\\_with\\_comment, bad\\_without\\_comment\n| start_time | Time of the oldest satisfaction rating, as a [Unix epoch time](htt"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Satisfaction_ratings Satisfaction_rating_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/satisfaction_ratings/:satisfaction_rating_id",
+            "params": [
+              {
+                "name": "satisfaction_rating_id",
+                "value": "35436",
+                "type": "path",
+                "description": "The id of the satisfaction rating to retrieve"
+              }
+            ]
+          },
+          "docs": "Returns a specific satisfaction rating. You can get the id from\nthe [List Satisfaction Ratings](#list-satisfaction-ratings) endpoint.\n\n#### Allowed For\n\n * Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Satisfaction_ratings Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/satisfaction_ratings/count"
+          },
+          "docs": "Returns an approximate count of satisfaction ratings in the account. If the count exceeds 100,000, the count will return a cached result. This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update i"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Tickets Ticket_id Satisfaction_rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/satisfaction_rating",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "35436",
+                "type": "path",
+                "description": "The id of the ticket"
+              }
+            ]
+          },
+          "docs": "Creates a CSAT rating for a solved ticket, or for a ticket that was previously\nsolved and then reopened.\n\nOnly the end user listed as the ticket requester can create a satisfaction rating for the ticket.\n\nOnly \"good\" and \"bad\" are valid values for the score when creating a rating. Other states, like \"offered\", are not valid and will result in a 422 error.\n\n#### Allowed For\n\n* End user who requested the ticket\n\nThe end user must be a verified user.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

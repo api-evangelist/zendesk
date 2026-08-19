@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Account Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/account/settings"
+          },
+          "docs": "Shows the settings that are available for the account.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Account Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/account/settings"
+          },
+          "docs": "Updates settings for the account. See [JSON Format](#json-format) above for the settings you can update.\n\n#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

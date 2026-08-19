@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Organization Subscriptions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organization_subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organization_subscriptions"
+          },
+          "docs": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For:\n\n* Agents\n* End users\n\nFor end users, the response will only list the subscriptions created by the requesting end user."
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Organization_subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/organization_subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Allowed For:\n\n* Agents\n* End users\n\nEnd users can only subscribe to shared organizations in which they're members."
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organization_subscriptions Organization_subscription_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organization_subscriptions/:organization_subscription_id"
+          },
+          "docs": "#### Allowed For:\n\n* Agents\n* End users\n\nFor end users, the response will only list the subscriptions created by the requesting end user."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Organization_subscriptions Organization_subscription_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/organization_subscriptions/:organization_subscription_id"
+          },
+          "docs": "#### Allowed For:\n\n* Agents\n* End users"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

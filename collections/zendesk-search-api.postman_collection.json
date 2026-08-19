@@ -1,0 +1,350 @@
+{
+  "item": [
+    {
+      "id": "4b4801d5-74e2-4411-becc-0b446b10e59b",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73dbe1bb-7c0f-40ec-b930-6bcd58ecc420",
+          "name": "Zendesk Get  Api V2 Search",
+          "request": {
+            "name": "Zendesk Get  Api V2 Search",
+            "description": {
+              "content": "Returns the search results. See [Query basics](#query-basics) for the syntax of the `query` parameter.\n\nUse the ampersand character (&) to append the `sort_by` or `sort_order` parameters to the URL.\n\nFor examples, see [Searching with Zendesk API](/documentation/ticketing/using-the-zendesk-api/searching-with-the-zendesk-api).\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Offset pagination only\n\nOffset pagination may result in duplicate results when paging. You can also use the\n[Export Search Results](/api-reference/ticketing/ticket-management/search/#export-search-results) endpoint, which\nuses cursor-based pagination and doesn't return duplicate results. See\n[Using cursor pagination](/api-reference/introduction/pagination/#using-cursor-pagination) for more information.\n\n\n#### Errors JSON Format\n\nErrors are represented as JSON objects which have the following keys:\n\n| Name                  | Type                 | Comment\n| --------------------- | ---------------------| --------------------\n| error                 | string               | The type of error. Examples: \"unavailable\", \"invalid\"\n| description           | string               |\n\n##### Example Error\n```js\n{\n  \"error\": \"unavailable\",\n  \"description\": \"Sorry, we could not complete your search query. Please try again in a moment.\"\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) The search query. See [Query basics](#query-basics) above. For details on the query syntax, see the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "One of `updated_at`, `created_at`, `priority`, `status`, or `ticket_type`. Defaults to sorting by relevance"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "One of `asc` or `desc`.  Defaults to `desc`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1bb719c-6d55-418b-b817-b449ce51bcc6",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "https://subdomain.zendesk.com/api/v2/search.json?query=type:ticket status:closed"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "status"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SearchResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d31ece55-6234-4e08-bf74-487ddd89fded",
+          "name": "Zendesk Get  Api V2 Search Count",
+          "request": {
+            "name": "Zendesk Get  Api V2 Search Count",
+            "description": {
+              "content": "Returns the number of items matching the query rather than the items. The search string works the same as a regular search.\n\n#### Allowed For\n\n- Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "search",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) The search query"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be18d416-50e1-4596-98f9-c353e0ac8e78",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "search",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "https://subdomain.zendesk.com/api/v2/search.json?query=type:ticket status:closed"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SearchCountResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ece95a18-b3c0-4986-9bf7-cbef01bf9039",
+          "name": "Zendesk Get  Api V2 Search Export",
+          "request": {
+            "name": "Zendesk Get  Api V2 Search Export",
+            "description": {
+              "content": "Exports a set of results. See [Query syntax](#query-syntax) for the syntax of the `query` parameter.\n\nUse this endpoint for search queries that will return more than 1000 results. The result set is ordered only by the `created_at` attribute.\n\nThe search only returns results of a single object type. The following object types are supported: ticket, organization, user, or group.\n\nYou must specify the type in the `filter[type]` parameter. Searches with type in the query string will result in an error.\n\n#### Allowed For\n\n- Agents\n\n#### Pagination\n\n- Cursor pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 1000 records per page. The number of results shown in a page is determined by the `page[size]` parameter.\n\n**Note**: You may experience a speed reduction or a timeout if you request 1000 results per page and you have many archived tickets in the results. Try reducing the number of results per page. We recommend 100 results per page.\n\nThe cursor specified by the `after_cursor` property in a response expires after one hour.\n\nFor more information on cursor-based pagination, see the following articles:\n\n- [Comparing cursor pagination and offset pagination](/documentation/developer-tools/pagination/comparing-cursor-pagination-and-offset-pagination)\n- [Paginating through lists using cursor pagination](/documentation/developer-tools/pagination/paginating-through-lists-using-cursor-pagination)\n\n#### Limits\n\nThis API endpoint is rate-limited to 100 requests per minute per account. The limit also counts towards the global API rate limit.\n\n#### Response Format\n\n| Name                  | Type                 | Comment\n| --------------------- | ---------------------| --------------------\n| links[next]           | string               | URL to the next page of results\n| meta[has_more]        | string               | Boolean indicating if there are more results\n| meta[after_cursor]    | string               | Cursor object returned from the Search Service\n| results               | array                | May consist of tickets, users, groups, or organizations, as specified by the `filter_type` parameter\n\nThe response is similar to the response of `GET /api/v2/search.json?`, with a few changes:\n\n* `links` - Has the following nested properties: `prev` and `next`. These replace the `next_page` and `prev_page` links. The `prev` property is always null because backward pagination is not supported. The `next` property may include an auto-generated link to the next page of results.\n* `meta` - Has the following nested properties: `has_more` and `after_cursor`. The `has_more` property indicates whether the next page has more results. The `after_cursor` property is the cursor used to paginate to the next page. It expires after one hour.\n\nThere's no `count` property.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "search",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) The search query. See [Query basics](#query-basics) above. For details on the query syntax, see the [Zendesk Support search reference](https://support.zendesk.com/hc/en-us/articles/203663226)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of results shown in a page."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[type]",
+                  "value": "<string>",
+                  "description": "The object type returned by the export query. Can be `ticket`, `organization`, `user`, or `group`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92dd382b-0824-4706-8406-1e20bf550b05",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "search",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "https://subdomain.zendesk.com/api/v2/search.json?query=type:ticket status:closed"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "status"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SearchExportResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "328dd6a5-6a8b-4de0-b524-5cbb3c284fff",
+    "name": "Zendesk Account Account Settings Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Lookup Relationships API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lookup Relationships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Relationships Definitions Target_type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/relationships/definitions/:target_type",
+            "params": [
+              {
+                "name": "target_type",
+                "value": "zen:custom_object:apartment",
+                "type": "path",
+                "description": "The target type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+              },
+              {
+                "name": "source_type",
+                "value": "zen:user",
+                "type": "query",
+                "description": "The source type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", and \"zen:organization\"\n"
+              }
+            ]
+          },
+          "docs": "Returns filter definitions based on the given target type.  Target types\ninclude users (zen:user), tickets (zen:ticket), organizations (zen:organization), or custom objects (zen:custom_object:CUSTOM_OBJECT_KEY).\nThe returned filter definitions are the options that you can use to build a custom field or ticket field's\n`relationship_filter`.\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Target_type Target_id Relationship_fields Field_id Source_type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/:target_type/:target_id/relationship_fields/:field_id/:source_type",
+            "params": [
+              {
+                "name": "target_type",
+                "value": "zen:custom_object:apartment",
+                "type": "path",
+                "description": "The type of object the relationship field is targeting.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+              },
+              {
+                "name": "target_id",
+                "value": "1234",
+                "type": "path",
+                "description": "The id of the object the relationship field is targeting\n"
+              },
+              {
+                "name": "field_id",
+                "value": "1234",
+                "type": "path",
+                "description": "The id of the lookup relationship field\n"
+              },
+              {
+                "name": "source_type",
+                "value": "zen:custom_object:apartment",
+                "type": "path",
+                "description": "The type of object the relationship field belongs to (example. ticket field belongs to a ticket object).\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+              }
+            ]
+          },
+          "docs": "Returns a list of source objects whose values are populated with the id of a related target object.  For example,\nif you have a lookup field called \"Success Manager\" on a ticket, this endpoint can answer the question,\n\"What tickets (sources) is this user (found by `target_type` and `target_id`)\nassigned as the 'Success Manager' (field referenced by `field_id`)?\"\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/in"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

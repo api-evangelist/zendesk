@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings AssigneeFieldAssignableAgents API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AssigneeFieldAssignableAgents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api Lotus Assignables Autocomplete.json",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/lotus/assignables/autocomplete.json"
+          },
+          "docs": "List assignable groups and agents based on query matched against name\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api Lotus Assignables Groups.json",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/lotus/assignables/groups.json"
+          },
+          "docs": "List assignable groups on the AssigneeField\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api Lotus Assignables Groups Group_id Agents.json",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/lotus/assignables/groups/:group_id/agents.json"
+          },
+          "docs": "List assignable agents from a group on the AssigneeField\n\n#### Allowed For\n\n* Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

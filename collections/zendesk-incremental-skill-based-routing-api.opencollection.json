@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Incremental Skill Based Routing API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Incremental Skill Based Routing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Routing Attribute_values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/routing/attribute_values"
+          },
+          "docs": "Returns a stream of changes that occurred on routing attribute values.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Routing Attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/routing/attributes"
+          },
+          "docs": "Returns a stream of changes that occurred on routing attributes.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that's only available in API responses. See [Pagination](#pagination).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Routing Instance_values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/routing/instance_values"
+          },
+          "docs": "Returns a stream of changes that occurred on routing instance values. Changes are grouped by `attribute_value_id`,\nwith associate type events listed alongside unassociate type events based on the unassociate event’s timestamp.\n\n#### Allowed For\n\n* Admins\n\n#### Parameters\n\nOptional\n\n| Name   | Type   | Comment\n| ------ | ------ | -------\n| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parame"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

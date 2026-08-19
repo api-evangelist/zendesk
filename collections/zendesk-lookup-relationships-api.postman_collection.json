@@ -1,0 +1,278 @@
+{
+  "item": [
+    {
+      "id": "874b225f-4821-4809-a00c-e569e6b843db",
+      "name": "Lookup Relationships",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "806c8ea8-79c2-4d0c-a883-7860edbe75fb",
+          "name": "Zendesk Get  Api V2 Relationships Definitions Target_type",
+          "request": {
+            "name": "Zendesk Get  Api V2 Relationships Definitions Target_type",
+            "description": {
+              "content": "Returns filter definitions based on the given target type.  Target types\ninclude users (zen:user), tickets (zen:ticket), organizations (zen:organization), or custom objects (zen:custom_object:CUSTOM_OBJECT_KEY).\nThe returned filter definitions are the options that you can use to build a custom field or ticket field's\n`relationship_filter`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "relationships",
+                "definitions",
+                ":target_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "source_type",
+                  "value": "<string>",
+                  "description": "The source type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", and \"zen:organization\"\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_type",
+                  "description": "(Required) The target type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d18abef5-e0f1-4d18-9069-d8cb4f7c9475",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "relationships",
+                    "definitions",
+                    ":target_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source_type",
+                      "value": "zen:user"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_type",
+                      "description": "(Required) The target type for which you would like to see filter definitions.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/RelationshipFilterDefinitionExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b9238a8-d442-4fcb-8fa4-e8a64d1546d3",
+          "name": "Zendesk Get  Api V2 Target_type Target_id Relationship_fields Field_id Source_type",
+          "request": {
+            "name": "Zendesk Get  Api V2 Target_type Target_id Relationship_fields Field_id Source_type",
+            "description": {
+              "content": "Returns a list of source objects whose values are populated with the id of a related target object.  For example,\nif you have a lookup field called \"Success Manager\" on a ticket, this endpoint can answer the question,\n\"What tickets (sources) is this user (found by `target_type` and `target_id`)\nassigned as the 'Success Manager' (field referenced by `field_id`)?\"\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                ":target_type",
+                ":target_id",
+                "relationship_fields",
+                ":field_id",
+                ":source_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_type",
+                  "description": "(Required) The type of object the relationship field is targeting.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "target_id",
+                  "description": "(Required) The id of the object the relationship field is targeting\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "field_id",
+                  "description": "(Required) The id of the lookup relationship field\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "source_type",
+                  "description": "(Required) The type of object the relationship field belongs to (example. ticket field belongs to a ticket object).\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24b90d8f-0322-4e4e-b102-cbc45fe56999",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    ":target_type",
+                    ":target_id",
+                    "relationship_fields",
+                    ":field_id",
+                    ":source_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_type",
+                      "description": "(Required) The type of object the relationship field is targeting.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "target_id",
+                      "description": "(Required) The id of the object the relationship field is targeting\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "field_id",
+                      "description": "(Required) The id of the lookup relationship field\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_type",
+                      "description": "(Required) The type of object the relationship field belongs to (example. ticket field belongs to a ticket object).\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ReverseLookupUsersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9f512325-bfd2-4b00-9750-3554c6b17f55",
+    "name": "Zendesk Account Account Settings Lookup Relationships API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

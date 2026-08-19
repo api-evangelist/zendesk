@@ -1,0 +1,710 @@
+{
+  "item": [
+    {
+      "id": "df1a52e4-e10b-498d-b1c1-d7b62d25f57c",
+      "name": "Automations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ba1cc54-22f0-4f9c-9dbd-2f8af26e98de",
+          "name": "Zendesk Get  Api V2 Automations",
+          "request": {
+            "name": "Zendesk Get  Api V2 Automations",
+            "description": {
+              "content": "Lists all automations for the current account.\n\n#### Allowed For\n\n* Agents\n\n#### Available Parameters\n\nYou can pass in any combination of the following optional filters:\n\n| Name       | Type    | Comment\n| ---------- | ------- | -------\n| active     | boolean | Only active automations if true, inactive automations if false\n| sort_by    | string  | Possible values are \"alphabetical\", \"created_at\", \"updated_at\", \"usage_1h\", \"usage_24h\", or \"usage_7d\". Defaults to \"position\"\n| sort_order | string  | One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others\n\n#### Sideloads\n\nThe following sideloads are supported. The usage sideloads are only supported on the Support Professional or Suite Growth plan or above.\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each automation, if present\n| permissions      | The permissions for each automation\n| usage_1h         | The number of times each automation has been used in the past hour\n| usage_24h        | The number of times each automation has been used in the past day\n| usage_7d         | The number of times each automation has been used in the past week\n| usage_30d        | The number of times each automation has been used in the past thirty days\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8196cfc-20f8-422f-9c03-0b61c1a960db",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AutomationsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db5025c6-57f4-4633-8796-cf3bf47ca939",
+          "name": "Zendesk Post  Api V2 Automations",
+          "request": {
+            "name": "Zendesk Post  Api V2 Automations",
+            "description": {
+              "content": "Creates an automation.\n\nNew automations must be unique and have at least one condition that is true only once or an action that nullifies at least one of the conditions. Active automations can have overlapping conditions but can't be identical.\n\nThe request must include the following conditions in the `all` array:\n\n- At least one time-based condition\n- At least one condition that checks one of the following fields: `status`, `type`, `group_id`, `assignee_id`, or `requester_id`.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93661135-0e87-4258-a2c8-b7e71b25887a",
+              "name": "Created response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AutomationCreateResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52f33f9f-ee9f-46c2-960c-5af8c84815fe",
+          "name": "Zendesk Get  Api V2 Automations Automation_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Automations Automation_id",
+            "description": {
+              "content": "#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations",
+                ":automation_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31d74c4b-7c3f-44c5-a35f-e1f2c7bb81b2",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations",
+                    ":automation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AutomationResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf68ee0b-4248-467b-acc9-07597352113f",
+          "name": "Zendesk Put  Api V2 Automations Automation_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Automations Automation_id",
+            "description": {
+              "content": "Updates an automation.\n\nUpdated automations must be unique and have at least one condition that is true only once or an action that nullifies at least one of the conditions. Active automations can have overlapping conditions but can't be identical.\n\nThe request must include the following conditions in the `all` array:\n- At least one time-based condition\n- At least one condition that checks one of the following fields: 'status', 'type', 'group_id', 'assignee_id', or 'requester_id'\n\n**Note**: Updating a condition or action updates both the `conditions` and `actions` arrays, clearing all existing values of both arrays. Include all your conditions and actions when updating any condition or action.\n**Note**: You might be restricted from updating some default automations.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations",
+                ":automation_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf7a436b-b545-4d4c-adca-acd44a11cf66",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations",
+                    ":automation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AutomationResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0058e8bb-b451-4461-ace8-4497485fb31c",
+          "name": "Zendesk Delete  Api V2 Automations Automation_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Automations Automation_id",
+            "description": {
+              "content": "**Note**: You might be restricted from deleting some default automations.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations",
+                ":automation_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4c2ddbb-c206-4f87-84ab-ed62e2c050b5",
+              "name": "No Content response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations",
+                    ":automation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f52c4156-23ce-4656-ae51-f39b2da11d6d",
+          "name": "Zendesk Get  Api V2 Automations Active",
+          "request": {
+            "name": "Zendesk Get  Api V2 Automations Active",
+            "description": {
+              "content": "Lists all active automations.\n\n#### Allowed For\n\n* Agents\n\n#### Available Parameters\n\nYou can pass in any combination of the following optional filters:\n\n| Name       | Type   | Comment\n| ---------- | ------ | -------\n| sort_by    | string | Possible values are \"alphabetical\", \"created_at\", \"updated_at\", \"usage_1h\", \"usage_24h\", or \"usage_7d\". Defaults to \"position\"\n| sort_order | string | One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each automation, if present\n| permissions      | The permissions for each automation\n| usage_1h         | The number of times each automation has been used in the past hour\n| usage_24h        | The number of times each automation has been used in the past day\n| usage_7d         | The number of times each automation has been used in the past week\n| usage_30d        | The number of times each automation has been used in the past thirty days\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae1f71b8-8222-4090-ad90-7958f9ac4c71",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AutomationsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f697188-20cc-4406-b879-97eef5fdab92",
+          "name": "Zendesk Delete  Api V2 Automations Destroy_many",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Automations Destroy_many",
+            "description": {
+              "content": "Deletes the automations corresponding to the provided comma-separated list of IDs.\n\n**Note**: You might be restricted from deleting some default automations. If included in a bulk deletion, the unrestricted automations will be deleted.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe DELETE request takes one parameter, an `ids` object that lists the automations to delete.\n\n| Name | Description\n| ---- | -----------\n| ids  | The IDs of the automations to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations",
+                "destroy_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<integer>",
+                  "description": "The IDs of the automations to delete"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<integer>",
+                  "description": "The IDs of the automations to delete"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf7991a5-9d0f-4e9f-b0a3-4854296d6428",
+              "name": "No Content response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations",
+                    "destroy_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f8bd1e9-ec66-4ddf-b48f-2fb2944521c2",
+          "name": "Zendesk Get  Api V2 Automations Search",
+          "request": {
+            "name": "Zendesk Get  Api V2 Automations Search",
+            "description": {
+              "content": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each automation, if present\n| permissions      | The permissions for each automation\n| usage_1h         | The number of times each automation has been used in the past hour\n| usage_24h        | The number of times each automation has been used in the past day\n| usage_7d         | The number of times each automation has been used in the past week\n| usage_30d        | The number of times each automation has been used in the past thirty days\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b78e90e0-fbda-4923-ae60-f3fcf81ca7d8",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AutomationsSearchResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4fb7bf7-899e-4c97-bbe1-8a0777a76f72",
+          "name": "Zendesk Put  Api V2 Automations Update_many",
+          "request": {
+            "name": "Zendesk Put  Api V2 Automations Update_many",
+            "description": {
+              "content": "**Note**: You might be restricted from updating some default automations. If included in a bulk update, the unrestricted automations will be updated.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe PUT request expects an `automations` object that lists the automations to update.\n\nEach automation may have the following properties:\n\n| Name     | Mandatory | Description\n| -------- | --------- | -----------\n| id       | yes       | The ID of the automation to update\n| position | no        | The new position of the automation\n| active   | no        | The active status of the automation (true or false)\n\n#### Example Request\n\n```js\n{\n  \"automations\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"position\": 5},\n    {\"id\": 27, \"position\": 9},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "automations",
+                "update_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e88953fc-15ee-4782-b8f7-b8ec07e23d16",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "automations",
+                    "update_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AutomationsUpdateManyResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ecce9eaa-fa82-40ad-abc0-32e6dd1411b8",
+    "name": "Zendesk Account Account Settings Automations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

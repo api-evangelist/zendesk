@@ -1,0 +1,368 @@
+{
+  "item": [
+    {
+      "id": "4a67fcbe-bbe9-459d-8b4e-9538e90a942c",
+      "name": "Satisfaction Ratings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5df4fcda-982e-45c9-b75e-edbceaa2d11b",
+          "name": "Zendesk Get  Api V2 Satisfaction_ratings",
+          "request": {
+            "name": "Zendesk Get  Api V2 Satisfaction_ratings",
+            "description": {
+              "content": "#### Allowed For\n* Admins\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Filters\n\n| Parameter  | Value\n| ---------- | -----\n| score      | offered, unoffered, received, received\\_with\\_comment, received\\_without\\_comment,<br/>good, good\\_with\\_comment, good\\_without\\_comment,<br/>bad, bad\\_with\\_comment, bad\\_without\\_comment\n| start_time | Time of the oldest satisfaction rating, as a [Unix epoch time](https://www.epochconverter.com/)\n| end_time   | Time of the most recent satisfaction rating, as a [Unix epoch time](https://www.epochconverter.com/)\n\nIf you specify an unqualified score such as `good`, the results include all the records with and without comments.\n\nExamples:\n\n* `/api/v2/satisfaction_ratings.json?score=bad`\n* `/api/v2/satisfaction_ratings.json?score=bad&start_time=1498151194`\n* `/api/v2/satisfaction_ratings.json?start_time=1340384793&end_time=1371920793`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "satisfaction_ratings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1885c2c-9937-4fd5-90c5-c0f410ac3717",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "satisfaction_ratings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SatisfactionRatingsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3065b067-359e-4010-9457-9a59e47fbe27",
+          "name": "Zendesk Get  Api V2 Satisfaction_ratings Satisfaction_rating_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Satisfaction_ratings Satisfaction_rating_id",
+            "description": {
+              "content": "Returns a specific satisfaction rating. You can get the id from\nthe [List Satisfaction Ratings](#list-satisfaction-ratings) endpoint.\n\n#### Allowed For\n\n * Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "satisfaction_ratings",
+                ":satisfaction_rating_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "satisfaction_rating_id",
+                  "description": "(Required) The id of the satisfaction rating to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65b063aa-166a-48f4-9301-0cf780ddbd8e",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "satisfaction_ratings",
+                    ":satisfaction_rating_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "satisfaction_rating_id",
+                      "description": "(Required) The id of the satisfaction rating to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SatisfactionRatingResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a694900b-7ec7-424a-8d67-fd9c0aed56e6",
+          "name": "Zendesk Get  Api V2 Satisfaction_ratings Count",
+          "request": {
+            "name": "Zendesk Get  Api V2 Satisfaction_ratings Count",
+            "description": {
+              "content": "Returns an approximate count of satisfaction ratings in the account. If the count exceeds 100,000, the count will return a cached result. This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.\n\n#### Allowed For\n* Admins",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "satisfaction_ratings",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a83ee840-2ee2-49df-afbc-ab7d0a71feba",
+              "name": "Count of satisfaction ratings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "satisfaction_ratings",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SatisfactionRatingsCountResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3561c73c-5d33-449f-a9bd-d67e8789327d",
+          "name": "Zendesk Post  Api V2 Tickets Ticket_id Satisfaction_rating",
+          "request": {
+            "name": "Zendesk Post  Api V2 Tickets Ticket_id Satisfaction_rating",
+            "description": {
+              "content": "Creates a CSAT rating for a solved ticket, or for a ticket that was previously\nsolved and then reopened.\n\nOnly the end user listed as the ticket requester can create a satisfaction rating for the ticket.\n\nOnly \"good\" and \"bad\" are valid values for the score when creating a rating. Other states, like \"offered\", are not valid and will result in a 422 error.\n\n#### Allowed For\n\n* End user who requested the ticket\n\nThe end user must be a verified user.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tickets",
+                ":ticket_id",
+                "satisfaction_rating"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticket_id",
+                  "description": "(Required) The id of the ticket"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f6c313b-d221-4cf9-8637-62de1eb0d089",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tickets",
+                    ":ticket_id",
+                    "satisfaction_rating"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticket_id",
+                      "description": "(Required) The id of the ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SatisfactionRatingResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0a5f048c-1829-4558-ba81-29c34924fe79",
+    "name": "Zendesk Account Account Settings Satisfaction Ratings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

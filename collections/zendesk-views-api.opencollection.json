@@ -1,0 +1,393 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Views API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "sales&group_id=25789188",
+                "type": "query",
+                "description": "Query string used to find all views with matching title"
+              },
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Filter views by access. May be \"personal\", \"shared\", or \"account\""
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter by active views if true or inactive views if false"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter views by group"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Possible values are \"alphabetical\", \"created_at\", \"updated_at\", and \"position\". If unspecified, the views are sorted by relevance"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others"
+              },
+              {
+                "name": "include",
+                "value": "permissions",
+                "type": "query",
+                "description": "A sideload to include in the response. See [Sideloads](#sideloads-3)"
+              }
+            ]
+          },
+          "docs": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views View_id Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/:view_id/tickets",
+            "params": [
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort or group the tickets by a column in the [View columns](#view-columns) table. The `subject` and `submitter` columns are not supported"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others"
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\n#### Pagination\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views",
+            "params": [
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Only views with given access. May be \"personal\", \"shared\", or \"account\""
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Only active views if true, inactive views if false"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Only views belonging to given group"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sort parameter used with cursor pagination. Defaults to \"created_at\". Prefix with '-' for descending order"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "The sort_by parameter used with offset pagination. Possible values are \"alphabetical\", \"created_at\", or \"updated_at\". Defaults to \"position\""
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "The sort_order parameter used with offset pagination. One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others"
+              }
+            ]
+          },
+          "docs": "Lists shared and personal views available to the current user.\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The permissions for each view\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n####"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Views",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/views"
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\n#### JSON Format\n\nThe JSON format consists of one property, a `view` object that lists the values to set when the view is created.\n\n**Note**: The request must include at least one condition in the `all` array that checks one of the following fields: `status`, `type`, `group_id`, `assignee_id`, or `requester_id`.\n\n| Name        | Description\n| ----------- | -----------\n| title       | Required. The title of the view\n| all         | Required. An array of one or more con"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views View_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/:view_id"
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Views View_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/views/:view_id"
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\n#### JSON Format\n\n The PUT request takes one property, a `view` object that lists the values to update. All properties are optional.\n\n**Note**: Updating a condition updates the containing array, clearing the other conditions. Include all your conditions when updating any condition.\n\n| Name        | Description\n| ----------- | -----------\n| title       | The title of the view\n| all         | An array of one or more conditions. A ticket must meet all the conditions to b"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Views View_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/views/:view_id"
+          },
+          "docs": "#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views View_id Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/:view_id/count"
+          },
+          "docs": "Returns the ticket count for a single view.\n\nThis endpoint is rate limited to 5 requests per minute, per view, per agent.\n\n#### View Counts\n\nThe view count endpoints, Count Tickets in View (this endpoint) and [Count Tickets in Views](#count-tickets-in-views), let you estimate how many tickets remain in a view without having to retrieve the entire view. They're designed to help estimate view size. From a business perspective, accuracy becomes less relevant as view size increases.\n\nTo ensure quali"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views View_id Execute",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/:view_id/execute",
+            "params": [
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "The ticket field used for sorting. This will either be a title or a custom field id."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "The direction the tickets are sorted. May be one of 'asc' or 'desc'"
+              }
+            ]
+          },
+          "docs": "Returns the column titles and the rows of the specified view.\n\nThe `columns` array lists the view's column titles and includes only views parameters.\n\nThe `rows` array lists the values of each column for each ticket and includes parameters from both views and tickets. Though not displayed in the view, a partial ticket object is included with each row object.\n\n**Note**: To get the full ticket objects for a specified view, use [List Tickets from a View](#list-tickets-from-a-view).\n\nThis endpoint i"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views View_id Export",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/:view_id/export"
+          },
+          "docs": "Returns the csv attachment of the specified view if possible. Enqueues a job to produce the csv if necessary.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views Active",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/active",
+            "params": [
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Only views with given access. May be \"personal\", \"shared\", or \"account\""
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Only views belonging to given group"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Possible values are \"alphabetical\", \"created_at\", or \"updated_at\". Defaults to \"position\""
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "One of \"asc\" or \"desc\". Defaults to \"asc\" for alphabetical and position sort, \"desc\" for all others"
+              }
+            ]
+          },
+          "docs": "Lists active shared and personal views available to the current user.\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The permissions for each view\n\n#### Pagination\n\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views Compact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/compact"
+          },
+          "docs": "A compacted list of shared and personal views available to the current user. This endpoint never returns more than 32 records and does not respect the \"per_page\" option.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/count"
+          },
+          "docs": "Returns an approximate count of shared and personal views available to the current user. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,0"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views Count_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/count_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2,3",
+                "type": "query",
+                "description": "List of view's ids separated by commas."
+              }
+            ]
+          },
+          "docs": "Returns the ticket count of each view in a list of views. Accepts up to 20 view ids per request. For the ticket count of a single view, see [Count Tickets in View](#count-tickets-in-view).\n\nOnly returns values for personal and shared views accessible to the user performing the request.\n\nThis endpoint is rate limited to 6 requests every 5 minutes.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Views Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/views/destroy_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2,3",
+                "type": "query",
+                "description": "The IDs of the views to delete"
+              }
+            ]
+          },
+          "docs": "Deletes the views corresponding to the provided list of IDs.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Views Preview",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/views/preview"
+          },
+          "docs": "You can preview views by constructing the conditions in the proper format and nesting them under the `view` property. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/). The output can also be controlled by passing in any of the following parameters and nesting them under the `output` property.\n\n| Name            | Type    | Comment\n| --------------- | ------- | -------\n| columns         | Array   | The ticket fields to display. System fields are looked u"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Views Preview Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/views/preview/count"
+          },
+          "docs": "Returns the ticket count for a single preview.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Views Show_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/views/show_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2,3",
+                "type": "query",
+                "description": "List of view's ids separated by commas."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Only active views if true, inactive views if false"
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each view, if present\n| permissions      | The permissions for each view\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Views Update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/views/update_many"
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe PUT request expects a `views` object that lists the views to update.\n\nEach view may have the following properties:\n\n| Name     | Mandatory | Description\n| -------- | --------- | -----------\n| id       | yes       | The ID of the view to update\n| position | no        | The new position of the view\n| active   | no        | The active status of the view (true or false)\n\n#### Example Request Body\n\n```js\n{\n  \"views\": [\n    {\"id\": 25, \"position\""
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

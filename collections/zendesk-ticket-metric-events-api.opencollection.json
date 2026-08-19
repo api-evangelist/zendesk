@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Ticket Metric Events API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ticket Metric Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Ticket_metric_events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/ticket_metric_events",
+            "params": [
+              {
+                "name": "start_time",
+                "value": "1332034771",
+                "type": "query",
+                "description": "The Unix UTC epoch time of the oldest event you're interested in. Example: 1332034771."
+              },
+              {
+                "name": "include_changes",
+                "value": "",
+                "type": "query",
+                "description": "This optional parameter enhances incremental data retrieval, delivering a consistent and accurate representation of data changes."
+              }
+            ]
+          },
+          "docs": "Returns ticket metric events that occurred on or after the start time.\n\nCursor pagination returns a maximum of 100 records per page. Events are listed in chronological order.\n\nIf the results are not paginated, events will be returned as a time-based incremental export.\n\nSee [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports).\n\n#### Pagination\n* Cursor pagination\n\nSee [Pagination](/api-reference/introduction/p"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

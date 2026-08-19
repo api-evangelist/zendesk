@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Group Memberships API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Group Memberships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Group_memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/group_memberships"
+          },
+          "docs": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For:\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Group_memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/group_memberships"
+          },
+          "docs": "Assigns an agent to a given group.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Group_memberships Group_membership_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/group_memberships/:group_membership_id"
+          },
+          "docs": "The 'id' is the group membership id, not a group id.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Group_memberships Group_membership_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/group_memberships/:group_membership_id"
+          },
+          "docs": "Immediately removes a user from a group and schedules a job to unassign all working tickets that are assigned to the given user and group combination.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Group_memberships Assignable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/group_memberships/assignable"
+          },
+          "docs": "Returns a maximum of 100 group memberships per page.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For:\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Group_memberships Create_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/group_memberships/create_many"
+          },
+          "docs": "Assigns up to 100 agents to given groups.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion.\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Group_memberships Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/group_memberships/destroy_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2,3",
+                "type": "query",
+                "description": "Id of the group memberships to delete. Comma separated"
+              }
+            ]
+          },
+          "docs": "Immediately removes users from groups and schedules a job to unassign all working tickets that are assigned to the given user and group combinations.\n\n#### Allowed For\n\n* Admins\n* Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Users User_id Group_memberships Group_membership_id Make_default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/group_memberships/:group_membership_id/make_default"
+          },
+          "docs": "#### Allowed For:\n\n* Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

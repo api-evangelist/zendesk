@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Support Addresses API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Support Addresses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Recipient_addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/recipient_addresses"
+          },
+          "docs": "Lists all the support addresses for the account.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Recipient_addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/recipient_addresses"
+          },
+          "docs": "Adds a Zendesk or external support address to your account.\n\nTo add a Zendesk address, use the following syntax: `{local-part}@{accountname}.zendesk.com`.\nExample: 'sales-team@example.zendesk.com'. The [local-part](https://en.wikipedia.org/wiki/Email_address#Local-part) can be anything you like.\n\nTo add an external email address such as help@omniwearshop.com, the email must already exist and you must set up forwarding on your email server. The exact steps depend on your mail server. See [Forward"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Recipient_addresses Support_address_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Recipient_addresses Support_address_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id"
+          },
+          "docs": "Updates an existing support address for your account.\n\nYou can't use this endpoint to update a support address's `email` property.\nInstead, you can create a new address using the [Create Support\nAddress](#create-support-address) endpoint.\n\n#### Allowed For\n\n* Admins\n* Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-ass"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Recipient_addresses Support_address_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id"
+          },
+          "docs": "Deletes a support address.\n\n#### Allowed For\n\n* Admins\n* Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Recipient_addresses Support_address_id Verify",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/recipient_addresses/:support_address_id/verify"
+          },
+          "docs": "Sends a test email to the specified support address to verify that email forwarding for the address works. An external support address won't work in Zendesk Support until it's verified.\n\n**Note**: You don't need to verify Zendesk system support addresses.\n\nThe endpoint takes the following body: `{\"type\": \"forwarding\"}`. The value of the `type` property defaults to \"forwarding\" if none is specified, but the values \"spf\" and \"dns\" are also accepted.\n\nUse this endpoint after [adding](#create-suppor"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

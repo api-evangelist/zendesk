@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Sharing Agreements API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sharing Agreements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Sharing_agreements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/sharing_agreements"
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Sharing_agreements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/sharing_agreements"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Sharing_agreements Sharing_agreement_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id"
+          },
+          "docs": "Returns a sharing agreement for your account.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Sharing_agreements Sharing_agreement_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id"
+          },
+          "docs": "Returns an updated sharing agreement. Only `status` is allowed to be updated.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Sharing_agreements Sharing_agreement_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/sharing_agreements/:sharing_agreement_id"
+          },
+          "docs": "Deletes a sharing agreement.\n\n#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

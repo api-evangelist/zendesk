@@ -1,0 +1,867 @@
+{
+  "item": [
+    {
+      "id": "c4e6d582-5305-4296-b2d4-762fdc0bed21",
+      "name": "Object Triggers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6594a0b-070b-4efa-b17f-cb30fe28b658",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers",
+            "description": {
+              "content": "Lists all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00c4deab-1b99-4892-a727-6a26140fe5f5",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ObjectTriggersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3839b1c-4b54-41e9-9e2e-1f22b89b5fcb",
+          "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers",
+          "request": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers",
+            "description": {
+              "content": "Creates a new object trigger for a specified object.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7cf82654-f15a-431a-88da-438a0ed3b18d",
+              "name": "Created response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/ObjectTriggerRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ObjectTriggerResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82690cea-1c47-4e4d-b0d8-cedb90258f2d",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+            "description": {
+              "content": "Returns details of a specific object trigger.\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers",
+                ":trigger_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c8a7a8b-30aa-4f62-826b-063732cbad26",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers",
+                    ":trigger_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ObjectTriggerResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20c1b933-87ee-4824-864a-0a27cd655a9d",
+          "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+            "description": {
+              "content": "Updates a specified object trigger.\n\n**Note**: Updating a condition or action updates both the conditions and actions arrays,\nclearing all existing values of both arrays. Include all your conditions\nand actions when updating any condition or action.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers",
+                ":trigger_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59646c55-d554-4e19-b230-3b25201c3c98",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers",
+                    ":trigger_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/ObjectTriggerRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ObjectTriggerResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04cecf9d-da46-4088-a8bc-3e78a61fd040",
+          "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+            "description": {
+              "content": "Deletes a specified object trigger.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers",
+                ":trigger_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dfcdf9cb-c53f-4369-9941-2544e316a041",
+              "name": "No Content response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers",
+                    ":trigger_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99c7d3d4-5859-41db-8adc-166e96811e0c",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active",
+            "description": {
+              "content": "Lists all active object triggers.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a01062d-e853-4c76-a191-e97a2480214a",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ObjectTriggersActiveResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfd0c84b-3b05-459c-a39d-d6255708b2aa",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions",
+            "description": {
+              "content": "Lists the conditions and actions of all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers",
+                "definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d542d8a6-361c-4a63-8a7d-622e16de186f",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers",
+                    "definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ObjectTriggerDefinitionResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa391a4e-4396-4e1e-b9cb-7d87322c4f60",
+          "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many",
+            "description": {
+              "content": "Deletes the object triggers corresponding to the provided comma-separated list of ids. \n\n**Note**: You can only bulk-delete triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe DELETE request takes an `ids` object that lists the\nobject triggers to delete. All of the specified object trigger `ids` must be associated with a single object.\n\n| Name | Description\n| ---- | -----------\n| ids  | The ids of the triggers to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers",
+                "destroy_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa370c82-3b8e-4973-8530-39b6fa859760",
+              "name": "No content response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers",
+                    "destroy_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff94f86e-1dab-45b4-b33d-92be93005e30",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search",
+            "description": {
+              "content": "Returns a list of object triggers that meet your filter or search criteria.\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Filter\n\nUse the `filter` query parameter to filter an object trigger search by one or more attributes. For example, the following `filter` argument filters object triggers by the `title` attribute:\n\n```json\n{\n  \"json\": {\n    \"title\": \"test\"\n  }\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bbd39f1-59f9-4a72-8163-2e648827b6b5",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ObjectTriggersSearchResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a55b73e-7941-4239-8ab6-8ec5ce5c6edd",
+          "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many",
+          "request": {
+            "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many",
+            "description": {
+              "content": "Updates the position or the active status of multiple object triggers. Any additional properties are ignored.\n\n**Note**: You can only bulk-update triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe PUT request expects a `triggers` object that lists the object triggers to update. All of the specified object trigger `ids` must be associated with a single object.\n\nYou can specify the following properties for each object trigger you're updating:\n\n| Name        | Mandatory | Description\n| --------    | --------- | -----------\n| id          | yes       | The ID of the object trigger to update\n| position    | no        | The new position of the object trigger\n| active      | no        | The active status of the object trigger (true or false)\n\n#### Example Request\n\n```js\n{\n  \"triggers\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"active\": true},\n    {\"id\": 27, \"position\": 9, \"active\": false},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "triggers",
+                "update_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "015b4654-7d5a-4f0b-b48a-ca786e35d363",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "triggers",
+                    "update_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/ObjectTriggerBulkUpdateRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ObjectTriggersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "de68294f-0eba-43a4-8aad-034f0f26d493",
+    "name": "Zendesk Account Account Settings Object Triggers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

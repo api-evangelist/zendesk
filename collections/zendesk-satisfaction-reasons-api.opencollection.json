@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Satisfaction Reasons API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Satisfaction Reasons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Satisfaction_reasons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/satisfaction_reasons"
+          },
+          "docs": "List all reasons for an account\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Satisfaction_reasons Satisfaction_reason_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/satisfaction_reasons/:satisfaction_reason_id",
+            "params": [
+              {
+                "name": "satisfaction_reason_id",
+                "value": "35121",
+                "type": "path",
+                "description": "The id of the satisfaction rating reason"
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

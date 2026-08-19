@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Object Triggers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Object Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers"
+          },
+          "docs": "Lists all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new object trigger for a specified object.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id"
+          },
+          "docs": "Returns details of a specific object trigger.\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a specified object trigger.\n\n**Note**: Updating a condition or action updates both the conditions and actions arrays,\nclearing all existing values of both arrays. Include all your conditions\nand actions when updating any condition or action.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/:trigger_id"
+          },
+          "docs": "Deletes a specified object trigger.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/active"
+          },
+          "docs": "Lists all active object triggers.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/definitions"
+          },
+          "docs": "Lists the conditions and actions of all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/destroy_many"
+          },
+          "docs": "Deletes the object triggers corresponding to the provided comma-separated list of ids. \n\n**Note**: You can only bulk-delete triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe DELETE request takes an `ids` object that lists the\nobject triggers to delete. All of the specified object trigger `ids` must be "
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/search"
+          },
+          "docs": "Returns a list of object triggers that meet your filter or search criteria.\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Filter\n\nUse the `filter` query parameter to filter an object trigger search by one or more attributes. For example, the following `filter` argument filters object triggers by the `title` attribute:\n\n```json\n{\n  \"json\": {\n    \"title\": \"test\"\n  }\n}\n```"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/triggers/update_many",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the position or the active status of multiple object triggers. Any additional properties are ignored.\n\n**Note**: You can only bulk-update triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe PUT request expects a `triggers` object that lists the object triggers to update. All of the specified obje"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

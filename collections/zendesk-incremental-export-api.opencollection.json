@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Incremental Export API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Incremental Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Incremental_resource Sample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/:incremental_resource/sample"
+          },
+          "docs": "Use this endpoint to test the incremental export format. It's more strict in terms of rate limiting,\nat 10 requests per 20 minutes instead of 10 requests per minute. It also returns only up to 50\nresults per request. Otherwise, it's identical to the above APIs.\n\nUse the `incremental_resource` parameter to specify the resource. Possible values are \"tickets\", \"ticket_events\", \"users\", or \"organizations\".\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/organizations"
+          },
+          "docs": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Organizations sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Ticket_events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/ticket_events"
+          },
+          "docs": "Returns a stream of changes that occurred on tickets, excluding events occuring within one minute of the request. Each event is tied\nto an update on a ticket and contains all the fields that were updated in that\nchange. For more information, see:\n\n- [Exporting ticket events](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-ticket-events) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api)\n- [Time-b"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/tickets"
+          },
+          "docs": "Returns the tickets that changed since the start time. For more information,\nsee [Exporting tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-tickets) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\nThis endpoint supports time-based incremental exports.\nFor more information, see [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Tickets Cursor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/tickets/cursor"
+          },
+          "docs": "Returns the tickets that changed since the start time. For more information,\nsee [Exporting tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-tickets) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\nThis endpoint supports cursor-based incremental exports.\nCursor-based exports are highly encouraged because they provide more consistent performance and\nresponse body sizes. For more infor"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/users"
+          },
+          "docs": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Users sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Incremental Users Cursor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/incremental/users/cursor"
+          },
+          "docs": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Users sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

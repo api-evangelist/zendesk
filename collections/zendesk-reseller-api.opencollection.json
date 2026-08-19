@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Reseller API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reseller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/accounts"
+          },
+          "docs": "Zendesk Post  Api V2 Accounts"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Accounts Available",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/accounts/available",
+            "params": [
+              {
+                "name": "subdomain",
+                "value": "z3ndesk",
+                "type": "query",
+                "description": "Specify the name of the subdomain you want to verify. The name can't contain underscores, hyphens, or spaces.\n"
+              }
+            ]
+          },
+          "docs": "Zendesk Support credentials are not required to access this endpoint. You can use any Zendesk Support subdomain.\n\nReturns \"true\" if the subdomain is available.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

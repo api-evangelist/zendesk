@@ -1,0 +1,290 @@
+{
+  "item": [
+    {
+      "id": "3ef12b4f-73dd-42db-9ee9-2c2ef5020283",
+      "name": "Email Notifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef6aba1a-0d16-409d-8c4f-9e665728ce6c",
+          "name": "Zendesk Get  Api V2 Email_notifications",
+          "request": {
+            "name": "Zendesk Get  Api V2 Email_notifications",
+            "description": {
+              "content": "#### Allowed For\n\n* Agents\n\n#### Request parameters\n\n**Important**: You must specify a `filter` query parameter to narrow the scope of the search for this endpoint.\n\n##### Pagination\n\nBy default, a maximum of 100 email notifications are included per page. Use cursor-based pagination parameters (`page[after]` and `page[before]`) to navigate the records (can't be used together in the same request). See [Pagination](/api-reference/introduction/pagination/) for more details.\n\n##### Sorting\n\nBy default, email notifications are sorted by creation time (newest first). The query parameter is not supported for this endpoint.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "email_notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[notification_id]",
+                  "value": "<integer>",
+                  "description": "(Required) Filter the email notifications by notification."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[comment_id]",
+                  "value": "<integer>",
+                  "description": "(Required) Filter the email notifications by comment."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[ticket_id]",
+                  "value": "<integer>",
+                  "description": "(Required) Filter the email notifications by ticket."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a73082bf-5aa8-4211-8ab9-999dd8bed137",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "email_notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[notification_id]",
+                      "value": "7824075373693"
+                    },
+                    {
+                      "key": "filter[comment_id]",
+                      "value": "782407"
+                    },
+                    {
+                      "key": "filter[ticket_id]",
+                      "value": "623"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/EmailNotificationsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5a3c554-4b68-4385-9162-6383261237db",
+          "name": "Zendesk Get  Api V2 Email_notifications Notification_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Email_notifications Notification_id",
+            "description": {
+              "content": "Shows details on an email notification. You can get the value of the `notification_id` parameter by listing the ticket's outbound emails.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "email_notifications",
+                ":notification_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9b54abd-fcef-4982-af84-05cab77069c1",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "email_notifications",
+                    ":notification_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/EmailNotificationResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb5dd3be-477c-49aa-9412-0050c87f46a6",
+          "name": "Zendesk Get  Api V2 Email_notifications Show_many",
+          "request": {
+            "name": "Zendesk Get  Api V2 Email_notifications Show_many",
+            "description": {
+              "content": "Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.\n\n#### Allowed For\n\n* Agents\n\n#### Filters\n\n* By notification: `?ids=8433702508541,8433348111869`\n* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`\n* By ticket: `?ticket_ids=730,723`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "email_notifications",
+                "show_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a819a17-537a-4433-8881-107bff1f7027",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "email_notifications",
+                    "show_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/EmailNotificationResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ee49897d-b539-4390-8ce8-b843fbe5ceab",
+    "name": "Zendesk Account Account Settings Email Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

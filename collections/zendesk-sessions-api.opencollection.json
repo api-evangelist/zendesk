@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Sessions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/sessions"
+          },
+          "docs": "If authenticated as an admin, returns all the account's sessions. If authenticated as an agent or end user, returns only the sessions of the user making the request.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Allowed For\n\n* Admins, Agents, End users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Users User_id Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/sessions"
+          },
+          "docs": "Deletes all the sessions for a user.\n\n#### Allowed For\n\n* Admins, Agents, End users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users User_id Sessions Session_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/sessions/:session_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins, Agents, End users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Users User_id Sessions Session_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/sessions/:session_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins, Agents, End users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Users Me Logout",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/users/me/logout"
+          },
+          "docs": "Deletes the current session. In practice, this only works when using session auth for requests, such as client-side requests\nmade from a Zendesk app. When using OAuth or basic authentication, you don't have a current session so this endpoint has no effect.\n\n#### Allowed For\n\n* Admins, Agents, End users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users Me Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/me/session"
+          },
+          "docs": "#### Allowed For\n\n* Admins, Agents, End users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users Me Session Renew",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/me/session/renew"
+          },
+          "docs": "#### Allowed For\n\n* Admins, Agents, End users\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

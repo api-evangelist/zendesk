@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Trigger Categories API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trigger Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Trigger_categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/trigger_categories",
+            "params": [
+              {
+                "name": "page",
+                "value": "[object Object]",
+                "type": "query",
+                "description": "Pagination parameters"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort parameters"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Allowed sideloads"
+              }
+            ]
+          },
+          "docs": "Returns all the ticket trigger categories in the account.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Trigger_categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/trigger_categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a ticket trigger category."
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Trigger_categories Trigger_category_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+            "params": [
+              {
+                "name": "trigger_category_id",
+                "value": "10001",
+                "type": "path",
+                "description": "The id of the ticket trigger category to retrieve"
+              }
+            ]
+          },
+          "docs": "Returns the ticket trigger category with the specified ID."
+        },
+        {
+          "info": {
+            "name": "Zendesk Patch  Api V2 Trigger_categories Trigger_category_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+            "params": [
+              {
+                "name": "trigger_category_id",
+                "value": "10001",
+                "type": "path",
+                "description": "The id of the ticket trigger category to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the ticket trigger category with the specified ID."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Trigger_categories Trigger_category_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/trigger_categories/:trigger_category_id",
+            "params": [
+              {
+                "name": "trigger_category_id",
+                "value": "10001",
+                "type": "path",
+                "description": "The id of the ticket trigger category to delete"
+              }
+            ]
+          },
+          "docs": "Deletes the ticket trigger category with the specified ID."
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Trigger_categories Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/trigger_categories/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a job that performs a batch operation for the given ticket trigger categories."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

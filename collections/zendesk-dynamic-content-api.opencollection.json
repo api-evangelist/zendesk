@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Dynamic Content API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dynamic Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Dynamic_content Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/dynamic_content/items"
+          },
+          "docs": "Returns a list of all dynamic content items for your account if accessed as an admin or agents who have permission to manage dynamic content.\n\n#### Allowed For\n\n* Admins, Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Dynamic_content Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/dynamic_content/items"
+          },
+          "docs": "Create a new content item, with one or more variants in the item's `variants` array. See [Specifying item variants](#specifying-item-variants).\n\nThe `default_locale_id` and variant `locale_id` values must be one of the locales the account has active. You can get the list with the [List Locales](/api-reference/ticketing/account-configuration/locales/#list-locales) endpoint.\n\n#### Allowed For\n\n* Admins, Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/dynamic_content/items/:dynamic_content_item_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins, Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/dynamic_content/items/:dynamic_content_item_id"
+          },
+          "docs": "The only attribute you can change is the name.\n\nTo add a variant to the item, or to update or delete the variants of the item, use the [Item Variants API](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/#update-many-variants).\n\n#### Allowed For\n\n* Admins, Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Dynamic_content Items Dynamic_content_item_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/dynamic_content/items/:dynamic_content_item_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins, Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Dynamic_content Items Show_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/dynamic_content/items/show_many",
+            "params": [
+              {
+                "name": "identifiers",
+                "value": "item1,item2",
+                "type": "query",
+                "description": "Identifiers for the dynamic contents"
+              }
+            ]
+          },
+          "docs": "#### Stability\n\n* Development\n\n#### Allowed For\n\n* Admins, Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

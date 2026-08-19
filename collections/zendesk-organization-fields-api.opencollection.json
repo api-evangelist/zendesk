@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Organization Fields API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organization_fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organization_fields"
+          },
+          "docs": "Returns a list of custom organization fields in your account. Fields are returned in the order that you specify in your organization fields configuration in Zendesk Support. Clients should cache this resource for the duration of their API usage and map the key for each organization field to the values returned under the `organization_fields` attribute on the [organization](/api-reference/ticketing/organizations/organizations/) resource.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offse"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Organization_fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/organization_fields"
+          },
+          "docs": "Creates any of the following custom field types:\n\n* text (default when no \"type\" is specified)\n* textarea\n* checkbox\n* date\n* integer\n* decimal\n* regexp\n* dropdown\n* lookup\n* multiselect\n\nSee [About custom field types](https://support.zendesk.com/hc/en-us/articles/203661866) in Zendesk help.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Organization_fields Organization_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/organization_fields/:organization_field_id"
+          },
+          "docs": "#### Allowed for\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Organization_fields Organization_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/organization_fields/:organization_field_id"
+          },
+          "docs": "#### Updating a Dropdown (Tagger) or Multiselect Field\n\nDropdown and multiselect fields return an array of `custom_field_options` which specify the name, value, and order of dropdown or multiselect options. When updating a dropdown or multiselect field, note the following information:\n\n- All options must be passed on update. Options that are not passed will be removed. As a result, these values will be removed from any organizations\n- To create a new option, pass a null `id` along with the `name"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Organization_fields Organization_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/organization_fields/:organization_field_id"
+          },
+          "docs": "#### Allowed for\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Organization_fields Reorder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/organization_fields/reorder"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

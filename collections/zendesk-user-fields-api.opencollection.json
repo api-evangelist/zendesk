@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings User Fields API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 User_fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/user_fields"
+          },
+          "docs": "Returns a list of custom user fields in your account. Fields are returned in the order that you specify in your user fields configuration in Zendesk Support. Clients should cache this resource for the duration of their API usage and map the key for each User Field to the values returned under the `user_fields` attribute on the [User](/api-reference/ticketing/users/users/) resource.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introducti"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 User_fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/user_fields"
+          },
+          "docs": "Creates any of the following custom field types:\n\n* text (default when no \"type\" is specified)\n* textarea\n* checkbox\n* date\n* integer\n* decimal\n* regexp\n* dropdown\n* lookup\n* multiselect\n\nSee [About custom field types](https://support.zendesk.com/hc/en-us/articles/203661866) in Zendesk help.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 User_fields User_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/user_fields/:user_field_id"
+          },
+          "docs": "#### Allowed for\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 User_fields User_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/user_fields/:user_field_id"
+          },
+          "docs": "#### Updating a Dropdown (Tagger) or Multiselect Field\n\nDropdown and multiselect fields return an array of `custom_field_options` which specify the name, value, and order of the list of dropdown or multiselect options.\nUnderstand the following behavior when updating a dropdown or multiselect field:\n\n- All options must be passed on update. Options that are not passed will be removed. As a result, these values will be removed from any organizations.\n- To create a new option, pass a null `id` along"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 User_fields User_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/user_fields/:user_field_id"
+          },
+          "docs": "#### Allowed for\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 User_fields User_field_id Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options"
+          },
+          "docs": "Returns a list of custom user field options for the given dropdown user field.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 User_fields User_field_id Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options"
+          },
+          "docs": "Creates a new option or updates an existing option for the given drop-down user field.\n\nTo update an option, include the id of the option in the `custom_field_option` object. Example: `{\"custom_field_option\": {\"id\": 10002, \"name\": \"Pineapples\", ... }`. If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.\n\n#### Response\n\nReturns one of the following status codes:\n\n- 200 with `Location: /api/v2/user_fields/{user_field_id}/options.json` if the u"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 User_fields User_field_id Options User_field_option_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options/:user_field_option_id"
+          },
+          "docs": "#### Allowed for\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 User_fields User_field_id Options User_field_option_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/user_fields/:user_field_id/options/:user_field_option_id"
+          },
+          "docs": "#### Allowed for\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 User_fields Reorder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/user_fields/reorder"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Conversation Log API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversation Log",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Conversation_log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/conversation_log"
+          },
+          "docs": "Lists the conversation log events for a specified ticket.\n\n#### Pagination\n\n- Cursor pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed for\n\n* Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Custom Roles API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_roles"
+          },
+          "docs": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_roles"
+          },
+          "docs": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\n* Agents with the `manage_roles` permission\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_roles Custom_role_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id"
+          },
+          "docs": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\n* Agents with the `manage_roles` permission\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Custom_roles Custom_role_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id"
+          },
+          "docs": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\nAgents with the `manage_roles` permission\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Custom_roles Custom_role_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/custom_roles/:custom_role_id"
+          },
+          "docs": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\n* Agents with the `manage_roles` permission\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

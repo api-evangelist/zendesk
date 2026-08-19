@@ -1,0 +1,570 @@
+{
+  "item": [
+    {
+      "id": "a210df99-c9fe-457c-b246-b97e538a1b2f",
+      "name": "Incremental Export",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e8d928d-5ff0-40b1-960b-4d37a34a76dc",
+          "name": "Zendesk Get  Api V2 Incremental Incremental_resource Sample",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Incremental_resource Sample",
+            "description": {
+              "content": "Use this endpoint to test the incremental export format. It's more strict in terms of rate limiting,\nat 10 requests per 20 minutes instead of 10 requests per minute. It also returns only up to 50\nresults per request. Otherwise, it's identical to the above APIs.\n\nUse the `incremental_resource` parameter to specify the resource. Possible values are \"tickets\", \"ticket_events\", \"users\", or \"organizations\".\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                ":incremental_resource",
+                "sample"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "422ff47f-141a-4fd4-a679-20d044108350",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    ":incremental_resource",
+                    "sample"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TimeBasedExportIncrementalTicketsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b362624d-f384-49b1-984b-83c02b0ecdba",
+          "name": "Zendesk Get  Api V2 Incremental Organizations",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Organizations",
+            "description": {
+              "content": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Organizations sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "organizations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "657612fd-5337-40de-bc07-6274926aab76",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ExportIncrementalOrganizationsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2dbf0fe-f2c9-4d4f-b325-4e6197985aaa",
+          "name": "Zendesk Get  Api V2 Incremental Ticket_events",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Ticket_events",
+            "description": {
+              "content": "Returns a stream of changes that occurred on tickets, excluding events occuring within one minute of the request. Each event is tied\nto an update on a ticket and contains all the fields that were updated in that\nchange. For more information, see:\n\n- [Exporting ticket events](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-ticket-events) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api)\n- [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api)\n\nYou can include comments in the event stream by using the `comment_events`\nsideload. See Sideloading below. If you don't specify the sideload, any comment\npresent in the ticket update is described only by Boolean `comment_present`\nand `comment_public` object properties in the event's `child_events` array.\nThe comment itself is not included.\n\n#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nThe endpoint supports the `comment_events` sideload. Any comment present in the ticket\nupdate is listed as an object in the event's `child_events` array. Example:\n\n```js\n\"child_events\": [\n  {\n    \"id\": 91048994488,\n    \"via\": {\n      \"channel\": \"api\",\n      \"source\": {\"from\":{},\"to\":{},\"rel\":null}},\n    \"via_reference_id\":null,\n    \"type\": \"Comment\",\n    \"author_id\": 5031726587,\n    \"body\": \"This is a comment\",\n    \"html_body\": \"&lt;div class=\"zd-comment\"&gt;&lt;p dir=\"auto\"&gt;This is a comment&lt;/p&gt;\",\n    \"public\": true,\n    \"attachments\": [],\n    \"audit_id\": 91048994468,\n    \"created_at\": \"2009-06-25T10:15:18Z\",\n    \"event_type\": \"Comment\"\n  },\n  ...\n],\n...\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "ticket_events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1781889-d649-46c2-a321-2c3593e0342d",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "ticket_events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ExportIncrementalTicketEventsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8273c0cc-6225-4c86-8c9c-1f5ed7dabea7",
+          "name": "Zendesk Get  Api V2 Incremental Tickets",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Tickets",
+            "description": {
+              "content": "Returns the tickets that changed since the start time. For more information,\nsee [Exporting tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-tickets) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\nThis endpoint supports time-based incremental exports.\nFor more information, see [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api). You can also return tickets using cursor-based pagination. See [Incremental Ticket Export, Cursor Based](#incremental-ticket-export-cursor-based).\n\nThe results include tickets that were updated by the system. See\n[Excluding system-updated tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#excluding-system-updated-tickets-time-based-exports) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\nThe endpoint can return tickets with an `updated_at` time that's earlier than the\n`start_time` time. The reason is that the API compares the `start_time` with the ticket's\n`generated_timestamp` value, not its `updated_at` value. The `updated_at` value is\nupdated only if the update generates a [ticket event](#incremental-ticket-event-export).\nThe `generated_timestamp` value is updated for all ticket updates, including system\nupdates. If a system update occurs after a ticket event, the unchanged\n`updated_at` time will become earlier relative to the updated `generated_timestamp`\ntime.\n\n#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Tickets sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints). For performance reasons,\n`last_audits` sideloads aren't supported.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "tickets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c73b19e-d8a9-4012-a41e-d796e4688faa",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TimeBasedExportIncrementalTicketsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf0cd3ca-7313-40cf-879a-7a0baf153422",
+          "name": "Zendesk Get  Api V2 Incremental Tickets Cursor",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Tickets Cursor",
+            "description": {
+              "content": "Returns the tickets that changed since the start time. For more information,\nsee [Exporting tickets](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#exporting-tickets) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\nThis endpoint supports cursor-based incremental exports.\nCursor-based exports are highly encouraged because they provide more consistent performance and\nresponse body sizes. For more information, see [Cursor-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#cursor-based-incremental-exports) in [Using the Incremental Exports API](/documentation/ticketing/managing-tickets/using-the-incremental-export-api).\n\n\n\n#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Tickets sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints). For performance reasons,\n`last_audits` sideloads aren't supported.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "tickets",
+                "cursor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acfcf106-4bf9-48c4-8f79-f62f654bb415",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "tickets",
+                    "cursor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CursorBasedExportIncrementalTicketsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "265011e7-b44f-4b38-9f5a-464247cdf8b7",
+          "name": "Zendesk Get  Api V2 Incremental Users",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Users",
+            "description": {
+              "content": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Users sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47c81d61-d581-4027-9bd4-485fc4023d78",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TimeBasedExportIncrementalUsersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0db0b6c8-1a29-4434-906f-2f4109d93671",
+          "name": "Zendesk Get  Api V2 Incremental Users Cursor",
+          "request": {
+            "name": "Zendesk Get  Api V2 Incremental Users Cursor",
+            "description": {
+              "content": "#### Allowed For\n\n * Admins\n\n#### Sideloading\n\nSee [Users sideloads](/documentation/ticketing/using-the-zendesk-api/side_loading/#supported-endpoints).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "incremental",
+                "users",
+                "cursor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75e47af2-3bd4-43e4-8fc7-1dad1ab7388c",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "incremental",
+                    "users",
+                    "cursor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CursorBasedExportIncrementalUsersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "796139f6-7b9b-4de8-b2da-9662cc95e7ab",
+    "name": "Zendesk Account Account Settings Incremental Export API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

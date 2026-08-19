@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Custom Ticket Statuses API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Ticket Statuses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Custom_status Default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/custom_status/default",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the default values for many custom ticket statuses at once.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_statuses",
+            "params": [
+              {
+                "name": "status_categories",
+                "value": "",
+                "type": "query",
+                "description": "Filter the list of custom ticket statuses by a comma-separated list of status categories"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "If true, show only active custom ticket statuses. If false, show only inactive custom ticket statuses. If the filter is not used, show all custom ticket statuses"
+              },
+              {
+                "name": "default",
+                "value": "",
+                "type": "query",
+                "description": "If true, show only default custom ticket statuses. If false, show only non-default custom ticket statuses. If the filter is not used, show all custom ticket statuses"
+              }
+            ]
+          },
+          "docs": "Lists all undeleted custom ticket statuses for the account. No pagination is provided.\n\n#### Allowed For\n\n* End Users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_statuses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a `custom_status` object that specifies the custom ticket status properties to create.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_statuses Custom_status_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_statuses/:custom_status_id"
+          },
+          "docs": "Returns the custom ticket status object.\n\n#### Allowed For\n\n* End Users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Custom_statuses Custom_status_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/custom_statuses/:custom_status_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a `custom_status` object that specifies the properties to update.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_statuses Custom_status_id Ticket_form_statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_statuses/:custom_status_id/ticket_form_statuses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates one or many tickets form status associations for a custom status.\n\n#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

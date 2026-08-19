@@ -1,0 +1,412 @@
+{
+  "item": [
+    {
+      "id": "f60da312-4626-4438-9302-31987b80d9d2",
+      "name": "Audit Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7fa8c42-e9cf-4cdd-bbfb-d22da193d4a3",
+          "name": "Zendesk Get  Api V2 Audit_logs",
+          "request": {
+            "name": "Zendesk Get  Api V2 Audit_logs",
+            "description": {
+              "content": "#### Allowed For\n\n* Admins on accounts that have audit log access\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "audit_logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[source_type]",
+                  "value": "<string>",
+                  "description": "Filter audit logs by the source type. For example, user or rule"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[source_id]",
+                  "value": "<integer>",
+                  "description": "Filter audit logs by the source id. Requires `filter[source_type]` to also be set"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[actor_id]",
+                  "value": "<integer>",
+                  "description": "Filter audit logs by the actor id"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[ip_address]",
+                  "value": "<string>",
+                  "description": "Filter audit logs by the ip address"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at]",
+                  "value": "<string>",
+                  "description": "Filter audit logs by the time of creation. When used, you must specify `filter[created_at]` twice in your request, first with the start time and again with an end time"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[action]",
+                  "value": "<string>",
+                  "description": "Filter audit logs by the action"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Offset pagination only. Sort audit logs. Default is `sort_by=created_at`"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "Offset pagination only. Sort audit logs. Default is `sort_order=desc`"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Cursor pagination only. Sort audit logs. Default is `sort=-created_at`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16bd610b-c84f-4caa-bfc0-04d4ff312a3b",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "audit_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[source_type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[source_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[actor_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[ip_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[created_at]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[action]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AuditLogsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "789baba5-ef40-4341-98a1-6e95690080e2",
+          "name": "Zendesk Get  Api V2 Audit_logs Audit_log_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Audit_logs Audit_log_id",
+            "description": {
+              "content": "#### Allowed For\n\n* Admins on accounts that have audit-log access\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "audit_logs",
+                ":audit_log_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a36dffd-8994-4a13-9e0b-df51aad18fe9",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "audit_logs",
+                    ":audit_log_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/AuditLogResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f228d2f0-7ba7-4471-be29-fd61b70aba8c",
+          "name": "Zendesk Post  Api V2 Audit_logs Export",
+          "request": {
+            "name": "Zendesk Post  Api V2 Audit_logs Export",
+            "description": {
+              "content": "#### Allowed For\n\n* Admins on accounts that have audit log access\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "audit_logs",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[source_type]",
+                  "value": "<string>",
+                  "description": "Filter audit logs by the source type. For example, user or rule"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[source_id]",
+                  "value": "<integer>",
+                  "description": "Filter audit logs by the source id. Requires `filter[source_type]` to also be set."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[actor_id]",
+                  "value": "<integer>",
+                  "description": "Filter audit logs by the actor id"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[ip_address]",
+                  "value": "<string>",
+                  "description": "Filter audit logs by the ip address"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at]",
+                  "value": "<string>",
+                  "description": "Filter audit logs by the time of creation. When used, you must specify `filter[created_at]` twice in your request, first with the start time and again with an end time"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[action]",
+                  "value": "<string>",
+                  "description": "Filter audit logs by the action"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "124adc9c-ff64-4ac4-8cd5-35cc344295c3",
+              "name": "Accepted description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "audit_logs",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[source_type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[source_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[actor_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[ip_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[created_at]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[action]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "53f473e3-1571-4617-abfc-2d090095b11e",
+    "name": "Zendesk Account Account Settings Audit Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

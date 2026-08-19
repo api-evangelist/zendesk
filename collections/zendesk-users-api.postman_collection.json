@@ -1,0 +1,3709 @@
+{
+  "item": [
+    {
+      "id": "5820ec69-4010-45da-ab1e-ba8697d6c1ff",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8056db9-7052-48fc-92e0-6ea73d825afc",
+          "name": "Zendesk Get  Api V2 Users Autocomplete",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users Autocomplete",
+            "description": {
+              "content": "Returns an array of users whose name starts with the value specified in the `name` parameter.\nIt only returns users with no foreign identities.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "autocomplete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) The name to search for the user.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6998209-c4cc-48bd-9da0-694a4c865041",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "autocomplete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "gil"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SearchUsersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7a0fa6f-c2e4-4ce8-8343-72337372fe9a",
+          "name": "Zendesk Get  Api V2 Deleted_users",
+          "request": {
+            "name": "Zendesk Get  Api V2 Deleted_users",
+            "description": {
+              "content": "Returns deleted users, including permanently deleted users.\n\nIf the results contains permanently deleted users, the users' properties\nthat normally contain personal data, such as `email` and `phone`,\nare null. The `name` property is \"Permanently Deleted User\".\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deleted_users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a8c0407-6d6e-43ed-900f-b2d5364abe6e",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deleted_users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/DeletedUsersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "400642cc-d9a9-4b17-9350-c1c73ac41b05",
+          "name": "Zendesk Get  Api V2 Deleted_users Deleted_user_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Deleted_users Deleted_user_id",
+            "description": {
+              "content": "Returns users that have been deleted but not permanently yet. See [Permanently Delete User](#permanently-delete-user).\n\n#### Allowed For:\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deleted_users",
+                ":deleted_user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1f42c45-bfac-4540-a16e-b84a0b386380",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deleted_users",
+                    ":deleted_user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/DeletedUserResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce985444-6283-4367-b499-9780794afc4a",
+          "name": "Zendesk Delete  Api V2 Deleted_users Deleted_user_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Deleted_users Deleted_user_id",
+            "description": {
+              "content": "Before permanently deleting a user, you must delete the user first. See [Delete User](/api-reference/ticketing/users/users/#delete-user).\n\nWARNING: Permanently deleting a user deletes all of their information. This information is not recoverable.\n\n#### Permanent user deletion rate limit\n\nYou can permanently delete 700 users every 10 minutes.\nThe rate limiting mechanism behaves as described in\n[Rates Limits](/api-reference/introduction/rate-limits/#monitoring-your-request-activity) in the API introduction.\nZendesk recommends that you obey the Retry-After header values.\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deleted_users",
+                ":deleted_user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9d335bf-17b6-4117-9c80-55006d57c316",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deleted_users",
+                    ":deleted_user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/DeletedUserResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f83c93f-49ee-4490-aeb7-f395eaaaa3a1",
+          "name": "Zendesk Get  Api V2 Deleted_users Count",
+          "request": {
+            "name": "Zendesk Get  Api V2 Deleted_users Count",
+            "description": {
+              "content": "Returns an approximate count of deleted users, including permanently deleted users. If the count exceeds 100,000, it is updated every 24 hours.\n\nThe response includes a `refreshed_at` property in a `count` object that contains a timestamp indicating when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "deleted_users",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9b21cdf-f9c5-4b6e-a681-11bc23ac9529",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "deleted_users",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/DeletedUsersCountResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4902627f-5f90-48fe-8c08-1ee06353b0e9",
+          "name": "Zendesk Get  Api V2 Users Search",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users Search",
+            "description": {
+              "content": "Returns an array of users who meet the search criteria.\n\nReturns up to 100 records per page to a maximum of 10,000 records per query. See [Using offset pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "The `query` parameter supports the Zendesk search syntax for more advanced\nuser searches. It can specify a partial or full value of any\nuser property, including name, email address, notes, or phone. Example:\n`query=\"jdoe\"`.\nSee the [Search API](/api-reference/ticketing/ticket-management/search/).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_id",
+                  "value": "<string>",
+                  "description": "The `external_id` parameter does not support the search syntax. It only accepts ids.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2edd7369-2c17-4815-b8ff-161577537077",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "jdoe"
+                    },
+                    {
+                      "key": "external_id",
+                      "value": "abc124"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/SearchUsersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5371b8c-d00d-4539-8fac-657bd78fd0c8",
+          "name": "Zendesk Get  Api V2 Users",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users",
+            "description": {
+              "content": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins, Agents and Light Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d69de34d-66ff-4fca-b7d9-9ea2a97afc58",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UsersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a99f0cdb-999a-43ed-962c-052eb2d0ffa1",
+          "name": "Zendesk Post  Api V2 Users",
+          "request": {
+            "name": "Zendesk Post  Api V2 Users",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "737fb822-1b5b-4fff-ad54-bc481a106772",
+              "name": "Created response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/UserRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UserCreateResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8fdb3fc-fd13-4537-baf1-7390850a6a77",
+          "name": "Zendesk Get  Api V2 Users User_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users User_id",
+            "description": {
+              "content": "#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e4f4ec7-d2bb-44b4-a6e2-5a05dcd2105f",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UserResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c574d7ac-a5da-451f-a651-c187430e44b3",
+          "name": "Zendesk Put  Api V2 Users User_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Users User_id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df984490-666f-4c00-b31a-344233f7ee9d",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/UpdateUserRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UpdateUserResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "142c27c6-80a3-413a-bbd4-d2bbc06e6fbc",
+          "name": "Zendesk Delete  Api V2 Users User_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Users User_id",
+            "description": {
+              "content": "Deletes the user and associated records from the account.\n\n**Warning**:\n\n* Deleted users are not recoverable.\n* Both agents and administrators can soft delete users in the agent interface in Zendesk Support. Agents with permission can delete end users, while administrators can delete all users except the account owner.\n\nTo comply with GDPR, a further step is needed. See [Permanently Delete User](/api-reference/ticketing/users/users/#permanently-delete-user).\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3396e60-bb83-4463-add9-25dd1cd21ae1",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/DeleteUserResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b5ace7d-dc70-4e56-b037-e584f001ff60",
+          "name": "Zendesk Get  Api V2 Users User_id Compliance_deletion_statuses",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users User_id Compliance_deletion_statuses",
+            "description": {
+              "content": "Returns the GDPR status for each user per area of compliance. A Zendesk area of compliance is typically a product like \"support/explore\" but can be more fine-grained for areas within the product lines.\n\nIf the user is not in the account, the request returns a 404 status.\n\n```http\nStatus: 404\n{\n  \"error\":\"RecordNotFound\",\n  \"description\":\"Not found\"\n}\n```\n\n#### Allowed For\n\n* Agents, with restrictions\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":user_id",
+                "compliance_deletion_statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "application",
+                  "value": "<string>",
+                  "description": "Area of compliance"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9375d7e7-93c5-460f-bd48-516fcde04fde",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":user_id",
+                    "compliance_deletion_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "application",
+                      "value": "chat"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ComplianceDeletionStatusesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b077a550-17b8-4baa-9d13-c51488aaf963",
+          "name": "Zendesk Put  Api V2 Users User_id Merge",
+          "request": {
+            "name": "Zendesk Put  Api V2 Users User_id Merge",
+            "description": {
+              "content": "Merges the end user specified in the path parameter into the existing end user specified in the request body.\n\nAny two end users can be merged with the exception of end users created by sharing agreements.\n\nTo be eligible for merging, the user in the path parameter must be a requester on 10,000 or fewer tickets. Otherwise, the merge will be blocked.\n\nAgents, admins, and users with more than 10,000 requested tickets cannot be merged.\n\nFor more information about how user data is merged, see [Merging a user's duplicate account](https://support.zendesk.com/hc/en-us/articles/4408887695898) in Zendesk help.\n\n#### Allowed For\n\n* Admins or agents with permission to edit end users\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":user_id",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2773e8bb-31b9-4ec5-8d03-390113327186",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":user_id",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/MergeEndUsersRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UserResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd5fcb11-1ff3-45f5-99d1-0ab4a04022dd",
+          "name": "Zendesk Get  Api V2 Users User_id Related",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users User_id Related",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":user_id",
+                "related"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d685632-6e51-4db3-a2ae-452b621de9d1",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":user_id",
+                    "related"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UserRelatedResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b4ffcce-65ef-4970-9fbd-0f07c91e0653",
+          "name": "Zendesk Get  Api V2 Users Count",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users Count",
+            "description": {
+              "content": "Returns an approximate count of users. If the count exceeds 100,000, it is updated every 24 hours.\n\nThe response includes a `refreshed_at` property in a `count` object that contains a timestamp indicating when the count was last updated.\n\n**Note**: When the count exceeds 100,000, the `refreshed_at` property may occasionally be null.\nThis indicates that the count is being updated in the background. The `count` object's `value` property is limited to 100,000 until the update is complete.\n\n#### Allowed For\n\n* Admins, Agents and Light Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dee0c4cf-dd54-44d9-9289-644e1f5d996c",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UserCountResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27adc9cb-1968-4852-999e-47fcabd4c71c",
+          "name": "Zendesk Post  Api V2 Users Create_many",
+          "request": {
+            "name": "Zendesk Post  Api V2 Users Create_many",
+            "description": {
+              "content": "Accepts an array of up to 100 user objects.\n\n**Note**: To protect the data in your Zendesk account, bulk user imports are not enabled by default in Zendesk accounts. The account owner must contact [Zendesk Customer Support](https://support.zendesk.com/hc/en-us/articles/4408843597850) to enable the imports. A 403 Forbidden\nerror is returned if data imports are not enabled.\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members\n\n#### Specifying an organization\n\nYou can assign a user to an existing organization by setting an\n`organization_id` property in the user object.\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "create_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e0d9846-6bee-4bb6-859b-0c0a2bff39fa",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "create_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/UsersCreateManyRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/JobStatusResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89eababd-ccd8-4eeb-af4d-692042d40df3",
+          "name": "Zendesk Post  Api V2 Users Create_or_update",
+          "request": {
+            "name": "Zendesk Post  Api V2 Users Create_or_update",
+            "description": {
+              "content": "Creates a user if the user does not already exist, or updates an existing user\nidentified by e-mail address or external ID.\n\nIf you don't specify a role parameter, the new user is assigned the role of end user.\n\nIf you need to create users without sending out a verification email, include a `\"skip_verify_email\": true` property in the body.\n\n#### External ID Case Sensitivity\n\nWhen providing an external id to identify an existing user to update, the search for the user record is not case sensitive.\n\nHowever, if an existing user is found, the system will update the user's external id to match the case of the external id used to find the user.\n\n#### Response Status Code\n\n- If the user exists in Zendesk, a successful request returns a 200 status code with \"Location: /api/v2/users/{user_id}.json\".\n- If the user does not exist in Zendesk, a successful request returns a 201 status code with \"Location: /api/v2/users/{new_user_id}.json\".\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "create_or_update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f1e2c40e-1d73-461d-9dd6-0232fcfc6e75",
+              "name": "Successful response, when user exits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "create_or_update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/UserRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UserCreateResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47eee4ac-1d57-4845-be06-2471ac6d2a64",
+              "name": "Created response, when user is new",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "create_or_update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/UserRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/UserCreateResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76b656fc-b34c-4a1e-a4df-e73769207a10",
+          "name": "Zendesk Post  Api V2 Users Create_or_update_many",
+          "request": {
+            "name": "Zendesk Post  Api V2 Users Create_or_update_many",
+            "description": {
+              "content": "Accepts an array of up to 100 user objects. For each user, the user is created if it does not\nalready exist, or the existing user is updated.\n\n**Note**: To protect the data in your Zendesk account, bulk user imports are not enabled by default in Zendesk accounts. The account owner must contact [Zendesk Customer Support](https://support.zendesk.com/hc/en-us/articles/4408843597850) to enable the imports. A 403 Forbidden\nerror is returned if data imports are not enabled.    \n\nEach individual user object can identify an existing user by `email` or by `external_id`.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "create_or_update_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ced7a049-dbdf-4b8c-a325-e78971b8ebe3",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "create_or_update_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/UsersRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/JobStatusResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f084c99f-ed07-4278-9d03-245d5f41b187",
+          "name": "Zendesk Delete  Api V2 Users Destroy_many",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Users Destroy_many",
+            "description": {
+              "content": "Accepts a comma-separated list of up to 100 user ids.\n\nThe request takes an `ids` or an `external_ids` query parameter.\n\n#### Allowed for\n\n- Admins\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "destroy_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Id of the users to delete. Comma separated"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_ids",
+                  "value": "<string>",
+                  "description": "External Id of the users to delete. Comma separated"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a8a7da0-3646-401d-b5ad-5d7a470f9dab",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "destroy_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "1,2,3"
+                    },
+                    {
+                      "key": "external_ids",
+                      "value": "abc,def,ghi"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/JobStatusBulkDeleteResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb7bf4be-3221-43d3-96cb-b16b213aea0f",
+          "name": "Zendesk Post  Api V2 Users Logout_many",
+          "request": {
+            "name": "Zendesk Post  Api V2 Users Logout_many",
+            "description": {
+              "content": "Accepts a comma-separated list of up to 100 user ids.\n\n#### Allowed For:\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "logout_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Accepts a comma-separated list of up to 100 user ids.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b78704ae-8a7e-4efd-8af5-496f97a8aee8",
+              "name": "Accepted response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "logout_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "1,2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "700728ec-b961-4176-a4cd-98cf4c29fcd9",
+          "name": "Zendesk Get  Api V2 Users Me",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users Me",
+            "description": {
+              "content": "The endpoint returns [user information](/api-reference/ticketing/users/users/) and an `authenticity_token`. \n\n#### Allowed For\n\n* Anonymous users\n\n#### Authenticity Token\n\nZendesk API calls made by end users from a Zendesk help center must include `authenticity_token` in the `X-CSRF-Token` HTTP header. This helps prevent [cross-site request forgery (CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks.\n\nFor an example using an authenticity token, see the AJAX request in the [Upgrading from Templating API v1](https://developer.zendesk.com/documentation/help_center/help-center-templates/v1#jquery) documentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43ef810c-8074-45cb-acd4-6795b336dee7",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CurrentUserResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1afa107-d3ef-4e6c-b245-30552232240c",
+          "name": "Zendesk Post  Api V2 Users Request_create",
+          "request": {
+            "name": "Zendesk Post  Api V2 Users Request_create",
+            "description": {
+              "content": "Sends the owner a reminder email to update their subscription so more agents can be created.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "request_create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2059818-f765-4295-ab49-57550a33122a",
+              "name": "description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "request_create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/RequestUserCreateRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "382548bb-fbf8-4cc3-8968-333f30b9f986",
+          "name": "Zendesk Get  Api V2 Users Show_many",
+          "request": {
+            "name": "Zendesk Get  Api V2 Users Show_many",
+            "description": {
+              "content": "Accepts a comma-separated list of up to 100 user ids or external ids.\n\n#### Allowed For:\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "show_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Accepts a comma-separated list of up to 100 user ids.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_ids",
+                  "value": "<string>",
+                  "description": "Accepts a comma-separated list of up to 100 external ids.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4dc5b779-5710-4045-bf74-21af40afb33a",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "show_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "1,2"
+                    },
+                    {
+                      "key": "external_ids",
+                      "value": "abc,def"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/ShowManyUsersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03053e7e-ef39-40ef-aa10-b44a0a441a80",
+          "name": "Zendesk Put  Api V2 Users Update_many",
+          "request": {
+            "name": "Zendesk Put  Api V2 Users Update_many",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                "update_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Id of the users to update. Comma separated"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_ids",
+                  "value": "<string>",
+                  "description": "External Id of the users to update. Comma separated"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"reference #/components/schemas/UserRequest not found in the OpenAPI spec\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dfcc7c85-5b56-47c7-a00c-dfd52bb483ba",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    "update_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "1,2,3"
+                    },
+                    {
+                      "key": "external_ids",
+                      "value": "abc,def,ghi"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/UpdateManyUsersRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/JobStatusResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a936f876-c464-428e-9ee5-979371b82e36",
+          "name": "Zendesk List Users",
+          "request": {
+            "name": "Zendesk List Users",
+            "description": {
+              "content": "Returns a paginated list of all users in the account, including end users, agents, and admins. Supports filtering by role and permission set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "The number of results per page (max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "Filter by user role."
+                },
+                {
+                  "disabled": false,
+                  "key": "permission_set",
+                  "value": "<integer>",
+                  "description": "For custom roles, filter by the permission set ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73a18b0e-b3f9-4299-9ff0-5f822f07befb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "role",
+                      "value": "end-user"
+                    },
+                    {
+                      "key": "permission_set",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"id\": \"abc123\",\n      \"url\": \"https://www.example.com\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\",\n      \"phone\": \"example_value\",\n      \"photo\": {\n        \"id\": \"abc123\",\n        \"file_name\": \"example_value\",\n        \"content_url\": \"https://www.example.com\",\n        \"content_type\": \"example_value\",\n        \"size\": 10,\n        \"thumbnails\": {}\n      },\n      \"locale_id\": \"500123\",\n      \"locale\": \"example_value\",\n      \"time_zone\": \"example_value\",\n      \"organization_id\": \"500123\",\n      \"role\": \"end-user\",\n      \"custom_role_id\": \"500123\",\n      \"verified\": true,\n      \"external_id\": \"500123\",\n      \"tags\": [\n        {}\n      ],\n      \"alias\": \"example_value\",\n      \"active\": true,\n      \"shared\": true,\n      \"shared_agent\": true,\n      \"shared_phone_number\": true,\n      \"signature\": \"example_value\",\n      \"details\": \"example_value\",\n      \"notes\": \"example_value\",\n      \"restricted_agent\": true,\n      \"suspended\": true,\n      \"default_group_id\": \"500123\",\n      \"report_csv\": true,\n      \"only_private_comments\": true,\n      \"ticket_restriction\": \"organization\",\n      \"moderator\": true,\n      \"chat_only\": true,\n      \"two_factor_auth_enabled\": true,\n      \"user_fields\": \"example_value\",\n      \"last_login_at\": \"2026-01-15T10:30:00Z\",\n      \"created_at\": \"2026-01-15T10:30:00Z\",\n      \"updated_at\": \"2026-01-15T10:30:00Z\"\n    }\n  ],\n  \"next_page\": \"https://www.example.com\",\n  \"previous_page\": \"https://www.example.com\",\n  \"count\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93316e87-e868-4fe8-940d-2639c4b08609",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "role",
+                      "value": "end-user"
+                    },
+                    {
+                      "key": "permission_set",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92b71019-37e3-40e0-8053-e4796a4b4f26",
+              "name": "Rate limit exceeded. Check the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "role",
+                      "value": "end-user"
+                    },
+                    {
+                      "key": "permission_set",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before making another request.",
+                  "key": "Retry-After",
+                  "value": "9466"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55acac12-5d5e-499f-b856-773d05f6ce8d",
+          "name": "Zendesk Create User",
+          "request": {
+            "name": "Zendesk Create User",
+            "description": {
+              "content": "Creates a new user. You must provide at least a name and an email address or phone number. The user role defaults to end-user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone\": \"<string>\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"<long>\",\n    \"organization_id\": \"<long>\",\n    \"external_id\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"locale_id\": \"<integer>\",\n    \"time_zone\": \"<string>\",\n    \"details\": \"<string>\",\n    \"notes\": \"<string>\",\n    \"alias\": \"<string>\",\n    \"signature\": \"<string>\",\n    \"verified\": false,\n    \"user_fields\": {\n      \"key_0\": false,\n      \"key_1\": 5634.991353492101\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "151421ef-6bd9-4f9a-aa82-f6800b477195",
+              "name": "User created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"verified\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": \"abc123\",\n    \"url\": \"https://www.example.com\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"photo\": {\n      \"id\": \"abc123\",\n      \"file_name\": \"example_value\",\n      \"content_url\": \"https://www.example.com\",\n      \"content_type\": \"example_value\",\n      \"size\": 10,\n      \"thumbnails\": [\n        {}\n      ]\n    },\n    \"locale_id\": \"500123\",\n    \"locale\": \"example_value\",\n    \"time_zone\": \"example_value\",\n    \"organization_id\": \"500123\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"verified\": true,\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"alias\": \"example_value\",\n    \"active\": true,\n    \"shared\": true,\n    \"shared_agent\": true,\n    \"shared_phone_number\": true,\n    \"signature\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"restricted_agent\": true,\n    \"suspended\": true,\n    \"default_group_id\": \"500123\",\n    \"report_csv\": true,\n    \"only_private_comments\": true,\n    \"ticket_restriction\": \"organization\",\n    \"moderator\": true,\n    \"chat_only\": true,\n    \"two_factor_auth_enabled\": true,\n    \"user_fields\": \"example_value\",\n    \"last_login_at\": \"2026-01-15T10:30:00Z\",\n    \"created_at\": \"2026-01-15T10:30:00Z\",\n    \"updated_at\": \"2026-01-15T10:30:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12541a7e-235a-4e0c-bec6-fd06fb6bdbb9",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"verified\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "614bf81d-0b15-4c1a-ad4e-d3051b17010c",
+              "name": "The request was well-formed but could not be processed due to validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"verified\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "703c8e64-cef1-4f63-82fe-63728045640f",
+              "name": "Rate limit exceeded. Check the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"verified\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before making another request.",
+                  "key": "Retry-After",
+                  "value": "9466"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7a411f8-fc55-4b61-9ef5-c783002ec513",
+          "name": "Zendesk Show User",
+          "request": {
+            "name": "Zendesk Show User",
+            "description": {
+              "content": "Returns the details of a specific user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "667a6465-aa96-41fd-ad86-f2e27a9a214b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": \"abc123\",\n    \"url\": \"https://www.example.com\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"photo\": {\n      \"id\": \"abc123\",\n      \"file_name\": \"example_value\",\n      \"content_url\": \"https://www.example.com\",\n      \"content_type\": \"example_value\",\n      \"size\": 10,\n      \"thumbnails\": [\n        {}\n      ]\n    },\n    \"locale_id\": \"500123\",\n    \"locale\": \"example_value\",\n    \"time_zone\": \"example_value\",\n    \"organization_id\": \"500123\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"verified\": true,\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"alias\": \"example_value\",\n    \"active\": true,\n    \"shared\": true,\n    \"shared_agent\": true,\n    \"shared_phone_number\": true,\n    \"signature\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"restricted_agent\": true,\n    \"suspended\": true,\n    \"default_group_id\": \"500123\",\n    \"report_csv\": true,\n    \"only_private_comments\": true,\n    \"ticket_restriction\": \"organization\",\n    \"moderator\": true,\n    \"chat_only\": true,\n    \"two_factor_auth_enabled\": true,\n    \"user_fields\": \"example_value\",\n    \"last_login_at\": \"2026-01-15T10:30:00Z\",\n    \"created_at\": \"2026-01-15T10:30:00Z\",\n    \"updated_at\": \"2026-01-15T10:30:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4918042e-c3b8-445e-9406-05bbfd1f0e71",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acee4e87-7b34-4be0-bcb1-474fe1a0cff6",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "424dcfd0-ed83-4eee-9211-035cc1bb4c38",
+              "name": "Rate limit exceeded. Check the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before making another request.",
+                  "key": "Retry-After",
+                  "value": "9466"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6339db30-f95f-4b83-8c06-f68656fb6337",
+          "name": "Zendesk Update User",
+          "request": {
+            "name": "Zendesk Update User",
+            "description": {
+              "content": "Updates a user. You can update the name, email, role, organization, tags, custom fields, and other properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phone\": \"<string>\",\n    \"role\": \"<string>\",\n    \"custom_role_id\": \"<long>\",\n    \"organization_id\": \"<long>\",\n    \"external_id\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"locale_id\": \"<integer>\",\n    \"time_zone\": \"<string>\",\n    \"details\": \"<string>\",\n    \"notes\": \"<string>\",\n    \"alias\": \"<string>\",\n    \"signature\": \"<string>\",\n    \"suspended\": \"<boolean>\",\n    \"user_fields\": {\n      \"key_0\": true,\n      \"key_1\": true\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6835525f-8aa2-43ef-8d12-09fc668253e0",
+              "name": "User updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"suspended\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": \"abc123\",\n    \"url\": \"https://www.example.com\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"photo\": {\n      \"id\": \"abc123\",\n      \"file_name\": \"example_value\",\n      \"content_url\": \"https://www.example.com\",\n      \"content_type\": \"example_value\",\n      \"size\": 10,\n      \"thumbnails\": [\n        {}\n      ]\n    },\n    \"locale_id\": \"500123\",\n    \"locale\": \"example_value\",\n    \"time_zone\": \"example_value\",\n    \"organization_id\": \"500123\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"verified\": true,\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"alias\": \"example_value\",\n    \"active\": true,\n    \"shared\": true,\n    \"shared_agent\": true,\n    \"shared_phone_number\": true,\n    \"signature\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"restricted_agent\": true,\n    \"suspended\": true,\n    \"default_group_id\": \"500123\",\n    \"report_csv\": true,\n    \"only_private_comments\": true,\n    \"ticket_restriction\": \"organization\",\n    \"moderator\": true,\n    \"chat_only\": true,\n    \"two_factor_auth_enabled\": true,\n    \"user_fields\": \"example_value\",\n    \"last_login_at\": \"2026-01-15T10:30:00Z\",\n    \"created_at\": \"2026-01-15T10:30:00Z\",\n    \"updated_at\": \"2026-01-15T10:30:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ebd9ee1-eba4-41b5-88d4-d2825a2b623b",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"suspended\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "118122fa-9e96-49a4-a549-a45dc17464ee",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"suspended\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a779fb16-66a5-4fa2-8326-9d68f6140a2c",
+              "name": "The request was well-formed but could not be processed due to validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"suspended\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cce3c3fd-d355-4554-8b36-ffd4ab67b71a",
+              "name": "Rate limit exceeded. Check the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"organization_id\": \"500123\",\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"locale_id\": \"500123\",\n    \"time_zone\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"alias\": \"example_value\",\n    \"signature\": \"example_value\",\n    \"suspended\": true,\n    \"user_fields\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before making another request.",
+                  "key": "Retry-After",
+                  "value": "9466"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5444f6ec-fe30-4647-9b8a-51f30eedc4bf",
+          "name": "Zendesk Delete User",
+          "request": {
+            "name": "Zendesk Delete User",
+            "description": {
+              "content": "Deletes a user. The user is soft-deleted and can be recovered within a limited time. Agents and admins can only be deleted by admins.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83f2d122-e100-4056-b51a-e55e1f03b157",
+              "name": "User deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": \"abc123\",\n    \"url\": \"https://www.example.com\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"phone\": \"example_value\",\n    \"photo\": {\n      \"id\": \"abc123\",\n      \"file_name\": \"example_value\",\n      \"content_url\": \"https://www.example.com\",\n      \"content_type\": \"example_value\",\n      \"size\": 10,\n      \"thumbnails\": [\n        {}\n      ]\n    },\n    \"locale_id\": \"500123\",\n    \"locale\": \"example_value\",\n    \"time_zone\": \"example_value\",\n    \"organization_id\": \"500123\",\n    \"role\": \"end-user\",\n    \"custom_role_id\": \"500123\",\n    \"verified\": true,\n    \"external_id\": \"500123\",\n    \"tags\": [\n      \"example_value\"\n    ],\n    \"alias\": \"example_value\",\n    \"active\": true,\n    \"shared\": true,\n    \"shared_agent\": true,\n    \"shared_phone_number\": true,\n    \"signature\": \"example_value\",\n    \"details\": \"example_value\",\n    \"notes\": \"example_value\",\n    \"restricted_agent\": true,\n    \"suspended\": true,\n    \"default_group_id\": \"500123\",\n    \"report_csv\": true,\n    \"only_private_comments\": true,\n    \"ticket_restriction\": \"organization\",\n    \"moderator\": true,\n    \"chat_only\": true,\n    \"two_factor_auth_enabled\": true,\n    \"user_fields\": \"example_value\",\n    \"last_login_at\": \"2026-01-15T10:30:00Z\",\n    \"created_at\": \"2026-01-15T10:30:00Z\",\n    \"updated_at\": \"2026-01-15T10:30:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea1875fd-f9f8-4634-bfa9-613caea0d274",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa14246d-2c43-412a-b315-9ee89edce8ee",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9af58995-b665-4412-ac67-06525a866a3c",
+              "name": "Rate limit exceeded. Check the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before making another request.",
+                  "key": "Retry-After",
+                  "value": "9466"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfd7a2ee-bee8-4570-a9bf-143b9a6a0c7a",
+          "name": "Zendesk Search Users",
+          "request": {
+            "name": "Zendesk Search Users",
+            "description": {
+              "content": "Searches for users by name, email, external ID, or other criteria. Returns a paginated list of matching users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) The search query. Supports name, email, phone, external_id, and other fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "The number of results per page (max 100)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33601f39-e4cd-49e7-aa0f-f0254db8b298",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"id\": \"abc123\",\n      \"url\": \"https://www.example.com\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\",\n      \"phone\": \"example_value\",\n      \"photo\": {\n        \"id\": \"abc123\",\n        \"file_name\": \"example_value\",\n        \"content_url\": \"https://www.example.com\",\n        \"content_type\": \"example_value\",\n        \"size\": 10,\n        \"thumbnails\": {}\n      },\n      \"locale_id\": \"500123\",\n      \"locale\": \"example_value\",\n      \"time_zone\": \"example_value\",\n      \"organization_id\": \"500123\",\n      \"role\": \"end-user\",\n      \"custom_role_id\": \"500123\",\n      \"verified\": true,\n      \"external_id\": \"500123\",\n      \"tags\": [\n        {}\n      ],\n      \"alias\": \"example_value\",\n      \"active\": true,\n      \"shared\": true,\n      \"shared_agent\": true,\n      \"shared_phone_number\": true,\n      \"signature\": \"example_value\",\n      \"details\": \"example_value\",\n      \"notes\": \"example_value\",\n      \"restricted_agent\": true,\n      \"suspended\": true,\n      \"default_group_id\": \"500123\",\n      \"report_csv\": true,\n      \"only_private_comments\": true,\n      \"ticket_restriction\": \"organization\",\n      \"moderator\": true,\n      \"chat_only\": true,\n      \"two_factor_auth_enabled\": true,\n      \"user_fields\": \"example_value\",\n      \"last_login_at\": \"2026-01-15T10:30:00Z\",\n      \"created_at\": \"2026-01-15T10:30:00Z\",\n      \"updated_at\": \"2026-01-15T10:30:00Z\"\n    }\n  ],\n  \"next_page\": \"https://www.example.com\",\n  \"previous_page\": \"https://www.example.com\",\n  \"count\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6591b691-0b7f-4af8-bff7-30c8d079fa71",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92d6bcf7-0a51-4ec6-93e8-8d0ba9d7584b",
+              "name": "Rate limit exceeded. Check the Retry-After header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of seconds to wait before making another request.",
+                  "key": "Retry-After",
+                  "value": "9466"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"details\": {\n    \"key_0\": 3804,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f7e7a1c7-cc96-4148-9ff5-94892ddce162",
+    "name": "Zendesk Account Account Settings Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

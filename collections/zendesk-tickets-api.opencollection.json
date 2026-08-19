@@ -1,0 +1,665 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Tickets API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tickets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Problems Autocomplete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/problems/autocomplete",
+            "params": [
+              {
+                "name": "text",
+                "value": "",
+                "type": "query",
+                "description": "The text to search for"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns tickets whose type is \"problem\" and whose subject contains the string specified in the `text` parameter.\n\nYou can specify the `text` parameter in the request body rather than the query string. Example:\n\n`{\"text\": \"fire\"}`\n\n#### Allowed For\n\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Deleted_tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/deleted_tickets"
+          },
+          "docs": "Returns a maximum of 100 deleted tickets per page. See [Pagination](/api-reference/introduction/pagination/).\n\nThe results includes all deleted (and not yet archived) tickets that\nhave not yet been [scrubbed](https://support.zendesk.com/hc/en-us/articles/4408845703194#topic_fv5_w51_sdb) in the past 30 days. Archived tickets are\nnot included in the results. See [About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756)\nin the Support Help Center.\n\nThe tickets are ordered ch"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Deleted_tickets Ticket_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/deleted_tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a soft-deleted ticket. See [Soft delete](https://support.zendesk.com/hc/en-us/articles/4408834005530#topic_zrm_wbj_1db)\nin the Zendesk GDPR docs. To soft delete a ticket, use the [Delete Ticket](#delete-ticket) endpoint.\n\nThis endpoint enqueues a ticket deletion job and returns a payload with the jobs status.\n\nIf the job succeeds, the ticket is permanently deleted. This operation can't be undone.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/tic"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Deleted_tickets Ticket_id Restore",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/deleted_tickets/:ticket_id/restore",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Deleted_tickets Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/deleted_tickets/destroy_many"
+          },
+          "docs": "Permanently deletes up to 100 soft-deleted tickets. See [Soft delete](https://support.zendesk.com/hc/en-us/articles/4408834005530#topic_zrm_wbj_1db)\nin the Zendesk GDPR docs. To soft delete tickets, use the [Bulk Delete Tickets](#bulk-delete-tickets) endpoint.\n\nThis endpoint accepts a comma-separated list of up to 100 ticket ids. It enqueues\na ticket deletion job and returns a payload with the jobs status.\n\nIf one ticket fails to be deleted, the endpoint still attempts to delete the others. If t"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Deleted_tickets Restore_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/deleted_tickets/restore_many"
+          },
+          "docs": "#### Allowed For\n\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Problems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/problems"
+          },
+          "docs": "The response is always ordered by `updated_at` in descending order\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/)."
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/tags",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Tickets Ticket_id Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/tags",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Tickets Ticket_id Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/tags",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "You can also add tags to multiple tickets with the [Update Many\nTickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets) endpoint.\n\n#### Safe Update\n\nIf the same ticket is updated by multiple API requests at\nthe same time, some tags could be lost because of ticket\nupdate collisions. Include `updated_stamp` and `safe_update`\nproperties in the request body to make a safe update.\n\nFor `updated_stamp`, retrieve and specify the ticket's\nlatest `updated_at` timestamp. The tag update onl"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Tickets Ticket_id Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/tags",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "You can also delete tags from multiple tickets with the\n[Update Many Tickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets) endpoint.\n\nThis endpoint supports safe updates. See [Safe Update](/api-reference/ticketing/ticket-management/tags/#safe-update).\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets",
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "query",
+                "description": "Lists tickets by external id. External ids don't have to be unique for each ticket. As a result, the request may return multiple tickets with the same external id."
+              }
+            ]
+          },
+          "docs": "Zendesk Get  Api V2 Tickets"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/tickets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Zendesk Post  Api V2 Tickets"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "Returns a number of ticket properties though not the ticket comments. To get the comments, use [List Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments)\n\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Tickets Ticket_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Zendesk Put  Api V2 Tickets Ticket_id"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Tickets Ticket_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Admins\n* Agents with permission to delete tickets\n\nAgent delete permissions are set in Support. See\n[Deleting tickets](https://support.zendesk.com/hc/en-us/articles/203690936)\nin the Support Help Center.\n\n#### Ticket deletion rate limit\n\nYou can delete 400 tickets every 1 minute using this endpoint.\nThe rate limiting mechanism behaves as described in\n[Rate limits](/api-reference/introduction/rate-limits/) in the API introduction.\nZendesk recommends that you obey the Retry-Aft"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Collaborators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/collaborators",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Email_ccs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/email_ccs",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "Returns any users cc'd on the ticket.\n\n#### Availability\n\nThe [CCs and Followers](https://support.zendesk.com/hc/en-us/articles/203690846) feature must be enabled in Zendesk Support.\n\nIf the feature is not enabled, the default CC functionality is used. In that case, use [List Collaborators](/api-reference/ticketing/tickets/tickets/#list-collaborators-for-a-ticket) to list the users cc'ed on the ticket.\n\n#### Allowed For\n\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Followers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/followers",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "Returns any users who follow the ticket.\n\n#### Availability\n\nThe [CCs and Followers](https://support.zendesk.com/hc/en-us/articles/203690846) feature must be enabled in Zendesk Support.\n\n#### Allowed For\n\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Incidents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/incidents",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents\n\n#### Pagination\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/)."
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Tickets Ticket_id Mark_as_spam",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/mark_as_spam",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Tickets Ticket_id Merge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/merge",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merges one or more tickets into the ticket with the specified id.\n\nSee [Merging tickets](https://support.zendesk.com/hc/en-us/articles/203690916)\nin the Support Help Center for ticket merging rules.\n\nAny attachment to the source ticket is copied to the target ticket.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-manageme"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Related",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/related",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "The request returns a data object with the following properties:\n\n| Name                | Type    | Comment\n| ------------------- | ------- | -------\n| topic_id            | string  | Related topic in the Web portal (deprecated feature)\n| jira_issue_ids      | array   | Array of associated jira issues\n| followup_source_ids | array   | Sources to follow up\n| from_archive        | boolean | Is true if the current ticket is archived\n| incidents           | integer | A count of related incident occu"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/count"
+          },
+          "docs": "Returns an approximate count of tickets in the account. If the count exceeds 100,000, it is updated every 24 hours.\n\n`ccd` lists tickets that the specified user is cc'd on.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Tickets Create_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/tickets/create_many",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accepts an array of up to 100 ticket objects. **Note**: Every ticket created with this endpoint may be affected by your business rules, which can include sending email notifications to your end users. If you are importing historical tickets or creating more than 1000 tickets, consider using the [Ticket Bulk Import](/api-reference/ticketing/tickets/ticket_import/#ticket-bulk-import) endpoint.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_status"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Tickets Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/tickets/destroy_many"
+          },
+          "docs": "Accepts a comma-separated list of up to 100 ticket ids.\n\n#### Allowed For\n\n* Admins\n* Agents with permission to delete tickets\n\nAgent delete permissions are set in Support. See\n[Deleting tickets](https://support.zendesk.com/hc/en-us/articles/203690936)\nin the Support Help Center.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ti"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Tickets Mark_many_as_spam",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/tickets/mark_many_as_spam"
+          },
+          "docs": "Accepts a comma-separated list of up to 100 ticket ids.\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Show_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/show_many"
+          },
+          "docs": "Accepts a comma-separated list of ticket ids to return.\n\nThis endpoint will return up to 100 tickets records.\n\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Tickets Update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/tickets/update_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "35436,35437",
+                "type": "query",
+                "description": "Comma-separated list of ticket ids"
+              }
+            ]
+          },
+          "docs": "Accepts an array of up to 100 ticket objects, or a comma-separated list of up to 100 ticket ids."
+        },
+        {
+          "info": {
+            "name": "Zendesk List Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tickets",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              },
+              {
+                "name": "sort_by",
+                "value": "created_at",
+                "type": "query",
+                "description": "The field to sort tickets by."
+              },
+              {
+                "name": "sort_order",
+                "value": "asc",
+                "type": "query",
+                "description": "The sort order."
+              },
+              {
+                "name": "external_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Filter tickets by external ID."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of tickets in the account. Tickets are sorted by created date in ascending order by default. Supports sideloading of related users, groups, and organizations."
+        },
+        {
+          "info": {
+            "name": "Zendesk Create Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tickets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ticket. You can set the requester, subject, description, priority, type, status, tags, custom fields, and other properties. Comments can be added during creation."
+        },
+        {
+          "info": {
+            "name": "Zendesk Show Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific ticket."
+        },
+        {
+          "info": {
+            "name": "Zendesk Update Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a ticket. You can update the status, priority, assignee, tags, custom fields, and add comments. Setting the status to \"solved\" or \"closed\" resolves or closes the ticket."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/tickets/:ticket_id",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a ticket. This operation cannot be undone. Deleted tickets are not recoverable."
+        },
+        {
+          "info": {
+            "name": "Zendesk List Ticket Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tickets/:ticket_id/comments",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the ticket."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              },
+              {
+                "name": "sort_order",
+                "value": "asc",
+                "type": "query",
+                "description": "Sort order for comments."
+              }
+            ]
+          },
+          "docs": "Returns the comments on a specific ticket."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

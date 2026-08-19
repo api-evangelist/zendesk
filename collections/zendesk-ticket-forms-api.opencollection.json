@@ -1,0 +1,220 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Ticket Forms API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ticket Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/:ticket_form_id/ticket_form_statuses"
+          },
+          "docs": "Fetches all of the associated ticket form statuses of a ticket form.\n\n#### Allowed For\n\n* Admins\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/:ticket_form_id/ticket_form_statuses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates one or many ticket form status associations\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/:ticket_form_id/ticket_form_statuses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates or deletes ticket form status associations. This is a bulk operation that can both add and remove ticket form status associations for a form in one call.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/:ticket_form_id/ticket_form_statuses/:ticket_form_status_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates or deletes ticket form status association by id.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_forms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_forms",
+            "params": [
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "true returns active ticket forms; false returns inactive ticket forms. If not present, returns both"
+              },
+              {
+                "name": "end_user_visible",
+                "value": "",
+                "type": "query",
+                "description": "true returns ticket forms where `end_user_visible`; false returns ticket forms that are not end-user visible. If not present, returns both"
+              },
+              {
+                "name": "fallback_to_default",
+                "value": "",
+                "type": "query",
+                "description": "true returns the default ticket form when the criteria defined by the parameters results in a set without active and end-user visible ticket forms"
+              },
+              {
+                "name": "associated_to_brand",
+                "value": "",
+                "type": "query",
+                "description": "true returns the ticket forms of the brand specified by the url's subdomain"
+              }
+            ]
+          },
+          "docs": "Returns a list of all ticket forms for your account if accessed as an admin or agent. End users only see ticket forms that have `end_user_visible` set to true.\n\n#### Allowed For\n\n* Anyone\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Ticket_forms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/ticket_forms"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_forms Ticket_form_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/:ticket_form_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins, Agents, and End Users\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Ticket_forms Ticket_form_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/:ticket_form_id"
+          },
+          "docs": "#### Allowed For\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Ticket_forms Ticket_form_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/:ticket_form_id"
+          },
+          "docs": "#### Allowed For\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Ticket_forms Ticket_form_id Clone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/:ticket_form_id/clone"
+          },
+          "docs": "#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Ticket_forms Reorder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/reorder"
+          },
+          "docs": "#### Allowed For\n* Admins\n\n#### Request Parameters\n\nYou can pass in the following parameter in the payload:\n\n| Name                | Type   | Comment\n| ------------------- | ------ | --------\n| ticket_form_ids     | array  | An array of ticket form ids. Example: \"[2, 23, 46, 50]\"\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_forms Show_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_forms/show_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2,3",
+                "type": "query",
+                "description": "IDs of the ticket forms to be shown"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "true returns active ticket forms; false returns inactive ticket forms. If not present, returns both"
+              },
+              {
+                "name": "end_user_visible",
+                "value": "",
+                "type": "query",
+                "description": "true returns ticket forms where `end_user_visible`; false returns ticket forms that are not end-user visible. If not present, returns both"
+              },
+              {
+                "name": "fallback_to_default",
+                "value": "",
+                "type": "query",
+                "description": "true returns the default ticket form when the criteria defined by the parameters results in a set without active and end-user visible ticket forms"
+              },
+              {
+                "name": "associated_to_brand",
+                "value": "",
+                "type": "query",
+                "description": "true returns the ticket forms of the brand specified by the url's subdomain"
+              }
+            ]
+          },
+          "docs": "Takes an `ids` query parameter that accepts a comma-separated list of up to 100 ticket form ids. This endpoint is used primarily by the [mobile SDK](/documentation/classic-web-widget-sdks/) and the [Web Widget](/api-reference/widget/introduction/).\n\n#### Allowed For\n\n* Anyone\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

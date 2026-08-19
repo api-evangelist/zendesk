@@ -1,0 +1,254 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Skill Based Routing API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Skill Based Routing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Agents User_id Instance_values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/agents/:user_id/instance_values"
+          },
+          "docs": "Returns an attribute value.\n\n#### Allowed For\n\n* Agents and admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Routing Agents User_id Instance_values",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/routing/agents/:user_id/instance_values"
+          },
+          "docs": "Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Agents Instance_values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/agents/instance_values",
+            "params": [
+              {
+                "name": "filter[agent_ids]",
+                "value": "224,225",
+                "type": "query",
+                "description": "A comma-separated list of agent ids"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request.\n"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request.\n"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return per page"
+              }
+            ]
+          },
+          "docs": "Accepts a comma-separated list of up to 100 agent ids and returns attribute values for each agent in the list.\n\n#### Allowed For\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882-Creating-custom-roles-and-assigning-agents)\n\n#### Pagination\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\nNote: `page[before]` and `page[after]` can't be used together in the same request.\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Routing Agents Instance_values Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/routing/agents/instance_values/job",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds, replaces or removes multiple attributes for up to 100 agents.\n\n#### Allowed For\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882-Creating-custom-roles-and-assigning-agents)\n\n#### Available Parameters\n\nThe request takes a data object with the following properties:\n| Name       | Type   | Required | Description                                                                                       |\n| ---------- | -"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/attributes"
+          },
+          "docs": "Returns a list of attributes for the account.\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| attribute_values | The attribute values available on the account\n\n#### Allowed For\n\n* Agents and admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Routing Attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/routing/attributes"
+          },
+          "docs": "Creates an attribute.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Attributes Attribute_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id"
+          },
+          "docs": "Returns an attribute.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Routing Attributes Attribute_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id"
+          },
+          "docs": "Updates an attribute.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Routing Attributes Attribute_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id"
+          },
+          "docs": "Deletes an attribute.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Attributes Attribute_id Values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values"
+          },
+          "docs": "Returns a list of attribute values for a provided attribute.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Routing Attributes Attribute_id Values",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values"
+          },
+          "docs": "Creates an attribute value.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Attributes Attribute_id Values Attribute_value_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id"
+          },
+          "docs": "Returns an attribute value.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Patch  Api V2 Routing Attributes Attribute_id Values Attribute_value_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id"
+          },
+          "docs": "Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Routing Attributes Attribute_id Values Attribute_value_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/:attribute_id/values/:attribute_value_id"
+          },
+          "docs": "Deletes an attribute value.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Attributes Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/attributes/definitions"
+          },
+          "docs": "Returns the condition definitions that can be configured to apply attributes to a ticket.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Requirements Fulfilled",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/requirements/fulfilled",
+            "params": [
+              {
+                "name": "ticket_ids",
+                "value": "1",
+                "type": "query",
+                "description": "The IDs of the relevant tickets to check for matching attributes"
+              }
+            ]
+          },
+          "docs": "Returns a list of ticket ids that contain attributes matching the current user's attributes. Accepts a `ticket_ids` parameter for relevant tickets to check for matching attributes.\n\n#### Allowed For\n\n* Agents and admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Routing Tickets Ticket_id Instance_values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/routing/tickets/:ticket_id/instance_values"
+          },
+          "docs": "Returns a list of attributes values for the ticket.\n\n#### Allowed For\n\n* Agents and admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Routing Tickets Ticket_id Instance_values",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/routing/tickets/:ticket_id/instance_values"
+          },
+          "docs": "Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.\n\nInvalid or deleted attributes are ignored.\n\n#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

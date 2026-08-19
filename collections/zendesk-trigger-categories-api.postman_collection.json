@@ -1,0 +1,1139 @@
+{
+  "item": [
+    {
+      "id": "05eb9544-a44e-45e1-8cb3-12e4b165da51",
+      "name": "Trigger Categories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "655ec13d-0a10-45c8-9b71-56effc6bfa17",
+          "name": "Zendesk Get  Api V2 Trigger_categories",
+          "request": {
+            "name": "Zendesk Get  Api V2 Trigger_categories",
+            "description": {
+              "content": "Returns all the ticket trigger categories in the account.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "trigger_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "Pagination parameters"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "Pagination parameters"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "Pagination parameters"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort parameters"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Allowed sideloads"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9aead096-a1bd-4964-875c-35c1acf0bce2",
+              "name": "A paged array of ticket trigger categories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[after]",
+                      "value": "eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"links\": {\n    \"next\": \"https://{subdomain}.zendesk.com/api/v2/trigger_categories.json?include=rule_counts&page[after]=eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9&page[size]=2&sort=position\",\n    \"prev\": \"https://{subdomain}.zendesk.com/api/v2/trigger_categories.json?include=rule_counts&page[before]=eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9&page[size]=2&sort=position\"\n  },\n  \"meta\": {\n    \"after_cursor\": \"eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9\",\n    \"before_cursor\": \"eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9\",\n    \"has_more\": true\n  },\n  \"trigger_categories\": [\n    {\n      \"created_at\": \"2020-07-17T01:30:07Z\",\n      \"id\": \"10001\",\n      \"name\": \"Email Triggers\",\n      \"position\": 0,\n      \"updated_at\": \"2020-07-17T01:30:07Z\"\n    },\n    {\n      \"created_at\": \"2020-07-17T01:30:07Z\",\n      \"id\": \"10002\",\n      \"name\": \"SMS Triggers\",\n      \"position\": 1,\n      \"updated_at\": \"2020-07-17T01:30:07Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3543ba0b-76a9-49e4-b8a1-b42c6838c5fc",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[after]",
+                      "value": "eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"InvalidPaginationParameter\",\n      \"title\": \"page[after] is not valid\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17918d63-e2d7-4b4c-b5a5-48bf55f686a0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[after]",
+                      "value": "eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "eyJvIjoiLXNjb3JlLGlkIiwidiI6ImFRSUFBQUFBQUFBQWFRMHBJUUVBQUFBQSJ9"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"TriggerCategoriesNotEnabled\",\n      \"title\": \"Ticket trigger categories are not enabled for your account\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5794a251-80b7-4058-910e-ce86548daff1",
+          "name": "Zendesk Post  Api V2 Trigger_categories",
+          "request": {
+            "name": "Zendesk Post  Api V2 Trigger_categories",
+            "description": {
+              "content": "Creates a ticket trigger category.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "trigger_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "641255e6-593d-42ef-b555-4567f5d93d0c",
+              "name": "The created ticket trigger category",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger_category\": {\n    \"name\": \"All Notification Triggers\",\n    \"position\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trigger_category\": {\n    \"created_at\": \"2020-07-17T01:30:07Z\",\n    \"id\": \"10001\",\n    \"name\": \"All Notification Triggers\",\n    \"position\": 0,\n    \"updated_at\": \"2020-07-17T01:30:07Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3222042-c3ab-41bb-af6b-cfea2a491760",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger_category\": {\n    \"name\": \"All Notification Triggers\",\n    \"position\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"InvalidTriggerCategory\",\n      \"title\": \"Name cannot be blank\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15bee3cc-9a41-494f-a7b7-911c0bc25634",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger_category\": {\n    \"name\": \"All Notification Triggers\",\n    \"position\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"TriggerCategoriesNotEnabled\",\n      \"title\": \"Ticket trigger categories are not enabled for your account\"\n    },\n    {\n      \"code\": \"ProductLimitExceeded\",\n      \"title\": \"Your account has reached the limit of 500 ticket trigger categories.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6af1ee1d-2caf-4b58-8e70-2bb786565ef5",
+          "name": "Zendesk Get  Api V2 Trigger_categories Trigger_category_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Trigger_categories Trigger_category_id",
+            "description": {
+              "content": "Returns the ticket trigger category with the specified ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "trigger_categories",
+                ":trigger_category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trigger_category_id",
+                  "description": "(Required) The id of the ticket trigger category to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31b6869f-2a67-43a9-b55f-6826e279587d",
+              "name": "The requested ticket trigger category",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    ":trigger_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger_category_id",
+                      "description": "(Required) The id of the ticket trigger category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trigger_category\": {\n    \"created_at\": \"2020-07-17T01:30:07Z\",\n    \"id\": \"10001\",\n    \"name\": \"All Notification Triggers\",\n    \"position\": 0,\n    \"updated_at\": \"2020-07-17T01:30:07Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e4345a4-ec7f-4cd1-9c55-acac7c2ae667",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    ":trigger_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger_category_id",
+                      "description": "(Required) The id of the ticket trigger category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"TriggerCategoryNotFound\",\n      \"title\": \"Category can’t be found. Check the ID and try again.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "663b62db-4c6a-49e1-9b04-e760fe43ceb0",
+          "name": "Zendesk Patch  Api V2 Trigger_categories Trigger_category_id",
+          "request": {
+            "name": "Zendesk Patch  Api V2 Trigger_categories Trigger_category_id",
+            "description": {
+              "content": "Updates the ticket trigger category with the specified ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "trigger_categories",
+                ":trigger_category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trigger_category_id",
+                  "description": "(Required) The id of the ticket trigger category to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trigger_category\": {\n    \"value\": \"reference #/components/schemas/TriggerCategoryRequest not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4302cd1-a653-4ada-8c51-44bf77a9fa74",
+              "name": "The updated trigger category",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    ":trigger_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger_category_id",
+                      "description": "(Required) The id of the ticket trigger category to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger_category\": {\n    \"name\": \"All Notification Triggers Updated\",\n    \"position\": 10\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trigger_category\": {\n    \"created_at\": \"2020-07-17T01:30:07Z\",\n    \"id\": \"10001\",\n    \"name\": \"All Notification Triggers Updated\",\n    \"position\": 10,\n    \"updated_at\": \"2020-07-18T05:23:32Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a605996e-b2fa-4bf7-af48-2583d819df2b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    ":trigger_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger_category_id",
+                      "description": "(Required) The id of the ticket trigger category to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger_category\": {\n    \"name\": \"All Notification Triggers Updated\",\n    \"position\": 10\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"InvalidTriggerCategory\",\n      \"title\": \"Name cannot be blank\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53393449-63b5-4b6b-9a25-35c8a9c71f62",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    ":trigger_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger_category_id",
+                      "description": "(Required) The id of the ticket trigger category to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger_category\": {\n    \"name\": \"All Notification Triggers Updated\",\n    \"position\": 10\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"TriggerCategoryNotFound\",\n      \"title\": \"Category can’t be found. Check the ID and try again.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f1b0337-8743-4c2c-9849-80a0619cec84",
+          "name": "Zendesk Delete  Api V2 Trigger_categories Trigger_category_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Trigger_categories Trigger_category_id",
+            "description": {
+              "content": "Deletes the ticket trigger category with the specified ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "trigger_categories",
+                ":trigger_category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trigger_category_id",
+                  "description": "(Required) The id of the ticket trigger category to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3090e867-b509-4835-b72a-8f3949a3b2c7",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    ":trigger_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger_category_id",
+                      "description": "(Required) The id of the ticket trigger category to delete"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b1d6b11-dcfd-4952-936f-f13365fea10a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    ":trigger_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger_category_id",
+                      "description": "(Required) The id of the ticket trigger category to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"TriggerCategoryNotEmpty\",\n      \"title\": \"A category with active ticket triggers cannot be deleted.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a11af3a-e892-4122-a721-722aae74ff8d",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    ":trigger_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger_category_id",
+                      "description": "(Required) The id of the ticket trigger category to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"TriggerCategoryNotFound\",\n      \"title\": \"Category can’t be found. Check the ID and try again.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dda3c185-7222-4cd4-810c-306a0dcab427",
+          "name": "Zendesk Post  Api V2 Trigger_categories Jobs",
+          "request": {
+            "name": "Zendesk Post  Api V2 Trigger_categories Jobs",
+            "description": {
+              "content": "Creates a job that performs a batch operation for the given ticket trigger categories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "trigger_categories",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf5e264f-1b97-4cd9-a4b5-2f864db878f4",
+              "name": "The response to the batch job",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job\": {\n    \"action\": \"patch\",\n    \"items\": {\n      \"trigger_categories\": [\n        {\n          \"id\": \"10001\",\n          \"position\": 0\n        },\n        {\n          \"id\": \"10002\",\n          \"position\": 1\n        }\n      ],\n      \"triggers\": [\n        {\n          \"active\": false,\n          \"category_id\": \"10001\",\n          \"id\": \"10011\",\n          \"position\": 10\n        },\n        {\n          \"active\": true,\n          \"category_id\": \"10002\",\n          \"id\": \"10012\",\n          \"position\": 1\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": {\n    \"trigger_categories\": [\n      {\n        \"created_at\": \"2020-07-18T01:24:53Z\",\n        \"id\": \"10001\",\n        \"name\": \"Notifications\",\n        \"position\": 0,\n        \"updated_at\": \"2020-07-20T01:30:07Z\"\n      },\n      {\n        \"created_at\": \"2020-07-17T06:31:12Z\",\n        \"id\": \"10002\",\n        \"name\": \"Apply Tags\",\n        \"position\": 1,\n        \"updated_at\": \"2020-07-20T01:30:07Z\"\n      }\n    ],\n    \"triggers\": [\n      {\n        \"actions\": [\n          {}\n        ],\n        \"active\": true,\n        \"conditions\": {},\n        \"created_at\": \"2012-09-25T22:50:26Z\",\n        \"description\": \"Notify external target\",\n        \"id\": 10012,\n        \"position\": 1,\n        \"raw_title\": \"Notify target\",\n        \"title\": \"Notify Target\",\n        \"updated_at\": \"2020-07-20T01:30:07Z\",\n        \"url\": \"http://{subdomain}.zendesk.com/api/v2/triggers/10012.json\"\n      },\n      {\n        \"actions\": [\n          {}\n        ],\n        \"active\": false,\n        \"conditions\": {},\n        \"created_at\": \"2012-09-25T22:50:26Z\",\n        \"description\": \"Close and save a ticket\",\n        \"id\": 10011,\n        \"position\": 10,\n        \"raw_title\": \"Close and Save\",\n        \"title\": \"Close and Save\",\n        \"updated_at\": \"2020-07-20T01:30:07Z\",\n        \"url\": \"http://{subdomain}.zendesk.com/api/v2/triggers/10011.json\"\n      }\n    ]\n  },\n  \"status\": \"complete\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b51a763-3234-4f14-8415-2af26b8b3ba0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "trigger_categories",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"job\": {\n    \"action\": \"patch\",\n    \"items\": {\n      \"trigger_categories\": [\n        {\n          \"id\": \"10001\",\n          \"position\": 0\n        },\n        {\n          \"id\": \"10002\",\n          \"position\": 1\n        }\n      ],\n      \"triggers\": [\n        {\n          \"active\": false,\n          \"category_id\": \"10001\",\n          \"id\": \"10011\",\n          \"position\": 10\n        },\n        {\n          \"active\": true,\n          \"category_id\": \"10002\",\n          \"id\": \"10012\",\n          \"position\": 1\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"InvalidTrigger\",\n      \"title\": \"category_id is not valid\",\n      \"trigger_id\": \"10001\"\n    }\n  ],\n  \"status\": \"failed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ae5f73ea-b310-46d2-9c04-fd6bd53e07b7",
+    "name": "Zendesk Account Account Settings Trigger Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

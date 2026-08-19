@@ -1,0 +1,1394 @@
+{
+  "item": [
+    {
+      "id": "4f82784f-786d-4aaf-ac7f-51ea2890e38c",
+      "name": "Custom Object Records",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d060579-8734-4dec-955c-ed47129f99ea",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Autocomplete",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Autocomplete",
+            "description": {
+              "content": "Retrieves an array of custom object records that have a field value that matches the value specified in the `name` parameter.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the first 10,000 records sorted by relevancy with page limits.\n#### Allowed For\n* Agents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records",
+                "autocomplete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Part of a name of the record you are searching for"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "The number of records to return in the response. You can specify up to 100 records per page.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "field_id",
+                  "value": "<string>",
+                  "description": "The id of the lookup field. If the field has a relationship filter, the filter is applied to the results. Must be used with `source` param.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "One of \"zen:user\", \"zen:ticket\", \"zen:organization\", or \"zen:custom_object:CUSTOM_OBJECT_KEY\". Represents the object `field_id` belongs to. Must be used with field_id param.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[dynamic_values][key_0]",
+                  "value": "<integer>",
+                  "description": "Provided values to be used with [dynamic filters](/api-reference/ticketing/lookup_relationships/lookup_relationships/#using-dynamic-filters).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[dynamic_values][key_1]",
+                  "value": "<integer>",
+                  "description": "Provided values to be used with [dynamic filters](/api-reference/ticketing/lookup_relationships/lookup_relationships/#using-dynamic-filters).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "requester_id",
+                  "value": "<integer>",
+                  "description": "The id of the requester. For use with dynamic filters.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignee_id",
+                  "value": "<integer>",
+                  "description": "The id of the selected assignee. For use with dynamic filters.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<integer>",
+                  "description": "The id of the organization the requester belongs to. For use with dynamic filters.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "040a6f26-4a7a-4fc4-9074-45f83b870425",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records",
+                    "autocomplete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "field_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[dynamic_values][ticket_fields_123]",
+                      "value": "123"
+                    },
+                    {
+                      "key": "requester_id",
+                      "value": "264817272"
+                    },
+                    {
+                      "key": "assignee_id",
+                      "value": "7334148660734"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "5633330889598"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsAutocompleteResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ad98d13-1e07-4f44-8df7-3167d2bb10fe",
+          "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Jobs",
+          "request": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Jobs",
+            "description": {
+              "content": "Queues a background job to perform bulk actions on up to 100 custom object records per single request.\nTakes a `job` object with two nested fields:\n* `action`, one of:\n    * `\"create\"`\n    * `\"delete\"`\n    * `\"delete_by_external_id\"`\n    * `\"create_or_update_by_external_id\"`\n    * `\"create_or_update_by_name\"`\n    * `\"update\"`\n* `items`\n    * For a `\"create\"` action, an array of JSON objects representing the custom object records being created\n    * For a `\"delete\"` action, an array of strings representing Zendesk record ids\n    * For a `\"delete_by_external_id\"` action, an array of strings representing external ids\n    * For a `\"create_or_update_by_external_id\"` action, an array of JSON objects representing the custom object records being created or updated by external id\n    * For a `\"create_or_update_by_name\"` action, an array of JSON objects representing the custom object records being created or updated by name. The `is_unique` property on the custom object's name field must be enabled.\n    * For an `\"update\"` action, an array of JSON objects representing the custom object records being updated\n\nNote: If autonumbering is selected for the custom object's name field, record names aren't allowed in the request body because they are generated automatically. If uniqueness is enabled, the record names must be unique.\n\n#### Allowed For\n* Agents\n\n#### Response ###\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2137989c-f410-4c33-8bbc-f2848d2035e1",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/CustomObjectRecordsBulkCreateRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsJobsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5c8c4f1-9e1c-4f0c-bfe9-ac7c0b036342",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records",
+            "description": {
+              "content": "Lists all undeleted custom object records for the specified object\n\n #### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n#### Allowed For\n* Agents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[ids]",
+                  "value": "<string>",
+                  "description": "Optional comma-separated list of ids to filter records by. If one or more ids are specified, only matching records are returned. The ids must be unique and are case sensitive."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[external_ids]",
+                  "value": "<string>",
+                  "description": "Optional comma-separated list of external ids to filter records by. If one or more ids are specified, only matching records are returned. The ids must be unique and are case sensitive."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "One of `id`, `updated_at`, `-id`, or `-updated_at`. The `-` denotes the sort will be descending.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3eb4281-2ec2-43af-b0a8-caca77967c58",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[ids]",
+                      "value": "id_1,id_2,id_3"
+                    },
+                    {
+                      "key": "filter[external_ids]",
+                      "value": "ex_id_1,ex_id_2,ex_id_3"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsIndexResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ec14197-2f47-46ec-947d-23d51b2f599a",
+          "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Records",
+          "request": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Records",
+            "description": {
+              "content": "Creates a custom object record according to all the properties described by a custom object definition. If `autoincrement_enabled` is true, record names aren't allowed in the request body because they are generated automatically. If `is_unique` is true, record names must be unique.\n#### Allowed For\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91ca6a4f-ba7d-44b0-bf16-5b056f5fdd4b",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/CustomObjectRecordsCreateRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsCreateResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0747eca5-780a-4ef8-a0de-7d47b4af2357",
+          "name": "Zendesk Patch  Api V2 Custom_objects Custom_object_key Records",
+          "request": {
+            "name": "Zendesk Patch  Api V2 Custom_objects Custom_object_key Records",
+            "description": {
+              "content": "If a record exists for the given external id or name, updates it. Only the specified attributes are updated. Otherwise, creates a new record with the provided external id, name and other attributes. The `is_unqiue` property on the custom object's name field must be enabled in order to update or create by name. External id and name cannot be used together in the same request.\n#### Allowed For\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b7a32972-4984-40ea-a64f-e1ad0c55f4e8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/CustomObjectRecordsUpsertRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsUpsertResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a7774e2-5807-4638-8c07-405ec4e74a6e",
+          "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Records",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Records",
+            "description": {
+              "content": "Deletes a record with the specified external id or name. The `is_unique` property on the custom object's name field must be enabled in order to delete by name. External id and name cannot be used together in the same request.\n#### Allowed For\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bcb402a-c926-4697-8619-3f1d73560d48",
+              "name": "No content response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0df3d2b0-cf0b-4fe7-8548-745d409f6431",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+            "description": {
+              "content": "Returns a custom record for a specific object using a provided id.\n#### Allowed For\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records",
+                ":custom_object_record_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98fc1dd1-d8ff-45af-a4cf-164f60ab7c85",
+              "name": "Custom Object Record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records",
+                    ":custom_object_record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsCreateResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cde366a5-28da-4235-9d4c-0c8c6faf2af5",
+          "name": "Zendesk Patch  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+          "request": {
+            "name": "Zendesk Patch  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+            "description": {
+              "content": "Updates an individual custom object record. The updating rules are as follows:\n* Takes a `custom_object_record` object that specifies the properties to update\n* The custom object fields should be nested inside a `custom_object_fields` object\n#### Allowed For\n* Agents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records",
+                ":custom_object_record_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f73be687-09d9-4cd6-a409-61ac3541f049",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records",
+                    ":custom_object_record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsCreateResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a5bb30e-1f9b-4d05-be07-a21ffc4bc5c5",
+          "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+            "description": {
+              "content": "Deletes a record with the specified id\n#### Allowed For\n* Agents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records",
+                ":custom_object_record_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9099a8cd-9ef0-4b17-b53b-4e37711983c6",
+              "name": "No content response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records",
+                    ":custom_object_record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bcce2c2-c5f8-47b7-8611-d99a83c45b40",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Count",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Count",
+            "description": {
+              "content": "Returns a total count of records for a specific custom object as well as the time the count was refreshed.\n#### Allowed For\n* Agents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca36184b-aba6-4f19-a2e4-e2ed244288aa",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": {\n    \"refreshed_at\": \"2022-09-02T22:44:35Z\",\n    \"value\": 7\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1898c6d5-882d-45a6-a1bb-2ea568c8c1de",
+          "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search",
+            "description": {
+              "content": "Returns an array of custom object records that meet the search criteria\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a `sort` parameter, only the first 10,000 records are returned. With a `sort` parameter, all records are returned.\n#### Allowed For\n* Agents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: : Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes the sort will be descending. Defaults to sorting by relevance.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "407a4f70-13ee-4756-b2d6-075fa6797499",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "jdoe"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsSearchResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6439c605-2349-4bbc-93ce-3f54e2216303",
+          "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search",
+          "request": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search",
+            "description": {
+              "content": "Returns an array of custom object records that meet the search and filter criteria.\n\nFilters can contain either an individual [comparison object](#comparison-object) or an array of [comparison objects](#comparison-object) within logical namespaces.\n\nA filter is a JSON object that has the following properties:\n\n| Name      | Type   | Required | Description\n| --------- | ------ | -------- | -----------\n| ATTRIBUTE | object | no       | A [comparison object](#comparison-object) specifying an attribute value condition to be met for records to match.<br/><br/>Examples are marked below.\n| $and      | array  | no       | Array of conjunctive filter objects (logical AND)\n| $or       | array  | no       | Array of conjunctive filter objects (logical OR)\n\n##### Examples\n\n\n```js\n{\n  \"filter\": {\n    \"custom_object_fields.field_key\": { \"$eq\": \"value\" } // ATTRIBUTE\n  }\n}\n```\n\n```js\n// $or\n{\n  \"filter\": {\n    \"$or\": [\n      { \"custom_object_fields.field_key\": { \"$eq\": \"value\" } }, // ATTRIBUTE\n      { \"external_id\": { \"$eq\": \"Record123\" } } // ATTRIBUTE\n    ]\n  }\n}\n```\n\n#### Comparison Object\n\nA comparison object defines a condition a record must meet to be considered a match. The condition is based on an attribute value or object type.\n\nA comparison object is a JSON object that has the following properties:\n\n| Name      | Type          | Required | Description\n| --------- | ------------- | -------- | -----------\n| FIELD_KEY | string        | yes      | When filtering on a custom field, they must be namedspaced with `custom_object_fields.`. ex. `custom_object_fields.field_key`<br/><br/>When filtering on a standard field, no namespace is required. The following fields are considered standard: `created_at`, `updated_at`, `created_by_user`, `updated_by_user`, `name`, `external_id`\n| OPERATOR  | string        | yes      | [Supported operators](/documentation/custom-data/v2/searching-custom-object-records/) vary by the value's data type\n| VALUE     | string, array | yes      | The value you're filtering for\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a `sort` parameter, only the first 10,000 records are returned. With a `sort` parameter, all records are returned.\n\n#### Allowed For\n\n* Agents\n* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                ":custom_object_key",
+                "records",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes the sort will be descending. Defaults to sorting by relevance.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[before]",
+                  "value": "<string>",
+                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[after]",
+                  "value": "<string>",
+                  "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"reference #/components/schemas/CustomObjectRecordsFilteredSearchRequestBasic not found in the OpenAPI spec\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d17c47e-fb3a-48d7-b79a-279f1141b4dd",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    ":custom_object_key",
+                    "records",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "jdoe"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[before]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[after]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/CustomObjectRecordsFilteredSearchRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsSearchResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7545166d-0f38-4dd0-b68d-60aad789b276",
+          "name": "Zendesk Get  Api V2 Custom_objects Limits Record_limit",
+          "request": {
+            "name": "Zendesk Get  Api V2 Custom_objects Limits Record_limit",
+            "description": {
+              "content": "List the current count and the limit for custom object records\n#### Allowed For\n* Agents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_objects",
+                "limits",
+                "record_limit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "375872f2-470a-4ecc-a3ce-f1f403da4293",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_objects",
+                    "limits",
+                    "record_limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/CustomObjectRecordsLimitResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "31133990-d64f-4173-825a-980f7d935500",
+    "name": "Zendesk Account Account Settings Custom Object Records API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

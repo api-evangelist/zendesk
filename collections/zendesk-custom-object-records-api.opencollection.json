@@ -1,0 +1,341 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Custom Object Records API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Object Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Autocomplete",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/autocomplete",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Part of a name of the record you are searching for"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "The number of records to return in the response. You can specify up to 100 records per page.\n"
+              },
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the lookup field. If the field has a relationship filter, the filter is applied to the results. Must be used with `source` param.\n"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "One of \"zen:user\", \"zen:ticket\", \"zen:organization\", or \"zen:custom_object:CUSTOM_OBJECT_KEY\". Represents the object `field_id` belongs to. Must be used with field_id param.\n"
+              },
+              {
+                "name": "filter[dynamic_values]",
+                "value": "",
+                "type": "query",
+                "description": "Provided values to be used with [dynamic filters](/api-reference/ticketing/lookup_relationships/lookup_relationships/#using-dynamic-filters).\n"
+              },
+              {
+                "name": "requester_id",
+                "value": "264817272",
+                "type": "query",
+                "description": "The id of the requester. For use with dynamic filters.\n"
+              },
+              {
+                "name": "assignee_id",
+                "value": "7334148660734",
+                "type": "query",
+                "description": "The id of the selected assignee. For use with dynamic filters.\n"
+              },
+              {
+                "name": "organization_id",
+                "value": "5633330889598",
+                "type": "query",
+                "description": "The id of the organization the requester belongs to. For use with dynamic filters.\n"
+              }
+            ]
+          },
+          "docs": "Retrieves an array of custom object records that have a field value that matches the value specified in the `name` parameter.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the first 10,000 records sorted by relevancy with page limits.\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Queues a background job to perform bulk actions on up to 100 custom object records per single request.\nTakes a `job` object with two nested fields:\n* `action`, one of:\n    * `\"create\"`\n    * `\"delete\"`\n    * `\"delete_by_external_id\"`\n    * `\"create_or_update_by_external_id\"`\n    * `\"create_or_update_by_name\"`\n    * `\"update\"`\n* `items`\n    * For a `\"create\"` action, an array of JSON objects representing the custom object records being created\n    * For a `\"delete\"` action, an array of strings re"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records",
+            "params": [
+              {
+                "name": "filter[ids]",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma-separated list of ids to filter records by. If one or more ids are specified, only matching records are returned. The ids must be unique and are case sensitive."
+              },
+              {
+                "name": "filter[external_ids]",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma-separated list of external ids to filter records by. If one or more ids are specified, only matching records are returned. The ids must be unique and are case sensitive."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "One of `id`, `updated_at`, `-id`, or `-updated_at`. The `-` denotes the sort will be descending.\n"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n"
+              }
+            ]
+          },
+          "docs": "Lists all undeleted custom object records for the specified object\n\n #### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a custom object record according to all the properties described by a custom object definition. If `autoincrement_enabled` is true, record names aren't allowed in the request body because they are generated automatically. If `is_unique` is true, record names must be unique.\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Patch  Api V2 Custom_objects Custom_object_key Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If a record exists for the given external id or name, updates it. Only the specified attributes are updated. Otherwise, creates a new record with the provided external id, name and other attributes. The `is_unqiue` property on the custom object's name field must be enabled in order to update or create by name. External id and name cannot be used together in the same request.\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records"
+          },
+          "docs": "Deletes a record with the specified external id or name. The `is_unique` property on the custom object's name field must be enabled in order to delete by name. External id and name cannot be used together in the same request.\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/:custom_object_record_id"
+          },
+          "docs": "Returns a custom record for a specific object using a provided id.\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Patch  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/:custom_object_record_id"
+          },
+          "docs": "Updates an individual custom object record. The updating rules are as follows:\n* Takes a `custom_object_record` object that specifies the properties to update\n* The custom object fields should be nested inside a `custom_object_fields` object\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Records Custom_object_record_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/:custom_object_record_id"
+          },
+          "docs": "Deletes a record with the specified id\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/count"
+          },
+          "docs": "Returns a total count of records for a specific custom object as well as the time the count was refreshed.\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Records Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "jdoe",
+                "type": "query",
+                "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: : Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes the sort will be descending. Defaults to sorting by relevance.\n"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n"
+              }
+            ]
+          },
+          "docs": "Returns an array of custom object records that meet the search criteria\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a `sort` parameter, only the first 10,000 records are returned. With a `sort` parameter, all records are returned.\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Records Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/records/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "jdoe",
+                "type": "query",
+                "description": "The query parameter is used to search text-based fields for records that match specific query terms.\nThe query can be multiple words or numbers. Every record that matches the beginning of any word or number in the query string is returned.<br/><br/>\n\nFuzzy search is supported for the following text-based field types: Text fields, Multi Line Text fields, and RegExp fields.<br/><br/>\n\nFor example, you might want to search for records related to Tesla vehicles: `query=Tesla`. In this example the API would return every record for the given custom object where any of the supported text fields contain the word 'Tesla'.<br/><br/>\n\nYou can include multiple words or numbers in your search. For example: `query=Tesla Honda 2020`. This search phrase would be URL encoded as `query=Tesla%20Honda%202020` and return every record for the custom object for which any of the supported text fields contained 'Tesla', 'Honda', or '2020'.\n"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "One of `name`, `created_at`, `updated_at`, `-name`, `-created_at`, or `-updated_at`. The `-` denotes the sort will be descending. Defaults to sorting by relevance.\n"
+              },
+              {
+                "name": "page[before]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.before_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+              },
+              {
+                "name": "page[after]",
+                "value": "",
+                "type": "query",
+                "description": "A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination) that tells the endpoint which page to start on. It should be a `meta.after_cursor` value from a previous request. Note: `page[before]` and `page[after]` can't be used together in the same request.\n"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns an array of custom object records that meet the search and filter criteria.\n\nFilters can contain either an individual [comparison object](#comparison-object) or an array of [comparison objects](#comparison-object) within logical namespaces.\n\nA filter is a JSON object that has the following properties:\n\n| Name      | Type   | Required | Description\n| --------- | ------ | -------- | -----------\n| ATTRIBUTE | object | no       | A [comparison object](#comparison-object) specifying an attrib"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Limits Record_limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/limits/record_limit"
+          },
+          "docs": "List the current count and the limit for custom object records\n#### Allowed For\n* Agents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

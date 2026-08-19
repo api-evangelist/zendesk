@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Ticket Content Pins API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ticket Content Pins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_content_pins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_content_pins",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the ticket for which to list content pins"
+              }
+            ]
+          },
+          "docs": "Lists the content pins for a specific ticket. Content pins are used to pin related content such as articles to a ticket for quick access. This endpoint returns the content pins associated with the specified ticket id.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Ticket_content_pins",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/ticket_content_pins",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new content pin for a specific ticket. Content pins allow you to link to articles, community posts, or external content for easy reference.\n\n#### Allowed For\n\n* Admins\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Ticket_content_pins Content_pin_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/ticket_content_pins/:content_pin_id",
+            "params": [
+              {
+                "name": "content_pin_id",
+                "value": "01HFS51MMTVW7CMVEV5V51NYV5",
+                "type": "path",
+                "description": "The id of the content pin to delete"
+              }
+            ]
+          },
+          "docs": "Deletes a specific content pin from a ticket.\n\n#### Allowed For\n\n* Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

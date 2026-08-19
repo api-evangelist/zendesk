@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Omnichannel Routing Queues API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Omnichannel Routing Queues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Queues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/queues"
+          },
+          "docs": "Returns all active queues for an account.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Queues",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/queues"
+          },
+          "docs": "Creates a queue. Accepts a JSON queue definition as the request body.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Queues Queue_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/queues/:queue_id"
+          },
+          "docs": "Returns a queue for the given queue id.\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Queues Queue_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/queues/:queue_id"
+          },
+          "docs": "Updates the queue definition for a given queue id.\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Queues Queue_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/queues/:queue_id"
+          },
+          "docs": "Deletes the queue and related records.\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Queues Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/queues/definitions"
+          },
+          "docs": "Returns the definitions of the queues and the\ndefinitions of the conditions under which a queue can execute. The\ndefinition of the action includes a title (\"Status\"), a type (\"list\"), and\npossible values. The definition of the condition includes the same fields\nas well as the possible operators.\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Patch  Api V2 Queues Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/queues/order"
+          },
+          "docs": "Alters the evaluation order of OCR queues in the account.\nThe evaluation order is set in a `queue_ids` array in the request body.\n\nYou must include every queue id in your account to reorder the OCR queues. If not, the endpoint will return 400 Bad Request.\n\n#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

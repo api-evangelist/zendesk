@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Custom Objects API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects"
+          },
+          "docs": "Lists all undeleted custom objects for the account\n#### Allowed For\n* Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_objects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an object describing all the properties required to create a custom object record\n#### Allowed For\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key"
+          },
+          "docs": "Returns an object with the specified key\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Patch  Api V2 Custom_objects Custom_object_key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key"
+          },
+          "docs": "Updates an individual custom object. The updating rules are as follows:\n* Takes a `custom_object` object that specifies the properties to update\n* The `key` property cannot be updated\n#### Allowed For\n* Admins"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key"
+          },
+          "docs": "Permanently deletes the custom object with the specified key\n#### Allowed For\n* Admins"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Limits Object_limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/limits/object_limit"
+          },
+          "docs": "List the current count and the limit for custom objects\n#### Allowed For\n* Admins"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

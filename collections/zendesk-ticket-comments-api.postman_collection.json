@@ -1,0 +1,604 @@
+{
+  "item": [
+    {
+      "id": "8e899c00-ba91-442f-8cfe-11d940832913",
+      "name": "Ticket Comments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88559fa6-a84c-41fc-9fa1-25423f538a07",
+          "name": "Zendesk Put  Api V2 Chat_file_redactions Ticket_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Chat_file_redactions Ticket_id",
+            "description": {
+              "content": "Permanently removes one or more chat attachments from a chat ticket.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name         | Type    | Required | Description                                                                                                                                                                                                                                            |\n| ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| chat_id      | string  | true     | The `chat_id` in the `ChatStartedEvent` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                                 |\n| chat_indexes | array   | false    | The array of `chat_index` in the `ChatFileAttachment` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if `message_ids` is not used                                                           |\n| message_ids  | array   | false    | The array of `message_id` in the `ChatFileAttachment` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatFileAttachment that is part of a conversation history. Mandatory if `chat_indexes` is not used |\n\nTo get the required body properties, make a request to the [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n```http\nStatus 200 OK\n{\n  \"audits\": [\n    \"events\": [\n      {\n        \"id\": 1932802680168,\n        \"type\": \"ChatStartedEvent\",\n        \"value\": {\n          \"visitor_id\": \"10502823-16EkM3T6VNq7KMd\",\n          \"chat_id\": \"2109.10502823.Sjuj2YrBpXwei\",\n          \"history\": [\n            {\n              \"chat_index\": 0,\n              \"type\": \"ChatFileAttachment\",\n              \"filename\": \"image1.jpg\"\n            },\n            {\n              \"chat_index\": 1,\n              \"type\": \"ChatFileAttachment\",\n              \"filename\": \"image2.jpg\"\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "chat_file_redactions",
+                ":ticket_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "869b4905-61d1-4b17-afb8-74a09d3da450",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chat_file_redactions",
+                    ":ticket_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketChatCommentAttachmentRedactionResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35dcdf70-a3c4-4ec8-b8d5-f0be5fd2cb04",
+          "name": "Zendesk Put  Api V2 Chat_redactions Ticket_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Chat_redactions Ticket_id",
+            "description": {
+              "content": "Permanently removes words or strings from a chat ticket's comment. \n\nWrap `<redact>` tags around the content in the chat comment you want redacted. Example: \n\n```json\n{\n  \"text\": \"My ID number is <redact>847564</redact>!\"\n}\n```\n\nThe characters contained in the tag will be replaced by the ▇ symbol.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                                                                                                                       |\n| ------------------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| chat_id                  | string  | true     | The `chat_id` in the `ChatStartedEvent` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                            |\n| chat_index               | integer | false    | The `chat_index` in the `ChatMessage` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if `message_id` is not used                                                                       |\n| message_id               | string  | false    | The `message_id` of the `ChatMessage` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatMessage that is part of a conversation history. Mandatory if `chat_index` is not used                     |\n| text                     | string  | true     | The `message` in the `ChatMessage` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits).  Wrap `message` with `<redact>` tags                                                                           |\n\nTo get the required body properties, make a request to the [Ticket Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n```http\nStatus 200 OK\n{\n  \"audits\": [\n    \"events\": [\n      {\n        \"id\": 1932802680168,\n        \"type\": \"ChatStartedEvent\",\n        \"value\": {\n          \"visitor_id\": \"10502823-16EkM3T6VNq7KMd\",\n          \"chat_id\": \"2109.10502823.Sjuj2YrBpXwei\",\n          \"history\": [\n            {\n              \"chat_index\": 0,\n              \"type\": \"ChatMessage\",\n              \"message\": \"My ID number is 847564!\"\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "chat_redactions",
+                ":ticket_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24e8eb8f-299e-4ee5-88d0-a92b183bca07",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "chat_redactions",
+                    ":ticket_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketChatCommentRedactionResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ff146c6-5052-4ce4-a55a-d68bef720890",
+          "name": "Zendesk Put  Api V2 Comment_redactions Ticket_comment_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Comment_redactions Ticket_comment_id",
+            "description": {
+              "content": "Redaction allows you to permanently remove words, strings, or attachments from a ticket comment.\n\nIn the `html_body` of the comment, wrap the content you want redacted in `<redact>` tags. Example:\n\n```json\n{\n  \"html_body\": \"<div class=\\\"zd-comment\\\" dir=\\\"auto\\\">My ID number is <redact>847564</redact>!</div>\",\n  \"ticket_id\":100\n}\n```\n\nThe characters in the redact tag will be replaced by the ▇ symbol.\n\nTo redact HTML elements such inline images, anchor tags, and links, add the `redact` tag attribute to the element as well as the `<redact>` tag to inner text, if any. Example: \n\n`<a href=\"http://example.com\" redact><redact>some link</redact></a>`\n\nThe `redact` attribute only redacts the tag. Any inner text will be left behind if not enclosed in a `<redact>` tag.\n\nRedaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it.\n\nThis endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus:\n\n- Redaction of comments in closed tickets\n\n- Redaction of comments in archived tickets\n\n- Redaction of formatted text (bold, italics, hyperlinks)\n\n**Limitations**: When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed.\n\n**Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                      |\n| -------------------------| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |\n| ticket_id                | integer | true     | The ID of the ticket                                                                                                                             |\n| html_body                | string  | false    | The `html_body` of the comment containing `<redact>` tags or `redact` attributes                                           |\n| external_attachment_urls | array   | false    | Array of attachment URLs belonging to the comment to be redacted. See [`content_url` property of Attachment](/api-reference/ticketing/tickets/ticket-attachments/) |\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "comment_redactions",
+                ":ticket_comment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0200f3b7-8318-4e94-9715-3b6f428b3808",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "comment_redactions",
+                    ":ticket_comment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketCommentsRedactionInAgentWorkspaceResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f3794d1-7190-470f-bfda-74852e481aa8",
+          "name": "Zendesk Get  Api V2 Tickets Ticket_id Comments",
+          "request": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Comments",
+            "description": {
+              "content": "Returns the comments added to the ticket.\n\nEach comment may include a `content_url` for an attachment or a `recording_url` for a voice comment that points to a file that may be hosted externally. For security reasons, take care not to inadvertently send Zendesk authentication credentials to third parties when attempting to access these files. See [Working with url properties](/documentation/ticketing/managing-tickets/working-with-url-properties).\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Sorting\n\nBy default, comments are sorted by creation date in ascending order.\n\nWhen using cursor pagination, use the following parameter to change the sort order:\n\n| Name   | Type   | Required | Comments\n| ------ | ------ | -------- | --------\n| `sort` | string | no       | Possible values are \"created_at\" (ascending order) or \"-created_at\" (descending order)\n\nWhen using offset pagination, use the following parameters to change the sort order:\n\n| Name         | Type   | Required | Comments\n| ------------ | ------ | -------- | --------\n| `sort_order` | string | no       | One of `asc`, `desc`. Defaults to `asc`\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tickets",
+                ":ticket_id",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_inline_images",
+                  "value": "<boolean>",
+                  "description": "Default is false. When true, inline images are also listed as attachments in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Accepts \"users\". Use this parameter to list email CCs by side-loading users. Example: `?include=users`. **Note**: If the comment source is email, a deleted user will be represented as the CCd email address. If the comment source is anything else, a deleted user will be represented as the user name."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fff08861-eeab-4abb-8f2b-60bb2ee757c2",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tickets",
+                    ":ticket_id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_inline_images",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketCommentsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8b51b69-fd43-40fa-8697-4fd5c38f4865",
+          "name": "Zendesk Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Make_private",
+          "request": {
+            "name": "Zendesk Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Make_private",
+            "description": {
+              "content": "#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tickets",
+                ":ticket_id",
+                "comments",
+                ":ticket_comment_id",
+                "make_private"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aeb70157-93ae-475e-b366-1c13ce1b4a7e",
+              "name": "description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tickets",
+                    ":ticket_id",
+                    "comments",
+                    ":ticket_comment_id",
+                    "make_private"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "230c2982-35c6-4141-b0f1-f2527416363f",
+          "name": "Zendesk Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Redact",
+          "request": {
+            "name": "Zendesk Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Redact",
+            "description": {
+              "content": "Permanently removes words or strings from a ticket comment. Specify the string to redact in an object with a `text` property. Example: `'{\"text\": \"987-65-4320\"}'`. The characters of the word or string are replaced by the ▇ symbol.\n\nIf the comment was made by email, the endpoint also attempts to redact the string from the original email retained by Zendesk for audit purposes.\n\n**Note**: If you use the rich text editor, support for redacting formatted text (bold, italics, hyperlinks) is limited.\n\nRedaction is permanent. You can't undo the redaction or see *what* was removed. Once a ticket is closed, you can no longer redact strings from its comments.\n\nTo use this endpoint, the \"Agents can delete tickets\" option must be enabled in the Zendesk Support admin interface at **Admin** > **Settings** > **Agents**.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tickets",
+                ":ticket_id",
+                "comments",
+                ":ticket_comment_id",
+                "redact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f60f32ec-5c43-46a1-af21-7fb7f6393fd2",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tickets",
+                    ":ticket_id",
+                    "comments",
+                    ":ticket_comment_id",
+                    "redact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketCommentStringRedactResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a31164fc-03d9-4933-b128-6465d875b8fc",
+          "name": "Zendesk Get  Api V2 Tickets Ticket_id Comments Count",
+          "request": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Comments Count",
+            "description": {
+              "content": "Returns an approximate count of the comments added to the ticket. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.\n\n#### Allowed For\n* Agents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tickets",
+                ":ticket_id",
+                "comments",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c55c47c-c835-45f6-ab44-f4e2c7e192f3",
+              "name": "Count of ticket comments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tickets",
+                    ":ticket_id",
+                    "comments",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketCommentsCountResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b815ea21-d69a-4ac1-a398-f1d8b77a3c4f",
+    "name": "Zendesk Account Account Settings Ticket Comments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

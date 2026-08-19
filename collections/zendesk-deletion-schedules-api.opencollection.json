@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Deletion Schedules API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deletion Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Deletion_schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/deletion_schedules"
+          },
+          "docs": "Lists all deletion schedules for the account. Deletion schedules are used to automatically delete data from the account after a certain period of time.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Deletion_schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/deletion_schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new deletion schedule.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Deletion_schedules Deletion_schedule_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/deletion_schedules/:deletion_schedule_id"
+          },
+          "docs": "Gets a deletion schedule by its id.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Deletion_schedules Deletion_schedule_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/deletion_schedules/:deletion_schedule_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a deletion schedule by its id.\n\n**Note**: Updating a condition updates the conditions array, clearing all existing values of the array. Include all your conditions when updating any condition.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Deletion_schedules Deletion_schedule_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/deletion_schedules/:deletion_schedule_id"
+          },
+          "docs": "Deletes a deletion schedule by its id.\n\n#### Allowed For\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

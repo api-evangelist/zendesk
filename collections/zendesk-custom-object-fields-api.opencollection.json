@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Custom Object Fields API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Object Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/fields"
+          },
+          "docs": "Lists all undeleted custom fields for the specified object.\n\n#### Allowed For\n* Agents\n\n#### Pagination\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/)."
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Custom_objects Custom_object_key Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/fields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates any of the following custom field types:\n\n* text (default when no \"type\" is specified)\n* textarea\n* checkbox\n* date\n* integer\n* decimal\n* regexp\n* dropdown\n* lookup\n* multiselect\n\nSee [About custom field types](https://support.zendesk.com/hc/en-us/articles/203661866) in Zendesk help.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Fields Custom_object_field_key_or_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/fields/:custom_object_field_key_or_id"
+          },
+          "docs": "Returns a custom field for a specific object using a provided key or id of the field.\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Patch  Api V2 Custom_objects Custom_object_key Fields Custom_object_field_key_or_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/fields/:custom_object_field_key_or_id"
+          },
+          "docs": "Updates individual custom object fields. The updating rules are as follows:\n* Takes a `custom_object_field` object that specifies the properties to update\n* The `key` property cannot be updated\n* If updating a standard field, only the `title`, `description`, and `properties` attributes can be updated.\n* The `properties` parameter is comprised of four parts and can't be changed if any records exist for the object.\n    * `autoincrement_enabled`: A Boolean that enables and disables autonumbering. M"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Custom_objects Custom_object_key Fields Custom_object_field_key_or_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/fields/:custom_object_field_key_or_id"
+          },
+          "docs": "Deletes a field with the specified key. Note: You can't delete standard fields.\n#### Allowed For\n* Admins"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Custom_objects Custom_object_key Fields Reorder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/fields/reorder"
+          },
+          "docs": "Sets a preferred order of custom fields for a specific object by providing field ids in the desired order.\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Custom_objects Custom_object_key Limits Field_limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/custom_objects/:custom_object_key/limits/field_limit"
+          },
+          "docs": "List the current count and the limit for a custom object's fields\n#### Allowed For\n* Agents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

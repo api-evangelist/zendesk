@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Ticket Metrics API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ticket Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_metrics"
+          },
+          "docs": "Returns a list of tickets with their metrics.\n\nTickets are ordered chronologically by created date, from newest to oldest.\nThe last ticket listed may not be the absolute oldest ticket in your account\ndue to ticket archiving.\n\nArchived tickets are not included in the response. See\n[About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756) in\nZendesk help.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pa"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_metrics Ticket_metric_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_metrics/:ticket_metric_id",
+            "params": [
+              {
+                "name": "ticket_metric_id",
+                "value": "10001",
+                "type": "path",
+                "description": "The id of the ticket metric to retrieve"
+              }
+            ]
+          },
+          "docs": "Returns a specific metric, or the metrics of a specific ticket.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

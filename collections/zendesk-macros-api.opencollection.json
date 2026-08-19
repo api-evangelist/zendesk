@@ -1,0 +1,263 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Macros API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Macros",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Macro_id Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/:macro_id/attachments"
+          },
+          "docs": "Lists the attachments associated with a macro.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Macros Macro_id Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/macros/:macro_id/attachments"
+          },
+          "docs": "Allows an attachment to be uploaded and associated with a macro at the same time.\n\n**Note:** A macro can be associated with up to five attachments.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Macros Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/macros/attachments"
+          },
+          "docs": "Allows an attachment to be uploaded that can be associated with a macro at a later time.\n\n**Note:** To ensure an uploaded attachment is not lost, associate it with a macro as soon as possible. From time to time, old attachments that are not not associated with any macro are purged.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Attachments Attachment_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/attachments/:attachment_id"
+          },
+          "docs": "Shows the properties of the specified macro attachment.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros"
+          },
+          "docs": "Lists all shared and personal macros available to the current user. For admins, the API returns all macros for the account, including the personal macros of agents and other admins.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Macros",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/macros",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Macro_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/:macro_id"
+          },
+          "docs": "#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Macros Macro_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/macros/:macro_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Macros Macro_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/macros/:macro_id"
+          },
+          "docs": "#### Allowed For\n* Agents, with restrictions applying on certain actions\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Macro_id Apply",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/:macro_id/apply"
+          },
+          "docs": "Returns the changes the macro would make to a ticket. It doesn't actually\nchange a ticket. You can use the response data in a subsequent API call\nto the [Tickets](/api-reference/ticketing/tickets/tickets/) endpoint to update the ticket.\n\nThe response includes only the ticket fields that would be changed by the\nmacro. To get the full ticket object after the macro is applied,\nsee [Show Ticket After Changes](#show-ticket-after-changes).\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/actions"
+          },
+          "docs": "#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Active",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/active"
+          },
+          "docs": "Lists all active shared and personal macros available to the current user.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/categories"
+          },
+          "docs": "Lists all macro categories available to the current user.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/definitions"
+          },
+          "docs": "Returns the definitions of the actions a macro can perform. For example,\none action can set the status of a ticket. The definition of the action\nincludes a title (\"Status\"), a type (\"list\"), and possible values. For a\nlist of support actions, see [Actions reference](/documentation/ticketing/reference-guides/actions-reference).\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Macros Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/macros/destroy_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2,3",
+                "type": "query",
+                "description": "The IDs of the macros to delete"
+              }
+            ]
+          },
+          "docs": "Deletes the macros corresponding to the provided comma-separated list of IDs.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros New",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/new",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "35436",
+                "type": "query",
+                "description": "The ID of the ticket from which to build a macro replica"
+              }
+            ]
+          },
+          "docs": "Returns an unpersisted macro representation derived from a ticket or macro.\n\nThe endpoint takes one of the following query parameters: `macro_id` or `ticket_id`. If you include both, `macro_id` is used.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Macros Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/macros/search"
+          },
+          "docs": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Macros Update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/macros/update_many",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the provided macros with the specified changes.\n\n#### Allowed For\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Tickets Ticket_id Macros Macro_id Apply",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/macros/:macro_id/apply",
+            "params": [
+              {
+                "name": "ticket_id",
+                "value": "35436",
+                "type": "path",
+                "description": "The ID of the ticket"
+              }
+            ]
+          },
+          "docs": "Returns the full ticket object as it would be after applying the macro to the ticket.\nIt doesn't actually change the ticket.\n\nTo get only the ticket fields that would be changed by the macro,\nsee [Show Changes to Ticket](#show-changes-to-ticket).\n\n#### Allowed For\n\n* Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

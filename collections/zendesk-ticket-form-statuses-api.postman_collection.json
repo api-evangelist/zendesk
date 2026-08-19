@@ -1,0 +1,827 @@
+{
+  "item": [
+    {
+      "id": "4f740295-3af0-44f5-9a1b-2a8bf6b8e5c6",
+      "name": "Ticket Form Statuses",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1ae1135c-1d16-485b-bcc5-47087def661f",
+          "name": "Zendesk Post  Api V2 Custom_statuses Custom_status_id Ticket_form_statuses",
+          "request": {
+            "name": "Zendesk Post  Api V2 Custom_statuses Custom_status_id Ticket_form_statuses",
+            "description": {
+              "content": "Creates one or many tickets form status associations for a custom status.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "custom_statuses",
+                ":custom_status_id",
+                "ticket_form_statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ticket_form_status\": [\n    {\n      \"ticket_form_id\": \"<integer>\"\n    },\n    {\n      \"ticket_form_id\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "78d0cd11-a8a8-4875-9435-2233a2ff9653",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "custom_statuses",
+                    ":custom_status_id",
+                    "ticket_form_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ticket_form_status\": [\n    {\n      \"ticket_form_id\": 1\n    },\n    {\n      \"ticket_form_id\": 2\n    },\n    {\n      \"ticket_form_id\": 3\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketFormStatusesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff58f8ce-caa0-4df1-a0bc-6678b83fd659",
+          "name": "Zendesk Get  Api V2 Ticket_form_statuses",
+          "request": {
+            "name": "Zendesk Get  Api V2 Ticket_form_statuses",
+            "description": {
+              "content": "Fetches all of the ticket form statuses for the account.\n\n#### Allowed For\n\n* Admins\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "ticket_form_statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d40ee847-1fa1-47a5-aec3-1afe6cecb927",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "ticket_form_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketFormStatusesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a41470e-a844-4250-a7ae-8ef8c09320d9",
+          "name": "Zendesk Get  Api V2 Ticket_form_statuses Show_many",
+          "request": {
+            "name": "Zendesk Get  Api V2 Ticket_form_statuses Show_many",
+            "description": {
+              "content": "Fetches all of the ticket form statuses specified by a comma separated list of ids.\n#### Allowed For\n* Admins\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "ticket_form_statuses",
+                "show_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Ticket form status ids to retrieve records for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f65bfac1-5176-4615-8849-fb48a18e1dc2",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "ticket_form_statuses",
+                    "show_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "abc,def,ghi"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketFormStatusesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00f87481-a927-43df-b80d-6c75aa7caa47",
+          "name": "Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+          "request": {
+            "name": "Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+            "description": {
+              "content": "Fetches all of the associated ticket form statuses of a ticket form.\n\n#### Allowed For\n\n* Admins\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "ticket_forms",
+                ":ticket_form_id",
+                "ticket_form_statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0aa9d0a6-56f7-4868-918c-dcbfc565bf19",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "ticket_forms",
+                    ":ticket_form_id",
+                    "ticket_form_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketFormStatusesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "774b79d2-0323-4c32-bda7-157759aeae78",
+          "name": "Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+          "request": {
+            "name": "Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+            "description": {
+              "content": "Creates one or many ticket form status associations\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "ticket_forms",
+                ":ticket_form_id",
+                "ticket_form_statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97ecfe59-a9c1-47ad-97dc-e215eb39b1db",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "ticket_forms",
+                    ":ticket_form_id",
+                    "ticket_form_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ticket_form_status\": [\n    {\n      \"custom_status_id\": 1234\n    },\n    {\n      \"custom_status_id\": 1235\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketFormStatusesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7886415-8682-4aff-a82e-e3b6df4737fc",
+          "name": "Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+          "request": {
+            "name": "Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+            "description": {
+              "content": "Updates or deletes ticket form status associations. This is a bulk operation that can both add and remove ticket form status associations for a form in one call.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "ticket_forms",
+                ":ticket_form_id",
+                "ticket_form_statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28f81f80-7230-4ec8-9c36-f7517dec0a69",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "ticket_forms",
+                    ":ticket_form_id",
+                    "ticket_form_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ticket_form_status\": [\n    {\n      \"_destroy\": \"1\",\n      \"id\": \"abcdef\"\n    },\n    {\n      \"custom_status_id\": 1\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketFormStatusesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91dd1e7f-019e-4d18-8bbb-bafefe10f4eb",
+          "name": "Zendesk Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses",
+            "description": {
+              "content": "Deletes all of of the ticket form statuses by id.\n\n#### Allowed For\n\n* Admins\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "ticket_forms",
+                ":ticket_form_id",
+                "ticket_form_statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9058acf9-9472-42ba-972a-85b7d960ea31",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "ticket_forms",
+                    ":ticket_form_id",
+                    "ticket_form_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": [\n    \"abc\",\n    \"def\",\n    \"hij\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bff6937-7867-404e-930a-c47f794060b1",
+          "name": "Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id",
+            "description": {
+              "content": "Updates or deletes ticket form status association by id.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "ticket_forms",
+                ":ticket_form_id",
+                "ticket_form_statuses",
+                ":ticket_form_status_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf080256-6383-4fdd-a7ad-d26fc30c1d33",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "ticket_forms",
+                    ":ticket_form_id",
+                    "ticket_form_statuses",
+                    ":ticket_form_status_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ticket_form_status\": [\n    {\n      \"custom_status_id\": 1\n    },\n    {\n      \"custom_status_id\": 2\n    },\n    {\n      \"custom_status_id\": 3\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TicketFormStatusesResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbf61c56-73e7-492b-bb20-f9888a6263c6",
+          "name": "Zendesk Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id",
+            "description": {
+              "content": "Deletes a ticket form status by id.\n\n#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "ticket_forms",
+                ":ticket_form_id",
+                "ticket_form_statuses",
+                ":ticket_form_status_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5cc5bb0-dd1f-42d2-be58-6c371cb2a378",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "ticket_forms",
+                    ":ticket_form_id",
+                    "ticket_form_statuses",
+                    ":ticket_form_status_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3341c25b-b801-4eb4-9d9e-72fc76e79693",
+    "name": "Zendesk Account Account Settings Ticket Form Statuses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Audit Logs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audit Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Audit_logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/audit_logs",
+            "params": [
+              {
+                "name": "filter[source_type]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the source type. For example, user or rule"
+              },
+              {
+                "name": "filter[source_id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the source id. Requires `filter[source_type]` to also be set"
+              },
+              {
+                "name": "filter[actor_id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the actor id"
+              },
+              {
+                "name": "filter[ip_address]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the ip address"
+              },
+              {
+                "name": "filter[created_at]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the time of creation. When used, you must specify `filter[created_at]` twice in your request, first with the start time and again with an end time"
+              },
+              {
+                "name": "filter[action]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the action"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Offset pagination only. Sort audit logs. Default is `sort_by=created_at`"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Offset pagination only. Sort audit logs. Default is `sort_order=desc`"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Cursor pagination only. Sort audit logs. Default is `sort=-created_at`"
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Admins on accounts that have audit log access\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Audit_logs Audit_log_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/audit_logs/:audit_log_id"
+          },
+          "docs": "#### Allowed For\n\n* Admins on accounts that have audit-log access\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Audit_logs Export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/audit_logs/export",
+            "params": [
+              {
+                "name": "filter[source_type]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the source type. For example, user or rule"
+              },
+              {
+                "name": "filter[source_id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the source id. Requires `filter[source_type]` to also be set."
+              },
+              {
+                "name": "filter[actor_id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the actor id"
+              },
+              {
+                "name": "filter[ip_address]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the ip address"
+              },
+              {
+                "name": "filter[created_at]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the time of creation. When used, you must specify `filter[created_at]` twice in your request, first with the start time and again with an end time"
+              },
+              {
+                "name": "filter[action]",
+                "value": "",
+                "type": "query",
+                "description": "Filter audit logs by the action"
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Admins on accounts that have audit log access\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

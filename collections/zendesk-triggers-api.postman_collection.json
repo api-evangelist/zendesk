@@ -1,0 +1,1061 @@
+{
+  "item": [
+    {
+      "id": "81939491-4845-477d-aa30-181454a085cd",
+      "name": "Triggers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa6cb666-b88a-4b81-a9da-79cf4fcdc256",
+          "name": "Zendesk Get  Api V2 Triggers Search",
+          "request": {
+            "name": "Zendesk Get  Api V2 Triggers Search",
+            "description": {
+              "content": "#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. For more information, see [Side-loading](/documentation/ticketing/using-the-zendesk-api/side_loading/).\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each ticket trigger, if present\n| permissions      | The permissions for each ticket trigger\n| usage_1h         | The number of times each ticket trigger has been used in the past hour\n| usage_24h        | The number of times each ticket trigger has been used in the past day\n| usage_7d         | The number of times each ticket trigger has been used in the past week\n| usage_30d        | The number of times each ticket trigger has been used in the past thirty days\n\n#### Filter\n\nUse the `filter` query parameter to filter a ticket trigger search by one or more attributes. For example, the following `filter` argument filters ticket triggers by the `description` attribute:\n\n```json\n{\n  \"json\": {\n    \"description\": \"Close a ticket\"\n  }\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29ac9a19-4eff-41d1-bf81-1658826ec0f3",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggersSearchResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1b737d6-f1f3-4eb2-bb72-2f29b6668890",
+          "name": "Zendesk Get  Api V2 Triggers",
+          "request": {
+            "name": "Zendesk Get  Api V2 Triggers",
+            "description": {
+              "content": "Lists all ticket triggers for the current account.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported. The usage sideloads are only supported on the Support Professional or Suite Growth plan or above.\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each trigger, if present\n| permissions      | The permissions for each trigger\n| usage_1h         | The number of times each trigger has been used in the past hour\n| usage_24h        | The number of times each trigger has been used in the past day\n| usage_7d         | The number of times each trigger has been used in the past week\n| usage_30d        | The number of times each trigger has been used in the past thirty days\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1bfc7819-1460-4dba-b3d7-3dcb98a80b45",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbdfacdb-89ce-4414-aaea-097cea7501c6",
+          "name": "Zendesk Post  Api V2 Triggers",
+          "request": {
+            "name": "Zendesk Post  Api V2 Triggers",
+            "description": {
+              "content": "#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5ca7fb5c-8732-4947-9711-2f951b544cb4",
+              "name": "Created response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/TriggerWithCategoryRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggerResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26786402-6aaa-4d52-9da5-dccee1dee842",
+          "name": "Zendesk Get  Api V2 Triggers Trigger_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Triggers Trigger_id",
+            "description": {
+              "content": "#### Allowed For\n\n* Agents\n\nThe Via Type value is a number instead of a text string. See [Via types reference](/documentation/ticketing/reference-guides/via-types/) for the keys.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                ":trigger_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "315f00c5-5565-455b-a182-dad1f66076f1",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    ":trigger_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggerResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "334d58fc-b20d-43f3-8df4-e01dd48c6d19",
+          "name": "Zendesk Put  Api V2 Triggers Trigger_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Triggers Trigger_id",
+            "description": {
+              "content": "#### Allowed For\n\n* Agents\n\n#### Note\n\nUpdating a condition or action updates both the conditions and actions arrays,\nclearing all existing values of both arrays. Include all your conditions\nand actions when updating any condition or action.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                ":trigger_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "75c49032-ae26-461d-b3ed-41ff4eb73aa4",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    ":trigger_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/TriggerWithCategoryRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggerResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab0c7b7b-665a-402d-8ee2-0efd2711e976",
+          "name": "Zendesk Delete  Api V2 Triggers Trigger_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Triggers Trigger_id",
+            "description": {
+              "content": "#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                ":trigger_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c44d7f4-b047-4962-b222-132eea7e4d25",
+              "name": "No Content response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    ":trigger_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66dee586-c070-4507-8b57-c061a6ba192f",
+          "name": "Zendesk Get  Api V2 Triggers Trigger_id Revisions",
+          "request": {
+            "name": "Zendesk Get  Api V2 Triggers Trigger_id Revisions",
+            "description": {
+              "content": "List the revisions associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.\n\n#### Allowed For\n\n * Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name  | Will sideload\n| ----- | -------------\n| users | The user that authored each revision\n\n#### Pagination\n\nThis endpoint uses cursor-based pagination. The records are ordered in\ndescending order by the `created_at` timestamp, then by `id` on duplicate\n`created_at` values.\n\nThe `cursor` parameter is a non-human-readable argument you can use to move\nforward or backward in time.\n\nEach JSON response will contain the following attributes to help you get\nmore results:\n\n- `after_url` requests more recent results\n- `before_url` requests older results\n- `after_cursor` is the cursor to build the request yourself\n- `before_cursor` is the cursor to build the request yourself\n\nThe properties are null if no more records are available.\n\nYou can request a maximum of 1000 records using the `limit` parameter. If\nno `limit` parameter is supplied, it will default to 1,000.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                ":trigger_id",
+                "revisions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e22a163-a001-4ce6-ae78-8d6c02faf8f4",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    ":trigger_id",
+                    "revisions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggerRevisionsResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26b4a7c3-1b4f-4b47-aad8-bbe24509e3c0",
+          "name": "Zendesk Get  Api V2 Triggers Trigger_id Revisions Trigger_revision_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Triggers Trigger_id Revisions Trigger_revision_id",
+            "description": {
+              "content": "Fetches a revision associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.\n\n#### Allowed For\n\n * Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name  | Will sideload\n| ----- | -------------\n| users | The user that authored each revision\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                ":trigger_id",
+                "revisions",
+                ":trigger_revision_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d3a4f97-4086-43da-8424-f2e81b2402ad",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    ":trigger_id",
+                    "revisions",
+                    ":trigger_revision_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggerRevisionResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5fb32e5-f3a8-458d-b621-30ddc17ebce5",
+          "name": "Zendesk Get  Api V2 Triggers Active",
+          "request": {
+            "name": "Zendesk Get  Api V2 Triggers Active",
+            "description": {
+              "content": "Lists all active ticket triggers.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n#### Allowed For\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| app_installation | The app installation that requires each ticket trigger, if present\n| permissions      | The permissions for each trigger\n| usage_1h         | The number of times each ticket trigger has been used in the past hour\n| usage_24h        | The number of times each ticket trigger has been used in the past day\n| usage_7d         | The number of times each ticket trigger has been used in the past week\n| usage_30d        | The number of times each ticket trigger has been used in the past thirty days\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "131bb1b6-1e79-4bda-befa-12c0eb23511a",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggersActiveResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ab00608-dc4f-4fcb-9e69-873dabd08642",
+          "name": "Zendesk Get  Api V2 Triggers Definitions",
+          "request": {
+            "name": "Zendesk Get  Api V2 Triggers Definitions",
+            "description": {
+              "content": "Returns the definitions of the actions a ticket trigger can perform and the\ndefinitions of the conditions under which a ticket trigger can execute. The\ndefinition of the action includes a title (\"Status\"), a type (\"list\"), and\npossible values. The definition of the condition includes the same fields\nas well as the possible operators.\n\nFor a list of supported actions, see the [Actions reference](/documentation/ticketing/reference-guides/actions-reference)\nFor a list of supported conditions, see the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                "definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "433c6f92-36a2-461f-a70a-6c658080a30f",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    "definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggerDefinitionResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40baf11a-f890-4eea-a557-3eb691317250",
+          "name": "Zendesk Delete  Api V2 Triggers Destroy_many",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Triggers Destroy_many",
+            "description": {
+              "content": "Deletes the ticket triggers corresponding to the provided comma-separated list of IDs.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe DELETE request takes one parameter, an `ids` object that lists the\nticket triggers to delete.\n\n| Name | Description\n| ---- | -----------\n| ids  | The IDs of the triggers to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                "destroy_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8caffda0-e253-4c10-aa2e-54935e7863a7",
+              "name": "No content response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    "destroy_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22d448cf-a671-4c55-adcc-ae39634444d0",
+          "name": "Zendesk Put  Api V2 Triggers Reorder",
+          "request": {
+            "name": "Zendesk Put  Api V2 Triggers Reorder",
+            "description": {
+              "content": "Alters the firing order of ticket triggers in the account. See\n[Reordering and sorting triggers](https://support.zendesk.com/hc/en-us/articles/115015696088)\nin the Zendesk Help Center. The firing order is set in a `trigger_ids` array in the request body.\n\nYou must include every ticket trigger id in your account to reorder the ticket triggers. If not, the endpoint will return 404 Forbidden.\n\nReordering ticket triggers via the API is not permitted if you have more than one ticket trigger category. If there is more than one\nticket trigger category, the endpoint will return a `LimitOneCategory` error.\n\n#### Allowed For\n\n* Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                "reorder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1cb8854-4306-41c2-ad3f-eccec27ce5e1",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggerResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9d752b9-9459-4a6c-8bed-f6ee04fcebba",
+          "name": "Zendesk Put  Api V2 Triggers Update_many",
+          "request": {
+            "name": "Zendesk Put  Api V2 Triggers Update_many",
+            "description": {
+              "content": "Updates the position or the active status of multiple ticket triggers. Any additional properties are ignored.\n\n#### Allowed For\n\n* Agents\n\n#### Request Parameters\n\nThe PUT request expects a `triggers` object that lists the ticket triggers to update.\n\nEach ticket trigger may have the following properties:\n\n| Name        | Mandatory | Description\n| --------    | --------- | -----------\n| id          | yes       | The ID of the ticket trigger to update\n| position    | no        | The new position of the ticket trigger\n| active      | no        | The active status of the ticket trigger (true or false)\n| category_id | no        | The ID of the new category the ticket trigger is to be moved to\n\n#### Example Request\n\n```js\n{\n  \"triggers\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"position\": 5},\n    {\"id\": 27, \"position\": 9},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "triggers",
+                "update_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "819a5835-f6a7-48d3-93c6-0c4841bd398c",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "triggers",
+                    "update_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "reference #/components/examples/TriggerBulkUpdateRequestExample not found in the given specification",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"reference #/components/examples/TriggersResponseExample not found in the given specification\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d45bda0e-26ef-440c-91b8-857d3f2b23f2",
+    "name": "Zendesk Account Account Settings Triggers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

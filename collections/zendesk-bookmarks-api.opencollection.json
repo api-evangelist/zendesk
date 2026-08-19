@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Bookmarks API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bookmarks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Bookmarks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/bookmarks"
+          },
+          "docs": "#### Allowed For\n- Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Bookmarks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/bookmarks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Allowed For\n- Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Bookmarks Bookmark_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/bookmarks/:bookmark_id"
+          },
+          "docs": "#### Allowed For\n- Agents (own bookmarks only)\n\nIf the bookmark already exists with a specified ticket id, the response status will be `http Status: 200 OK`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

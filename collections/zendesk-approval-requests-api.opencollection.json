@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Approval Requests API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Approval Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/:approval_request_id"
+          },
+          "docs": "Shows an approval request.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Patch  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Approval_request_id Decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/:approval_request_id/decision",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the  approver's decision about an approval request.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Approval_workflow_instances Approval_workflow_instance_id Approval_requests Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/approval_workflow_instances/:approval_workflow_instance_id/approval_requests/search"
+          },
+          "docs": "Returns a list of approvals associated with a specific workflow instance. Results can be filtered by approval request status.\n\n#### Allowed For\n\n* Agents\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

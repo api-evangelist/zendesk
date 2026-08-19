@@ -1,0 +1,637 @@
+{
+  "item": [
+    {
+      "id": "76acf7bc-a7c9-4999-ac48-17ecbb3d7182",
+      "name": "Workspaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5f0f108-2d30-4bbf-82dd-c64c92b6c909",
+          "name": "Zendesk Get  Api V2 Workspaces",
+          "request": {
+            "name": "Zendesk Get  Api V2 Workspaces",
+            "description": {
+              "content": "#### Allowed For\n\n* Admins, Agents\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "workspaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f204c3f9-4516-4df1-a381-8dbe81a05311",
+              "name": "Success Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "workspaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1,\n  \"next_page\": null,\n  \"previous_page\": null,\n  \"workspaces\": [\n    {\n      \"activated\": true,\n      \"apps\": [\n        {\n          \"expand\": false,\n          \"id\": 360000080413,\n          \"position\": 1\n        }\n      ],\n      \"conditions\": {\n        \"all\": [\n          {\n            \"field\": \"ticket_form_id\",\n            \"operator\": \"is\",\n            \"value\": \"360000014173\"\n          }\n        ],\n        \"any\": []\n      },\n      \"created_at\": \"2018-11-13T19:08:13Z\",\n      \"description\": \"Test rules\",\n      \"id\": 3133,\n      \"macro_ids\": [\n        360005374974\n      ],\n      \"position\": 1,\n      \"prefer_workspace_app_order\": true,\n      \"selected_macros\": [\n        {\n          \"actions\": [\n            {\n              \"field\": \"status\",\n              \"value\": \"solved\"\n            }\n          ],\n          \"active\": true,\n          \"created_at\": \"2018-02-08T23:45:30Z\",\n          \"description\": null,\n          \"id\": 360005374974,\n          \"position\": 9999,\n          \"restriction\": {\n            \"id\": 360002226093,\n            \"ids\": [\n              360002226093\n            ],\n            \"type\": \"Group\"\n          },\n          \"title\": \"Close and redirect to topics\",\n          \"updated_at\": \"2018-11-08T22:27:00Z\",\n          \"url\": \"https://{subdomain}.zendesk.com/api/v2/macros/360005374974.json\",\n          \"usage_7d\": 0\n        }\n      ],\n      \"ticket_form_id\": 360000014173,\n      \"title\": \"Test Workspace 1\",\n      \"updated_at\": \"2018-12-17T22:37:40Z\",\n      \"url\": \"https://{subdomain}.zendesk.com/api/v2/workspaces.json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b4f6f0-f121-454f-82b8-69cef80fa83e",
+          "name": "Zendesk Post  Api V2 Workspaces",
+          "request": {
+            "name": "Zendesk Post  Api V2 Workspaces",
+            "description": {
+              "content": "#### Allowed For\n\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "workspaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceInput not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5162a8b-a4e0-4431-8010-f5d28cfaf910",
+              "name": "Created workspace",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "workspaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspace\": {\n    \"conditions\": {\n      \"all\": [\n        {\n          \"field\": \"ticket_form_id\",\n          \"operator\": \"is\",\n          \"value\": \"360000014173\"\n        }\n      ],\n      \"any\": []\n    },\n    \"description\": \"Test rules\",\n    \"macros\": [\n      360005374974\n    ],\n    \"ticket_form_id\": 360000014173,\n    \"title\": \"Test Workspace 1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"workspace\": {\n    \"activated\": true,\n    \"apps\": [],\n    \"conditions\": {\n      \"all\": [\n        {\n          \"field\": \"ticket_form_id\",\n          \"operator\": \"is\",\n          \"value\": \"360000014173\"\n        }\n      ],\n      \"any\": []\n    },\n    \"created_at\": \"2018-11-13T19:08:13Z\",\n    \"description\": \"Test rules\",\n    \"id\": 3133,\n    \"macro_ids\": [\n      360005374974\n    ],\n    \"position\": 1,\n    \"prefer_workspace_app_order\": true,\n    \"selected_macros\": [\n      {\n        \"actions\": [\n          {\n            \"field\": \"status\",\n            \"value\": \"solved\"\n          }\n        ],\n        \"active\": true,\n        \"created_at\": \"2018-02-08T23:45:30Z\",\n        \"description\": null,\n        \"id\": 360005374974,\n        \"position\": 9999,\n        \"restriction\": {\n          \"id\": 360002226093,\n          \"ids\": [\n            360002226093\n          ],\n          \"type\": \"Group\"\n        },\n        \"title\": \"Close and redirect to topics\",\n        \"updated_at\": \"2018-11-08T22:27:00Z\",\n        \"url\": \"https://{subdomain}.zendesk.com/api/v2/macros/360005374974.json\",\n        \"usage_7d\": 0\n      }\n    ],\n    \"ticket_form_id\": 360000014173,\n    \"title\": \"Test Workspace 1\",\n    \"updated_at\": \"2018-12-17T22:37:40Z\",\n    \"url\": \"https://{subdomain}.zendesk.com/api/v2/workspaces.json\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7693a504-e4f2-4bc5-be41-72763d78c4cf",
+          "name": "Zendesk Get  Api V2 Workspaces Workspace_id",
+          "request": {
+            "name": "Zendesk Get  Api V2 Workspaces Workspace_id",
+            "description": {
+              "content": "#### Allowed For\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "workspaces",
+                ":workspace_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a5821d2-8f5a-4278-861c-23feeb2dbd3e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "workspaces",
+                    ":workspace_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"workspace\": {\n    \"activated\": true,\n    \"apps\": [],\n    \"conditions\": {\n      \"all\": [\n        {\n          \"field\": \"ticket_form_id\",\n          \"operator\": \"is\",\n          \"value\": \"360000014173\"\n        }\n      ],\n      \"any\": []\n    },\n    \"created_at\": \"2018-11-13T19:08:13Z\",\n    \"description\": \"Test rules\",\n    \"id\": 3133,\n    \"macro_ids\": [\n      360005374974\n    ],\n    \"position\": 1,\n    \"prefer_workspace_app_order\": true,\n    \"selected_macros\": [\n      {\n        \"actions\": [\n          {\n            \"field\": \"status\",\n            \"value\": \"solved\"\n          }\n        ],\n        \"active\": true,\n        \"created_at\": \"2018-02-08T23:45:30Z\",\n        \"description\": null,\n        \"id\": 360005374974,\n        \"position\": 9999,\n        \"restriction\": {\n          \"id\": 360002226093,\n          \"ids\": [\n            360002226093\n          ],\n          \"type\": \"Group\"\n        },\n        \"title\": \"Close and redirect to topics\",\n        \"updated_at\": \"2018-11-08T22:27:00Z\",\n        \"url\": \"https://{subdomain}.zendesk.com/api/v2/macros/360005374974.json\",\n        \"usage_7d\": 0\n      }\n    ],\n    \"ticket_form_id\": 360000014173,\n    \"title\": \"Test Workspace 1\",\n    \"updated_at\": \"2018-12-17T22:37:40Z\",\n    \"url\": \"https://{subdomain}.zendesk.com/api/v2/workspaces.json\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5aed153-be3f-40be-982f-b524db3a928c",
+          "name": "Zendesk Put  Api V2 Workspaces Workspace_id",
+          "request": {
+            "name": "Zendesk Put  Api V2 Workspaces Workspace_id",
+            "description": {
+              "content": "#### Allowed For\n* Admins",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "workspaces",
+                ":workspace_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workspace\": {\n    \"value\": \"reference #/components/schemas/WorkspaceInput not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d6b1d13-7ea5-4549-90f6-2108b4d17943",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "workspaces",
+                    ":workspace_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspace\": {\n    \"conditions\": {\n      \"all\": [\n        {\n          \"field\": \"ticket_form_id\",\n          \"operator\": \"is\",\n          \"value\": \"360000014173\"\n        }\n      ],\n      \"any\": []\n    },\n    \"description\": \"Test rules\",\n    \"macros\": [\n      360005374974\n    ],\n    \"ticket_form_id\": 360000014173,\n    \"title\": \"Test Workspace 1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"workspace\": {\n    \"activated\": true,\n    \"apps\": [],\n    \"conditions\": {\n      \"all\": [\n        {\n          \"field\": \"ticket_form_id\",\n          \"operator\": \"is\",\n          \"value\": \"360000014173\"\n        }\n      ],\n      \"any\": []\n    },\n    \"created_at\": \"2018-11-13T19:08:13Z\",\n    \"description\": \"Test rules\",\n    \"id\": 3133,\n    \"macro_ids\": [\n      360005374974\n    ],\n    \"position\": 1,\n    \"prefer_workspace_app_order\": true,\n    \"selected_macros\": [\n      {\n        \"actions\": [\n          {\n            \"field\": \"status\",\n            \"value\": \"solved\"\n          }\n        ],\n        \"active\": true,\n        \"created_at\": \"2018-02-08T23:45:30Z\",\n        \"description\": null,\n        \"id\": 360005374974,\n        \"position\": 9999,\n        \"restriction\": {\n          \"id\": 360002226093,\n          \"ids\": [\n            360002226093\n          ],\n          \"type\": \"Group\"\n        },\n        \"title\": \"Close and redirect to topics\",\n        \"updated_at\": \"2018-11-08T22:27:00Z\",\n        \"url\": \"https://{subdomain}.zendesk.com/api/v2/macros/360005374974.json\",\n        \"usage_7d\": 0\n      }\n    ],\n    \"ticket_form_id\": 360000014173,\n    \"title\": \"Test Workspace 1\",\n    \"updated_at\": \"2018-12-17T22:37:40Z\",\n    \"url\": \"https://{subdomain}.zendesk.com/api/v2/workspaces.json\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36cd7f4e-be31-4b95-912c-05edf20c189f",
+          "name": "Zendesk Delete  Api V2 Workspaces Workspace_id",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Workspaces Workspace_id",
+            "description": {
+              "content": "#### Allowed For\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "workspaces",
+                ":workspace_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3710ae9b-4a1f-42c9-8b38-40272b55edcd",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "workspaces",
+                    ":workspace_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b607ef97-fcab-447c-b23b-75a9ac1d9f35",
+          "name": "Zendesk Delete  Api V2 Workspaces Destroy_many",
+          "request": {
+            "name": "Zendesk Delete  Api V2 Workspaces Destroy_many",
+            "description": {
+              "content": "#### Allowed For\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "workspaces",
+                "destroy_many"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<integer>",
+                  "description": "(Required) The ids of the workspaces to delete"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<integer>",
+                  "description": "(Required) The ids of the workspaces to delete"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46089531-1b2e-4781-85f7-612c3490fee9",
+              "name": "Succesful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "workspaces",
+                    "destroy_many"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "1"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "2"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "097e0c86-763b-4711-baa9-748752f84e3f",
+          "name": "Zendesk Put  Api V2 Workspaces Reorder",
+          "request": {
+            "name": "Zendesk Put  Api V2 Workspaces Reorder",
+            "description": {
+              "content": "#### Allowed For\n* Admins\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "workspaces",
+                "reorder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4376347b-76ff-48ba-8968-2da77723e49e",
+              "name": "Succesful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "workspaces",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    12,\n    32,\n    48,\n    60\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ad7852cc-634b-441b-8164-a9108acefb13",
+    "name": "Zendesk Account Account Settings Workspaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs a description.",
+      "type": "text/plain"
+    }
+  }
+}

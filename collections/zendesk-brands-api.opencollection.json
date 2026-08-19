@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Brands API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brands",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Brands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/brands"
+          },
+          "docs": "Returns a list of all brands for your account sorted by name.\n\n#### Allowed for\n\n* Admins\n* Agents with the `assign_tickets_to_any_brand` permission can list all brands for the account\n* Agents without the `assign_tickets_to_any_brand` permission can only list brands they are members of\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/)."
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Brands",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/brands",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### Allowed for\n- Admins"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Brands Brand_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/brands/:brand_id"
+          },
+          "docs": "Returns a brand for your account.\n\n#### Allowed for\n\n* Admins, Agents"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Brands Brand_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/brands/:brand_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns an updated brand.\n\n#### Allowed for\n* Admins\n\n#### Updating a Brand's Image\nA brand image can be updated by uploading a local file using the update brand endpoint. See the **Using curl** sections below for more information."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Brands Brand_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/brands/:brand_id"
+          },
+          "docs": "Deletes a brand.\n\n#### Allowed for\n- Admins"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Brands Brand_id Check_host_mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/brands/:brand_id/check_host_mapping"
+          },
+          "docs": "Returns a JSON object determining whether a host mapping is valid for the given brand.\n\n#### Allowed for\n- Admins"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Brands Check_host_mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/brands/check_host_mapping"
+          },
+          "docs": "Returns a JSON object determining whether a host mapping is valid for a given subdomain.\n\n#### Allowed for\n\n* Admins"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

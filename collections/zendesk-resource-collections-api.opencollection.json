@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Resource Collections API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resource Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Resource_collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/resource_collections"
+          },
+          "docs": "Lists resource collections for the account.\n\n#### Allowed for\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Resource_collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/resource_collections"
+          },
+          "docs": "Creates a resource collection from a provided `payload` object. The `payload` object is specified the same way as the content of a requirements.json file in a Zendesk app. See [Specifying Apps Requirements](/documentation/apps/app-developer-guide/apps_requirements/) in the Zendesk Apps framework docs.\n\nThe response includes a [job\nstatus](/api-reference/ticketing/ticket-management/job_statuses/) for creation of the specified resources.\n\n#### Allowed for\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Resource_collections Resource_collection_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id"
+          },
+          "docs": "Retrieves details for a specified resource collection.\n\n#### Allowed for\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Resource_collections Resource_collection_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id"
+          },
+          "docs": "Updates a resource collection using a provided `payload` object. The `payload` object  is specified the same way as the content of a requirements.json file in a Zendesk app. See [Specifying Apps Requirements](/documentation/apps/app-developer-guide/apps_requirements/) in the Zendesk Apps framework docs.\n\nThe response includes a [job\nstatus](/api-reference/ticketing/ticket-management/job_statuses/) for the resource updates.\n\n#### Allowed for\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Resource_collections Resource_collection_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/resource_collections/:resource_collection_id"
+          },
+          "docs": "Deletes a specified resource collection.\n\nThe response includes a [job\nstatus](/api-reference/ticketing/ticket-management/job_statuses/) for deletion of the collection's resources.\n\n#### Allowed for\n\n* Admins\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

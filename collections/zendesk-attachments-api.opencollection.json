@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Attachments API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Attachments Attachment_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/attachments/:attachment_id"
+          },
+          "docs": "Shows attachment details. You can get the value of the `attachment_id` parameter by listing the ticket's comments.\nSee [List Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments). Each comment\nin the list has an `attachments` list that specifies an `id` for each attachment.\n\n\n #### Allowed for\n\n * Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Attachments Attachment_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/attachments/:attachment_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Toggles enabling or restricting agent access to attachments with detected malware.\n\n#### Allowed For\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments Attachment_id Redact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/tickets/:ticket_id/comments/:comment_id/attachments/:attachment_id/redact"
+          },
+          "docs": "Redaction allows you to permanently remove attachments from an existing comment on a ticket. Once removed from a comment, the attachment is replaced with an empty \"redacted.txt\" file.\n\nThe redaction is permanent. It is not possible to undo redaction or see what was removed. Once a ticket is closed, redacting its attachments is no longer possible.\n\nAlso, if you want to redact an inline attachment, you can use the `include_inline_images` parameter in the [List Comments](/api-reference/ticketing/ti"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Uploads",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/uploads"
+          },
+          "docs": "Uploads a file that can be attached to a ticket comment. It doesn't attach the file to the comment. For details and examples, see [Attaching ticket comments with the API](/documentation/ticketing/using-the-zendesk-api/adding-ticket-attachments-with-the-api).\n\nThe endpoint has a required `filename` query parameter. The parameter specifies what the file will be named when attached to the ticket comment (to give the agent more context about the file). The parameter does not specify the file on the "
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Uploads Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/uploads/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "6bk3gql82em5nmf",
+                "type": "path",
+                "description": "The token of the uploaded attachment"
+              }
+            ]
+          },
+          "docs": "#### Allowed for\n\n* End Users\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Ticket Fields API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ticket Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_fields",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Forces the `title_in_portal` property to return a dynamic content variant for the specified locale.\n Only accepts [active locale ids](/api-reference/ticketing/account-configuration/locales/#list-locales).\nExample: `locale=\"de\"`.\n"
+              },
+              {
+                "name": "creator",
+                "value": "",
+                "type": "query",
+                "description": "Displays the `creator_user_id` and `creator_app_name` properties. If the ticket field is created\n by an app, `creator_app_name` is the name of the app and `creator_user_id` is `-1`. If the ticket field\n is not created by an app, `creator_app_name` is null\n"
+              }
+            ]
+          },
+          "docs": "Returns a list of all system and custom ticket fields in your account.\n\nFor end users, only the ticket fields with visible_in_portal set to true are returned.\n\nCursor pagination returns a maximum of 100 records per page and fields are returned in the order specified by their id.\n\nIf the results are not paginated, every field is returned in the response and fields are returned in the order specified by the position.\n\nYou can adjust the position of ticket fields by:\n\n- Using the [Update Ticket Fie"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Ticket_fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/ticket_fields"
+          },
+          "docs": "Creates any of the following custom field types:\n\n| Custom field type | Description                                                                                                                                                     |\n|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| text              | Default custom field type when `type` is not specified      "
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_fields Ticket_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id"
+          },
+          "docs": "#### Allowed for\n\n* Agents\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| users            | The user or users that created the ticket field\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Ticket_fields Ticket_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id"
+          },
+          "docs": "#### Updating drop-down field options\n\nYou can also use the update endpoint to add, update, or remove options in a drop-down custom field. Updating field options for multi-select fields works exactly the same as drop-down field options.\n\n**Important**: Unless you want to remove some options, you must specify all existing options in any update request. Omitting an option removes it from the drop-down field, which removes its values from any tickets or macros.\n\nUse the `custom_field_options` attri"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Ticket_fields Ticket_field_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id"
+          },
+          "docs": "#### Allowed for\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_fields Ticket_field_id Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options"
+          },
+          "docs": "Returns a list of custom ticket field options for the given drop-down ticket field.\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Ticket_fields Ticket_field_id Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options"
+          },
+          "docs": "Creates or updates an option for the given drop-down ticket field.\n\nTo update an option, include the id of the option in the `custom_field_option` object. Example:\n\n`{\"custom_field_option\": {\"id\": 10002, \"name\": \"Pineapples\", ... }`\n\nIf an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.\n\n#### Response\n\nReturns one of the following status codes:\n\n- 200 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options.json` if the ticket field opt"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_fields Ticket_field_id Options Ticket_field_option_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options/:ticket_field_option_id"
+          },
+          "docs": "#### Allowed for\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Ticket_fields Ticket_field_id Options Ticket_field_option_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/:ticket_field_id/options/:ticket_field_option_id"
+          },
+          "docs": "#### Allowed for\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Ticket_fields Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/count"
+          },
+          "docs": "Returns an approximate count of system and custom ticket fields in the account. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.\n\nThe `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until "
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Ticket_fields Reorder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/ticket_fields/reorder"
+          },
+          "docs": "#### Allowed For\n* Admins\n\n#### Request Parameters\n\nYou can pass in the following parameter in the payload:\n\n| Name                | Type   | Comment\n| ------------------- | ------ | --------\n| ticket_field_ids    | array  | An array of ticket field ids. Example: \"[2, 23, 46, 50]\". Not all ticket_field_ids are necessary in the payload; only those provided will be assigned to the first positions. Missing IDs will be assigned incremental positions automatically.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,584 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zendesk Account Account Settings Users API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users Autocomplete",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/autocomplete",
+            "params": [
+              {
+                "name": "name",
+                "value": "gil",
+                "type": "query",
+                "description": "The name to search for the user.\n"
+              }
+            ]
+          },
+          "docs": "Returns an array of users whose name starts with the value specified in the `name` parameter.\nIt only returns users with no foreign identities.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Deleted_users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/deleted_users"
+          },
+          "docs": "Returns deleted users, including permanently deleted users.\n\nIf the results contains permanently deleted users, the users' properties\nthat normally contain personal data, such as `email` and `phone`,\nare null. The `name` property is \"Permanently Deleted User\".\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Deleted_users Deleted_user_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/deleted_users/:deleted_user_id"
+          },
+          "docs": "Returns users that have been deleted but not permanently yet. See [Permanently Delete User](#permanently-delete-user).\n\n#### Allowed For:\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Deleted_users Deleted_user_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/deleted_users/:deleted_user_id"
+          },
+          "docs": "Before permanently deleting a user, you must delete the user first. See [Delete User](/api-reference/ticketing/users/users/#delete-user).\n\nWARNING: Permanently deleting a user deletes all of their information. This information is not recoverable.\n\n#### Permanent user deletion rate limit\n\nYou can permanently delete 700 users every 10 minutes.\nThe rate limiting mechanism behaves as described in\n[Rates Limits](/api-reference/introduction/rate-limits/#monitoring-your-request-activity) in the API int"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Deleted_users Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/deleted_users/count"
+          },
+          "docs": "Returns an approximate count of deleted users, including permanently deleted users. If the count exceeds 100,000, it is updated every 24 hours.\n\nThe response includes a `refreshed_at` property in a `count` object that contains a timestamp indicating when the count was last updated.\n\n**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.\nThis indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "jdoe",
+                "type": "query",
+                "description": "The `query` parameter supports the Zendesk search syntax for more advanced\nuser searches. It can specify a partial or full value of any\nuser property, including name, email address, notes, or phone. Example:\n`query=\"jdoe\"`.\nSee the [Search API](/api-reference/ticketing/ticket-management/search/).\n"
+              },
+              {
+                "name": "external_id",
+                "value": "abc124",
+                "type": "query",
+                "description": "The `external_id` parameter does not support the search syntax. It only accepts ids.\n"
+              }
+            ]
+          },
+          "docs": "Returns an array of users who meet the search criteria.\n\nReturns up to 100 records per page to a maximum of 10,000 records per query. See [Using offset pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users"
+          },
+          "docs": "#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins, Agents and Light Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Zendesk Post  Api V2 Users"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users User_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ]
+          },
+          "docs": "#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Users User_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Zendesk Put  Api V2 Users User_id"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Users User_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ]
+          },
+          "docs": "Deletes the user and associated records from the account.\n\n**Warning**:\n\n* Deleted users are not recoverable.\n* Both agents and administrators can soft delete users in the agent interface in Zendesk Support. Agents with permission can delete end users, while administrators can delete all users except the account owner.\n\nTo comply with GDPR, a further step is needed. See [Permanently Delete User](/api-reference/ticketing/users/users/#permanently-delete-user).\n\n#### Allowed For\n\n* Admins and [agen"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users User_id Compliance_deletion_statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/compliance_deletion_statuses",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              },
+              {
+                "name": "application",
+                "value": "chat",
+                "type": "query",
+                "description": "Area of compliance"
+              }
+            ]
+          },
+          "docs": "Returns the GDPR status for each user per area of compliance. A Zendesk area of compliance is typically a product like \"support/explore\" but can be more fine-grained for areas within the product lines.\n\nIf the user is not in the account, the request returns a 404 status.\n\n```http\nStatus: 404\n{\n  \"error\":\"RecordNotFound\",\n  \"description\":\"Not found\"\n}\n```\n\n#### Allowed For\n\n* Agents, with restrictions\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-r"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Users User_id Merge",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/merge",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merges the end user specified in the path parameter into the existing end user specified in the request body.\n\nAny two end users can be merged with the exception of end users created by sharing agreements.\n\nTo be eligible for merging, the user in the path parameter must be a requester on 10,000 or fewer tickets. Otherwise, the merge will be blocked.\n\nAgents, admins, and users with more than 10,000 requested tickets cannot be merged.\n\nFor more information about how user data is merged, see [Mergi"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users User_id Related",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/:user_id/related",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ]
+          },
+          "docs": "Zendesk Get  Api V2 Users User_id Related"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/count"
+          },
+          "docs": "Returns an approximate count of users. If the count exceeds 100,000, it is updated every 24 hours.\n\nThe response includes a `refreshed_at` property in a `count` object that contains a timestamp indicating when the count was last updated.\n\n**Note**: When the count exceeds 100,000, the `refreshed_at` property may occasionally be null.\nThis indicates that the count is being updated in the background. The `count` object's `value` property is limited to 100,000 until the update is complete.\n\n#### All"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Users Create_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/users/create_many",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accepts an array of up to 100 user objects.\n\n**Note**: To protect the data in your Zendesk account, bulk user imports are not enabled by default in Zendesk accounts. The account owner must contact [Zendesk Customer Support](https://support.zendesk.com/hc/en-us/articles/4408843597850) to enable the imports. A 403 Forbidden\nerror is returned if data imports are not enabled.\n\n#### Allowed For\n\n* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/440888"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Users Create_or_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/users/create_or_update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user if the user does not already exist, or updates an existing user\nidentified by e-mail address or external ID.\n\nIf you don't specify a role parameter, the new user is assigned the role of end user.\n\nIf you need to create users without sending out a verification email, include a `\"skip_verify_email\": true` property in the body.\n\n#### External ID Case Sensitivity\n\nWhen providing an external id to identify an existing user to update, the search for the user record is not case sensitive"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Users Create_or_update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/users/create_or_update_many",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accepts an array of up to 100 user objects. For each user, the user is created if it does not\nalready exist, or the existing user is updated.\n\n**Note**: To protect the data in your Zendesk account, bulk user imports are not enabled by default in Zendesk accounts. The account owner must contact [Zendesk Customer Support](https://support.zendesk.com/hc/en-us/articles/4408843597850) to enable the imports. A 403 Forbidden\nerror is returned if data imports are not enabled.    \n\nEach individual user o"
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete  Api V2 Users Destroy_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/users/destroy_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2,3",
+                "type": "query",
+                "description": "Id of the users to delete. Comma separated"
+              },
+              {
+                "name": "external_ids",
+                "value": "abc,def,ghi",
+                "type": "query",
+                "description": "External Id of the users to delete. Comma separated"
+              }
+            ]
+          },
+          "docs": "Accepts a comma-separated list of up to 100 user ids.\n\nThe request takes an `ids` or an `external_ids` query parameter.\n\n#### Allowed for\n\n- Admins\n\n#### Response\n\nThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job's completion. Only a certain number of jo"
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Users Logout_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/users/logout_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2",
+                "type": "query",
+                "description": "Accepts a comma-separated list of up to 100 user ids.\n"
+              }
+            ]
+          },
+          "docs": "Accepts a comma-separated list of up to 100 user ids.\n\n#### Allowed For:\n\n* Admins\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users Me",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/me"
+          },
+          "docs": "The endpoint returns [user information](/api-reference/ticketing/users/users/) and an `authenticity_token`. \n\n#### Allowed For\n\n* Anonymous users\n\n#### Authenticity Token\n\nZendesk API calls made by end users from a Zendesk help center must include `authenticity_token` in the `X-CSRF-Token` HTTP header. This helps prevent [cross-site request forgery (CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks.\n\nFor an example using an authenticity token, see the AJAX request in the ["
+        },
+        {
+          "info": {
+            "name": "Zendesk Post  Api V2 Users Request_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/users/request_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends the owner a reminder email to update their subscription so more agents can be created.\n\n#### Allowed For\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Get  Api V2 Users Show_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/users/show_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2",
+                "type": "query",
+                "description": "Accepts a comma-separated list of up to 100 user ids.\n"
+              },
+              {
+                "name": "external_ids",
+                "value": "abc,def",
+                "type": "query",
+                "description": "Accepts a comma-separated list of up to 100 external ids.\n"
+              }
+            ]
+          },
+          "docs": "Accepts a comma-separated list of up to 100 user ids or external ids.\n\n#### Allowed For:\n\n* Agents\n"
+        },
+        {
+          "info": {
+            "name": "Zendesk Put  Api V2 Users Update_many",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/users/update_many",
+            "params": [
+              {
+                "name": "ids",
+                "value": "1,2,3",
+                "type": "query",
+                "description": "Id of the users to update. Comma separated"
+              },
+              {
+                "name": "external_ids",
+                "value": "abc,def,ghi",
+                "type": "query",
+                "description": "External Id of the users to update. Comma separated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Zendesk Put  Api V2 Users Update_many"
+        },
+        {
+          "info": {
+            "name": "Zendesk List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              },
+              {
+                "name": "role",
+                "value": "end-user",
+                "type": "query",
+                "description": "Filter by user role."
+              },
+              {
+                "name": "permission_set",
+                "value": "10",
+                "type": "query",
+                "description": "For custom roles, filter by the permission set ID."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all users in the account, including end users, agents, and admins. Supports filtering by role and permission set."
+        },
+        {
+          "info": {
+            "name": "Zendesk Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user. You must provide at least a name and an email address or phone number. The user role defaults to end-user."
+        },
+        {
+          "info": {
+            "name": "Zendesk Show User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific user."
+        },
+        {
+          "info": {
+            "name": "Zendesk Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a user. You can update the name, email, role, organization, tags, custom fields, and other properties."
+        },
+        {
+          "info": {
+            "name": "Zendesk Delete User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user."
+              }
+            ]
+          },
+          "docs": "Deletes a user. The user is soft-deleted and can be recovered within a limited time. Agents and admins can only be deleted by admins."
+        },
+        {
+          "info": {
+            "name": "Zendesk Search Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "The search query. Supports name, email, phone, external_id, and other fields."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max 100)."
+              }
+            ]
+          },
+          "docs": "Searches for users by name, email, external ID, or other criteria. Returns a paginated list of matching users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
