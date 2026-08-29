@@ -12866,6 +12866,19 @@ tags:
 - Ticketing
 - Tickets
 kind: contract
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -12882,6 +12895,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zendesk.png
 access: 3rd-Party
 common:
+- type: CapabilityMap
+  url: capabilities/zendesk-capability-edges.yml
+  name: Zendesk Business Capability Map
 - type: AgenticAccess
   url: agentic-access/zendesk-agentic-access.yml
 - type: VulnerabilityDisclosure
