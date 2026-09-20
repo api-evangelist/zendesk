@@ -1,0 +1,136 @@
+slug: zendesk
+provider: Zendesk
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 13
+edges:
+- tag: Tickets
+  spec_file: zendesk-tickets-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.92
+  evidence: ListTickets, ListTicketProblems, RestoreDeletedTicket, schemas TicketCreate / TicketUpdate
+    / Comment / ListTicketCollaboratorsResponse
+  reason: Core support ticket lifecycle (create, update, comment, collaborators, incidents/problems) for
+    a customer service platform — clearly inbound customer inquiry capture, routing and resolution.
+- tag: Satisfaction Ratings
+  spec_file: zendesk-satisfaction-ratings-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.88
+  evidence: POST /api/v2/tickets/{ticket_id}/satisfaction_rating CreateTicketSatisfactionRating, ListSatisfactionRatings
+  reason: Captures and reports customer satisfaction (CSAT) scores against resolved tickets, which is
+    voice-of-customer/survey feedback collection within customer service.
+- tag: Requests
+  spec_file: zendesk-requests-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.85
+  evidence: CreateRequest, ListComments, ShowComment with schema TicketCommentsResponse
+  reason: Requests are end-user-facing support tickets with comment threads; creating, updating, searching
+    and commenting on them is inbound customer inquiry capture and resolution in a customer service platform.
+- tag: Ticket Comments
+  spec_file: zendesk-ticket-comments-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.8
+  evidence: GET /api/v2/tickets/{ticket_id}/comments  ListTicketComments ... MakeTicketCommentPrivate
+  reason: Reading, privatising and redacting comments on support tickets is core interaction handling
+    on inbound customer contacts in a help-desk platform.
+- tag: X Channel
+  spec_file: zendesk-x-channel-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.8
+  evidence: POST /api/v2/channels/twitter/tickets  CreateTicketFromTweet; GET /api/v2/channels/twitter/monitored_twitter_handles  ListMonitoredTwitterHandles
+  reason: Monitors social handles and converts inbound tweets into support tickets — multi-channel capture
+    and routing of inbound customer contacts. Not media/PR relations, since the output is a support ticket.
+- tag: Basics
+  spec_file: zendesk-basics-api-openapi.yml
+  capability_id: BC-430.30
+  capability_id_l1: BC-430
+  capability_name: Contact Centre Operations Management
+  confidence: 0.75
+  evidence: CreateTicketOrVoicemailTicket  POST /api/v2/channels/voice/tickets; OpenTicketInAgentBrowser  /channels/voice/agents/{agent_id}/tickets/{ticket_id}/display
+  reason: Voice-channel operations creating voicemail/call tickets and driving the agent desktop are contact-centre
+    telephony operations within customer service, despite the meaningless 'Basics' tag name.
+- tag: Organizations
+  spec_file: zendesk-organizations-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.75
+  evidence: CreateOrganization, CreateOrganizationMerge, ListOrganizationMerges, OrganizationRelated,
+    schema OrganizationMergeResponse
+  reason: Full lifecycle plus merge/dedup of customer organization records in a support platform equates
+    to customer master data and identity resolution (golden record), rather than legal entity governance.
+- tag: Satisfaction Reasons
+  spec_file: zendesk-satisfaction-reasons-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.75
+  evidence: GET /api/v2/satisfaction_reasons  ListSatisfactionRatingReasons ... ShowSatisfactionRatings
+  reason: Operations expose the reason codes attached to customer satisfaction ratings on support tickets
+    — CSAT/voice-of-customer feedback data, i.e. Customer Feedback Management within Customer Service.
+- tag: Suspended Tickets
+  spec_file: zendesk-suspended-tickets-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.72
+  evidence: PUT /api/v2/suspended_tickets/{id}/recover  RecoverSuspendedTicket
+  reason: Handling of support tickets held in the suspended (spam/unverified) queue including recovery
+    into the normal queue — part of inbound customer inquiry handling.
+- tag: Conversation Log
+  spec_file: zendesk-conversation-log-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.7
+  evidence: GET /api/v2/tickets/{ticket_id}/conversation_log  ListConversationLogForTicket
+  reason: Retrieves the conversation history of a support ticket — inbound customer contact interaction
+    record, part of customer inquiry handling in a customer service platform.
+- tag: Custom Roles
+  spec_file: zendesk-custom-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /api/v2/custom_roles  CreateCustomRole ... UpdateCustomRoleById
+  reason: Creating and maintaining custom agent roles defines permission sets governing access, which
+    maps to identity and access management (role/permission administration).
+- tag: Skill Based Routing
+  spec_file: zendesk-skill-based-routing-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.7
+  evidence: POST /api/v2/routing/agents/{user_id}/instance_values  SetAgentAttributeValues ... SkillBasedRoutingTicketFulfilledResponse
+  reason: Defines agent skill attributes and values used to route support tickets to qualified agents
+    — inbound contact routing within Customer Service Management; could arguably sit under contact-centre
+    operations.
+- tag: User Passwords
+  spec_file: zendesk-user-passwords-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /api/v2/users/{user_id}/password  SetUserPassword; PUT ... ChangeOwnPassword; GET .../password/requirements  GetUserPasswordRequirements
+  reason: Credential setting, change and password-policy retrieval for platform accounts is identity and
+    access management, not a customer-service business capability. Confidence held below 0.8 because it
+    is a narrow credential utility rather than a full IAM surface.
