@@ -1,227 +1,70 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Zendesk
-providerId: zendesk
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: true
-tags:
-  - Customer Service
-  - Help Center
-  - Ticketing
-  - CRM
-  - Support
-  - Talk
-  - Chat
-description: |
-  Zendesk is a per-agent, per-month seat-based subscription with two plan families
-  (Suite and Support) and AI / quality / WFM / contact-center add-ons. API access is
-  included with every paid plan; per-plan API request rate limits scale with the
-  tier (covered in rate-limits/) and a separate "High Volume API" add-on lifts
-  qualifying plans to 2,500 req/min.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.zendesk.com/pricing/
 sources:
-  - https://www.zendesk.com/pricing/
-  - https://developer.zendesk.com/api-reference/introduction/rate-limits/
+- https://www.zendesk.com/pricing/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T124425
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-seat
+published: true
+note: Per-agent seat pricing with annual billing (20% off annual); AI agents billed per automated resolution
+  beyond plan allowance. Enterprise tier is sales-negotiated.
+plan_count: 7
+currency: USD
 plans:
-  - id: zendesk-support-team
-    name: Support Team
-    type: subscription
-    description: Entry Support-only tier with email / social / basic ticketing.
-    entries:
-      - label: Per-agent licence
-        name: agent_seat
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$19/agent/month (billed annually)'
-        userMultiplied: true
-    elements:
-      - name: Email and social messaging support
-      - name: Pre-defined responses
-      - name: Ticket routing and automations
-      - name: Basic analytics
-  - id: zendesk-suite-team
-    name: Suite Team
-    type: subscription
-    description: Entry Suite tier with messaging, telephony, and AI agents.
-    entries:
-      - label: Per-agent licence
-        name: agent_seat
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$55/agent/month (billed annually)'
-        userMultiplied: true
-    elements:
-      - name: Essential AI agents and generative replies
-      - name: Knowledge builder
-      - name: Messaging and live chat
-      - name: Social messaging
-      - name: Telephony
-  - id: zendesk-suite-professional
-    name: Suite Professional
-    type: subscription
-    description: Most-popular Suite tier — Copilot tools, multi-help-center, IVR, SLAs,
-      HIPAA.
-    entries:
-      - label: Per-agent licence
-        name: agent_seat
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$115/agent/month (billed annually)'
-        userMultiplied: true
-    elements:
-      - name: Copilot tools
-      - name: Up to 5 help centers
-      - name: Customizable reporting
-      - name: App builder
-      - name: CSAT surveys
-      - name: Skills-based routing and IVR
-      - name: SLAs
-      - name: HIPAA compliance
-  - id: zendesk-suite-enterprise
-    name: Suite Enterprise
-    type: subscription
-    description: Enterprise Suite tier — sandbox, audit logs, dynamic workspaces.
-    entries:
-      - label: Per-agent licence
-        name: agent_seat
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$169/agent/month (billed annually)'
-        userMultiplied: true
-    elements:
-      - name: Up to 300 help centers
-      - name: Approval workflows
-      - name: Sandbox environment
-      - name: Audit logs
-      - name: Dynamic workspaces
-      - name: Ticket queues
-  - id: zendesk-suite-copilot-bundles
-    name: Suite + Copilot Bundles
-    type: subscription
-    description: Pre-bundled Suite + Copilot tiers combining Suite features with the
-      Copilot add-on.
-    entries:
-      - label: Suite + Copilot Professional
-        name: suite_copilot_professional
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$155/agent/month (billed annually)'
-        userMultiplied: true
-      - label: Suite + Copilot Enterprise
-        name: suite_copilot_enterprise
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$209/agent/month (billed annually)'
-        userMultiplied: true
-    elements:
-      - name: Suite features at the corresponding tier
-      - name: Copilot tooling
-  - id: zendesk-addons
-    name: Add-ons
-    type: subscription
-    description: Per-agent add-ons that can be attached to qualifying Suite / Support
-      plans.
-    entries:
-      - label: Copilot
-        name: addon_copilot
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$50/agent/month'
-        userMultiplied: true
-      - label: Quality Assurance
-        name: addon_qa
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$35/agent/month'
-        userMultiplied: true
-      - label: Workforce Management
-        name: addon_wfm
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$25/agent/month'
-        userMultiplied: true
-      - label: Advanced Data Privacy
-        name: addon_advanced_data_privacy
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$50/agent/month'
-        userMultiplied: true
-      - label: Contact Center
-        name: addon_contact_center
-        type: subscription
-        metric: seat
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '$50/agent/month'
-        userMultiplied: true
-    elements:
-      - name: Per-agent add-on entitlements
-  - id: zendesk-high-volume-api
-    name: High Volume API
-    type: subscription
-    description: Lifts qualifying plans to 2,500 req/min on the API. Available on
-      Growth+ (Suite) or Professional+ (Support); minimum 10 agent seats. Pricing
-      is quoted by Zendesk Sales (not on the public price card).
-    entries:
-      - label: High Volume API uplift
-        name: high_volume_api
-        type: flat
-        metric: account
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: contact sales
-        userMultiplied: false
-    elements:
-      - name: 2,500 API requests / minute
-      - name: 10 agent-seat minimum
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- name: Support Team
+  price_text: $19 agent/month paid yearly
+  price: 19
+  currency: USD
+  period: month
+  unit: agent/month
+  included_quota: Email and ticketing system, Ticket routing, Prebuilt analytics dashboards, Pre-written
+    responses, Customer context, Automations and triggers
+- name: Suite Team
+  price_text: $55 agent/month paid yearly
+  price: 55
+  currency: USD
+  period: month
+  unit: agent/month
+  included_quota: Support Team features, plus AI Agents, AI Knowledge Base, AI Action Builder, Omnichannel
+    routing, Messaging and live chat, Telephony
+- name: Suite Professional
+  price_text: $115 agent/month paid yearly
+  price: 115
+  currency: USD
+  period: month
+  unit: agent/month
+  included_quota: Suite Team features, plus Admin Copilot, App Builder, AI Writing Tools, AI Quick Reports,
+    Skills-based routing, IVR phone tree
+- name: Suite Enterprise + Copilot
+  price_text: Talk to Sales
+  period: none
+  included_quota: Suite Professional features, plus Intelligent Triage, Auto Assist, Generative AI for
+    Voice, Approval workflows, Sandbox, Custom agent roles
+- name: Copilot (add-on)
+  price_text: $50 agent/month paid yearly
+  price: 50
+  currency: USD
+  period: month
+  unit: agent/month
+- name: Workforce Engagement Bundle (add-on)
+  price_text: $50 agent/month paid yearly
+  price: 50
+  currency: USD
+  period: month
+  unit: agent/month
+- name: Contact Center (add-on)
+  price_text: $83 agent/month paid yearly
+  price: 83
+  currency: USD
+  period: month
+  unit: agent/month
+rate_limit_statements:
+- Certain features like App Builder, Action Builder and Voice are billed based on consumption exceeding
+  applicable plan allowances.
+- The startups program provides early stage startups a 6-month trial of the Zendesk Suite for up to 50
+  agents.
