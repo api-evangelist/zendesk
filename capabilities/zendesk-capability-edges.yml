@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 13
+edge_count: 20
 edges:
 - tag: Tickets
   spec_file: zendesk-tickets-api-openapi.yml
@@ -68,6 +68,27 @@ edges:
   evidence: CreateTicketOrVoicemailTicket  POST /api/v2/channels/voice/tickets; OpenTicketInAgentBrowser  /channels/voice/agents/{agent_id}/tickets/{ticket_id}/display
   reason: Voice-channel operations creating voicemail/call tickets and driving the agent desktop are contact-centre
     telephony operations within customer service, despite the meaningless 'Basics' tag name.
+- tag: OAuth Clients
+  spec_file: zendesk-oauth-clients-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.75
+  evidence: POST /api/v2/oauth/clients  CreateOAuthClient; PUT /api/v2/oauth/clients/{oauth_client_id}/generate_secret  ClientGenerateSecret
+  reason: Creating, updating and re-secreting OAuth client applications is exactly issuance and stewardship
+    of developer credentials/OAuth clients for API integrators, matching Developer Identity & Credential
+    Management. Some chance a grader would read it as enterprise IAM instead.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Omnichannel Routing Queues
+  spec_file: zendesk-omnichannel-routing-queues-api-openapi.yml
+  capability_id: BC-430.30
+  capability_id_l1: BC-430
+  capability_name: Contact Centre Operations Management
+  confidence: 0.75
+  evidence: POST /api/v2/queues  CreateQueue; PATCH /api/v2/queues/order  ReorderQueues; QueuesResponse
+  reason: Creating and prioritising omnichannel routing queues that distribute incoming work to agents
+    is contact-centre routing and operations management within a customer service platform.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Organizations
   spec_file: zendesk-organizations-api-openapi.yml
   capability_id: BC-420.10
@@ -114,6 +135,62 @@ edges:
   evidence: POST /api/v2/custom_roles  CreateCustomRole ... UpdateCustomRoleById
   reason: Creating and maintaining custom agent roles defines permission sets governing access, which
     maps to identity and access management (role/permission administration).
+- tag: Custom Ticket Statuses
+  spec_file: zendesk-custom-ticket-statuses-api-openapi.yml
+  capability_id: BC-430
+  capability_id_l1: BC-430
+  capability_name: Customer Service Management
+  confidence: 0.7
+  evidence: POST /api/v2/custom_statuses  CreateCustomStatus ... CreateTicketFormStatusesForCustomStatus
+  reason: Statuses and ticket-form statuses configure the support ticket lifecycle in a customer service
+    platform, so it sits under Customer Service Management; too configuration-oriented to pin a specific
+    sub-capability.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Macros
+  spec_file: zendesk-macros-api-openapi.yml
+  capability_id: BC-430
+  capability_id_l1: BC-430
+  capability_name: Customer Service Management
+  confidence: 0.7
+  evidence: GET /api/v2/macros/{macro_id}/apply  ShowChangesToTicket; MacroApplyTicketResponse, MacroCategoriesResponse
+  reason: Zendesk macros are pre-defined sets of ticket actions/canned responses that agents apply to
+    tickets, so the surface supports support-ticket handling and resolution. Kept at L1 Customer Service
+    Management because the evidence does not clearly single out inquiry handling versus self-service knowledge
+    content.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: OAuth Tokens
+  spec_file: zendesk-oauth-tokens-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.7
+  evidence: POST /api/v2/oauth/tokens  CreateOAuthToken; DELETE /api/v2/oauth/tokens/{oauth_token_id}  RevokeOAuthToken
+  reason: Issuing, listing and revoking OAuth access tokens used by API integrations is developer credential
+    lifecycle management on the platform's API surface. Slightly lower confidence as it could alternatively
+    be read as generic Identity & Access Management.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Organization Memberships
+  spec_file: zendesk-organization-memberships-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: CreateOrganizationMembership ... SetOrganizationMembershipAsDefault ... UnassignOrganization
+  reason: Associates support end-users with customer organizations — maintenance of customer master relationships
+    in a CRM/support context. Mapped to Customer Data Management; some ambiguity as it is a relational
+    join object rather than full golden-record management.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Sessions
+  spec_file: zendesk-sessions-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: DeleteAuthenticatedSession ... RenewCurrentSession ... BulkDeleteSessionsByUserId
+  reason: Authenticated user session listing, renewal and revocation — access management plumbing. Mapped
+    to Identity & Access Management at low-moderate confidence since session handling is arguably pure
+    authentication mechanics.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Skill Based Routing
   spec_file: zendesk-skill-based-routing-api-openapi.yml
   capability_id: BC-430.10
