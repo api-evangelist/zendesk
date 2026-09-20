@@ -1,138 +1,153 @@
-specification: API Commons Rate Limits
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
-provider: Zendesk
-providerId: zendesk
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: true
-tags:
-  - Customer Service
-  - Help Center
-  - Ticketing
-  - CRM
-  - Rate Limiting
-description: |
-  Zendesk publishes per-plan account-wide API rate limits in requests per minute,
-  with additional endpoint-specific limits, a job-queue cap, and an account-wide
-  spike-protection ceiling. Limits scale with the Suite / Support tier; the High
-  Volume API add-on lifts qualifying plans to 2,500 req/min.
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://developer.zendesk.com/api-reference/introduction/rate-limits/
 sources:
-  - https://developer.zendesk.com/api-reference/introduction/rate-limits/
-  - https://www.zendesk.com/pricing/
-headers:
-  limit: X-Rate-Limit
-  retryAfter: Retry-After
-responseCodes:
-  throttled: 429
+- https://developer.zendesk.com/api-reference/introduction/rate-limits/
+provenance:
+  tool: planning/api-economics/harvest_ratelimits.py
+  run: 20260920T133210
+  grounding: every limit_text was found verbatim in the fetched page text
+published: true
+note: Plan tables (Suite/Support per-minute limits like 200/400/700/2500) are given as bare numbers in
+  tables without verbatim rate phrasing, so only quotable limits are listed.
+limit_count: 22
 limits:
-  - name: Suite Team
-    scope: account
-    metric: requests_per_minute
-    limit: 200
-    timeFrame: minute
-  - name: Suite Growth
-    scope: account
-    metric: requests_per_minute
-    limit: 400
-    timeFrame: minute
-  - name: Suite Professional
-    scope: account
-    metric: requests_per_minute
-    limit: 400
-    timeFrame: minute
-  - name: Suite Enterprise
-    scope: account
-    metric: requests_per_minute
-    limit: 700
-    timeFrame: minute
-  - name: Suite Enterprise Plus
-    scope: account
-    metric: requests_per_minute
-    limit: 2500
-    timeFrame: minute
-  - name: Support Essential (legacy)
-    scope: account
-    metric: requests_per_minute
-    limit: 10
-    timeFrame: minute
-  - name: Support Team
-    scope: account
-    metric: requests_per_minute
-    limit: 200
-    timeFrame: minute
-  - name: Support Professional
-    scope: account
-    metric: requests_per_minute
-    limit: 400
-    timeFrame: minute
-  - name: Support Enterprise
-    scope: account
-    metric: requests_per_minute
-    limit: 700
-    timeFrame: minute
-  - name: High Volume API add-on
-    scope: account
-    metric: requests_per_minute
-    limit: 2500
-    timeFrame: minute
-    notes: Available on Growth+ (Suite) or Professional+ (Support); minimum 10 agent
-      seats.
-  - name: Update Ticket (per user, per ticket)
-    scope: account
-    metric: requests_per_minute
-    limit: 30
-    timeFrame: minute
-    notes: 30 updates per 10 minutes per user per ticket; 100 requests/min account-wide.
-  - name: Incremental Exports
-    scope: account
-    metric: requests_per_minute
-    limit: 10
-    timeFrame: minute
-    notes: 30/min with the High Volume API add-on.
-  - name: Update User (per user)
-    scope: account
-    metric: requests_per_minute
-    limit: 5
-    timeFrame: minute
-  - name: Get Ticket Attachment Content
-    scope: account
-    metric: requests_per_minute
-    limit: 2500
-    timeFrame: minute
-  - name: Job Queue depth
-    scope: account
-    metric: concurrent_requests
-    limit: 30
-    notes: Maximum concurrent queued or running jobs.
-  - name: Account-wide spike protection
-    scope: account
-    metric: requests_per_minute
-    limit: 100000
-    timeFrame: minute
-    notes: Hard ceiling that triggers spike-protection for unusual activity.
-  - name: Apps API (per user / per app)
-    scope: key
-    metric: requests_per_minute
-    limit: 100
-    timeFrame: minute
-    notes: 700 calls per 5 minutes per user per app at the API level.
-policies:
-  - name: 429 + Retry-After
-    description: When the limit is exceeded the API returns 429 Too Many Requests with a
-      Retry-After header indicating how many seconds to wait before retrying.
-  - name: X-Rate-Limit header
-    description: "Responses include an X-Rate-Limit header reflecting the account's
-      current per-minute ceiling (e.g. X-Rate-Limit: 700)."
-  - name: Plan-tier scoping
-    description: Limits are account-wide and scale with the Suite / Support plan tier.
-      Endpoint-specific limits apply on top of the per-plan ceiling.
-  - name: High Volume API uplift
-    description: The High Volume API add-on lifts qualifying plans to 2,500 req/min and
-      also boosts incremental-exports throughput.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- name: High Volume API add-on
+  limit_text: 2500 requests per minute to the Support and Help Center APIs
+  limit: 2500
+  window: minute
+  scope: account
+  plan: High Volume API add-on
+  endpoint: Support and Help Center APIs
+- name: List Tickets
+  limit_text: 50 requests per minute where num is over 500
+  limit: 50
+  window: minute
+  scope: endpoint
+  endpoint: GET /api/v2/tickets.json?page={num}
+- name: Update Ticket per user per ticket
+  limit_text: 30 updates per 10 minutes per user per ticket
+  limit: 30
+  scope: user
+  endpoint: PUT /api/v2/tickets/{id}.json
+- name: Update Ticket per account
+  limit_text: 100 requests per min per account
+  limit: 100
+  window: minute
+  scope: account
+  endpoint: PUT /api/v2/tickets/{id}.json
+- name: Update Ticket per account High Volume
+  limit_text: 300 requests per min per account with the High Volume add-on
+  limit: 300
+  window: minute
+  scope: account
+  plan: High Volume add-on
+  endpoint: PUT /api/v2/tickets/{id}.json
+- name: Incremental Exports global limit
+  limit_text: 10 requests per minute
+  limit: 10
+  window: minute
+  scope: endpoint
+  endpoint: GET /api/v2/incremental/*
+- name: Incremental Exports with High Volume add-on
+  limit_text: 30 requests per minute
+  limit: 30
+  window: minute
+  scope: endpoint
+  plan: High Volume add-on
+  endpoint: GET /api/v2/incremental/*
+- name: Exporting Views
+  limit_text: 100000 requests per hour
+  limit: 100000
+  window: hour
+  scope: endpoint
+  endpoint: GET /api/v2/views/{id}/export.json
+- name: Executing Views
+  limit_text: 5 requests per minute, per view, per agent
+  limit: 5
+  window: minute
+  scope: user
+  endpoint: GET /api/v2/views/{view_id}/execute.json
+- name: Update User
+  limit_text: 5 requests per minute per user
+  limit: 5
+  window: minute
+  scope: user
+  endpoint: PUT /api/v2/users/{user_id}
+- name: Create or Update User
+  limit_text: 5 requests per minute per user
+  limit: 5
+  window: minute
+  scope: user
+  endpoint: POST /api/v2/users/create_or_update
+- name: Export Search Results
+  limit_text: 100 requests per minute per account
+  limit: 100
+  window: minute
+  scope: account
+  endpoint: GET /api/v2/search/export?query={query}
+- name: Update Organization
+  limit_text: 5 requests per minute per organization
+  limit: 5
+  window: minute
+  scope: endpoint
+  endpoint: PUT /api/v2/organization/{organization_id}
+- name: Side Conversation create/reply
+  limit_text: 300 requests per 10 minutes
+  limit: 300
+  scope: endpoint
+  endpoint: POST /api/v2/tickets/{ticket_id}/side_conversations[/{id}/reply]
+- name: Incremental Side Conversation Events
+  limit_text: 600 requests per 10 minutes
+  limit: 600
+  scope: endpoint
+  endpoint: GET /api/v2/tickets/side_conversations/events
+- name: Get Ticket Attachment Content
+  limit_text: 2500 requests per minute
+  limit: 2500
+  window: minute
+  scope: endpoint
+  endpoint: GET /attachments/token/{token}/?name={file}
+- name: Attachment uploads not associated
+  limit_text: 10 requests per minute per upload for uploads not associated with a ticket or comment
+  limit: 10
+  window: minute
+  scope: endpoint
+  endpoint: GET /attachments/token/{token}/?name={file}
+- name: External record creation
+  limit_text: 770 records per minute
+  limit: 770
+  window: minute
+  scope: endpoint
+  endpoint: External Content API
+- name: Job limit
+  limit_text: You can have up to 30 queued or running jobs at once
+  limit: 30
+  scope: account
+- name: Apps rate limit (client level)
+  limit_text: 100 requests per minute per user per app at the client level
+  limit: 100
+  window: minute
+  scope: user
+- name: Apps rate limit (API level)
+  limit_text: 700 calls per 5 minutes per user per app at the API level
+  limit: 700
+  scope: user
+- name: Account limit
+  limit_text: The account-wide limit is 100,000 requests per minute
+  limit: 100000
+  window: minute
+  scope: account
+  kind: burst
+headers:
+- X-Rate-Limit
+- X-Rate-Limit-Remaining
+- Retry-After
+- x-rate-limit
+- ratelimit-limit
+- x-rate-limit-remaining
+- ratelimit-remaining
+- ratelimit-reset
+- zendesk-ratelimit-tickets-index
+exceeded_status: 429
