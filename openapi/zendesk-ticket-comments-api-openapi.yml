@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk Ticket Comments API
   version: '1.0'
-  title: Zendesk Account Account Settings Ticket Comments API
-  description: Needs a description.
+  description: 'Operations tagged Ticket Comments across 4 of this provider''s published API definitions: chat-file-redactions-openapi-original.yml, chat-redactions-openapi-original.yml, comment-redactions-openapi-original.yml, tickets-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: Ticket Comments
 paths:
@@ -13,8 +13,96 @@ paths:
       operationId: RedactChatCommentAttachment
       tags:
       - Ticket Comments
-      summary: Zendesk Put  Api V2 Chat_file_redactions Ticket_id
-      description: "Permanently removes one or more chat attachments from a chat ticket.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name         | Type    | Required | Description                                                                                                                                                                                                                                            |\n| ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| chat_id      | string  | true     | The `chat_id` in the `ChatStartedEvent` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                                 |\n| chat_indexes | array   | false    | The array of `chat_index` in the `ChatFileAttachment` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if `message_ids` is not used                                                           |\n| message_ids  | array   | false    | The array of `message_id` in the `ChatFileAttachment` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatFileAttachment that is part of a conversation history. Mandatory if `chat_indexes` is not used |\n\nTo get the required body properties, make a request to the [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n```http\nStatus 200 OK\n{\n  \"audits\": [\n    \"events\": [\n      {\n        \"id\": 1932802680168,\n        \"type\": \"ChatStartedEvent\",\n        \"value\": {\n          \"visitor_id\": \"10502823-16EkM3T6VNq7KMd\",\n          \"chat_id\": \"2109.10502823.Sjuj2YrBpXwei\",\n          \"history\": [\n            {\n              \"chat_index\": 0,\n              \"type\": \"ChatFileAttachment\",\n              \"filename\": \"image1.jpg\"\n            },\n            {\n              \"chat_index\": 1,\n              \"type\": \"ChatFileAttachment\",\n              \"filename\": \"image2.jpg\"\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n```\n"
+      summary: Zendesk Put Api V2 Chat_file_redactions Ticket_id
+      description: 'Permanently removes one or more chat attachments from a chat ticket.
+
+
+        **Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using Redact Ticket Comment In Agent Workspace.
+
+
+        #### Allowed For
+
+
+        - Agents
+
+
+        Agent Workspace must enabled for the account. Deleting tickets must be enabled for agents.
+
+
+        #### Request Body Properties
+
+
+        | Name | Type | Required | Description |
+
+        | ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+        | chat_id | string | true | The `chat_id` in the `ChatStartedEvent` event in the ticket audit. See Ticket Audits |
+
+        | chat_indexes | array | false | The array of `chat_index` in the `ChatFileAttachment` event in the ticket audit. See Ticket Audits. Mandatory if `message_ids` is not used |
+
+        | message_ids | array | false | The array of `message_id` in the `ChatFileAttachment` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatFileAttachment that is part of a conversation history. Mandatory if `chat_indexes` is not used |
+
+
+        To get the required body properties, make a request to the Ticket Audits endpoint. Example response:
+
+
+        ```http
+
+        Status 200 OK
+
+        {
+
+        "audits": [
+
+        "events": [
+
+        {
+
+        "id": 1932802680168,
+
+        "type": "ChatStartedEvent",
+
+        "value": {
+
+        "visitor_id": "10502823-16EkM3T6VNq7KMd",
+
+        "chat_id": "2109.10502823.Sjuj2YrBpXwei",
+
+        "history": [
+
+        {
+
+        "chat_index": 0,
+
+        "type": "ChatFileAttachment",
+
+        "filename": "image1.jpg"
+
+        },
+
+        {
+
+        "chat_index": 1,
+
+        "type": "ChatFileAttachment",
+
+        "filename": "image2.jpg"
+
+        }
+
+        ]
+
+        }
+
+        }
+
+        ]
+
+        ]
+
+        }
+
+        ```'
       responses:
         '200':
           description: Success response
@@ -32,8 +120,105 @@ paths:
       operationId: RedactChatComment
       tags:
       - Ticket Comments
-      summary: Zendesk Put  Api V2 Chat_redactions Ticket_id
-      description: "Permanently removes words or strings from a chat ticket's comment. \n\nWrap `<redact>` tags around the content in the chat comment you want redacted. Example: \n\n```json\n{\n  \"text\": \"My ID number is <redact>847564</redact>!\"\n}\n```\n\nThe characters contained in the tag will be replaced by the ▇ symbol.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                                                                                                                       |\n| ------------------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| chat_id                  | string  | true     | The `chat_id` in the `ChatStartedEvent` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                            |\n| chat_index               | integer | false    | The `chat_index` in the `ChatMessage` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if `message_id` is not used                                                                       |\n| message_id               | string  | false    | The `message_id` of the `ChatMessage` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatMessage that is part of a conversation history. Mandatory if `chat_index` is not used                     |\n| text                     | string  | true     | The `message` in the `ChatMessage` event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits).  Wrap `message` with `<redact>` tags                                                                           |\n\nTo get the required body properties, make a request to the [Ticket Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n```http\nStatus 200 OK\n{\n  \"audits\": [\n    \"events\": [\n      {\n        \"id\": 1932802680168,\n        \"type\": \"ChatStartedEvent\",\n        \"value\": {\n          \"visitor_id\": \"10502823-16EkM3T6VNq7KMd\",\n          \"chat_id\": \"2109.10502823.Sjuj2YrBpXwei\",\n          \"history\": [\n            {\n              \"chat_index\": 0,\n              \"type\": \"ChatMessage\",\n              \"message\": \"My ID number is 847564!\"\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n```\n"
+      summary: Zendesk Put Api V2 Chat_redactions Ticket_id
+      description: 'Permanently removes words or strings from a chat ticket''s comment.
+
+
+        Wrap `` tags around the content in the chat comment you want redacted. Example:
+
+
+        ```json
+
+        {
+
+        "text": "My ID number is 847564!"
+
+        }
+
+        ```
+
+
+        The characters contained in the tag will be replaced by the ▇ symbol.
+
+
+        **Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using Redact Ticket Comment In Agent Workspace.
+
+
+        #### Allowed For
+
+
+        - Agents
+
+
+        Agent Workspace must enabled for the account. Deleting tickets must be enabled for agents.
+
+
+        #### Request Body Properties
+
+
+        | Name | Type | Required | Description |
+
+        | ------------------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+        | chat_id | string | true | The `chat_id` in the `ChatStartedEvent` event in the ticket audit. See Ticket Audits |
+
+        | chat_index | integer | false | The `chat_index` in the `ChatMessage` event in the ticket audit. See Ticket Audits. Mandatory if `message_id` is not used |
+
+        | message_id | string | false | The `message_id` of the `ChatMessage` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatMessage that is part of a conversation history. Mandatory if `chat_index` is not used |
+
+        | text | string | true | The `message` in the `ChatMessage` event in the ticket audit. See Ticket Audits. Wrap `message` with `` tags |
+
+
+        To get the required body properties, make a request to the Ticket Audit endpoint. Example response:
+
+
+        ```http
+
+        Status 200 OK
+
+        {
+
+        "audits": [
+
+        "events": [
+
+        {
+
+        "id": 1932802680168,
+
+        "type": "ChatStartedEvent",
+
+        "value": {
+
+        "visitor_id": "10502823-16EkM3T6VNq7KMd",
+
+        "chat_id": "2109.10502823.Sjuj2YrBpXwei",
+
+        "history": [
+
+        {
+
+        "chat_index": 0,
+
+        "type": "ChatMessage",
+
+        "message": "My ID number is 847564!"
+
+        }
+
+        ]
+
+        }
+
+        }
+
+        ]
+
+        ]
+
+        }
+
+        ```'
       responses:
         '200':
           description: Success response
@@ -51,8 +236,84 @@ paths:
       operationId: RedactTicketCommentInAgentWorkspace
       tags:
       - Ticket Comments
-      summary: Zendesk Put  Api V2 Comment_redactions Ticket_comment_id
-      description: "Redaction allows you to permanently remove words, strings, or attachments from a ticket comment.\n\nIn the `html_body` of the comment, wrap the content you want redacted in `<redact>` tags. Example:\n\n```json\n{\n  \"html_body\": \"<div class=\\\"zd-comment\\\" dir=\\\"auto\\\">My ID number is <redact>847564</redact>!</div>\",\n  \"ticket_id\":100\n}\n```\n\nThe characters in the redact tag will be replaced by the ▇ symbol.\n\nTo redact HTML elements such inline images, anchor tags, and links, add the `redact` tag attribute to the element as well as the `<redact>` tag to inner text, if any. Example: \n\n`<a href=\"http://example.com\" redact><redact>some link</redact></a>`\n\nThe `redact` attribute only redacts the tag. Any inner text will be left behind if not enclosed in a `<redact>` tag.\n\nRedaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it.\n\nThis endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus:\n\n- Redaction of comments in closed tickets\n\n- Redaction of comments in archived tickets\n\n- Redaction of formatted text (bold, italics, hyperlinks)\n\n**Limitations**: When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed.\n\n**Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/360024218473) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                      |\n| -------------------------| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |\n| ticket_id                | integer | true     | The ID of the ticket                                                                                                                             |\n| html_body                | string  | false    | The `html_body` of the comment containing `<redact>` tags or `redact` attributes                                           |\n| external_attachment_urls | array   | false    | Array of attachment URLs belonging to the comment to be redacted. See [`content_url` property of Attachment](/api-reference/ticketing/tickets/ticket-attachments/) |\n"
+      summary: Zendesk Put Api V2 Comment_redactions Ticket_comment_id
+      description: 'Redaction allows you to permanently remove words, strings, or attachments from a ticket comment.
+
+
+        In the `html_body` of the comment, wrap the content you want redacted in `` tags. Example:
+
+
+        ```json
+
+        {
+
+        "html_body": "
+
+        My ID number is 847564!
+
+        ",
+
+        "ticket_id":100
+
+        }
+
+        ```
+
+
+        The characters in the redact tag will be replaced by the ▇ symbol.
+
+
+        To redact HTML elements such inline images, anchor tags, and links, add the `redact` tag attribute to the element as well as the `` tag to inner text, if any. Example:
+
+
+        `some link`
+
+
+        The `redact` attribute only redacts the tag. Any inner text will be left behind if not enclosed in a `` tag.
+
+
+        Redaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it.
+
+
+        This endpoint provides all the same functionality that the Redact String in Comment endpoint provides, plus:
+
+
+        - Redaction of comments in closed tickets
+
+
+        - Redaction of comments in archived tickets
+
+
+        - Redaction of formatted text (bold, italics, hyperlinks)
+
+
+        **Limitations**: When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed.
+
+
+        **Note**: We recommend using this endpoint instead of the Redact String in Comment endpoint, which will eventually be deprecated.
+
+
+        #### Allowed For
+
+
+        - Agents
+
+
+        Agent Workspace must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content.
+
+
+        #### Request Body Properties
+
+
+        | Name | Type | Required | Description |
+
+        | -------------------------| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+        | ticket_id | integer | true | The ID of the ticket |
+
+        | html_body | string | false | The `html_body` of the comment containing `` tags or `redact` attributes |
+
+        | external_attachment_urls | array | false | Array of attachment URLs belonging to the comment to be redacted. See `content_url` property of Attachment |'
       responses:
         '200':
           description: Success response
@@ -70,11 +331,11 @@ paths:
       operationId: ListTicketComments
       tags:
       - Ticket Comments
-      summary: Zendesk Get  Api V2 Tickets Ticket_id Comments
+      summary: Zendesk Get Api V2 Tickets Ticket_id Comments
       description: 'Returns the comments added to the ticket.
 
 
-        Each comment may include a `content_url` for an attachment or a `recording_url` for a voice comment that points to a file that may be hosted externally. For security reasons, take care not to inadvertently send Zendesk authentication credentials to third parties when attempting to access these files. See [Working with url properties](/documentation/ticketing/managing-tickets/working-with-url-properties).
+        Each comment may include a `content_url` for an attachment or a `recording_url` for a voice comment that points to a file that may be hosted externally. For security reasons, take care not to inadvertently send Zendesk authentication credentials to third parties when attempting to access these files. See Working with url properties.
 
 
         #### Pagination
@@ -85,7 +346,7 @@ paths:
         - Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -100,29 +361,27 @@ paths:
         When using cursor pagination, use the following parameter to change the sort order:
 
 
-        | Name   | Type   | Required | Comments
+        | Name | Type | Required | Comments
 
         | ------ | ------ | -------- | --------
 
-        | `sort` | string | no       | Possible values are "created_at" (ascending order) or "-created_at" (descending order)
+        | `sort` | string | no | Possible values are "created_at" (ascending order) or "-created_at" (descending order)
 
 
         When using offset pagination, use the following parameters to change the sort order:
 
 
-        | Name         | Type   | Required | Comments
+        | Name | Type | Required | Comments
 
         | ------------ | ------ | -------- | --------
 
-        | `sort_order` | string | no       | One of `asc`, `desc`. Defaults to `asc`
+        | `sort_order` | string | no | One of `asc`, `desc`. Defaults to `asc`
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       parameters:
       - name: include_inline_images
         in: query
@@ -152,13 +411,11 @@ paths:
       operationId: MakeTicketCommentPrivate
       tags:
       - Ticket Comments
-      summary: Zendesk Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Make_private
+      summary: Zendesk Put Api V2 Tickets Ticket_id Comments Ticket_comment_id Make_private
       description: '#### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: description
@@ -177,7 +434,7 @@ paths:
       operationId: RedactStringInComment
       tags:
       - Ticket Comments
-      summary: Zendesk Put  Api V2 Tickets Ticket_id Comments Ticket_comment_id Redact
+      summary: Zendesk Put Api V2 Tickets Ticket_id Comments Ticket_comment_id Redact
       description: 'Permanently removes words or strings from a ticket comment. Specify the string to redact in an object with a `text` property. Example: `''{"text": "987-65-4320"}''`. The characters of the word or string are replaced by the ▇ symbol.
 
 
@@ -196,9 +453,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -214,8 +469,8 @@ paths:
       operationId: CountTicketComments
       tags:
       - Ticket Comments
-      summary: Zendesk Get  Api V2 Tickets Ticket_id Comments Count
-      description: 'Returns an approximate count of the comments added to the ticket. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.
+      summary: Zendesk Get Api V2 Tickets Ticket_id Comments Count
+      description: 'Returns an approximate count of the comments added to the ticket. If the count exceeds 100,000, the count will return a cached result. This cached result will update every 24 hours.
 
 
         The `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.
@@ -292,6 +547,11 @@ components:
               timestamp: 1632470783218
               type: ChatJoin
             visitor_id: 10502823-16EkM3T6VNq7KMd
+    TicketCommentResponse:
+      type: object
+      properties:
+        comment:
+          $ref: '#/components/schemas/TicketCommentObject'
     TicketCommentsResponse:
       type: object
       properties:
@@ -299,11 +559,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketCommentObject'
-    TicketCommentResponse:
-      type: object
-      properties:
-        comment:
-          $ref: '#/components/schemas/TicketCommentObject'
     TicketCommentsCountResponse:
       type: object
       properties:
@@ -315,3 +570,8 @@ components:
               format: date-time
             value:
               type: integer
+x-refined-from:
+- chat-file-redactions-openapi-original.yml
+- chat-redactions-openapi-original.yml
+- comment-redactions-openapi-original.yml
+- tickets-openapi-original.yml

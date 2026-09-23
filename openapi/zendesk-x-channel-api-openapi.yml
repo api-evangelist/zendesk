@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk X Channel API
   version: '1.0'
-  title: Zendesk Account Account Settings X Channel API
-  description: Needs a description.
+  description: 'Operations tagged X Channel across 2 of this provider''s published API definitions: channels-openapi-original.yml, tickets-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: X Channel
 paths:
@@ -11,15 +11,13 @@ paths:
       operationId: ListMonitoredTwitterHandles
       tags:
       - X Channel
-      summary: Zendesk Get  Api V2 Channels Twitter Monitored_twitter_handles
+      summary: Zendesk Get Api V2 Channels Twitter Monitored_twitter_handles
       description: '#### Allowed For
 
 
         * Admins
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -37,15 +35,13 @@ paths:
       operationId: ShowMonitoredTwitterHandle
       tags:
       - X Channel
-      summary: Zendesk Get  Api V2 Channels Twitter Monitored_twitter_handles Monitored_twitter_handle_id
+      summary: Zendesk Get Api V2 Channels Twitter Monitored_twitter_handles…
       description: '#### Allowed For
 
 
         * Admins
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -61,7 +57,7 @@ paths:
       operationId: CreateTicketFromTweet
       tags:
       - X Channel
-      summary: Zendesk Post  Api V2 Channels Twitter Tickets
+      summary: Zendesk Post Api V2 Channels Twitter Tickets
       description: 'Turns a tweet into a ticket. You must provide the tweet id as well as the id of a monitored X (formerly Twitter) handle configured for your account.
 
 
@@ -71,9 +67,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '201':
           description: description
@@ -91,13 +85,11 @@ paths:
       operationId: GettingTwicketStatus
       tags:
       - X Channel
-      summary: Zendesk Get  Api V2 Channels Twitter Tickets Comment_id Statuses
+      summary: Zendesk Get Api V2 Channels Twitter Tickets Comment_id Statuses
       description: '#### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       parameters:
       - name: ids
         in: query
@@ -117,6 +109,18 @@ paths:
                   $ref: '#/components/examples/TwitterChannelTwicketStatusResponseExample'
 components:
   schemas:
+    TwitterChannelsResponse:
+      type: object
+      properties:
+        monitored_twitter_handles:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwitterChannelObject'
+    TwitterChannelResponse:
+      type: object
+      properties:
+        monitored_twitter_handle:
+          $ref: '#/components/schemas/TwitterChannelObject'
     TwitterChannelTwicketStatusResponse:
       type: object
       properties:
@@ -133,15 +137,6 @@ components:
                 type: boolean
               user_followed:
                 type: boolean
-    TwitterChannelsResponse:
-      type: object
-      properties:
-        monitored_twitter_handles:
-          type: array
-          items:
-            $ref: '#/components/schemas/TwitterChannelObject'
-    TwitterChannelResponse:
-      type: object
-      properties:
-        monitored_twitter_handle:
-          $ref: '#/components/schemas/TwitterChannelObject'
+x-refined-from:
+- channels-openapi-original.yml
+- tickets-openapi-original.yml

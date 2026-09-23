@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk Assignee Field Assignable Agents API
   version: '1.0'
-  title: Zendesk Account Account Settings AssigneeFieldAssignableAgents API
-  description: Needs a description.
+  description: 'Operations tagged AssigneeFieldAssignableAgents across 3 of this provider''s published API definitions: assignables-openapi-original.yml, autocomplete-openapi-original.yml, groups-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: AssigneeFieldAssignableAgents
 paths:
@@ -11,16 +11,14 @@ paths:
       operationId: ListAssigneeFieldAssignableGroupsAndAgentsSearch
       tags:
       - AssigneeFieldAssignableAgents
-      summary: Zendesk Get  Api Lotus Assignables Autocomplete.json
+      summary: Zendesk Get Api Lotus Assignables Autocomplete.json
       description: 'List assignable groups and agents based on query matched against name
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       parameters:
       - $ref: '#/components/parameters/AssigneeFieldSearchValue'
       responses:
@@ -38,16 +36,14 @@ paths:
       operationId: ListAssigneeFieldAssignableGroups
       tags:
       - AssigneeFieldAssignableAgents
-      summary: Zendesk Get  Api Lotus Assignables Groups.json
+      summary: Zendesk Get Api Lotus Assignables Groups.json
       description: 'List assignable groups on the AssigneeField
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -63,16 +59,14 @@ paths:
       operationId: ListAssigneeFieldAssignableGroupAgents
       tags:
       - AssigneeFieldAssignableAgents
-      summary: Zendesk Get  Api Lotus Assignables Groups Group_id Agents.json
+      summary: Zendesk Get Api Lotus Assignables Groups Group_id Agents.json
       description: 'List assignable agents from a group on the AssigneeField
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       parameters:
       - $ref: '#/components/parameters/GroupId'
       responses:
@@ -176,3 +170,7 @@ components:
         count: 3
         next_page: null
         previous_page: null
+x-refined-from:
+- assignables-openapi-original.yml
+- autocomplete-openapi-original.yml
+- groups-openapi-original.yml

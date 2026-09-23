@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk Object Triggers API
   version: '1.0'
-  title: Zendesk Account Account Settings Object Triggers API
-  description: Needs a description.
+  description: 'Operations tagged Object Triggers across 3 of this provider''s published API definitions: custom-objects-openapi-original.yml, search-openapi-original.yml, triggers-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: Object Triggers
 paths:
@@ -13,8 +13,13 @@ paths:
       operationId: ListObjectTriggers
       tags:
       - Object Triggers
-      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers
-      description: "Lists all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n"
+      summary: Zendesk Get Api V2 Custom_objects Custom_object_key Triggers
+      description: 'Lists all triggers for the specified custom object.
+
+
+        #### Allowed For
+
+        * Agents'
       parameters:
       - $ref: '#/components/parameters/TriggerActive'
       - $ref: '#/components/parameters/TriggerSortBy'
@@ -33,7 +38,7 @@ paths:
       operationId: CreateObjectTrigger
       tags:
       - Object Triggers
-      summary: Zendesk Post  Api V2 Custom_objects Custom_object_key Triggers
+      summary: Zendesk Post Api V2 Custom_objects Custom_object_key Triggers
       description: 'Creates a new object trigger for a specified object.
 
 
@@ -42,9 +47,7 @@ paths:
 
         * Administrators
 
-        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
-
-        '
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)'
       requestBody:
         required: true
         content:
@@ -72,15 +75,13 @@ paths:
       operationId: GetObjectTrigger
       tags:
       - Object Triggers
-      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      summary: Zendesk Get Api V2 Custom_objects Custom_object_key Triggers Trigger_id
       description: 'Returns details of a specific object trigger.
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -95,7 +96,7 @@ paths:
       operationId: UpdateObjectTrigger
       tags:
       - Object Triggers
-      summary: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      summary: Zendesk Put Api V2 Custom_objects Custom_object_key Triggers Trigger_id
       description: 'Updates a specified object trigger.
 
 
@@ -111,9 +112,7 @@ paths:
 
         * Administrators
 
-        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
-
-        '
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)'
       requestBody:
         required: true
         content:
@@ -137,7 +136,7 @@ paths:
       operationId: DeleteObjectTrigger
       tags:
       - Object Triggers
-      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Trigger_id
+      summary: Zendesk Delete Api V2 Custom_objects Custom_object_key Triggers Trigger_id
       description: 'Deletes a specified object trigger.
 
 
@@ -146,9 +145,7 @@ paths:
 
         * Administrators
 
-        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
-
-        '
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)'
       responses:
         '204':
           description: No Content response
@@ -161,7 +158,7 @@ paths:
       operationId: ListActiveObjectTriggers
       tags:
       - Object Triggers
-      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Active
+      summary: Zendesk Get Api V2 Custom_objects Custom_object_key Triggers Active
       description: 'Lists all active object triggers.
 
 
@@ -173,7 +170,7 @@ paths:
         - Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -184,9 +181,7 @@ paths:
 
         * Administrators
 
-        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
-
-        '
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)'
       responses:
         '200':
           description: Success response
@@ -204,8 +199,13 @@ paths:
       operationId: ListObjectTriggersDefinitions
       tags:
       - Object Triggers
-      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Definitions
-      description: "Lists the conditions and actions of all triggers for the specified custom object.\n\n#### Allowed For \n* Agents\n"
+      summary: Zendesk Get Api V2 Custom_objects Custom_object_key Triggers Definitions
+      description: 'Lists the conditions and actions of all triggers for the specified custom object.
+
+
+        #### Allowed For
+
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -224,8 +224,48 @@ paths:
       operationId: DeleteManyObjectTriggers
       tags:
       - Object Triggers
-      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key Triggers Destroy_many
-      description: "Deletes the object triggers corresponding to the provided comma-separated list of ids. \n\n**Note**: You can only bulk-delete triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe DELETE request takes an `ids` object that lists the\nobject triggers to delete. All of the specified object trigger `ids` must be associated with a single object.\n\n| Name | Description\n| ---- | -----------\n| ids  | The ids of the triggers to delete\n\n#### Example request\n\n```js\n{\n  \"ids\": \"25,23,27,22\"\n}\n```\n"
+      summary: Zendesk Delete Api V2 Custom_objects Custom_object_key Triggers Destroy_many
+      description: 'Deletes the object triggers corresponding to the provided comma-separated list of ids.
+
+
+        **Note**: You can only bulk-delete triggers associated with one object at a time, specified by the `custom_object_key` in the request.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
+
+
+        #### Request Parameters
+
+
+        The DELETE request takes an `ids` object that lists the
+
+        object triggers to delete. All of the specified object trigger `ids` must be associated with a single object.
+
+
+        | Name | Description
+
+        | ---- | -----------
+
+        | ids | The ids of the triggers to delete
+
+
+        #### Example request
+
+
+        ```js
+
+        {
+
+        "ids": "25,23,27,22"
+
+        }
+
+        ```'
       responses:
         '204':
           description: No content response
@@ -243,8 +283,44 @@ paths:
       operationId: SearchObjectTriggers
       tags:
       - Object Triggers
-      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key Triggers Search
-      description: "Returns a list of object triggers that meet your filter or search criteria.\n\n#### Pagination\n\n* Offset pagination only\n\nSee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).\n\n#### Allowed For\n\n* Agents\n\n#### Filter\n\nUse the `filter` query parameter to filter an object trigger search by one or more attributes. For example, the following `filter` argument filters object triggers by the `title` attribute:\n\n```json\n{\n  \"json\": {\n    \"title\": \"test\"\n  }\n}\n```\n"
+      summary: Zendesk Get Api V2 Custom_objects Custom_object_key Triggers Search
+      description: 'Returns a list of object triggers that meet your filter or search criteria.
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        See Using Offset Pagination.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Filter
+
+
+        Use the `filter` query parameter to filter an object trigger search by one or more attributes. For example, the following `filter` argument filters object triggers by the `title` attribute:
+
+
+        ```json
+
+        {
+
+        "json": {
+
+        "title": "test"
+
+        }
+
+        }
+
+        ```'
       responses:
         '200':
           description: Success response
@@ -262,8 +338,63 @@ paths:
       operationId: UpdateManyObjectTriggers
       tags:
       - Object Triggers
-      summary: Zendesk Put  Api V2 Custom_objects Custom_object_key Triggers Update_many
-      description: "Updates the position or the active status of multiple object triggers. Any additional properties are ignored.\n\n**Note**: You can only bulk-update triggers associated with one object at a time, specified by the `custom_object_key` in the request.\n\n#### Allowed For\n\n* Administrators\n* Agents in custom roles with the `manage_triggers` permission (Enterprise only)\n\n#### Request Parameters\n\nThe PUT request expects a `triggers` object that lists the object triggers to update. All of the specified object trigger `ids` must be associated with a single object.\n\nYou can specify the following properties for each object trigger you're updating:\n\n| Name        | Mandatory | Description\n| --------    | --------- | -----------\n| id          | yes       | The ID of the object trigger to update\n| position    | no        | The new position of the object trigger\n| active      | no        | The active status of the object trigger (true or false)\n\n#### Example Request\n\n```js\n{\n  \"triggers\": [\n    {\"id\": 25, \"position\": 3},\n    {\"id\": 23, \"active\": true},\n    {\"id\": 27, \"position\": 9, \"active\": false},\n    {\"id\": 22, \"position\": 7}\n  ]\n}\n```\n"
+      summary: Zendesk Put Api V2 Custom_objects Custom_object_key Triggers Update_many
+      description: 'Updates the position or the active status of multiple object triggers. Any additional properties are ignored.
+
+
+        **Note**: You can only bulk-update triggers associated with one object at a time, specified by the `custom_object_key` in the request.
+
+
+        #### Allowed For
+
+
+        * Administrators
+
+        * Agents in custom roles with the `manage_triggers` permission (Enterprise only)
+
+
+        #### Request Parameters
+
+
+        The PUT request expects a `triggers` object that lists the object triggers to update. All of the specified object trigger `ids` must be associated with a single object.
+
+
+        You can specify the following properties for each object trigger you''re updating:
+
+
+        | Name | Mandatory | Description
+
+        | -------- | --------- | -----------
+
+        | id | yes | The ID of the object trigger to update
+
+        | position | no | The new position of the object trigger
+
+        | active | no | The active status of the object trigger (true or false)
+
+
+        #### Example Request
+
+
+        ```js
+
+        {
+
+        "triggers": [
+
+        {"id": 25, "position": 3},
+
+        {"id": 23, "active": true},
+
+        {"id": 27, "position": 9, "active": false},
+
+        {"id": 22, "position": 7}
+
+        ]
+
+        }
+
+        ```'
       requestBody:
         required: true
         content:
@@ -290,11 +421,6 @@ components:
       properties:
         definitions:
           $ref: '#/components/schemas/ObjectTriggerDefinitionObject'
-    ObjectTriggerResponse:
-      type: object
-      properties:
-        trigger:
-          $ref: '#/components/schemas/ObjectTriggerObject'
     ObjectTriggersResponse:
       type: object
       properties:
@@ -310,3 +436,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ObjectTriggerObject'
+    ObjectTriggerResponse:
+      type: object
+      properties:
+        trigger:
+          $ref: '#/components/schemas/ObjectTriggerObject'
+x-refined-from:
+- custom-objects-openapi-original.yml
+- search-openapi-original.yml
+- triggers-openapi-original.yml

@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk Sessions API
   version: '1.0'
-  title: Zendesk Account Account Settings Sessions API
-  description: Needs a description.
+  description: 'Operations tagged Sessions across 2 of this provider''s published API definitions: sessions-openapi-original.yml, users-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: Sessions
 paths:
@@ -13,7 +13,7 @@ paths:
       operationId: ListSessions
       tags:
       - Sessions
-      summary: Zendesk Get  Api V2 Sessions
+      summary: Zendesk Get Api V2 Sessions
       description: 'If authenticated as an admin, returns all the account''s sessions. If authenticated as an agent or end user, returns only the sessions of the user making the request.
 
 
@@ -25,15 +25,13 @@ paths:
         - Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         #### Allowed For
 
 
-        * Admins, Agents, End users
-
-        '
+        * Admins, Agents, End users'
       responses:
         '200':
           description: Success response
@@ -51,16 +49,14 @@ paths:
       operationId: BulkDeleteSessionsByUserId
       tags:
       - Sessions
-      summary: Zendesk Delete  Api V2 Users User_id Sessions
+      summary: Zendesk Delete Api V2 Users User_id Sessions
       description: 'Deletes all the sessions for a user.
 
 
         #### Allowed For
 
 
-        * Admins, Agents, End users
-
-        '
+        * Admins, Agents, End users'
       responses:
         '204':
           description: No Content
@@ -72,13 +68,11 @@ paths:
       operationId: ShowSession
       tags:
       - Sessions
-      summary: Zendesk Get  Api V2 Users User_id Sessions Session_id
+      summary: Zendesk Get Api V2 Users User_id Sessions Session_id
       description: '#### Allowed For
 
 
-        * Admins, Agents, End users
-
-        '
+        * Admins, Agents, End users'
       responses:
         '200':
           description: Success response
@@ -93,13 +87,11 @@ paths:
       operationId: DeleteSession
       tags:
       - Sessions
-      summary: Zendesk Delete  Api V2 Users User_id Sessions Session_id
+      summary: Zendesk Delete Api V2 Users User_id Sessions Session_id
       description: '#### Allowed For
 
 
-        * Admins, Agents, End users
-
-        '
+        * Admins, Agents, End users'
       responses:
         '204':
           description: No Content
@@ -108,7 +100,7 @@ paths:
       operationId: DeleteAuthenticatedSession
       tags:
       - Sessions
-      summary: Zendesk Delete  Api V2 Users Me Logout
+      summary: Zendesk Delete Api V2 Users Me Logout
       description: 'Deletes the current session. In practice, this only works when using session auth for requests, such as client-side requests
 
         made from a Zendesk app. When using OAuth or basic authentication, you don''t have a current session so this endpoint has no effect.
@@ -117,9 +109,7 @@ paths:
         #### Allowed For
 
 
-        * Admins, Agents, End users
-
-        '
+        * Admins, Agents, End users'
       responses:
         '204':
           description: No Content
@@ -128,13 +118,11 @@ paths:
       operationId: ShowCurrentlyAuthenticatedSession
       tags:
       - Sessions
-      summary: Zendesk Get  Api V2 Users Me Session
+      summary: Zendesk Get Api V2 Users Me Session
       description: '#### Allowed For
 
 
-        * Admins, Agents, End users
-
-        '
+        * Admins, Agents, End users'
       responses:
         '200':
           description: Success response
@@ -150,13 +138,11 @@ paths:
       operationId: RenewCurrentSession
       tags:
       - Sessions
-      summary: Zendesk Get  Api V2 Users Me Session Renew
+      summary: Zendesk Get Api V2 Users Me Session Renew
       description: '#### Allowed For
 
 
-        * Admins, Agents, End users
-
-        '
+        * Admins, Agents, End users'
       responses:
         '200':
           description: Success response
@@ -169,12 +155,6 @@ paths:
                   $ref: '#/components/examples/RenewSessionResponseExample'
 components:
   schemas:
-    RenewSessionResponse:
-      type: object
-      properties:
-        authenticity_token:
-          type: string
-          description: A token of authenticity for the request
     SessionResponse:
       type: object
       properties:
@@ -189,3 +169,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SessionObject'
+    RenewSessionResponse:
+      type: object
+      properties:
+        authenticity_token:
+          type: string
+          description: A token of authenticity for the request
+x-refined-from:
+- sessions-openapi-original.yml
+- users-openapi-original.yml

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings OAuth Tokens API
+  title: Zendesk Oauth OAuth Tokens API
   description: Needs a description.
 tags:
 - name: OAuth Tokens
@@ -15,8 +15,8 @@ paths:
       operationId: ListOAuthTokens
       tags:
       - OAuth Tokens
-      summary: Zendesk Get  Api V2 Oauth Tokens
-      description: 'Returns the properties of the tokens for the current user. Admins can view OAuth token properties for all users using the [all](/api-reference/ticketing/oauth/oauth_tokens/#parameters) parameter. The [client_id](/api-reference/ticketing/oauth/oauth_tokens/#parameters) parameter can be included to filter that list by a global or local OAuth client ID. For security reasons, only the first 10 characters of each access token are included.
+      summary: Zendesk Get Api V2 Oauth Tokens
+      description: 'Returns the properties of the tokens for the current user. Admins can view OAuth token properties for all users using the all parameter. The client_id parameter can be included to filter that list by a global or local OAuth client ID. For security reasons, only the first 10 characters of each access token are included.
 
 
         #### Pagination
@@ -27,7 +27,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -36,9 +36,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -53,19 +51,19 @@ paths:
       operationId: CreateOAuthToken
       tags:
       - OAuth Tokens
-      summary: Zendesk Post  Api V2 Oauth Tokens
-      description: 'Returns an OAuth access token with a specified [scope](#scopes).
+      summary: Zendesk Post Api V2 Oauth Tokens
+      description: 'Returns an OAuth access token with a specified scope.
 
 
-        Refresh tokens aren''t used. An access token doesn''t expire but it can be [revoked](#revoke-token).
+        Refresh tokens aren''t used. An access token doesn''t expire but it can be revoked.
 
 
-        For a tutorial, see [Creating and using OAuth tokens with the API](/documentation/ticketing/working-with-oauth/creating-and-using-oauth-tokens-with-the-api/).
+        For a tutorial, see Creating and using OAuth tokens with the API.
 
 
-        **Note**: For OAuth authorization code, use the [Create Token for Grant Type](/api-reference/ticketing/oauth/grant_type_tokens/#create-token-for-grant-type) endpoint.
+        **Note**: For OAuth authorization code, use the Create Token for Grant Type endpoint.
 
-        The two APIs don''t share the same path, JSON format, or request parameters. However, both APIs return access tokens that can be used to [authenticate API requests](/api-reference/ticketing/introduction/#oauth-access-token).
+        The two APIs don''t share the same path, JSON format, or request parameters. However, both APIs return access tokens that can be used to authenticate API requests.
 
 
         #### Allowed For
@@ -80,13 +78,13 @@ paths:
         The POST request takes a "token" object that contains an OAuth client''s resource id and scopes.
 
 
-        | Name      | Type    | Description
+        | Name | Type | Description
 
         | --------- | ------- | --------------------------------------------------
 
-        | client_id | integer | The resource `id` of an [OAuth client](/api-reference/ticketing/oauth/oauth_clients/#json-format) (not the client''s unique identifier). For the ids, see [List Clients](/api-reference/ticketing/oauth/oauth_clients/#list-clients)
+        | client_id | integer | The resource `id` of an OAuth client (not the client''s unique identifier). For the ids, see List Clients
 
-        | scopes    | array   | Valid scopes for the token. See [Scopes](#scopes) below
+        | scopes | array | Valid scopes for the token. See Scopes below
 
 
         #### Scopes
@@ -99,7 +97,7 @@ paths:
 
         **Note**: Don''t confuse the **scopes** parameter (plural) with the **scope** parameter (singular)
 
-        for [grant-type tokens](/api-reference/ticketing/oauth/grant_type_tokens/).
+        for grant-type tokens.
 
 
         The **scopes** parameter is an array of strings, each specifying a resource name and
@@ -161,7 +159,7 @@ paths:
 
         * `impersonate` - allows Zendesk Support admins to make requests on behalf of
 
-        end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/)
+        end users. See Making API requests on behalf of end users
 
 
         **Resources that can be scoped**
@@ -197,9 +195,7 @@ paths:
 
         * any_channel (write only)
 
-        * web_widget (write only)
-
-        '
+        * web_widget (write only)'
       responses:
         '201':
           description: Created response
@@ -217,8 +213,31 @@ paths:
       operationId: ShowToken
       tags:
       - OAuth Tokens
-      summary: Zendesk Get  Api V2 Oauth Tokens Oauth_token_id
-      description: "Returns the properties of the specified token. For security reasons, only the first 10 characters of the access token are included.\n\nIn the first endpoint, `id` is a token id, not the full token.\n\nIn the second endpoint, include an `Authorization: Bearer` header with the full token to get its associated properties. Example:\n\n```sh\ncurl https://{subdomain}.zendesk.com/api/v2/oauth/tokens/current.json \\\n  -H 'Authorization: Bearer ${authToken}' \\\n  -v -u {email_address}/token:{api_token}\n```\n\n#### Allowed for\n\n* Admins, Agents, End Users\n"
+      summary: Zendesk Get Api V2 Oauth Tokens Oauth_token_id
+      description: 'Returns the properties of the specified token. For security reasons, only the first 10 characters of the access token are included.
+
+
+        In the first endpoint, `id` is a token id, not the full token.
+
+
+        In the second endpoint, include an `Authorization: Bearer` header with the full token to get its associated properties. Example:
+
+
+        ```sh
+
+        curl https://{subdomain}.zendesk.com/api/v2/oauth/tokens/current.json \
+
+        -H ''Authorization: Bearer ${authToken}'' \
+
+        -v -u {email_address}/token:{api_token}
+
+        ```
+
+
+        #### Allowed for
+
+
+        * Admins, Agents, End Users'
       responses:
         '200':
           description: Success response
@@ -233,18 +252,15 @@ paths:
       operationId: RevokeOAuthToken
       tags:
       - OAuth Tokens
-      summary: Zendesk Delete  Api V2 Oauth Tokens Oauth_token_id
-      description: "#### Allowed for\n * Admins, Agents, End Users\n"
+      summary: Zendesk Delete Api V2 Oauth Tokens Oauth_token_id
+      description: '#### Allowed for
+
+        * Admins, Agents, End Users'
       responses:
         '204':
           description: No content response
 components:
   schemas:
-    OAuthTokenResponse:
-      type: object
-      properties:
-        token:
-          $ref: '#/components/schemas/OauthTokenObject'
     OAuthTokensResponse:
       type: object
       properties:
@@ -252,3 +268,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OauthTokenObject'
+    OAuthTokenResponse:
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/OauthTokenObject'

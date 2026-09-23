@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Dynamic Content API
+  title: Zendesk Dynamic Content API
   description: Needs a description.
 tags:
 - name: Dynamic Content
@@ -11,7 +11,7 @@ paths:
       operationId: ListDynamicContents
       tags:
       - Dynamic Content
-      summary: Zendesk Get  Api V2 Dynamic_content Items
+      summary: Zendesk Get Api V2 Dynamic_content Items
       description: 'Returns a list of all dynamic content items for your account if accessed as an admin or agents who have permission to manage dynamic content.
 
 
@@ -29,9 +29,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
-
-        '
+        See Pagination.'
       responses:
         '200':
           description: Success response
@@ -46,19 +44,17 @@ paths:
       operationId: CreateDynamicContent
       tags:
       - Dynamic Content
-      summary: Zendesk Post  Api V2 Dynamic_content Items
-      description: 'Create a new content item, with one or more variants in the item''s `variants` array. See [Specifying item variants](#specifying-item-variants).
+      summary: Zendesk Post Api V2 Dynamic_content Items
+      description: 'Create a new content item, with one or more variants in the item''s `variants` array. See Specifying item variants.
 
 
-        The `default_locale_id` and variant `locale_id` values must be one of the locales the account has active. You can get the list with the [List Locales](/api-reference/ticketing/account-configuration/locales/#list-locales) endpoint.
+        The `default_locale_id` and variant `locale_id` values must be one of the locales the account has active. You can get the list with the List Locales endpoint.
 
 
         #### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '201':
           description: Created response
@@ -76,13 +72,11 @@ paths:
       operationId: ShowDynamicContentItem
       tags:
       - Dynamic Content
-      summary: Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id
+      summary: Zendesk Get Api V2 Dynamic_content Items Dynamic_content_item_id
       description: '#### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '200':
           description: Success response
@@ -97,19 +91,17 @@ paths:
       operationId: UpdateDynamicContentItem
       tags:
       - Dynamic Content
-      summary: Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id
+      summary: Zendesk Put Api V2 Dynamic_content Items Dynamic_content_item_id
       description: 'The only attribute you can change is the name.
 
 
-        To add a variant to the item, or to update or delete the variants of the item, use the [Item Variants API](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/#update-many-variants).
+        To add a variant to the item, or to update or delete the variants of the item, use the Item Variants API.
 
 
         #### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '200':
           description: Success response
@@ -124,13 +116,11 @@ paths:
       operationId: DeleteDynamicContentItem
       tags:
       - Dynamic Content
-      summary: Zendesk Delete  Api V2 Dynamic_content Items Dynamic_content_item_id
+      summary: Zendesk Delete Api V2 Dynamic_content Items Dynamic_content_item_id
       description: '#### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '204':
           description: No Content response
@@ -139,7 +129,7 @@ paths:
       operationId: ShowManyDynamicContents
       tags:
       - Dynamic Content
-      summary: Zendesk Get  Api V2 Dynamic_content Items Show_many
+      summary: Zendesk Get Api V2 Dynamic_content Items Show_many
       description: '#### Stability
 
 
@@ -149,9 +139,7 @@ paths:
         #### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       parameters:
       - name: identifiers
         in: query

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Custom Objects API
+  title: Zendesk Custom Objects API
   description: Needs a description.
 tags:
 - name: Custom Objects
@@ -11,7 +11,7 @@ paths:
       operationId: ListCustomObjects
       tags:
       - Custom Objects
-      summary: Zendesk Get  Api V2 Custom_objects
+      summary: Zendesk Get Api V2 Custom_objects
       description: 'Lists all undeleted custom objects for the account
 
         #### Allowed For
@@ -31,14 +31,12 @@ paths:
       operationId: CreateCustomObject
       tags:
       - Custom Objects
-      summary: Zendesk Post  Api V2 Custom_objects
+      summary: Zendesk Post Api V2 Custom_objects
       description: 'Creates an object describing all the properties required to create a custom object record
 
         #### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       requestBody:
         content:
           application/json:
@@ -62,14 +60,12 @@ paths:
       operationId: ShowCustomObject
       tags:
       - Custom Objects
-      summary: Zendesk Get  Api V2 Custom_objects Custom_object_key
+      summary: Zendesk Get Api V2 Custom_objects Custom_object_key
       description: 'Returns an object with the specified key
 
         #### Allowed For
 
-        * Agents
-
-        '
+        * Agents'
       parameters:
       - $ref: '#/components/parameters/CustomObjectKey'
       responses:
@@ -86,7 +82,7 @@ paths:
       operationId: UpdateCustomObject
       tags:
       - Custom Objects
-      summary: Zendesk Patch  Api V2 Custom_objects Custom_object_key
+      summary: Zendesk Patch Api V2 Custom_objects Custom_object_key
       description: 'Updates an individual custom object. The updating rules are as follows:
 
         * Takes a `custom_object` object that specifies the properties to update
@@ -112,7 +108,7 @@ paths:
       operationId: DeleteCustomObject
       tags:
       - Custom Objects
-      summary: Zendesk Delete  Api V2 Custom_objects Custom_object_key
+      summary: Zendesk Delete Api V2 Custom_objects Custom_object_key
       description: 'Permanently deletes the custom object with the specified key
 
         #### Allowed For
@@ -128,7 +124,7 @@ paths:
       operationId: CustomObjectsLimit
       tags:
       - Custom Objects
-      summary: Zendesk Get  Api V2 Custom_objects Limits Object_limit
+      summary: Zendesk Get Api V2 Custom_objects Limits Object_limit
       description: 'List the current count and the limit for custom objects
 
         #### Allowed For
@@ -151,6 +147,13 @@ components:
       properties:
         custom_object:
           $ref: '#/components/schemas/CustomObject'
+    CustomObjectsResponse:
+      type: object
+      properties:
+        custom_objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomObject'
     CustomObjectLimitsResponse:
       type: object
       properties:
@@ -162,10 +165,3 @@ components:
           type: integer
           description: The maximum allowed number for the requested resource
           readOnly: true
-    CustomObjectsResponse:
-      type: object
-      properties:
-        custom_objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomObject'

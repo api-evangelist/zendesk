@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings User Identities API
+  title: Zendesk Users User Identities API
   description: Needs a description.
 tags:
 - name: User Identities
@@ -27,7 +27,7 @@ paths:
       operationId: ListUserIdentities
       tags:
       - User Identities
-      summary: Zendesk Get  Api V2 Users User_id Identities
+      summary: Zendesk Get Api V2 Users User_id Identities
       description: 'Returns a list of identities for the given user.
 
 
@@ -42,7 +42,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page for cursor pagination.
@@ -53,9 +53,7 @@ paths:
 
         * Agents
 
-        * Verified end users
-
-        '
+        * Verified end users'
       responses:
         '200':
           description: Success response
@@ -70,28 +68,28 @@ paths:
       operationId: CreateUserIdentity
       tags:
       - User Identities
-      summary: Zendesk Post  Api V2 Users User_id Identities
+      summary: Zendesk Post Api V2 Users User_id Identities
       description: 'Adds an identity to a user''s profile. An agent can add an identity to any user profile.
 
 
         Supported identity types:
 
 
-        | Type             | Example |
+        | Type | Example |
 
         | ---------------- | ------- |
 
-        | email            | `{ "type" : "email", "value" : "someone@example.com" }` |
+        | email | `{ "type" : "email", "value" : "someone@example.com" }` |
 
-        | twitter          | `{ "type" : "twitter", "value" : "screen_name" }` |
+        | twitter | `{ "type" : "twitter", "value" : "screen_name" }` |
 
-        | facebook         | `{ "type" : "facebook", "value" : "855769377321" }` |
+        | facebook | `{ "type" : "facebook", "value" : "855769377321" }` |
 
-        | google           | `{ "type" : "google", "value" : "example@gmail.com" }` |
+        | google | `{ "type" : "google", "value" : "example@gmail.com" }` |
 
         | agent_forwarding | `{ "type" : "agent_forwarding", "value" : "+1 555-123-4567" }` |
 
-        | phone_number     | `{ "type" : "phone_number", "value" : "+1 555-123-4567" }` |
+        | phone_number | `{ "type" : "phone_number", "value" : "+1 555-123-4567" }` |
 
 
         To create an identity without sending out a verification email, include a `"skip_verify_email": true` property. The `"skip_verify_email": true` property does not apply when updating your own agent profile. A welcome or verification email will be sent regardless of this setting.
@@ -100,9 +98,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '201':
           description: Created response
@@ -121,7 +117,7 @@ paths:
       operationId: ShowUserIdentity
       tags:
       - User Identities
-      summary: Zendesk Get  Api V2 Users User_id Identities User_identity_id
+      summary: Zendesk Get Api V2 Users User_id Identities User_identity_id
       description: 'Shows the identity with the given id for a given user.
 
 
@@ -133,9 +129,7 @@ paths:
 
         * Agents
 
-        * Verified end users
-
-        '
+        * Verified end users'
       responses:
         '200':
           description: Success response
@@ -150,7 +144,7 @@ paths:
       operationId: UpdateUserIdentity
       tags:
       - User Identities
-      summary: Zendesk Put  Api V2 Users User_id Identities User_identity_id
+      summary: Zendesk Put Api V2 Users User_id Identities User_identity_id
       description: 'This endpoint allows you to:
 
 
@@ -161,15 +155,13 @@ paths:
         * Update the `value` property of the specified identity
 
 
-        You can''t change an identity''s `primary` attribute with this endpoint. You must use the [Make Identity Primary](#make-identity-primary) endpoint instead.
+        You can''t change an identity''s `primary` attribute with this endpoint. You must use the Make Identity Primary endpoint instead.
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -184,10 +176,10 @@ paths:
       operationId: DeleteUserIdentity
       tags:
       - User Identities
-      summary: Zendesk Delete  Api V2 Users User_id Identities User_identity_id
+      summary: Zendesk Delete Api V2 Users User_id Identities User_identity_id
       description: 'Deletes the identity for a given user.
 
-        In certain cases, a phone number associated with an identity is still visible on the user profile after the identity has been deleted via API. You can remove the phone number from the user profile by updating the `phone` attribute of the user to an empty string. See [Update User via API](/api-reference/ticketing/users/users/#update-user) for details and examples.
+        In certain cases, a phone number associated with an identity is still visible on the user profile after the identity has been deleted via API. You can remove the phone number from the user profile by updating the `phone` attribute of the user to an empty string. See Update User via API for details and examples.
 
 
         Deleting identities with type `messaging` could break messaging functionality. For example, an agent may stop being able to send messages via the messaging channel.
@@ -195,9 +187,7 @@ paths:
 
         #### Allowed For
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '204':
           description: No Content response
@@ -209,8 +199,8 @@ paths:
       operationId: MakeUserIdentityPrimary
       tags:
       - User Identities
-      summary: Zendesk Put  Api V2 Users User_id Identities User_identity_id Make_primary
-      description: 'Sets the specified identity as primary. To change other attributes, use the [Update  Identity](#update-identity) endpoint. This is a collection-level operation and the correct behavior for an API client is to subsequently reload the entire collection.
+      summary: Zendesk Put Api V2 Users User_id Identities User_identity_id Make_primary
+      description: 'Sets the specified identity as primary. To change other attributes, use the Update Identity endpoint. This is a collection-level operation and the correct behavior for an API client is to subsequently reload the entire collection.
 
 
         The first endpoint is the preferred option if authenticating as an agent. If authenticating as an end user, you can only use the second endpoint. In addition, an end user can only make an email identity primary if the email is verified.
@@ -221,9 +211,7 @@ paths:
 
         * Agents
 
-        * Verified end users
-
-        '
+        * Verified end users'
       responses:
         '200':
           description: Success response
@@ -242,16 +230,14 @@ paths:
       operationId: RequestUserVerfication
       tags:
       - User Identities
-      summary: Zendesk Put  Api V2 Users User_id Identities User_identity_id Request_verification
+      summary: Zendesk Put Api V2 Users User_id Identities User_identity_id…
       description: 'Sends the user a verification email with a link to verify ownership of the email address.
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success description
@@ -270,22 +256,20 @@ paths:
       operationId: VerifyUserIdentity
       tags:
       - User Identities
-      summary: Zendesk Put  Api V2 Users User_id Identities User_identity_id Verify
+      summary: Zendesk Put Api V2 Users User_id Identities User_identity_id Verify
       description: 'Sets the specified identity as verified.
 
 
-        For security reasons, you can''t use this endpoint to update the email identity of the account owner. To verify the person''s identity, send a verification email. See [Verifying the account owner''s email address](https://support.zendesk.com/hc/en-us/articles/4408828975130) in Zendesk help.
+        For security reasons, you can''t use this endpoint to update the email identity of the account owner. To verify the person''s identity, send a verification email. See Verifying the account owner''s email address in Zendesk help.
 
 
-        If [automatic mapping of users to organizations using the email domain](https://support.zendesk.com/hc/en-us/articles/4408882246298-Creating-organizations#topic_nxl_vdt_bc) is enabled and the user is not already a member of an organization, they will be automatically added to the organization associated with the email domain once the email identity is verified.
+        If automatic mapping of users to organizations using the email domain is enabled and the user is not already a member of an organization, they will be automatically added to the organization associated with the email domain once the email identity is verified.
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -298,11 +282,6 @@ paths:
                   $ref: '#/components/examples/UserIdentityResponseExample'
 components:
   schemas:
-    UserIdentityResponse:
-      type: object
-      properties:
-        identity:
-          $ref: '#/components/schemas/UserIdentityObject'
     UserIdentitiesResponse:
       type: object
       properties:
@@ -310,3 +289,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserIdentityObject'
+    UserIdentityResponse:
+      type: object
+      properties:
+        identity:
+          $ref: '#/components/schemas/UserIdentityObject'

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings SLA Policies API
+  title: Zendesk Slas SLA Policies API
   description: Needs a description.
 tags:
 - name: SLA Policies
@@ -11,7 +11,7 @@ paths:
       operationId: ListSLAPolicies
       tags:
       - SLA Policies
-      summary: Zendesk Get  Api V2 Slas Policies
+      summary: Zendesk Get Api V2 Slas Policies
       description: '#### Availability
 
 
@@ -21,9 +21,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -38,7 +36,7 @@ paths:
       operationId: CreateSLAPolicy
       tags:
       - SLA Policies
-      summary: Zendesk Post  Api V2 Slas Policies
+      summary: Zendesk Post Api V2 Slas Policies
       description: '#### Availability
 
 
@@ -48,9 +46,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '201':
           description: Created response
@@ -68,7 +64,7 @@ paths:
       operationId: ShowSLAPolicy
       tags:
       - SLA Policies
-      summary: Zendesk Get  Api V2 Slas Policies Sla_policy_id
+      summary: Zendesk Get Api V2 Slas Policies Sla_policy_id
       description: '#### Availability
 
 
@@ -78,9 +74,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -95,7 +89,7 @@ paths:
       operationId: UpdateSLAPolicy
       tags:
       - SLA Policies
-      summary: Zendesk Put  Api V2 Slas Policies Sla_policy_id
+      summary: Zendesk Put Api V2 Slas Policies Sla_policy_id
       description: 'Updates the specified policy.
 
 
@@ -108,9 +102,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -125,7 +117,7 @@ paths:
       operationId: DeleteSLAPolicy
       tags:
       - SLA Policies
-      summary: Zendesk Delete  Api V2 Slas Policies Sla_policy_id
+      summary: Zendesk Delete Api V2 Slas Policies Sla_policy_id
       description: '#### Availability
 
 
@@ -135,9 +127,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No Content response
@@ -146,7 +136,7 @@ paths:
       operationId: RetrieveSLAPolicyFilterDefinitionItems
       tags:
       - SLA Policies
-      summary: Zendesk Get  Api V2 Slas Policies Definitions
+      summary: Zendesk Get Api V2 Slas Policies Definitions
       description: '#### Availability
 
 
@@ -156,9 +146,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -174,7 +162,7 @@ paths:
       operationId: ReorderSLAPolicies
       tags:
       - SLA Policies
-      summary: Zendesk Put  Api V2 Slas Policies Reorder
+      summary: Zendesk Put Api V2 Slas Policies Reorder
       description: '#### Availability
 
 
@@ -184,9 +172,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       parameters:
       - name: sla_policy_ids
         in: query
@@ -225,6 +211,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SLAPolicyObject'
+    SLAPolicyResponse:
+      type: object
+      properties:
+        sla_policy:
+          $ref: '#/components/schemas/SLAPolicyObject'
     SLAPolicyFilterDefinitionResponse:
       type: object
       properties:
@@ -307,8 +298,3 @@ components:
                               nullable: true
                       type:
                         type: string
-    SLAPolicyResponse:
-      type: object
-      properties:
-        sla_policy:
-          $ref: '#/components/schemas/SLAPolicyObject'

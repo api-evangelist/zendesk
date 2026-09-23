@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Search API
+  title: Zendesk Search API
   description: Needs a description.
 tags:
 - name: Search
@@ -11,8 +11,65 @@ paths:
       operationId: ListSearchResults
       tags:
       - Search
-      summary: Zendesk Get  Api V2 Search
-      description: "Returns the search results. See [Query basics](#query-basics) for the syntax of the `query` parameter.\n\nUse the ampersand character (&) to append the `sort_by` or `sort_order` parameters to the URL.\n\nFor examples, see [Searching with Zendesk API](/documentation/ticketing/using-the-zendesk-api/searching-with-the-zendesk-api).\n\n#### Allowed For\n\n* Agents\n\n#### Pagination\n\n* Offset pagination only\n\nOffset pagination may result in duplicate results when paging. You can also use the\n[Export Search Results](/api-reference/ticketing/ticket-management/search/#export-search-results) endpoint, which\nuses cursor-based pagination and doesn't return duplicate results. See\n[Using cursor pagination](/api-reference/introduction/pagination/#using-cursor-pagination) for more information.\n\n\n#### Errors JSON Format\n\nErrors are represented as JSON objects which have the following keys:\n\n| Name                  | Type                 | Comment\n| --------------------- | ---------------------| --------------------\n| error                 | string               | The type of error. Examples: \"unavailable\", \"invalid\"\n| description           | string               |\n\n##### Example Error\n```js\n{\n  \"error\": \"unavailable\",\n  \"description\": \"Sorry, we could not complete your search query. Please try again in a moment.\"\n}\n```\n"
+      summary: Zendesk Get Api V2 Search
+      description: 'Returns the search results. See Query basics for the syntax of the `query` parameter.
+
+
+        Use the ampersand character (&) to append the `sort_by` or `sort_order` parameters to the URL.
+
+
+        For examples, see Searching with Zendesk API.
+
+
+        #### Allowed For
+
+
+        * Agents
+
+
+        #### Pagination
+
+
+        * Offset pagination only
+
+
+        Offset pagination may result in duplicate results when paging. You can also use the
+
+        Export Search Results endpoint, which
+
+        uses cursor-based pagination and doesn''t return duplicate results. See
+
+        Using cursor pagination for more information.
+
+
+        #### Errors JSON Format
+
+
+        Errors are represented as JSON objects which have the following keys:
+
+
+        | Name | Type | Comment
+
+        | --------------------- | ---------------------| --------------------
+
+        | error | string | The type of error. Examples: "unavailable", "invalid"
+
+        | description | string |
+
+
+        ##### Example Error
+
+        ```js
+
+        {
+
+        "error": "unavailable",
+
+        "description": "Sorry, we could not complete your search query. Please try again in a moment."
+
+        }
+
+        ```'
       parameters:
       - name: query
         in: query
@@ -46,16 +103,14 @@ paths:
       operationId: CountSearchResults
       tags:
       - Search
-      summary: Zendesk Get  Api V2 Search Count
+      summary: Zendesk Get Api V2 Search Count
       description: 'Returns the number of items matching the query rather than the items. The search string works the same as a regular search.
 
 
         #### Allowed For
 
 
-        - Agents
-
-        '
+        - Agents'
       parameters:
       - name: query
         in: query
@@ -79,8 +134,8 @@ paths:
       operationId: ExportSearchResults
       tags:
       - Search
-      summary: Zendesk Get  Api V2 Search Export
-      description: 'Exports a set of results. See [Query syntax](#query-syntax) for the syntax of the `query` parameter.
+      summary: Zendesk Get Api V2 Search Export
+      description: 'Exports a set of results. See Query syntax for the syntax of the `query` parameter.
 
 
         Use this endpoint for search queries that will return more than 1000 results. The result set is ordered only by the `created_at` attribute.
@@ -104,7 +159,7 @@ paths:
         - Cursor pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 1000 records per page. The number of results shown in a page is determined by the `page[size]` parameter.
@@ -119,9 +174,9 @@ paths:
         For more information on cursor-based pagination, see the following articles:
 
 
-        - [Comparing cursor pagination and offset pagination](/documentation/developer-tools/pagination/comparing-cursor-pagination-and-offset-pagination)
+        - Comparing cursor pagination and offset pagination
 
-        - [Paginating through lists using cursor pagination](/documentation/developer-tools/pagination/paginating-through-lists-using-cursor-pagination)
+        - Paginating through lists using cursor pagination
 
 
         #### Limits
@@ -133,17 +188,17 @@ paths:
         #### Response Format
 
 
-        | Name                  | Type                 | Comment
+        | Name | Type | Comment
 
         | --------------------- | ---------------------| --------------------
 
-        | links[next]           | string               | URL to the next page of results
+        | links[next] | string | URL to the next page of results
 
-        | meta[has_more]        | string               | Boolean indicating if there are more results
+        | meta[has_more] | string | Boolean indicating if there are more results
 
-        | meta[after_cursor]    | string               | Cursor object returned from the Search Service
+        | meta[after_cursor] | string | Cursor object returned from the Search Service
 
-        | results               | array                | May consist of tickets, users, groups, or organizations, as specified by the `filter_type` parameter
+        | results | array | May consist of tickets, users, groups, or organizations, as specified by the `filter_type` parameter
 
 
         The response is similar to the response of `GET /api/v2/search.json?`, with a few changes:
@@ -154,9 +209,7 @@ paths:
         * `meta` - Has the following nested properties: `has_more` and `after_cursor`. The `has_more` property indicates whether the next page has more results. The `after_cursor` property is the cursor used to paginate to the next page. It expires after one hour.
 
 
-        There''s no `count` property.
-
-        '
+        There''s no `count` property.'
       parameters:
       - name: query
         in: query
@@ -187,54 +240,6 @@ paths:
                   $ref: '#/components/examples/SearchExportResponseExample'
 components:
   schemas:
-    SearchResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The number of resources returned by the query corresponding to this page of results in the paginated response
-          readOnly: true
-        facets:
-          type: string
-          description: The facets corresponding to the search query
-          nullable: true
-          readOnly: true
-        next_page:
-          type: string
-          description: URL to the next page of results
-          nullable: true
-          readOnly: true
-        previous_page:
-          type: string
-          description: URL to the previous page of results
-          nullable: true
-          readOnly: true
-        results:
-          type: array
-          description: May consist of tickets, users, groups, or organizations, as specified by the `result_type` property in each result object
-          items:
-            $ref: '#/components/schemas/SearchResultObject'
-          readOnly: true
-      example:
-        count: 1
-        facets: null
-        next_page: null
-        previous_page: null
-        results:
-        - created_at: '2018-04-06T03:17:05Z'
-          default: false
-          deleted: false
-          description: ''
-          id: 1835972
-          name: Ragtail
-          result_type: group
-          updated_at: '2018-04-06T03:17:05Z'
-          url: https://example.zendesk.com/api/v2/groups/1835972.json
-    SearchCountResponse:
-      type: object
-      properties:
-        count:
-          type: integer
     SearchExportResponse:
       type: object
       properties:
@@ -291,3 +296,51 @@ components:
           before_cursor: null
           has_more: true
         results: []
+    SearchCountResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+    SearchResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The number of resources returned by the query corresponding to this page of results in the paginated response
+          readOnly: true
+        facets:
+          type: string
+          description: The facets corresponding to the search query
+          nullable: true
+          readOnly: true
+        next_page:
+          type: string
+          description: URL to the next page of results
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: URL to the previous page of results
+          nullable: true
+          readOnly: true
+        results:
+          type: array
+          description: May consist of tickets, users, groups, or organizations, as specified by the `result_type` property in each result object
+          items:
+            $ref: '#/components/schemas/SearchResultObject'
+          readOnly: true
+      example:
+        count: 1
+        facets: null
+        next_page: null
+        previous_page: null
+        results:
+        - created_at: '2018-04-06T03:17:05Z'
+          default: false
+          deleted: false
+          description: ''
+          id: 1835972
+          name: Ragtail
+          result_type: group
+          updated_at: '2018-04-06T03:17:05Z'
+          url: https://example.zendesk.com/api/v2/groups/1835972.json

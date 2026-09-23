@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk Group Memberships API
   version: '1.0'
-  title: Zendesk Account Account Settings Group Memberships API
-  description: Needs a description.
+  description: 'Operations tagged Group Memberships across 2 of this provider''s published API definitions: group-memberships-openapi-original.yml, users-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: Group Memberships
 paths:
@@ -11,7 +11,7 @@ paths:
       operationId: ListGroupMemberships
       tags:
       - Group Memberships
-      summary: Zendesk Get  Api V2 Group_memberships
+      summary: Zendesk Get Api V2 Group_memberships
       description: '#### Pagination
 
 
@@ -20,7 +20,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -29,9 +29,7 @@ paths:
         #### Allowed For:
 
 
-        * Agents
-
-        '
+        * Agents'
       parameters:
       - $ref: '#/components/parameters/GroupId'
       - $ref: '#/components/parameters/UserId'
@@ -49,7 +47,7 @@ paths:
       operationId: CreateGroupMembership
       tags:
       - Group Memberships
-      summary: Zendesk Post  Api V2 Group_memberships
+      summary: Zendesk Post Api V2 Group_memberships
       description: 'Assigns an agent to a given group.
 
 
@@ -58,9 +56,7 @@ paths:
 
         * Admins
 
-        * Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)
-
-        '
+        * Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)'
       responses:
         '201':
           description: Created response
@@ -79,16 +75,14 @@ paths:
       operationId: ShowGroupMembershipById
       tags:
       - Group Memberships
-      summary: Zendesk Get  Api V2 Group_memberships Group_membership_id
+      summary: Zendesk Get Api V2 Group_memberships Group_membership_id
       description: 'The ''id'' is the group membership id, not a group id.
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -103,7 +97,7 @@ paths:
       operationId: DeleteGroupMembership
       tags:
       - Group Memberships
-      summary: Zendesk Delete  Api V2 Group_memberships Group_membership_id
+      summary: Zendesk Delete Api V2 Group_memberships Group_membership_id
       description: 'Immediately removes a user from a group and schedules a job to unassign all working tickets that are assigned to the given user and group combination.
 
 
@@ -112,9 +106,7 @@ paths:
 
         * Admins
 
-        * Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)
-
-        '
+        * Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)'
       responses:
         '204':
           description: No content response
@@ -123,7 +115,7 @@ paths:
       operationId: ListAssignableGroupMemberships
       tags:
       - Group Memberships
-      summary: Zendesk Get  Api V2 Group_memberships Assignable
+      summary: Zendesk Get Api V2 Group_memberships Assignable
       description: 'Returns a maximum of 100 group memberships per page.
 
 
@@ -135,7 +127,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -144,9 +136,7 @@ paths:
         #### Allowed For:
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -162,7 +152,7 @@ paths:
       operationId: GroupMembershipBulkCreate
       tags:
       - Group Memberships
-      summary: Zendesk Post  Api V2 Group_memberships Create_many
+      summary: Zendesk Post Api V2 Group_memberships Create_many
       description: 'Assigns up to 100 agents to given groups.
 
 
@@ -177,9 +167,7 @@ paths:
         #### Response
 
 
-        This endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job''s completion.
-
-        '
+        This endpoint returns a `job_status` JSON object and queues a background job to do the work. Use the Show Job Status endpoint to check for the job''s completion.'
       responses:
         '200':
           description: Success response
@@ -195,7 +183,7 @@ paths:
       operationId: GroupMembershipBulkDelete
       tags:
       - Group Memberships
-      summary: Zendesk Delete  Api V2 Group_memberships Destroy_many
+      summary: Zendesk Delete Api V2 Group_memberships Destroy_many
       description: 'Immediately removes users from groups and schedules a job to unassign all working tickets that are assigned to the given user and group combinations.
 
 
@@ -204,9 +192,7 @@ paths:
 
         * Admins
 
-        * Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)
-
-        '
+        * Agents assigned to a custom role with permissions to manage group memberships (Enterprise only)'
       parameters:
       - name: ids
         in: query
@@ -232,13 +218,11 @@ paths:
       operationId: GroupMembershipSetDefault
       tags:
       - Group Memberships
-      summary: Zendesk Put  Api V2 Users User_id Group_memberships Group_membership_id Make_default
+      summary: Zendesk Put Api V2 Users User_id Group_memberships Group_membership_id…
       description: '#### Allowed For:
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -251,11 +235,6 @@ paths:
                   $ref: '#/components/examples/GroupMembershipsResponseExample'
 components:
   schemas:
-    GroupMembershipResponse:
-      type: object
-      properties:
-        group_membership:
-          $ref: '#/components/schemas/GroupMembershipObject'
     GroupMembershipsResponse:
       type: object
       properties:
@@ -268,3 +247,11 @@ components:
       properties:
         job_status:
           $ref: '#/components/schemas/JobStatusObject'
+    GroupMembershipResponse:
+      type: object
+      properties:
+        group_membership:
+          $ref: '#/components/schemas/GroupMembershipObject'
+x-refined-from:
+- group-memberships-openapi-original.yml
+- users-openapi-original.yml

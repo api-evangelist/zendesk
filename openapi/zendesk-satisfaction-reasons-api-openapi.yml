@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Satisfaction Reasons API
+  title: Zendesk Satisfaction Reasons API
   description: Needs a description.
 tags:
 - name: Satisfaction Reasons
@@ -11,16 +11,14 @@ paths:
       operationId: ListSatisfactionRatingReasons
       tags:
       - Satisfaction Reasons
-      summary: Zendesk Get  Api V2 Satisfaction_reasons
+      summary: Zendesk Get Api V2 Satisfaction_reasons
       description: 'List all reasons for an account
 
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -36,13 +34,11 @@ paths:
       operationId: ShowSatisfactionRatings
       tags:
       - Satisfaction Reasons
-      summary: Zendesk Get  Api V2 Satisfaction_reasons Satisfaction_reason_id
+      summary: Zendesk Get Api V2 Satisfaction_reasons Satisfaction_reason_id
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       parameters:
       - name: satisfaction_reason_id
         in: path
@@ -63,17 +59,17 @@ paths:
                   $ref: '#/components/examples/SatisfactionReasonResponseExample'
 components:
   schemas:
-    SatisfactionReasonsResponse:
-      type: object
-      properties:
-        reasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/SatisfactionReasonObject'
     SatisfactionReasonResponse:
       type: object
       properties:
         reason:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionReasonObject'
+    SatisfactionReasonsResponse:
+      type: object
+      properties:
+        reasons:
           type: array
           items:
             $ref: '#/components/schemas/SatisfactionReasonObject'

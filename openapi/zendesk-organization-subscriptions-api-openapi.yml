@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Organization Subscriptions API
+  title: Zendesk Organization Subscriptions API
   description: Needs a description.
 tags:
 - name: Organization Subscriptions
@@ -11,7 +11,7 @@ paths:
       operationId: ListOrganizationSubscriptions
       tags:
       - Organization Subscriptions
-      summary: Zendesk Get  Api V2 Organization_subscriptions
+      summary: Zendesk Get Api V2 Organization_subscriptions
       description: '#### Pagination
 
 
@@ -20,7 +20,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -49,7 +49,7 @@ paths:
       operationId: CreateOrganizationSubscription
       tags:
       - Organization Subscriptions
-      summary: Zendesk Post  Api V2 Organization_subscriptions
+      summary: Zendesk Post Api V2 Organization_subscriptions
       description: '#### Allowed For:
 
 
@@ -82,7 +82,7 @@ paths:
       operationId: ShowOrganizationSubscription
       tags:
       - Organization Subscriptions
-      summary: Zendesk Get  Api V2 Organization_subscriptions Organization_subscription_id
+      summary: Zendesk Get Api V2 Organization_subscriptions Organization_subscription_id
       description: '#### Allowed For:
 
 
@@ -108,7 +108,7 @@ paths:
       operationId: DeleteOrganizationSubscription
       tags:
       - Organization Subscriptions
-      summary: Zendesk Delete  Api V2 Organization_subscriptions Organization_subscription_id
+      summary: Zendesk Delete Api V2 Organization_subscriptions Organization_subscription_id
       description: '#### Allowed For:
 
 
@@ -122,11 +122,6 @@ paths:
           description: No content
 components:
   schemas:
-    OrganizationSubscriptionResponse:
-      type: object
-      properties:
-        organization_subscription:
-          $ref: '#/components/schemas/OrganizationSubscriptionObject'
     OrganizationSubscriptionsResponse:
       type: object
       allOf:
@@ -138,3 +133,8 @@ components:
             description: An array of organization subscriptions
             items:
               $ref: '#/components/schemas/OrganizationSubscriptionObject'
+    OrganizationSubscriptionResponse:
+      type: object
+      properties:
+        organization_subscription:
+          $ref: '#/components/schemas/OrganizationSubscriptionObject'

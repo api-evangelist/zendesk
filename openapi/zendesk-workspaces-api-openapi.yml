@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Workspaces API
+  title: Zendesk Workspaces API
   description: Needs a description.
 tags:
 - name: Workspaces
@@ -11,13 +11,11 @@ paths:
       operationId: ListWorkspaces
       tags:
       - Workspaces
-      summary: Zendesk Get  Api V2 Workspaces
+      summary: Zendesk Get Api V2 Workspaces
       description: '#### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '200':
           description: Success Response
@@ -76,13 +74,11 @@ paths:
       operationId: CreateWorkspace
       tags:
       - Workspaces
-      summary: Zendesk Post  Api V2 Workspaces
+      summary: Zendesk Post Api V2 Workspaces
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       requestBody:
         content:
           application/json:
@@ -164,12 +160,10 @@ paths:
       operationId: ShowWorkspace
       tags:
       - Workspaces
-      summary: Zendesk Get  Api V2 Workspaces Workspace_id
+      summary: Zendesk Get Api V2 Workspaces Workspace_id
       description: '#### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Successful response
@@ -225,7 +219,7 @@ paths:
       operationId: UpdateWorkspace
       tags:
       - Workspaces
-      summary: Zendesk Put  Api V2 Workspaces Workspace_id
+      summary: Zendesk Put Api V2 Workspaces Workspace_id
       description: '#### Allowed For
 
         * Admins'
@@ -307,12 +301,10 @@ paths:
       operationId: DeleteWorkspace
       tags:
       - Workspaces
-      summary: Zendesk Delete  Api V2 Workspaces Workspace_id
+      summary: Zendesk Delete Api V2 Workspaces Workspace_id
       description: '#### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No Content
@@ -321,12 +313,10 @@ paths:
       operationId: DestroyManyWorkspaces
       tags:
       - Workspaces
-      summary: Zendesk Delete  Api V2 Workspaces Destroy_many
+      summary: Zendesk Delete Api V2 Workspaces Destroy_many
       description: '#### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       parameters:
       - name: ids
         in: query
@@ -355,12 +345,10 @@ paths:
       operationId: ReorderWorkspaces
       tags:
       - Workspaces
-      summary: Zendesk Put  Api V2 Workspaces Reorder
+      summary: Zendesk Put Api V2 Workspaces Reorder
       description: '#### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       requestBody:
         content:
           application/json:

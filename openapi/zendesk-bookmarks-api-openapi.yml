@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Bookmarks API
+  title: Zendesk Bookmarks API
   description: Needs a description.
 tags:
 - name: Bookmarks
@@ -11,7 +11,7 @@ paths:
       operationId: ListBookmarks
       tags:
       - Bookmarks
-      summary: Zendesk Get  Api V2 Bookmarks
+      summary: Zendesk Get Api V2 Bookmarks
       description: '#### Allowed For
 
         - Agents'
@@ -29,7 +29,7 @@ paths:
       operationId: CreateBookmark
       tags:
       - Bookmarks
-      summary: Zendesk Post  Api V2 Bookmarks
+      summary: Zendesk Post Api V2 Bookmarks
       description: '#### Allowed For
 
         - Agents'
@@ -67,7 +67,7 @@ paths:
       operationId: DeleteBookmark
       tags:
       - Bookmarks
-      summary: Zendesk Delete  Api V2 Bookmarks Bookmark_id
+      summary: Zendesk Delete Api V2 Bookmarks Bookmark_id
       description: '#### Allowed For
 
         - Agents (own bookmarks only)
@@ -79,11 +79,6 @@ paths:
           description: No content
 components:
   schemas:
-    BookmarkResponse:
-      type: object
-      properties:
-        bookmark:
-          $ref: '#/components/schemas/BookmarkObject'
     BookmarksResponse:
       title: Bookmarks
       type: object
@@ -95,3 +90,8 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/BookmarkObject'
+    BookmarkResponse:
+      type: object
+      properties:
+        bookmark:
+          $ref: '#/components/schemas/BookmarkObject'

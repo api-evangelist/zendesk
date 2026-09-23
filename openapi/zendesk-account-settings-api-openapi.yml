@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
   title: Zendesk Account Account Settings API
@@ -11,16 +11,14 @@ paths:
       operationId: ShowAccountSettings
       tags:
       - Account Settings
-      summary: Zendesk Get  Api V2 Account Settings
+      summary: Zendesk Get Api V2 Account Settings
       description: 'Shows the settings that are available for the account.
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -35,16 +33,14 @@ paths:
       operationId: UpdateAccountSettings
       tags:
       - Account Settings
-      summary: Zendesk Put  Api V2 Account Settings
-      description: 'Updates settings for the account. See [JSON Format](#json-format) above for the settings you can update.
+      summary: Zendesk Put Api V2 Account Settings
+      description: 'Updates settings for the account. See JSON Format above for the settings you can update.
 
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -158,14 +154,20 @@ components:
             email_template_photos: true
             email_template_selection: false
             gmail_actions: true
-            html_mail_template: "<!DOCTYPE html>\r\n<html dir=\"auto\" {{lang}}>\r\n<head>\r\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n  <style type=\"text/css\">\r\n    table td {\r\n      border-collapse: collapse;\r\n    }\r\n    {{styles}}\r\n  </style>\r\n</head>\r\n<body {{attributes}} style=\"width: 100%!important; margin: 0; padding: 0;\">\r\n  <div style=\"font-family: 'system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue','Arial','sans-serif'; font-size: 14px; line-height: 1.5; color:#444444;\">\r\n    <div style=\"color: #b5b5b5;\">{{delimiter}}</div>\r\n    {{content}}\r\n  </div><br/>\r\n  <div style=\"font-family: 'system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue','Arial','sans-serif'; font-size: 12px; line-height: 1.5; color: #49545c; margin: 10px 0 14px 0; padding-top: 10px;\">\r\n    {{footer}} {{footer_link}}\r\n  </div><br/>\r\n  {{quoted_content}}\r\n</body>\r\n</html>\r\n"
+            html_mail_template: "<!DOCTYPE html>\n<html dir=\"auto\" {{lang}}>\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n  <style type=\"text/css\">\n    table td {\n      border-collapse: collapse;\n    }\n    {{styles}}\n  </style>\n</head>\n<body {{attributes}} style=\"width: 100%!important; margin: 0; padding: 0;\">\n  <div style=\"font-family: 'system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue','Arial','sans-serif'; font-size: 14px; line-height: 1.5; color:#444444;\">\n    <div style=\"color: #b5b5b5;\">{{delimiter}}</div>\n    {{content}}\n  </div><br/>\n  <div style=\"font-family: 'system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Neue','Arial','sans-serif'; font-size: 12px; line-height: 1.5; color: #49545c; margin: 10px 0 14px 0; padding-top: 10px;\">\n    {{footer}} {{footer_link}}\n  </div><br/>\n  {{quoted_content}}\n</body>\n</html>\n"
             mail_delimiter: '{{txt.email.delimiter}}'
             modern_email_template: true
             no_mail_delimiter: true
             personalized_replies: true
             rich_content_in_emails: true
             send_gmail_messages_via_gmail: true
-            text_mail_template: "{{content}}\r\n\r\n{{footer}}\r\n\r\n{{quoted_content}}"
+            text_mail_template: '{{content}}
+
+
+              {{footer}}
+
+
+              {{quoted_content}}'
           google_apps:
             has_google_apps: false
             has_google_apps_admin: false

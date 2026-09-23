@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Activity Stream API
+  title: Zendesk Activities Activity Stream API
   description: Needs a description.
 tags:
 - name: Activity Stream
@@ -13,7 +13,7 @@ paths:
       operationId: ListActivities
       tags:
       - Activity Stream
-      summary: Zendesk Get  Api V2 Activities
+      summary: Zendesk Get Api V2 Activities
       description: 'Lists ticket activities in the last 30 days affecting the agent making the request.
 
         Also sideloads the following arrays of user records:
@@ -32,7 +32,7 @@ paths:
         - Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -41,9 +41,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -61,16 +59,14 @@ paths:
       operationId: ShowActivity
       tags:
       - Activity Stream
-      summary: Zendesk Get  Api V2 Activities Activity_id
+      summary: Zendesk Get Api V2 Activities Activity_id
       description: 'Lists a specific activity.
 
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -86,7 +82,7 @@ paths:
       operationId: CountActivities
       tags:
       - Activity Stream
-      summary: Zendesk Get  Api V2 Activities Count
+      summary: Zendesk Get Api V2 Activities Count
       description: 'Returns an approximate count of ticket activities in the last 30 days affecting the agent making the request. If the count exceeds 100,000, the count will return a cached result. This cached result will update every 24 hours.
 
 
@@ -242,6 +238,17 @@ components:
             verified: true
           user_id: 3343
           verb: tickets.assignment
+    ActivitiesCountResponse:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: date-time
+            value:
+              type: integer
     ActivitiesResponse:
       type: object
       properties:
@@ -506,14 +513,3 @@ components:
             skittles: '2018-09-14T00:00:00+00:00'
             user_field_1: '101'
           verified: true
-    ActivitiesCountResponse:
-      type: object
-      properties:
-        count:
-          type: object
-          properties:
-            refreshed_at:
-              type: string
-              format: date-time
-            value:
-              type: integer

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Locales API
+  title: Zendesk Locales API
   description: Needs a description.
 tags:
 - name: Locales
@@ -11,19 +11,17 @@ paths:
       operationId: ListLocales
       tags:
       - Locales
-      summary: Zendesk Get  Api V2 Locales
+      summary: Zendesk Get Api V2 Locales
       description: 'Lists the translation locales available for the account.
 
 
-        **Note**: You can alter the list by passing an updated `locale_ids` array to the [Update Account Settings](/api-reference/ticketing/account-configuration/account_settings/#update-account-settings) endpoint.
+        **Note**: You can alter the list by passing an updated `locale_ids` array to the Update Account Settings endpoint.
 
 
         #### Allowed For
 
 
-        * Anyone
-
-        '
+        * Anyone'
       responses:
         '200':
           description: Success response
@@ -41,13 +39,11 @@ paths:
       operationId: ShowLocaleById
       tags:
       - Locales
-      summary: Zendesk Get  Api V2 Locales Locale_id
+      summary: Zendesk Get Api V2 Locales Locale_id
       description: '#### Allowed For
 
 
-        * Anyone
-
-        '
+        * Anyone'
       responses:
         '200':
           description: Success Response
@@ -63,16 +59,14 @@ paths:
       operationId: ListLocalesForAgent
       tags:
       - Locales
-      summary: Zendesk Get  Api V2 Locales Agent
+      summary: Zendesk Get Api V2 Locales Agent
       description: 'Lists the translation locales that have been localized for agents on a specific account.
 
 
         #### Allowed For
 
 
-        * Anyone
-
-        '
+        * Anyone'
       responses:
         '200':
           description: Success response
@@ -88,16 +82,14 @@ paths:
       operationId: ShowCurrentLocale
       tags:
       - Locales
-      summary: Zendesk Get  Api V2 Locales Current
-      description: 'This works like [Show Locale](#show-locale), but instead of taking a locale id as an argument, it renders the locale of the user performing the request.
+      summary: Zendesk Get Api V2 Locales Current
+      description: 'This works like Show Locale, but instead of taking a locale id as an argument, it renders the locale of the user performing the request.
 
 
         #### Allowed For
 
 
-        * Anyone
-
-        '
+        * Anyone'
       responses:
         '200':
           description: Success response
@@ -113,13 +105,11 @@ paths:
       operationId: DetectBestLocale
       tags:
       - Locales
-      summary: Zendesk Get  Api V2 Locales Detect_best_locale
+      summary: Zendesk Get Api V2 Locales Detect_best_locale
       description: '#### Allowed For
 
 
-        * Anyone
-
-        '
+        * Anyone'
       responses:
         '200':
           description: Success response
@@ -135,16 +125,14 @@ paths:
       operationId: ListAvailablePublicLocales
       tags:
       - Locales
-      summary: Zendesk Get  Api V2 Locales Public
+      summary: Zendesk Get Api V2 Locales Public
       description: 'Lists the translation locales that are available to all accounts.
 
 
         #### Allowed For
 
 
-        * Anyone
-
-        '
+        * Anyone'
       responses:
         '200':
           description: Success response

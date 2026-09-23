@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Resource Collections API
+  title: Zendesk Resource Collections API
   description: Needs a description.
 tags:
 - name: Resource Collections
@@ -11,16 +11,14 @@ paths:
       operationId: ListResourceCollections
       tags:
       - Resource Collections
-      summary: Zendesk Get  Api V2 Resource_collections
+      summary: Zendesk Get Api V2 Resource_collections
       description: 'Lists resource collections for the account.
 
 
         #### Allowed for
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -35,21 +33,19 @@ paths:
       operationId: CreateResourceCollection
       tags:
       - Resource Collections
-      summary: Zendesk Post  Api V2 Resource_collections
-      description: 'Creates a resource collection from a provided `payload` object. The `payload` object is specified the same way as the content of a requirements.json file in a Zendesk app. See [Specifying Apps Requirements](/documentation/apps/app-developer-guide/apps_requirements/) in the Zendesk Apps framework docs.
+      summary: Zendesk Post Api V2 Resource_collections
+      description: 'Creates a resource collection from a provided `payload` object. The `payload` object is specified the same way as the content of a requirements.json file in a Zendesk app. See Specifying Apps Requirements in the Zendesk Apps framework docs.
 
 
-        The response includes a [job
+        The response includes a job
 
-        status](/api-reference/ticketing/ticket-management/job_statuses/) for creation of the specified resources.
+        status for creation of the specified resources.
 
 
         #### Allowed for
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -67,16 +63,14 @@ paths:
       operationId: RetrieveResourceCollection
       tags:
       - Resource Collections
-      summary: Zendesk Get  Api V2 Resource_collections Resource_collection_id
+      summary: Zendesk Get Api V2 Resource_collections Resource_collection_id
       description: 'Retrieves details for a specified resource collection.
 
 
         #### Allowed for
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -91,21 +85,19 @@ paths:
       operationId: UpdateResourceCollection
       tags:
       - Resource Collections
-      summary: Zendesk Put  Api V2 Resource_collections Resource_collection_id
-      description: 'Updates a resource collection using a provided `payload` object. The `payload` object  is specified the same way as the content of a requirements.json file in a Zendesk app. See [Specifying Apps Requirements](/documentation/apps/app-developer-guide/apps_requirements/) in the Zendesk Apps framework docs.
+      summary: Zendesk Put Api V2 Resource_collections Resource_collection_id
+      description: 'Updates a resource collection using a provided `payload` object. The `payload` object is specified the same way as the content of a requirements.json file in a Zendesk app. See Specifying Apps Requirements in the Zendesk Apps framework docs.
 
 
-        The response includes a [job
+        The response includes a job
 
-        status](/api-reference/ticketing/ticket-management/job_statuses/) for the resource updates.
+        status for the resource updates.
 
 
         #### Allowed for
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -120,21 +112,19 @@ paths:
       operationId: DeleteResourceCollection
       tags:
       - Resource Collections
-      summary: Zendesk Delete  Api V2 Resource_collections Resource_collection_id
+      summary: Zendesk Delete Api V2 Resource_collections Resource_collection_id
       description: 'Deletes a specified resource collection.
 
 
-        The response includes a [job
+        The response includes a job
 
-        status](/api-reference/ticketing/ticket-management/job_statuses/) for deletion of the collection''s resources.
+        status for deletion of the collection''s resources.
 
 
         #### Allowed for
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response

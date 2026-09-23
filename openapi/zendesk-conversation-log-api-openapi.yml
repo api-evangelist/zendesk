@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Conversation Log API
+  title: Zendesk Tickets Conversation Log API
   description: Needs a description.
 tags:
 - name: Conversation Log
@@ -11,7 +11,7 @@ paths:
       operationId: ListConversationLogForTicket
       tags:
       - Conversation Log
-      summary: Zendesk Get  Api V2 Tickets Ticket_id Conversation_log
+      summary: Zendesk Get Api V2 Tickets Ticket_id Conversation_log
       description: 'Lists the conversation log events for a specified ticket.
 
 
@@ -21,7 +21,7 @@ paths:
         - Cursor pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -30,9 +30,7 @@ paths:
         #### Allowed for
 
 
-        * Agents
-
-        '
+        * Agents'
       parameters:
       - $ref: '#/components/parameters/TicketId'
       responses:

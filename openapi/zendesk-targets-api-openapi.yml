@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Targets API
+  title: Zendesk Targets API
   description: Needs a description.
 tags:
 - name: Targets
@@ -11,13 +11,11 @@ paths:
       operationId: ListTargets
       tags:
       - Targets
-      summary: Zendesk Get  Api V2 Targets
+      summary: Zendesk Get Api V2 Targets
       description: '#### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -32,13 +30,11 @@ paths:
       operationId: CreateTarget
       tags:
       - Targets
-      summary: Zendesk Post  Api V2 Targets
+      summary: Zendesk Post Api V2 Targets
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '201':
           description: Created response
@@ -56,13 +52,11 @@ paths:
       operationId: ShowTarget
       tags:
       - Targets
-      summary: Zendesk Get  Api V2 Targets Target_id
+      summary: Zendesk Get Api V2 Targets Target_id
       description: '#### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -77,12 +71,10 @@ paths:
       operationId: UpdateTarget
       tags:
       - Targets
-      summary: Zendesk Put  Api V2 Targets Target_id
+      summary: Zendesk Put Api V2 Targets Target_id
       description: '#### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -97,22 +89,15 @@ paths:
       operationId: DeleteTarget
       tags:
       - Targets
-      summary: Zendesk Delete  Api V2 Targets Target_id
+      summary: Zendesk Delete Api V2 Targets Target_id
       description: '#### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No Content response
 components:
   schemas:
-    TargetResponse:
-      type: object
-      properties:
-        target:
-          $ref: '#/components/schemas/TargetObject'
     TargetsResponse:
       type: object
       properties:
@@ -120,3 +105,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TargetObject'
+    TargetResponse:
+      type: object
+      properties:
+        target:
+          $ref: '#/components/schemas/TargetObject'

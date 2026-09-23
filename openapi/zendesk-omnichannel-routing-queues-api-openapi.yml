@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Omnichannel Routing Queues API
+  title: Zendesk Queues Omnichannel Routing Queues API
   description: Needs a description.
 tags:
 - name: Omnichannel Routing Queues
@@ -11,16 +11,14 @@ paths:
       operationId: ListQueues
       tags:
       - Omnichannel Routing Queues
-      summary: Zendesk Get  Api V2 Queues
+      summary: Zendesk Get Api V2 Queues
       description: 'Returns all active queues for an account.
 
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -35,16 +33,14 @@ paths:
       operationId: CreateQueue
       tags:
       - Omnichannel Routing Queues
-      summary: Zendesk Post  Api V2 Queues
+      summary: Zendesk Post Api V2 Queues
       description: 'Creates a queue. Accepts a JSON queue definition as the request body.
 
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '201':
           description: Created response
@@ -62,15 +58,13 @@ paths:
       operationId: ShowQueueById
       tags:
       - Omnichannel Routing Queues
-      summary: Zendesk Get  Api V2 Queues Queue_id
+      summary: Zendesk Get Api V2 Queues Queue_id
       description: 'Returns a queue for the given queue id.
 
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -85,15 +79,13 @@ paths:
       operationId: UpdateQueue
       tags:
       - Omnichannel Routing Queues
-      summary: Zendesk Put  Api V2 Queues Queue_id
+      summary: Zendesk Put Api V2 Queues Queue_id
       description: 'Updates the queue definition for a given queue id.
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -108,15 +100,13 @@ paths:
       operationId: DeleteQueue
       tags:
       - Omnichannel Routing Queues
-      summary: Zendesk Delete  Api V2 Queues Queue_id
+      summary: Zendesk Delete Api V2 Queues Queue_id
       description: 'Deletes the queue and related records.
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No content response
@@ -125,7 +115,7 @@ paths:
       operationId: ListQueueDefinitions
       tags:
       - Omnichannel Routing Queues
-      summary: Zendesk Get  Api V2 Queues Definitions
+      summary: Zendesk Get Api V2 Queues Definitions
       description: 'Returns the definitions of the queues and the
 
         definitions of the conditions under which a queue can execute. The
@@ -139,9 +129,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -157,7 +145,7 @@ paths:
       operationId: ReorderQueues
       tags:
       - Omnichannel Routing Queues
-      summary: Zendesk Patch  Api V2 Queues Order
+      summary: Zendesk Patch Api V2 Queues Order
       description: 'Alters the evaluation order of OCR queues in the account.
 
         The evaluation order is set in a `queue_ids` array in the request body.
@@ -169,19 +157,12 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No Content
 components:
   schemas:
-    QueueResponse:
-      type: object
-      properties:
-        queue:
-          $ref: '#/components/schemas/QueueObject'
     QueuesResponse:
       type: object
       properties:
@@ -189,6 +170,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueueObject'
+    QueueResponse:
+      type: object
+      properties:
+        queue:
+          $ref: '#/components/schemas/QueueObject'
     DefinitionsResponse:
       type: object
       properties:

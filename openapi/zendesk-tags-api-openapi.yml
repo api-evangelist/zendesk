@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Tags API
+  title: Zendesk Tags API
   description: Needs a description.
 tags:
 - name: Tags
@@ -11,7 +11,7 @@ paths:
       operationId: ListTags
       tags:
       - Tags
-      summary: Zendesk Get  Api V2 Tags
+      summary: Zendesk Get Api V2 Tags
       description: 'Lists up to the 20,000 most popular tags in the last 60 days, in decreasing popularity.
 
 
@@ -23,7 +23,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -32,9 +32,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -50,7 +48,7 @@ paths:
       operationId: CountTags
       tags:
       - Tags
-      summary: Zendesk Get  Api V2 Tags Count
+      summary: Zendesk Get Api V2 Tags Count
       description: 'Returns an approximate count of tags. If the count exceeds 100,000, it
 
         is updated every 24 hours.
@@ -73,9 +71,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -88,11 +84,6 @@ paths:
                   $ref: '#/components/examples/TagCountResponseExample'
 components:
   schemas:
-    TagCountResponse:
-      type: object
-      properties:
-        count:
-          $ref: '#/components/schemas/TagCountObject'
     TagsResponse:
       type: object
       properties:
@@ -114,3 +105,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TagListTagObject'
+    TagCountResponse:
+      type: object
+      properties:
+        count:
+          $ref: '#/components/schemas/TagCountObject'

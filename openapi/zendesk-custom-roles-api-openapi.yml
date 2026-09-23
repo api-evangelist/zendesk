@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Custom Roles API
+  title: Zendesk Custom Roles API
   description: Needs a description.
 tags:
 - name: Custom Roles
@@ -11,7 +11,7 @@ paths:
       operationId: ListCustomRoles
       tags:
       - Custom Roles
-      summary: Zendesk Get  Api V2 Custom_roles
+      summary: Zendesk Get Api V2 Custom_roles
       description: '#### Availability
 
 
@@ -21,9 +21,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -38,7 +36,7 @@ paths:
       operationId: CreateCustomRole
       tags:
       - Custom Roles
-      summary: Zendesk Post  Api V2 Custom_roles
+      summary: Zendesk Post Api V2 Custom_roles
       description: '#### Availability
 
 
@@ -50,9 +48,7 @@ paths:
 
         * Administrators
 
-        * Agents with the `manage_roles` permission
-
-        '
+        * Agents with the `manage_roles` permission'
       responses:
         '200':
           description: Created response
@@ -70,7 +66,7 @@ paths:
       operationId: ShowCustomRoleById
       tags:
       - Custom Roles
-      summary: Zendesk Get  Api V2 Custom_roles Custom_role_id
+      summary: Zendesk Get Api V2 Custom_roles Custom_role_id
       description: '#### Availability
 
 
@@ -82,9 +78,7 @@ paths:
 
         * Administrators
 
-        * Agents with the `manage_roles` permission
-
-        '
+        * Agents with the `manage_roles` permission'
       responses:
         '200':
           description: Success response
@@ -99,7 +93,7 @@ paths:
       operationId: UpdateCustomRoleById
       tags:
       - Custom Roles
-      summary: Zendesk Put  Api V2 Custom_roles Custom_role_id
+      summary: Zendesk Put Api V2 Custom_roles Custom_role_id
       description: '#### Availability
 
 
@@ -111,9 +105,7 @@ paths:
 
         * Administrators
 
-        Agents with the `manage_roles` permission
-
-        '
+        Agents with the `manage_roles` permission'
       responses:
         '200':
           description: Success response
@@ -128,7 +120,7 @@ paths:
       operationId: DeleteCustomRoleById
       tags:
       - Custom Roles
-      summary: Zendesk Delete  Api V2 Custom_roles Custom_role_id
+      summary: Zendesk Delete Api V2 Custom_roles Custom_role_id
       description: '#### Availability
 
 
@@ -140,19 +132,12 @@ paths:
 
         * Administrators
 
-        * Agents with the `manage_roles` permission
-
-        '
+        * Agents with the `manage_roles` permission'
       responses:
         '204':
           description: No Contetnt response
 components:
   schemas:
-    CustomRoleResponse:
-      type: object
-      properties:
-        custom_role:
-          $ref: '#/components/schemas/CustomRoleObject'
     CustomRolesResponse:
       type: object
       properties:
@@ -160,3 +145,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomRoleObject'
+    CustomRoleResponse:
+      type: object
+      properties:
+        custom_role:
+          $ref: '#/components/schemas/CustomRoleObject'

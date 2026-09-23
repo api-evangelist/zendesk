@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk Ticket Audits API
   version: '1.0'
-  title: Zendesk Account Account Settings Ticket Audits API
-  description: Needs a description.
+  description: 'Operations tagged Ticket Audits across 2 of this provider''s published API definitions: ticket-audits-openapi-original.yml, tickets-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: Ticket Audits
 paths:
@@ -11,21 +11,19 @@ paths:
       operationId: ListTicketAudits
       tags:
       - Ticket Audits
-      summary: Zendesk Get  Api V2 Ticket_audits
-      description: 'Returns ticket audits. Archived tickets are not included in the response. Use the [List Audits for a Ticket](#list-audits-for-a-ticket) endpoint to
+      summary: Zendesk Get Api V2 Ticket_audits
+      description: 'Returns ticket audits. Archived tickets are not included in the response. Use the List Audits for a Ticket endpoint to
 
-        retrieve audit records for an archived ticket. To learn more about archived tickets, see [About archived tickets](https://support.zendesk.com/hc/en-us/articles/203657756).
+        retrieve audit records for an archived ticket. To learn more about archived tickets, see About archived tickets.
 
 
-        This endpoint should not be used for capturing change data. When continually chasing the tail of a cursor, some records will be skipped. For this use case, use the [Incremental Ticket Event Export API](/api-reference/ticketing/ticket-management/incremental_exports/#incremental-ticket-event-export).
+        This endpoint should not be used for capturing change data. When continually chasing the tail of a cursor, some records will be skipped. For this use case, use the Incremental Ticket Event Export API.
 
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       parameters:
       - name: page[before]
         in: query
@@ -63,7 +61,7 @@ paths:
       operationId: ListAuditsForTicket
       tags:
       - Ticket Audits
-      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits
+      summary: Zendesk Get Api V2 Tickets Ticket_id Audits
       description: 'Lists the audits for a specified ticket.
 
 
@@ -75,21 +73,19 @@ paths:
         - Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
 
 
-        **Note**: Audits for [Archived Tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) do not support pagination for this endpoint.
+        **Note**: Audits for Archived Tickets do not support pagination for this endpoint.
 
 
         #### Allowed for
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: OK response
@@ -108,13 +104,11 @@ paths:
       operationId: ShowTicketAudit
       tags:
       - Ticket Audits
-      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits Ticket_audit_id
+      summary: Zendesk Get Api V2 Tickets Ticket_id Audits Ticket_audit_id
       description: '#### Allowed for
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: OK response
@@ -133,13 +127,11 @@ paths:
       operationId: MakeTicketCommentPrivateFromAudits
       tags:
       - Ticket Audits
-      summary: Zendesk Put  Api V2 Tickets Ticket_id Audits Ticket_audit_id Make_private
+      summary: Zendesk Put Api V2 Tickets Ticket_id Audits Ticket_audit_id Make_private
       description: '#### Allowed for
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: description
@@ -157,8 +149,8 @@ paths:
       operationId: CountAuditsForTicket
       tags:
       - Ticket Audits
-      summary: Zendesk Get  Api V2 Tickets Ticket_id Audits Count
-      description: 'Returns an approximate count of audits for a specified ticket. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.
+      summary: Zendesk Get Api V2 Tickets Ticket_id Audits Count
+      description: 'Returns an approximate count of audits for a specified ticket. If the count exceeds 100,000, the count will return a cached result. This cached result will update every 24 hours.
 
 
         The `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.
@@ -170,9 +162,7 @@ paths:
         #### Allowed for
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Count of audits on a ticket
@@ -238,3 +228,6 @@ components:
       properties:
         audit:
           $ref: '#/components/schemas/TicketAuditObject'
+x-refined-from:
+- ticket-audits-openapi-original.yml
+- tickets-openapi-original.yml

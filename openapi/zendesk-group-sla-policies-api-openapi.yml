@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Group SLA Policies API
+  title: Zendesk Group Slas Group SLA Policies API
   description: Needs a description.
 tags:
 - name: Group SLA Policies
@@ -11,13 +11,11 @@ paths:
       operationId: ListGroupSLAPolicies
       tags:
       - Group SLA Policies
-      summary: Zendesk Get  Api V2 Group_slas Policies
+      summary: Zendesk Get Api V2 Group_slas Policies
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -32,13 +30,11 @@ paths:
       operationId: CreateGroupSLAPolicy
       tags:
       - Group SLA Policies
-      summary: Zendesk Post  Api V2 Group_slas Policies
+      summary: Zendesk Post Api V2 Group_slas Policies
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '201':
           description: Created response
@@ -56,13 +52,11 @@ paths:
       operationId: ShowGroupSLAPolicy
       tags:
       - Group SLA Policies
-      summary: Zendesk Get  Api V2 Group_slas Policies Group_sla_policy_id
+      summary: Zendesk Get Api V2 Group_slas Policies Group_sla_policy_id
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -77,16 +71,14 @@ paths:
       operationId: UpdateGroupSLAPolicy
       tags:
       - Group SLA Policies
-      summary: Zendesk Put  Api V2 Group_slas Policies Group_sla_policy_id
+      summary: Zendesk Put Api V2 Group_slas Policies Group_sla_policy_id
       description: 'Updates the specified policy.
 
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -101,13 +93,11 @@ paths:
       operationId: DeleteGroupSLAPolicy
       tags:
       - Group SLA Policies
-      summary: Zendesk Delete  Api V2 Group_slas Policies Group_sla_policy_id
+      summary: Zendesk Delete Api V2 Group_slas Policies Group_sla_policy_id
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No Content response
@@ -116,13 +106,11 @@ paths:
       operationId: RetrieveGroupSLAPolicyFilterDefinitionItems
       tags:
       - Group SLA Policies
-      summary: Zendesk Get  Api V2 Group_slas Policies Definitions
+      summary: Zendesk Get Api V2 Group_slas Policies Definitions
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -138,13 +126,11 @@ paths:
       operationId: ReorderGroupSLAPolicies
       tags:
       - Group SLA Policies
-      summary: Zendesk Put  Api V2 Group_slas Policies Reorder
+      summary: Zendesk Put Api V2 Group_slas Policies Reorder
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       parameters:
       - name: group_sla_policy_ids
         in: query
@@ -165,24 +151,11 @@ paths:
               example: ''
 components:
   schemas:
-    GroupSLAPoliciesResponse:
+    GroupSLAPolicyResponse:
       type: object
       properties:
-        count:
-          type: integer
-          readOnly: true
-        group_sla_policies:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupSLAPolicyObject'
-        next_page:
-          type: string
-          nullable: true
-          readOnly: true
-        previous_page:
-          type: string
-          nullable: true
-          readOnly: true
+        group_sla_policy:
+          $ref: '#/components/schemas/GroupSLAPolicyObject'
     GroupSLAPolicyFilterDefinitionResponse:
       type: object
       properties:
@@ -224,8 +197,21 @@ components:
                               nullable: true
                       type:
                         type: string
-    GroupSLAPolicyResponse:
+    GroupSLAPoliciesResponse:
       type: object
       properties:
-        group_sla_policy:
-          $ref: '#/components/schemas/GroupSLAPolicyObject'
+        count:
+          type: integer
+          readOnly: true
+        group_sla_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupSLAPolicyObject'
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true

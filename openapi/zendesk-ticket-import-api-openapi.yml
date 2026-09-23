@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Ticket Import API
+  title: Zendesk Tickets Ticket Import API
   description: Needs a description.
 tags:
 - name: Ticket Import
@@ -11,7 +11,7 @@ paths:
       operationId: TicketImport
       tags:
       - Ticket Import
-      summary: Zendesk Post  Api V2 Imports Tickets
+      summary: Zendesk Post Api V2 Imports Tickets
       description: '#### Allowed For
 
 
@@ -41,7 +41,7 @@ paths:
       operationId: TicketBulkImport
       tags:
       - Ticket Import
-      summary: Zendesk Post  Api V2 Imports Tickets Create_many
+      summary: Zendesk Post Api V2 Imports Tickets Create_many
       description: 'Accepts an array of up to 100 ticket objects.
 
 
@@ -71,13 +71,13 @@ paths:
                   $ref: '#/components/examples/JobStatusResponseExample'
 components:
   schemas:
-    JobStatusResponse:
-      type: object
-      properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
     TicketResponse:
       type: object
       properties:
         ticket:
           $ref: '#/components/schemas/TicketObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Reseller API
+  title: Zendesk Account Reseller API
   description: Needs a description.
 tags:
 - name: Reseller
@@ -11,7 +11,7 @@ paths:
       operationId: CreateTrialAccount
       tags:
       - Reseller
-      summary: Zendesk Post  Api V2 Accounts
+      summary: Zendesk Post Api V2 Accounts
       responses:
         '201':
           description: Created response
@@ -27,13 +27,11 @@ paths:
       operationId: VerifySubdomainAvailability
       tags:
       - Reseller
-      summary: Zendesk Get  Api V2 Accounts Available
+      summary: Zendesk Get Api V2 Accounts Available
       description: 'Zendesk Support credentials are not required to access this endpoint. You can use any Zendesk Support subdomain.
 
 
-        Returns "true" if the subdomain is available.
-
-        '
+        Returns "true" if the subdomain is available.'
       parameters:
       - name: subdomain
         in: query

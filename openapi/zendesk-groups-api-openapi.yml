@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Groups API
+  title: Zendesk Groups API
   description: Needs a description.
 tags:
 - name: Groups
@@ -11,7 +11,7 @@ paths:
       operationId: ListGroups
       tags:
       - Groups
-      summary: Zendesk Get  Api V2 Groups
+      summary: Zendesk Get Api V2 Groups
       description: '#### Pagination
 
 
@@ -20,7 +20,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -31,9 +31,7 @@ paths:
 
         * Admins
 
-        * Agents
-
-        '
+        * Agents'
       parameters:
       - $ref: '#/components/parameters/UserId'
       - $ref: '#/components/parameters/ExcludeDeleted'
@@ -51,15 +49,13 @@ paths:
       operationId: CreateGroup
       tags:
       - Groups
-      summary: Zendesk Post  Api V2 Groups
+      summary: Zendesk Post Api V2 Groups
       description: '#### Allowed For
 
 
         * Admins
 
-        * Agents assigned to a custom role with permissions to manage groups (Enterprise only)
-
-        '
+        * Agents assigned to a custom role with permissions to manage groups (Enterprise only)'
       responses:
         '201':
           description: Created response
@@ -77,15 +73,13 @@ paths:
       operationId: ShowGroupById
       tags:
       - Groups
-      summary: Zendesk Get  Api V2 Groups Group_id
+      summary: Zendesk Get Api V2 Groups Group_id
       description: '#### Allowed For
 
 
         * Admins
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -100,13 +94,11 @@ paths:
       operationId: UpdateGroup
       tags:
       - Groups
-      summary: Zendesk Put  Api V2 Groups Group_id
+      summary: Zendesk Put Api V2 Groups Group_id
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -121,15 +113,13 @@ paths:
       operationId: DeleteGroup
       tags:
       - Groups
-      summary: Zendesk Delete  Api V2 Groups Group_id
+      summary: Zendesk Delete Api V2 Groups Group_id
       description: '#### Allowed For
 
 
         * Admins
 
-        * Agents assigned to a custom role with permissions to manage groups (Enterprise only)
-
-        '
+        * Agents assigned to a custom role with permissions to manage groups (Enterprise only)'
       responses:
         '204':
           description: No content response
@@ -138,7 +128,7 @@ paths:
       operationId: ListAssignableGroups
       tags:
       - Groups
-      summary: Zendesk Get  Api V2 Groups Assignable
+      summary: Zendesk Get Api V2 Groups Assignable
       description: '#### Pagination
 
 
@@ -147,7 +137,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -158,9 +148,7 @@ paths:
 
         * Admins
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -178,7 +166,7 @@ paths:
       operationId: CountGroups
       tags:
       - Groups
-      summary: Zendesk Get  Api V2 Groups Count
+      summary: Zendesk Get Api V2 Groups Count
       description: 'Returns an approximate count of groups. If the count exceeds 100,000, it is updated every 24 hours.
 
 
@@ -193,9 +181,7 @@ paths:
 
         * Admins
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -208,6 +194,13 @@ paths:
                   $ref: '#/components/examples/GroupsCountResponseExample'
 components:
   schemas:
+    GroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupObject'
     GroupResponse:
       type: object
       properties:
@@ -228,10 +221,3 @@ components:
               type: integer
               description: Approximate count of groups
               readOnly: true
-    GroupsResponse:
-      type: object
-      properties:
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupObject'

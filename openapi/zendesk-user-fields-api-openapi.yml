@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings User Fields API
+  title: Zendesk User Fields API
   description: Needs a description.
 tags:
 - name: User Fields
@@ -11,8 +11,8 @@ paths:
       operationId: ListUserFields
       tags:
       - User Fields
-      summary: Zendesk Get  Api V2 User_fields
-      description: 'Returns a list of custom user fields in your account. Fields are returned in the order that you specify in your user fields configuration in Zendesk Support. Clients should cache this resource for the duration of their API usage and map the key for each User Field to the values returned under the `user_fields` attribute on the [User](/api-reference/ticketing/users/users/) resource.
+      summary: Zendesk Get Api V2 User_fields
+      description: 'Returns a list of custom user fields in your account. Fields are returned in the order that you specify in your user fields configuration in Zendesk Support. Clients should cache this resource for the duration of their API usage and map the key for each User Field to the values returned under the `user_fields` attribute on the User resource.
 
 
         #### Pagination
@@ -23,7 +23,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -32,9 +32,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -49,7 +47,7 @@ paths:
       operationId: CreateUserField
       tags:
       - User Fields
-      summary: Zendesk Post  Api V2 User_fields
+      summary: Zendesk Post Api V2 User_fields
       description: 'Creates any of the following custom field types:
 
 
@@ -74,15 +72,13 @@ paths:
         * multiselect
 
 
-        See [About custom field types](https://support.zendesk.com/hc/en-us/articles/203661866) in Zendesk help.
+        See About custom field types in Zendesk help.
 
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '201':
           description: Created response
@@ -100,13 +96,11 @@ paths:
       operationId: ShowUserField
       tags:
       - User Fields
-      summary: Zendesk Get  Api V2 User_fields User_field_id
+      summary: Zendesk Get Api V2 User_fields User_field_id
       description: '#### Allowed for
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -121,8 +115,45 @@ paths:
       operationId: UpdateUserField
       tags:
       - User Fields
-      summary: Zendesk Put  Api V2 User_fields User_field_id
-      description: "#### Updating a Dropdown (Tagger) or Multiselect Field\n\nDropdown and multiselect fields return an array of `custom_field_options` which specify the name, value, and order of the list of dropdown or multiselect options.\nUnderstand the following behavior when updating a dropdown or multiselect field:\n\n- All options must be passed on update. Options that are not passed will be removed. As a result, these values will be removed from any organizations.\n- To create a new option, pass a null `id` along with `name` and `value`.\n- To update an existing option, pass its `id` along with `name` and `value`.\n- To re-order an option, reposition it in the `custom_field_options` array relative to the other options.\n- To remove an option, omit it from the list of options upon update.\n\n#### Example Request\n\n```bash\ncurl https://{subdomain}.zendesk.com/api/v2/user_fields/{user_field_id}.json \\\n  -H \"Content-Type: application/json\" -X PUT \\\n  -d '{\"user_field\": {\"custom_field_options\": [{\"id\": 124, \"name\": \"Option 2\", \"value\": \"option_2\"}, {\"id\": 123, \"name\": \"Option 1\", \"value\": \"option_1\"}, {\"id\": 125, \"name\": \"Option 2\", \"value\": \"option_3\"}]}}' \\\n  -v -u {email_address}/token:{api_token}\n```\n#### Allowed for\n\n* Admins\n"
+      summary: Zendesk Put Api V2 User_fields User_field_id
+      description: '#### Updating a Dropdown (Tagger) or Multiselect Field
+
+
+        Dropdown and multiselect fields return an array of `custom_field_options` which specify the name, value, and order of the list of dropdown or multiselect options.
+
+        Understand the following behavior when updating a dropdown or multiselect field:
+
+
+        - All options must be passed on update. Options that are not passed will be removed. As a result, these values will be removed from any organizations.
+
+        - To create a new option, pass a null `id` along with `name` and `value`.
+
+        - To update an existing option, pass its `id` along with `name` and `value`.
+
+        - To re-order an option, reposition it in the `custom_field_options` array relative to the other options.
+
+        - To remove an option, omit it from the list of options upon update.
+
+
+        #### Example Request
+
+
+        ```bash
+
+        curl https://{subdomain}.zendesk.com/api/v2/user_fields/{user_field_id}.json \
+
+        -H "Content-Type: application/json" -X PUT \
+
+        -d ''{"user_field": {"custom_field_options": [{"id": 124, "name": "Option 2", "value": "option_2"}, {"id": 123, "name": "Option 1", "value": "option_1"}, {"id": 125, "name": "Option 2", "value": "option_3"}]}}'' \
+
+        -v -u {email_address}/token:{api_token}
+
+        ```
+
+        #### Allowed for
+
+
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -137,13 +168,11 @@ paths:
       operationId: DeleteUserField
       tags:
       - User Fields
-      summary: Zendesk Delete  Api V2 User_fields User_field_id
+      summary: Zendesk Delete Api V2 User_fields User_field_id
       description: '#### Allowed for
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No Content response
@@ -154,7 +183,7 @@ paths:
       operationId: ListUserFieldOptions
       tags:
       - User Fields
-      summary: Zendesk Get  Api V2 User_fields User_field_id Options
+      summary: Zendesk Get Api V2 User_fields User_field_id Options
       description: 'Returns a list of custom user field options for the given dropdown user field.
 
 
@@ -166,7 +195,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -175,9 +204,7 @@ paths:
         #### Allowed For
 
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -192,7 +219,7 @@ paths:
       operationId: CreateOrUpdateUserFieldOption
       tags:
       - User Fields
-      summary: Zendesk Post  Api V2 User_fields User_field_id Options
+      summary: Zendesk Post Api V2 User_fields User_field_id Options
       description: 'Creates a new option or updates an existing option for the given drop-down user field.
 
 
@@ -213,9 +240,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -243,12 +268,10 @@ paths:
       operationId: ShowUserFieldOption
       tags:
       - User Fields
-      summary: Zendesk Get  Api V2 User_fields User_field_id Options User_field_option_id
+      summary: Zendesk Get Api V2 User_fields User_field_id Options User_field_option_id
       description: '#### Allowed for
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -263,12 +286,10 @@ paths:
       operationId: DeleteUserFieldOption
       tags:
       - User Fields
-      summary: Zendesk Delete  Api V2 User_fields User_field_id Options User_field_option_id
+      summary: Zendesk Delete Api V2 User_fields User_field_id Options User_field_option_id
       description: '#### Allowed for
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No Content response
@@ -277,13 +298,11 @@ paths:
       operationId: ReorderUserField
       tags:
       - User Fields
-      summary: Zendesk Put  Api V2 User_fields Reorder
+      summary: Zendesk Put Api V2 User_fields Reorder
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -317,6 +336,16 @@ components:
           description: URL of the previous page
           nullable: true
           readOnly: true
+    UserFieldResponse:
+      type: object
+      properties:
+        user_field:
+          $ref: '#/components/schemas/UserFieldObject'
+    CustomFieldOptionResponse:
+      type: object
+      properties:
+        custom_field_option:
+          $ref: '#/components/schemas/CustomFieldOptionObject'
     UserFieldsResponse:
       type: object
       properties:
@@ -338,13 +367,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserFieldObject'
-    CustomFieldOptionResponse:
-      type: object
-      properties:
-        custom_field_option:
-          $ref: '#/components/schemas/CustomFieldOptionObject'
-    UserFieldResponse:
-      type: object
-      properties:
-        user_field:
-          $ref: '#/components/schemas/UserFieldObject'

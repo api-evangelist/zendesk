@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Dynamic Content Item Variants API
+  title: Zendesk Dynamic Content Dynamic Content Item Variants API
   description: Needs a description.
 tags:
 - name: Dynamic Content Item Variants
@@ -13,7 +13,7 @@ paths:
       operationId: DynamicContentListVariants
       tags:
       - Dynamic Content Item Variants
-      summary: Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
+      summary: Zendesk Get Api V2 Dynamic_content Items Dynamic_content_item_id Variants
       description: 'Returns all the variants of the specified dynamic content item.
 
 
@@ -31,9 +31,7 @@ paths:
         * Cursor pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
-
-        '
+        See Pagination.'
       responses:
         '200':
           description: Success response
@@ -48,16 +46,14 @@ paths:
       operationId: CreateDynamicContentVariant
       tags:
       - Dynamic Content Item Variants
-      summary: Zendesk Post  Api V2 Dynamic_content Items Dynamic_content_item_id Variants
+      summary: Zendesk Post Api V2 Dynamic_content Items Dynamic_content_item_id Variants
       description: 'You can only create one variant for each locale id. If a locale variant already exists, the request is rejected.
 
 
         #### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '201':
           description: Created response
@@ -76,13 +72,11 @@ paths:
       operationId: ShowDynamicContentVariant
       tags:
       - Dynamic Content Item Variants
-      summary: Zendesk Get  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
+      summary: Zendesk Get Api V2 Dynamic_content Items Dynamic_content_item_id Variants…
       description: '#### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '200':
           description: Success response
@@ -97,7 +91,7 @@ paths:
       operationId: UpdateDynamicContentVariant
       tags:
       - Dynamic Content Item Variants
-      summary: Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
+      summary: Zendesk Put Api V2 Dynamic_content Items Dynamic_content_item_id Variants…
       description: 'Updates the specified variant. You don''t need to include all the properties. If you just want to update content, for example, then include just that.
 
 
@@ -107,9 +101,7 @@ paths:
         #### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '200':
           description: Success response
@@ -124,13 +116,11 @@ paths:
       operationId: DeleteDynamicContentVariant
       tags:
       - Dynamic Content Item Variants
-      summary: Zendesk Delete  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Dynamic_content_variant_id
+      summary: Zendesk Delete Api V2 Dynamic_content Items Dynamic_content_item_id Variants…
       description: '#### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '204':
           description: No Content response
@@ -141,13 +131,11 @@ paths:
       operationId: CreateManyDynamicContentVariants
       tags:
       - Dynamic Content Item Variants
-      summary: Zendesk Post  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Create_many
+      summary: Zendesk Post Api V2 Dynamic_content Items Dynamic_content_item_id Variants…
       description: '#### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '201':
           description: Created response
@@ -165,19 +153,17 @@ paths:
       operationId: UpdateManyDynamicContentVariants
       tags:
       - Dynamic Content Item Variants
-      summary: Zendesk Put  Api V2 Dynamic_content Items Dynamic_content_item_id Variants Update_many
-      description: 'Updates one or more variants. See [Update Variant](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/#update-variant).
+      summary: Zendesk Put Api V2 Dynamic_content Items Dynamic_content_item_id Variants…
+      description: 'Updates one or more variants. See Update Variant.
 
 
-        You must specify the variants by id in the body. To get the variant ids, see [List Variants](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/#list-variants).
+        You must specify the variants by id in the body. To get the variant ids, see List Variants.
 
 
         #### Allowed For
 
 
-        * Admins, Agents
-
-        '
+        * Admins, Agents'
       responses:
         '200':
           description: Success response
@@ -190,6 +176,11 @@ paths:
                   $ref: '#/components/examples/DynamicContentVariantsUpdateManyResponseExample'
 components:
   schemas:
+    DynamicContentVariantResponse:
+      type: object
+      properties:
+        variant:
+          $ref: '#/components/schemas/DynamicContentVariantObject'
     DynamicContentVariantsResponse:
       type: object
       properties:
@@ -197,8 +188,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DynamicContentVariantObject'
-    DynamicContentVariantResponse:
-      type: object
-      properties:
-        variant:
-          $ref: '#/components/schemas/DynamicContentVariantObject'

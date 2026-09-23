@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Support Addresses API
+  title: Zendesk Recipient Addresses Support Addresses API
   description: Needs a description.
 tags:
 - name: Support Addresses
@@ -11,7 +11,7 @@ paths:
       operationId: ListSupportAddresses
       tags:
       - Support Addresses
-      summary: Zendesk Get  Api V2 Recipient_addresses
+      summary: Zendesk Get Api V2 Recipient_addresses
       description: 'Lists all the support addresses for the account.
 
 
@@ -23,7 +23,7 @@ paths:
         - Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -34,9 +34,7 @@ paths:
 
         * Admins
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -51,16 +49,16 @@ paths:
       operationId: CreateSupportAddress
       tags:
       - Support Addresses
-      summary: Zendesk Post  Api V2 Recipient_addresses
+      summary: Zendesk Post Api V2 Recipient_addresses
       description: 'Adds a Zendesk or external support address to your account.
 
 
         To add a Zendesk address, use the following syntax: `{local-part}@{accountname}.zendesk.com`.
 
-        Example: ''sales-team@example.zendesk.com''. The [local-part](https://en.wikipedia.org/wiki/Email_address#Local-part) can be anything you like.
+        Example: ''sales-team@example.zendesk.com''. The local-part can be anything you like.
 
 
-        To add an external email address such as help@omniwearshop.com, the email must already exist and you must set up forwarding on your email server. The exact steps depend on your mail server. See [Forwarding incoming email to Zendesk Support](https://support.zendesk.com/hc/en-us/articles/203663266). After setting up forwarding, run the [Verify Support Address Forwarding](#verify-support-address-forwarding) endpoint. The address won''t work in Zendesk Support until it''s been verified.
+        To add an external email address such as help@omniwearshop.com, the email must already exist and you must set up forwarding on your email server. The exact steps depend on your mail server. See Forwarding incoming email to Zendesk Support. After setting up forwarding, run the Verify Support Address Forwarding endpoint. The address won''t work in Zendesk Support until it''s been verified.
 
 
         #### Allowed For
@@ -68,9 +66,7 @@ paths:
 
         * Admins
 
-        * Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center
-
-        '
+        * Agents with permission to manage channels and extensions. See the system permissions in Creating custom roles and assigning agents (Enterprise) in the Support Help Center'
       responses:
         '201':
           description: Created response
@@ -88,15 +84,13 @@ paths:
       operationId: ShowSupportAddress
       tags:
       - Support Addresses
-      summary: Zendesk Get  Api V2 Recipient_addresses Support_address_id
+      summary: Zendesk Get Api V2 Recipient_addresses Support_address_id
       description: '#### Allowed For
 
 
         * Admins
 
-        * Agents
-
-        '
+        * Agents'
       responses:
         '200':
           description: Success response
@@ -111,15 +105,15 @@ paths:
       operationId: UpdateSupportAddress
       tags:
       - Support Addresses
-      summary: Zendesk Put  Api V2 Recipient_addresses Support_address_id
+      summary: Zendesk Put Api V2 Recipient_addresses Support_address_id
       description: 'Updates an existing support address for your account.
 
 
         You can''t use this endpoint to update a support address''s `email` property.
 
-        Instead, you can create a new address using the [Create Support
+        Instead, you can create a new address using the Create Support
 
-        Address](#create-support-address) endpoint.
+        Address endpoint.
 
 
         #### Allowed For
@@ -127,9 +121,7 @@ paths:
 
         * Admins
 
-        * Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center
-
-        '
+        * Agents with permission to manage channels and extensions. See the system permissions in Creating custom roles and assigning agents (Enterprise) in the Support Help Center'
       responses:
         '200':
           description: Success response
@@ -144,7 +136,7 @@ paths:
       operationId: DeleteRecipientAddress
       tags:
       - Support Addresses
-      summary: Zendesk Delete  Api V2 Recipient_addresses Support_address_id
+      summary: Zendesk Delete Api V2 Recipient_addresses Support_address_id
       description: 'Deletes a support address.
 
 
@@ -153,9 +145,7 @@ paths:
 
         * Admins
 
-        * Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center
-
-        '
+        * Agents with permission to manage channels and extensions. See the system permissions in Creating custom roles and assigning agents (Enterprise) in the Support Help Center'
       responses:
         '204':
           description: No Content response
@@ -166,7 +156,7 @@ paths:
       operationId: VerifySupportAddressForwarding
       tags:
       - Support Addresses
-      summary: Zendesk Put  Api V2 Recipient_addresses Support_address_id Verify
+      summary: Zendesk Put Api V2 Recipient_addresses Support_address_id Verify
       description: 'Sends a test email to the specified support address to verify that email forwarding for the address works. An external support address won''t work in Zendesk Support until it''s verified.
 
 
@@ -176,10 +166,10 @@ paths:
         The endpoint takes the following body: `{"type": "forwarding"}`. The value of the `type` property defaults to "forwarding" if none is specified, but the values "spf" and "dns" are also accepted.
 
 
-        Use this endpoint after [adding](#create-support-address) an external support address to Zendesk Support and setting up forwarding on your email server. See [Forwarding incoming email to Zendesk Support](https://support.zendesk.com/hc/en-us/articles/203663266).
+        Use this endpoint after adding an external support address to Zendesk Support and setting up forwarding on your email server. See Forwarding incoming email to Zendesk Support.
 
 
-        The endpoint doesn''t return the results of the test. Instead, use the [Show Support Address](#show-support-address) endpoint to check that the `forwarding_status` property is "verified".
+        The endpoint doesn''t return the results of the test. Instead, use the Show Support Address endpoint to check that the `forwarding_status` property is "verified".
 
 
         Other verification checks can also be performed using this API. These include SPF checks and DNS checks.
@@ -196,9 +186,7 @@ paths:
 
         * Admins
 
-        * Agents with permission to manage channels and extensions. See the system permissions in [Creating custom roles and assigning agents (Enterprise)](https://support.zendesk.com/hc/en-us/articles/203662026-Creating-custom-roles-and-assigning-agents-Enterprise-#topic_cxn_hig_bd) in the Support Help Center
-
-        '
+        * Agents with permission to manage channels and extensions. See the system permissions in Creating custom roles and assigning agents (Enterprise) in the Support Help Center'
       responses:
         '200':
           description: Success response

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Global Clients API
+  title: Zendesk Oauth Global Clients API
   description: Needs a description.
 tags:
 - name: Global Clients
@@ -11,7 +11,7 @@ paths:
       operationId: ListGlobalOAuthClients
       tags:
       - Global Clients
-      summary: Zendesk Get  Api V2 Oauth Global_clients
+      summary: Zendesk Get Api V2 Oauth Global_clients
       description: 'Returns all the global OAuth clients that users on your account have authorized.
 
 
@@ -23,7 +23,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -32,9 +32,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -52,15 +50,13 @@ paths:
       operationId: ShowGlobalClient
       tags:
       - Global Clients
-      summary: Zendesk Get  Api V2 Oauth Global_clients Global_client_id
+      summary: Zendesk Get Api V2 Oauth Global_clients Global_client_id
       description: 'Returns the global OAuth client associated with the ID sent on the request.
 
 
         #### Allowed for
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -79,7 +75,7 @@ paths:
       operationId: GlobalOAuthClientsTokenSummary
       tags:
       - Global Clients
-      summary: Zendesk Get  Api V2 Oauth Global_clients Token_summary
+      summary: Zendesk Get Api V2 Oauth Global_clients Token_summary
       description: 'Returns information about tokens for the global clients that your account has authorized.
 
 
@@ -91,7 +87,7 @@ paths:
         * Offset pagination
 
 
-        See [Pagination](/api-reference/introduction/pagination/).
+        See Pagination.
 
 
         Returns a maximum of 100 records per page.
@@ -100,9 +96,7 @@ paths:
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -115,13 +109,6 @@ paths:
                   $ref: '#/components/examples/GlobalClientsTokenSummaryResponseExample'
 components:
   schemas:
-    GlobalClientsResponse:
-      type: object
-      properties:
-        global_clients:
-          type: array
-          items:
-            $ref: '#/components/schemas/GlobalClientObject'
     GlobalClientsTokenSummaryResponse:
       type: object
       properties:
@@ -134,3 +121,10 @@ components:
       properties:
         global_client:
           $ref: '#/components/schemas/GlobalClientObject'
+    GlobalClientsResponse:
+      type: object
+      properties:
+        global_clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalClientObject'

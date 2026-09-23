@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk Basics API
   version: '1.0'
-  title: Zendesk Account Account Settings Basics API
-  description: Needs a description.
+  description: 'Operations tagged Basics across 3 of this provider''s published API definitions: channels-openapi-original.yml, tickets-openapi-original.yml, users-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: Basics
 paths:
@@ -11,7 +11,7 @@ paths:
       operationId: OpenTicketInAgentBrowser
       tags:
       - Basics
-      summary: Zendesk Post  Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
+      summary: Zendesk Post Api V2 Channels Voice Agents Agent_id Tickets Ticket_id Display
       description: 'Allows you to instruct an agent''s browser to open a ticket.
 
 
@@ -65,7 +65,7 @@ paths:
       operationId: OpenUsersProfileInAgentBrowser
       tags:
       - Basics
-      summary: Zendesk Post  Api V2 Channels Voice Agents Agent_id Users User_id Display
+      summary: Zendesk Post Api V2 Channels Voice Agents Agent_id Users User_id Display
       description: 'Allows you to instruct an agent''s browser to open a user''s profile.
 
 
@@ -119,7 +119,7 @@ paths:
       operationId: CreateTicketOrVoicemailTicket
       tags:
       - Basics
-      summary: Zendesk Post  Api V2 Channels Voice Tickets
+      summary: Zendesk Post Api V2 Channels Voice Tickets
       description: '#### Allowed For
 
         * Agents
@@ -131,7 +131,7 @@ paths:
         #### Introduction
 
 
-        Creating tickets using Talk Partner Edition follows the same conventions as the Create Ticket endpoint. See [Create Ticket](/api-reference/ticketing/tickets/tickets/#create-ticket).
+        Creating tickets using Talk Partner Edition follows the same conventions as the Create Ticket endpoint. See Create Ticket.
 
 
         #### Request parameters
@@ -155,15 +155,15 @@ paths:
         Tickets created using this endpoint must have one of the following `via_id` parameters:
 
 
-        | ID       | Description
+        | ID | Description
 
         | ---------| -------------
 
-        | 44       | Voicemail
+        | 44 | Voicemail
 
-        | 45       | Phone call (inbound)
+        | 45 | Phone call (inbound)
 
-        | 46       | Phone call (outbound)
+        | 46 | Phone call (outbound)
 
 
         ### Creating voicemail tickets
@@ -176,25 +176,25 @@ paths:
         The ticket must have a `voice_comment` with the following values:
 
 
-        | Name               | Type                  | Comment
+        | Name | Type | Comment
 
         | ------------------ | ----------------------| -------
 
-        | from               | string                | Incoming phone number
+        | from | string | Incoming phone number
 
-        | to                 | string                | Dialed phone number
+        | to | string | Dialed phone number
 
-        | recording_url      | string                | URL of the recording
+        | recording_url | string | URL of the recording
 
-        | started_at         | date                  | [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) timestamp of the call starting time
+        | started_at | date | ISO 8601 timestamp of the call starting time
 
-        | call_duration      | integer               | Duration in seconds of the call
+        | call_duration | integer | Duration in seconds of the call
 
-        | answered_by_id     | integer               | The agent who answered the call
+        | answered_by_id | integer | The agent who answered the call
 
-        | transcription_text | string                | Transcription of the call (optional)
+        | transcription_text | string | Transcription of the call (optional)
 
-        | location           | string                | Location of the caller (optional)'
+        | location | string | Location of the caller (optional)'
       parameters:
       - $ref: '#/components/parameters/AgentId'
       - $ref: '#/components/parameters/TicketId'
@@ -241,3 +241,7 @@ components:
       properties:
         ticket:
           $ref: '#/components/schemas/TicketObject'
+x-refined-from:
+- channels-openapi-original.yml
+- tickets-openapi-original.yml
+- users-openapi-original.yml

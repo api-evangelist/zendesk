@@ -1,160 +1,24 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Zendesk Account Account Settings Ticket Forms API
+  title: Zendesk Ticket Forms API
   description: Needs a description.
 tags:
 - name: Ticket Forms
 paths:
-  /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses:
-    parameters:
-    - $ref: '#/components/parameters/TicketFormId'
-    get:
-      operationId: TicketFormTicketFormStatuses
-      tags:
-      - Ticket Forms
-      summary: Zendesk Get  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
-      description: 'Fetches all of the associated ticket form statuses of a ticket form.
-
-
-        #### Allowed For
-
-
-        * Admins
-
-        * Agents
-
-        '
-      responses:
-        '200':
-          description: Success response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TicketFormStatusesResponse'
-              examples:
-                default:
-                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
-    post:
-      operationId: CreateTicketFormStatuses
-      tags:
-      - Ticket Forms
-      summary: Zendesk Post  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
-      description: 'Creates one or many ticket form status associations
-
-
-        #### Allowed For
-
-
-        * Admins
-
-        '
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TicketFormStatusesParams'
-            example:
-              ticket_form_status:
-              - custom_status_id: 1234
-              - custom_status_id: 1235
-      responses:
-        '200':
-          description: Success response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TicketFormStatusesResponse'
-              examples:
-                default:
-                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
-    put:
-      operationId: UpdateTicketFormStatuses
-      tags:
-      - Ticket Forms
-      summary: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
-      description: 'Updates or deletes ticket form status associations. This is a bulk operation that can both add and remove ticket form status associations for a form in one call.
-
-
-        #### Allowed For
-
-
-        * Admins
-
-        '
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
-            example:
-              ticket_form_status:
-              - _destroy: '1'
-                id: abcdef
-              - custom_status_id: 1
-      responses:
-        '200':
-          description: Success response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TicketFormStatusesResponse'
-              examples:
-                default:
-                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
-  /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses/{ticket_form_status_id}:
-    parameters:
-    - $ref: '#/components/parameters/TicketFormId'
-    - $ref: '#/components/parameters/TicketFormStatusId'
-    put:
-      operationId: UpdateTicketFormStatusById
-      tags:
-      - Ticket Forms
-      summary: Zendesk Put  Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses Ticket_form_status_id
-      description: 'Updates or deletes ticket form status association by id.
-
-
-        #### Allowed For
-
-
-        * Admins
-
-        '
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
-            example:
-              ticket_form_status:
-              - custom_status_id: 1
-              - custom_status_id: 2
-              - custom_status_id: 3
-      responses:
-        '200':
-          description: Success response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TicketFormStatusesResponse'
-              examples:
-                default:
-                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
   /api/v2/ticket_forms:
     get:
       operationId: ListTicketForms
       tags:
       - Ticket Forms
-      summary: Zendesk Get  Api V2 Ticket_forms
+      summary: Zendesk Get Api V2 Ticket_forms
       description: 'Returns a list of all ticket forms for your account if accessed as an admin or agent. End users only see ticket forms that have `end_user_visible` set to true.
 
 
         #### Allowed For
 
 
-        * Anyone
-
-        '
+        * Anyone'
       parameters:
       - name: active
         in: query
@@ -190,13 +54,11 @@ paths:
       operationId: CreateTicketForm
       tags:
       - Ticket Forms
-      summary: Zendesk Post  Api V2 Ticket_forms
+      summary: Zendesk Post Api V2 Ticket_forms
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '201':
           description: Created response
@@ -214,13 +76,11 @@ paths:
       operationId: ShowTicketForm
       tags:
       - Ticket Forms
-      summary: Zendesk Get  Api V2 Ticket_forms Ticket_form_id
+      summary: Zendesk Get Api V2 Ticket_forms Ticket_form_id
       description: '#### Allowed For
 
 
-        * Admins, Agents, and End Users
-
-        '
+        * Admins, Agents, and End Users'
       responses:
         '200':
           description: Success response
@@ -235,12 +95,10 @@ paths:
       operationId: UpdateTicketForm
       tags:
       - Ticket Forms
-      summary: Zendesk Put  Api V2 Ticket_forms Ticket_form_id
+      summary: Zendesk Put Api V2 Ticket_forms Ticket_form_id
       description: '#### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -255,12 +113,10 @@ paths:
       operationId: DeleteTicketForm
       tags:
       - Ticket Forms
-      summary: Zendesk Delete  Api V2 Ticket_forms Ticket_form_id
+      summary: Zendesk Delete Api V2 Ticket_forms Ticket_form_id
       description: '#### Allowed For
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '204':
           description: No Content response
@@ -271,13 +127,11 @@ paths:
       operationId: CloneTicketForm
       tags:
       - Ticket Forms
-      summary: Zendesk Post  Api V2 Ticket_forms Ticket_form_id Clone
+      summary: Zendesk Post Api V2 Ticket_forms Ticket_form_id Clone
       description: '#### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       responses:
         '200':
           description: Success response
@@ -288,12 +142,138 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TicketFormResponseExample'
+  /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses:
+    parameters:
+    - $ref: '#/components/parameters/TicketFormId'
+    get:
+      operationId: TicketFormTicketFormStatuses
+      tags:
+      - Ticket Forms
+      summary: Zendesk Get Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: 'Fetches all of the associated ticket form statuses of a ticket form.
+
+
+        #### Allowed For
+
+
+        * Admins
+
+        * Agents'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    post:
+      operationId: CreateTicketFormStatuses
+      tags:
+      - Ticket Forms
+      summary: Zendesk Post Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: 'Creates one or many ticket form status associations
+
+
+        #### Allowed For
+
+
+        * Admins'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketFormStatusesParams'
+            example:
+              ticket_form_status:
+              - custom_status_id: 1234
+              - custom_status_id: 1235
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+    put:
+      operationId: UpdateTicketFormStatuses
+      tags:
+      - Ticket Forms
+      summary: Zendesk Put Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses
+      description: 'Updates or deletes ticket form status associations. This is a bulk operation that can both add and remove ticket form status associations for a form in one call.
+
+
+        #### Allowed For
+
+
+        * Admins'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
+            example:
+              ticket_form_status:
+              - _destroy: '1'
+                id: abcdef
+              - custom_status_id: 1
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
+  /api/v2/ticket_forms/{ticket_form_id}/ticket_form_statuses/{ticket_form_status_id}:
+    parameters:
+    - $ref: '#/components/parameters/TicketFormId'
+    - $ref: '#/components/parameters/TicketFormStatusId'
+    put:
+      operationId: UpdateTicketFormStatusById
+      tags:
+      - Ticket Forms
+      summary: Zendesk Put Api V2 Ticket_forms Ticket_form_id Ticket_form_statuses…
+      description: 'Updates or deletes ticket form status association by id.
+
+
+        #### Allowed For
+
+
+        * Admins'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
+            example:
+              ticket_form_status:
+              - custom_status_id: 1
+              - custom_status_id: 2
+              - custom_status_id: 3
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketFormStatusesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketFormStatusesResponseExample'
   /api/v2/ticket_forms/reorder:
     put:
       operationId: ReorderTicketForms
       tags:
       - Ticket Forms
-      summary: Zendesk Put  Api V2 Ticket_forms Reorder
+      summary: Zendesk Put Api V2 Ticket_forms Reorder
       description: '#### Allowed For
 
         * Admins
@@ -305,13 +285,11 @@ paths:
         You can pass in the following parameter in the payload:
 
 
-        | Name                | Type   | Comment
+        | Name | Type | Comment
 
         | ------------------- | ------ | --------
 
-        | ticket_form_ids     | array  | An array of ticket form ids. Example: "[2, 23, 46, 50]"
-
-        '
+        | ticket_form_ids | array | An array of ticket form ids. Example: "[2, 23, 46, 50]"'
       responses:
         '200':
           description: Success response
@@ -327,16 +305,14 @@ paths:
       operationId: ShowManyTicketForms
       tags:
       - Ticket Forms
-      summary: Zendesk Get  Api V2 Ticket_forms Show_many
-      description: 'Takes an `ids` query parameter that accepts a comma-separated list of up to 100 ticket form ids. This endpoint is used primarily by the [mobile SDK](/documentation/classic-web-widget-sdks/) and the [Web Widget](/api-reference/widget/introduction/).
+      summary: Zendesk Get Api V2 Ticket_forms Show_many
+      description: 'Takes an `ids` query parameter that accepts a comma-separated list of up to 100 ticket form ids. This endpoint is used primarily by the mobile SDK and the Web Widget.
 
 
         #### Allowed For
 
 
-        * Anyone
-
-        '
+        * Anyone'
       parameters:
       - name: ids
         in: query
@@ -377,11 +353,13 @@ paths:
                   $ref: '#/components/examples/TicketFormsResponseExample'
 components:
   schemas:
-    TicketFormResponse:
+    TicketFormsResponse:
       type: object
       properties:
-        ticket_form:
-          $ref: '#/components/schemas/TicketFormObject'
+        ticket_forms:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFormObject'
     TicketFormStatusesResponse:
       type: object
       properties:
@@ -390,10 +368,8 @@ components:
           items:
             $ref: '#/components/schemas/TicketFormStatusObject'
           maxItems: 1
-    TicketFormsResponse:
+    TicketFormResponse:
       type: object
       properties:
-        ticket_forms:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketFormObject'
+        ticket_form:
+          $ref: '#/components/schemas/TicketFormObject'

@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
+  title: Zendesk Attachments API
   version: '1.0'
-  title: Zendesk Account Account Settings Attachments API
-  description: Needs a description.
+  description: 'Operations tagged Attachments across 3 of this provider''s published API definitions: attachments-openapi-original.yml, tickets-openapi-original.yml, uploads-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 tags:
 - name: Attachments
 paths:
@@ -11,8 +11,18 @@ paths:
       operationId: ShowAttachment
       tags:
       - Attachments
-      summary: Zendesk Get  Api V2 Attachments Attachment_id
-      description: "Shows attachment details. You can get the value of the `attachment_id` parameter by listing the ticket's comments.\nSee [List Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments). Each comment\nin the list has an `attachments` list that specifies an `id` for each attachment.\n\n\n #### Allowed for\n\n * Agents\n"
+      summary: Zendesk Get Api V2 Attachments Attachment_id
+      description: 'Shows attachment details. You can get the value of the `attachment_id` parameter by listing the ticket''s comments.
+
+        See List Comments. Each comment
+
+        in the list has an `attachments` list that specifies an `id` for each attachment.
+
+
+        #### Allowed for
+
+
+        * Agents'
       parameters:
       - $ref: '#/components/parameters/AttachmentId'
       responses:
@@ -29,16 +39,14 @@ paths:
       operationId: UpdateAttachment
       tags:
       - Attachments
-      summary: Zendesk Put  Api V2 Attachments Attachment_id
+      summary: Zendesk Put Api V2 Attachments Attachment_id
       description: 'Toggles enabling or restricting agent access to attachments with detected malware.
 
 
         #### Allowed For
 
 
-        * Admins
-
-        '
+        * Admins'
       parameters:
       - $ref: '#/components/parameters/AttachmentId'
       requestBody:
@@ -68,14 +76,14 @@ paths:
       operationId: RedactCommentAttachment
       tags:
       - Attachments
-      summary: Zendesk Put  Api V2 Tickets Ticket_id Comments Comment_id Attachments Attachment_id Redact
+      summary: Zendesk Put Api V2 Tickets Ticket_id Comments Comment_id Attachments…
       description: 'Redaction allows you to permanently remove attachments from an existing comment on a ticket. Once removed from a comment, the attachment is replaced with an empty "redacted.txt" file.
 
 
         The redaction is permanent. It is not possible to undo redaction or see what was removed. Once a ticket is closed, redacting its attachments is no longer possible.
 
 
-        Also, if you want to redact an inline attachment, you can use the `include_inline_images` parameter in the [List Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments) operation to obtain the inline attachment ID, and use it in the request URL.
+        Also, if you want to redact an inline attachment, you can use the `include_inline_images` parameter in the List Comments operation to obtain the inline attachment ID, and use it in the request URL.
 
 
         #### Allowed For
@@ -83,11 +91,9 @@ paths:
 
         * Admins
 
-        * Agents when [deleting tickets is enabled for agents on professional accounts](https://support.zendesk.com/hc/en-us/articles/360002128107)
+        * Agents when deleting tickets is enabled for agents on professional accounts
 
-        * Agents assigned to a custom role with permissions to redact ticket content (Enterprise only)
-
-        '
+        * Agents assigned to a custom role with permissions to redact ticket content (Enterprise only)'
       responses:
         '200':
           description: OK response
@@ -103,8 +109,8 @@ paths:
       operationId: UploadFiles
       tags:
       - Attachments
-      summary: Zendesk Post  Api V2 Uploads
-      description: 'Uploads a file that can be attached to a ticket comment. It doesn''t attach the file to the comment. For details and examples, see [Attaching ticket comments with the API](/documentation/ticketing/using-the-zendesk-api/adding-ticket-attachments-with-the-api).
+      summary: Zendesk Post Api V2 Uploads
+      description: 'Uploads a file that can be attached to a ticket comment. It doesn''t attach the file to the comment. For details and examples, see Attaching ticket comments with the API.
 
 
         The endpoint has a required `filename` query parameter. The parameter specifies what the file will be named when attached to the ticket comment (to give the agent more context about the file). The parameter does not specify the file on the local system to be uploaded. While the two names can be different, their file extensions must be the same. If they don''t match, the agent''s browser or file reader could give an error when attempting to open the attachment.
@@ -116,15 +122,13 @@ paths:
         Adding multiple files to the same upload is handled by splitting requests and passing the API token received from the first request to each subsequent request. The token is valid for 60 minutes.
 
 
-        **Note**: Even if [private attachments](https://support.zendesk.com/hc/en-us/articles/204265396) are enabled in the Zendesk Support instance, uploaded files are visible to any authenticated user at the `content_URL` specified in the [JSON response](#json-format) until the upload token is consumed. Once a file is associated with a ticket or post, visibility is restricted to users with access to the ticket or post with the attachment.
+        **Note**: Even if private attachments are enabled in the Zendesk Support instance, uploaded files are visible to any authenticated user at the `content_URL` specified in the JSON response until the upload token is consumed. Once a file is associated with a ticket or post, visibility is restricted to users with access to the ticket or post with the attachment.
 
 
         #### Allowed For
 
 
-        * End users
-
-        '
+        * End users'
       responses:
         '201':
           description: Created response
@@ -140,13 +144,11 @@ paths:
       operationId: DeleteUpload
       tags:
       - Attachments
-      summary: Zendesk Delete  Api V2 Uploads Token
+      summary: Zendesk Delete Api V2 Uploads Token
       description: '#### Allowed for
 
 
-        * End Users
-
-        '
+        * End Users'
       parameters:
       - name: token
         in: path
@@ -165,3 +167,7 @@ components:
       properties:
         attachment:
           $ref: '#/components/schemas/AttachmentObject'
+x-refined-from:
+- attachments-openapi-original.yml
+- tickets-openapi-original.yml
+- uploads-openapi-original.yml
