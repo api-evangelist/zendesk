@@ -259,17 +259,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SuspendedTicketObject'
-    RecoverSuspendedTicketResponse:
-      type: object
-      properties:
-        ticket:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketObject'
     RecoverSuspendedTicketsResponse:
       type: object
       properties:
         tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketObject'
+    RecoverSuspendedTicketResponse:
+      type: object
+      properties:
+        ticket:
           type: array
           items:
             $ref: '#/components/schemas/TicketObject'

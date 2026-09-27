@@ -353,13 +353,6 @@ paths:
                   $ref: '#/components/examples/TicketFormsResponseExample'
 components:
   schemas:
-    TicketFormsResponse:
-      type: object
-      properties:
-        ticket_forms:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketFormObject'
     TicketFormStatusesResponse:
       type: object
       properties:
@@ -368,6 +361,13 @@ components:
           items:
             $ref: '#/components/schemas/TicketFormStatusObject'
           maxItems: 1
+    TicketFormsResponse:
+      type: object
+      properties:
+        ticket_forms:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFormObject'
     TicketFormResponse:
       type: object
       properties:

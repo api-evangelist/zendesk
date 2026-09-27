@@ -106,50 +106,6 @@ paths:
                   $ref: '#/components/examples/ApprovalRequestsSearchResponseExample'
 components:
   schemas:
-    ApprovalRequestResponse:
-      title: ApprovalRequestObject
-      type: object
-      properties:
-        approval_request:
-          type: object
-          properties:
-            assignee_user:
-              $ref: '#/components/schemas/ApprovalRequestUser'
-            created_at:
-              type: string
-              format: date-time
-              description: The time the approval request was created
-              readOnly: true
-            created_by_user:
-              $ref: '#/components/schemas/ApprovalRequestUser'
-            decided_at:
-              type: string
-              format: date-time
-              description: The time at which the approver submitted a decision about the request.
-              nullable: true
-            decisions:
-              type: array
-              description: List of decisions for the approval request
-              items:
-                $ref: '#/components/schemas/ApprovalRequestDecision'
-            id:
-              type: string
-              description: Unique identifier for the approval request
-            message:
-              type: string
-              description: Details for the approval request
-            status:
-              type: string
-              description: Current status of the approval request
-            subject:
-              type: string
-              description: Subject for the approval request
-            ticket_details:
-              $ref: '#/components/schemas/ApprovalTicketDetails'
-            withdrawn_reason:
-              type: string
-              description: Reason for withdrawing the approval request
-              nullable: true
     ApprovalRequestsSearchResponse:
       title: ApprovalRequestsSearchResponse
       type: object
@@ -201,6 +157,50 @@ components:
           type: string
           description: URL for the previous page of results
           nullable: true
+    ApprovalRequestResponse:
+      title: ApprovalRequestObject
+      type: object
+      properties:
+        approval_request:
+          type: object
+          properties:
+            assignee_user:
+              $ref: '#/components/schemas/ApprovalRequestUser'
+            created_at:
+              type: string
+              format: date-time
+              description: The time the approval request was created
+              readOnly: true
+            created_by_user:
+              $ref: '#/components/schemas/ApprovalRequestUser'
+            decided_at:
+              type: string
+              format: date-time
+              description: The time at which the approver submitted a decision about the request.
+              nullable: true
+            decisions:
+              type: array
+              description: List of decisions for the approval request
+              items:
+                $ref: '#/components/schemas/ApprovalRequestDecision'
+            id:
+              type: string
+              description: Unique identifier for the approval request
+            message:
+              type: string
+              description: Details for the approval request
+            status:
+              type: string
+              description: Current status of the approval request
+            subject:
+              type: string
+              description: Subject for the approval request
+            ticket_details:
+              $ref: '#/components/schemas/ApprovalTicketDetails'
+            withdrawn_reason:
+              type: string
+              description: Reason for withdrawing the approval request
+              nullable: true
 x-refined-from:
 - approval-workflow-instances-openapi-original.yml
 - search-openapi-original.yml

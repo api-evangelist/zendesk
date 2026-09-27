@@ -209,6 +209,23 @@ paths:
                   $ref: '#/components/examples/HostMappingResponseWrongCNAMEExample'
 components:
   schemas:
+    BrandResponse:
+      type: object
+      properties:
+        brand:
+          $ref: '#/components/schemas/BrandObject'
+    BrandsResponse:
+      title: Brands
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/OffsetPaginationObject'
+      - type: object
+        properties:
+          brands:
+            type: array
+            description: Array of brands
+            items:
+              $ref: '#/components/schemas/BrandObject'
     HostMappingObject:
       title: Host Mapping
       type: object
@@ -233,20 +250,3 @@ components:
         - bar.zendesk.coom
         is_valid: false
         reason: wrong_cname
-    BrandResponse:
-      type: object
-      properties:
-        brand:
-          $ref: '#/components/schemas/BrandObject'
-    BrandsResponse:
-      title: Brands
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/OffsetPaginationObject'
-      - type: object
-        properties:
-          brands:
-            type: array
-            description: Array of brands
-            items:
-              $ref: '#/components/schemas/BrandObject'

@@ -201,11 +201,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupObject'
-    GroupResponse:
-      type: object
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupObject'
     GroupsCountObject:
       type: object
       properties:
@@ -221,3 +216,8 @@ components:
               type: integer
               description: Approximate count of groups
               readOnly: true
+    GroupResponse:
+      type: object
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupObject'

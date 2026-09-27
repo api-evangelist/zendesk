@@ -65,6 +65,11 @@ paths:
                   $ref: '#/components/examples/TargetFailureResponseExample'
 components:
   schemas:
+    TargetFailureResponse:
+      type: object
+      properties:
+        target_failure:
+          $ref: '#/components/schemas/TargetFailureObject'
     TargetFailuresResponse:
       type: object
       properties:
@@ -72,8 +77,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TargetFailureObject'
-    TargetFailureResponse:
-      type: object
-      properties:
-        target_failure:
-          $ref: '#/components/schemas/TargetFailureObject'

@@ -529,23 +529,29 @@ paths:
                   $ref: '#/components/examples/SkillBasedRoutingTicketAttributesResponseExample'
 components:
   schemas:
-    JobStatusResponse:
+    SkillBasedRoutingAttributesResponse:
       type: object
       properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
-    SkillBasedRoutingAttributeValuesResponse:
-      type: object
-      properties:
-        attribute_values:
+        attributes:
           type: array
           items:
-            $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
-    SkillBasedRoutingAttributeValueResponse:
+            $ref: '#/components/schemas/SkillBasedRoutingAttributeObject'
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+    SkillBasedRoutingAttributeResponse:
       type: object
       properties:
-        attribute_value:
-          $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
+        attribute:
+          $ref: '#/components/schemas/SkillBasedRoutingAttributeObject'
     SkillBasedRoutingTicketFulfilledResponse:
       type: object
       properties:
@@ -553,6 +559,28 @@ components:
           type: array
           items:
             type: integer
+    ManySkillBasedRoutingAttributeValuesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: The number of instance values returned
+          readOnly: true
+        instance_values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManySkillBasedRoutingAttributeValues'
+        next_page:
+          type: string
+          description: The URL for the next page of results
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: The URL for the previous page of results
+          nullable: true
+          readOnly: true
     SkillBasedRoutingAttributeDefinitions:
       type: object
       properties:
@@ -577,51 +605,23 @@ components:
                     type: string
                   title:
                     type: string
-    SkillBasedRoutingAttributeResponse:
+    SkillBasedRoutingAttributeValuesResponse:
       type: object
       properties:
-        attribute:
-          $ref: '#/components/schemas/SkillBasedRoutingAttributeObject'
-    SkillBasedRoutingAttributesResponse:
-      type: object
-      properties:
-        attributes:
+        attribute_values:
           type: array
           items:
-            $ref: '#/components/schemas/SkillBasedRoutingAttributeObject'
-        count:
-          type: integer
-          readOnly: true
-        next_page:
-          type: string
-          nullable: true
-          readOnly: true
-        previous_page:
-          type: string
-          nullable: true
-          readOnly: true
-    ManySkillBasedRoutingAttributeValuesResponse:
+            $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
+    JobStatusResponse:
       type: object
       properties:
-        count:
-          type: integer
-          format: int32
-          description: The number of instance values returned
-          readOnly: true
-        instance_values:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManySkillBasedRoutingAttributeValues'
-        next_page:
-          type: string
-          description: The URL for the next page of results
-          nullable: true
-          readOnly: true
-        previous_page:
-          type: string
-          description: The URL for the previous page of results
-          nullable: true
-          readOnly: true
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    SkillBasedRoutingAttributeValueResponse:
+      type: object
+      properties:
+        attribute_value:
+          $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
 x-refined-from:
 - routing-openapi-original.yml
 - tickets-openapi-original.yml

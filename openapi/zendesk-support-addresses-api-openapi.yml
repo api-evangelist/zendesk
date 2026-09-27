@@ -199,11 +199,6 @@ paths:
               example: ''
 components:
   schemas:
-    SupportAddressResponse:
-      type: object
-      properties:
-        recipient_address:
-          $ref: '#/components/schemas/SupportAddressObject'
     SupportAddressesResponse:
       type: object
       properties:
@@ -211,3 +206,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SupportAddressObject'
+    SupportAddressResponse:
+      type: object
+      properties:
+        recipient_address:
+          $ref: '#/components/schemas/SupportAddressObject'

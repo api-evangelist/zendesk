@@ -1144,6 +1144,9 @@ apis:
   name: Zendesk Ticket Comments API
   tags:
   - Comments
+  - Ticketing
+  tags_raw:
+  - Comments
   - Tickets
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://{subdomain}.zendesk.com
@@ -11415,6 +11418,8 @@ apis:
   humanURL: https://developer.zendesk.com/api-reference/ticketing/introduction/
   baseURL: https://{subdomain}.zendesk.com
   tags:
+  - Ticketing
+  tags_raw:
   - Tickets
   properties:
   - type: OpenAPI
@@ -12883,21 +12888,34 @@ tags:
 - T1
 - Talk
 - Ticketing
+- Zendesk
+tags_raw:
+- Chat
+- CRM
+- Help Center
+- Sell
+- Support
+- T1
+- Talk
+- Ticketing
 - Tickets
 - Zendesk
 kind: contract
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - zendesk/sunshine-conversations-api-spec
   open_source: unknown
   commercial: true
-  callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  callable_host: true
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: paid
@@ -13042,7 +13060,7 @@ common:
   type: TermsOfService
   description: 'null'
 - url: >-
-    https://www.zendesk.com/help-center-closed/?utm_source=helpcenter-closed&utm_medium=poweredbyzendesk&utm_campaign=text&utm_content=developerblog.zendesk.com
+    https://www.zendesk.com/help-center-closed/
   name: Help Center Closed
   type: Blog
   description: 'null'
@@ -13067,7 +13085,7 @@ common:
   type: Blog
   description: 'null'
 - url: >-
-    https://training.zendesk.com/?_gl=1*bjm8lh*_gcl_au*NzkzMDYzNTc4LjE3NTQzMzc4ODI.*_ga*ODQ3OTgwMzk0LjE3NTQzMzc4NDA.*_ga_FBP7C61M6Z*czE3NTQzMzc4ODkkbzEkZzEkdDE3NTQzMzgwODckajQ0JGwwJGgw
+    https://training.zendesk.com/
   name: Zendesk Training
   type: Training
   description: 'null'

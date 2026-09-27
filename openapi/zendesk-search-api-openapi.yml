@@ -240,6 +240,54 @@ paths:
                   $ref: '#/components/examples/SearchExportResponseExample'
 components:
   schemas:
+    SearchCountResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+    SearchResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The number of resources returned by the query corresponding to this page of results in the paginated response
+          readOnly: true
+        facets:
+          type: string
+          description: The facets corresponding to the search query
+          nullable: true
+          readOnly: true
+        next_page:
+          type: string
+          description: URL to the next page of results
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: URL to the previous page of results
+          nullable: true
+          readOnly: true
+        results:
+          type: array
+          description: May consist of tickets, users, groups, or organizations, as specified by the `result_type` property in each result object
+          items:
+            $ref: '#/components/schemas/SearchResultObject'
+          readOnly: true
+      example:
+        count: 1
+        facets: null
+        next_page: null
+        previous_page: null
+        results:
+        - created_at: '2018-04-06T03:17:05Z'
+          default: false
+          deleted: false
+          description: ''
+          id: 1835972
+          name: Ragtail
+          result_type: group
+          updated_at: '2018-04-06T03:17:05Z'
+          url: https://example.zendesk.com/api/v2/groups/1835972.json
     SearchExportResponse:
       type: object
       properties:
@@ -296,51 +344,3 @@ components:
           before_cursor: null
           has_more: true
         results: []
-    SearchCountResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-    SearchResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The number of resources returned by the query corresponding to this page of results in the paginated response
-          readOnly: true
-        facets:
-          type: string
-          description: The facets corresponding to the search query
-          nullable: true
-          readOnly: true
-        next_page:
-          type: string
-          description: URL to the next page of results
-          nullable: true
-          readOnly: true
-        previous_page:
-          type: string
-          description: URL to the previous page of results
-          nullable: true
-          readOnly: true
-        results:
-          type: array
-          description: May consist of tickets, users, groups, or organizations, as specified by the `result_type` property in each result object
-          items:
-            $ref: '#/components/schemas/SearchResultObject'
-          readOnly: true
-      example:
-        count: 1
-        facets: null
-        next_page: null
-        previous_page: null
-        results:
-        - created_at: '2018-04-06T03:17:05Z'
-          default: false
-          deleted: false
-          description: ''
-          id: 1835972
-          name: Ragtail
-          result_type: group
-          updated_at: '2018-04-06T03:17:05Z'
-          url: https://example.zendesk.com/api/v2/groups/1835972.json

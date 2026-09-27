@@ -166,6 +166,11 @@ paths:
                   $ref: '#/components/examples/BulkSkillBasedRoutingAttributeValuesErrorExample'
 components:
   schemas:
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
     JobStatusesResponse:
       type: object
       properties:
@@ -175,11 +180,6 @@ components:
             $ref: '#/components/schemas/JobStatusObject'
       required:
       - job_statuses
-    JobStatusResponse:
-      type: object
-      properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
 x-refined-from:
 - job-statuses-openapi-original.yml
 - routing-openapi-original.yml

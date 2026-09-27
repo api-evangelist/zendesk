@@ -1152,18 +1152,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketObject'
-    ViewCountResponse:
-      type: object
-      properties:
-        view_count:
-          $ref: '#/components/schemas/ViewCountObject'
-    ViewCountsResponse:
-      type: object
-      properties:
-        view_counts:
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewCountObject'
     ViewResponse:
       type: object
       properties:
@@ -1196,6 +1184,13 @@ components:
             view_id:
               type: integer
               readOnly: true
+    ViewCountsResponse:
+      type: object
+      properties:
+        view_counts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewCountObject'
     ViewsCountResponse:
       type: object
       properties:
@@ -1207,6 +1202,11 @@ components:
               format: date-time
             value:
               type: integer
+    ViewCountResponse:
+      type: object
+      properties:
+        view_count:
+          $ref: '#/components/schemas/ViewCountObject'
 x-refined-from:
 - search-openapi-original.yml
 - tickets-openapi-original.yml

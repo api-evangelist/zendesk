@@ -515,6 +515,24 @@ paths:
               example: ''
 components:
   schemas:
+    TicketFieldsResponse:
+      type: object
+      properties:
+        ticket_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFieldObject'
+    TicketFieldCountResponse:
+      type: object
+      properties:
+        count:
+          type: object
+          properties:
+            refreshed_at:
+              type: string
+              format: date-time
+            value:
+              type: integer
     CustomFieldOptionsResponse:
       type: object
       properties:
@@ -546,21 +564,3 @@ components:
       properties:
         custom_field_option:
           $ref: '#/components/schemas/CustomFieldOptionObject'
-    TicketFieldCountResponse:
-      type: object
-      properties:
-        count:
-          type: object
-          properties:
-            refreshed_at:
-              type: string
-              format: date-time
-            value:
-              type: integer
-    TicketFieldsResponse:
-      type: object
-      properties:
-        ticket_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketFieldObject'

@@ -218,8 +218,6 @@ components:
           items:
             $ref: '#/components/schemas/TicketFormStatusObject'
           maxItems: 1
-    BulkUpdateDefaultCustomStatusResponse:
-      type: object
     CustomStatusResponse:
       type: object
       properties:
@@ -232,6 +230,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomStatusObject'
+    BulkUpdateDefaultCustomStatusResponse:
+      type: object
 x-refined-from:
 - custom-status-openapi-original.yml
 - ticket-form-statuses-openapi-original.yml

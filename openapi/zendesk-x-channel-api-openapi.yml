@@ -109,18 +109,6 @@ paths:
                   $ref: '#/components/examples/TwitterChannelTwicketStatusResponseExample'
 components:
   schemas:
-    TwitterChannelsResponse:
-      type: object
-      properties:
-        monitored_twitter_handles:
-          type: array
-          items:
-            $ref: '#/components/schemas/TwitterChannelObject'
-    TwitterChannelResponse:
-      type: object
-      properties:
-        monitored_twitter_handle:
-          $ref: '#/components/schemas/TwitterChannelObject'
     TwitterChannelTwicketStatusResponse:
       type: object
       properties:
@@ -137,6 +125,18 @@ components:
                 type: boolean
               user_followed:
                 type: boolean
+    TwitterChannelResponse:
+      type: object
+      properties:
+        monitored_twitter_handle:
+          $ref: '#/components/schemas/TwitterChannelObject'
+    TwitterChannelsResponse:
+      type: object
+      properties:
+        monitored_twitter_handles:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwitterChannelObject'
 x-refined-from:
 - channels-openapi-original.yml
 - tickets-openapi-original.yml

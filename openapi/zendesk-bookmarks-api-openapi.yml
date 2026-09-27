@@ -79,6 +79,11 @@ paths:
           description: No content
 components:
   schemas:
+    BookmarkResponse:
+      type: object
+      properties:
+        bookmark:
+          $ref: '#/components/schemas/BookmarkObject'
     BookmarksResponse:
       title: Bookmarks
       type: object
@@ -90,8 +95,3 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/BookmarkObject'
-    BookmarkResponse:
-      type: object
-      properties:
-        bookmark:
-          $ref: '#/components/schemas/BookmarkObject'

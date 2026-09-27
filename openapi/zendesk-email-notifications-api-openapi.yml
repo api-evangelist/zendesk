@@ -133,11 +133,6 @@ paths:
                   $ref: '#/components/examples/EmailNotificationResponseExample'
 components:
   schemas:
-    EmailNotificationResponse:
-      type: object
-      properties:
-        email_notification:
-          $ref: '#/components/schemas/EmailNotificationObject'
     EmailNotificationsResponse:
       type: object
       properties:
@@ -145,3 +140,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EmailNotificationObject'
+    EmailNotificationResponse:
+      type: object
+      properties:
+        email_notification:
+          $ref: '#/components/schemas/EmailNotificationObject'

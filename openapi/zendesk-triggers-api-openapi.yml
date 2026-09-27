@@ -647,46 +647,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TriggerObject'
-    TriggerResponse:
-      type: object
-      properties:
-        trigger:
-          $ref: '#/components/schemas/TriggerObject'
-    TriggerDefinitionResponse:
-      type: object
-      properties:
-        definitions:
-          $ref: '#/components/schemas/TriggerDefinitionObject'
-    TriggerRevisionResponse:
-      type: object
-      properties:
-        trigger_revision:
-          type: object
-          properties:
-            author_id:
-              type: integer
-            created_at:
-              type: string
-            id:
-              type: integer
-            snapshot:
-              type: object
-              properties:
-                actions:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/TriggerActionObject'
-                active:
-                  type: boolean
-                conditions:
-                  $ref: '#/components/schemas/TriggerConditionsObject'
-                description:
-                  type: string
-                  nullable: true
-                title:
-                  type: string
-            url:
-              type: string
     TriggerRevisionsResponse:
       type: object
       properties:
@@ -746,6 +706,46 @@ components:
                 $ref: '#/components/schemas/TriggerSnapshotObject'
               url:
                 type: string
+    TriggerResponse:
+      type: object
+      properties:
+        trigger:
+          $ref: '#/components/schemas/TriggerObject'
+    TriggerRevisionResponse:
+      type: object
+      properties:
+        trigger_revision:
+          type: object
+          properties:
+            author_id:
+              type: integer
+            created_at:
+              type: string
+            id:
+              type: integer
+            snapshot:
+              type: object
+              properties:
+                actions:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/TriggerActionObject'
+                active:
+                  type: boolean
+                conditions:
+                  $ref: '#/components/schemas/TriggerConditionsObject'
+                description:
+                  type: string
+                  nullable: true
+                title:
+                  type: string
+            url:
+              type: string
+    TriggerDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          $ref: '#/components/schemas/TriggerDefinitionObject'
 x-refined-from:
 - search-openapi-original.yml
 - triggers-openapi-original.yml

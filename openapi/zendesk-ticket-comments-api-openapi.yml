@@ -552,13 +552,6 @@ components:
       properties:
         comment:
           $ref: '#/components/schemas/TicketCommentObject'
-    TicketCommentsResponse:
-      type: object
-      properties:
-        comments:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketCommentObject'
     TicketCommentsCountResponse:
       type: object
       properties:
@@ -570,6 +563,13 @@ components:
               format: date-time
             value:
               type: integer
+    TicketCommentsResponse:
+      type: object
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketCommentObject'
 x-refined-from:
 - chat-file-redactions-openapi-original.yml
 - chat-redactions-openapi-original.yml
