@@ -765,11 +765,6 @@ components:
           - has_more
           - after_cursor
           - before_cursor
-    CustomObjectRecordResponse:
-      type: object
-      properties:
-        custom_object_record:
-          $ref: '#/components/schemas/CustomObjectRecord'
     CustomObjectLimitsResponse:
       type: object
       properties:
@@ -781,6 +776,11 @@ components:
           type: integer
           description: The maximum allowed number for the requested resource
           readOnly: true
+    CustomObjectRecordResponse:
+      type: object
+      properties:
+        custom_object_record:
+          $ref: '#/components/schemas/CustomObjectRecord'
 x-refined-from:
 - autocomplete-openapi-original.yml
 - custom-objects-openapi-original.yml

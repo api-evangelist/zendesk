@@ -163,6 +163,11 @@ paths:
           description: No Content
 components:
   schemas:
+    QueueResponse:
+      type: object
+      properties:
+        queue:
+          $ref: '#/components/schemas/QueueObject'
     QueuesResponse:
       type: object
       properties:
@@ -170,11 +175,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueueObject'
-    QueueResponse:
-      type: object
-      properties:
-        queue:
-          $ref: '#/components/schemas/QueueObject'
     DefinitionsResponse:
       type: object
       properties:

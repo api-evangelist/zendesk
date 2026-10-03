@@ -122,11 +122,6 @@ paths:
           description: No content
 components:
   schemas:
-    OrganizationSubscriptionResponse:
-      type: object
-      properties:
-        organization_subscription:
-          $ref: '#/components/schemas/OrganizationSubscriptionObject'
     OrganizationSubscriptionsResponse:
       type: object
       allOf:
@@ -138,3 +133,8 @@ components:
             description: An array of organization subscriptions
             items:
               $ref: '#/components/schemas/OrganizationSubscriptionObject'
+    OrganizationSubscriptionResponse:
+      type: object
+      properties:
+        organization_subscription:
+          $ref: '#/components/schemas/OrganizationSubscriptionObject'

@@ -84,6 +84,11 @@ paths:
                   $ref: '#/components/examples/TagCountResponseExample'
 components:
   schemas:
+    TagCountResponse:
+      type: object
+      properties:
+        count:
+          $ref: '#/components/schemas/TagCountObject'
     TagsResponse:
       type: object
       properties:
@@ -105,8 +110,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TagListTagObject'
-    TagCountResponse:
-      type: object
-      properties:
-        count:
-          $ref: '#/components/schemas/TagCountObject'

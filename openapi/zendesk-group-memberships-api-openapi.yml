@@ -235,11 +235,6 @@ paths:
                   $ref: '#/components/examples/GroupMembershipsResponseExample'
 components:
   schemas:
-    JobStatusResponse:
-      type: object
-      properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
     GroupMembershipsResponse:
       type: object
       properties:
@@ -247,6 +242,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupMembershipObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
     GroupMembershipResponse:
       type: object
       properties:

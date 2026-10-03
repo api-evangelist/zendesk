@@ -169,6 +169,11 @@ components:
           type: string
           nullable: true
           readOnly: true
+    GroupSLAPolicyResponse:
+      type: object
+      properties:
+        group_sla_policy:
+          $ref: '#/components/schemas/GroupSLAPolicyObject'
     GroupSLAPolicyFilterDefinitionResponse:
       type: object
       properties:
@@ -210,8 +215,3 @@ components:
                               nullable: true
                       type:
                         type: string
-    GroupSLAPolicyResponse:
-      type: object
-      properties:
-        group_sla_policy:
-          $ref: '#/components/schemas/GroupSLAPolicyObject'

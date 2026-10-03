@@ -647,6 +647,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TriggerObject'
+    TriggerResponse:
+      type: object
+      properties:
+        trigger:
+          $ref: '#/components/schemas/TriggerObject'
+    TriggerDefinitionResponse:
+      type: object
+      properties:
+        definitions:
+          $ref: '#/components/schemas/TriggerDefinitionObject'
     TriggerRevisionsResponse:
       type: object
       properties:
@@ -706,11 +716,6 @@ components:
                 $ref: '#/components/schemas/TriggerSnapshotObject'
               url:
                 type: string
-    TriggerResponse:
-      type: object
-      properties:
-        trigger:
-          $ref: '#/components/schemas/TriggerObject'
     TriggerRevisionResponse:
       type: object
       properties:
@@ -741,11 +746,6 @@ components:
                   type: string
             url:
               type: string
-    TriggerDefinitionResponse:
-      type: object
-      properties:
-        definitions:
-          $ref: '#/components/schemas/TriggerDefinitionObject'
 x-refined-from:
 - search-openapi-original.yml
 - triggers-openapi-original.yml

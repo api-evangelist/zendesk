@@ -1237,16 +1237,16 @@ components:
           - loser_id
           - winner_id
           - status
-    OrganizationResponse:
-      type: object
-      properties:
-        organization:
-          $ref: '#/components/schemas/OrganizationObject'
     CountOrganizationResponse:
       type: object
       properties:
         count:
           $ref: '#/components/schemas/CountOrganizationObject'
+    OrganizationsRelatedResponse:
+      type: object
+      properties:
+        organization_related:
+          $ref: '#/components/schemas/OrganizationMetadataObject'
     OrganizationMergeListResponse:
       type: object
       properties:
@@ -1278,16 +1278,16 @@ components:
           - loser_id
           - winner_id
           - status
+    OrganizationResponse:
+      type: object
+      properties:
+        organization:
+          $ref: '#/components/schemas/OrganizationObject'
     JobStatusResponse:
       type: object
       properties:
         job_status:
           $ref: '#/components/schemas/JobStatusObject'
-    OrganizationsRelatedResponse:
-      type: object
-      properties:
-        organization_related:
-          $ref: '#/components/schemas/OrganizationMetadataObject'
     OrganizationCreate:
       type: object
       description: Payload for creating a new organization.
@@ -1415,6 +1415,23 @@ components:
           description: When the organization was last updated (ISO 8601).
           readOnly: true
           example: '2026-01-15T10:30:00Z'
+    Error:
+      type: object
+      description: An error response from the Zendesk API.
+      properties:
+        error:
+          type: string
+          description: The error type identifier.
+          example: example_value
+        description:
+          type: string
+          description: A human-readable description of the error.
+          example: A sample description.
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional details about the error.
+          example: example_value
     OrganizationUpdate:
       type: object
       description: Payload for updating an existing organization.
@@ -1459,32 +1476,33 @@ components:
           type: object
           additionalProperties: true
           example: example_value
-    Error:
-      type: object
-      description: An error response from the Zendesk API.
-      properties:
-        error:
-          type: string
-          description: The error type identifier.
-          example: example_value
-        description:
-          type: string
-          description: A human-readable description of the error.
-          example: A sample description.
-        details:
-          type: object
-          additionalProperties: true
-          description: Additional details about the error.
-          example: example_value
+  parameters:
+    PerPageParam:
+      name: per_page
+      in: query
+      description: The number of results per page (max 100).
+      schema:
+        type: integer
+        default: 100
+        maximum: 100
+    PageParam:
+      name: page
+      in: query
+      description: The page number.
+      schema:
+        type: integer
+        default: 1
+    OrganizationId:
+      name: organization_id
+      in: path
+      required: true
+      description: The ID of the organization.
+      schema:
+        type: integer
+        format: int64
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
+    UnprocessableEntity:
+      description: The request was well-formed but could not be processed due to validation errors.
       content:
         application/json:
           schema:
@@ -1500,36 +1518,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: The request was well-formed but could not be processed due to validation errors.
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    PerPageParam:
-      name: per_page
-      in: query
-      description: The number of results per page (max 100).
-      schema:
-        type: integer
-        default: 100
-        maximum: 100
-    OrganizationId:
-      name: organization_id
-      in: path
-      required: true
-      description: The ID of the organization.
-      schema:
-        type: integer
-        format: int64
-    PageParam:
-      name: page
-      in: query
-      description: The page number.
-      schema:
-        type: integer
-        default: 1
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

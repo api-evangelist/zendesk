@@ -145,11 +145,6 @@ paths:
                   $ref: '#/components/examples/LocalesResponseExample'
 components:
   schemas:
-    LocaleResponse:
-      type: object
-      properties:
-        locale:
-          $ref: '#/components/schemas/LocaleObject'
     LocalesResponse:
       type: object
       properties:
@@ -157,3 +152,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LocaleObject'
+    LocaleResponse:
+      type: object
+      properties:
+        locale:
+          $ref: '#/components/schemas/LocaleObject'

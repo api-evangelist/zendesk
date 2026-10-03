@@ -174,20 +174,6 @@ paths:
                   $ref: '#/components/examples/SatisfactionRatingResponseExample'
 components:
   schemas:
-    SatisfactionRatingsResponse:
-      type: object
-      properties:
-        satisfaction_ratings:
-          type: array
-          items:
-            $ref: '#/components/schemas/SatisfactionRatingObject'
-    SatisfactionRatingResponse:
-      type: object
-      properties:
-        satisfaction_rating:
-          type: array
-          items:
-            $ref: '#/components/schemas/SatisfactionRatingObject'
     SatisfactionRatingsCountResponse:
       type: object
       properties:
@@ -199,6 +185,20 @@ components:
               format: date-time
             value:
               type: integer
+    SatisfactionRatingResponse:
+      type: object
+      properties:
+        satisfaction_rating:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionRatingObject'
+    SatisfactionRatingsResponse:
+      type: object
+      properties:
+        satisfaction_ratings:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionRatingObject'
 x-refined-from:
 - satisfaction-ratings-openapi-original.yml
 - tickets-openapi-original.yml

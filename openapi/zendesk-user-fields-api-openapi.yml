@@ -315,27 +315,11 @@ paths:
               example: ''
 components:
   schemas:
-    UserFieldsResponse:
+    CustomFieldOptionResponse:
       type: object
       properties:
-        count:
-          type: integer
-          description: Total count of records retrieved
-          readOnly: true
-        next_page:
-          type: string
-          description: URL of the next page
-          nullable: true
-          readOnly: true
-        previous_page:
-          type: string
-          description: URL of the previous page
-          nullable: true
-          readOnly: true
-        user_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserFieldObject'
+        custom_field_option:
+          $ref: '#/components/schemas/CustomFieldOptionObject'
     CustomFieldOptionsResponse:
       type: object
       properties:
@@ -357,13 +341,29 @@ components:
           description: URL of the previous page
           nullable: true
           readOnly: true
+    UserFieldsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total count of records retrieved
+          readOnly: true
+        next_page:
+          type: string
+          description: URL of the next page
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          description: URL of the previous page
+          nullable: true
+          readOnly: true
+        user_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserFieldObject'
     UserFieldResponse:
       type: object
       properties:
         user_field:
           $ref: '#/components/schemas/UserFieldObject'
-    CustomFieldOptionResponse:
-      type: object
-      properties:
-        custom_field_option:
-          $ref: '#/components/schemas/CustomFieldOptionObject'

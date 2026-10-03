@@ -416,11 +416,11 @@ paths:
                   $ref: '#/components/examples/ObjectTriggersResponseExample'
 components:
   schemas:
-    ObjectTriggerResponse:
+    ObjectTriggerDefinitionResponse:
       type: object
       properties:
-        trigger:
-          $ref: '#/components/schemas/ObjectTriggerObject'
+        definitions:
+          $ref: '#/components/schemas/ObjectTriggerDefinitionObject'
     ObjectTriggersResponse:
       type: object
       properties:
@@ -436,11 +436,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ObjectTriggerObject'
-    ObjectTriggerDefinitionResponse:
+    ObjectTriggerResponse:
       type: object
       properties:
-        definitions:
-          $ref: '#/components/schemas/ObjectTriggerDefinitionObject'
+        trigger:
+          $ref: '#/components/schemas/ObjectTriggerObject'
 x-refined-from:
 - custom-objects-openapi-original.yml
 - search-openapi-original.yml

@@ -142,18 +142,6 @@ paths:
                   $ref: '#/components/examples/CustomObjectsLimitResponseExample'
 components:
   schemas:
-    CustomObjectsResponse:
-      type: object
-      properties:
-        custom_objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomObject'
-    CustomObjectResponse:
-      type: object
-      properties:
-        custom_object:
-          $ref: '#/components/schemas/CustomObject'
     CustomObjectLimitsResponse:
       type: object
       properties:
@@ -165,3 +153,15 @@ components:
           type: integer
           description: The maximum allowed number for the requested resource
           readOnly: true
+    CustomObjectResponse:
+      type: object
+      properties:
+        custom_object:
+          $ref: '#/components/schemas/CustomObject'
+    CustomObjectsResponse:
+      type: object
+      properties:
+        custom_objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomObject'

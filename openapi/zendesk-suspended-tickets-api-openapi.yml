@@ -252,13 +252,6 @@ components:
               type: string
               description: Token for subsequent request
               readOnly: true
-    SuspendedTicketsResponse:
-      type: object
-      properties:
-        suspended_tickets:
-          type: array
-          items:
-            $ref: '#/components/schemas/SuspendedTicketObject'
     RecoverSuspendedTicketsResponse:
       type: object
       properties:
@@ -266,6 +259,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketObject'
+    SuspendedTicketsResponse:
+      type: object
+      properties:
+        suspended_tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/SuspendedTicketObject'
     RecoverSuspendedTicketResponse:
       type: object
       properties:

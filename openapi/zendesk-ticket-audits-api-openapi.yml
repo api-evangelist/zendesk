@@ -194,11 +194,6 @@ components:
         before_url:
           type: string
           readOnly: true
-    TicketAuditResponse:
-      type: object
-      properties:
-        audit:
-          $ref: '#/components/schemas/TicketAuditObject'
     TicketAuditsResponseNoneCursor:
       type: object
       properties:
@@ -228,6 +223,11 @@ components:
               format: date-time
             value:
               type: integer
+    TicketAuditResponse:
+      type: object
+      properties:
+        audit:
+          $ref: '#/components/schemas/TicketAuditObject'
 x-refined-from:
 - ticket-audits-openapi-original.yml
 - tickets-openapi-original.yml
