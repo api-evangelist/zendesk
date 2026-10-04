@@ -155,17 +155,17 @@ paths:
                   $ref: '#/components/examples/RenewSessionResponseExample'
 components:
   schemas:
-    SessionsResponse:
-      type: object
-      properties:
-        sessions:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionObject'
     SessionResponse:
       type: object
       properties:
         session:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionObject'
+    SessionsResponse:
+      type: object
+      properties:
+        sessions:
           type: array
           items:
             $ref: '#/components/schemas/SessionObject'

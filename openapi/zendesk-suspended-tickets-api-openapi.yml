@@ -252,13 +252,6 @@ components:
               type: string
               description: Token for subsequent request
               readOnly: true
-    RecoverSuspendedTicketsResponse:
-      type: object
-      properties:
-        tickets:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketObject'
     SuspendedTicketsResponse:
       type: object
       properties:
@@ -285,6 +278,13 @@ components:
             view_id:
               type: string
               readOnly: true
+    RecoverSuspendedTicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketObject'
 x-refined-from:
 - attachments-openapi-original.yml
 - suspended-tickets-openapi-original.yml

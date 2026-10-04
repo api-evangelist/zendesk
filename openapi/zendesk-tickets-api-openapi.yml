@@ -1621,11 +1621,6 @@ components:
     ListTicketProblemsResponse:
       type: object
       additionalProperties: true
-    JobStatusResponse:
-      type: object
-      properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
     ListDeletedTicketsResponse:
       type: object
       allOf:
@@ -1652,6 +1647,11 @@ components:
                 subject:
                   type: string
       - $ref: '#/components/schemas/OffsetPaginationObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
     TagsByObjectIdResponse:
       type: object
       properties:
@@ -1662,6 +1662,20 @@ components:
             type: string
       required:
       - tags
+    ListTicketEmailCCsResponse:
+      type: object
+      additionalProperties: true
+    ListTicketIncidentsResponse:
+      type: object
+      additionalProperties: true
+    ListTicketFollowersResponse:
+      type: object
+      additionalProperties: true
+    TicketResponse:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/TicketObject'
     TicketRelatedInformation:
       type: object
       properties:
@@ -1685,14 +1699,6 @@ components:
           type: string
           description: Related topic in the Web portal (deprecated feature)
           nullable: true
-    TicketResponse:
-      type: object
-      properties:
-        ticket:
-          $ref: '#/components/schemas/TicketObject'
-    ListTicketFollowersResponse:
-      type: object
-      additionalProperties: true
     TicketUpdateResponse:
       type: object
       properties:
@@ -1700,6 +1706,9 @@ components:
           $ref: '#/components/schemas/AuditObject'
         ticket:
           $ref: '#/components/schemas/TicketObject'
+    ListTicketCollaboratorsResponse:
+      type: object
+      additionalProperties: true
     TicketsResponse:
       type: object
       properties:
@@ -1707,15 +1716,221 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketObject'
-    ListTicketCollaboratorsResponse:
+    TicketCreate:
       type: object
-      additionalProperties: true
-    ListTicketIncidentsResponse:
+      description: Payload for creating a new ticket.
+      properties:
+        subject:
+          type: string
+          description: The subject of the ticket.
+          example: example_value
+        comment:
+          type: object
+          required:
+          - body
+          description: The initial comment (description) of the ticket.
+          properties:
+            body:
+              type: string
+              description: The body of the comment.
+            html_body:
+              type: string
+              description: The HTML body of the comment.
+            public:
+              type: boolean
+              default: true
+              description: Whether the comment is public.
+            uploads:
+              type: array
+              items:
+                type: string
+              description: Upload tokens for attachments.
+          example: example_value
+        requester_id:
+          type: integer
+          format: int64
+          description: The ID of the requester.
+          example: '500123'
+        requester:
+          type: object
+          description: Requester details for creating a new user inline. Use either requester_id or requester, not both.
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+              format: email
+            locale_id:
+              type: integer
+          example: example_value
+        submitter_id:
+          type: integer
+          format: int64
+          description: The ID of the submitter.
+          example: '500123'
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the assigned agent.
+          example: '500123'
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          description: The ID of the assigned group.
+          example: '500123'
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        type:
+          type: string
+          enum:
+          - problem
+          - incident
+          - question
+          - task
+          nullable: true
+          example: problem
+        priority:
+          type: string
+          enum:
+          - urgent
+          - high
+          - normal
+          - low
+          nullable: true
+          example: urgent
+        status:
+          type: string
+          enum:
+          - new
+          - open
+          - pending
+          - hold
+          - solved
+          default: new
+          example: new
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        external_id:
+          type: string
+          nullable: true
+          example: '500123'
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+          example: []
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          example: '2026-01-15T10:30:00Z'
+        ticket_form_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        brand_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        collaborator_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: []
+        email_cc_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: user@example.com
+        problem_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+    Error:
       type: object
-      additionalProperties: true
-    ListTicketEmailCCsResponse:
+      description: An error response from the Zendesk API.
+      properties:
+        error:
+          type: string
+          description: The error type identifier.
+          example: example_value
+        description:
+          type: string
+          description: A human-readable description of the error.
+          example: A sample description.
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional details about the error.
+          example: example_value
+    Comment:
       type: object
-      additionalProperties: true
+      description: A comment on a ticket.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the comment.
+          readOnly: true
+          example: abc123
+        type:
+          type: string
+          enum:
+          - Comment
+          - VoiceComment
+          description: The type of the comment.
+          readOnly: true
+          example: Comment
+        body:
+          type: string
+          description: The plain text body of the comment.
+          example: example_value
+        html_body:
+          type: string
+          description: The HTML body of the comment.
+          example: example_value
+        plain_body:
+          type: string
+          description: The plain text body with formatting stripped.
+          readOnly: true
+          example: example_value
+        public:
+          type: boolean
+          description: Whether the comment is public (visible to the requester).
+          example: true
+        author_id:
+          type: integer
+          format: int64
+          description: The ID of the comment author.
+          example: '500123'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+          description: Attachments on the comment.
+          readOnly: true
+          example: []
+        via:
+          $ref: '#/components/schemas/Via'
+        created_at:
+          type: string
+          format: date-time
+          description: When the comment was created (ISO 8601).
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
     Attachment:
       type: object
       description: A file attachment.
@@ -1757,6 +1972,152 @@ components:
               size:
                 type: integer
           example: []
+    CustomField:
+      type: object
+      description: A custom field key-value pair.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the custom field.
+          example: abc123
+        value:
+          description: The value of the custom field.
+          oneOf:
+          - type: string
+          - type: number
+          - type: boolean
+          - type: array
+            items:
+              type: string
+          nullable: true
+          example: example_value
+    TicketUpdate:
+      type: object
+      description: Payload for updating an existing ticket.
+      properties:
+        subject:
+          type: string
+          example: example_value
+        comment:
+          type: object
+          description: A new comment to add to the ticket.
+          properties:
+            body:
+              type: string
+            html_body:
+              type: string
+            public:
+              type: boolean
+              default: true
+            author_id:
+              type: integer
+              format: int64
+            uploads:
+              type: array
+              items:
+                type: string
+          example: example_value
+        assignee_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        type:
+          type: string
+          enum:
+          - problem
+          - incident
+          - question
+          - task
+          nullable: true
+          example: problem
+        priority:
+          type: string
+          enum:
+          - urgent
+          - high
+          - normal
+          - low
+          nullable: true
+          example: urgent
+        status:
+          type: string
+          enum:
+          - new
+          - open
+          - pending
+          - hold
+          - solved
+          - closed
+          example: new
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+          example: []
+        due_at:
+          type: string
+          format: date-time
+          nullable: true
+          example: '2026-01-15T10:30:00Z'
+        problem_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        collaborator_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: []
+        email_cc_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: user@example.com
+        external_id:
+          type: string
+          nullable: true
+          example: '500123'
+    Via:
+      type: object
+      description: How the ticket or comment was created.
+      properties:
+        channel:
+          type: string
+          description: The channel the ticket or comment came through (e.g., web, email, api, chat, voice).
+          example: example_value
+        source:
+          type: object
+          properties:
+            from:
+              type: object
+              additionalProperties: true
+            to:
+              type: object
+              additionalProperties: true
+            rel:
+              type: string
+              nullable: true
+          example: example_value
     Ticket:
       type: object
       description: A Zendesk Support ticket representing a customer service request.
@@ -2008,368 +2369,24 @@ components:
           description: When the ticket was last updated (ISO 8601).
           readOnly: true
           example: '2026-01-15T10:30:00Z'
-    TicketUpdate:
-      type: object
-      description: Payload for updating an existing ticket.
-      properties:
-        subject:
-          type: string
-          example: example_value
-        comment:
-          type: object
-          description: A new comment to add to the ticket.
-          properties:
-            body:
-              type: string
-            html_body:
-              type: string
-            public:
-              type: boolean
-              default: true
-            author_id:
-              type: integer
-              format: int64
-            uploads:
-              type: array
-              items:
-                type: string
-          example: example_value
-        assignee_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        group_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        organization_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        type:
-          type: string
-          enum:
-          - problem
-          - incident
-          - question
-          - task
-          nullable: true
-          example: problem
-        priority:
-          type: string
-          enum:
-          - urgent
-          - high
-          - normal
-          - low
-          nullable: true
-          example: urgent
-        status:
-          type: string
-          enum:
-          - new
-          - open
-          - pending
-          - hold
-          - solved
-          - closed
-          example: new
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
-        custom_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomField'
-          example: []
-        due_at:
-          type: string
-          format: date-time
-          nullable: true
-          example: '2026-01-15T10:30:00Z'
-        problem_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        collaborator_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-          example: []
-        email_cc_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-          example: user@example.com
-        external_id:
-          type: string
-          nullable: true
-          example: '500123'
-    Via:
-      type: object
-      description: How the ticket or comment was created.
-      properties:
-        channel:
-          type: string
-          description: The channel the ticket or comment came through (e.g., web, email, api, chat, voice).
-          example: example_value
-        source:
-          type: object
-          properties:
-            from:
-              type: object
-              additionalProperties: true
-            to:
-              type: object
-              additionalProperties: true
-            rel:
-              type: string
-              nullable: true
-          example: example_value
-    Error:
-      type: object
-      description: An error response from the Zendesk API.
-      properties:
-        error:
-          type: string
-          description: The error type identifier.
-          example: example_value
-        description:
-          type: string
-          description: A human-readable description of the error.
-          example: A sample description.
-        details:
-          type: object
-          additionalProperties: true
-          description: Additional details about the error.
-          example: example_value
-    CustomField:
-      type: object
-      description: A custom field key-value pair.
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: The ID of the custom field.
-          example: abc123
-        value:
-          description: The value of the custom field.
-          oneOf:
-          - type: string
-          - type: number
-          - type: boolean
-          - type: array
-            items:
-              type: string
-          nullable: true
-          example: example_value
-    TicketCreate:
-      type: object
-      description: Payload for creating a new ticket.
-      properties:
-        subject:
-          type: string
-          description: The subject of the ticket.
-          example: example_value
-        comment:
-          type: object
-          required:
-          - body
-          description: The initial comment (description) of the ticket.
-          properties:
-            body:
-              type: string
-              description: The body of the comment.
-            html_body:
-              type: string
-              description: The HTML body of the comment.
-            public:
-              type: boolean
-              default: true
-              description: Whether the comment is public.
-            uploads:
-              type: array
-              items:
-                type: string
-              description: Upload tokens for attachments.
-          example: example_value
-        requester_id:
-          type: integer
-          format: int64
-          description: The ID of the requester.
-          example: '500123'
-        requester:
-          type: object
-          description: Requester details for creating a new user inline. Use either requester_id or requester, not both.
-          properties:
-            name:
-              type: string
-            email:
-              type: string
-              format: email
-            locale_id:
-              type: integer
-          example: example_value
-        submitter_id:
-          type: integer
-          format: int64
-          description: The ID of the submitter.
-          example: '500123'
-        assignee_id:
-          type: integer
-          format: int64
-          nullable: true
-          description: The ID of the assigned agent.
-          example: '500123'
-        group_id:
-          type: integer
-          format: int64
-          nullable: true
-          description: The ID of the assigned group.
-          example: '500123'
-        organization_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        type:
-          type: string
-          enum:
-          - problem
-          - incident
-          - question
-          - task
-          nullable: true
-          example: problem
-        priority:
-          type: string
-          enum:
-          - urgent
-          - high
-          - normal
-          - low
-          nullable: true
-          example: urgent
-        status:
-          type: string
-          enum:
-          - new
-          - open
-          - pending
-          - hold
-          - solved
-          default: new
-          example: new
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
-        external_id:
-          type: string
-          nullable: true
-          example: '500123'
-        custom_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomField'
-          example: []
-        due_at:
-          type: string
-          format: date-time
-          nullable: true
-          example: '2026-01-15T10:30:00Z'
-        ticket_form_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        brand_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        collaborator_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-          example: []
-        email_cc_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-          example: user@example.com
-        problem_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-    Comment:
-      type: object
-      description: A comment on a ticket.
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: The ID of the comment.
-          readOnly: true
-          example: abc123
-        type:
-          type: string
-          enum:
-          - Comment
-          - VoiceComment
-          description: The type of the comment.
-          readOnly: true
-          example: Comment
-        body:
-          type: string
-          description: The plain text body of the comment.
-          example: example_value
-        html_body:
-          type: string
-          description: The HTML body of the comment.
-          example: example_value
-        plain_body:
-          type: string
-          description: The plain text body with formatting stripped.
-          readOnly: true
-          example: example_value
-        public:
-          type: boolean
-          description: Whether the comment is public (visible to the requester).
-          example: true
-        author_id:
-          type: integer
-          format: int64
-          description: The ID of the comment author.
-          example: '500123'
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-          description: Attachments on the comment.
-          readOnly: true
-          example: []
-        via:
-          $ref: '#/components/schemas/Via'
-        created_at:
-          type: string
-          format: date-time
-          description: When the comment was created (ISO 8601).
-          readOnly: true
-          example: '2026-01-15T10:30:00Z'
   responses:
+    TooManyRequests:
+      description: Rate limit exceeded. Check the Retry-After header.
+      headers:
+        Retry-After:
+          description: Number of seconds to wait before making another request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found.
       content:
@@ -2382,24 +2399,15 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Rate limit exceeded. Check the Retry-After header.
-      headers:
-        Retry-After:
-          description: Number of seconds to wait before making another request.
-          schema:
-            type: integer
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
+    TicketId:
+      name: ticket_id
+      in: path
+      required: true
+      description: The ID of the ticket.
+      schema:
+        type: integer
+        format: int64
     PerPageParam:
       name: per_page
       in: query
@@ -2415,14 +2423,6 @@ components:
       schema:
         type: integer
         default: 1
-    TicketId:
-      name: ticket_id
-      in: path
-      required: true
-      description: The ID of the ticket.
-      schema:
-        type: integer
-        format: int64
   securitySchemes:
     basicAuth:
       type: http

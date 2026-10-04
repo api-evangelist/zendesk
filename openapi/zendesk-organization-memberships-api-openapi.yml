@@ -250,16 +250,6 @@ paths:
                   $ref: '#/components/examples/OrganizationMembershipResponseExample'
 components:
   schemas:
-    JobStatusResponse:
-      type: object
-      properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
-    OrganizationMembershipResponse:
-      type: object
-      properties:
-        organization_membership:
-          $ref: '#/components/schemas/OrganizationMembershipObject'
     OrganizationMembershipsResponse:
       type: object
       properties:
@@ -267,6 +257,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrganizationMembershipObject'
+    OrganizationMembershipResponse:
+      type: object
+      properties:
+        organization_membership:
+          $ref: '#/components/schemas/OrganizationMembershipObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
 x-refined-from:
 - organization-memberships-openapi-original.yml
 - organizations-openapi-original.yml

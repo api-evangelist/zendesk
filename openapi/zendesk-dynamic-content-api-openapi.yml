@@ -159,11 +159,6 @@ paths:
                   $ref: '#/components/examples/DynamicContentsResponseExample'
 components:
   schemas:
-    DynamicContentResponse:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/DynamicContentObject'
     DynamicContentsResponse:
       type: object
       properties:
@@ -171,3 +166,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DynamicContentObject'
+    DynamicContentResponse:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/DynamicContentObject'

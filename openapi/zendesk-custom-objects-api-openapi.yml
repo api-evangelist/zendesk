@@ -153,11 +153,6 @@ components:
           type: integer
           description: The maximum allowed number for the requested resource
           readOnly: true
-    CustomObjectResponse:
-      type: object
-      properties:
-        custom_object:
-          $ref: '#/components/schemas/CustomObject'
     CustomObjectsResponse:
       type: object
       properties:
@@ -165,3 +160,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomObject'
+    CustomObjectResponse:
+      type: object
+      properties:
+        custom_object:
+          $ref: '#/components/schemas/CustomObject'

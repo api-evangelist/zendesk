@@ -1152,6 +1152,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketObject'
+    ViewExportResponse:
+      type: object
+      properties:
+        export:
+          type: object
+          properties:
+            status:
+              type: string
+              readOnly: true
+            view_id:
+              type: integer
+              readOnly: true
+    ViewResponse:
+      type: object
+      properties:
+        columns:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        groups:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        rows:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        view:
+          $ref: '#/components/schemas/ViewObject'
     ViewsCountResponse:
       type: object
       properties:
@@ -1175,38 +1207,6 @@ components:
       properties:
         view_count:
           $ref: '#/components/schemas/ViewCountObject'
-    ViewResponse:
-      type: object
-      properties:
-        columns:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        groups:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        rows:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        view:
-          $ref: '#/components/schemas/ViewObject'
-    ViewExportResponse:
-      type: object
-      properties:
-        export:
-          type: object
-          properties:
-            status:
-              type: string
-              readOnly: true
-            view_id:
-              type: integer
-              readOnly: true
 x-refined-from:
 - search-openapi-original.yml
 - tickets-openapi-original.yml

@@ -81,6 +81,31 @@ paths:
                   $ref: '#/components/examples/AssigneeFieldAssignableGroupAgentsResponseExample'
 components:
   schemas:
+    AssigneeFieldAssignableGroupsAndAgentsSearchResponse:
+      type: object
+      properties:
+        agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssigneeFieldAssignableSearchAgentObject'
+        count:
+          type: integer
+          description: Number of agents + groups listed from search result.
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssigneeFieldAssignableSearchGroupObject'
+      example:
+        agents:
+        - group: Tech
+          group_id: 6574839201
+          id: 8392017465
+          name: Sam Technologist
+          photo_url: https://z3n-example.zendesk.com/system/photos/410305192023/my_profile.png
+        count: 2
+        groups:
+        - id: 6574839201
+          name: Tech
     AssigneeFieldAssignableGroupAgentsResponse:
       type: object
       properties:
@@ -113,31 +138,6 @@ components:
         count: 3
         next_page: null
         previous_page: null
-    AssigneeFieldAssignableGroupsAndAgentsSearchResponse:
-      type: object
-      properties:
-        agents:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssigneeFieldAssignableSearchAgentObject'
-        count:
-          type: integer
-          description: Number of agents + groups listed from search result.
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssigneeFieldAssignableSearchGroupObject'
-      example:
-        agents:
-        - group: Tech
-          group_id: 6574839201
-          id: 8392017465
-          name: Sam Technologist
-          photo_url: https://z3n-example.zendesk.com/system/photos/410305192023/my_profile.png
-        count: 2
-        groups:
-        - id: 6574839201
-          name: Tech
     AssigneeFieldAssignableGroupsResponse:
       type: object
       properties:

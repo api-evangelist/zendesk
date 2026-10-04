@@ -161,11 +161,6 @@ paths:
               example: ''
 components:
   schemas:
-    AuditLogResponse:
-      type: object
-      properties:
-        audit_log:
-          $ref: '#/components/schemas/AuditLogObject'
     AuditLogsResponse:
       type: object
       properties:
@@ -173,3 +168,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AuditLogObject'
+    AuditLogResponse:
+      type: object
+      properties:
+        audit_log:
+          $ref: '#/components/schemas/AuditLogObject'

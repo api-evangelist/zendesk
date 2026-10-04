@@ -209,11 +209,6 @@ paths:
                   $ref: '#/components/examples/HostMappingResponseWrongCNAMEExample'
 components:
   schemas:
-    BrandResponse:
-      type: object
-      properties:
-        brand:
-          $ref: '#/components/schemas/BrandObject'
     BrandsResponse:
       title: Brands
       type: object
@@ -226,6 +221,11 @@ components:
             description: Array of brands
             items:
               $ref: '#/components/schemas/BrandObject'
+    BrandResponse:
+      type: object
+      properties:
+        brand:
+          $ref: '#/components/schemas/BrandObject'
     HostMappingObject:
       title: Host Mapping
       type: object

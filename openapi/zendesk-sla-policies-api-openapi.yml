@@ -193,24 +193,6 @@ paths:
               example: ''
 components:
   schemas:
-    SLAPoliciesResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          readOnly: true
-        next_page:
-          type: string
-          nullable: true
-          readOnly: true
-        previous_page:
-          type: string
-          nullable: true
-          readOnly: true
-        sla_policies:
-          type: array
-          items:
-            $ref: '#/components/schemas/SLAPolicyObject'
     SLAPolicyResponse:
       type: object
       properties:
@@ -298,3 +280,21 @@ components:
                               nullable: true
                       type:
                         type: string
+    SLAPoliciesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          readOnly: true
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true
+        sla_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/SLAPolicyObject'

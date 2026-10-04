@@ -137,6 +137,11 @@ paths:
                   $ref: '#/components/examples/ResourceCollectionDeleteResponseExample'
 components:
   schemas:
+    ResourceCollectionResponse:
+      type: object
+      properties:
+        resource_collection:
+          $ref: '#/components/schemas/ResourceCollectionObject'
     ResourceCollectionsResponse:
       type: object
       properties:
@@ -160,8 +165,3 @@ components:
       properties:
         job_status:
           $ref: '#/components/schemas/JobStatusObject'
-    ResourceCollectionResponse:
-      type: object
-      properties:
-        resource_collection:
-          $ref: '#/components/schemas/ResourceCollectionObject'

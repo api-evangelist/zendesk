@@ -151,24 +151,6 @@ paths:
               example: ''
 components:
   schemas:
-    GroupSLAPoliciesResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          readOnly: true
-        group_sla_policies:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupSLAPolicyObject'
-        next_page:
-          type: string
-          nullable: true
-          readOnly: true
-        previous_page:
-          type: string
-          nullable: true
-          readOnly: true
     GroupSLAPolicyResponse:
       type: object
       properties:
@@ -215,3 +197,21 @@ components:
                               nullable: true
                       type:
                         type: string
+    GroupSLAPoliciesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          readOnly: true
+        group_sla_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupSLAPolicyObject'
+        next_page:
+          type: string
+          nullable: true
+          readOnly: true
+        previous_page:
+          type: string
+          nullable: true
+          readOnly: true

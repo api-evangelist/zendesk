@@ -59,17 +59,17 @@ paths:
                   $ref: '#/components/examples/SatisfactionReasonResponseExample'
 components:
   schemas:
-    SatisfactionReasonResponse:
-      type: object
-      properties:
-        reason:
-          type: array
-          items:
-            $ref: '#/components/schemas/SatisfactionReasonObject'
     SatisfactionReasonsResponse:
       type: object
       properties:
         reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/SatisfactionReasonObject'
+    SatisfactionReasonResponse:
+      type: object
+      properties:
+        reason:
           type: array
           items:
             $ref: '#/components/schemas/SatisfactionReasonObject'

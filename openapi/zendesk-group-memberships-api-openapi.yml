@@ -235,6 +235,11 @@ paths:
                   $ref: '#/components/examples/GroupMembershipsResponseExample'
 components:
   schemas:
+    GroupMembershipResponse:
+      type: object
+      properties:
+        group_membership:
+          $ref: '#/components/schemas/GroupMembershipObject'
     GroupMembershipsResponse:
       type: object
       properties:
@@ -247,11 +252,6 @@ components:
       properties:
         job_status:
           $ref: '#/components/schemas/JobStatusObject'
-    GroupMembershipResponse:
-      type: object
-      properties:
-        group_membership:
-          $ref: '#/components/schemas/GroupMembershipObject'
 x-refined-from:
 - group-memberships-openapi-original.yml
 - users-openapi-original.yml

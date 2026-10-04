@@ -261,11 +261,6 @@ paths:
           description: No content response
 components:
   schemas:
-    OAuthTokenResponse:
-      type: object
-      properties:
-        token:
-          $ref: '#/components/schemas/OauthTokenObject'
     OAuthTokensResponse:
       type: object
       properties:
@@ -273,3 +268,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OauthTokenObject'
+    OAuthTokenResponse:
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/OauthTokenObject'

@@ -134,12 +134,12 @@ paths:
                   $ref: '#/components/examples/RelationshipFilterDefinitionExample'
 components:
   schemas:
+    ReverseLookupResponse:
+      type: object
+      anyOf:
+      - $ref: '#/components/schemas/UsersResponse'
     RelationshipFilterDefinitionResponse:
       type: object
       properties:
         definitions:
           $ref: '#/components/schemas/RelationshipFilterDefinition'
-    ReverseLookupResponse:
-      type: object
-      anyOf:
-      - $ref: '#/components/schemas/UsersResponse'
