@@ -1,0 +1,986 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/zendesk/integrations
+- https://n8n.io/integrations/zendesk/
+- https://composio.dev/toolkits/zendesk
+checked:
+- https://composio.dev/toolkits/zendesk
+- https://monid.ai/tools/zendesk
+- https://n8n.io/integrations/zendesk/
+- https://zapier.com/apps/zendesk/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: zendesk
+  url: https://zapier.com/apps/zendesk/integrations
+  external_url: https://www.zendesk.com/
+  partner_tier: PLATINUM
+  triggers:
+  - key: group
+    label: New Group
+  - key: new_tag_ticket
+    label: New Tag Added to Ticket
+  - key: new_ticket_comment
+    label: New Comment on Ticket
+  - key: new_ticket_in_view
+    label: New Ticket in View
+  - key: new_ticket_v2
+    label: New Ticket
+  - key: new_user_tag
+    label: Tag Added to User
+  - key: organization_v2
+    label: New Organization
+  - key: suspended_ticket
+    label: New Suspended Ticket
+  - key: ticket_audit
+    label: New Action on Ticket
+  - key: updated_ticket
+    label: Updated Ticket
+  - key: updated_ticket_in_view
+    label: Updated Ticket in View
+  - key: user_v2
+    label: New User
+  - key: view
+    label: New View
+  actions:
+  - key: delete_user
+    label: Delete User
+  - key: organization
+    label: Create Organization
+  - key: remove_ticket_tags
+    label: 'Remove Tag(s) from Ticket '
+  - key: ticket
+    label: Create Ticket
+  - key: ticket_attachment
+    label: Attach File to Ticket
+  - key: ticket_comment
+    label: Add Comment to Ticket
+  - key: ticket_tags
+    label: Add Tag(s) to Ticket
+  - key: update_organization
+    label: Update Organization
+  - key: update_ticket_v2
+    label: Update Ticket
+  - key: update_user
+    label: Update User
+  - key: user
+    label: Create User
+  - key: _zap_raw_request
+    label: API Request (Beta)
+  searches:
+  - key: agent
+    label: Find an Agent
+  - key: all_comments
+    label: Find Ticket Comments
+  - key: find_tickets_v2
+    label: Find Tickets
+  - key: group
+    label: Find a Group
+  - key: latest_comment
+    label: Find Latest Comment
+  - key: organization
+    label: Find an Organization
+  - key: user
+    label: Find a User
+- marketplace: n8n
+  channel: open-source-node
+  app: zendesk
+  url: https://n8n.io/integrations/zendesk/
+  identity: title
+  pair_pages: 8
+  pairs:
+  - zenrows
+  - zoho-books
+  - zoho-crm
+  - zoho-desk
+  - zonka-feedback
+  - zoom
+  - zscaler-zia
+  - zulip
+- marketplace: composio
+  channel: agent-gateway
+  app: zendesk
+  url: https://composio.dev/toolkits/zendesk
+  identity: action-prefix
+  actions:
+  - key: ZENDESK_APPLY_ZENDESK_MACRO
+  - key: ZENDESK_AUTOCOMPLETE_PROBLEMS
+  - key: ZENDESK_AUTOCOMPLETE_USERS
+  - key: ZENDESK_CHECK_HOST_MAPPING_VALIDITY_FOR_EXISTING_BRAND
+  - key: ZENDESK_COUNT_DELETED_USERS
+  - key: ZENDESK_COUNT_USER_CCD_TICKETS
+  - key: ZENDESK_COUNT_ZENDESK_CUSTOM_OBJECT_RECORDS
+  - key: ZENDESK_COUNT_ZENDESK_ORGANIZATIONS
+  - key: ZENDESK_CREATE_ACCESS_RULE
+  - key: ZENDESK_CREATE_APPS_INSTALLATION
+  - key: ZENDESK_CREATE_APPS_NOTIFY
+  - key: ZENDESK_CREATE_AUTOCOMPLETE_TAGS
+  - key: ZENDESK_CREATE_AUTOMATION
+  - key: ZENDESK_CREATE_BOOKMARK
+  - key: ZENDESK_CREATE_COMMENT_REDACTION
+  - key: ZENDESK_CREATE_CUSTOM_OBJECT_BULK_JOB
+  - key: ZENDESK_CREATE_CUSTOM_OBJECT_RECORD
+  - key: ZENDESK_CREATE_CUSTOM_OBJECT_RECORD_ATTACHMENT
+  - key: ZENDESK_CREATE_CUSTOM_STATUSES
+  - key: ZENDESK_CREATE_DELETION_SCHEDULE
+  - key: ZENDESK_CREATE_DYNAMIC_CONTENT_ITEMS
+  - key: ZENDESK_CREATE_DYNAMIC_CONTENT_ITEMS_VARIANTS
+  - key: ZENDESK_CREATE_END_USER_IDENTITY
+  - key: ZENDESK_CREATE_GROUP_MEMBERSHIPS
+  - key: ZENDESK_CREATE_IMPORTS_TICKETS_CREATE_MANY
+  - key: ZENDESK_CREATE_MANY_DYNAMIC_CONTENT_ITEMS_VARIANTS
+  - key: ZENDESK_CREATE_MANY_TICKETS
+  - key: ZENDESK_CREATE_MANY_USERS
+  - key: ZENDESK_CREATE_OBJECT_TRIGGER
+  - key: ZENDESK_CREATE_ORGANIZATIONS_TAGS
+  - key: ZENDESK_CREATE_ORGANIZATION_FIELD
+  - key: ZENDESK_CREATE_ORGANIZATION_MEMBERSHIPS
+  - key: ZENDESK_CREATE_ORGANIZATION_MEMBERSHIPS_CREATE_MANY
+  - key: ZENDESK_CREATE_ORGANIZATION_MERGE
+  - key: ZENDESK_CREATE_ORGANIZATION_SUBSCRIPTION
+  - key: ZENDESK_CREATE_OR_UPDATE_MANY_USERS
+  - key: ZENDESK_CREATE_OR_UPDATE_ORGANIZATION
+  - key: ZENDESK_CREATE_OR_UPDATE_USER
+  - key: ZENDESK_CREATE_PUSH_NOTIFICATION_DEVICES_DESTROY_MANY
+  - key: ZENDESK_CREATE_RESOURCE_COLLECTIONS
+  - key: ZENDESK_CREATE_SIDE_CONVERSATION
+  - key: ZENDESK_CREATE_SUPPORT_ADDRESS
+  - key: ZENDESK_CREATE_SUSPENDED_TICKETS_EXPORT
+  - key: ZENDESK_CREATE_TICKET_CONTENT_PIN
+  - key: ZENDESK_CREATE_TICKET_FIELD
+  - key: ZENDESK_CREATE_TICKET_FIELD_OPTION
+  - key: ZENDESK_CREATE_TRIGGER
+  - key: ZENDESK_CREATE_TRIGGER_CATEGORIES_JOB
+  - key: ZENDESK_CREATE_TRIGGER_CATEGORY
+  - key: ZENDESK_CREATE_USERS_LOGOUT_MANY
+  - key: ZENDESK_CREATE_USERS_ORGANIZATION_MEMBERSHIPS
+  - key: ZENDESK_CREATE_USERS_TAGS
+  - key: ZENDESK_CREATE_USER_FIELD_OPTION
+  - key: ZENDESK_CREATE_USER_IDENTITY
+  - key: ZENDESK_CREATE_USER_PROFILES_EVENTS
+  - key: ZENDESK_CREATE_VIEW
+  - key: ZENDESK_CREATE_VIEWS_PREVIEW
+  - key: ZENDESK_CREATE_VIEWS_PREVIEW_COUNT
+  - key: ZENDESK_CREATE_ZENDESK_ATTACHMENTS
+  - key: ZENDESK_CREATE_ZENDESK_CUSTOM_OBJECT
+  - key: ZENDESK_CREATE_ZENDESK_CUSTOM_OBJECT_FIELD
+  - key: ZENDESK_CREATE_ZENDESK_GROUP
+  - key: ZENDESK_CREATE_ZENDESK_IMPORT_TICKET
+  - key: ZENDESK_CREATE_ZENDESK_ORGANIZATION
+  - key: ZENDESK_CREATE_ZENDESK_REQUEST
+  - key: ZENDESK_CREATE_ZENDESK_TARGET
+  - key: ZENDESK_CREATE_ZENDESK_TICKET
+  - key: ZENDESK_CREATE_ZENDESK_TICKET_OR_VOICEMAIL_TICKET
+  - key: ZENDESK_CREATE_ZENDESK_USER
+  - key: ZENDESK_CREATE_ZENDESK_USER_FIELD
+  - key: ZENDESK_DELETE_ACCESS_RULE
+  - key: ZENDESK_DELETE_AUTOMATION
+  - key: ZENDESK_DELETE_BUSINESS_HOURS_SCHEDULE
+  - key: ZENDESK_DELETE_CUSTOM_OBJECT_RECORD_ATTACHMENT
+  - key: ZENDESK_DELETE_CUSTOM_OBJECT_RECORD_BY_EXTERNAL_ID_OR_NAME
+  - key: ZENDESK_DELETE_DELETED_TICKET
+  - key: ZENDESK_DELETE_DELETION_SCHEDULE
+  - key: ZENDESK_DELETE_GROUP_MEMBERSHIP
+  - key: ZENDESK_DELETE_GROUP_MEMBERSHIPS_DESTROY_MANY
+  - key: ZENDESK_DELETE_MACRO
+  - key: ZENDESK_DELETE_MACROS_DESTROY_MANY
+  - key: ZENDESK_DELETE_MANY_AUTOMATIONS
+  - key: ZENDESK_DELETE_MANY_OBJECT_TRIGGERS
+  - key: ZENDESK_DELETE_MANY_ORGANIZATION_MEMBERSHIPS
+  - key: ZENDESK_DELETE_MANY_VIEWS
+  - key: ZENDESK_DELETE_ORGANIZATIONS_TAGS
+  - key: ZENDESK_DELETE_ORGANIZATION_FIELD
+  - key: ZENDESK_DELETE_ORGANIZATION_MEMBERSHIP
+  - key: ZENDESK_DELETE_ORGANIZATION_SUBSCRIPTION
+  - key: ZENDESK_DELETE_RESOURCE_COLLECTIONS
+  - key: ZENDESK_DELETE_SUSPENDED_TICKETS_DESTROY_MANY
+  - key: ZENDESK_DELETE_TARGET
+  - key: ZENDESK_DELETE_TICKETS_TAGS
+  - key: ZENDESK_DELETE_TICKET_FIELD
+  - key: ZENDESK_DELETE_TICKET_FIELD_OPTION
+  - key: ZENDESK_DELETE_TRIGGER
+  - key: ZENDESK_DELETE_TRIGGER_CATEGORY
+  - key: ZENDESK_DELETE_USERS_DESTROY_MANY
+  - key: ZENDESK_DELETE_USERS_GROUP_MEMBERSHIPS
+  - key: ZENDESK_DELETE_USERS_IDENTITY
+  - key: ZENDESK_DELETE_USERS_ME_LOGOUT
+  - key: ZENDESK_DELETE_USERS_ORGANIZATION_MEMBERSHIPS
+  - key: ZENDESK_DELETE_USERS_SESSIONS
+  - key: ZENDESK_DELETE_USERS_TAGS
+  - key: ZENDESK_DELETE_USER_FIELD
+  - key: ZENDESK_DELETE_USER_FIELD_OPTION
+  - key: ZENDESK_DELETE_USER_PERMANENTLY
+  - key: ZENDESK_DELETE_USER_PROFILE
+  - key: ZENDESK_DELETE_USER_SESSION
+  - key: ZENDESK_DELETE_VIEW
+  - key: ZENDESK_DELETE_ZENDESK_APP_INSTALLATION
+  - key: ZENDESK_DELETE_ZENDESK_BOOKMARK
+  - key: ZENDESK_DELETE_ZENDESK_CUSTOM_OBJECT
+  - key: ZENDESK_DELETE_ZENDESK_CUSTOM_OBJECT_FIELD
+  - key: ZENDESK_DELETE_ZENDESK_CUSTOM_OBJECT_RECORD
+  - key: ZENDESK_DELETE_ZENDESK_CUSTOM_STATUS
+  - key: ZENDESK_DELETE_ZENDESK_DYNAMIC_CONTENT_ITEM
+  - key: ZENDESK_DELETE_ZENDESK_DYNAMIC_CONTENT_ITEM_VARIANT
+  - key: ZENDESK_DELETE_ZENDESK_OBJECT_TRIGGER
+  - key: ZENDESK_DELETE_ZENDESK_ORGANIZATION
+  - key: ZENDESK_DELETE_ZENDESK_SUPPORT_ADDRESS
+  - key: ZENDESK_DELETE_ZENDESK_TICKET
+  - key: ZENDESK_DELETE_ZENDESK_USER
+  - key: ZENDESK_DESTROY_MANY_DELETED_TICKETS
+  - key: ZENDESK_DESTROY_MANY_ORGANIZATIONS
+  - key: ZENDESK_DETECT_BEST_LOCALE
+  - key: ZENDESK_DOWNLOAD_CUSTOM_OBJECT_RECORD_ATTACHMENT
+  - key: ZENDESK_GET_ABOUT_ME
+  - key: ZENDESK_GET_ACCOUNT_SETTINGS
+  - key: ZENDESK_GET_ACTIVE_TRIGGERS
+  - key: ZENDESK_GET_ACTIVITIES_COUNT
+  - key: ZENDESK_GET_ALL_ZENDESK_ORGANIZATIONS
+  - key: ZENDESK_GET_APP
+  - key: ZENDESK_GET_APPS_INSTALLATIONS_REQUIREMENTS
+  - key: ZENDESK_GET_APPS_JOB_STATUS
+  - key: ZENDESK_GET_APPS_LOCATION
+  - key: ZENDESK_GET_APPS_LOCATION_INSTALLATIONS
+  - key: ZENDESK_GET_APPS_PUBLIC_KEY
+  - key: ZENDESK_GET_APPS_PUBLIC_KEY_PEM
+  - key: ZENDESK_GET_ATTACHMENT
+  - key: ZENDESK_GET_AUTOCOMPLETE_TAGS
+  - key: ZENDESK_GET_AUTOMATION
+  - key: ZENDESK_GET_AUTOMATIONS
+  - key: ZENDESK_GET_AUTOMATIONS_SEARCH
+  - key: ZENDESK_GET_BRANDS
+  - key: ZENDESK_GET_BRANDS2
+  - key: ZENDESK_GET_BRANDS_AGENTS
+  - key: ZENDESK_GET_CUSTOM_OBJECTS_LIMIT
+  - key: ZENDESK_GET_CUSTOM_OBJECT_FIELDS_LIMIT
+  - key: ZENDESK_GET_CUSTOM_OBJECT_RECORDS_LIMIT
+  - key: ZENDESK_GET_CUSTOM_STATUS
+  - key: ZENDESK_GET_CUSTOM_STATUSES
+  - key: ZENDESK_GET_DELETED_TICKETS
+  - key: ZENDESK_GET_DELETED_USER
+  - key: ZENDESK_GET_DELETION_SCHEDULE
+  - key: ZENDESK_GET_DELETION_SCHEDULES
+  - key: ZENDESK_GET_DYNAMIC_CONTENT_ITEMS
+  - key: ZENDESK_GET_DYNAMIC_CONTENT_ITEMS_SHOW_MANY
+  - key: ZENDESK_GET_DYNAMIC_CONTENT_ITEMS_VARIANTS
+  - key: ZENDESK_GET_DYNAMIC_CONTENT_ITEM_SHOW
+  - key: ZENDESK_GET_DYNAMIC_CONTENT_ITEM_VARIANT
+  - key: ZENDESK_GET_EMAIL_NOTIFICATION
+  - key: ZENDESK_GET_EMAIL_NOTIFICATIONS
+  - key: ZENDESK_GET_EMAIL_NOTIFICATIONS_SHOW_MANY
+  - key: ZENDESK_GET_END_USER_IDENTITIES
+  - key: ZENDESK_GET_END_USER_IDENTITY
+  - key: ZENDESK_GET_GROUPS_ASSIGNABLE
+  - key: ZENDESK_GET_GROUPS_COUNT
+  - key: ZENDESK_GET_GROUPS_USERS_COUNT
+  - key: ZENDESK_GET_GROUP_MEMBERSHIP
+  - key: ZENDESK_GET_GROUP_MEMBERSHIPS
+  - key: ZENDESK_GET_GROUP_MEMBERSHIPS_BY_GROUP
+  - key: ZENDESK_GET_GROUP_USERS
+  - key: ZENDESK_GET_GUIDE_SURVEYS
+  - key: ZENDESK_GET_GUIDE_SURVEY_RESPONSES
+  - key: ZENDESK_GET_INCREMENTAL_ORGANIZATIONS
+  - key: ZENDESK_GET_INCREMENTAL_ROUTING_ATTRIBUTES
+  - key: ZENDESK_GET_INCREMENTAL_ROUTING_ATTRIBUTE_VALUES
+  - key: ZENDESK_GET_INCREMENTAL_ROUTING_INSTANCE_VALUES
+  - key: ZENDESK_GET_INCREMENTAL_SAMPLE
+  - key: ZENDESK_GET_INCREMENTAL_TICKETS
+  - key: ZENDESK_GET_INCREMENTAL_TICKETS_CURSOR
+  - key: ZENDESK_GET_INCREMENTAL_TICKET_EVENTS
+  - key: ZENDESK_GET_INCREMENTAL_TICKET_METRIC_EVENTS
+  - key: ZENDESK_GET_INCREMENTAL_USERS
+  - key: ZENDESK_GET_INCREMENTAL_USERS_CURSOR
+  - key: ZENDESK_GET_JOB_STATUSES
+  - key: ZENDESK_GET_JOB_STATUSES2
+  - key: ZENDESK_GET_LOCALE
+  - key: ZENDESK_GET_LOCALES
+  - key: ZENDESK_GET_LOCALES_AGENT
+  - key: ZENDESK_GET_LOCALES_CURRENT
+  - key: ZENDESK_GET_MACRO2
+  - key: ZENDESK_GET_MACROS
+  - key: ZENDESK_GET_MACROS_ACTIONS
+  - key: ZENDESK_GET_MACROS_ACTIVE
+  - key: ZENDESK_GET_MACROS_APPLY
+  - key: ZENDESK_GET_MACROS_SEARCH
+  - key: ZENDESK_GET_MACRO_ATTACHMENTS
+  - key: ZENDESK_GET_MACRO_CATEGORIES
+  - key: ZENDESK_GET_MACRO_DEFINITIONS
+  - key: ZENDESK_GET_MACRO_REPLICA
+  - key: ZENDESK_GET_OBJECT_TRIGGER
+  - key: ZENDESK_GET_OPEN_REQUESTS
+  - key: ZENDESK_GET_ORGANIZATIONS_AUTOCOMPLETE
+  - key: ZENDESK_GET_ORGANIZATIONS_MERGES
+  - key: ZENDESK_GET_ORGANIZATIONS_SHOW_MANY
+  - key: ZENDESK_GET_ORGANIZATIONS_TICKETS_COUNT
+  - key: ZENDESK_GET_ORGANIZATION_FIELD2
+  - key: ZENDESK_GET_ORGANIZATION_FIELDS
+  - key: ZENDESK_GET_ORGANIZATION_MEMBERSHIP2
+  - key: ZENDESK_GET_ORGANIZATION_RELATED
+  - key: ZENDESK_GET_ORGANIZATION_REQUESTS
+  - key: ZENDESK_GET_ORGANIZATION_SUBSCRIPTION
+  - key: ZENDESK_GET_ORGANIZATION_SUBSCRIPTIONS
+  - key: ZENDESK_GET_ORGANIZATION_TAGS
+  - key: ZENDESK_GET_ORGANIZATION_TICKETS
+  - key: ZENDESK_GET_ORGANIZATION_USERS
+  - key: ZENDESK_GET_ORGANIZATION_USERS_COUNT
+  - key: ZENDESK_GET_OWNED_APPS
+  - key: ZENDESK_GET_PROBLEMS
+  - key: ZENDESK_GET_PUBLIC_LOCALES
+  - key: ZENDESK_GET_RECENT_TICKETS
+  - key: ZENDESK_GET_REMOTE_AUTHENTICATIONS
+  - key: ZENDESK_GET_REQUESTS
+  - key: ZENDESK_GET_REQUESTS_CCDB
+  - key: ZENDESK_GET_REQUESTS_COMMENT
+  - key: ZENDESK_GET_REQUESTS_SEARCH
+  - key: ZENDESK_GET_REQUESTS_SOLVED
+  - key: ZENDESK_GET_REQUEST_COMMENTS
+  - key: ZENDESK_GET_ROUTING_AGENTS_INSTANCE_VALUES
+  - key: ZENDESK_GET_SATISFACTION_RATINGS
+  - key: ZENDESK_GET_SATISFACTION_RATINGS_COUNT
+  - key: ZENDESK_GET_SEARCH_COUNT
+  - key: ZENDESK_GET_SEARCH_EXPORT
+  - key: ZENDESK_GET_SECURITY_SETTINGS
+  - key: ZENDESK_GET_SIDE_CONVERSATIONS_EVENTS
+  - key: ZENDESK_GET_SUPPORT_ADDRESS
+  - key: ZENDESK_GET_TAGS
+  - key: ZENDESK_GET_TAGS_COUNT
+  - key: ZENDESK_GET_TARGET
+  - key: ZENDESK_GET_TARGETS
+  - key: ZENDESK_GET_TARGET_FAILURE
+  - key: ZENDESK_GET_TARGET_FAILURES
+  - key: ZENDESK_GET_TICKETS_AUDITS
+  - key: ZENDESK_GET_TICKETS_AUDITS_COUNT
+  - key: ZENDESK_GET_TICKETS_COMMENTS_COUNT
+  - key: ZENDESK_GET_TICKETS_CONVERSATION_LOG
+  - key: ZENDESK_GET_TICKETS_COUNT
+  - key: ZENDESK_GET_TICKETS_METRICS
+  - key: ZENDESK_GET_TICKETS_SIDE_CONVERSATIONS_EVENTS
+  - key: ZENDESK_GET_TICKET_AUDIT_BY_ID
+  - key: ZENDESK_GET_TICKET_COLLABORATORS
+  - key: ZENDESK_GET_TICKET_COMMENTS
+  - key: ZENDESK_GET_TICKET_EMAIL_C_CS
+  - key: ZENDESK_GET_TICKET_FIELD2
+  - key: ZENDESK_GET_TICKET_FIELDS
+  - key: ZENDESK_GET_TICKET_FIELDS_COUNT
+  - key: ZENDESK_GET_TICKET_FIELDS_SHOW_MANY
+  - key: ZENDESK_GET_TICKET_FOLLOWERS
+  - key: ZENDESK_GET_TICKET_FORMS
+  - key: ZENDESK_GET_TICKET_FORMS_SHOW_MANY
+  - key: ZENDESK_GET_TICKET_INCIDENTS
+  - key: ZENDESK_GET_TICKET_METRIC
+  - key: ZENDESK_GET_TICKET_METRICS
+  - key: ZENDESK_GET_TICKET_SKIPS
+  - key: ZENDESK_GET_TRIGGER
+  - key: ZENDESK_GET_TRIGGERS
+  - key: ZENDESK_GET_TRIGGERS_DEFINITIONS
+  - key: ZENDESK_GET_TRIGGERS_SEARCH
+  - key: ZENDESK_GET_TRIGGER_CATEGORIES
+  - key: ZENDESK_GET_TRIGGER_CATEGORIES2
+  - key: ZENDESK_GET_USER
+  - key: ZENDESK_GET_USERS_ASSIGNED_TICKETS
+  - key: ZENDESK_GET_USERS_AUTOCOMPLETE
+  - key: ZENDESK_GET_USERS_BRAND_AGENTS
+  - key: ZENDESK_GET_USERS_CCD_TICKETS
+  - key: ZENDESK_GET_USERS_COMPLIANCE_DELETION_STATUSES
+  - key: ZENDESK_GET_USERS_COUNT
+  - key: ZENDESK_GET_USERS_FOLLOWED_TICKETS
+  - key: ZENDESK_GET_USERS_GROUPS
+  - key: ZENDESK_GET_USERS_GROUPS_COUNT
+  - key: ZENDESK_GET_USERS_GROUP_MEMBERSHIPS
+  - key: ZENDESK_GET_USERS_GROUP_MEMBERSHIPS_BY_ID
+  - key: ZENDESK_GET_USERS_IDENTITIES2
+  - key: ZENDESK_GET_USERS_ME_SESSION
+  - key: ZENDESK_GET_USERS_ME_SETTINGS
+  - key: ZENDESK_GET_USERS_ORGANIZATIONS
+  - key: ZENDESK_GET_USERS_ORGANIZATIONS_COUNT
+  - key: ZENDESK_GET_USERS_ORGANIZATION_MEMBERSHIPS
+  - key: ZENDESK_GET_USERS_ORGANIZATION_MEMBERSHIPS2
+  - key: ZENDESK_GET_USERS_ORGANIZATION_SUBSCRIPTIONS
+  - key: ZENDESK_GET_USERS_PASSWORD_REQUIREMENTS
+  - key: ZENDESK_GET_USERS_PROFILES
+  - key: ZENDESK_GET_USERS_RELATED
+  - key: ZENDESK_GET_USERS_REQUESTED_TICKETS
+  - key: ZENDESK_GET_USERS_REQUESTS
+  - key: ZENDESK_GET_USERS_SKIPS
+  - key: ZENDESK_GET_USERS_TAGS
+  - key: ZENDESK_GET_USER_ENTITLEMENTS_FULL
+  - key: ZENDESK_GET_USER_EVENTS
+  - key: ZENDESK_GET_USER_FIELDS
+  - key: ZENDESK_GET_USER_FIELDS_SHOW_MANY
+  - key: ZENDESK_GET_USER_FIELD_BY_ID
+  - key: ZENDESK_GET_USER_FIELD_OPTIONS
+  - key: ZENDESK_GET_USER_PROFILES2
+  - key: ZENDESK_GET_USER_PROFILES_EVENTS2
+  - key: ZENDESK_GET_USER_SESSIONS
+  - key: ZENDESK_GET_USER_TICKETS_ASSIGNED_COUNT
+  - key: ZENDESK_GET_VIEWS
+  - key: ZENDESK_GET_VIEWS_ACTIVE
+  - key: ZENDESK_GET_VIEWS_COMPACT
+  - key: ZENDESK_GET_VIEWS_COUNT
+  - key: ZENDESK_GET_VIEWS_COUNT_MANY
+  - key: ZENDESK_GET_VIEWS_EXECUTE
+  - key: ZENDESK_GET_VIEWS_EXPORT
+  - key: ZENDESK_GET_VIEWS_SEARCH
+  - key: ZENDESK_GET_VIEWS_SHOW_MANY
+  - key: ZENDESK_GET_VIEWS_TICKETS
+  - key: ZENDESK_GET_VIEW_DEFINITIONS
+  - key: ZENDESK_GET_VIEW_TICKET_COUNT
+  - key: ZENDESK_GET_ZENDESK_ACTIVITIES
+  - key: ZENDESK_GET_ZENDESK_CUSTOM_ROLES
+  - key: ZENDESK_GET_ZENDESK_ORGANIZATION
+  - key: ZENDESK_GET_ZENDESK_ORGANIZATIONS_SUBSCRIPTIONS
+  - key: ZENDESK_GET_ZENDESK_ORGANIZATION_MERGE
+  - key: ZENDESK_GET_ZENDESK_REQUESTS
+  - key: ZENDESK_GET_ZENDESK_SESSIONS
+  - key: ZENDESK_GET_ZENDESK_SHARING_AGREEMENTS
+  - key: ZENDESK_GET_ZENDESK_SUSPENDED_TICKETS
+  - key: ZENDESK_GET_ZENDESK_TICKETS_SIDE_CONVERSATION_ID
+  - key: ZENDESK_GET_ZENDESK_TICKETS_TAGS
+  - key: ZENDESK_GET_ZENDESK_TICKET_BY_ID
+  - key: ZENDESK_GET_ZENDESK_TICKET_FIELDS_OPTIONS
+  - key: ZENDESK_GET_ZENDESK_TICKET_FIELDS_OPTIONS2
+  - key: ZENDESK_GET_ZENDESK_TICKET_FORM
+  - key: ZENDESK_GET_ZENDESK_TICKET_RELATED
+  - key: ZENDESK_LIST_ACTIVE_AUTOMATIONS
+  - key: ZENDESK_LIST_APP_INSTALLATIONS
+  - key: ZENDESK_LIST_APP_LOCATIONS
+  - key: ZENDESK_LIST_ASSIGNABLE_GROUP_MEMBERSHIPS
+  - key: ZENDESK_LIST_ASSIGNABLE_GROUP_MEMBERSHIPS_BY_GROUP
+  - key: ZENDESK_LIST_BOOKMARKS
+  - key: ZENDESK_LIST_BRAND_AGENTS
+  - key: ZENDESK_LIST_CUSTOM_OBJECT_RECORDS
+  - key: ZENDESK_LIST_CUSTOM_OBJECT_RECORD_ATTACHMENTS
+  - key: ZENDESK_LIST_DELETED_USERS
+  - key: ZENDESK_LIST_INCREMENTAL_CUSTOM_OBJECT_RECORDS
+  - key: ZENDESK_LIST_MONITORED_TWITTER_HANDLES
+  - key: ZENDESK_LIST_OBJECT_TRIGGERS
+  - key: ZENDESK_LIST_OBJECT_TRIGGERS_DEFINITIONS
+  - key: ZENDESK_LIST_ORGANIZATION_MEMBERSHIPS
+  - key: ZENDESK_LIST_ORGANIZATION_MEMBERSHIPS_BY_ORGANIZATION
+  - key: ZENDESK_LIST_RESOURCE_COLLECTIONS
+  - key: ZENDESK_LIST_SKIPS
+  - key: ZENDESK_LIST_SUPPORT_ADDRESSES
+  - key: ZENDESK_LIST_TICKET_AUDITS
+  - key: ZENDESK_LIST_TICKET_CONTENT_PINS
+  - key: ZENDESK_LIST_USER_IDENTITIES
+  - key: ZENDESK_LIST_ZENDESK_ACCESS_RULES
+  - key: ZENDESK_LIST_ZENDESK_CUSTOM_OBJECTS
+  - key: ZENDESK_LIST_ZENDESK_CUSTOM_OBJECT_FIELDS
+  - key: ZENDESK_LIST_ZENDESK_PERMISSION_POLICIES
+  - key: ZENDESK_LIST_ZENDESK_TICKETS
+  - key: ZENDESK_LIST_ZENDESK_USERS
+  - key: ZENDESK_MAKE_COMMENT_PRIVATE
+  - key: ZENDESK_MAKE_DEFAULT_ORGANIZATION_MEMBERSHIP
+  - key: ZENDESK_MAKE_END_USER_IDENTITY_PRIMARY
+  - key: ZENDESK_MAKE_TICKET_COMMENT_PRIVATE
+  - key: ZENDESK_MAKE_USER_IDENTITY_PRIMARY
+  - key: ZENDESK_MARK_MANY_TICKETS_AS_SPAM
+  - key: ZENDESK_MERGE_USERS
+  - key: ZENDESK_MERGE_ZENDESK_TICKETS
+  - key: ZENDESK_NEW_USER_TRIGGER
+  - key: ZENDESK_NEW_ZENDESK_TICKET_TRIGGER
+  - key: ZENDESK_OPEN_USERS_PROFILE_IN_AGENT_BROWSER
+  - key: ZENDESK_RECOVER_MANY_SUSPENDED_TICKETS
+  - key: ZENDESK_RENEW_SESSION
+  - key: ZENDESK_REORDER_CUSTOM_OBJECT_FIELDS
+  - key: ZENDESK_REORDER_LOCATION_INSTALLATIONS
+  - key: ZENDESK_REORDER_ORGANIZATION_FIELDS
+  - key: ZENDESK_REORDER_TICKET_FIELDS
+  - key: ZENDESK_REORDER_TRIGGERS
+  - key: ZENDESK_REORDER_USER_FIELDS
+  - key: ZENDESK_REPLY_ZENDESK_TICKET
+  - key: ZENDESK_REQUEST_END_USER_VERIFICATION
+  - key: ZENDESK_REQUEST_USER_CREATE
+  - key: ZENDESK_REQUEST_USER_VERIFICATION
+  - key: ZENDESK_RESTORE_MANY_TICKETS
+  - key: ZENDESK_RESTORE_ZENDESK_TICKET
+  - key: ZENDESK_SEARCH_CUSTOM_OBJECT_RECORDS
+  - key: ZENDESK_SEARCH_OBJECT_TRIGGERS
+  - key: ZENDESK_SEARCH_ZENDESK
+  - key: ZENDESK_SEARCH_ZENDESK_ORGANIZATIONS
+  - key: ZENDESK_SEARCH_ZENDESK_USERS
+  - key: ZENDESK_SET_DEFAULT_CUSTOM_STATUS
+  - key: ZENDESK_SET_GROUP_MEMBERSHIP_AS_DEFAULT
+  - key: ZENDESK_SET_USERS_ORGANIZATION_AS_DEFAULT
+  - key: ZENDESK_SHOW_ACCESS_RULE
+  - key: ZENDESK_SHOW_CUSTOM_OBJECT
+  - key: ZENDESK_SHOW_CUSTOM_OBJECT_RECORD
+  - key: ZENDESK_SHOW_MANY_JOB_STATUSES
+  - key: ZENDESK_SHOW_MANY_TICKETS
+  - key: ZENDESK_SHOW_MANY_USERS
+  - key: ZENDESK_SHOW_PERMISSION_POLICY
+  - key: ZENDESK_SHOW_REQUEST
+  - key: ZENDESK_UNASSIGN_USER_ORGANIZATION
+  - key: ZENDESK_UPDATE_ACCESS_RULE
+  - key: ZENDESK_UPDATE_APPS_INSTALLATION
+  - key: ZENDESK_UPDATE_AUTOMATION
+  - key: ZENDESK_UPDATE_CUSTOM_OBJECT
+  - key: ZENDESK_UPDATE_CUSTOM_OBJECT_RECORD
+  - key: ZENDESK_UPDATE_CUSTOM_STATUS
+  - key: ZENDESK_UPDATE_DELETION_SCHEDULE
+  - key: ZENDESK_UPDATE_DYNAMIC_CONTENT_ITEMS_VARIANT
+  - key: ZENDESK_UPDATE_DYNAMIC_CONTENT_ITEMS_VARIANTS
+  - key: ZENDESK_UPDATE_MACRO
+  - key: ZENDESK_UPDATE_MANY_AUTOMATIONS
+  - key: ZENDESK_UPDATE_MANY_MACROS
+  - key: ZENDESK_UPDATE_MANY_OBJECT_TRIGGERS
+  - key: ZENDESK_UPDATE_MANY_ORGANIZATIONS
+  - key: ZENDESK_UPDATE_MANY_TICKETS
+  - key: ZENDESK_UPDATE_MANY_TRIGGERS
+  - key: ZENDESK_UPDATE_MANY_USERS
+  - key: ZENDESK_UPDATE_MANY_VIEWS
+  - key: ZENDESK_UPDATE_OBJECT_TRIGGER
+  - key: ZENDESK_UPDATE_ORGANIZATIONS_TAGS
+  - key: ZENDESK_UPDATE_ORGANIZATION_FIELD
+  - key: ZENDESK_UPDATE_PERMISSION_POLICY
+  - key: ZENDESK_UPDATE_RESOURCE_COLLECTION
+  - key: ZENDESK_UPDATE_SIDE_CONVERSATION
+  - key: ZENDESK_UPDATE_SUPPORT_ADDRESS
+  - key: ZENDESK_UPDATE_TARGET
+  - key: ZENDESK_UPDATE_TICKETS_TAGS
+  - key: ZENDESK_UPDATE_TICKET_FIELD
+  - key: ZENDESK_UPDATE_TICKET_TRIGGER
+  - key: ZENDESK_UPDATE_TRIGGER_CATEGORY
+  - key: ZENDESK_UPDATE_USERS_IDENTITY
+  - key: ZENDESK_UPDATE_USERS_ME_SETTINGS
+  - key: ZENDESK_UPDATE_USERS_PROFILES
+  - key: ZENDESK_UPDATE_USERS_TAGS
+  - key: ZENDESK_UPDATE_USER_FIELD
+  - key: ZENDESK_UPDATE_USER_PROFILE
+  - key: ZENDESK_UPDATE_USER_PROFILE_BY_ID
+  - key: ZENDESK_UPDATE_VIEW
+  - key: ZENDESK_UPDATE_ZENDESK_ACCOUNT_SETTINGS
+  - key: ZENDESK_UPDATE_ZENDESK_ATTACHMENT
+  - key: ZENDESK_UPDATE_ZENDESK_CUSTOM_OBJECT_FIELD
+  - key: ZENDESK_UPDATE_ZENDESK_DYNAMIC_CONTENT_ITEM
+  - key: ZENDESK_UPDATE_ZENDESK_ORGANIZATION
+  - key: ZENDESK_UPDATE_ZENDESK_REQUESTS
+  - key: ZENDESK_UPDATE_ZENDESK_TICKET
+  - key: ZENDESK_UPSERT_CUSTOM_OBJECT_RECORD_BY_EXTERNAL_ID_OR_NAME
+  - key: ZENDESK_VERIFY_SUBDOMAIN_AVAILABILITY
+  - key: ZENDESK_VERIFY_SUPPORT_ADDRESS
+  - key: ZENDESK_VERIFY_USER_IDENTITY
+edges:
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Gmail
+  partner: gmail
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: Evernote
+  partner: evernote
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/evernote
+  direction: third-party
+  category: Notes
+  partner_url: https://evernote.com/
+- partner_name: Salesforce
+  partner: salesforce
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/salesforce
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.salesforce.com/
+- partner_name: Autotask
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/autotask
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: http://www.autotask.com/
+- partner_name: Gravity Forms
+  partner: gravity-forms
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/gravity-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.gravityforms.com/?utm_campaign=partners&utm_source=zapier-listing-learn-more&utm_medium=free-placement
+- partner_name: Asana
+  partner: asana
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/asana
+  direction: third-party
+  category: Project Management
+  partner_url: http://asana.com/
+- partner_name: Jira Software Cloud
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/jira-software-cloud
+  direction: third-party
+  category: Project Management
+  partner_url: https://www.atlassian.com/software/jira
+- partner_name: Amazon Seller Central
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/amazon-seller-central
+  direction: third-party
+  category: Amazon
+  partner_url: https://sellercentral.amazon.com/
+- partner_name: ClickUp
+  partner: clickup
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/clickup
+  direction: third-party
+  category: Project Management
+  partner_url: https://clickup.com/zapier
+- partner_name: Textline
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/textline
+  direction: third-party
+  category: Customer Support
+  partner_url: https://textline.com/?utm_source=partner&utm_medium=zapier
+- partner_name: Microsoft Excel
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/excel
+  direction: third-party
+  category: Microsoft
+  partner_url: https://zapier.com/office.com
+- partner_name: MonkeyLearn
+  partner: monkeylearn
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/monkeylearn-legacy
+  direction: third-party
+  category: Analytics
+  partner_url: https://monkeylearn.com/
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: LiquidPlanner Classic
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/liquid-planner-classic
+  direction: third-party
+  category: Project Management
+  partner_url: https://www.liquidplanner.com/lp-classic-support/
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: Azure DevOps
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/azure-devops
+  direction: third-party
+  category: Developer Tools
+  partner_url: https://www.visualstudio.com/
+- partner_name: monday.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: SurveyMonkey
+  partner: surveymonkey
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/surveymonkey
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://zpr.io/62HWp
+- partner_name: Formidable Forms
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/formidable
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://formidableforms.com/
+- partner_name: Stripe
+  partner: stripe
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/stripe
+  direction: third-party
+  category: Payment Processing
+  partner_url: https://stripe.com/
+- partner_name: Smartsheet
+  partner: smartsheet
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/smartsheet
+  direction: third-party
+  category: Spreadsheets
+  partner_url: https://www.smartsheet.com/
+- partner_name: Trello
+  partner: trello
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/trello
+  direction: third-party
+  category: Project Management
+  partner_url: https://trello.com/
+- partner_name: Zapier Chatbots
+  partner: zapier
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/zapier-chatbots
+  direction: third-party
+  category: AI Chatbots
+  partner_url: https://zapier.com/blog/create-custom-ai-chatbots-with-interfaces/
+- partner_name: Pipedrive
+  partner: pipedrive
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zendesk/integrations/pipedrive
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://pipedrive.com/
+- partner_name: beehiiv
+  partner: beehiiv
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/beehiiv/blob/main/openapi/beehiiv-data-deletion-api-openapi.yml
+  contract_reference:
+    repo: beehiiv
+    spec_file: beehiiv-data-deletion-api-openapi.yml
+    value: zendesk
+    property: components.schemas.type_dataDeletion_DataDeletionRequestSource
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: cacheflow
+  partner: cacheflow
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/cacheflow/blob/main/openapi/cacheflow-slack-api-openapi.yml
+  contract_reference:
+    repo: cacheflow
+    spec_file: cacheflow-slack-api-openapi.yml
+    value: zendesk
+    property: schemas.IdentityToken.source
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+templates:
+- title: Create Zendesk tickets from new Typeform entries
+  url: https://zapier.com/apps/typeform/integrations/zendesk/117/create-zendesk-tickets-from-new-typeform-entries
+  apps:
+  - typeform
+  - zendesk
+- title: Create a new Zendesk ticket automatically every week
+  url: https://zapier.com/apps/schedule/integrations/zendesk/9382/create-a-new-zendesk-ticket-automatically-every-week
+  apps:
+  - schedule
+  - zendesk
+- title: Create Zendesk tickets from new HubSpot form submissions
+  url: https://zapier.com/apps/hubspot/integrations/zendesk/2817/create-zendesk-tickets-from-new-hubspot-form-submissions
+  apps:
+  - hubspot
+  - zendesk
+- title: Create Zendesk tickets from new Google Forms responses
+  url: https://zapier.com/apps/google-forms/integrations/zendesk/11093/create-zendesk-tickets-from-new-google-forms-responses
+  apps:
+  - google-forms
+  - zendesk
+- title: Create new Zendesk tickets from Unbounce form submissions
+  url: https://zapier.com/apps/unbounce/integrations/zendesk/2987/create-new-zendesk-tickets-from-unbounce-form-submissions
+  apps:
+  - unbounce
+  - zendesk
+- title: 'Create monthly Zendesk tickets '
+  url: https://zapier.com/apps/schedule/integrations/zendesk/10619/create-monthly-zendesk-tickets
+  apps:
+  - schedule
+  - zendesk
+- title: Send Slack notifications for new Zendesk tickets
+  url: https://zapier.com/apps/slack/integrations/zendesk/2818/send-slack-notifications-for-new-zendesk-tickets
+  apps:
+  - zendesk
+  - slack
+- title: Create a Zendesk ticket from a Wufoo form entry
+  url: https://zapier.com/apps/wufoo/integrations/zendesk/6/create-a-zendesk-ticket-from-a-wufoo-form-entry
+  apps:
+  - wufoo
+  - zendesk
+- title: Create Zendesk tickets from new Gravity Forms submissions
+  url: https://zapier.com/apps/gravity-forms/integrations/zendesk/2732/create-zendesk-tickets-from-new-gravity-forms-submissions
+  apps:
+  - gravity-forms
+  - zendesk
+- title: Turn webhooks into Zendesk tickets
+  url: https://zapier.com/apps/webhook/integrations/zendesk/8647/turn-webhooks-into-zendesk-tickets
+  apps:
+  - webhook
+  - zendesk
+- title: Add new Zendesk tickets to Google Sheets rows and update them automatically
+  url: https://zapier.com/apps/google-sheets/integrations/zendesk/1374889/add-new-zendesk-tickets-to-google-sheets-rows-and-update-them-automatically
+  apps:
+  - zendesk
+  - google-sheets
+- title: Add tickets on Zendesk for new submissions to a Webflow form
+  url: https://zapier.com/apps/webflow/integrations/zendesk/7050/add-tickets-on-zendesk-for-new-submissions-to-a-webflow-form
+  apps:
+  - webflow
+  - zendesk
+template_total: 2132

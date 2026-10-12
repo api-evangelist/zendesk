@@ -1,0 +1,19 @@
+# DERIVED by build-integration-preconfigs.py (roadmap#949). Overlay on the PARTNER's contract:
+# where beehiiv's enum names zendesk, and what that value is.
+overlay: 1.0.0
+info:
+  title: zendesk as a processor-connection in beehiiv's contract
+  version: 1.0.0
+extends: https://raw.githubusercontent.com/api-evangelist/beehiiv/refs/heads/main/openapi/beehiiv-data-deletion-api-openapi.yml
+actions:
+- target: $.components.schemas.type_dataDeletion_DataDeletionRequestSource
+  update:
+    x-apievangelist-integration:
+      values:
+        zendesk:
+          provider: zendesk
+          relationship: processor-connection
+          evidence: https://github.com/api-evangelist/beehiiv/blob/main/openapi/beehiiv-data-deletion-api-openapi.yml
+      method: derived
+      generated: '2026-10-12'
+      generator: build-integration-preconfigs.py
