@@ -7,6 +7,7 @@ source:
 checked:
 - https://composio.dev/toolkits/zendesk
 - https://hightouch.com/docs/destinations/zendesk
+- https://marketplace.atlassian.com/
 - https://monid.ai/tools/zendesk
 - https://n8n.io/integrations/zendesk/
 - https://zapier.com/apps/zendesk/integrations
@@ -951,6 +952,21 @@ edges:
       - upsert
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: Atlassian Marketplace
+  partner: atlassian
+  partner_match: aggregator
+  type: marketplace
+  marketplace: atlassian
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.atlassian.com/vendors/7485/zendesk
+  listing_count: 1
+  apps:
+  - Zendesk Support for Jira
+  publisher_name: Zendesk
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 templates:
 - title: Create Zendesk tickets from new Typeform entries
   url: https://zapier.com/apps/typeform/integrations/zendesk/117/create-zendesk-tickets-from-new-typeform-entries
