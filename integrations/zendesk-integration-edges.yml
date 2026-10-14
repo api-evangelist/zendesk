@@ -5,6 +5,7 @@ source:
 - https://n8n.io/integrations/zendesk/
 - https://composio.dev/toolkits/zendesk
 checked:
+- freshbooks/integrations/freshbooks-integration-edges.yml
 - https://composio.dev/toolkits/zendesk
 - https://hightouch.com/docs/destinations/zendesk
 - https://marketplace.atlassian.com/
@@ -924,6 +925,21 @@ edges:
     property: schemas.IdentityToken.source
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
+- partner_name: Atlassian Marketplace
+  partner: atlassian
+  partner_match: aggregator
+  type: marketplace
+  marketplace: atlassian
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.atlassian.com/vendors/7485/zendesk
+  listing_count: 1
+  apps:
+  - Zendesk Support for Jira
+  publisher_name: Zendesk
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 - partner_name: Hightouch
   partner: hightouch
   partner_match: aggregator
@@ -952,21 +968,23 @@ edges:
       - upsert
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
-- partner_name: Atlassian Marketplace
-  partner: atlassian
-  partner_match: aggregator
+- partner_name: FreshBooks (own)
+  partner: freshbooks
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
   type: marketplace
-  marketplace: atlassian
-  channel: partner-built
   relationship: platform-app
   direction: third-party
-  evidence: https://marketplace.atlassian.com/vendors/7485/zendesk
-  listing_count: 1
+  channel: partner-built
+  marketplace: own
+  evidence: https://appstore.freshbooks.com/apps/zendesk-for-new-freshbooks
+  mirror_of: freshbooks/integrations/freshbooks-integration-edges.yml
   apps:
-  - Zendesk Support for Jira
-  publisher_name: Zendesk
-  detected_by: sweep-devtools.py
+  - Zendesk
+  listing_count: 1
   detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Manage Customers
 templates:
 - title: Create Zendesk tickets from new Typeform entries
   url: https://zapier.com/apps/typeform/integrations/zendesk/117/create-zendesk-tickets-from-new-typeform-entries
