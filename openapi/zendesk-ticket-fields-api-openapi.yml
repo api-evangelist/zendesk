@@ -526,11 +526,6 @@ components:
               format: date-time
             value:
               type: integer
-    TicketFieldResponse:
-      type: object
-      properties:
-        ticket_field:
-          $ref: '#/components/schemas/TicketFieldObject'
     CustomFieldOptionsResponse:
       type: object
       properties:
@@ -559,6 +554,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketFieldObject'
+    TicketFieldResponse:
+      type: object
+      properties:
+        ticket_field:
+          $ref: '#/components/schemas/TicketFieldObject'
     CustomFieldOptionResponse:
       type: object
       properties:

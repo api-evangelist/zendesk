@@ -109,6 +109,11 @@ paths:
                   $ref: '#/components/examples/TwitterChannelTwicketStatusResponseExample'
 components:
   schemas:
+    TwitterChannelResponse:
+      type: object
+      properties:
+        monitored_twitter_handle:
+          $ref: '#/components/schemas/TwitterChannelObject'
     TwitterChannelTwicketStatusResponse:
       type: object
       properties:
@@ -132,11 +137,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TwitterChannelObject'
-    TwitterChannelResponse:
-      type: object
-      properties:
-        monitored_twitter_handle:
-          $ref: '#/components/schemas/TwitterChannelObject'
 x-refined-from:
 - channels-openapi-original.yml
 - tickets-openapi-original.yml

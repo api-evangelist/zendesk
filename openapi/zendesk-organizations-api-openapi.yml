@@ -1237,6 +1237,11 @@ components:
           - loser_id
           - winner_id
           - status
+    OrganizationResponse:
+      type: object
+      properties:
+        organization:
+          $ref: '#/components/schemas/OrganizationObject'
     OrganizationMergeListResponse:
       type: object
       properties:
@@ -1273,37 +1278,59 @@ components:
       properties:
         count:
           $ref: '#/components/schemas/CountOrganizationObject'
-    OrganizationResponse:
-      type: object
-      properties:
-        organization:
-          $ref: '#/components/schemas/OrganizationObject'
-    JobStatusResponse:
-      type: object
-      properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
     OrganizationsRelatedResponse:
       type: object
       properties:
         organization_related:
           $ref: '#/components/schemas/OrganizationMetadataObject'
-    Error:
+    JobStatusResponse:
       type: object
-      description: An error response from the Zendesk API.
       properties:
-        error:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
+    OrganizationUpdate:
+      type: object
+      description: Payload for updating an existing organization.
+      properties:
+        name:
           type: string
-          description: The error type identifier.
-          example: example_value
-        description:
-          type: string
-          description: A human-readable description of the error.
-          example: A sample description.
+          example: Example Title
         details:
+          type: string
+          nullable: true
+          example: example_value
+        notes:
+          type: string
+          nullable: true
+          example: example_value
+        domain_names:
+          type: array
+          items:
+            type: string
+          example: []
+        group_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        shared_tickets:
+          type: boolean
+          example: true
+        shared_comments:
+          type: boolean
+          example: true
+        external_id:
+          type: string
+          nullable: true
+          example: '500123'
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        organization_fields:
           type: object
           additionalProperties: true
-          description: Additional details about the error.
           example: example_value
     Organization:
       type: object
@@ -1383,50 +1410,6 @@ components:
           description: When the organization was last updated (ISO 8601).
           readOnly: true
           example: '2026-01-15T10:30:00Z'
-    OrganizationUpdate:
-      type: object
-      description: Payload for updating an existing organization.
-      properties:
-        name:
-          type: string
-          example: Example Title
-        details:
-          type: string
-          nullable: true
-          example: example_value
-        notes:
-          type: string
-          nullable: true
-          example: example_value
-        domain_names:
-          type: array
-          items:
-            type: string
-          example: []
-        group_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        shared_tickets:
-          type: boolean
-          example: true
-        shared_comments:
-          type: boolean
-          example: true
-        external_id:
-          type: string
-          nullable: true
-          example: '500123'
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
-        organization_fields:
-          type: object
-          additionalProperties: true
-          example: example_value
     OrganizationCreate:
       type: object
       description: Payload for creating a new organization.
@@ -1476,7 +1459,30 @@ components:
           type: object
           additionalProperties: true
           example: example_value
+    Error:
+      type: object
+      description: An error response from the Zendesk API.
+      properties:
+        error:
+          type: string
+          description: The error type identifier.
+          example: example_value
+        description:
+          type: string
+          description: A human-readable description of the error.
+          example: A sample description.
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional details about the error.
+          example: example_value
   responses:
+    UnprocessableEntity:
+      description: The request was well-formed but could not be processed due to validation errors.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     TooManyRequests:
       description: Rate limit exceeded. Check the Retry-After header.
       headers:
@@ -1488,25 +1494,27 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: The request was well-formed but could not be processed due to validation errors.
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   parameters:
+    OrganizationId:
+      name: organization_id
+      in: path
+      required: true
+      description: The ID of the organization.
+      schema:
+        type: integer
+        format: int64
     PerPageParam:
       name: per_page
       in: query
@@ -1522,14 +1530,6 @@ components:
       schema:
         type: integer
         default: 1
-    OrganizationId:
-      name: organization_id
-      in: path
-      required: true
-      description: The ID of the organization.
-      schema:
-        type: integer
-        format: int64
   securitySchemes:
     basicAuth:
       type: http

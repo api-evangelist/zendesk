@@ -1591,21 +1591,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ComplianceDeletionStatusObject'
-    UserRelatedResponse:
-      type: object
-      properties:
-        user_related:
-          $ref: '#/components/schemas/UserRelatedObject'
-    UserResponse:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/UserObject'
-    JobStatusResponse:
-      type: object
-      properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
     CurrentUserResponse:
       type: object
       properties:
@@ -1618,102 +1603,21 @@ components:
                 type: string
                 description: CSRF token required by some Zendesk APIs.
                 readOnly: true
-    Error:
+    UserResponse:
       type: object
-      description: An error response from the Zendesk API.
       properties:
-        error:
-          type: string
-          description: The error type identifier.
-          example: example_value
-        description:
-          type: string
-          description: A human-readable description of the error.
-          example: A sample description.
-        details:
-          type: object
-          additionalProperties: true
-          description: Additional details about the error.
-          example: example_value
-    UserCreate:
+        user:
+          $ref: '#/components/schemas/UserObject'
+    UserRelatedResponse:
       type: object
-      description: Payload for creating a new user.
-      required:
-      - name
       properties:
-        name:
-          type: string
-          description: The name of the user.
-          example: Example Title
-        email:
-          type: string
-          format: email
-          description: The user's email address.
-          example: user@example.com
-        phone:
-          type: string
-          nullable: true
-          description: The user's phone number.
-          example: example_value
-        role:
-          type: string
-          enum:
-          - end-user
-          - agent
-          - admin
-          default: end-user
-          example: end-user
-        custom_role_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        organization_id:
-          type: integer
-          format: int64
-          nullable: true
-          example: '500123'
-        external_id:
-          type: string
-          nullable: true
-          example: '500123'
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
-        locale_id:
-          type: integer
-          nullable: true
-          example: '500123'
-        time_zone:
-          type: string
-          nullable: true
-          example: example_value
-        details:
-          type: string
-          nullable: true
-          example: example_value
-        notes:
-          type: string
-          nullable: true
-          example: example_value
-        alias:
-          type: string
-          nullable: true
-          example: example_value
-        signature:
-          type: string
-          nullable: true
-          example: example_value
-        verified:
-          type: boolean
-          default: false
-          example: true
-        user_fields:
-          type: object
-          additionalProperties: true
-          example: example_value
+        user_related:
+          $ref: '#/components/schemas/UserRelatedObject'
+    JobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
     UserUpdate:
       type: object
       description: Payload for updating an existing user.
@@ -2017,7 +1921,109 @@ components:
           description: When the user was last updated (ISO 8601).
           readOnly: true
           example: '2026-01-15T10:30:00Z'
+    UserCreate:
+      type: object
+      description: Payload for creating a new user.
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the user.
+          example: Example Title
+        email:
+          type: string
+          format: email
+          description: The user's email address.
+          example: user@example.com
+        phone:
+          type: string
+          nullable: true
+          description: The user's phone number.
+          example: example_value
+        role:
+          type: string
+          enum:
+          - end-user
+          - agent
+          - admin
+          default: end-user
+          example: end-user
+        custom_role_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        organization_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: '500123'
+        external_id:
+          type: string
+          nullable: true
+          example: '500123'
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        locale_id:
+          type: integer
+          nullable: true
+          example: '500123'
+        time_zone:
+          type: string
+          nullable: true
+          example: example_value
+        details:
+          type: string
+          nullable: true
+          example: example_value
+        notes:
+          type: string
+          nullable: true
+          example: example_value
+        alias:
+          type: string
+          nullable: true
+          example: example_value
+        signature:
+          type: string
+          nullable: true
+          example: example_value
+        verified:
+          type: boolean
+          default: false
+          example: true
+        user_fields:
+          type: object
+          additionalProperties: true
+          example: example_value
+    Error:
+      type: object
+      description: An error response from the Zendesk API.
+      properties:
+        error:
+          type: string
+          description: The error type identifier.
+          example: example_value
+        description:
+          type: string
+          description: A human-readable description of the error.
+          example: A sample description.
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional details about the error.
+          example: example_value
   responses:
+    UnprocessableEntity:
+      description: The request was well-formed but could not be processed due to validation errors.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     TooManyRequests:
       description: Rate limit exceeded. Check the Retry-After header.
       headers:
@@ -2029,33 +2035,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: The request was well-formed but could not be processed due to validation errors.
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   parameters:
-    PerPageParam:
-      name: per_page
-      in: query
-      description: The number of results per page (max 100).
-      schema:
-        type: integer
-        default: 100
-        maximum: 100
     UserId:
       name: user_id
       in: path
@@ -2064,6 +2056,14 @@ components:
       schema:
         type: integer
         format: int64
+    PerPageParam:
+      name: per_page
+      in: query
+      description: The number of results per page (max 100).
+      schema:
+        type: integer
+        default: 100
+        maximum: 100
     PageParam:
       name: page
       in: query

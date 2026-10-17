@@ -73,6 +73,11 @@ paths:
                   $ref: '#/components/examples/BrandAgentResponseExample'
 components:
   schemas:
+    BrandAgentResponse:
+      type: object
+      properties:
+        brand_agent:
+          $ref: '#/components/schemas/BrandAgentObject'
     BrandAgentsResponse:
       type: object
       properties:
@@ -80,8 +85,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BrandAgentObject'
-    BrandAgentResponse:
-      type: object
-      properties:
-        brand_agent:
-          $ref: '#/components/schemas/BrandAgentObject'

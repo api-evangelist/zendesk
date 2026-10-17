@@ -132,11 +132,6 @@ paths:
                   $ref: '#/components/examples/OAuthClientResponseExample'
 components:
   schemas:
-    OauthClientResponse:
-      type: object
-      properties:
-        client:
-          $ref: '#/components/schemas/OAuthClientObject'
     OAuthClientsResponse:
       type: object
       properties:
@@ -144,3 +139,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OAuthClientObject'
+    OauthClientResponse:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/OAuthClientObject'

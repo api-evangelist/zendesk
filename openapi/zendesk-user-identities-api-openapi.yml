@@ -282,6 +282,11 @@ paths:
                   $ref: '#/components/examples/UserIdentityResponseExample'
 components:
   schemas:
+    UserIdentityResponse:
+      type: object
+      properties:
+        identity:
+          $ref: '#/components/schemas/UserIdentityObject'
     UserIdentitiesResponse:
       type: object
       properties:
@@ -289,8 +294,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserIdentityObject'
-    UserIdentityResponse:
-      type: object
-      properties:
-        identity:
-          $ref: '#/components/schemas/UserIdentityObject'

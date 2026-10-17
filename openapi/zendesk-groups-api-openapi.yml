@@ -194,6 +194,18 @@ paths:
                   $ref: '#/components/examples/GroupsCountResponseExample'
 components:
   schemas:
+    GroupResponse:
+      type: object
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupObject'
+    GroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupObject'
     GroupsCountObject:
       type: object
       properties:
@@ -209,15 +221,3 @@ components:
               type: integer
               description: Approximate count of groups
               readOnly: true
-    GroupResponse:
-      type: object
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupObject'
-    GroupsResponse:
-      type: object
-      properties:
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupObject'

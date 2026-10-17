@@ -593,6 +593,23 @@ components:
       properties:
         macro_attachment:
           $ref: '#/components/schemas/MacroAttachmentObject'
+    MacrosResponse:
+      type: object
+      allOf:
+      - type: object
+        properties:
+          macros:
+            type: array
+            items:
+              $ref: '#/components/schemas/MacroObject'
+      - $ref: '#/components/schemas/OffsetPaginationObject'
+    MacroCategoriesResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            type: string
     MacroApplyTicketResponse:
       type: object
       properties:
@@ -630,23 +647,6 @@ components:
                   type: integer
                 url:
                   type: string
-    MacrosResponse:
-      type: object
-      allOf:
-      - type: object
-        properties:
-          macros:
-            type: array
-            items:
-              $ref: '#/components/schemas/MacroObject'
-      - $ref: '#/components/schemas/OffsetPaginationObject'
-    MacroCategoriesResponse:
-      type: object
-      properties:
-        categories:
-          type: array
-          items:
-            type: string
     MacroResponse:
       type: object
       properties:

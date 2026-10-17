@@ -210,16 +210,6 @@ paths:
                   $ref: '#/components/examples/TicketFormStatusesResponseExample'
 components:
   schemas:
-    BulkUpdateDefaultCustomStatusResponse:
-      type: object
-    TicketFormStatusesResponse:
-      type: object
-      properties:
-        ticket_form_statuses:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketFormStatusObject'
-          maxItems: 1
     CustomStatusResponse:
       type: object
       properties:
@@ -232,6 +222,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomStatusObject'
+    TicketFormStatusesResponse:
+      type: object
+      properties:
+        ticket_form_statuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFormStatusObject'
+          maxItems: 1
+    BulkUpdateDefaultCustomStatusResponse:
+      type: object
 x-refined-from:
 - custom-status-openapi-original.yml
 - ticket-form-statuses-openapi-original.yml

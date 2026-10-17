@@ -109,6 +109,11 @@ paths:
           description: No Content response
 components:
   schemas:
+    SharingAgreementResponse:
+      type: object
+      properties:
+        sharing_agreement:
+          $ref: '#/components/schemas/SharingAgreementObject'
     SharingAgreementsResponse:
       type: object
       properties:
@@ -116,8 +121,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SharingAgreementObject'
-    SharingAgreementResponse:
-      type: object
-      properties:
-        sharing_agreement:
-          $ref: '#/components/schemas/SharingAgreementObject'

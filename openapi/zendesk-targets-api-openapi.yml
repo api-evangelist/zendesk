@@ -98,11 +98,6 @@ paths:
           description: No Content response
 components:
   schemas:
-    TargetResponse:
-      type: object
-      properties:
-        target:
-          $ref: '#/components/schemas/TargetObject'
     TargetsResponse:
       type: object
       properties:
@@ -110,3 +105,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TargetObject'
+    TargetResponse:
+      type: object
+      properties:
+        target:
+          $ref: '#/components/schemas/TargetObject'

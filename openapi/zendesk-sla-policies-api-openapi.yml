@@ -193,11 +193,6 @@ paths:
               example: ''
 components:
   schemas:
-    SLAPolicyResponse:
-      type: object
-      properties:
-        sla_policy:
-          $ref: '#/components/schemas/SLAPolicyObject'
     SLAPolicyFilterDefinitionResponse:
       type: object
       properties:
@@ -298,3 +293,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SLAPolicyObject'
+    SLAPolicyResponse:
+      type: object
+      properties:
+        sla_policy:
+          $ref: '#/components/schemas/SLAPolicyObject'

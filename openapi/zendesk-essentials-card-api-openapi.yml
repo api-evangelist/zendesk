@@ -85,6 +85,11 @@ paths:
                   $ref: '#/components/examples/EssentialsCardsExample'
 components:
   schemas:
+    EssentialsCardResponse:
+      type: object
+      properties:
+        object_layout:
+          $ref: '#/components/schemas/EssentialsCardObject'
     EssentialsCardsResponse:
       type: object
       properties:
@@ -92,8 +97,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EssentialsCardObject'
-    EssentialsCardResponse:
-      type: object
-      properties:
-        object_layout:
-          $ref: '#/components/schemas/EssentialsCardObject'

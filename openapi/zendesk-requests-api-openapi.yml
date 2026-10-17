@@ -318,11 +318,6 @@ paths:
                   $ref: '#/components/examples/RequestsResponseExample'
 components:
   schemas:
-    RequestResponse:
-      type: object
-      properties:
-        request:
-          $ref: '#/components/schemas/RequestObject'
     TicketCommentsResponse:
       type: object
       properties:
@@ -330,6 +325,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketCommentObject'
+    TicketCommentResponse:
+      type: object
+      properties:
+        comment:
+          $ref: '#/components/schemas/TicketCommentObject'
+    RequestResponse:
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/RequestObject'
     RequestsResponse:
       type: object
       properties:
@@ -337,11 +342,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RequestObject'
-    TicketCommentResponse:
-      type: object
-      properties:
-        comment:
-          $ref: '#/components/schemas/TicketCommentObject'
 x-refined-from:
 - requests-openapi-original.yml
 - search-openapi-original.yml

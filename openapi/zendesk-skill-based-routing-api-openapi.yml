@@ -529,18 +529,6 @@ paths:
                   $ref: '#/components/examples/SkillBasedRoutingTicketAttributesResponseExample'
 components:
   schemas:
-    SkillBasedRoutingTicketFulfilledResponse:
-      type: object
-      properties:
-        fulfilled_ticket_ids:
-          type: array
-          items:
-            type: integer
-    SkillBasedRoutingAttributeValueResponse:
-      type: object
-      properties:
-        attribute_value:
-          $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
     ManySkillBasedRoutingAttributeValuesResponse:
       type: object
       properties:
@@ -563,6 +551,13 @@ components:
           description: The URL for the previous page of results
           nullable: true
           readOnly: true
+    SkillBasedRoutingTicketFulfilledResponse:
+      type: object
+      properties:
+        fulfilled_ticket_ids:
+          type: array
+          items:
+            type: integer
     SkillBasedRoutingAttributesResponse:
       type: object
       properties:
@@ -581,6 +576,16 @@ components:
           type: string
           nullable: true
           readOnly: true
+    SkillBasedRoutingAttributeResponse:
+      type: object
+      properties:
+        attribute:
+          $ref: '#/components/schemas/SkillBasedRoutingAttributeObject'
+    SkillBasedRoutingAttributeValueResponse:
+      type: object
+      properties:
+        attribute_value:
+          $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
     SkillBasedRoutingAttributeValuesResponse:
       type: object
       properties:
@@ -588,11 +593,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SkillBasedRoutingAttributeValueObject'
-    JobStatusResponse:
-      type: object
-      properties:
-        job_status:
-          $ref: '#/components/schemas/JobStatusObject'
     SkillBasedRoutingAttributeDefinitions:
       type: object
       properties:
@@ -617,11 +617,11 @@ components:
                     type: string
                   title:
                     type: string
-    SkillBasedRoutingAttributeResponse:
+    JobStatusResponse:
       type: object
       properties:
-        attribute:
-          $ref: '#/components/schemas/SkillBasedRoutingAttributeObject'
+        job_status:
+          $ref: '#/components/schemas/JobStatusObject'
 x-refined-from:
 - routing-openapi-original.yml
 - tickets-openapi-original.yml

@@ -1152,18 +1152,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketObject'
-    ViewExportResponse:
-      type: object
-      properties:
-        export:
-          type: object
-          properties:
-            status:
-              type: string
-              readOnly: true
-            view_id:
-              type: integer
-              readOnly: true
     ViewResponse:
       type: object
       properties:
@@ -1202,6 +1190,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ViewCountObject'
+    ViewExportResponse:
+      type: object
+      properties:
+        export:
+          type: object
+          properties:
+            status:
+              type: string
+              readOnly: true
+            view_id:
+              type: integer
+              readOnly: true
     ViewCountResponse:
       type: object
       properties:

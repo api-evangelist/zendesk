@@ -240,6 +240,11 @@ paths:
                   $ref: '#/components/examples/SearchExportResponseExample'
 components:
   schemas:
+    SearchCountResponse:
+      type: object
+      properties:
+        count:
+          type: integer
     SearchExportResponse:
       type: object
       properties:
@@ -339,8 +344,3 @@ components:
           result_type: group
           updated_at: '2018-04-06T03:17:05Z'
           url: https://example.zendesk.com/api/v2/groups/1835972.json
-    SearchCountResponse:
-      type: object
-      properties:
-        count:
-          type: integer

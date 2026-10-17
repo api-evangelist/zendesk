@@ -104,17 +104,17 @@ paths:
                   $ref: '#/components/examples/TicketMetricResponseExample'
 components:
   schemas:
-    TicketMetricsResponse:
-      type: object
-      properties:
-        ticket_metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketMetricObject'
     TicketMetricsByTicketMetricIdResponse:
       type: object
       properties:
         ticket_metric:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketMetricObject'
+    TicketMetricsResponse:
+      type: object
+      properties:
+        ticket_metrics:
           type: array
           items:
             $ref: '#/components/schemas/TicketMetricObject'

@@ -109,6 +109,11 @@ paths:
                   $ref: '#/components/examples/GlobalClientsTokenSummaryResponseExample'
 components:
   schemas:
+    GlobalClientResponse:
+      type: object
+      properties:
+        global_client:
+          $ref: '#/components/schemas/GlobalClientObject'
     GlobalClientsResponse:
       type: object
       properties:
@@ -123,8 +128,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GlobalClientTokenSummaryObject'
-    GlobalClientResponse:
-      type: object
-      properties:
-        global_client:
-          $ref: '#/components/schemas/GlobalClientObject'

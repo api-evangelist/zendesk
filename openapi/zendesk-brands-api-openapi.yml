@@ -221,11 +221,6 @@ components:
             description: Array of brands
             items:
               $ref: '#/components/schemas/BrandObject'
-    BrandResponse:
-      type: object
-      properties:
-        brand:
-          $ref: '#/components/schemas/BrandObject'
     HostMappingObject:
       title: Host Mapping
       type: object
@@ -250,3 +245,8 @@ components:
         - bar.zendesk.coom
         is_valid: false
         reason: wrong_cname
+    BrandResponse:
+      type: object
+      properties:
+        brand:
+          $ref: '#/components/schemas/BrandObject'

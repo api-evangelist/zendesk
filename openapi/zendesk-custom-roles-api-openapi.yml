@@ -138,11 +138,6 @@ paths:
           description: No Contetnt response
 components:
   schemas:
-    CustomRoleResponse:
-      type: object
-      properties:
-        custom_role:
-          $ref: '#/components/schemas/CustomRoleObject'
     CustomRolesResponse:
       type: object
       properties:
@@ -150,3 +145,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomRoleObject'
+    CustomRoleResponse:
+      type: object
+      properties:
+        custom_role:
+          $ref: '#/components/schemas/CustomRoleObject'
