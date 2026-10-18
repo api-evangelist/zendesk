@@ -581,3 +581,112 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: zendesk-airbyte
+  label: Airbyte
+  partner: airbyte
+  partner_name: Airbyte
+  type: marketplace
+  marketplace: airbyte-registry
+  channel: elt-connector
+  evidence: https://docs.airbyte.com/integrations/sources/zendesk-chat
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Airbyte connector registry (connectors.airbyte.com cloud_registry.json + oss_registry.json)
+    spec_file: null
+    role: elt-connector:airbyte-certified
+    registered_name: Zendesk Chat
+    matched_domain: zendesk.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connectors:
+    - airbyte/source-zendesk-chat
+    - airbyte/source-zendesk-sunshine
+    - airbyte/source-zendesk-support
+    - airbyte/source-zendesk-talk
+    support_level:
+    - certified
+    - community
+    release_stage:
+    - alpha
+    - generally_available
+    in_cloud: true
+    builder: Airbyte (certified)
+    standard: Airbyte certified connector
+    certified_products:
+    - product: Airbyte certified source
+      type: source
+      lapsed: false
+      cloud: true
+  status: pending-generation
+  arazzo: null
+- slug: zendesk-fivetran
+  label: Fivetran
+  partner: fivetran
+  partner_name: Fivetran
+  type: marketplace
+  marketplace: fivetran-connectors
+  channel: elt-connector
+  evidence: https://fivetran.com/docs/connectors/applications/zendesk
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
+    spec_file: null
+    role: elt-connector:fivetran
+    registered_name: Zendesk Support
+    matched_domain: zendesk.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connector_paths:
+    - connectors/applications/zendesk
+    - connectors/applications/zendesk-chat
+    - connectors/applications/zendesk-sunshine
+    - connectors/applications/zendesk-workforce-management
+    vendor_link: https://www.zendesk.com/
+    builder: Fivetran
+  status: pending-generation
+  arazzo: null
+- slug: zendesk-meltano
+  label: Meltano
+  partner: meltano
+  partner_name: Meltano
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  evidence: https://hub.meltano.com/extractors/tap-zendesk-chat--airbyte
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Zendesk Chat
+    matched_domain: zendesk.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-zendesk--airbyte
+    - tap-zendesk--hotgluexyz
+    - tap-zendesk--singer-io
+    - tap-zendesk--twilio-labs
+    - tap-zendesk-chat--airbyte
+    - tap-zendesk-chat--singer-io
+    - tap-zendesk-sunshine--airbyte
+    - tap-zendesk-talk--airbyte
+    maintenance_status:
+    - active
+    - beta
+    - inactive
+    quality:
+    - bronze
+    - silver
+    builder: 'community (Meltano Hub variant maintainers: airbyte, hotgluexyz, singer-io, twilio-labs)'
+  status: pending-partner-spec
+  arazzo: null
