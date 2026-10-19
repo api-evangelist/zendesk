@@ -690,3 +690,65 @@
     builder: 'community (Meltano Hub variant maintainers: airbyte, hotgluexyz, singer-io, twilio-labs)'
   status: not-a-workflow
   arazzo: null
+- slug: zendesk-npm-registry
+  label: npm registry
+  partner: npm
+  partner_name: npm registry
+  category: official SDK (JavaScript/TypeScript)
+  type: register
+  channel: package-registry
+  evidence: https://www.npmjs.com/package/@zendesk/zcli
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@zendesk/zcli'
+      version: 2.1.0
+      released: '2026-10-01'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@zendesk/zcli
+      repo_leg: shared-github-org:zendesk
+      publisher_leg: email:zendesk.com
+      matched_by: domain+name-among-holders
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: zendesk-rubygems
+  label: RubyGems
+  partner: rubygems
+  partner_name: RubyGems
+  category: official SDK (Ruby)
+  type: register
+  channel: package-registry
+  evidence: https://rubygems.org/gems/zendesk_api
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: RubyGems (public registry JSON)
+    spec_file: null
+    language: Ruby
+    packages:
+    - name: zendesk_api
+      version: 3.1.2
+      released: '2026-07-23'
+      released_field: version_created_at
+      lapsed: false
+      page: https://rubygems.org/gems/zendesk_api
+      repo_leg: domain:zendesk.com
+      publisher_leg: org:zendesk
+      matched_by: domain+name-among-holders
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
