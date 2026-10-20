@@ -1,9 +1,10 @@
-generated: '2026-10-12'
+generated: '2026-10-20'
 method: searched
 source:
 - https://zapier.com/apps/zendesk/integrations
 - https://n8n.io/integrations/zendesk/
 - https://composio.dev/toolkits/zendesk
+- https://www.zendesk.com/marketplace/
 checked:
 - freshbooks/integrations/freshbooks-integration-edges.yml
 - https://api.nuget.org/v3
@@ -37,6 +38,14 @@ checked:
 - https://zapier.com/apps/zendesk/integrations
 summary: null
 marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: zendesk
+  url: https://www.zendesk.com/marketplace/
+  app_count: 1784
+  adapter: sweep-customer-support.py:apps.json
+  listed: 196
+  note: 1784 listings read; only domain-linked builders / vendors are written
 - marketplace: zapier
   channel: ipaas-listing
   app: zendesk
@@ -115,16 +124,8 @@ marketplace_apps:
   app: zendesk
   url: https://n8n.io/integrations/zendesk/
   identity: title
-  pair_pages: 8
-  pairs:
-  - zenrows
-  - zoho-books
-  - zoho-crm
-  - zoho-desk
-  - zonka-feedback
-  - zoom
-  - zscaler-zia
-  - zulip
+  pair_pages: 0
+  pairs: []
 - marketplace: composio
   channel: agent-gateway
   app: zendesk
@@ -257,6 +258,7 @@ marketplace_apps:
   - key: ZENDESK_DESTROY_MANY_DELETED_TICKETS
   - key: ZENDESK_DESTROY_MANY_ORGANIZATIONS
   - key: ZENDESK_DETECT_BEST_LOCALE
+  - key: ZENDESK_DOWNLOAD_ATTACHMENT
   - key: ZENDESK_DOWNLOAD_CUSTOM_OBJECT_RECORD_ATTACHMENT
   - key: ZENDESK_GET_ABOUT_ME
   - key: ZENDESK_GET_ACCOUNT_SETTINGS
@@ -266,7 +268,6 @@ marketplace_apps:
   - key: ZENDESK_GET_APP
   - key: ZENDESK_GET_APPS_INSTALLATIONS_REQUIREMENTS
   - key: ZENDESK_GET_APPS_JOB_STATUS
-  - key: ZENDESK_GET_APPS_LOCATION
   - key: ZENDESK_GET_APPS_LOCATION_INSTALLATIONS
   - key: ZENDESK_GET_APPS_PUBLIC_KEY
   - key: ZENDESK_GET_APPS_PUBLIC_KEY_PEM
@@ -397,6 +398,7 @@ marketplace_apps:
   - key: ZENDESK_GET_TICKET_METRIC
   - key: ZENDESK_GET_TICKET_METRICS
   - key: ZENDESK_GET_TICKET_SKIPS
+  - key: ZENDESK_GET_TICKET_SLA_POLICY_METRICS
   - key: ZENDESK_GET_TRIGGER
   - key: ZENDESK_GET_TRIGGERS
   - key: ZENDESK_GET_TRIGGERS_DEFINITIONS
@@ -478,6 +480,7 @@ marketplace_apps:
   - key: ZENDESK_LIST_CUSTOM_OBJECT_RECORDS
   - key: ZENDESK_LIST_CUSTOM_OBJECT_RECORD_ATTACHMENTS
   - key: ZENDESK_LIST_DELETED_USERS
+  - key: ZENDESK_LIST_HELP_CENTER_CONTENT
   - key: ZENDESK_LIST_INCREMENTAL_CUSTOM_OBJECT_RECORDS
   - key: ZENDESK_LIST_MONITORED_TWITTER_HANDLES
   - key: ZENDESK_LIST_OBJECT_TRIGGERS
@@ -522,6 +525,7 @@ marketplace_apps:
   - key: ZENDESK_RESTORE_MANY_TICKETS
   - key: ZENDESK_RESTORE_ZENDESK_TICKET
   - key: ZENDESK_SEARCH_CUSTOM_OBJECT_RECORDS
+  - key: ZENDESK_SEARCH_HELP_CENTER_ARTICLES
   - key: ZENDESK_SEARCH_OBJECT_TRIGGERS
   - key: ZENDESK_SEARCH_ZENDESK
   - key: ZENDESK_SEARCH_ZENDESK_ORGANIZATIONS
@@ -568,6 +572,7 @@ marketplace_apps:
   - key: ZENDESK_UPDATE_TICKET_FIELD
   - key: ZENDESK_UPDATE_TICKET_TRIGGER
   - key: ZENDESK_UPDATE_TRIGGER_CATEGORY
+  - key: ZENDESK_UPDATE_USER
   - key: ZENDESK_UPDATE_USERS_IDENTITY
   - key: ZENDESK_UPDATE_USERS_ME_SETTINGS
   - key: ZENDESK_UPDATE_USERS_PROFILES
@@ -587,345 +592,7 @@ marketplace_apps:
   - key: ZENDESK_VERIFY_SUBDOMAIN_AVAILABILITY
   - key: ZENDESK_VERIFY_SUPPORT_ADDRESS
   - key: ZENDESK_VERIFY_USER_IDENTITY
-- marketplace: own
-  channel: partner-built
-  app: zendesk
-  url: https://www.zendesk.com/marketplace/
-  app_count: 1784
-  adapter: sweep-customer-support.py:apps.json
-  listed: 196
-  note: 1784 listings read; only domain-linked builders / vendors are written
 edges:
-- partner_name: Typeform
-  partner: typeform
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/typeform
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
-- partner_name: Google Sheets
-  partner: google-sheets
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/google-sheets
-  direction: third-party
-  category: Google
-  partner_url: http://sheets.google.com/
-- partner_name: Slack
-  partner: slack
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/slack
-  direction: third-party
-  category: Team Chat
-  partner_url: https://slack.com/
-- partner_name: HubSpot
-  partner: hubspot
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/hubspot
-  direction: third-party
-  category: Marketing Automation
-  partner_url: http://www.hubspot.com/
-- partner_name: Google Forms
-  partner: google-forms
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/google-forms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: http://google.com/
-- partner_name: Gmail
-  partner: gmail
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/gmail
-  direction: third-party
-  category: Email
-  partner_url: https://mail.google.com/
-- partner_name: Airtable
-  partner: airtable
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/airtable
-  direction: third-party
-  category: Databases
-  partner_url: https://airtable.com/
-- partner_name: Evernote
-  partner: evernote
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/evernote
-  direction: third-party
-  category: Notes
-  partner_url: https://evernote.com/
-- partner_name: Salesforce
-  partner: salesforce
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/salesforce
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://www.salesforce.com/
-- partner_name: Autotask
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/autotask
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: http://www.autotask.com/
-- partner_name: Gravity Forms
-  partner: gravity-forms
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/gravity-forms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://www.gravityforms.com/?utm_campaign=partners&utm_source=zapier-listing-learn-more&utm_medium=free-placement
-- partner_name: Asana
-  partner: asana
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/asana
-  direction: third-party
-  category: Project Management
-  partner_url: http://asana.com/
-- partner_name: Jira Software Cloud
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/jira-software-cloud
-  direction: third-party
-  category: Project Management
-  partner_url: https://www.atlassian.com/software/jira
-- partner_name: Amazon Seller Central
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/amazon-seller-central
-  direction: third-party
-  category: Amazon
-  partner_url: https://sellercentral.amazon.com/
-- partner_name: ClickUp
-  partner: clickup
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/clickup
-  direction: third-party
-  category: Project Management
-  partner_url: https://clickup.com/zapier
-- partner_name: Textline
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/textline
-  direction: third-party
-  category: Customer Support
-  partner_url: https://textline.com/?utm_source=partner&utm_medium=zapier
-- partner_name: Microsoft Excel
-  partner: null
-  partner_match: null
-  partner_candidate: zapier
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/excel
-  direction: third-party
-  category: Microsoft
-  partner_url: https://zapier.com/office.com
-- partner_name: MonkeyLearn
-  partner: monkeylearn
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/monkeylearn-legacy
-  direction: third-party
-  category: Analytics
-  partner_url: https://monkeylearn.com/
-- partner_name: Calendly
-  partner: calendly
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/calendly
-  direction: third-party
-  category: Scheduling & Booking
-  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
-- partner_name: LiquidPlanner Classic
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/liquid-planner-classic
-  direction: third-party
-  category: Project Management
-  partner_url: https://www.liquidplanner.com/lp-classic-support/
-- partner_name: Shopify
-  partner: shopify
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/shopify
-  direction: third-party
-  category: eCommerce
-  partner_url: https://www.shopify.com/
-- partner_name: Azure DevOps
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/azure-devops
-  direction: third-party
-  category: Developer Tools
-  partner_url: https://www.visualstudio.com/
-- partner_name: monday.com
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/monday
-  direction: third-party
-  category: Project Management
-  partner_url: https://monday.com/
-- partner_name: SurveyMonkey
-  partner: surveymonkey
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/surveymonkey
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: http://zpr.io/62HWp
-- partner_name: Formidable Forms
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/formidable
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: http://formidableforms.com/
-- partner_name: Stripe
-  partner: stripe
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/stripe
-  direction: third-party
-  category: Payment Processing
-  partner_url: https://stripe.com/
-- partner_name: Smartsheet
-  partner: smartsheet
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/smartsheet
-  direction: third-party
-  category: Spreadsheets
-  partner_url: https://www.smartsheet.com/
-- partner_name: Trello
-  partner: trello
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/trello
-  direction: third-party
-  category: Project Management
-  partner_url: https://trello.com/
-- partner_name: Zapier Chatbots
-  partner: zapier
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/zapier-chatbots
-  direction: third-party
-  category: AI Chatbots
-  partner_url: https://zapier.com/blog/create-custom-ai-chatbots-with-interfaces/
-- partner_name: Pipedrive
-  partner: pipedrive
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zendesk/integrations/pipedrive
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://pipedrive.com/
 - partner_name: beehiiv
   partner: beehiiv
   partner_match: domain
@@ -6487,6 +6154,366 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Gmail
+  partner: gmail
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: Salesforce
+  partner: salesforce
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/salesforce
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.salesforce.com/
+- partner_name: Jira Software Cloud
+  partner: jira
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/jira-software-cloud
+  direction: third-party
+  category: Project Management
+  partner_url: https://www.atlassian.com/software/jira
+- partner_name: Evernote
+  partner: evernote
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/evernote
+  direction: third-party
+  category: Notes
+  partner_url: https://evernote.com/
+- partner_name: Gravity Forms
+  partner: gravity-forms
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/gravity-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.gravityforms.com/?utm_campaign=partners&utm_source=zapier-listing-learn-more&utm_medium=free-placement
+- partner_name: Autotask
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/autotask
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: http://www.autotask.com/
+- partner_name: Asana
+  partner: asana
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/asana
+  direction: third-party
+  category: Project Management
+  partner_url: http://asana.com/
+- partner_name: ClickUp
+  partner: clickup
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/clickup
+  direction: third-party
+  category: Project Management
+  partner_url: https://clickup.com/zapier
+- partner_name: Amazon Seller Central
+  partner: amazon
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/amazon-seller-central
+  direction: third-party
+  category: Amazon
+  partner_url: https://sellercentral.amazon.com/
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: Microsoft Excel
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/excel
+  direction: third-party
+  category: Microsoft
+  partner_url: https://zapier.com/office.com
+- partner_name: Textline
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/textline
+  direction: third-party
+  category: Customer Support
+  partner_url: https://textline.com/?utm_source=partner&utm_medium=zapier
+- partner_name: MonkeyLearn
+  partner: monkeylearn
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/monkeylearn-legacy
+  direction: third-party
+  category: Analytics
+  partner_url: https://monkeylearn.com/
+- partner_name: LiquidPlanner Classic
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/liquid-planner-classic
+  direction: third-party
+  category: Project Management
+  partner_url: https://www.liquidplanner.com/lp-classic-support/
+- partner_name: Notion
+  partner: notion
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/notion
+  direction: third-party
+  category: Task Management
+  partner_url: https://www.notion.so/
+- partner_name: monday.com
+  partner: monday-com
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: Trello
+  partner: trello
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/trello
+  direction: third-party
+  category: Project Management
+  partner_url: https://trello.com/
+- partner_name: Azure DevOps
+  partner: null
+  partner_match: null
+  partner_candidate: rest-client
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/azure-devops
+  direction: third-party
+  category: Developer Tools
+  partner_url: https://www.visualstudio.com/
+- partner_name: Stripe
+  partner: stripe
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/stripe
+  direction: third-party
+  category: Payment Processing
+  partner_url: https://stripe.com/
+- partner_name: Zapier Chatbots
+  partner: zapier
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/zapier-chatbots
+  direction: third-party
+  category: AI Chatbots
+  partner_url: https://zapier.com/blog/create-custom-ai-chatbots-with-interfaces/
+- partner_name: SurveyMonkey
+  partner: surveymonkey
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/surveymonkey
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://zpr.io/62HWp
+- partner_name: Smartsheet
+  partner: smartsheet
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/smartsheet
+  direction: third-party
+  category: Spreadsheets
+  partner_url: https://www.smartsheet.com/
+- partner_name: Formidable Forms
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/zendesk/integrations/formidable
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://formidableforms.com/
 templates:
 - title: Create Zendesk tickets from new Typeform entries
   url: https://zapier.com/apps/typeform/integrations/zendesk/117/create-zendesk-tickets-from-new-typeform-entries
