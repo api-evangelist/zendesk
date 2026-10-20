@@ -8,6 +8,7 @@ source:
 checked:
 - freshbooks/integrations/freshbooks-integration-edges.yml
 - https://api.nuget.org/v3
+- https://cdn.winget.microsoft.com/cache
 - https://cloudsecurityalliance.org/star/registry
 - https://composio.dev/toolkits/zendesk
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
@@ -16,8 +17,12 @@ checked:
 - https://eucoc.cloud/en/public-register/list-of-adherent-services
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/connectors/partner-built-program
+- https://formulae.brew.sh/api/cask.json
+- https://formulae.brew.sh/api/formula.json
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
+- https://github.com/ScoopInstaller/Extras
+- https://github.com/ScoopInstaller/Main
 - https://github.com/meltano/hub
 - https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/
 - https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/
@@ -6514,6 +6519,36 @@ edges:
   direction: third-party
   category: Forms & Surveys
   partner_url: http://formidableforms.com/
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official CLI (npm registry)
+  evidence: https://www.npmjs.com/package/@zendesk/zcli
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public package index)
+    spec_file: null
+    packages:
+    - name: '@zendesk/zcli'
+      version: 2.1.0
+      released: '2026-10-01'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@zendesk/zcli
+      cli: bin zcli
+      repo_leg: shared-github-org:zendesk
+      publisher_leg: email:zendesk.com
+      matched_by: domain+name-among-holders
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  detected_by: sweep-official-clis.py
+  first_seen: '2026-10-20'
 templates:
 - title: Create Zendesk tickets from new Typeform entries
   url: https://zapier.com/apps/typeform/integrations/zendesk/117/create-zendesk-tickets-from-new-typeform-entries
