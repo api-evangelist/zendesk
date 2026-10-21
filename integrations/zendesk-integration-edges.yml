@@ -8,7 +8,6 @@ source:
 checked:
 - freshbooks/integrations/freshbooks-integration-edges.yml
 - https://api.nuget.org/v3
-- https://cdn.winget.microsoft.com/cache
 - https://cloudsecurityalliance.org/star/registry
 - https://composio.dev/toolkits/zendesk
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
@@ -17,12 +16,8 @@ checked:
 - https://eucoc.cloud/en/public-register/list-of-adherent-services
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/connectors/partner-built-program
-- https://formulae.brew.sh/api/cask.json
-- https://formulae.brew.sh/api/formula.json
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
-- https://github.com/ScoopInstaller/Extras
-- https://github.com/ScoopInstaller/Main
 - https://github.com/meltano/hub
 - https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/
 - https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/
@@ -41,6 +36,18 @@ checked:
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/suppliers
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/zendesk/integrations
+- https://cdn.winget.microsoft.com/cache
+- https://formulae.brew.sh/api/cask.json
+- https://formulae.brew.sh/api/formula.json
+- https://github.com/ScoopInstaller/Extras
+- https://github.com/ScoopInstaller/Main
+- https://marketplace.zoom.us/
+- https://marketplace.zoom.us/api/v1/apps/search
+- https://partner.zoom.com/partner-locator/
+- https://partner.zoom.com/solutions/
+- https://partner.zoom.com/wp-json/wp/v2/isvsolution
+- https://partner.zoom.com/wp-json/wp/v2/partner
+- https://partners.zoom.us/
 summary: null
 marketplace_apps:
 - marketplace: own
@@ -6549,6 +6556,41 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
   first_seen: '2026-10-20'
+- partner_name: Zoom Partner Program
+  partner: zoom
+  partner_match: register-name
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://partner.zoom.com/solutions/zendesk/
+  category: Zoom technology partner
+  partner_tier:
+  - Technology Alliances
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Zendesk
+    register_id: https://partner.zoom.com/solutions/zendesk/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Contact Center
+      - Meetings
+      - Phone
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-zoom-app-marketplace.py
+  first_seen: '2026-10-21'
 templates:
 - title: Create Zendesk tickets from new Typeform entries
   url: https://zapier.com/apps/typeform/integrations/zendesk/117/create-zendesk-tickets-from-new-typeform-entries
