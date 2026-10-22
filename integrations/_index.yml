@@ -5978,3 +5978,40 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: zendesk-ismap
+  label: ISMAP
+  partner_name: ISMAP
+  category: Japan government cloud security assessment (ISMAP)
+  type: contract
+  channel: regulator-register
+  evidence: https://www.ismap.go.jp/csm?id=cloud_service_list
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ISMAP / ISMAP-LIU cloud service lists (www.ismap.go.jp)
+    standard: ISMAP
+    spec_file: null
+    role: ismap-registered
+    registrations:
+    - register_number: C26-0105-2
+      registration_type: ISMAP
+      service: Zendesk Suite Professional、Zendesk Suite Enterprise、Zendesk Suite Enterprise Plusプラン
+      registered_name: Zendesk, Inc.
+      service_url: https://www.zendesk.co.jp/
+      matched_domain: zendesk.co.jp
+      matched_by: domain+local-verified
+      evidence_url: https://www.ismap.go.jp/csm?id=cloud_service_list
+      scope_of_statement: https://www.ismap.go.jp/sys_attachment.do?sys_id=c171d60b83c7bed0aa68c6a8beaad32a
+      hand_verified: Zendesk, Inc. on zendesk.co.jp; all/zendesk holds zendesk.com
+    signal_note: certified_products = one entry per ISMAP registration TYPE (ISMAP, ISMAP-LIU), never per service;
+      services are context, never counted. The lists carry current registrations only (a filed renewal keeps a registration
+      valid), so lapsed is always false
+    certified_products:
+    - product: ISMAP
+      standard: ISMAP
+      registration_type: ISMAP
+      lapsed: false
+    detected_by: sweep-japan-ismap-tisax-assessments.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
